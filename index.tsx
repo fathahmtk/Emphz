@@ -104,6 +104,14 @@ const productPortfolio = [
                 material: "Polycarbonate",
                 ipRating: "IP54"
             },
+            {
+                title: "Smart WM-IoT Series",
+                description: "Integrated sensor-ready panels engineered for industrial IoT deployments with dedicated cable management.",
+                image_front: "https://storage.googleapis.com/maker-studio-project-assets/grp-renders/grp-render-2-front.png",
+                image_side: "https://storage.googleapis.com/maker-studio-project-assets/grp-renders/grp-render-2-side.png",
+                material: "GRP",
+                ipRating: "IP67"
+            },
         ]
     },
     {
@@ -125,6 +133,14 @@ const productPortfolio = [
                 material: "GRP",
                 ipRating: "IP66"
             },
+            {
+                title: "FS-ClimateGuard Series",
+                description: "Thermally managed cabinets supplied with active ventilation kits for high-load automation environments.",
+                image_front: "https://storage.googleapis.com/maker-studio-project-assets/grp-renders/grp-render-4-front.png",
+                image_side: "https://storage.googleapis.com/maker-studio-project-assets/grp-renders/grp-render-4-side.png",
+                material: "GRP",
+                ipRating: "IP65"
+            },
         ]
     },
     {
@@ -138,6 +154,35 @@ const productPortfolio = [
                 material: "Polycarbonate",
                 ipRating: "IP67"
             },
+            {
+                title: "ATEX-Rated Terminal Pods",
+                description: "Explosion-proof junction solutions certified for hazardous zones with customizable gland plates.",
+                image_front: "https://storage.googleapis.com/maker-studio-project-assets/grp-renders/grp-render-3-front.png",
+                image_side: "https://storage.googleapis.com/maker-studio-project-assets/grp-renders/grp-render-3-side.png",
+                material: "Glass Reinforced Polyester",
+                ipRating: "IP68"
+            },
+        ]
+    },
+    {
+        category: "Outdoor Kiosk Enclosures",
+        items: [
+            {
+                title: "Kiosk Transit Series",
+                description: "Weatherized kiosks purpose-built for transportation hubs with tamper-resistant access panels.",
+                image_front: "https://storage.googleapis.com/maker-studio-project-assets/grp-renders/grp-render-5-front.png",
+                image_side: "https://storage.googleapis.com/maker-studio-project-assets/grp-renders/grp-render-5-side.png",
+                material: "GRP",
+                ipRating: "IP65"
+            },
+            {
+                title: "Kiosk Energy Series",
+                description: "Pre-engineered housings for EV charging controllers with integrated cooling pathways and service compartments.",
+                image_front: "https://storage.googleapis.com/maker-studio-project-assets/grp-renders/grp-render-1-front.png",
+                image_side: "https://storage.googleapis.com/maker-studio-project-assets/grp-renders/grp-render-1-side.png",
+                material: "GRP",
+                ipRating: "IP66"
+            }
         ]
     },
 ];
