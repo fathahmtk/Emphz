@@ -181,14 +181,14 @@ const HomePage: React.FC = () => {
                     </div>
                 ))}
 
-                <div className="container mx-auto px-6 text-center relative z-10">
-                    <h1 ref={animatedRef} className="timeline-item text-4xl sm:text-5xl md:text-7xl font-extrabold font-heading mb-6 leading-tight tracking-tighter">
-                        {t('home.hero.title')}
+                <div key={currentSlide} className="container mx-auto px-6 text-center relative z-10">
+                    <h1 ref={animatedRef} className="timeline-item text-4xl sm:text-5xl md:text-7xl font-extrabold font-heading mb-6 leading-tight tracking-tighter" style={{transitionDelay: '200ms'}}>
+                        {t(`home.hero.slide${currentSlide + 1}.title`)}
                     </h1>
-                    <p ref={animatedRef} className="timeline-item text-lg md:text-xl text-gray-300 mb-10 max-w-3xl mx-auto" style={{transitionDelay: '150ms'}}>
-                        {t('home.hero.subtitle')}
+                    <p ref={animatedRef} className="timeline-item text-lg md:text-xl text-gray-300 mb-10 max-w-3xl mx-auto" style={{transitionDelay: '350ms'}}>
+                        {t(`home.hero.slide${currentSlide + 1}.subtitle`)}
                     </p>
-                    <div ref={animatedRef} className="timeline-item flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4" style={{transitionDelay: '300ms'}}>
+                    <div ref={animatedRef} className="timeline-item flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4" style={{transitionDelay: '500ms'}}>
                         <NavLink to="/products" className="w-full sm:w-auto bg-accent text-white px-8 py-4 rounded-lg font-semibold hover:bg-accent-hover shadow-lg transition-all duration-300 transform hover:-translate-y-1 cta-glow font-heading">
                             {t('home.hero.exploreProducts')}
                         </NavLink>

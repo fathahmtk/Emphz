@@ -21,8 +21,18 @@ export default {
     },
     home: {
         hero: {
-            title: "When it’s GRP, it’s EMPHZ.",
-            subtitle: "From electrical enclosures to modular kiosks and cabins, EMPHZ sets the benchmark in composite innovation — delivering GRP solutions that outperform metal in strength, safety, and sustainability.",
+            slide1: {
+                title: "When it’s GRP, it’s EMPHZ.",
+                subtitle: "From electrical enclosures to modular kiosks, we set the benchmark in composite innovation, outperforming metal in every metric.",
+            },
+            slide2: {
+                title: "Engineered for Any Environment",
+                subtitle: "Our GRP modular cabins and villas provide durable, rapid-deployment solutions for housing and commercial use worldwide.",
+            },
+            slide3: {
+                title: "The Standard in Composite Engineering",
+                subtitle: "We deliver custom, high-performance GRP solutions that meet rigorous international standards for safety and reliability.",
+            },
             exploreProducts: 'Explore Our Products',
             getQuote: 'Get a Custom Quote'
         },
