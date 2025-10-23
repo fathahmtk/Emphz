@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Package, Mail, Users, BarChart, Eye, TrendingDown } from 'lucide-react';
 import { useAuth } from '../../hooks/useAuth';
+import { getDashboardStats } from '../../services/mockApi';
 
-const StatCard: React.FC<{ title: string; value: string | number; icon: React.ReactNode }> = ({ title, value, icon }) => (
+const StatCard: React.FC<{ title: string; value: React.ReactNode; icon: React.ReactNode }> = ({ title, value, icon }) => (
     <div className="bg-background p-6 rounded-lg shadow-sm border border-border flex items-center">
         <div className="bg-accent text-white p-4 rounded-full mr-5">
             {icon}
         </div>
         <div>
             <p className="text-sm text-text-secondary font-medium">{title}</p>
-            <p className="text-3xl font-bold text-text-DEFAULT">{value}</p>
+            <div className="text-3xl font-bold text-text-DEFAULT">{value}</div>
         </div>
     </div>
 );
@@ -26,8 +27,33 @@ const mockAnalyticsData = {
 const AdminDashboardPage: React.FC = () => {
     const { user } = useAuth();
     const [analyticsRange, setAnalyticsRange] = useState<AnalyticsRange>('30d');
+    const [stats, setStats] = useState({
+        totalProducts: 0,
+        newEnquiries: 0,
+        totalCustomers: 0,
+        monthlySales: 0,
+    });
+    const [loadingStats, setLoadingStats] = useState(true);
     
+    useEffect(() => {
+        const fetchStats = async () => {
+            setLoadingStats(true);
+            const data = await getDashboardStats();
+            setStats(data);
+            setLoadingStats(false);
+        };
+        fetchStats();
+    }, []);
+
     const analyticsData = mockAnalyticsData[analyticsRange];
+
+    const formatCurrency = (amount: number) => {
+        return new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(amount);
+    };
+
+    const renderStatValue = (value: string | number) => {
+        return loadingStats ? <div className="h-8 w-20 bg-gray-200 rounded animate-pulse"></div> : <p>{value}</p>;
+    };
 
     return (
         <div className="space-y-8">
@@ -36,10 +62,10 @@ const AdminDashboardPage: React.FC = () => {
             <div>
                  <h2 className="text-xl font-semibold mb-4 text-text-DEFAULT">Quick Stats</h2>
                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <StatCard title="Total Products" value="11" icon={<Package />} />
-                    <StatCard title="New Enquiries" value="2" icon={<Mail />} />
-                    <StatCard title="Customers" value="3" icon={<Users />} />
-                    <StatCard title="Sales (Month)" value="₹XX,XX" icon={<BarChart />} />
+                    <StatCard title="Total Products" value={renderStatValue(stats.totalProducts)} icon={<Package />} />
+                    <StatCard title="New Enquiries" value={renderStatValue(stats.newEnquiries)} icon={<Mail />} />
+                    <StatCard title="Total Customers" value={renderStatValue(stats.totalCustomers)} icon={<Users />} />
+                    <StatCard title="Sales (This Month)" value={loadingStats ? renderStatValue('...') : <p>{formatCurrency(stats.monthlySales)}</p>} icon={<BarChart />} />
                 </div>
             </div>
 

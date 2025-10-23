@@ -30,7 +30,7 @@ const AdminLoginPage: React.FC = () => {
     <div className="min-h-screen bg-gray-100 flex items-center justify-center">
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
         <div className="text-center mb-6">
-            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCAyMDAgNTAiPjxzdHlsZT4udGV4dCB7IGZvbnQ6IGJvbGQgMzZweCAnUG9wcGlucycsIHNhbnMtc2VyaWY7IGZpbGw6ICMxZTI5M2I7IH0gLmRvdCB7IGZpbGw6ICMwNmI2ZDQ7IH08L3N0eWxlPjx0ZXh0IHg9IjEwIiB5PSIzOCIgY2xhc3M9InRleHQiPkVNUEhaPC90ZXh0PjxjaXJjbGUgY3g9IjE1NSIgY3k9IjM1IiByPSI1IiBjbGFzcz0iZG90Ii8+PC9zdmc+" alt="EMPHZ Logo" className="h-12 mx-auto" />
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNzAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCAyNzAgNTAiPjxzdHlsZT4udGV4dC1lbXBoeiB7IGZvbnQ6IGJvbGQgMzZweCAnUG9wcGlucycsIHNhbnMtc2VyaWY7IGZpbGw6ICMxZTI5M2I7IH0gLnRleHQtZ2xvYmFsIHsgZm9udDogNTAwIDM2cHggJ1BvcHBpbnMnLCBzYW5zLXNlcmlmOyBmaWxsOiAjNDc1NTY5OyB9IC5kb3QgeyBmaWxsOiAjMDZiNmQ0OyB9PC9zdHlsZT48dGV4dCB4PSIxMCIgeT0iMzgiIGNsYXNzPSJ0ZXh0LWVtcGh6Ij5FTVBIWjwvdGV4dD48dGV4dCB4PSIxNDgiIHk9IjM4IiBjbGFzcz0idGV4dC1nbG9iYWwiPkdsb2JhbDwvdGV4dD48Y2lyY2xlIGN4PSIyNTUiIGN5PSIzNSIgcj0iNSIgY2xhc3M9ImRvdCIvPjwvc3ZnPg==" alt="EMPHZ Global Logo" className="h-12 mx-auto" />
             <p className="text-gray-500 mt-2">Admin Portal</p>
         </div>
         <form onSubmit={handleSubmit} className="space-y-6">

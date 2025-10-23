@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { BlogPost } from '../types';
 import { getBlogPosts } from '../services/mockApi';
+import Breadcrumbs from '../components/Breadcrumbs';
+import { SectionDivider } from '../components/SectionDivider';
+import { usePageMetadata } from '../hooks/usePageMetadata';
 
 const BlogPostCard: React.FC<{ post: BlogPost }> = ({ post }) => (
     <div className="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col group transition-transform duration-300 hover:scale-105 border border-border">
@@ -26,20 +29,13 @@ const InsightsPage: React.FC = () => {
     const [posts, setPosts] = useState<BlogPost[]>([]);
     const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        document.title = "Insights & Articles | EMPHZ Private Limited";
-        const setMetaTag = (name: string, content: string) => {
-            let element = document.querySelector(`meta[name="${name}"]`);
-            if (!element) {
-                element = document.createElement('meta');
-                element.setAttribute('name', name);
-                document.head.appendChild(element);
-            }
-            element.setAttribute('content', content);
-        };
-        setMetaTag('description', "Explore the latest insights, articles, and thinking on composite engineering, GRP solutions, and industry trends from the experts at EMPHZ Private Limited.");
-        setMetaTag('keywords', "Composite engineering, GRP trends, industry insights, GRP articles, sustainability, EMPHZ Private Limited");
+    usePageMetadata(
+        "EMPHZ Engineering Blog | GRP Technology & Innovation",
+        "Read the latest on GRP technology from the experts at EMPHZ, The GRP Company. Our insights cover composite engineering, sustainability, and market trends.",
+        "EMPHZ GRP insights, GRP technology, composite engineering blog, GRP trends, The GRP Company, EMPHZ Global"
+    );
 
+    useEffect(() => {
         const fetchPosts = async () => {
             setLoading(true);
             const data = await getBlogPosts();
@@ -49,14 +45,30 @@ const InsightsPage: React.FC = () => {
         fetchPosts();
     }, []);
 
+    const breadcrumbLinks = [
+        { name: 'Home', path: '/' },
+        { name: 'Insights' }
+    ];
+
     return (
         <div className="bg-background-light min-h-screen">
-            <div className="container mx-auto px-6 py-12">
-                <div className="text-center mb-12">
-                    <h1 className="text-4xl font-bold font-heading text-primary mb-2">Insights & Articles</h1>
-                    <p className="text-lg text-text-secondary">Explore our latest thinking on composite engineering, industry trends, and sustainability.</p>
+            <div className="bg-background relative overflow-hidden">
+                 <div className="absolute inset-0">
+                    <img src="https://images.unsplash.com/photo-1604147706283-d7119b5b822c?q=80&w=1920&auto=format&fit=crop" alt="Abstract background texture" className="w-full h-full object-cover opacity-50" />
+                    <div className="absolute inset-0 bg-white/95"></div>
                 </div>
+                <div className="relative">
+                    <Breadcrumbs links={breadcrumbLinks} />
+                    <div className="container mx-auto px-6 py-12 text-center">
+                        <h1 className="text-4xl font-bold font-heading text-primary mb-2">EMPHZ GRP Engineering Insights</h1>
+                        <p className="text-lg text-text-secondary">Explore our latest thinking on composite engineering, industry trends, and the future of GRP technology.</p>
+                    </div>
+                </div>
+            </div>
 
+            <SectionDivider />
+
+            <div className="container mx-auto px-6 py-12">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {loading ? (
                         Array.from({ length: 3 }).map((_, index) => (

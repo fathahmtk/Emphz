@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate, NavLink } from 'react-router-dom';
+import React, { useState, useEffect, useMemo } from 'react';
+import { useNavigate, NavLink, useLocation } from 'react-router-dom';
 import { Enquiry, Quotation } from '../../types';
 import { getEnquiries, updateEnquiryStatus, addQuotation } from '../../services/mockApi';
 import { QuotationForm } from '../../components/QuotationForm';
@@ -9,20 +9,40 @@ import { StatusDropdown } from '../../components/StatusDropdown';
 const AdminEnquiriesPage: React.FC = () => {
     const [enquiries, setEnquiries] = useState<Enquiry[]>([]);
     const [loading, setLoading] = useState(true);
+    const [searchTerm, setSearchTerm] = useState('');
     const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
     const [quotePrefill, setQuotePrefill] = useState<Partial<Quotation> | null>(null);
     const navigate = useNavigate();
-
-    const fetchEnquiriesData = async () => {
-        setLoading(true);
-        const data = await getEnquiries();
-        setEnquiries(data);
-        setLoading(false);
-    };
+    const location = useLocation();
 
     useEffect(() => {
+        const fetchEnquiriesData = async () => {
+            setLoading(true);
+            const data = await getEnquiries();
+            setEnquiries(data);
+            setLoading(false);
+        };
+        
+        const params = new URLSearchParams(location.search);
+        const search = params.get('search');
+        if (search) {
+            setSearchTerm(search);
+        }
+        
         fetchEnquiriesData();
-    }, []);
+    }, [location.search]);
+
+    const filteredEnquiries = useMemo(() => {
+        if (!searchTerm) {
+            return enquiries;
+        }
+        const lowercasedTerm = searchTerm.toLowerCase();
+        return enquiries.filter(enquiry =>
+            enquiry.name.toLowerCase().includes(lowercasedTerm) ||
+            enquiry.email.toLowerCase().includes(lowercasedTerm)
+        );
+    }, [enquiries, searchTerm]);
+
 
     const handleStatusChange = async (id: number, newStatus: Enquiry['status']) => {
         try {
@@ -66,6 +86,16 @@ const AdminEnquiriesPage: React.FC = () => {
 
             <h1 className="text-2xl sm:text-3xl font-bold text-text-DEFAULT mb-6">Customer Enquiries</h1>
             
+            <div className="mb-4">
+                <input
+                    type="text"
+                    placeholder="Search by name or email..."
+                    value={searchTerm}
+                    onChange={e => setSearchTerm(e.target.value)}
+                    className="w-full max-w-md px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent"
+                />
+            </div>
+
             <div className="bg-white p-4 sm:p-6 rounded-lg shadow-sm border border-border">
                  <div className="overflow-x-auto">
                     <table className="w-full text-sm text-left text-text-secondary">
@@ -90,7 +120,7 @@ const AdminEnquiriesPage: React.FC = () => {
                                     </tr>
                                 ))
                             ) : (
-                                enquiries.map(enquiry => (
+                                filteredEnquiries.map(enquiry => (
                                     <tr key={enquiry.id} className="bg-white border-b border-border hover:bg-background-light">
                                         <td className="px-6 py-4 whitespace-nowrap">
                                             <p className="font-medium text-text-DEFAULT">{enquiry.name}</p>
@@ -125,6 +155,11 @@ const AdminEnquiriesPage: React.FC = () => {
                             )}
                         </tbody>
                     </table>
+                    {!loading && filteredEnquiries.length === 0 && (
+                        <div className="text-center py-10">
+                            <p className="text-text-secondary">No enquiries found for "{searchTerm}".</p>
+                        </div>
+                    )}
                 </div>
             </div>
         </div>

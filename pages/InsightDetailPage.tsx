@@ -1,47 +1,67 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, NavLink } from 'react-router-dom';
 import { BlogPost } from '../types';
-import { getBlogPostBySlug } from '../services/mockApi';
-import { Calendar, User } from 'lucide-react';
+import { getBlogPostBySlug, getLatestBlogPosts } from '../services/mockApi';
+import { Calendar, User, ArrowRight } from 'lucide-react';
+import Breadcrumbs from '../components/Breadcrumbs';
+import { SectionDivider } from '../components/SectionDivider';
+import { usePageMetadata } from '../hooks/usePageMetadata';
+
+const InsightCard: React.FC<{ post: BlogPost }> = ({ post }) => {
+    return (
+        <div className="group [perspective:1000px] h-full">
+            <div className="relative bg-white rounded-lg border border-border overflow-hidden flex flex-col h-full transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(5deg)] shadow-md hover:shadow-2xl">
+                <div className="relative">
+                    <img src={post.coverUrl} alt={post.title} className="w-full h-48 object-cover" />
+                </div>
+                <div className="p-6 flex flex-col flex-grow">
+                    <p className="text-xs text-text-secondary mb-2">{new Date(post.publishedAt!).toLocaleDateString()}</p>
+                    <h3 className="text-lg font-bold font-heading text-text-DEFAULT mb-2 flex-grow">{post.title}</h3>
+                    <NavLink to={`/insights/${post.slug}`} className="relative z-10 mt-4 font-semibold text-accent hover:text-accent-hover flex items-center group-hover:gap-3 transition-all duration-300">
+                        Read More <ArrowRight size={16} className="ms-1" />
+                    </NavLink>
+                </div>
+            </div>
+        </div>
+    );
+};
 
 const InsightDetailPage: React.FC = () => {
     const { slug } = useParams<{ slug: string }>();
     const [post, setPost] = useState<BlogPost | null>(null);
+    const [latestPosts, setLatestPosts] = useState<BlogPost[]>([]);
     const [loading, setLoading] = useState(true);
 
+    usePageMetadata(
+        post ? `${post.title} | An EMPHZ GRP Engineering Insight` : "EMPHZ GRP Insight",
+        post ? `${post.excerpt} - A deep dive from EMPHZ, The GRP Company.` : "Expert insights from EMPHZ Global.",
+        post ? `${post.title}, EMPHZ GRP, GRP insights, composite engineering, The GRP Company` : "EMPHZ GRP"
+    );
+
     useEffect(() => {
+        window.scrollTo(0, 0);
         const fetchPost = async () => {
             if (slug) {
                 setLoading(true);
-                const data = await getBlogPostBySlug(slug);
-                setPost(data || null);
+                const [postData, allLatestPosts] = await Promise.all([
+                    getBlogPostBySlug(slug),
+                    getLatestBlogPosts(3)
+                ]);
+                
+                setPost(postData || null);
+                // Filter out the current post from the latest posts list
+                setLatestPosts(allLatestPosts.filter(p => p.slug !== slug).slice(0, 2));
                 setLoading(false);
             }
         };
         fetchPost();
     }, [slug]);
 
-    useEffect(() => {
-        if (post) {
-            document.title = `${post.title} | EMPHZ Insights`;
-            const setMetaTag = (name: string, content: string) => {
-                let element = document.querySelector(`meta[name="${name}"]`);
-                if (!element) {
-                    element = document.createElement('meta');
-                    element.setAttribute('name', name);
-                    document.head.appendChild(element);
-                }
-                element.setAttribute('content', content);
-            };
-            setMetaTag('description', `${post.excerpt} - Read the full article from EMPHZ Private Limited on GRP solutions and composite engineering.`);
-            setMetaTag('keywords', `${post.title}, GRP insights, composite engineering, EMPHZ Private Limited, GRP solutions`);
-        }
-    }, [post]);
-
     if (loading) {
         return (
              <div className="container mx-auto px-6 py-12 animate-pulse">
-                <div className="h-10 w-3/4 bg-gray-300 rounded mx-auto"></div>
+                <div className="h-6 w-1/3 bg-gray-300 rounded mb-4"></div>
+                <div className="h-10 w-3/4 bg-gray-300 rounded mx-auto mt-4"></div>
                 <div className="mt-8 h-96 bg-gray-300 rounded-lg"></div>
                 <div className="mt-8 space-y-4">
                     <div className="h-6 w-full bg-gray-300 rounded"></div>
@@ -53,11 +73,28 @@ const InsightDetailPage: React.FC = () => {
     }
 
     if (!post) {
-        return <div className="text-center py-20">Post not found.</div>;
+         const notFoundBreadcrumbs = [
+            { name: 'Home', path: '/' },
+            { name: 'Insights', path: '/insights' },
+            { name: 'Not Found' },
+        ];
+        return (
+            <div>
+                <Breadcrumbs links={notFoundBreadcrumbs} />
+                <div className="text-center py-20">Post not found.</div>
+            </div>
+        );
     }
+    
+    const breadcrumbLinks = [
+        { name: 'Home', path: '/' },
+        { name: 'Insights', path: '/insights' },
+        { name: post.title },
+    ];
 
     return (
         <div className="bg-white">
+            <Breadcrumbs links={breadcrumbLinks} />
             <div className="container mx-auto px-6 py-12 max-w-4xl">
                 <article>
                     <header className="mb-8 text-center">
@@ -84,14 +121,27 @@ const InsightDetailPage: React.FC = () => {
                            <p key={index} className="mb-4">{paragraph}</p>
                         ))}
                     </div>
-
-                    <div className="mt-12 text-center">
-                        <NavLink to="/insights" className="bg-accent text-white px-6 py-3 rounded-md font-semibold hover:bg-accent-hover transition duration-300">
-                            &larr; Back to Insights
-                        </NavLink>
-                    </div>
                 </article>
             </div>
+
+            {latestPosts.length > 0 && (
+                <div className="bg-background-light pt-12 pb-20">
+                    <SectionDivider />
+                    <div className="container mx-auto px-6">
+                        <h2 className="text-3xl font-bold font-heading text-primary mb-8 text-center">Latest Insights</h2>
+                         <div className="grid grid-cols-1 md:grid-cols-2 max-w-4xl mx-auto gap-8">
+                           {latestPosts.map((post) => (
+                               <InsightCard key={post.id} post={post} />
+                           ))}
+                        </div>
+                         <div className="mt-12 text-center">
+                            <NavLink to="/insights" className="bg-accent text-white px-6 py-3 rounded-md font-semibold hover:bg-accent-hover transition duration-300">
+                                View All Insights
+                            </NavLink>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

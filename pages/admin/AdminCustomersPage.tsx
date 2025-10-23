@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Customer } from '../../types';
 import { getCustomers } from '../../services/mockApi';
 import { Eye } from 'lucide-react';
@@ -6,6 +7,7 @@ import { Eye } from 'lucide-react';
 const AdminCustomersPage: React.FC = () => {
     const [customers, setCustomers] = useState<Customer[]>([]);
     const [loading, setLoading] = useState(true);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchCustomers = async () => {
@@ -18,8 +20,8 @@ const AdminCustomersPage: React.FC = () => {
         fetchCustomers();
     }, []);
 
-    const handleViewHistory = (customerName: string) => {
-        alert(`Viewing history for ${customerName}. This would show all their enquiries and quotations.`);
+    const handleViewHistory = (customerEmail: string) => {
+        navigate(`/admin/enquiries?search=${encodeURIComponent(customerEmail)}`);
     };
 
     return (
@@ -66,7 +68,7 @@ const AdminCustomersPage: React.FC = () => {
                                         <td className="px-6 py-4 whitespace-nowrap">{new Date(customer.firstSeen).toLocaleDateString()}</td>
                                         <td className="px-6 py-4">
                                             <div className="flex space-x-3">
-                                                <button onClick={() => handleViewHistory(customer.name)} className="text-gray-500 hover:text-blue-600" title="View History"><Eye size={18}/></button>
+                                                <button onClick={() => handleViewHistory(customer.email)} className="text-gray-500 hover:text-blue-600" title="View History"><Eye size={18}/></button>
                                             </div>
                                         </td>
                                     </tr>

@@ -3,11 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>EMPHZ Private Limited</title>
+    <title>EMPHZ Global</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@500;600;700;800&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700;800&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
       .timeline-item {
         opacity: 0;
@@ -30,7 +30,7 @@
           stroke-dashoffset: 166;
           stroke-width: 4;
           stroke-miterlimit: 10;
-          stroke: #06b6d4; /* accent color */
+          stroke: #C9A227; /* accent color */
           fill: none;
           animation: draw-circle 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
       }
@@ -40,7 +40,7 @@
           stroke-width: 5;
           stroke-linecap: round;
           stroke-miterlimit: 10;
-          stroke: #06b6d4; /* accent color */
+          stroke: #C9A227; /* accent color */
           fill: none;
           animation: draw-checkmark 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.6s forwards;
       }
@@ -59,10 +59,16 @@
           50% { transform: translateY(-10px); }
           100% { transform: translateY(0px); }
       }
-      @keyframes glow {
-          0% { box-shadow: 0 0 5px theme('colors.accent.DEFAULT'), 0 0 10px theme('colors.accent.DEFAULT'); }
-          50% { box-shadow: 0 0 20px theme('colors.accent.DEFAULT'), 0 0 30px theme('colors.accent.DEFAULT'); }
-          100% { box-shadow: 0 0 5px theme('colors.accent.DEFAULT'), 0 0 10px theme('colors.accent.DEFAULT'); }
+      .cta-glow:hover {
+        animation: pulse-glow 2s ease-in-out infinite;
+      }
+      @keyframes pulse-glow {
+        0%, 100% {
+          box-shadow: 0 0 7px rgba(201, 162, 39, 0.5);
+        }
+        50% {
+          box-shadow: 0 0 15px rgba(201, 162, 39, 0.8);
+        }
       }
       /* Page Transition Animation */
       @keyframes page-enter {
@@ -79,6 +85,11 @@
       .page-transition {
         animation: page-enter 0.4s ease-out forwards;
       }
+
+      .pattern-bg {
+        background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.08) 1px, transparent 0);
+        background-size: 25px 25px;
+      }
     </style>
     <script>
       tailwind.config = {
@@ -86,15 +97,14 @@
           extend: {
             colors: {
               primary: {
-                DEFAULT: '#1e293b', // slate-800 (Dark Charcoal Grey)
-                medium: '#475569', // slate-600
-                dark: '#0f172a',   // slate-900
+                DEFAULT: '#0B3D91', // Deep Blue
+                medium: '#1E4A9B', 
+                dark: '#072C6B',
               },
               accent: {
-                DEFAULT: '#06b6d4',  // cyan-500 (Vibrant Blue)
-                hover: '#0891b2',   // cyan-600
-                light: '#ecfeff', // cyan-50
-                secondary: '#f97316', // orange-500
+                DEFAULT: '#C9A227',  // Gold
+                hover: '#B8921A',   
+                light: '#FBF5E1', 
               },
               text: {
                 DEFAULT: '#1e293b', // slate-800
@@ -102,12 +112,12 @@
               },
               background: {
                 DEFAULT: '#FFFFFF',
-                light: '#f8fafc', // slate-50
+                light: '#F7F8FA',
               },
               border: '#E2E8F0', // slate-200
             },
             fontFamily: {
-              sans: ['Lato', 'sans-serif'],
+              sans: ['Inter', 'sans-serif'],
               heading: ['Poppins', 'sans-serif'],
               arabic: ['Tajawal', 'sans-serif'],
             },
@@ -118,7 +128,6 @@
             animation: {
                 'gradient-xy': 'gradient-xy 15s ease infinite',
                 'float': 'float 6s ease-in-out infinite',
-                'glow': 'glow 3s ease-in-out infinite',
             },
             keyframes: {
                 'gradient-xy': {
@@ -151,6 +160,7 @@
   <body class="bg-background-light font-sans text-text-DEFAULT">
     <div id="root"></div>
     <!-- This app is a single-page application. To see the full functionality including routing, please run it in a development environment. -->
+    <script src="/emphz_global.js"></script>
     <script type="module" src="/index.tsx"></script>
   </body>
 </html>

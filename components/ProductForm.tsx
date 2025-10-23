@@ -44,7 +44,8 @@ export const ProductForm: React.FC<ProductFormProps> = ({ product, onSave, onCan
                 description: product.description,
                 tags: product.tags.join(', '),
                 specs: Object.entries(product.specs).map(([k, v]) => `${k}:${v}`).join('\n'),
-                imageUrls: product.imageUrls.join(', '),
+                // FIX: Map image objects to a comma-separated string of URLs.
+                imageUrls: product.imageUrls.map(img => img.url).join(', '),
                 pdfUrls: product.pdfUrls.map(p => `${p.title}:${p.url}`).join('\n'),
                 isFeatured: product.isFeatured,
             });
@@ -70,7 +71,8 @@ export const ProductForm: React.FC<ProductFormProps> = ({ product, onSave, onCan
         const transformedData = {
             ...formData,
             tags: formData.tags.split(',').map(t => t.trim()).filter(Boolean),
-            imageUrls: formData.imageUrls.split(',').map(t => t.trim()).filter(Boolean),
+            // FIX: Transform comma-separated URL string back into an array of image objects.
+            imageUrls: formData.imageUrls.split(',').map((url, index) => ({ view: index === 0 ? 'front' : `gallery${index}`, url: url.trim() })).filter(img => img.url),
             specs: formData.specs.split('\n').reduce((acc, line) => {
                 const [key, ...valParts] = line.split(':');
                 if (key && valParts.length > 0) {

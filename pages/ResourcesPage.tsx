@@ -2,6 +2,9 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { Download as DownloadType } from '../types';
 import { getDownloads } from '../services/mockApi';
 import { Download as DownloadIcon, FileText, CheckSquare, Square } from 'lucide-react';
+import Breadcrumbs from '../components/Breadcrumbs';
+import { SectionDivider } from '../components/SectionDivider';
+import { usePageMetadata } from '../hooks/usePageMetadata';
 
 const ResourcesPage: React.FC = () => {
     const [downloads, setDownloads] = useState<DownloadType[]>([]);
@@ -10,20 +13,13 @@ const ResourcesPage: React.FC = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [categoryFilter, setCategoryFilter] = useState('All');
 
-    useEffect(() => {
-        document.title = "Resources Library | EMPHZ Private Limited";
-        const setMetaTag = (name: string, content: string) => {
-            let element = document.querySelector(`meta[name="${name}"]`);
-            if (!element) {
-                element = document.createElement('meta');
-                element.setAttribute('name', name);
-                document.head.appendChild(element);
-            }
-            element.setAttribute('content', content);
-        };
-        setMetaTag('description', "Access technical resources for our GRP solutions. Download datasheets, CAD files, installation guides, and certifications from EMPHZ Private Limited.");
-        setMetaTag('keywords', "GRP datasheets, CAD files, technical resources, certifications, GRP guides, EMPHZ Private Limited");
+    usePageMetadata(
+        "EMPHZ GRP Resources | Datasheets, Certifications & CAD",
+        "The official resource library from EMPHZ, The GRP Company. Download technical datasheets, CAD files, and certifications for all EMPHZ GRP solutions.",
+        "EMPHZ GRP datasheets, GRP CAD files, GRP certifications, GRP technical resources, The GRP Company"
+    );
 
+    useEffect(() => {
         const fetchDownloads = async () => {
             setLoading(true);
             const data = await getDownloads();
@@ -46,16 +42,16 @@ const ResourcesPage: React.FC = () => {
         });
     }, [downloads, categoryFilter, searchTerm]);
 
+    // Group downloads by category for display.
+    // Using a typed reduce function ensures correct type inference for the accumulator.
     const groupedDownloads = useMemo(() => {
-        // FIX: By providing a generic type argument to `reduce`, we ensure the accumulator `acc` and
-        // the final result are correctly typed, resolving the error with `files.map` downstream.
-        return filteredDownloads.reduce<Record<string, DownloadType[]>>((acc, download) => {
+        return filteredDownloads.reduce<Record<string, DownloadType[]>>((groups, download) => {
             const category = download.category;
-            if (!acc[category]) {
-                acc[category] = [];
+            if (!groups[category]) {
+                groups[category] = [];
             }
-            acc[category].push(download);
-            return acc;
+            groups[category].push(download);
+            return groups;
         }, {});
     }, [filteredDownloads]);
 
@@ -74,15 +70,31 @@ const ResourcesPage: React.FC = () => {
         alert(`Simulating download of a submittal pack containing:\n- ${selectedFiles.join('\n- ')}`);
         setSelected([]);
     };
+    
+    const breadcrumbLinks = [
+        { name: 'Home', path: '/' },
+        { name: 'Resources' }
+    ];
 
     return (
         <div className="bg-background-light min-h-screen">
-            <div className="container mx-auto px-6 py-12">
-                <div className="text-center mb-12">
-                    <h1 className="text-4xl font-bold font-heading text-primary mb-2">Resources Library</h1>
-                    <p className="text-lg text-text-secondary max-w-3xl mx-auto">Access datasheets, CAD files, installation guides, and certifications. Select multiple files to create a custom submittal pack.</p>
+            <div className="bg-background relative overflow-hidden">
+                 <div className="absolute inset-0">
+                    <img src="https://images.unsplash.com/photo-1604147706283-d7119b5b822c?q=80&w=1920&auto=format&fit=crop" alt="Abstract background texture" className="w-full h-full object-cover opacity-50" />
+                    <div className="absolute inset-0 bg-white/95"></div>
                 </div>
+                <div className="relative">
+                    <Breadcrumbs links={breadcrumbLinks} />
+                    <div className="container mx-auto px-6 py-12 text-center">
+                        <h1 className="text-4xl font-bold font-heading text-primary mb-2">EMPHZ GRP Resource Library</h1>
+                        <p className="text-lg text-text-secondary max-w-3xl mx-auto">Access datasheets, CAD files, and certifications for all EMPHZ solutions. Select files to create a custom submittal pack.</p>
+                    </div>
+                </div>
+            </div>
 
+            <SectionDivider />
+
+            <div className="container mx-auto px-6 py-12">
                  <div className="bg-white p-6 rounded-lg shadow-md border border-border mb-8 flex flex-col md:flex-row gap-4 items-center">
                     <input
                         type="text"
@@ -123,11 +135,13 @@ const ResourcesPage: React.FC = () => {
                     </div>
                 ) : Object.keys(groupedDownloads).length > 0 ? (
                     <div className="space-y-10">
-                        {Object.entries(groupedDownloads).map(([category, files]) => (
+                        {/* FIX: Replaced Object.entries with Object.keys for better type safety with object iteration.
+                            This resolves an issue where `files` was inferred as `unknown` by TypeScript. */}
+                        {Object.keys(groupedDownloads).map((category) => (
                             <div key={category}>
                                 <h2 className="text-2xl font-bold font-heading text-text-DEFAULT mb-4 pb-2 border-b-2 border-accent">{category}</h2>
                                 <ul className="space-y-3">
-                                    {files.map(file => (
+                                    {groupedDownloads[category].map(file => (
                                         <li key={file.id} className="bg-white p-4 rounded-md shadow-sm flex items-center justify-between hover:bg-background-light transition-colors border border-border">
                                             <div className="flex items-center">
                                                 <button onClick={() => handleSelect(file.id)} className="mr-4 text-accent">

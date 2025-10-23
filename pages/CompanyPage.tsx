@@ -1,12 +1,15 @@
 import React, { useEffect, useRef } from 'react';
 import { User, Shield, Zap } from 'lucide-react';
+import Breadcrumbs from '../components/Breadcrumbs';
+import { SectionDivider } from '../components/SectionDivider';
+import { usePageMetadata } from '../hooks/usePageMetadata';
 
 const leadership = [
-    { name: 'Muhammed Rashik P', role: 'CEO' },
-    { name: 'Jithin', role: 'Operations' },
-    { name: 'Muhammed Muneer A H', role: 'Engineering' },
-    { name: 'Muhammed Rafeeque', role: 'Sales' },
-    { name: 'Assainar Thevaroth', role: 'Finance' }
+    { name: 'Muhammed Rashik P', role: 'CEO', imageUrl: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=tinysrgb&w=200&h=200&fit=crop' },
+    { name: 'Jithin', role: 'Operations', imageUrl: 'https://images.unsplash.com/photo-1557862921-37829c790f19?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=tinysrgb&w=200&h=200&fit=crop' },
+    { name: 'Muhammed Muneer A H', role: 'Engineering', imageUrl: 'https://images.unsplash.com/photo-1627161683011-c881435a26ee?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=tinysrgb&w=200&h=200&fit=crop' },
+    { name: 'Muhammed Rafeeque', role: 'Sales', imageUrl: 'https://images.unsplash.com/photo-1583864697784-a0efc8379f70?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=tinysrgb&w=200&h=200&fit=crop' },
+    { name: 'Assainar Thevaroth', role: 'Finance', imageUrl: 'https://images.unsplash.com/photo-1590086782792-42dd2350150d?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=tinysrgb&w=200&h=200&fit=crop' }
 ];
 
 const milestones = [
@@ -19,20 +22,13 @@ const milestones = [
 const CompanyPage: React.FC = () => {
     const timelineRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-    useEffect(() => {
-        document.title = "About EMPHZ Private Limited | Composite Engineering Partner";
-        const setMetaTag = (name: string, content: string) => {
-            let element = document.querySelector(`meta[name="${name}"]`);
-            if (!element) {
-                element = document.createElement('meta');
-                element.setAttribute('name', name);
-                document.head.appendChild(element);
-            }
-            element.setAttribute('content', content);
-        };
-        setMetaTag('description', "Learn about EMPHZ Private Limited, India’s composite engineering partner. Discover our mission, journey, and the leadership team dedicated to high-performance GRP solutions.");
-        setMetaTag('keywords', "About EMPHZ, company profile, GRP manufacturer India, composite engineering, our team, EMPHZ Private Limited");
+    usePageMetadata(
+        "About EMPHZ Global | The GRP Company",
+        "Learn about EMPHZ Global, the company redefining GRP manufacturing in India and beyond. Our mission is to be the world's most trusted GRP engineering partner.",
+        "About EMPHZ, The GRP Company, GRP manufacturer India, composite engineering, EMPHZ team, GRP experts"
+    );
 
+    useEffect(() => {
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
@@ -61,36 +57,51 @@ const CompanyPage: React.FC = () => {
         };
     }, []);
 
+    const breadcrumbLinks = [
+        { name: 'Home', path: '/' },
+        { name: 'Company' }
+    ];
 
     return (
-        <div className="bg-background">
-            <div className="container mx-auto px-6 py-16">
-                <div className="text-center max-w-4xl mx-auto">
-                    <h1 className="text-4xl md:text-5xl font-bold font-heading text-primary mb-4">India’s Composite Engineering Partner</h1>
-                    <p className="text-lg text-text-secondary">We are dedicated to delivering high-performance GRP solutions for critical power and process infrastructure. Our work is defined by precision engineering, relentless quality control, and a commitment to sustainability.</p>
+        <div className="bg-background-light">
+            <div className="bg-background relative overflow-hidden">
+                <div className="absolute inset-0">
+                    <img src="https://images.unsplash.com/photo-1604147706283-d7119b5b822c?q=80&w=1920&auto=format&fit=crop" alt="Abstract background texture" className="w-full h-full object-cover opacity-50" />
+                    <div className="absolute inset-0 bg-white/95"></div>
                 </div>
+                <div className="relative">
+                    <Breadcrumbs links={breadcrumbLinks} />
+                    <div className="container mx-auto px-6 py-16">
+                        <div className="text-center max-w-4xl mx-auto">
+                            <h1 className="text-4xl md:text-5xl font-bold font-heading text-primary mb-4">EMPHZ Global: The GRP Company</h1>
+                            <p className="text-lg text-text-secondary">We are dedicated to delivering high-performance GRP solutions for critical infrastructure. Our work is defined by precision engineering, relentless quality, and a commitment to making EMPHZ the global synonym for GRP.</p>
+                        </div>
 
-                <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
-                    <div>
-                        <Shield className="mx-auto h-12 w-12 text-accent mb-4"/>
-                        <h3 className="text-2xl font-bold font-heading text-text-DEFAULT mb-2">Who We Are</h3>
-                        <p className="text-text-secondary">A team of engineers and innovators pushing the boundaries of composite materials to build safer, more resilient infrastructure.</p>
-                    </div>
-                     <div>
-                        <Zap className="mx-auto h-12 w-12 text-accent mb-4"/>
-                        <h3 className="text-2xl font-bold font-heading text-text-DEFAULT mb-2">How We Work</h3>
-                        <p className="text-text-secondary">Leveraging automated SMC molding, in-house laboratory testing, and a design philosophy centered on durability and maintainability.</p>
-                    </div>
-                     <div>
-                        <User className="mx-auto h-12 w-12 text-accent mb-4"/>
-                        <h3 className="text-2xl font-bold font-heading text-text-DEFAULT mb-2">Our Leadership</h3>
-                        <p className="text-text-secondary">Guided by a leadership team with deep expertise across engineering, operations, and finance to drive growth and innovation.</p>
+                        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+                            <div>
+                                <Shield className="mx-auto h-12 w-12 text-accent mb-4"/>
+                                <h3 className="text-2xl font-bold font-heading text-text-DEFAULT mb-2">Who We Are</h3>
+                                <p className="text-text-secondary">A team of engineers and innovators pushing the boundaries of composite materials to build safer, more resilient infrastructure.</p>
+                            </div>
+                             <div>
+                                <Zap className="mx-auto h-12 w-12 text-accent mb-4"/>
+                                <h3 className="text-2xl font-bold font-heading text-text-DEFAULT mb-2">How We Work</h3>
+                                <p className="text-text-secondary">Leveraging automated SMC molding, in-house laboratory testing, and a design philosophy centered on durability and maintainability.</p>
+                            </div>
+                             <div>
+                                <User className="mx-auto h-12 w-12 text-accent mb-4"/>
+                                <h3 className="text-2xl font-bold font-heading text-text-DEFAULT mb-2">Our Leadership</h3>
+                                <p className="text-text-secondary">Guided by a leadership team with deep expertise across engineering, operations, and finance to drive growth and innovation.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
+            <SectionDivider />
+
             {/* Our Journey Timeline */}
-            <div className="bg-background-light py-20">
+            <div className="py-20">
                 <div className="container mx-auto px-6">
                      <h2 className="text-3xl font-bold font-heading text-center text-primary mb-16">Our Journey</h2>
                      <div className="relative">
@@ -136,13 +147,15 @@ const CompanyPage: React.FC = () => {
                 </div>
             </div>
 
+             <SectionDivider />
+
             <div className="container mx-auto px-6 py-16">
-                <div className="bg-background-light p-12 rounded-lg border border-border">
+                <div className="bg-background p-12 rounded-lg border border-border shadow-lg">
                      <h2 className="text-3xl font-bold font-heading text-center text-primary mb-10">Meet Our Team</h2>
                      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 text-center">
                         {leadership.map(member => (
                             <div key={member.name}>
-                                <img src="https://placehold.co/200x200/e0f2fe/0c4a6e?text=EMPHZ" alt={member.name} className="w-24 h-24 rounded-full mx-auto mb-4 border-4 border-white shadow-md"/>
+                                <img src={member.imageUrl} alt={member.name} className="w-24 h-24 rounded-full mx-auto mb-4 border-4 border-white shadow-md object-cover"/>
                                 <h4 className="font-bold font-heading text-text-DEFAULT">{member.name}</h4>
                                 <p className="text-sm text-text-secondary">{member.role}</p>
                             </div>

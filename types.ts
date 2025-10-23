@@ -33,7 +33,7 @@ export interface Product {
   description: string;
   tags: string[];
   specs: Record<string, string>;
-  imageUrls: string[];
+  imageUrls: { view: string; url: string }[];
   pdfUrls: { title: string; url: string }[];
   isFeatured: boolean;
   createdAt: Date;
@@ -125,4 +125,12 @@ export interface Customer {
   enquiryCount: number;
   quotationCount: number;
   firstSeen: Date;
+}
+
+export interface Testimonial {
+  id: number;
+  name: string;
+  company: string;
+  quote: string;
+  avatarUrl: string;
 }

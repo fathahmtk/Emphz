@@ -4,6 +4,9 @@ import { Product } from '../types';
 import { getProducts } from '../services/mockApi';
 import { CheckCircle, Download } from 'lucide-react';
 import { ProductCard } from '../components/ProductCard';
+import Breadcrumbs from '../components/Breadcrumbs';
+import { SectionDivider } from '../components/SectionDivider';
+import { usePageMetadata } from '../hooks/usePageMetadata';
 
 const ProductDetailPage: React.FC = () => {
     const { slug } = useParams<{ slug: string }>();
@@ -11,7 +14,12 @@ const ProductDetailPage: React.FC = () => {
     const [relatedProducts, setRelatedProducts] = useState<Product[]>([]);
     const [loading, setLoading] = useState(true);
 
-    // Effect for fetching all product data
+    usePageMetadata(
+        product ? `${product.name} | An EMPHZ GRP Solution` : "EMPHZ GRP Product",
+        product ? `Official specifications for the ${product.name}. Discover why this EMPHZ GRP product is the benchmark for performance and durability in its class.` : "Explore high-performance GRP solutions from EMPHZ Global.",
+        product ? `${product.name}, EMPHZ GRP, ${product.categoryName} by EMPHZ, GRP, Emphz Global, composite engineering` : "EMPHZ GRP"
+    );
+
     useEffect(() => {
         window.scrollTo(0, 0);
 
@@ -49,30 +57,11 @@ const ProductDetailPage: React.FC = () => {
         fetchProductData();
     }, [slug]);
 
-    // Effect for updating document title and meta tags
-    useEffect(() => {
-        if (product) {
-            document.title = `${product.name} | EMPHZ Private Limited`;
-            const setMetaTag = (name: string, content: string) => {
-                let element = document.querySelector(`meta[name="${name}"]`);
-                if (!element) {
-                    element = document.createElement('meta');
-                    element.setAttribute('name', name);
-                    document.head.appendChild(element);
-                }
-                element.setAttribute('content', content);
-            };
-            setMetaTag('description', `${product.summary} Discover the specifications and features of our high-performance GRP solutions.`);
-            setMetaTag('keywords', `${product.name}, GRP, ${product.categoryName}, ${product.tags.join(', ')}, EMPHZ Private Limited, GRP solutions`);
-        } else if (!loading) {
-            document.title = "Product Not Found | EMPHZ Private Limited";
-        }
-    }, [product, loading]);
-
     if (loading) {
         return (
              <div className="container mx-auto px-6 py-12 animate-pulse">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div className="h-6 w-1/3 bg-gray-300 rounded mb-4"></div>
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-4">
                     <div className="h-[500px] bg-gray-300 rounded-lg"></div>
                     <div>
                         <div className="h-12 w-3/4 bg-gray-300 rounded mb-4"></div>
@@ -85,15 +74,32 @@ const ProductDetailPage: React.FC = () => {
     }
 
     if (!product) {
-        return <div className="text-center py-20">Product not found.</div>;
+        const notFoundBreadcrumbs = [
+            { name: 'Home', path: '/' },
+            { name: 'Products', path: '/products' },
+            { name: 'Not Found' },
+        ];
+        return (
+            <div>
+                <Breadcrumbs links={notFoundBreadcrumbs} />
+                <div className="text-center py-20">Product not found.</div>
+            </div>
+        );
     }
+    
+    const breadcrumbLinks = [
+        { name: 'Home', path: '/' },
+        { name: 'Products', path: '/products' },
+        { name: product.name },
+    ];
 
     return (
         <div className="bg-background">
-            <div className="container mx-auto px-6 py-16">
+            <Breadcrumbs links={breadcrumbLinks} />
+            <div className="container mx-auto px-6 pt-8 pb-16">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
                     <div>
-                        <img src={product.imageUrls[0]} alt={product.name} className="w-full rounded-lg shadow-xl mb-4 border border-border" />
+                        <img src={product.imageUrls[0].url} alt={product.name} className="w-full rounded-lg shadow-xl mb-4 border border-border" />
                         {/* Add thumbnail images if available */}
                     </div>
                     <div>
@@ -143,11 +149,13 @@ const ProductDetailPage: React.FC = () => {
 
             {relatedProducts.length > 0 && (
                 <div className="bg-background-light py-20">
+                    <SectionDivider />
                     <div className="container mx-auto px-6">
                         <h2 className="text-3xl font-bold font-heading text-primary mb-8 text-center">You Might Also Like</h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                             {relatedProducts.map(relatedProduct => (
-                                <ProductCard key={relatedProduct.id} product={relatedProduct} />
+                                // Dummy values for compare props as it's not used on this page
+                                <ProductCard key={relatedProduct.id} product={relatedProduct} isSelectedForCompare={false} onToggleCompare={() => {}}/>
                             ))}
                         </div>
                     </div>

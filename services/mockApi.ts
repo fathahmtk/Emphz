@@ -1,4 +1,5 @@
-import { Product, CaseStudy, Enquiry, Solution, BlogPost, Download, Quotation, Customer } from '../types';
+
+import { Product, CaseStudy, Enquiry, Solution, BlogPost, Download, Quotation, Customer, User, Role, Testimonial } from '../types';
 
 let products: Product[] = [
   {
@@ -7,7 +8,11 @@ let products: Product[] = [
     description: 'Our single-door GRP enclosures offer superior protection for sensitive equipment in harsh environments. Made from high-strength Sheet Molding Compound (SMC), they are ideal for industrial automation, utility metering, and telecommunications.',
     tags: ["IP66", "UL94 V-0", "RAL7035", "SS304"],
     specs: { Material: 'GRP (SMC)', Protection: 'IP66 (IEC 60529)', 'Fire Rating': 'UL 94 V-0', Colour: 'RAL7035', 'Temp Range': '–40°C to +120°C', 'Mounting': 'Wall/Pole/Floor' },
-    imageUrls: ['https://placehold.co/800x600/e0f2fe/0c4a6e?text=Product+Render%0ASingle-Door+Enclosure', 'https://placehold.co/800x600/f0f9ff/0c4a6e?text=Interior+View%0ADIN+Rail+Mounting'],
+    imageUrls: [
+        { view: 'front', url: 'https://images.unsplash.com/photo-1617714541355-566b6a48f4a3?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=tinysrgb&w=800&h=800&fit=crop' },
+        { view: 'internal', url: 'https://images.unsplash.com/photo-1581092921462-697de703b449?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=tinysrgb&w=800&h=800&fit=crop' },
+        { view: 'side', url: 'https://images.unsplash.com/photo-1616628188583-df2bf52c35a7?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=tinysrgb&w=800&h=800&fit=crop' }
+    ],
     pdfUrls: [{ title: 'Technical Data Sheet', url: '#' }, { title: 'Installation Guide', url: '#' }],
     isFeatured: true, createdAt: new Date(), updatedAt: new Date(),
   },
@@ -17,7 +22,10 @@ let products: Product[] = [
     description: 'Designed for motor control centers, power distribution units, and large-scale automation, these double-door cabinets provide ample space and robust protection. Reinforced structure and multi-point locking ensure security and durability.',
     tags: ["IP65", "UL94 V-0", "RAL7035"],
     specs: { Material: 'GRP (SMC)', Protection: 'IP65', 'Fire Rating': 'UL 94 V-0', Colour: 'RAL7035', 'Temp Range': '–40°C to +120°C', 'Hardware': 'SS316' },
-    imageUrls: ['https://placehold.co/800x600/e0f2fe/0c4a6e?text=Product+Render%0ADouble-Door+Cabinet'],
+    imageUrls: [
+        { view: 'front', url: 'https://images.unsplash.com/photo-1526394931762-92eb3c573559?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=tinysrgb&w=800&h=800&fit=crop' },
+        { view: 'internal', url: 'https://images.unsplash.com/photo-1621905252507-b25492cc269a?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=tinysrgb&w=800&h=800&fit=crop' },
+    ],
     pdfUrls: [{ title: 'Technical Data Sheet', url: '#' }],
     isFeatured: true, createdAt: new Date(), updatedAt: new Date(),
   },
@@ -27,7 +35,9 @@ let products: Product[] = [
     description: 'Protect critical wiring junctions and field instruments with our range of GRP boxes. Available in various sizes with hinged or screw-down lids, they provide IP67 protection against dust and water ingress.',
     tags: ["IP67", "UL94 V-0", "Corrosion-Proof"],
     specs: { Material: 'GRP (SMC/DMC)', Protection: 'IP67', 'Fire Rating': 'UL 94 V-0', 'Gasket': 'EPDM/Neoprene', 'Lid': 'Hinged or Screw-lid' },
-    imageUrls: ['https://placehold.co/800x600/e0f2fe/0c4a6e?text=Exploded+View%0AJunction+Box+Assembly'],
+    imageUrls: [
+        { view: 'front', url: 'https://images.unsplash.com/photo-1621905252507-b25492cc269a?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=tinysrgb&w=800&h=800&fit=crop' },
+    ],
     pdfUrls: [{ title: 'Technical Data Sheet', url: '#' }],
     isFeatured: false, createdAt: new Date(), updatedAt: new Date(),
   },
@@ -37,7 +47,9 @@ let products: Product[] = [
     description: 'Our feeder pillars are engineered for public and private utility networks, offering a safe, secure, and weather-resistant housing for electrical distribution equipment. They are DISCOM-ready and feature tamper-resistant designs.',
     tags: ["IP55", "Utility Grade", "Anti-Corrosion"],
     specs: { Material: 'GRP (SMC)', Protection: 'IP55', 'Impact Resistance': 'IK10', Colour: 'RAL7035 / Green', 'Locking': 'Utility Triangle Lock' },
-    imageUrls: ['https://placehold.co/800x600/e0f2fe/0c4a6e?text=In-Situ%0AFeeder+Pillar'],
+    imageUrls: [
+        { view: 'front', url: 'https://images.unsplash.com/photo-1617044618715-3b76435c592a?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=tinysrgb&w=800&h=800&fit=crop' },
+    ],
     pdfUrls: [{ title: 'Technical Data Sheet', url: '#' }],
     isFeatured: true, createdAt: new Date(), updatedAt: new Date(),
   },
@@ -47,7 +59,21 @@ let products: Product[] = [
     description: 'Essential for large-scale solar farms, our GRP solar combiner boxes protect fuses and monitoring equipment from harsh outdoor conditions, ensuring maximum solar plant efficiency and safety.',
     tags: ["IP67", "Solar", "UV-Resistant"],
     specs: { 'Material': 'GRP (SMC)', Protection: 'IP67', 'DC Voltage': 'Up to 1500V DC', 'Features': 'Fuse holders, DC disconnect, surge protection' },
-    imageUrls: ['https://placehold.co/800x600/e0f2fe/0c4a6e?text=3D+Render%0ASolar+Combiner+Box'],
+    imageUrls: [
+        { view: 'front', url: 'https://images.unsplash.com/photo-1545208942-731c6f13de18?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=tinysrgb&w=800&h=800&fit=crop' },
+    ],
+    pdfUrls: [{ title: 'Technical Data Sheet', url: '#' }],
+    isFeatured: false, createdAt: new Date(), updatedAt: new Date(),
+  },
+  {
+    id: 10, name: 'GRP Battery Cabinet', slug: 'battery-cabinet', categoryId: 5, categoryName: 'Utilities',
+    summary: 'Thermally managed enclosures for battery energy storage systems (BESS).',
+    description: 'Protect your critical battery investments with our GRP battery cabinets. Featuring options for thermal management, ventilation, and fire suppression, these cabinets are designed to optimize battery life and ensure safe operation in utility-scale BESS applications.',
+    tags: ["IP65", "BESS", "Thermal Management"],
+    specs: { 'Material': 'GRP (SMC)', Protection: 'IP65', 'Insulation': 'PUF Core', 'Cooling': 'Optional AC/Fan', 'Fire Safety': 'Optional Suppression System' },
+    imageUrls: [
+        { view: 'front', url: 'https://images.unsplash.com/photo-1629102980834-8d4517b55f8d?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=tinysrgb&w=800&h=800&fit=crop' },
+    ],
     pdfUrls: [{ title: 'Technical Data Sheet', url: '#' }],
     isFeatured: false, createdAt: new Date(), updatedAt: new Date(),
   },
@@ -57,7 +83,10 @@ let products: Product[] = [
     description: 'Prefabricated GRP security cabins provide a comfortable and secure environment for personnel. Insulated panels offer thermal and acoustic comfort, and the lightweight design allows for easy relocation.',
     tags: ["Insulated", "Portable", "Weatherproof"],
     specs: { 'Panel': 'PUF Insulated GRP', 'Standard Sizes': '1.2x1.2m, 1.5x1.5m, 2x2m', 'Features': 'Integrated wiring, windows, desk', 'Base': 'MS/GRP Frame' },
-    imageUrls: ['https://placehold.co/800x600/e0f2fe/0c4a6e?text=Architectural+Render%0ASecurity+Cabin', 'https://placehold.co/800x600/f0f9ff/0c4a6e?text=Cutaway+View%0AInsulated+Panel'],
+    imageUrls: [
+        { view: 'front', url: 'https://images.unsplash.com/photo-1588796123498-f29a02a4e135?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=tinysrgb&w=800&h=800&fit=crop' },
+        { view: 'side', url: 'https://images.unsplash.com/photo-1517495306984-f84210f9daa8?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=tinysrgb&w=800&h=800&fit=crop' },
+    ],
     pdfUrls: [{ title: 'Technical Data Sheet', url: '#' }, { title: 'Brochure', url: '#' }],
     isFeatured: true, createdAt: new Date(), updatedAt: new Date(),
   },
@@ -67,7 +96,9 @@ let products: Product[] = [
     description: 'Designed for high-traffic environments, our GRP toll booths offer durability and operator comfort. They come pre-wired with provisions for toll collection systems, ventilation, and lighting.',
     tags: ["Weatherproof", "Ergonomic", "Integrated"],
     specs: { 'Material': 'GRP Composite', 'Window': 'Toughened Glass', 'Features': 'AC provision, counter, wiring', 'Base': 'MS Frame' },
-    imageUrls: ['https://placehold.co/800x600/e0f2fe/0c4a6e?text=3D+Render%0AToll+Booth'],
+    imageUrls: [
+        { view: 'front', url: 'https://images.unsplash.com/photo-1569951428232-a4a34b3e813f?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=tinysrgb&w=800&h=800&fit=crop' },
+    ],
     pdfUrls: [{ title: 'Technical Data Sheet', url: '#' }],
     isFeatured: false, createdAt: new Date(), updatedAt: new Date(),
   },
@@ -77,7 +108,9 @@ let products: Product[] = [
     description: 'Revolutionizing housing with rapid-deployment GRP villas. These modular structures are energy-efficient, fire-retardant, and built to last, offering a sustainable and quick alternative to traditional construction.',
     tags: ["Modular", "Energy-Efficient", "Rapid Deployment"],
     specs: { 'Structure': 'GRP Composite Panels', 'Insulation': 'PUF/EPS Core', 'Configurations': 'Studio, 1-BHK, 2-BHK, 3-BHK', 'Lifespan': '50+ Years' },
-    imageUrls: ['https://placehold.co/800x600/e0f2fe/0c4a6e?text=3D+Architectural%0APrefab+GRP+Villa'],
+    imageUrls: [
+        { view: 'front', url: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=tinysrgb&w=800&h=800&fit=crop' },
+    ],
     pdfUrls: [{ title: 'Technical Data Sheet', url: '#' }, { title: 'Brochure', url: '#' }],
     isFeatured: true, createdAt: new Date(), updatedAt: new Date(),
   },
@@ -87,7 +120,9 @@ let products: Product[] = [
     description: 'Our prefabricated GRP toilet blocks are a quick and hygienic solution for public and industrial sanitation needs. They are easy to clean, resistant to vandalism, and can be deployed rapidly.',
     tags: ["Sanitation", "Modular", "Hygienic"],
     specs: { 'Structure': 'GRP Panels', 'Fittings': 'Standard sanitary ware', 'Plumbing': 'Pre-plumbed', 'Sizes': '2-seater, 4-seater, custom' },
-    imageUrls: ['https://placehold.co/800x600/e0f2fe/0c4a6e?text=3D+Render%0AToilet+Block'],
+    imageUrls: [
+        { view: 'front', url: 'https://images.unsplash.com/photo-1599818498305-b0728c8dbf54?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=tinysrgb&w=800&h=800&fit=crop' },
+    ],
     pdfUrls: [{ title: 'Technical Data Sheet', url: '#' }],
     isFeatured: false, createdAt: new Date(), updatedAt: new Date(),
   },
@@ -101,31 +136,31 @@ const productCategories = [
     { id: 5, name: 'Utilities' },
 ];
 
-const caseStudies: CaseStudy[] = [
+let caseStudies: CaseStudy[] = [
   {
     id: 1, client: 'Qatar Electricity & Water', title: 'Custom IP66 Enclosures for Harsh Desert Climate', industry: 'Utilities',
     challenge: 'Extreme temperatures, dust, and UV exposure were causing frequent failures in existing metallic enclosures, leading to significant grid downtime.',
     solution: 'EMPHZ designed and supplied custom-sized GRP enclosures with IP66 rating, UV-resistant coating, and a thermal management system.',
     result: '30% reduction in equipment failure and associated downtime.',
-    imageUrl: 'https://placehold.co/800x600/fef3c7/b45309?text=Conceptual%0ADesert+Energy+Grid', createdAt: new Date(),
+    imageUrl: 'https://images.unsplash.com/photo-1506729623306-b47218a29a3a?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=tinysrgb&w=800&h=600&fit=crop', createdAt: new Date(),
   },
   {
     id: 2, client: 'Kochi Metro Rail', title: 'Integrated GRP Kiosks for Ticketing & Comms', industry: 'Infrastructure',
     challenge: 'Required durable, low-maintenance kiosks for outdoor ticketing and communication systems, resistant to high humidity and public vandalism.',
     solution: 'Developed all-in-one GRP kiosks with integrated AC, electrical wiring, and reinforced structures. The non-corrosive material was ideal for the coastal climate.',
     result: 'Zero maintenance reported in the first 3 years of operation.',
-    imageUrl: 'https://placehold.co/800x600/ecfdf5/059669?text=Conceptual%0AUrban+Transit+System', createdAt: new Date(),
+    imageUrl: 'https://images.unsplash.com/photo-1616423642340-2735d4528135?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=tinysrgb&w=800&h=600&fit=crop', createdAt: new Date(),
   },
   {
     id: 3, client: 'Tata Power Solar', title: 'UV-Stabilized Enclosures for Solar Inverters', industry: 'Renewable Energy',
     challenge: 'Standard enclosures were degrading under constant, intense solar radiation in large-scale solar farms, compromising inverter lifespan.',
     solution: 'EMPHZ provided GRP enclosures manufactured with a specialized UV-stabilized resin and a protective gel-coat finish.',
     result: 'Projected 25% increase in the operational lifespan of inverter systems.',
-    imageUrl: 'https://placehold.co/800x600/eff6ff/1d4ed8?text=Conceptual%0ASolar+Power+Farm', createdAt: new Date(),
+    imageUrl: 'https://images.unsplash.com/photo-1558449028-b53a39d100fc?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=tinysrgb&w=800&h=600&fit=crop', createdAt: new Date(),
   },
 ];
 
-const solutions: Solution[] = [
+let solutions: Solution[] = [
     {
         slug: 'electrical-utilities',
         name: 'Electrical & Utilities',
@@ -143,6 +178,24 @@ const solutions: Solution[] = [
         outcomes: ['Increased asset lifespan with UV-stabilized materials', 'Improved thermal management for batteries and inverters', 'Arc-safe designs for enhanced PV system safety'],
         products: ['solar-combiner', 'battery-cabinet'],
         caseStudies: ['Tata Power Solar']
+    },
+    {
+        slug: 'infrastructure-transit',
+        name: 'Infrastructure & Transit',
+        problem: 'Public infrastructure like highways and metro systems requires durable, low-maintenance, and vandal-resistant structures for operations and security.',
+        approach: 'We provide prefabricated GRP kiosks and cabins that are weatherproof, insulated, and can be rapidly deployed. Their non-corrosive nature ensures a long service life in high-traffic urban environments.',
+        outcomes: ['Rapid deployment for faster project completion', 'Reduced lifetime maintenance costs', 'Enhanced comfort and safety for personnel'],
+        products: ['toll-booth-kiosk', 'guard-cabin', 'modular-toilet-block'],
+        caseStudies: ['Kochi Metro Rail']
+    },
+    {
+        slug: 'telecommunications',
+        name: 'Telecommunications',
+        problem: 'Sensitive telecom equipment, especially for 5G networks, needs optimal protection from weather and unauthorized access in remote or exposed locations.',
+        approach: 'Our IP66 and IP67 rated GRP enclosures and junction boxes offer superior protection against dust and water ingress. Their non-conductive properties also prevent signal interference, ensuring network reliability.',
+        outcomes: ['Maximized network uptime with reliable equipment protection', 'Prevention of signal interference', 'Secure housing for remote 4G/5G hardware'],
+        products: ['single-door', 'junction-instrument'],
+        caseStudies: []
     }
 ];
 
@@ -154,7 +207,7 @@ let blogPosts: BlogPost[] = [
     excerpt: 'Exploring how GRP and other composites are set to revolutionize construction, energy, and public works with their superior strength-to-weight ratio and longevity.',
     content: "The 21st century demands infrastructure that is not only robust but also sustainable and quick to deploy. Traditional materials like steel and concrete, while reliable, come with significant drawbacks in terms of weight, corrosion, and carbon footprint. This is where Glass Reinforced Plastic (GRP) and other advanced composites are stepping in to fill the gap. From rebar to entire bridge decks, composites offer a compelling alternative that promises a longer service life with minimal maintenance. At EMPHZ, we are at the forefront of this revolution, engineering composite solutions that are lighter, stronger, and more environmentally friendly. Our research indicates that the lifecycle cost of GRP infrastructure can be up to 40% lower than its steel counterpart, primarily due to the elimination of corrosion-related maintenance. The future is not just built; it's molded.",
     author: 'Muhammed Muneer A H',
-    coverUrl: 'https://placehold.co/800x600/1e293b/ffffff?text=Futuristic%0ABridge+Concept',
+    coverUrl: 'https://images.unsplash.com/photo-1519757043432-3a3fad7f5a04?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=tinysrgb&w=800&h=600&fit=crop',
     published: true,
     publishedAt: new Date('2023-10-26'),
     createdAt: new Date('2023-10-26'),
@@ -166,7 +219,7 @@ let blogPosts: BlogPost[] = [
     excerpt: 'A deep dive into the total cost of ownership for GRP versus traditional steel in industrial applications, considering installation, maintenance, and lifespan.',
     content: "When selecting materials for industrial enclosures or structural components, the initial purchase price is often the primary focus. However, this overlooks the total cost of ownership (TCO), which includes installation, maintenance, and replacement costs over the asset's lifespan. Steel, while initially cheaper, requires regular painting and treatment to prevent rust, especially in corrosive environments. It is also heavy, leading to higher transportation and installation costs. GRP, on the other hand, is inherently corrosion-resistant, lightweight, and requires virtually no maintenance. Our analysis, based on a 20-year TCO model for a typical coastal chemical plant, shows that GRP enclosures become more cost-effective than stainless steel enclosures after just 7 years. The initial investment pays dividends through decades of worry-free operation.",
     author: 'Assainar Thevaroth',
-    coverUrl: 'https://placehold.co/800x600/1e293b/ffffff?text=Material+Science%0AComparison+Graphic',
+    coverUrl: 'https://images.unsplash.com/photo-1567942714540-91a110dba41e?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=tinysrgb&w=800&h=600&fit=crop',
     published: true,
     publishedAt: new Date('2023-11-15'),
     createdAt: new Date('2023-11-15'),
@@ -178,7 +231,7 @@ let blogPosts: BlogPost[] = [
     excerpt: 'Learn how EMPHZ is integrating sustainable practices, from using recyclable cores to optimizing our automated SMC molding process for minimal waste.',
     content: "Sustainability is no longer a buzzword; it's a core business imperative. At EMPHZ, we are committed to minimizing our environmental impact throughout our manufacturing lifecycle. Our GRP products have a lower embodied carbon footprint compared to steel and aluminum. We are continuously innovating, incorporating recyclable core materials and optimizing our closed-molding processes to drastically reduce VOC emissions and material waste. Our Mysore factory is partially powered by solar energy, and we have implemented a comprehensive water recycling program. Our goal is to achieve carbon-neutral operations by 2030, proving that high-performance engineering and environmental stewardship can, and must, go hand in hand.",
     author: 'Muhammed Rashik P',
-    coverUrl: 'https://placehold.co/800x600/1e293b/ffffff?text=Eco-Manufacturing%0AConcept',
+    coverUrl: 'https://images.unsplash.com/photo-1592398231248-9366113b2fab?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=tinysrgb&w=800&h=600&fit=crop',
     published: false,
     createdAt: new Date('2023-12-01'),
   },
@@ -205,7 +258,7 @@ let quotations: Quotation[] = [
         enquiryId: 1,
         customer: 'John Doe',
         email: 'john.doe@example.com',
-        status: 'Sent',
+        status: 'Approved',
         subtotal: 15000,
         tax: 2700,
         total: 17700,
@@ -228,8 +281,45 @@ let quotations: Quotation[] = [
     }
 ];
 
+let users: User[] = [
+    { id: 1, name: 'Admin User', email: 'admin@emphz.com', role: Role.ADMIN, createdAt: new Date(), updatedAt: new Date() },
+    { id: 2, name: 'Editor User', email: 'editor@emphz.com', role: Role.EDITOR, createdAt: new Date(), updatedAt: new Date() },
+    { id: 3, name: 'Sales User', email: 'sales@emphz.com', role: Role.SALES, createdAt: new Date(), updatedAt: new Date() },
+];
+
+let testimonials: Testimonial[] = [
+  {
+    id: 1,
+    name: 'Ahmed Al-Kuwari',
+    company: 'Lead Engineer, Qatar Electricity & Water',
+    quote: 'The custom GRP enclosures from EMPHZ have been a game-changer for our grid stability. Their performance in our harsh desert climate is unmatched, significantly reducing maintenance cycles.',
+    avatarUrl: 'https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=tinysrgb&w=100&h=100&fit=crop',
+  },
+  {
+    id: 2,
+    name: 'Priya Sharma',
+    company: 'Project Manager, Kochi Metro Rail',
+    quote: 'EMPHZ delivered highly durable and aesthetically pleasing GRP kiosks for our metro stations. The zero-maintenance aspect is a huge operational advantage for us in a public transit environment.',
+    avatarUrl: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=tinysrgb&w=100&h=100&fit=crop',
+  },
+  {
+    id: 3,
+    name: 'Arjun Singh',
+    company: 'Solar Farm Operations, Tata Power Solar',
+    quote: "We rely on EMPHZ's solar combiner boxes to protect our most critical assets. Their UV and thermal stability have extended the life of our inverters, directly impacting our ROI.",
+    avatarUrl: 'https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=tinysrgb&w=100&h=100&fit=crop',
+  },
+];
+
 export const getProducts = async (): Promise<Product[]> => {
   return new Promise(resolve => setTimeout(() => resolve(products), 500));
+};
+
+export const getProductsBySlugs = async (slugs: string[]): Promise<Product[]> => {
+    return new Promise(resolve => setTimeout(() => {
+        const foundProducts = products.filter(p => slugs.includes(p.slug));
+        resolve(foundProducts);
+    }, 300));
 };
 
 export const getFeaturedProducts = async (): Promise<Product[]> => {
@@ -290,8 +380,83 @@ export const getCaseStudies = async (): Promise<CaseStudy[]> => {
   return new Promise(resolve => setTimeout(() => resolve(caseStudies), 500));
 };
 
+export const addCaseStudy = async (studyData: Omit<CaseStudy, 'id' | 'createdAt'>): Promise<CaseStudy> => {
+    return new Promise(resolve => setTimeout(() => {
+        const newStudy: CaseStudy = {
+            ...studyData,
+            id: caseStudies.length > 0 ? Math.max(...caseStudies.map(s => s.id)) + 1 : 1,
+            createdAt: new Date(),
+        };
+        caseStudies.unshift(newStudy);
+        resolve(newStudy);
+    }, 500));
+};
+
+export const updateCaseStudy = async (updatedStudyData: CaseStudy): Promise<CaseStudy> => {
+    return new Promise((resolve, reject) => setTimeout(() => {
+        const index = caseStudies.findIndex(s => s.id === updatedStudyData.id);
+        if (index !== -1) {
+            caseStudies[index] = { ...caseStudies[index], ...updatedStudyData };
+            resolve(caseStudies[index]);
+        } else {
+            reject(new Error('Case study not found'));
+        }
+    }, 500));
+};
+
+export const deleteCaseStudy = async (studyId: number): Promise<{ success: boolean }> => {
+    return new Promise((resolve, reject) => setTimeout(() => {
+        const initialLength = caseStudies.length;
+        caseStudies = caseStudies.filter(s => s.id !== studyId);
+        if (caseStudies.length < initialLength) {
+            resolve({ success: true });
+        } else {
+            reject(new Error('Case study not found'));
+        }
+    }, 500));
+};
+
 export const getSolutions = async (): Promise<Solution[]> => {
   return new Promise(resolve => setTimeout(() => resolve(solutions), 500));
+};
+
+export const addSolution = async (solutionData: Solution): Promise<Solution> => {
+    return new Promise((resolve, reject) => setTimeout(() => {
+        if (solutions.some(s => s.slug === solutionData.slug)) {
+            reject(new Error('Solution with this slug already exists'));
+            return;
+        }
+        solutions.unshift(solutionData);
+        resolve(solutionData);
+    }, 500));
+};
+
+export const updateSolution = async (slug: string, updatedSolutionData: Solution): Promise<Solution> => {
+    return new Promise((resolve, reject) => setTimeout(() => {
+        const index = solutions.findIndex(s => s.slug === slug);
+        if (index !== -1) {
+            if (slug !== updatedSolutionData.slug && solutions.some(s => s.slug === updatedSolutionData.slug)) {
+                 reject(new Error('Solution with this new slug already exists'));
+                 return;
+            }
+            solutions[index] = updatedSolutionData;
+            resolve(solutions[index]);
+        } else {
+            reject(new Error('Solution not found'));
+        }
+    }, 500));
+};
+
+export const deleteSolution = async (slug: string): Promise<{ success: boolean }> => {
+    return new Promise((resolve, reject) => setTimeout(() => {
+        const initialLength = solutions.length;
+        solutions = solutions.filter(s => s.slug !== slug);
+        if (solutions.length < initialLength) {
+            resolve({ success: true });
+        } else {
+            reject(new Error('Solution not found'));
+        }
+    }, 500));
 };
 
 export const getBlogPosts = async (): Promise<BlogPost[]> => {
@@ -514,4 +679,120 @@ export const getCustomers = async (): Promise<Customer[]> => {
 
     const customers = Array.from(customerMap.values());
     return new Promise(resolve => setTimeout(() => resolve(customers), 500));
+};
+
+export const getDashboardStats = async (): Promise<{
+  totalProducts: number;
+  newEnquiries: number;
+  totalCustomers: number;
+  monthlySales: number;
+}> => {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      const totalProducts = products.length;
+      
+      const oneMonthAgo = new Date();
+      oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1);
+      
+      const newEnquiries = enquiries.filter(e => e.status === 'New').length;
+
+      const customerMap = new Map<string, any>();
+      enquiries.forEach(enquiry => { if (!customerMap.has(enquiry.email)) customerMap.set(enquiry.email, {}); });
+      quotations.forEach(quote => { if (!customerMap.has(quote.email)) customerMap.set(quote.email, {}); });
+      const totalCustomers = customerMap.size;
+
+      const monthlySales = quotations
+        .filter(q => q.status === 'Approved' && q.createdAt > oneMonthAgo)
+        .reduce((sum, q) => sum + q.total, 0);
+
+      resolve({
+        totalProducts,
+        newEnquiries,
+        totalCustomers,
+        monthlySales,
+      });
+    }, 300);
+  });
+};
+
+export const getUsers = async (): Promise<User[]> => {
+    return new Promise(resolve => setTimeout(() => resolve(users), 300));
+};
+
+export const addUser = async (userData: Omit<User, 'id' | 'createdAt' | 'updatedAt'>): Promise<User> => {
+    return new Promise(resolve => setTimeout(() => {
+        const newUser: User = {
+            ...userData,
+            id: users.length > 0 ? Math.max(...users.map(u => u.id)) + 1 : 1,
+            createdAt: new Date(),
+            updatedAt: new Date(),
+        };
+        users.unshift(newUser);
+        resolve(newUser);
+    }, 500));
+};
+
+export const updateUser = async (updatedUserData: User): Promise<User> => {
+    return new Promise((resolve, reject) => setTimeout(() => {
+        const index = users.findIndex(u => u.id === updatedUserData.id);
+        if (index !== -1) {
+            users[index] = { ...users[index], ...updatedUserData, updatedAt: new Date() };
+            resolve(users[index]);
+        } else {
+            reject(new Error('User not found'));
+        }
+    }, 500));
+};
+
+export const deleteUser = async (userId: number): Promise<{ success: boolean }> => {
+    return new Promise((resolve, reject) => setTimeout(() => {
+        const initialLength = users.length;
+        users = users.filter(u => u.id !== userId);
+        if (users.length < initialLength) {
+            resolve({ success: true });
+        } else {
+            reject(new Error('User not found'));
+        }
+    }, 500));
+};
+
+export const getTestimonials = async (): Promise<Testimonial[]> => {
+    return new Promise(resolve => setTimeout(() => resolve(testimonials), 500));
+};
+
+export const searchAll = async (query: string): Promise<{ products: Product[], blogPosts: BlogPost[], caseStudies: CaseStudy[] }> => {
+    return new Promise(resolve => setTimeout(() => {
+        const lowerQuery = query.toLowerCase();
+        
+        if (!lowerQuery) {
+            resolve({ products: [], blogPosts: [], caseStudies: [] });
+            return;
+        }
+
+        const foundProducts = products.filter(p => 
+            p.name.toLowerCase().includes(lowerQuery) ||
+            p.summary.toLowerCase().includes(lowerQuery) ||
+            p.description.toLowerCase().includes(lowerQuery) ||
+            p.tags.some(t => t.toLowerCase().includes(lowerQuery))
+        );
+
+        const foundPosts = blogPosts.filter(p =>
+            p.title.toLowerCase().includes(lowerQuery) ||
+            p.excerpt.toLowerCase().includes(lowerQuery) ||
+            p.content.toLowerCase().includes(lowerQuery)
+        );
+
+        const foundCaseStudies = caseStudies.filter(c =>
+            c.title.toLowerCase().includes(lowerQuery) ||
+            c.client.toLowerCase().includes(lowerQuery) ||
+            c.challenge.toLowerCase().includes(lowerQuery) ||
+            c.solution.toLowerCase().includes(lowerQuery)
+        );
+
+        resolve({
+            products: foundProducts,
+            blogPosts: foundPosts,
+            caseStudies: foundCaseStudies
+        });
+    }, 600));
 };

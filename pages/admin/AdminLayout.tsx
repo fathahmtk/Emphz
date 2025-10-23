@@ -1,21 +1,26 @@
 import React, { useState } from 'react';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
-import { LayoutDashboard, Package, Mail, LogOut, User as UserIcon, FileText, DownloadCloud, ClipboardList, Menu, X, Users } from 'lucide-react';
+import { LayoutDashboard, Package, Mail, LogOut, User as UserIcon, FileText, DownloadCloud, ClipboardList, Menu, X, Users, BookOpen, Lightbulb, Users2 } from 'lucide-react';
 import { useAuth } from '../../hooks/useAuth';
-
-const adminNavLinks = [
-  { name: 'Dashboard', path: '/admin/dashboard', icon: <LayoutDashboard size={20} /> },
-  { name: 'Products', path: '/admin/products', icon: <Package size={20} /> },
-  { name: 'Enquiries', path: '/admin/enquiries', icon: <Mail size={20} /> },
-  { name: 'Quotations', path: '/admin/quotations', icon: <ClipboardList size={20} /> },
-  { name: 'Customers', path: '/admin/customers', icon: <Users size={20} /> },
-  { name: 'Insights', path: '/admin/insights', icon: <FileText size={20} /> },
-  { name: 'Downloads', path: '/admin/downloads', icon: <DownloadCloud size={20} /> },
-];
+import { useI18n } from '../../hooks/useI18n';
 
 const AdminSidebar: React.FC<{onLinkClick: () => void}> = ({ onLinkClick }) => {
     const { user, logout } = useAuth();
     const navigate = useNavigate();
+    const { t } = useI18n();
+
+    const adminNavLinks = [
+      { name: t('admin.sidebar.dashboard'), path: '/admin/dashboard', icon: <LayoutDashboard size={20} /> },
+      { name: t('admin.sidebar.products'), path: '/admin/products', icon: <Package size={20} /> },
+      { name: t('admin.sidebar.enquiries'), path: '/admin/enquiries', icon: <Mail size={20} /> },
+      { name: t('admin.sidebar.quotations'), path: '/admin/quotations', icon: <ClipboardList size={20} /> },
+      { name: t('admin.sidebar.customers'), path: '/admin/customers', icon: <Users size={20} /> },
+      { name: t('admin.sidebar.caseStudies'), path: '/admin/case-studies', icon: <BookOpen size={20} /> },
+      { name: t('admin.sidebar.solutions'), path: '/admin/solutions', icon: <Lightbulb size={20} /> },
+      { name: t('admin.sidebar.insights'), path: '/admin/insights', icon: <FileText size={20} /> },
+      { name: t('admin.sidebar.downloads'), path: '/admin/downloads', icon: <DownloadCloud size={20} /> },
+      { name: t('admin.sidebar.users'), path: '/admin/users', icon: <Users2 size={20} /> },
+    ];
 
     const handleLogout = () => {
         logout();
@@ -25,7 +30,7 @@ const AdminSidebar: React.FC<{onLinkClick: () => void}> = ({ onLinkClick }) => {
     return (
          <div className="w-64 bg-primary text-gray-200 flex flex-col min-h-screen">
             <div className="px-6 py-5 border-b border-primary-medium">
-                <NavLink to="/admin"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCAyMDAgNTAiPjxzdHlsZT4udGV4dCB7IGZvbnQ6IGJvbGQgMzZweCAnUG9wcGlucycsIHNhbnMtc2VyaWY7IGZpbGw6ICNmOGZhZmM7IH0gLmRvdCB7IGZpbGw6ICMwNmI2ZDQ7IH08L3N0eWxlPjx0ZXh0IHg9IjEwIiB5PSIzOCIgY2xhc3M9InRleHQiPkVNUEhaPC90ZXh0PjxjaXJjbGUgY3g9IjE1NSIgY3k9IjM1IiByPSI1IiBjbGFzcz0iZG90Ii8+PC9zdmc+" alt="EMPHZ Admin Logo" className="h-9" /></NavLink>
+                <NavLink to="/admin"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNzAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCAyNzAgNTAiPjxzdHlsZT4udGV4dC1lbXBoeiB7IGZvbnQ6IGJvbGQgMzZweCAnUG9wcGlucycsIHNhbnMtc2VyaWY7IGZpbGw6ICNmOGZhZmM7IH0gLnRleHQtZ2xvYmFsIHsgZm9udDogNTAwIDM2cHggJ1BvcHBpbnMnLCBzYW5zLXNlcmlmOyBmaWxsOiAjY2JkNWUxOyB9IC5kb3QgeyBmaWxsOiAjQzlBMjI3OyB9PC9zdHlsZT48dGV4dCB4PSIxMCIgeT0iMzgiIGNsYXNzPSJ0ZXh0LWVtcGh6Ij5FTVBIWjwvdGV4dD48dGV4dCB4PSIxNDgiIHk9IjM4IiBjbGFzcz0idGV4dC1nbG9iYWwiPkdsb2JhbDwvdGV4dD48Y2lyY2xlIGN4PSIyNTUiIGN5PSIzNSIgcj0iNSIgY2xhc3M9ImRvdCIvPjwvc3ZnPg==" alt="EMPHZ Global Admin Logo" className="h-9" /></NavLink>
             </div>
             <nav className="flex-grow p-4">
                 {adminNavLinks.map(link => (
@@ -38,13 +43,13 @@ const AdminSidebar: React.FC<{onLinkClick: () => void}> = ({ onLinkClick }) => {
                         }
                     >
                         {link.icon}
-                        <span className="ml-3 font-medium">{link.name}</span>
+                        <span className="ms-3 font-medium">{link.name}</span>
                     </NavLink>
                 ))}
             </nav>
             <div className="p-4 border-t border-primary-medium">
                 <div className="flex items-center mb-4 p-2 rounded-lg bg-primary-dark">
-                     <UserIcon className="mr-3 text-gray-300"/>
+                     <UserIcon className="me-3 text-gray-300"/>
                      <div>
                         <p className="font-semibold text-white">{user?.name}</p>
                         <p className="text-xs text-gray-300">{user?.role}</p>
@@ -54,7 +59,7 @@ const AdminSidebar: React.FC<{onLinkClick: () => void}> = ({ onLinkClick }) => {
                     onClick={handleLogout}
                     className="w-full flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-md hover:bg-red-700 transition-colors"
                 >
-                    <LogOut size={16} className="mr-2" />
+                    <LogOut size={16} className="me-2" />
                     Logout
                 </button>
             </div>
@@ -64,10 +69,10 @@ const AdminSidebar: React.FC<{onLinkClick: () => void}> = ({ onLinkClick }) => {
 
 const AdminHeader: React.FC<{ onMenuClick: () => void }> = ({ onMenuClick }) => (
     <header className="md:hidden bg-background border-b border-border p-4 flex items-center">
-        <button onClick={onMenuClick} className="text-text-DEFAULT mr-4">
+        <button onClick={onMenuClick} className="text-text-DEFAULT me-4">
             <Menu size={24} />
         </button>
-        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCAyMDAgNTAiPjxzdHlsZT4udGV4dCB7IGZvbnQ6IGJvbGQgMzZweCAnUG9wcGlucycsIHNhbnMtc2VyaWY7IGZpbGw6ICMxZTI5M2I7IH0gLmRvdCB7IGZpbGw6ICMwNmI2ZDQ7IH08L3N0eWxlPjx0ZXh0IHg9IjEwIiB5PSIzOCIgY2xhc3M9InRleHQiPkVNUEhaPC90ZXh0PjxjaXJjbGUgY3g9IjE1NSIgY3k9IjM1IiByPSI1IiBjbGFzcz0iZG90Ii8+PC9zdmc+" alt="EMPHZ Admin Logo" className="h-8" />
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNzAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCAyNzAgNTAiPjxzdHlsZT4udGV4dC1lbXBoeiB7IGZvbnQ6IGJvbGQgMzZweCAnUG9wcGlucycsIHNhbnMtc2VyaWY7IGZpbGw6ICMwQjNEOTE7IH0gLnRleHQtZ2xvYmFsIHsgZm9udDogNTAwIDM2cHggJ1BvcHBpbnMnLCBzYW5zLXNlcmlmOyBmaWxsOiAjNjQ3NDhiOyB9IC5kb3QgeyBmaWxsOiAjQzlBMjI3OyB9PC9zdHlsZT48dGV4dCB4PSIxMCIgeT0iMzgiIGNsYXNzPSJ0ZXh0LWVtcGh6Ij5FTVBIWjwvdGV4dD48dGV4dCB4PSIxNDgiIHk9IjM4IiBjbGFzcz0idGV4dC1nbG9iYWwiPkdsb2JhbDwvdGV4dD48Y2lyY2xlIGN4PSIyNTUiIGN5PSIzNSIgcj0iNSIgY2xhc3M9ImRvdCIvPjwvc3ZnPg==" alt="EMPHZ Global Admin Logo" className="h-8" />
     </header>
 );
 

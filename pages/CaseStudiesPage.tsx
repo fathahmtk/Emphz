@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { CaseStudy } from '../types';
 import { getCaseStudies } from '../services/mockApi';
+import Breadcrumbs from '../components/Breadcrumbs';
+import { SectionDivider } from '../components/SectionDivider';
+import { usePageMetadata } from '../hooks/usePageMetadata';
 
 const CaseStudyCard: React.FC<{ study: CaseStudy }> = ({ study }) => (
     <div className="bg-white rounded-lg shadow-lg overflow-hidden border border-border">
@@ -21,20 +24,13 @@ const CaseStudiesPage: React.FC = () => {
     const [caseStudies, setCaseStudies] = useState<CaseStudy[]>([]);
     const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        document.title = "Case Studies | Proven GRP Solutions | EMPHZ Private Limited";
-        const setMetaTag = (name: string, content: string) => {
-            let element = document.querySelector(`meta[name="${name}"]`);
-            if (!element) {
-                element = document.createElement('meta');
-                element.setAttribute('name', name);
-                document.head.appendChild(element);
-            }
-            element.setAttribute('content', content);
-        };
-        setMetaTag('description', "Read our case studies to see how EMPHZ Private Limited has delivered proven, high-performance GRP solutions for industry leaders in challenging environments.");
-        setMetaTag('keywords', "GRP case studies, GRP performance, composite engineering projects, EMPHZ Private Limited, GRP solutions");
+    usePageMetadata(
+        "EMPHZ GRP Success Stories | Proven Composite Solutions",
+        "See EMPHZ GRP in action. Our case studies showcase the proven performance and reliability of our GRP solutions for global clients in demanding environments.",
+        "EMPHZ GRP case studies, GRP success stories, composite solutions, GRP performance, EMPHZ projects, The GRP Company"
+    );
 
+    useEffect(() => {
         const fetchStudies = async () => {
             setLoading(true);
             const data = await getCaseStudies();
@@ -43,15 +39,31 @@ const CaseStudiesPage: React.FC = () => {
         };
         fetchStudies();
     }, []);
+    
+    const breadcrumbLinks = [
+        { name: 'Home', path: '/' },
+        { name: 'Case Studies' }
+    ];
 
     return (
         <div className="bg-background-light min-h-screen">
-            <div className="container mx-auto px-6 py-12">
-                <div className="text-center mb-12">
-                    <h1 className="text-4xl font-bold font-heading text-primary mb-2">Proven Performance in the Field</h1>
-                    <p className="text-lg text-text-secondary">See how our GRP solutions deliver tangible results for industry leaders.</p>
+            <div className="bg-background relative overflow-hidden">
+                <div className="absolute inset-0">
+                    <img src="https://images.unsplash.com/photo-1604147706283-d7119b5b822c?q=80&w=1920&auto=format&fit=crop" alt="Abstract background texture" className="w-full h-full object-cover opacity-50" />
+                    <div className="absolute inset-0 bg-white/95"></div>
                 </div>
+                <div className="relative">
+                    <Breadcrumbs links={breadcrumbLinks} />
+                    <div className="container mx-auto px-6 py-12 text-center">
+                        <h1 className="text-4xl font-bold font-heading text-primary mb-2">EMPHZ GRP Success Stories</h1>
+                        <p className="text-lg text-text-secondary">See how our GRP solutions deliver tangible results for industry leaders. Proven performance, engineered by EMPHZ.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <SectionDivider />
 
+            <div className="container mx-auto px-6 py-12">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {loading ? (
                         Array.from({ length: 3 }).map((_, index) => (
