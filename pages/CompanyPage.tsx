@@ -142,7 +142,7 @@ const CompanyPage: React.FC = () => {
                      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 text-center">
                         {leadership.map(member => (
                             <div key={member.name}>
-                                <img src={`https://picsum.photos/seed/${member.name}/200/200`} alt={member.name} className="w-24 h-24 rounded-full mx-auto mb-4 border-4 border-white shadow-md"/>
+                                <img src="https://placehold.co/200x200/e0f2fe/0c4a6e?text=EMPHZ" alt={member.name} className="w-24 h-24 rounded-full mx-auto mb-4 border-4 border-white shadow-md"/>
                                 <h4 className="font-bold font-heading text-text-DEFAULT">{member.name}</h4>
                                 <p className="text-sm text-text-secondary">{member.role}</p>
                             </div>

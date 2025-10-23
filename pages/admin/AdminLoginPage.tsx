@@ -1,4 +1,5 @@
 
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
@@ -29,7 +30,7 @@ const AdminLoginPage: React.FC = () => {
     <div className="min-h-screen bg-gray-100 flex items-center justify-center">
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
         <div className="text-center mb-6">
-            <img src="/assets/logo-dark.png" alt="EMPHZ Logo" className="h-12 mx-auto" />
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCAyMDAgNTAiPjxzdHlsZT4udGV4dCB7IGZvbnQ6IGJvbGQgMzZweCAnUG9wcGlucycsIHNhbnMtc2VyaWY7IGZpbGw6ICMxZTI5M2I7IH0gLmRvdCB7IGZpbGw6ICMwNmI2ZDQ7IH08L3N0eWxlPjx0ZXh0IHg9IjEwIiB5PSIzOCIgY2xhc3M9InRleHQiPkVNUEhaPC90ZXh0PjxjaXJjbGUgY3g9IjE1NSIgY3k9IjM1IiByPSI1IiBjbGFzcz0iZG90Ii8+PC9zdmc+" alt="EMPHZ Logo" className="h-12 mx-auto" />
             <p className="text-gray-500 mt-2">Admin Portal</p>
         </div>
         <form onSubmit={handleSubmit} className="space-y-6">

@@ -20,7 +20,7 @@ const Header: React.FC = () => {
       <header className="bg-background border-b border-border sticky top-0 z-50">
         <div className="container mx-auto px-6 py-4">
             <div className="flex justify-between items-center">
-                 <NavLink to="/"><img src="/assets/logo-dark.png" alt="EMPHZ Logo" className="h-10" /></NavLink>
+                 <NavLink to="/"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCAyMDAgNTAiPjxzdHlsZT4udGV4dCB7IGZvbnQ6IGJvbGQgMzZweCAnUG9wcGlucycsIHNhbnMtc2VyaWY7IGZpbGw6ICMxZTI5M2I7IH0gLmRvdCB7IGZpbGw6ICMwNmI2ZDQ7IH08L3N0eWxlPjx0ZXh0IHg9IjEwIiB5PSIzOCIgY2xhc3M9InRleHQiPkVNUEhaPC90ZXh0PjxjaXJjbGUgY3g9IjE1NSIgY3k9IjM1IiByPSI1IiBjbGFzcz0iZG90Ii8+PC9zdmc+" alt="EMPHZ Logo" className="h-10" /></NavLink>
                  <nav className="hidden md:flex items-center space-x-8">
                     {publicNavLinks.map(link => (
                         <NavLink key={link.name} to={link.path} 
@@ -73,7 +73,7 @@ const Footer: React.FC = () => (
         <div className="container mx-auto px-6 py-12">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <div>
-                    <img src="/assets/logo-light.png" alt="EMPHZ Logo" className="h-10 mb-4" />
+                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCAyMDAgNTAiPjxzdHlsZT4udGV4dCB7IGZvbnQ6IGJvbGQgMzZweCAnUG9wcGlucycsIHNhbnMtc2VyaWY7IGZpbGw6ICNmOGZhZmM7IH0gLmRvdCB7IGZpbGw6ICMwNmI2ZDQ7IH08L3N0eWxlPjx0ZXh0IHg9IjEwIiB5PSIzOCIgY2xhc3M9InRleHQiPkVNUEhaPC90ZXh0PjxjaXJjbGUgY3g9IjE1NSIgY3k9IjM1IiByPSI1IiBjbGFzcz0iZG90Ii8+PC9zdmc+" alt="EMPHZ Logo" className="h-10 mb-4" />
                     <p className="text-gray-400 text-sm">Engineering Tomorrow’s Infrastructure — Today.</p>
                 </div>
                  <div>

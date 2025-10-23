@@ -25,7 +25,7 @@ const AdminSidebar: React.FC<{onLinkClick: () => void}> = ({ onLinkClick }) => {
     return (
          <div className="w-64 bg-primary text-gray-200 flex flex-col min-h-screen">
             <div className="px-6 py-5 border-b border-primary-medium">
-                <NavLink to="/admin"><img src="/assets/logo-light.png" alt="EMPHZ Admin Logo" className="h-9" /></NavLink>
+                <NavLink to="/admin"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCAyMDAgNTAiPjxzdHlsZT4udGV4dCB7IGZvbnQ6IGJvbGQgMzZweCAnUG9wcGlucycsIHNhbnMtc2VyaWY7IGZpbGw6ICNmOGZhZmM7IH0gLmRvdCB7IGZpbGw6ICMwNmI2ZDQ7IH08L3N0eWxlPjx0ZXh0IHg9IjEwIiB5PSIzOCIgY2xhc3M9InRleHQiPkVNUEhaPC90ZXh0PjxjaXJjbGUgY3g9IjE1NSIgY3k9IjM1IiByPSI1IiBjbGFzcz0iZG90Ii8+PC9zdmc+" alt="EMPHZ Admin Logo" className="h-9" /></NavLink>
             </div>
             <nav className="flex-grow p-4">
                 {adminNavLinks.map(link => (
@@ -67,7 +67,7 @@ const AdminHeader: React.FC<{ onMenuClick: () => void }> = ({ onMenuClick }) => 
         <button onClick={onMenuClick} className="text-text-DEFAULT mr-4">
             <Menu size={24} />
         </button>
-        <img src="/assets/logo-dark.png" alt="EMPHZ Admin Logo" className="h-8" />
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCAyMDAgNTAiPjxzdHlsZT4udGV4dCB7IGZvbnQ6IGJvbGQgMzZweCAnUG9wcGlucycsIHNhbnMtc2VyaWY7IGZpbGw6ICMxZTI5M2I7IH0gLmRvdCB7IGZpbGw6ICMwNmI2ZDQ7IH08L3N0eWxlPjx0ZXh0IHg9IjEwIiB5PSIzOCIgY2xhc3M9InRleHQiPkVNUEhaPC90ZXh0PjxjaXJjbGUgY3g9IjE1NSIgY3k9IjM1IiByPSI1IiBjbGFzcz0iZG90Ii8+PC9zdmc+" alt="EMPHZ Admin Logo" className="h-8" />
     </header>
 );
 

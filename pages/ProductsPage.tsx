@@ -8,6 +8,7 @@ const ProductsPage: React.FC = () => {
     const [loading, setLoading] = useState(true);
     const [searchTerm, setSearchTerm] = useState('');
     const [categoryFilter, setCategoryFilter] = useState('All');
+    const [featuredFilter, setFeaturedFilter] = useState('All');
 
     useEffect(() => {
         document.title = "Our GRP Products | EMPHZ Private Limited";
@@ -36,11 +37,19 @@ const ProductsPage: React.FC = () => {
 
     const filteredProducts = useMemo(() => {
         return products.filter(product => {
-            const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase()) || product.summary.toLowerCase().includes(searchTerm.toLowerCase());
+            const lowercasedTerm = searchTerm.toLowerCase();
+            const matchesSearch =
+                product.name.toLowerCase().includes(lowercasedTerm) ||
+                product.summary.toLowerCase().includes(lowercasedTerm) ||
+                product.tags.some(tag => tag.toLowerCase().includes(lowercasedTerm));
+            
             const matchesCategory = categoryFilter === 'All' || product.categoryName === categoryFilter;
-            return matchesSearch && matchesCategory;
+            
+            const matchesFeatured = featuredFilter === 'All' || product.isFeatured;
+
+            return matchesSearch && matchesCategory && matchesFeatured;
         });
-    }, [products, searchTerm, categoryFilter]);
+    }, [products, searchTerm, categoryFilter, featuredFilter]);
 
     return (
         <div className="bg-background-light min-h-screen">
@@ -53,18 +62,28 @@ const ProductsPage: React.FC = () => {
                 <div className="bg-background p-6 rounded-lg shadow-sm border border-border mb-10 flex flex-col md:flex-row gap-4 items-center">
                     <input
                         type="text"
-                        placeholder="Search products by name or feature..."
+                        placeholder="Search by name, summary, or tag..."
                         value={searchTerm}
                         onChange={e => setSearchTerm(e.target.value)}
                         className="w-full md:flex-1 px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent"
                     />
-                    <select
-                        value={categoryFilter}
-                        onChange={e => setCategoryFilter(e.target.value)}
-                         className="w-full md:w-auto px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent bg-background"
-                    >
-                        {categories.map(cat => <option key={cat} value={cat}>{cat}</option>)}
-                    </select>
+                    <div className="w-full md:w-auto flex flex-col sm:flex-row gap-4">
+                        <select
+                            value={categoryFilter}
+                            onChange={e => setCategoryFilter(e.target.value)}
+                            className="w-full sm:w-auto px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent bg-background"
+                        >
+                            {categories.map(cat => <option key={cat} value={cat}>{cat}</option>)}
+                        </select>
+                        <select
+                            value={featuredFilter}
+                            onChange={e => setFeaturedFilter(e.target.value)}
+                            className="w-full sm:w-auto px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent bg-background"
+                        >
+                            <option value="All">All Products</option>
+                            <option value="Featured">Featured Only</option>
+                        </select>
+                    </div>
                 </div>
                 
                 {loading ? (

@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import {
-  ShieldCheck, Zap, Wind, Recycle, Layers, Cpu, GitMerge, CheckCircle,
-  Building, Lightbulb, TrendingUp, ArrowRight, BookOpen, Wrench, PackageCheck
+  ShieldCheck, Zap, Layers, Wrench, Cpu, GitMerge, PackageCheck, ArrowRight
 } from 'lucide-react';
 import { Product, BlogPost } from '../types';
 import { getFeaturedProducts, getLatestBlogPosts } from '../services/mockApi';
@@ -126,37 +125,37 @@ const HomePage: React.FC = () => {
             {/* Hero Section */}
             <section className="relative bg-primary-dark text-white py-20 md:py-32 overflow-hidden">
                  <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary-dark to-black opacity-80"></div>
-                 <img src="https://picsum.photos/seed/hero-bg/1920/1080" alt="Industrial background" className="absolute inset-0 w-full h-full object-cover mix-blend-overlay"/>
+                 <img src="https://placehold.co/1920x1080/0f172a/e0f2fe?text=EMPHZ%0AAdvanced+Composites" alt="Advanced Composite Manufacturing Facility" className="absolute inset-0 w-full h-full object-cover mix-blend-overlay"/>
                 <div className="container mx-auto px-6 text-center relative z-10">
                     <h1 className={`text-4xl sm:text-5xl md:text-7xl font-bold font-heading mb-6 leading-tight tracking-tighter transition-all duration-1000 ease-out ${isMounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-                        Your Partner for Custom GRP Solutions
+                        Engineering the Future of Composites
                     </h1>
                     <p className={`text-lg md:text-xl text-gray-300 mb-10 max-w-3xl mx-auto transition-opacity duration-1000 ease-out delay-300 ${isMounted ? 'opacity-100' : 'opacity-0'}`}>
-                        From unique specifications to any production scale, we engineer GRP solutions tailored to your exact needs.
+                        We deliver high-performance GRP solutions, custom-engineered for the world's most demanding applications. From bespoke designs to large-scale production, we are your trusted partner in innovation.
                     </p>
                     <div className={`flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4 transition-all duration-1000 ease-out delay-500 ${isMounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
                         <NavLink to="/products" className="w-full sm:w-auto bg-accent text-white px-8 py-4 rounded-lg font-semibold hover:bg-accent-hover shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 animate-glow font-heading">
-                            Explore Products
+                            Explore Our Products
                         </NavLink>
                         <NavLink to="/contact" className="w-full sm:w-auto bg-white/20 backdrop-blur-sm text-white px-8 py-4 rounded-lg font-semibold hover:bg-white/30 transition-colors duration-300 font-heading">
-                            Request a Quote
+                            Get a Custom Quote
                         </NavLink>
                     </div>
                 </div>
             </section>
             
-            {/* Why EMPHZ Section */}
+            {/* Why GRP? Section */}
             <section className="py-20 bg-background-light">
                  <div className="container mx-auto px-6">
                     <div className="text-center max-w-3xl mx-auto mb-12">
-                        <h2 ref={animatedRef} className="timeline-item text-4xl font-bold font-heading tracking-tight text-text-DEFAULT mb-4">The EMPHZ Advantage</h2>
+                        <h2 ref={animatedRef} className="timeline-item text-4xl font-bold font-heading tracking-tight text-text-DEFAULT mb-4">The GRP Advantage: Why Composites Win</h2>
                         <p ref={animatedRef} className="timeline-item text-text-secondary" style={{transitionDelay: '150ms'}}>Our Glass Reinforced Plastic (GRP) solutions are engineered to outperform traditional materials in every critical aspect.</p>
                     </div>
                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                        <div ref={animatedRef} className="timeline-item" style={{transitionDelay: '200ms'}}><InfoCard icon={<ShieldCheck size={32}/>} title="Unmatched Durability">Withstand harsh chemicals, extreme temperatures, and UV radiation without corroding or degrading.</InfoCard></div>
-                        <div ref={animatedRef} className="timeline-item" style={{transitionDelay: '300ms'}}><InfoCard icon={<Zap size={32}/>} title="Superior Safety">Naturally non-conductive and fire-retardant (UL 94 V-0), ensuring maximum protection for equipment and personnel.</InfoCard></div>
-                        <div ref={animatedRef} className="timeline-item" style={{transitionDelay: '400ms'}}><InfoCard icon={<Layers size={32}/>} title="High Performance">Exceptional strength-to-weight ratio makes for easy transport and installation without compromising on toughness.</InfoCard></div>
-                        <div ref={animatedRef} className="timeline-item" style={{transitionDelay: '500ms'}}><InfoCard icon={<Wrench size={32}/>} title="Bespoke Engineering">We specialize in custom products. No matter the requirement or quantity, our team collaborates with you to design and deliver the perfect GRP solution.</InfoCard></div>
+                        <div ref={animatedRef} className="timeline-item" style={{transitionDelay: '200ms'}}><InfoCard icon={<ShieldCheck size={32}/>} title="Extreme Durability">Built to last. Our GRP solutions are impervious to corrosion, UV radiation, and extreme temperatures, ensuring decades of maintenance-free operation.</InfoCard></div>
+                        <div ref={animatedRef} className="timeline-item" style={{transitionDelay: '300ms'}}><InfoCard icon={<Zap size={32}/>} title="Uncompromised Safety">Inherently non-conductive and fire-retardant, our products provide the highest level of protection for critical equipment and personnel in hazardous environments.</InfoCard></div>
+                        <div ref={animatedRef} className="timeline-item" style={{transitionDelay: '400ms'}}><InfoCard icon={<Layers size={32}/>} title="Superior Strength, Less Weight">Achieve the strength of steel at a fraction of the weight. This simplifies logistics, speeds up installation, and reduces structural load requirements.</InfoCard></div>
+                        <div ref={animatedRef} className="timeline-item" style={{transitionDelay: '500ms'}}><InfoCard icon={<Wrench size={32}/>} title="Limitless Customization">Your vision, engineered. We specialize in custom molding and fabrication, delivering GRP products in any shape, size, or specification to meet your exact needs.</InfoCard></div>
                      </div>
                  </div>
             </section>
@@ -165,8 +164,8 @@ const HomePage: React.FC = () => {
             <section className="py-20 bg-background">
                 <div className="container mx-auto px-6">
                     <div className="text-center max-w-3xl mx-auto">
-                        <h2 ref={animatedRef} className="timeline-item text-4xl font-bold font-heading tracking-tight text-text-DEFAULT mb-4">Featured Product Families</h2>
-                        <p ref={animatedRef} className="timeline-item text-text-secondary mb-12" style={{transitionDelay: '150ms'}}>GRP products that outperform steel and aluminum in strength, longevity, and environmental impact.</p>
+                        <h2 ref={animatedRef} className="timeline-item text-4xl font-bold font-heading tracking-tight text-text-DEFAULT mb-4">Core Product Platforms</h2>
+                        <p ref={animatedRef} className="timeline-item text-text-secondary mb-12" style={{transitionDelay: '150ms'}}>Explore our range of engineered GRP solutions, designed for performance and reliability across critical industries.</p>
                     </div>
                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                        {loading ? (
@@ -216,12 +215,12 @@ const HomePage: React.FC = () => {
             {/* Industries We Serve Section */}
             <section className="py-20 bg-background-light">
                 <div className="container mx-auto px-6">
-                    <h2 ref={animatedRef} className="timeline-item text-4xl font-bold font-heading tracking-tight text-center text-text-DEFAULT mb-12">Industries We Serve</h2>
+                    <h2 ref={animatedRef} className="timeline-item text-4xl font-bold font-heading tracking-tight text-center text-text-DEFAULT mb-12">Powering Critical Industries</h2>
                     <div ref={animatedRef} className="timeline-item grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" style={{transitionDelay: '200ms'}}>
-                        <IndustryCard name="Utilities" imageUrl="https://picsum.photos/seed/industry1/600/600" />
-                        <IndustryCard name="Renewable Energy" imageUrl="https://picsum.photos/seed/industry2/600/600" />
-                        <IndustryCard name="Infrastructure" imageUrl="https://picsum.photos/seed/industry3/600/600" />
-                        <IndustryCard name="Telecom" imageUrl="https://picsum.photos/seed/industry4/600/600" />
+                        <IndustryCard name="Electrical & Utilities" imageUrl="https://placehold.co/600x600/dbeafe/1e3a8a?text=Electrical%0AIsometric+Grid" />
+                        <IndustryCard name="Renewable Energy" imageUrl="https://placehold.co/600x600/dcfce7/15803d?text=Renewable%0AIsometric+Wind+Farm" />
+                        <IndustryCard name="Infrastructure" imageUrl="https://placehold.co/600x600/e2e8f0/334155?text=Infrastructure%0AIsometric+City" />
+                        <IndustryCard name="Telecom" imageUrl="https://placehold.co/600x600/e0e7ff/4338ca?text=Telecom%0AIsometric+Tower" />
                     </div>
                 </div>
             </section>
@@ -230,7 +229,7 @@ const HomePage: React.FC = () => {
              <section className="bg-background">
                 <div className="container mx-auto px-6 py-20 sm:py-24 text-center">
                     <div ref={animatedRef} className="timeline-item">
-                        <img src="https://picsum.photos/seed/ceo/120/120" alt="Muhammed Rashik P, CEO" className="w-28 h-28 rounded-full mx-auto mb-8 border-4 border-white shadow-lg"/>
+                        <img src="https://placehold.co/120x120/0f172a/ffffff?text=CEO" alt="Muhammed Rashik P, CEO" className="w-28 h-28 rounded-full mx-auto mb-8 border-4 border-white shadow-lg"/>
                         <blockquote className="text-2xl sm:text-3xl font-medium font-heading max-w-4xl mx-auto mb-6 leading-snug text-text-DEFAULT">
                             “We don’t just mold GRP — we mold confidence. Our mission is to engineer trust through safer, smarter, more sustainable composites.”
                         </blockquote>
@@ -242,7 +241,7 @@ const HomePage: React.FC = () => {
             {/* Latest Insights */}
             <section className="py-20 bg-background-light">
                 <div className="container mx-auto px-6">
-                    <h2 ref={animatedRef} className="timeline-item text-4xl font-bold font-heading tracking-tight text-center text-text-DEFAULT mb-12">Latest Insights</h2>
+                    <h2 ref={animatedRef} className="timeline-item text-4xl font-bold font-heading tracking-tight text-center text-text-DEFAULT mb-12">From Our Engineering Desk</h2>
                      <div className="grid grid-cols-1 md:grid-cols-2 max-w-4xl mx-auto gap-8">
                        {loading ? (
                          Array.from({ length: 2 }).map((_, index) => (
@@ -262,16 +261,16 @@ const HomePage: React.FC = () => {
             {/* Final CTA */}
             <section className="bg-accent-secondary text-white">
                 <div className="container mx-auto px-6 py-20 text-center">
-                    <h2 ref={animatedRef} className="timeline-item text-4xl font-bold font-heading tracking-tight mb-4">Have a unique requirement?</h2>
+                    <h2 ref={animatedRef} className="timeline-item text-4xl font-bold font-heading tracking-tight mb-4">Have a Complex Challenge?</h2>
                     <p ref={animatedRef} className="timeline-item text-lg text-orange-100 max-w-2xl mx-auto mb-8" style={{transitionDelay: '150ms'}}>
-                        Challenge us. We are experts in custom GRP manufacturing for any application and scale. Let's build your solution together.
+                        We have the composite solution. Partner with us to engineer a custom GRP product that meets your performance, safety, and budgetary requirements. Let's build together.
                     </p>
                     <div ref={animatedRef} className="timeline-item flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4" style={{transitionDelay: '300ms'}}>
                         <NavLink to="/contact" className="w-full sm:w-auto bg-white text-accent-secondary px-8 py-3 rounded-lg font-bold hover:bg-orange-100 shadow-lg transition-colors duration-300 transform hover:-translate-y-1 font-heading">
                             Discuss Your Project
                         </NavLink>
                         <NavLink to="/resources" className="w-full sm:w-auto bg-transparent border-2 border-white text-white px-8 py-3 rounded-lg font-bold hover:bg-white/10 transition-colors duration-300 font-heading">
-                           Download Profile
+                           Download Company Profile
                         </NavLink>
                     </div>
                 </div>

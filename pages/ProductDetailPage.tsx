@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, NavLink } from 'react-router-dom';
 import { Product } from '../types';
-import { getProductBySlug, getProducts } from '../services/mockApi';
+import { getProducts } from '../services/mockApi';
 import { CheckCircle, Download } from 'lucide-react';
 import { ProductCard } from '../components/ProductCard';
 
@@ -13,17 +13,32 @@ const ProductDetailPage: React.FC = () => {
 
     useEffect(() => {
         const fetchProductData = async () => {
-            if (slug) {
-                setLoading(true);
-                window.scrollTo(0, 0);
+            if (!slug) return;
 
-                const [productData, allProducts] = await Promise.all([
-                    getProductBySlug(slug),
-                    getProducts()
-                ]);
+            setLoading(true);
+            window.scrollTo(0, 0);
+
+            try {
+                const allProducts = await getProducts();
+                const productData = allProducts.find(p => p.slug === slug);
 
                 if (productData) {
                     setProduct(productData);
+
+                    // Update meta tags and title
+                    document.title = `${productData.name} | EMPHZ Private Limited`;
+                    const setMetaTag = (name: string, content: string) => {
+                        let element = document.querySelector(`meta[name="${name}"]`);
+                        if (!element) {
+                            element = document.createElement('meta');
+                            element.setAttribute('name', name);
+                            document.head.appendChild(element);
+                        }
+                        element.setAttribute('content', content);
+                    };
+                    setMetaTag('description', `${productData.summary} Discover the specifications and features of our high-performance GRP solutions.`);
+                    setMetaTag('keywords', `${productData.name}, GRP, ${productData.categoryName}, ${productData.tags.join(', ')}, EMPHZ Private Limited, GRP solutions`);
+                    
                     const related = allProducts
                         .filter(p => p.id !== productData.id && p.categoryId === productData.categoryId)
                         .slice(0, 3);
@@ -32,28 +47,16 @@ const ProductDetailPage: React.FC = () => {
                     setProduct(null);
                     setRelatedProducts([]);
                 }
+            } catch (error) {
+                console.error("Failed to fetch product data:", error);
+                setProduct(null);
+                setRelatedProducts([]);
+            } finally {
                 setLoading(false);
             }
         };
         fetchProductData();
     }, [slug]);
-
-    useEffect(() => {
-        if (product) {
-            document.title = `${product.name} | EMPHZ Private Limited`;
-            const setMetaTag = (name: string, content: string) => {
-                let element = document.querySelector(`meta[name="${name}"]`);
-                if (!element) {
-                    element = document.createElement('meta');
-                    element.setAttribute('name', name);
-                    document.head.appendChild(element);
-                }
-                element.setAttribute('content', content);
-            };
-            setMetaTag('description', `${product.summary} Discover the specifications and features of our high-performance GRP solutions.`);
-            setMetaTag('keywords', `${product.name}, GRP, ${product.categoryName}, ${product.tags.join(', ')}, EMPHZ Private Limited, GRP solutions`);
-        }
-    }, [product]);
 
     if (loading) {
         return (
