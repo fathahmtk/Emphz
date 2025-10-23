@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EMPHZ Private Limited</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#0B3D91', // Deep Blue
+              accent: '#C9A227',  // Gold
+              neutral: {
+                light: '#F7F8FA',
+                DEFAULT: '#F7F8FA',
+                dark: '#EAEBEE',
+              },
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              arabic: ['Tajawal', 'sans-serif'],
+            }
+          }
+        }
+      }
+    </script>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.546.0",
+    "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.9.4"
+  }
+}
+</script>
+</head>
+  <body class="bg-neutral-light font-sans">
+    <div id="root"></div>
+    <!-- This app is a single-page application. To see the full functionality including routing, please run it in a development environment. -->
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
