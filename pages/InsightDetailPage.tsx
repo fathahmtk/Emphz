@@ -44,7 +44,7 @@ const InsightDetailPage: React.FC = () => {
             <div className="container mx-auto px-6 py-12 max-w-4xl">
                 <article>
                     <header className="mb-8 text-center">
-                        <h1 className="text-4xl md:text-5xl font-extrabold text-primary mb-4 leading-tight">{post.title}</h1>
+                        <h1 className="text-4xl md:text-5xl font-bold text-primary mb-4 leading-tight">{post.title}</h1>
                         <div className="flex justify-center items-center space-x-6 text-gray-500 text-sm">
                             <div className="flex items-center">
                                 <User size={14} className="mr-2"/>
@@ -61,7 +61,7 @@ const InsightDetailPage: React.FC = () => {
                     
                     <img src={post.coverUrl} alt={post.title} className="w-full h-auto max-h-96 object-cover rounded-lg shadow-xl mb-8" />
                     
-                    <div className="prose lg:prose-xl max-w-none text-gray-700 leading-relaxed">
+                    <div className="prose lg:prose-xl max-w-none text-text-DEFAULT leading-relaxed">
                         {/* A real app might use a markdown renderer here */}
                         {post.content.split('\n').map((paragraph, index) => (
                            <p key={index} className="mb-4">{paragraph}</p>
@@ -69,7 +69,7 @@ const InsightDetailPage: React.FC = () => {
                     </div>
 
                     <div className="mt-12 text-center">
-                        <NavLink to="/insights" className="bg-primary text-white px-6 py-3 rounded-md font-semibold hover:bg-blue-800 transition duration-300">
+                        <NavLink to="/insights" className="bg-accent text-white px-6 py-3 rounded-md font-semibold hover:bg-accent-hover transition duration-300">
                             &larr; Back to Insights
                         </NavLink>
                     </div>

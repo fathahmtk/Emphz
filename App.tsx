@@ -17,9 +17,11 @@ import AdminLayout from './pages/admin/AdminLayout';
 import AdminDashboardPage from './pages/admin/AdminDashboardPage';
 import AdminProductsPage from './pages/admin/AdminProductsPage';
 import AdminEnquiriesPage from './pages/admin/AdminEnquiriesPage';
+import AdminEnquiryDetailPage from './pages/admin/AdminEnquiryDetailPage';
 import AdminInsightsPage from './pages/admin/AdminInsightsPage';
 import AdminDownloadsPage from './pages/admin/AdminDownloadsPage';
 import AdminQuotationsPage from './pages/admin/AdminQuotationsPage';
+import AdminQuotationDetailPage from './pages/admin/AdminQuotationDetailPage';
 import AdminCustomersPage from './pages/admin/AdminCustomersPage';
 import { AuthProvider, useAuth } from './hooks/useAuth';
 
@@ -53,7 +55,9 @@ const App: React.FC = () => {
               <Route path="dashboard" element={<AdminDashboardPage />} />
               <Route path="products" element={<AdminProductsPage />} />
               <Route path="enquiries" element={<AdminEnquiriesPage />} />
+              <Route path="enquiries/:id" element={<AdminEnquiryDetailPage />} />
               <Route path="quotations" element={<AdminQuotationsPage />} />
+              <Route path="quotations/:id" element={<AdminQuotationDetailPage />} />
               <Route path="customers" element={<AdminCustomersPage />} />
               <Route path="insights" element={<AdminInsightsPage />} />
               <Route path="downloads" element={<AdminDownloadsPage />} />

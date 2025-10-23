@@ -1,32 +1,80 @@
 import React, { useState, useEffect } from 'react';
 import { Product } from '../../types';
-import { getProducts } from '../../services/mockApi';
+import { getProducts, addProduct, updateProduct, deleteProduct } from '../../services/mockApi';
 import { Plus, Edit, Trash } from 'lucide-react';
+import { ProductForm } from '../../components/ProductForm';
 
 const AdminProductsPage: React.FC = () => {
     const [products, setProducts] = useState<Product[]>([]);
     const [loading, setLoading] = useState(true);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [editingProduct, setEditingProduct] = useState<Product | null>(null);
+
+    const fetchProductsData = async () => {
+        setLoading(true);
+        const data = await getProducts();
+        setProducts(data);
+        setLoading(false);
+    };
 
     useEffect(() => {
-        const fetchProducts = async () => {
-            setLoading(true);
-            const data = await getProducts();
-            setProducts(data);
-            setLoading(false);
-        };
-        fetchProducts();
+        fetchProductsData();
     }, []);
 
-    const handleActionClick = (action: string, productName: string) => {
-        alert(`${action} clicked for ${productName}. This is a UI demonstration; no data will be changed.`);
+    const handleAddNew = () => {
+        setEditingProduct(null);
+        setIsModalOpen(true);
+    };
+
+    const handleEdit = (product: Product) => {
+        setEditingProduct(product);
+        setIsModalOpen(true);
+    };
+    
+    const handleDelete = async (productId: number, productName: string) => {
+        if (window.confirm(`Are you sure you want to delete "${productName}"?`)) {
+            try {
+                await deleteProduct(productId);
+                setProducts(prev => prev.filter(p => p.id !== productId));
+                alert(`"${productName}" deleted successfully.`);
+            } catch (error) {
+                const err = error as Error;
+                alert(`Failed to delete product: ${err.message}`);
+            }
+        }
+    };
+    
+    const handleSave = async (productData: Omit<Product, 'id' | 'createdAt' | 'updatedAt' | 'categoryName'> | Product) => {
+        try {
+            if ('id' in productData) {
+                // Editing existing product
+                await updateProduct(productData as Product);
+            } else {
+                // Adding new product
+                await addProduct(productData);
+            }
+            setIsModalOpen(false);
+            setEditingProduct(null);
+            await fetchProductsData(); // Re-fetch to see changes
+        } catch (error) {
+            const err = error as Error;
+            alert(`Failed to save product: ${err.message}`);
+        }
+    };
+    
+    const handleCancel = () => {
+        setIsModalOpen(false);
+        setEditingProduct(null);
     };
 
     return (
         <div>
+            {isModalOpen && <ProductForm product={editingProduct} onSave={handleSave} onCancel={handleCancel} />}
+            
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
                 <h1 className="text-2xl sm:text-3xl font-bold text-gray-800">Manage Products</h1>
                 <button 
-                    onClick={() => alert("Add new product form would appear here.")}
+                    onClick={handleAddNew}
                     className="bg-accent text-white px-4 py-2 rounded-lg font-semibold hover:bg-accent-hover shadow-sm hover:shadow-md transition-all duration-300 flex items-center self-end sm:self-auto">
                     <Plus size={18} className="mr-2"/> Add Product
                 </button>
@@ -65,8 +113,8 @@ const AdminProductsPage: React.FC = () => {
                                         </td>
                                         <td className="px-6 py-4">
                                             <div className="flex space-x-4">
-                                                <button onClick={() => handleActionClick('Edit', product.name)} className="text-blue-600 hover:text-blue-800"><Edit size={18}/></button>
-                                                <button onClick={() => handleActionClick('Delete', product.name)} className="text-red-600 hover:text-red-800"><Trash size={18}/></button>
+                                                <button onClick={() => handleEdit(product)} className="text-blue-600 hover:text-blue-800"><Edit size={18}/></button>
+                                                <button onClick={() => handleDelete(product.id, product.name)} className="text-red-600 hover:text-red-800"><Trash size={18}/></button>
                                             </div>
                                         </td>
                                     </tr>

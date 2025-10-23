@@ -36,9 +36,9 @@ const HomePage: React.FC = () => {
         <div className="bg-background">
             {/* Hero Section */}
             <section className="bg-background-light relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-accent-light to-background animate-gradient-xy"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-slate-100 via-cyan-50 to-white animate-gradient-xy"></div>
                 <div className="container mx-auto px-6 pt-20 pb-16 sm:pt-28 sm:pb-24 text-center relative z-10">
-                    <h1 className={`text-4xl sm:text-5xl md:text-7xl font-extrabold text-text-DEFAULT mb-6 leading-tight tracking-tight transition-all duration-1000 ease-out ${isMounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+                    <h1 className={`text-4xl sm:text-5xl md:text-7xl font-bold text-text-DEFAULT mb-6 leading-tight tracking-tight transition-all duration-1000 ease-out ${isMounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
                         India’s Most Advanced GRP Solutions Manufacturer
                     </h1>
                     <p className={`text-lg md:text-xl text-text-secondary mb-10 max-w-3xl mx-auto transition-opacity duration-1000 ease-out delay-300 ${isMounted ? 'opacity-100' : 'opacity-0'}`}>
@@ -76,10 +76,10 @@ const HomePage: React.FC = () => {
             <section className="py-16 bg-background">
                  <div className="container mx-auto px-6">
                     <div className="flex justify-center flex-wrap gap-x-10 gap-y-6">
-                        <ValueBadge icon={<ShieldCheck className="text-primary-medium" />} text="IP66 Weatherproof" />
-                        <ValueBadge icon={<Zap className="text-primary-medium" />} text="UL 94 V-0 Fire Safe" />
-                        <ValueBadge icon={<Wind className="text-primary-medium" />} text="Non-Conductive" />
-                        <ValueBadge icon={<Recycle className="text-primary-medium" />} text="UV/Corrosion-Proof" />
+                        <ValueBadge icon={<ShieldCheck className="text-accent" />} text="IP66 Weatherproof" />
+                        <ValueBadge icon={<Zap className="text-accent" />} text="UL 94 V-0 Fire Safe" />
+                        <ValueBadge icon={<Wind className="text-accent" />} text="Non-Conductive" />
+                        <ValueBadge icon={<Recycle className="text-accent" />} text="UV/Corrosion-Proof" />
                     </div>
                  </div>
             </section>

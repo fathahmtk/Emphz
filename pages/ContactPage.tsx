@@ -72,12 +72,12 @@ const ContactPage: React.FC = () => {
         <div className="bg-background-light">
             <div className="container mx-auto px-6 py-16">
                 <div className="text-center mb-12">
-                    <h1 className="text-4xl font-extrabold text-primary mb-2">Get in Touch</h1>
+                    <h1 className="text-4xl font-bold text-primary mb-2">Get in Touch</h1>
                     <p className="text-lg text-text-secondary">We're here to help with your project needs. Contact us or fill out the form below.</p>
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                    <div className="bg-white p-8 rounded-lg shadow-lg">
+                    <div className="bg-white p-8 rounded-lg shadow-lg border border-border">
                         <h2 className="text-2xl font-bold text-primary mb-6">Contact Form</h2>
                         {status === 'success' ? (
                             <SuccessAnimation message="Thank you! Your enquiry has been sent." />
@@ -114,19 +114,19 @@ const ContactPage: React.FC = () => {
                         )}
                     </div>
                      <div className="space-y-8">
-                         <div className="bg-white p-8 rounded-lg shadow-lg">
-                             <h3 className="text-xl font-bold text-text-DEFAULT flex items-center mb-4"><MapPin className="text-primary mr-3"/>Head Office – Kerala</h3>
+                         <div className="bg-white p-8 rounded-lg shadow-lg border border-border">
+                             <h3 className="text-xl font-bold text-text-DEFAULT flex items-center mb-4"><MapPin className="text-accent mr-3"/>Head Office – Kerala</h3>
                              <address className="text-text-secondary not-italic">C/o Kunhi Ebrayi, Government Hospital Road, Nut Street, Vadakara – 673104, India</address>
                          </div>
-                          <div className="bg-white p-8 rounded-lg shadow-lg">
-                             <h3 className="text-xl font-bold text-text-DEFAULT flex items-center mb-4"><MapPin className="text-primary mr-3"/>Factory – Mysore, Karnataka</h3>
+                          <div className="bg-white p-8 rounded-lg shadow-lg border border-border">
+                             <h3 className="text-xl font-bold text-text-DEFAULT flex items-center mb-4"><MapPin className="text-accent mr-3"/>Factory – Mysore, Karnataka</h3>
                              <address className="text-text-secondary not-italic">260/A, Hebbal Industrial Area, Mysore – 570016, India</address>
                          </div>
-                          <div className="bg-white p-8 rounded-lg shadow-lg">
-                            <a href="tel:+918648881888" className="flex items-center text-lg text-text-secondary hover:text-primary mb-4"><Phone className="mr-3"/>+91 86488 81888</a>
-                            <a href="mailto:info@emphz.com" className="flex items-center text-lg text-text-secondary hover:text-primary"><Mail className="mr-3"/>info@emphz.com</a>
+                          <div className="bg-white p-8 rounded-lg shadow-lg border border-border">
+                            <a href="tel:+918648881888" className="flex items-center text-lg text-text-secondary hover:text-accent mb-4"><Phone className="mr-3"/>+91 86488 81888</a>
+                            <a href="mailto:info@emphz.com" className="flex items-center text-lg text-text-secondary hover:text-accent"><Mail className="mr-3"/>info@emphz.com</a>
                          </div>
-                         <a href="https://wa.me/918648881888" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-full bg-accent text-white py-3 px-4 rounded-md shadow-sm font-semibold hover:bg-accent-hover transition">
+                         <a href="https://wa.me/918648881888" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-full bg-green-500 text-white py-3 px-4 rounded-md shadow-sm font-semibold hover:bg-green-600 transition">
                             <MessageSquare className="mr-2"/> Chat on WhatsApp
                          </a>
                     </div>

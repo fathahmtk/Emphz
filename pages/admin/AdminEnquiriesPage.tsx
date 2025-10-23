@@ -1,86 +1,124 @@
 import React, { useState, useEffect } from 'react';
-import { Enquiry } from '../../types';
-import { getEnquiries } from '../../services/mockApi';
-
-const statusColors = {
-    New: 'bg-blue-100 text-blue-800',
-    'In Progress': 'bg-yellow-100 text-yellow-800',
-    Closed: 'bg-green-100 text-green-800',
-};
+import { useNavigate, NavLink } from 'react-router-dom';
+import { Enquiry, Quotation } from '../../types';
+import { getEnquiries, updateEnquiryStatus, addQuotation } from '../../services/mockApi';
+import { QuotationForm } from '../../components/QuotationForm';
+import { Eye } from 'lucide-react';
+import { StatusDropdown } from '../../components/StatusDropdown';
 
 const AdminEnquiriesPage: React.FC = () => {
     const [enquiries, setEnquiries] = useState<Enquiry[]>([]);
     const [loading, setLoading] = useState(true);
+    const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
+    const [quotePrefill, setQuotePrefill] = useState<Partial<Quotation> | null>(null);
+    const navigate = useNavigate();
+
+    const fetchEnquiriesData = async () => {
+        setLoading(true);
+        const data = await getEnquiries();
+        setEnquiries(data);
+        setLoading(false);
+    };
 
     useEffect(() => {
-        const fetchEnquiries = async () => {
-            setLoading(true);
-            const data = await getEnquiries();
-            setEnquiries(data);
-            setLoading(false);
-        };
-        fetchEnquiries();
+        fetchEnquiriesData();
     }, []);
 
-    const handleStatusChange = (id: number, newStatus: Enquiry['status']) => {
-        alert(`Status for enquiry ${id} would be changed to ${newStatus}. This is a UI demo.`);
-        setEnquiries(enquiries.map(enq => enq.id === id ? {...enq, status: newStatus} : enq));
-    }
+    const handleStatusChange = async (id: number, newStatus: Enquiry['status']) => {
+        try {
+            await updateEnquiryStatus(id, newStatus);
+            setEnquiries(enquiries.map(enq => enq.id === id ? {...enq, status: newStatus} : enq));
+        } catch (error) {
+            alert(`Failed to update status: ${(error as Error).message}`);
+        }
+    };
+
+    const handleCreateQuote = (enquiry: Enquiry) => {
+        setQuotePrefill({
+            enquiryId: enquiry.id,
+            customer: enquiry.name,
+            email: enquiry.email,
+        });
+        setIsQuoteModalOpen(true);
+    };
+
+    const handleSaveQuote = async (quoteData: Omit<Quotation, 'id' | 'createdAt'> | Quotation) => {
+        try {
+            await addQuotation(quoteData as Omit<Quotation, 'id' | 'createdAt'>);
+            setIsQuoteModalOpen(false);
+            setQuotePrefill(null);
+            alert('Quotation created successfully!');
+            navigate('/admin/quotations');
+        } catch (error) {
+             alert(`Failed to create quote: ${(error as Error).message}`);
+        }
+    };
+
+    const handleCancelQuote = () => {
+        setIsQuoteModalOpen(false);
+        setQuotePrefill(null);
+    };
+
 
     return (
         <div>
-            <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6">Customer Enquiries</h1>
+            {isQuoteModalOpen && <QuotationForm quote={quotePrefill as Quotation} onSave={handleSaveQuote} onCancel={handleCancelQuote} />}
+
+            <h1 className="text-2xl sm:text-3xl font-bold text-text-DEFAULT mb-6">Customer Enquiries</h1>
             
-            <div className="bg-white p-4 sm:p-6 rounded-lg shadow-md">
+            <div className="bg-white p-4 sm:p-6 rounded-lg shadow-sm border border-border">
                  <div className="overflow-x-auto">
-                    <table className="w-full text-sm text-left text-gray-500">
-                        <thead className="text-xs text-gray-700 uppercase bg-gray-50">
+                    <table className="w-full text-sm text-left text-text-secondary">
+                        <thead className="text-xs text-text-secondary uppercase bg-background-light">
                             <tr>
-                                <th scope="col" className="px-6 py-3 whitespace-nowrap">Customer</th>
-                                <th scope="col" className="px-6 py-3">Message</th>
-                                <th scope="col" className="px-6 py-3">Date</th>
-                                <th scope="col" className="px-6 py-3">Status</th>
-                                <th scope="col" className="px-6 py-3">Actions</th>
+                                <th scope="col" className="px-6 py-3 whitespace-nowrap font-semibold">Customer</th>
+                                <th scope="col" className="px-6 py-3 font-semibold">Message</th>
+                                <th scope="col" className="px-6 py-3 font-semibold">Date</th>
+                                <th scope="col" className="px-6 py-3 font-semibold">Status</th>
+                                <th scope="col" className="px-6 py-3 font-semibold">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             {loading ? (
                                 Array.from({ length: 2 }).map((_, index) => (
-                                    <tr key={index} className="bg-white border-b">
+                                    <tr key={index} className="bg-white border-b border-border">
                                         <td className="px-6 py-4"><div className="h-4 bg-gray-200 rounded animate-pulse w-24"></div></td>
                                         <td className="px-6 py-4"><div className="h-4 bg-gray-200 rounded animate-pulse"></div></td>
                                         <td className="px-6 py-4"><div className="h-4 bg-gray-200 rounded animate-pulse w-20"></div></td>
-                                        <td className="px-6 py-4"><div className="h-4 bg-gray-200 rounded animate-pulse w-16"></div></td>
-                                        <td className="px-6 py-4"><div className="h-6 bg-gray-200 rounded-full animate-pulse w-24"></div></td>
+                                        <td className="px-6 py-4"><div className="h-6 bg-gray-200 rounded-md animate-pulse w-24"></div></td>
+                                        <td className="px-6 py-4"><div className="h-6 bg-gray-200 rounded-md animate-pulse w-24"></div></td>
                                     </tr>
                                 ))
                             ) : (
                                 enquiries.map(enquiry => (
-                                    <tr key={enquiry.id} className="bg-white border-b hover:bg-gray-50">
+                                    <tr key={enquiry.id} className="bg-white border-b border-border hover:bg-background-light">
                                         <td className="px-6 py-4 whitespace-nowrap">
-                                            <p className="font-medium text-gray-900">{enquiry.name}</p>
-                                            <p className="text-xs text-gray-500">{enquiry.email}</p>
+                                            <p className="font-medium text-text-DEFAULT">{enquiry.name}</p>
+                                            <p className="text-xs text-text-secondary">{enquiry.email}</p>
                                         </td>
-                                        <td className="px-6 py-4 max-w-sm truncate">{enquiry.message}</td>
+                                        <td className="px-6 py-4 max-w-sm truncate" title={enquiry.message}>{enquiry.message}</td>
                                         <td className="px-6 py-4 whitespace-nowrap">{new Date(enquiry.createdAt).toLocaleDateString()}</td>
                                         <td className="px-6 py-4">
-                                            <select 
-                                                value={enquiry.status}
-                                                onChange={(e) => handleStatusChange(enquiry.id, e.target.value as Enquiry['status'])}
-                                                className={`text-xs font-semibold px-2 py-1 rounded-full border-none focus:ring-0 ${statusColors[enquiry.status]}`}
-                                            >
-                                                <option value="New">New</option>
-                                                <option value="In Progress">In Progress</option>
-                                                <option value="Closed">Closed</option>
-                                            </select>
+                                            <StatusDropdown 
+                                                currentStatus={enquiry.status}
+                                                onStatusChange={(newStatus) => handleStatusChange(enquiry.id, newStatus)}
+                                            />
                                         </td>
                                         <td className="px-6 py-4 whitespace-nowrap">
-                                            <button
-                                                onClick={() => alert(`Creating a quote from enquiry #${enquiry.id} for ${enquiry.name}.`)}
-                                                className="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-1 rounded-full hover:bg-blue-200 transition-colors"
-                                            >
-                                                Create Quote
-                                            </button>
+                                             <div className="flex items-center gap-4">
+                                                <NavLink 
+                                                    to={`/admin/enquiries/${enquiry.id}`}
+                                                    className="text-primary hover:text-primary-dark font-semibold text-xs flex items-center gap-1"
+                                                >
+                                                    <Eye size={14}/> View
+                                                </NavLink>
+                                                <button
+                                                    onClick={() => handleCreateQuote(enquiry)}
+                                                    className="bg-accent text-white text-xs font-semibold px-2.5 py-1.5 rounded-md hover:bg-accent-hover transition-colors"
+                                                >
+                                                    Create Quote
+                                                </button>
+                                            </div>
                                         </td>
                                     </tr>
                                 ))

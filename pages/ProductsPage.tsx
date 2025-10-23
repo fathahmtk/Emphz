@@ -33,7 +33,7 @@ const ProductsPage: React.FC = () => {
         <div className="bg-background-light min-h-screen">
             <div className="container mx-auto px-6 py-16">
                 <div className="text-center mb-12 max-w-3xl mx-auto">
-                    <h1 className="text-4xl sm:text-5xl font-extrabold text-primary mb-3 tracking-tight">Engineered GRP Systems</h1>
+                    <h1 className="text-4xl sm:text-5xl font-bold text-primary mb-3 tracking-tight">Engineered GRP Systems</h1>
                     <p className="text-lg text-text-secondary">Explore our comprehensive catalog. Filter by rating, size, mounting, and environment to find the perfect solution for your project.</p>
                 </div>
 

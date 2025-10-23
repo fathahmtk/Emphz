@@ -64,7 +64,7 @@ const ResourcesPage: React.FC = () => {
         <div className="bg-background-light min-h-screen">
             <div className="container mx-auto px-6 py-12">
                 <div className="text-center mb-12">
-                    <h1 className="text-4xl font-extrabold text-primary mb-2">Resources Library</h1>
+                    <h1 className="text-4xl font-bold text-primary mb-2">Resources Library</h1>
                     <p className="text-lg text-text-secondary max-w-3xl mx-auto">Access datasheets, CAD files, installation guides, and certifications. Select multiple files to create a custom submittal pack.</p>
                 </div>
 
@@ -85,7 +85,7 @@ const ResourcesPage: React.FC = () => {
                     </select>
                 </div>
 
-                <div className="bg-white p-6 rounded-lg shadow-lg sticky top-20 z-40 mb-8">
+                <div className="bg-white p-6 rounded-lg shadow-lg sticky top-20 z-40 mb-8 border border-border">
                     <div className="flex justify-between items-center">
                         <p className="font-semibold text-text-DEFAULT">{selected.length} file(s) selected</p>
                         <button
@@ -110,21 +110,21 @@ const ResourcesPage: React.FC = () => {
                     <div className="space-y-10">
                         {Object.entries(groupedDownloads).map(([category, files]) => (
                             <div key={category}>
-                                <h2 className="text-2xl font-bold text-text-DEFAULT mb-4 pb-2 border-b-2 border-primary">{category}</h2>
+                                <h2 className="text-2xl font-bold text-text-DEFAULT mb-4 pb-2 border-b-2 border-accent">{category}</h2>
                                 <ul className="space-y-3">
                                     {files.map(file => (
-                                        <li key={file.id} className="bg-white p-4 rounded-md shadow-sm flex items-center justify-between hover:bg-background-light transition-colors">
+                                        <li key={file.id} className="bg-white p-4 rounded-md shadow-sm flex items-center justify-between hover:bg-background-light transition-colors border border-border">
                                             <div className="flex items-center">
-                                                <button onClick={() => handleSelect(file.id)} className="mr-4 text-primary">
+                                                <button onClick={() => handleSelect(file.id)} className="mr-4 text-accent">
                                                     {selected.includes(file.id) ? <CheckSquare /> : <Square />}
                                                 </button>
-                                                <FileText className="text-primary mr-3 flex-shrink-0" />
+                                                <FileText className="text-accent mr-3 flex-shrink-0" />
                                                 <div>
                                                     <p className="font-semibold text-text-DEFAULT">{file.title}</p>
                                                     <p className="text-xs text-text-secondary">Views: {file.views}</p>
                                                 </div>
                                             </div>
-                                            <a href={file.fileUrl} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-semibold text-sm">Download</a>
+                                            <a href={file.fileUrl} target="_blank" rel="noopener noreferrer" className="text-accent hover:underline font-semibold text-sm">Download</a>
                                         </li>
                                     ))}
                                 </ul>

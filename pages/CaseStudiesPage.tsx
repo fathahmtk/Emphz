@@ -5,10 +5,10 @@ import { CaseStudy } from '../types';
 import { getCaseStudies } from '../services/mockApi';
 
 const CaseStudyCard: React.FC<{ study: CaseStudy }> = ({ study }) => (
-    <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+    <div className="bg-white rounded-lg shadow-lg overflow-hidden border border-border">
         <img src={study.imageUrl} alt={study.title} className="w-full h-56 object-cover"/>
         <div className="p-6">
-            <p className="text-sm font-semibold text-primary mb-1">{study.industry}</p>
+            <p className="text-sm font-semibold text-accent mb-1">{study.industry}</p>
             <h3 className="text-xl font-bold text-text-DEFAULT mb-2">{study.client}</h3>
             <p className="text-text-secondary mb-4">{study.challenge}</p>
             <div className="bg-accent-light border-l-4 border-accent p-4 rounded-r-lg">
@@ -37,7 +37,7 @@ const CaseStudiesPage: React.FC = () => {
         <div className="bg-background-light min-h-screen">
             <div className="container mx-auto px-6 py-12">
                 <div className="text-center mb-12">
-                    <h1 className="text-4xl font-extrabold text-primary mb-2">Proven Performance in the Field</h1>
+                    <h1 className="text-4xl font-bold text-primary mb-2">Proven Performance in the Field</h1>
                     <p className="text-lg text-text-secondary">See how our GRP solutions deliver tangible results for industry leaders.</p>
                 </div>
 

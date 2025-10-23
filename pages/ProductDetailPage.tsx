@@ -49,7 +49,7 @@ const ProductDetailPage: React.FC = () => {
                         {/* Add thumbnail images if available */}
                     </div>
                     <div>
-                        <h1 className="text-3xl sm:text-4xl font-extrabold text-primary mb-3 tracking-tight">{product.name}</h1>
+                        <h1 className="text-3xl sm:text-4xl font-bold text-primary mb-3 tracking-tight">{product.name}</h1>
                         <p className="text-lg text-text-secondary mb-8">{product.summary}</p>
                         
                         <div className="bg-background-light p-6 rounded-lg border border-border mb-8">

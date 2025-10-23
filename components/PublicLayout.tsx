@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
-import { Phone, Mail, MessageSquare, Menu, X } from 'lucide-react';
+import { Phone, Mail, MessageSquare, Menu, X, Linkedin, Twitter, Facebook } from 'lucide-react';
 
 const publicNavLinks = [
   { name: 'Home', path: '/' },
@@ -20,7 +20,7 @@ const Header: React.FC = () => {
       <header className="bg-background border-b border-border sticky top-0 z-50">
         <div className="container mx-auto px-6 py-4">
             <div className="flex justify-between items-center">
-                 <NavLink to="/" className="text-3xl font-extrabold text-primary">EMPHZ</NavLink>
+                 <NavLink to="/"><img src="/assets/logo-dark.png" alt="EMPHZ Logo" className="h-10" /></NavLink>
                  <nav className="hidden md:flex items-center space-x-8">
                     {publicNavLinks.map(link => (
                         <NavLink key={link.name} to={link.path} 
@@ -69,24 +69,24 @@ const Header: React.FC = () => {
 };
 
 const Footer: React.FC = () => (
-    <footer className="bg-primary text-gray-200">
+    <footer className="bg-primary text-gray-300">
         <div className="container mx-auto px-6 py-12">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <div>
-                    <h3 className="text-2xl font-bold text-white mb-4">EMPHZ</h3>
-                    <p className="text-gray-300 text-sm">Engineering Tomorrow’s Infrastructure — Today.</p>
+                    <img src="/assets/logo-light.png" alt="EMPHZ Logo" className="h-10 mb-4" />
+                    <p className="text-gray-400 text-sm">Engineering Tomorrow’s Infrastructure — Today.</p>
                 </div>
                  <div>
                     <h4 className="font-semibold text-lg text-white mb-4">Quick Links</h4>
                     <ul className="space-y-3 text-sm">
                         {publicNavLinks.slice(0, 5).map(link => (
-                           <li key={link.path}><NavLink to={link.path} className="text-gray-300 hover:text-white transition-colors">{link.name}</NavLink></li>
+                           <li key={link.path}><NavLink to={link.path} className="text-gray-400 hover:text-white transition-colors">{link.name}</NavLink></li>
                         ))}
                     </ul>
                 </div>
                  <div>
                     <h4 className="font-semibold text-lg text-white mb-4">Contact Us</h4>
-                    <address className="text-gray-300 not-italic text-sm space-y-3">
+                    <address className="text-gray-400 not-italic text-sm space-y-3">
                         <p>Head Office – Kerala, India</p>
                         <a href="tel:+918648881888" className="flex items-center hover:text-white transition-colors"><Phone size={14} className="mr-2"/>+91 86488 81888</a>
                         <a href="mailto:info@emphz.com" className="flex items-center hover:text-white transition-colors"><Mail size={14} className="mr-2"/>info@emphz.com</a>
@@ -95,11 +95,13 @@ const Footer: React.FC = () => (
                  <div>
                     <h4 className="font-semibold text-lg text-white mb-4">Follow Us</h4>
                      <div className="flex space-x-4">
-                        {/* Add Social media icons here */}
+                        <a href="#" className="text-gray-400 hover:text-white transition-colors" aria-label="LinkedIn"><Linkedin size={24}/></a>
+                        <a href="#" className="text-gray-400 hover:text-white transition-colors" aria-label="Twitter"><Twitter size={24}/></a>
+                        <a href="#" className="text-gray-400 hover:text-white transition-colors" aria-label="Facebook"><Facebook size={24}/></a>
                      </div>
                 </div>
             </div>
-            <div className="mt-12 border-t border-primary-medium pt-8 text-center text-gray-400 text-sm">
+            <div className="mt-12 border-t border-primary-medium pt-8 text-center text-gray-500 text-sm">
                 <p>&copy; {new Date().getFullYear()} EMPHZ Private Limited. All Rights Reserved.</p>
             </div>
         </div>

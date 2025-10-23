@@ -1,6 +1,6 @@
 import { Product, CaseStudy, Enquiry, Solution, BlogPost, Download, Quotation, Customer } from '../types';
 
-const products: Product[] = [
+let products: Product[] = [
   {
     id: 1, name: 'GRP Single-Door Enclosure', slug: 'single-door', categoryId: 1, categoryName: 'Enclosures',
     summary: 'Compact IP66 enclosure for control & instrumentation; non-conductive and UV-stable.',
@@ -63,6 +63,14 @@ const products: Product[] = [
   },
 ];
 
+const productCategories = [
+    { id: 1, name: 'Enclosures' },
+    { id: 2, name: 'Kiosks' },
+    { id: 3, name: 'Structural' },
+    { id: 4, name: 'Housing' },
+    { id: 5, name: 'Utilities' },
+];
+
 const caseStudies: CaseStudy[] = [
   {
     id: 1, client: 'Qatar Electricity & Water', title: 'Custom IP66 Enclosures for Harsh Desert Climate', industry: 'Utilities',
@@ -108,7 +116,7 @@ const solutions: Solution[] = [
     }
 ];
 
-const blogPosts: BlogPost[] = [
+let blogPosts: BlogPost[] = [
   {
     id: 1,
     title: 'The Future of Composite Infrastructure',
@@ -146,7 +154,7 @@ const blogPosts: BlogPost[] = [
   },
 ];
 
-const downloads: Download[] = [
+let downloads: Download[] = [
     { id: 1, title: 'Single-Door Enclosure Datasheet', category: 'Datasheet', fileUrl: '#', views: 150, createdAt: new Date() },
     { id: 2, title: 'Double-Door Enclosure Datasheet', category: 'Datasheet', fileUrl: '#', views: 95, createdAt: new Date() },
     { id: 3, title: 'ISO 9001:2015 Certificate', category: 'Certificate', fileUrl: '#', views: 210, createdAt: new Date() },
@@ -161,7 +169,7 @@ let enquiries: Enquiry[] = [
     { id: 2, name: 'Jane Smith', email: 'jane.smith@example.com', company: 'Test Inc.', message: 'Information about security cabins.', status: 'In Progress', createdAt: new Date() },
 ];
 
-const quotations: Quotation[] = [
+let quotations: Quotation[] = [
     {
         id: 1,
         enquiryId: 1,
@@ -202,6 +210,52 @@ export const getProductBySlug = async (slug: string): Promise<Product | undefine
   return new Promise(resolve => setTimeout(() => resolve(products.find(p => p.slug === slug)), 500));
 };
 
+export const addProduct = async (productData: Omit<Product, 'id' | 'createdAt' | 'updatedAt' | 'categoryName'>): Promise<Product> => {
+    return new Promise(resolve => setTimeout(() => {
+        const category = productCategories.find(c => c.id === productData.categoryId);
+        const newProduct: Product = {
+            ...productData,
+            id: products.length > 0 ? Math.max(...products.map(p => p.id)) + 1 : 1,
+            categoryName: category ? category.name : 'Unknown',
+            createdAt: new Date(),
+            updatedAt: new Date(),
+        };
+        products.unshift(newProduct);
+        resolve(newProduct);
+    }, 500));
+};
+
+export const updateProduct = async (updatedProductData: Product): Promise<Product> => {
+    return new Promise((resolve, reject) => setTimeout(() => {
+        const index = products.findIndex(p => p.id === updatedProductData.id);
+        if (index !== -1) {
+            const category = productCategories.find(c => c.id === updatedProductData.categoryId);
+            const productToSave: Product = { 
+                ...products[index],
+                ...updatedProductData,
+                categoryName: category ? category.name : products[index].categoryName,
+                updatedAt: new Date() 
+            };
+            products[index] = productToSave;
+            resolve(productToSave);
+        } else {
+            reject(new Error('Product not found'));
+        }
+    }, 500));
+};
+
+export const deleteProduct = async (productId: number): Promise<{ success: boolean }> => {
+    return new Promise((resolve, reject) => setTimeout(() => {
+        const initialLength = products.length;
+        products = products.filter(p => p.id !== productId);
+        if (products.length < initialLength) {
+            resolve({ success: true });
+        } else {
+            reject(new Error('Product not found'));
+        }
+    }, 500));
+};
+
 export const getCaseStudies = async (): Promise<CaseStudy[]> => {
   return new Promise(resolve => setTimeout(() => resolve(caseStudies), 500));
 };
@@ -218,29 +272,160 @@ export const getBlogPostBySlug = async (slug: string): Promise<BlogPost | undefi
     return new Promise(resolve => setTimeout(() => resolve(blogPosts.find(p => p.slug === slug)), 500));
 };
 
+export const addBlogPost = async (postData: Omit<BlogPost, 'id' | 'createdAt'>): Promise<BlogPost> => {
+    return new Promise(resolve => setTimeout(() => {
+        const newPost: BlogPost = {
+            ...postData,
+            id: blogPosts.length > 0 ? Math.max(...blogPosts.map(p => p.id)) + 1 : 1,
+            createdAt: new Date(),
+        };
+        blogPosts.unshift(newPost);
+        resolve(newPost);
+    }, 500));
+};
+
+export const updateBlogPost = async (updatedPostData: BlogPost): Promise<BlogPost> => {
+    return new Promise((resolve, reject) => setTimeout(() => {
+        const index = blogPosts.findIndex(p => p.id === updatedPostData.id);
+        if (index !== -1) {
+            blogPosts[index] = { ...blogPosts[index], ...updatedPostData };
+            resolve(blogPosts[index]);
+        } else {
+            reject(new Error('Blog post not found'));
+        }
+    }, 500));
+};
+
+export const deleteBlogPost = async (postId: number): Promise<{ success: boolean }> => {
+    return new Promise((resolve, reject) => setTimeout(() => {
+        const initialLength = blogPosts.length;
+        blogPosts = blogPosts.filter(p => p.id !== postId);
+        if (blogPosts.length < initialLength) {
+            resolve({ success: true });
+        } else {
+            reject(new Error('Blog post not found'));
+        }
+    }, 500));
+};
+
 export const getDownloads = async (): Promise<Download[]> => {
     return new Promise(resolve => setTimeout(() => resolve(downloads), 500));
 };
+
+export const addDownload = async (downloadData: Omit<Download, 'id' | 'createdAt' | 'views'>): Promise<Download> => {
+    return new Promise(resolve => setTimeout(() => {
+        const newDownload: Download = {
+            ...downloadData,
+            id: downloads.length > 0 ? Math.max(...downloads.map(d => d.id)) + 1 : 1,
+            views: 0,
+            createdAt: new Date(),
+        };
+        downloads.unshift(newDownload);
+        resolve(newDownload);
+    }, 500));
+};
+
+export const updateDownload = async (updatedDownloadData: Download): Promise<Download> => {
+    return new Promise((resolve, reject) => setTimeout(() => {
+        const index = downloads.findIndex(d => d.id === updatedDownloadData.id);
+        if (index !== -1) {
+            downloads[index] = { ...downloads[index], ...updatedDownloadData };
+            resolve(downloads[index]);
+        } else {
+            reject(new Error('Download not found'));
+        }
+    }, 500));
+};
+
+export const deleteDownload = async (downloadId: number): Promise<{ success: boolean }> => {
+    return new Promise((resolve, reject) => setTimeout(() => {
+        const initialLength = downloads.length;
+        downloads = downloads.filter(d => d.id !== downloadId);
+        if (downloads.length < initialLength) {
+            resolve({ success: true });
+        } else {
+            reject(new Error('Download not found'));
+        }
+    }, 500));
+};
+
 
 export const getEnquiries = async (): Promise<Enquiry[]> => {
     return new Promise(resolve => setTimeout(() => resolve(enquiries), 500));
 };
 
+export const getEnquiryById = async (id: number): Promise<Enquiry | undefined> => {
+    return new Promise(resolve => setTimeout(() => resolve(enquiries.find(e => e.id === id)), 300));
+};
+
 export const addEnquiry = async (enquiry: Omit<Enquiry, 'id' | 'createdAt' | 'status'>): Promise<Enquiry> => {
     const newEnquiry: Enquiry = {
         ...enquiry,
-        id: enquiries.length + 1,
+        id: enquiries.length > 0 ? Math.max(...enquiries.map(e => e.id)) + 1 : 1,
         createdAt: new Date(),
         status: 'New',
     };
-    enquiries.push(newEnquiry);
+    enquiries.unshift(newEnquiry);
     // In a real app, this would also trigger sending emails.
     console.log("Simulating email to admin and user for new enquiry:", newEnquiry);
     return new Promise(resolve => setTimeout(() => resolve(newEnquiry), 500));
 };
 
+export const updateEnquiryStatus = async (enquiryId: number, status: Enquiry['status']): Promise<Enquiry> => {
+     return new Promise((resolve, reject) => setTimeout(() => {
+        const index = enquiries.findIndex(e => e.id === enquiryId);
+        if (index !== -1) {
+            enquiries[index].status = status;
+            resolve(enquiries[index]);
+        } else {
+            reject(new Error('Enquiry not found'));
+        }
+    }, 300));
+};
+
+
 export const getQuotations = async (): Promise<Quotation[]> => {
     return new Promise(resolve => setTimeout(() => resolve(quotations), 500));
+};
+
+export const getQuotationById = async (id: number): Promise<Quotation | undefined> => {
+    return new Promise(resolve => setTimeout(() => resolve(quotations.find(q => q.id === id)), 300));
+};
+
+export const addQuotation = async (quoteData: Omit<Quotation, 'id' | 'createdAt'>): Promise<Quotation> => {
+    return new Promise(resolve => setTimeout(() => {
+        const newQuote: Quotation = {
+            ...quoteData,
+            id: quotations.length > 0 ? Math.max(...quotations.map(q => q.id)) + 1 : 1,
+            createdAt: new Date(),
+        };
+        quotations.unshift(newQuote);
+        resolve(newQuote);
+    }, 500));
+};
+
+export const updateQuotation = async (updatedQuoteData: Quotation): Promise<Quotation> => {
+    return new Promise((resolve, reject) => setTimeout(() => {
+        const index = quotations.findIndex(q => q.id === updatedQuoteData.id);
+        if (index !== -1) {
+            quotations[index] = { ...quotations[index], ...updatedQuoteData };
+            resolve(quotations[index]);
+        } else {
+            reject(new Error('Quotation not found'));
+        }
+    }, 500));
+};
+
+export const deleteQuotation = async (quoteId: number): Promise<{ success: boolean }> => {
+    return new Promise((resolve, reject) => setTimeout(() => {
+        const initialLength = quotations.length;
+        quotations = quotations.filter(q => q.id !== quoteId);
+        if (quotations.length < initialLength) {
+            resolve({ success: true });
+        } else {
+            reject(new Error('Quotation not found'));
+        }
+    }, 500));
 };
 
 export const getCustomers = async (): Promise<Customer[]> => {

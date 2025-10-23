@@ -24,7 +24,7 @@ const SolutionsPage: React.FC = () => {
         <div className="bg-background-light min-h-screen">
             <div className="container mx-auto px-6 py-12">
                 <div className="text-center mb-12">
-                    <h1 className="text-4xl font-extrabold text-primary mb-2">Industry-Specific Solutions</h1>
+                    <h1 className="text-4xl font-bold text-primary mb-2">Industry-Specific Solutions</h1>
                     <p className="text-lg text-text-secondary max-w-3xl mx-auto">We engineer GRP systems to solve challenges in the world's most demanding sectors.</p>
                 </div>
                 
@@ -35,7 +35,7 @@ const SolutionsPage: React.FC = () => {
                     ))
                 ) : (
                     solutions.map(solution => (
-                        <div key={solution.slug} className="bg-white p-8 rounded-lg shadow-lg">
+                        <div key={solution.slug} className="bg-white p-8 rounded-lg shadow-lg border border-border">
                             <h2 className="text-3xl font-bold text-primary mb-4">{solution.name}</h2>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                                 <div>
@@ -54,7 +54,7 @@ const SolutionsPage: React.FC = () => {
                                             </li>
                                         ))}
                                     </ul>
-                                    <NavLink to={`/products?category=${solution.name}`} className="font-semibold text-primary hover:underline flex items-center">
+                                    <NavLink to={`/products?category=${solution.name}`} className="font-semibold text-accent hover:text-accent-hover flex items-center">
                                         View Recommended Products <ArrowRight size={18} className="ml-1"/>
                                     </NavLink>
                                 </div>

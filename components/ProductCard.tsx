@@ -18,7 +18,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                 <p className="text-text-secondary text-sm mb-4 flex-grow">{product.summary}</p>
                 <div className="flex flex-wrap gap-2 mb-6">
                     {product.tags.slice(0, 3).map(tag => (
-                        <span key={tag} className="bg-background-light text-text-secondary text-xs font-semibold px-3 py-1 rounded-full">{tag}</span>
+                        <span key={tag} className="bg-background-light text-text-secondary text-xs font-semibold px-3 py-1 rounded-full border border-border">{tag}</span>
                     ))}
                 </div>
                 <NavLink to={`/products/${product.slug}`} className="mt-auto bg-accent text-white text-center font-semibold py-3 px-4 rounded-lg hover:bg-accent-hover transition-all duration-300">
