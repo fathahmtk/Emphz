@@ -117,8 +117,8 @@ const ContactPage: React.FC = () => {
                 <div className="relative">
                     <Breadcrumbs links={breadcrumbLinks} />
                     <div className="container mx-auto px-6 py-12 text-center">
-                        <h1 className="text-4xl font-bold font-heading text-primary mb-2">Contact The GRP Experts</h1>
-                        <p className="text-lg text-text-secondary">We're here to help engineer your next GRP solution. Contact us to discuss your project or request a quotation.</p>
+                        <h1 className="text-4xl font-bold font-heading text-primary mb-2">Contact EMPHZ Global</h1>
+                        <p className="text-lg text-text-secondary">Get a custom GRP solution or quotation from The GRP Experts.</p>
                     </div>
                 </div>
             </div>

@@ -1,4 +1,3 @@
-
 import { Product, CaseStudy, Enquiry, Solution, BlogPost, Download, Quotation, Customer, User, Role, Testimonial } from '../types';
 
 let products: Product[] = [
@@ -111,7 +110,7 @@ let products: Product[] = [
     imageUrls: [
         { view: 'front', url: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=tinysrgb&w=800&h=800&fit=crop' },
     ],
-    pdfUrls: [{ title: 'Technical Data Sheet', url: '#' }, { title: 'Brochure', url: '#' }],
+    pdfUrls: [{ title: 'Brochure', url: '#' }],
     isFeatured: true, createdAt: new Date(), updatedAt: new Date(),
   },
   {
@@ -138,21 +137,21 @@ const productCategories = [
 
 let caseStudies: CaseStudy[] = [
   {
-    id: 1, client: 'Qatar Electricity & Water', title: 'Custom IP66 Enclosures for Harsh Desert Climate', industry: 'Utilities',
+    id: 1, client: 'Qatar Electricity & Water', title: 'Reducing Downtime by 30% with EMPHZ GRP Feeder Pillars', industry: 'Utilities',
     challenge: 'Extreme temperatures, dust, and UV exposure were causing frequent failures in existing metallic enclosures, leading to significant grid downtime.',
     solution: 'EMPHZ designed and supplied custom-sized GRP enclosures with IP66 rating, UV-resistant coating, and a thermal management system.',
     result: '30% reduction in equipment failure and associated downtime.',
     imageUrl: 'https://images.unsplash.com/photo-1506729623306-b47218a29a3a?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=tinysrgb&w=800&h=600&fit=crop', createdAt: new Date(),
   },
   {
-    id: 2, client: 'Kochi Metro Rail', title: 'Integrated GRP Kiosks for Ticketing & Comms', industry: 'Infrastructure',
+    id: 2, client: 'Kochi Metro Rail', title: 'Weatherproof GRP Kiosks Engineered for Kochi Metro', industry: 'Infrastructure',
     challenge: 'Required durable, low-maintenance kiosks for outdoor ticketing and communication systems, resistant to high humidity and public vandalism.',
     solution: 'Developed all-in-one GRP kiosks with integrated AC, electrical wiring, and reinforced structures. The non-corrosive material was ideal for the coastal climate.',
     result: 'Zero maintenance reported in the first 3 years of operation.',
     imageUrl: 'https://images.unsplash.com/photo-1616423642340-2735d4528135?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=tinysrgb&w=800&h=600&fit=crop', createdAt: new Date(),
   },
   {
-    id: 3, client: 'Tata Power Solar', title: 'UV-Stabilized Enclosures for Solar Inverters', industry: 'Renewable Energy',
+    id: 3, client: 'Tata Power Solar', title: 'EMPHZ GRP Cabinets Extending Solar Equipment Lifespan', industry: 'Renewable Energy',
     challenge: 'Standard enclosures were degrading under constant, intense solar radiation in large-scale solar farms, compromising inverter lifespan.',
     solution: 'EMPHZ provided GRP enclosures manufactured with a specialized UV-stabilized resin and a protective gel-coat finish.',
     result: 'Projected 25% increase in the operational lifespan of inverter systems.',
@@ -168,7 +167,7 @@ let solutions: Solution[] = [
         approach: 'Our approach is to replace vulnerable traditional materials with high-performance GRP composites that provide superior insulation, environmental sealing (IP-rated), and corrosion resistance, ensuring long-term operational reliability.',
         outcomes: ['Enhanced safety due to non-conductive properties', 'Reduced maintenance costs from corrosion resistance', 'Improved equipment lifespan with IP66 weatherproofing'],
         products: ['double-door', 'feeder-pillar', 'junction-instrument'],
-        caseStudies: ['Qatar Electricity & Water']
+        caseStudies: ['Reducing Downtime by 30% with EMPHZ GRP Feeder Pillars']
     },
     {
         slug: 'renewable-energy',
@@ -177,7 +176,7 @@ let solutions: Solution[] = [
         approach: 'We engineer GRP solutions with enhanced UV and thermal stability, such as solar combiner boxes and battery cabinets, designed to protect sensitive components and maximize the longevity of renewable energy investments.',
         outcomes: ['Increased asset lifespan with UV-stabilized materials', 'Improved thermal management for batteries and inverters', 'Arc-safe designs for enhanced PV system safety'],
         products: ['solar-combiner', 'battery-cabinet'],
-        caseStudies: ['Tata Power Solar']
+        caseStudies: ['EMPHZ GRP Cabinets Extending Solar Equipment Lifespan']
     },
     {
         slug: 'infrastructure-transit',
@@ -186,7 +185,7 @@ let solutions: Solution[] = [
         approach: 'We provide prefabricated GRP kiosks and cabins that are weatherproof, insulated, and can be rapidly deployed. Their non-corrosive nature ensures a long service life in high-traffic urban environments.',
         outcomes: ['Rapid deployment for faster project completion', 'Reduced lifetime maintenance costs', 'Enhanced comfort and safety for personnel'],
         products: ['toll-booth-kiosk', 'guard-cabin', 'modular-toilet-block'],
-        caseStudies: ['Kochi Metro Rail']
+        caseStudies: ['Weatherproof GRP Kiosks Engineered for Kochi Metro']
     },
     {
         slug: 'telecommunications',
@@ -202,8 +201,8 @@ let solutions: Solution[] = [
 let blogPosts: BlogPost[] = [
   {
     id: 1,
-    title: 'The Future of Composite Infrastructure',
-    slug: 'future-of-composite-infrastructure',
+    title: 'The Science Behind EMPHZ GRP: Built to Last a Lifetime',
+    slug: 'science-behind-emphz-grp',
     excerpt: 'Exploring how GRP and other composites are set to revolutionize construction, energy, and public works with their superior strength-to-weight ratio and longevity.',
     content: "The 21st century demands infrastructure that is not only robust but also sustainable and quick to deploy. Traditional materials like steel and concrete, while reliable, come with significant drawbacks in terms of weight, corrosion, and carbon footprint. This is where Glass Reinforced Plastic (GRP) and other advanced composites are stepping in to fill the gap. From rebar to entire bridge decks, composites offer a compelling alternative that promises a longer service life with minimal maintenance. At EMPHZ, we are at the forefront of this revolution, engineering composite solutions that are lighter, stronger, and more environmentally friendly. Our research indicates that the lifecycle cost of GRP infrastructure can be up to 40% lower than its steel counterpart, primarily due to the elimination of corrosion-related maintenance. The future is not just built; it's molded.",
     author: 'Muhammed Muneer A H',
@@ -214,7 +213,7 @@ let blogPosts: BlogPost[] = [
   },
   {
     id: 2,
-    title: 'Steel vs GRP — Lifecycle Cost Comparison',
+    title: 'Why EMPHZ GRP Outperforms Metal in Every Way',
     slug: 'steel-vs-grp-lifecycle-cost',
     excerpt: 'A deep dive into the total cost of ownership for GRP versus traditional steel in industrial applications, considering installation, maintenance, and lifespan.',
     content: "When selecting materials for industrial enclosures or structural components, the initial purchase price is often the primary focus. However, this overlooks the total cost of ownership (TCO), which includes installation, maintenance, and replacement costs over the asset's lifespan. Steel, while initially cheaper, requires regular painting and treatment to prevent rust, especially in corrosive environments. It is also heavy, leading to higher transportation and installation costs. GRP, on the other hand, is inherently corrosion-resistant, lightweight, and requires virtually no maintenance. Our analysis, based on a 20-year TCO model for a typical coastal chemical plant, shows that GRP enclosures become more cost-effective than stainless steel enclosures after just 7 years. The initial investment pays dividends through decades of worry-free operation.",
@@ -226,7 +225,7 @@ let blogPosts: BlogPost[] = [
   },
   {
     id: 3,
-    title: 'Sustainability in Manufacturing — EMPHZ’s Carbon-Neutral Approach',
+    title: 'How EMPHZ GRP Helps Build a Carbon-Neutral Future',
     slug: 'sustainability-in-manufacturing',
     excerpt: 'Learn how EMPHZ is integrating sustainable practices, from using recyclable cores to optimizing our automated SMC molding process for minimal waste.',
     content: "Sustainability is no longer a buzzword; it's a core business imperative. At EMPHZ, we are committed to minimizing our environmental impact throughout our manufacturing lifecycle. Our GRP products have a lower embodied carbon footprint compared to steel and aluminum. We are continuously innovating, incorporating recyclable core materials and optimizing our closed-molding processes to drastically reduce VOC emissions and material waste. Our Mysore factory is partially powered by solar energy, and we have implemented a comprehensive water recycling program. Our goal is to achieve carbon-neutral operations by 2030, proving that high-performance engineering and environmental stewardship can, and must, go hand in hand.",
@@ -238,13 +237,13 @@ let blogPosts: BlogPost[] = [
 ];
 
 let downloads: Download[] = [
-    { id: 1, title: 'Single-Door Enclosure Datasheet', category: 'Datasheet', fileUrl: '#', views: 150, createdAt: new Date() },
-    { id: 2, title: 'Double-Door Enclosure Datasheet', category: 'Datasheet', fileUrl: '#', views: 95, createdAt: new Date() },
+    { id: 1, title: 'EMPHZ GRP Enclosures – The Benchmark in Electrical Safety', category: 'Datasheet', fileUrl: '#', views: 150, createdAt: new Date() },
+    { id: 2, title: 'EMPHZ Composite Kiosks – Durable, Customizable, Smart', category: 'Datasheet', fileUrl: '#', views: 95, createdAt: new Date() },
     { id: 3, title: 'ISO 9001:2015 Certificate', category: 'Certificate', fileUrl: '#', views: 210, createdAt: new Date() },
     { id: 4, title: 'IEC 61439 Certificate', category: 'Certificate', fileUrl: '#', views: 180, createdAt: new Date() },
     { id: 5, title: 'Enclosure Installation Guide', category: 'Guide', fileUrl: '#', views: 120, createdAt: new Date() },
     { id: 6, title: 'Single-Door Enclosure (STP/3D)', category: 'CAD', fileUrl: '#', views: 75, createdAt: new Date() },
-    { id: 7, title: 'EMPHZ Company Profile 2024', category: 'Company Profile', fileUrl: '#', views: 300, createdAt: new Date() },
+    { id: 7, title: 'EMPHZ Global: The GRP Company - Profile 2024', category: 'Company Profile', fileUrl: '#', views: 300, createdAt: new Date() },
 ];
 
 let enquiries: Enquiry[] = [

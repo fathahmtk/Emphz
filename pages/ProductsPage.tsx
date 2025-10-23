@@ -16,7 +16,7 @@ const ProductsPage: React.FC = () => {
     const [isCompareModalOpen, setIsCompareModalOpen] = useState(false);
 
     usePageMetadata(
-        "EMPHZ GRP Product Catalog | Enclosures, Kiosks & Cabins",
+        "EMPHZ GRP Enclosures & Cabins | Engineered Composite Solutions",
         "Explore the complete catalog of EMPHZ GRP solutions. Our high-performance GRP enclosures, modular cabins, and feeder pillars are engineered to be the industry benchmark.",
         "EMPHZ GRP products, GRP product catalog, EMPHZ enclosures, EMPHZ kiosks, GRP cabins, composite solutions, EMPHZ Global"
     );
@@ -79,7 +79,7 @@ const ProductsPage: React.FC = () => {
                     <Breadcrumbs links={breadcrumbLinks} />
                     <div className="container mx-auto px-6 py-12 text-center">
                         <h1 className="text-4xl sm:text-5xl font-bold font-heading text-primary mb-3 tracking-tight">EMPHZ GRP Product Catalog</h1>
-                        <p className="text-lg text-text-secondary max-w-3xl mx-auto">Explore our complete range of high-performance GRP enclosures, kiosks, and composite solutions. When it's GRP, it's EMPHZ.</p>
+                        <p className="text-lg text-text-secondary max-w-3xl mx-auto">Engineered Composite Solutions from The GRP Company. Explore our complete range of high-performance GRP enclosures, kiosks, and composite solutions.</p>
                     </div>
                 </div>
             </div>

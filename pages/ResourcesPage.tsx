@@ -87,7 +87,7 @@ const ResourcesPage: React.FC = () => {
                     <Breadcrumbs links={breadcrumbLinks} />
                     <div className="container mx-auto px-6 py-12 text-center">
                         <h1 className="text-4xl font-bold font-heading text-primary mb-2">EMPHZ GRP Resource Library</h1>
-                        <p className="text-lg text-text-secondary max-w-3xl mx-auto">Access datasheets, CAD files, and certifications for all EMPHZ solutions. Select files to create a custom submittal pack.</p>
+                        <p className="text-lg text-text-secondary max-w-3xl mx-auto">Access datasheets, CAD files, and certifications from The GRP Company. Select files to create a custom submittal pack.</p>
                     </div>
                 </div>
             </div>

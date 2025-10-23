@@ -12,7 +12,7 @@ export default {
         search: 'Search'
     },
     footer: {
-        tagline: 'EMPHZ Global: The GRP Company.',
+        tagline: 'The GRP Company.',
         quickLinks: 'Quick Links',
         contactUs: 'Contact Us',
         office: 'Head Office – Kerala, India',
@@ -21,7 +21,7 @@ export default {
     },
     home: {
         hero: {
-            title: "When it's GRP, it's EMPHZ.",
+            title: "When it’s GRP, it’s EMPHZ.",
             subtitle: "From electrical enclosures to modular kiosks and cabins, EMPHZ sets the benchmark in composite innovation — delivering GRP solutions that outperform metal in strength, safety, and sustainability.",
             exploreProducts: 'Explore Our Products',
             getQuote: 'Get a Custom Quote'

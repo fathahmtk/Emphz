@@ -13,7 +13,7 @@ const NotFoundPage: React.FC = () => {
     return (
         <div className="bg-background-light flex-grow flex items-center justify-center py-16">
             <div className="text-center">
-                <AlertTriangle className="mx-auto h-20 w-20 text-accent-secondary mb-4" />
+                <AlertTriangle className="mx-auto h-20 w-20 text-accent mb-4" />
                 <h1 className="text-6xl font-extrabold font-heading text-primary tracking-tighter">404</h1>
                 <p className="text-2xl font-semibold text-text-DEFAULT mt-2">Page Not Found</p>
                 <p className="text-text-secondary mt-4 max-w-sm mx-auto">

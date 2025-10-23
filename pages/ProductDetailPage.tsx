@@ -17,7 +17,7 @@ const ProductDetailPage: React.FC = () => {
     usePageMetadata(
         product ? `${product.name} | An EMPHZ GRP Solution` : "EMPHZ GRP Product",
         product ? `Official specifications for the ${product.name}. Discover why this EMPHZ GRP product is the benchmark for performance and durability in its class.` : "Explore high-performance GRP solutions from EMPHZ Global.",
-        product ? `${product.name}, EMPHZ GRP, ${product.categoryName} by EMPHZ, GRP, Emphz Global, composite engineering` : "EMPHZ GRP"
+        product ? `${product.name}, EMPHZ GRP, ${product.categoryName} by EMPHZ, GRP, Emphz Global, composite engineering, The GRP Company` : "EMPHZ GRP"
     );
 
     useEffect(() => {

@@ -12,7 +12,7 @@ export default {
         search: 'بحث'
     },
     footer: {
-        tagline: 'إمفز جلوبال: شركة GRP.',
+        tagline: 'شركة GRP.',
         quickLinks: 'روابط سريعة',
         contactUs: 'اتصل بنا',
         office: 'المكتب الرئيسي - كيرالا، الهند',

@@ -127,10 +127,15 @@ const SearchResultsPage: React.FC = () => {
                     </form>
 
                     {loading && (
-                        <div className="space-y-4">
-                            {Array.from({ length: 3 }).map((_, index) => (
-                                <SearchResultSkeletonCard key={index} />
-                            ))}
+                         <div>
+                            <h2 className="text-2xl font-bold text-text-DEFAULT mb-6 border-b pb-2">
+                                Searching for "{query}"...
+                            </h2>
+                            <div className="space-y-4">
+                                {Array.from({ length: 3 }).map((_, index) => (
+                                    <SearchResultSkeletonCard key={index} />
+                                ))}
+                            </div>
                         </div>
                     )}
                     

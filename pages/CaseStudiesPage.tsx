@@ -10,8 +10,8 @@ const CaseStudyCard: React.FC<{ study: CaseStudy }> = ({ study }) => (
         <img src={study.imageUrl} alt={study.title} className="w-full h-56 object-cover"/>
         <div className="p-6">
             <p className="text-sm font-semibold text-accent mb-1">{study.industry}</p>
-            <h3 className="text-xl font-bold font-heading text-text-DEFAULT mb-2">{study.client}</h3>
-            <p className="text-text-secondary mb-4">{study.challenge}</p>
+            <h3 className="text-xl font-bold font-heading text-text-DEFAULT mb-2">{study.title}</h3>
+            <p className="text-text-secondary mb-4 line-clamp-3">{study.challenge}</p>
             <div className="bg-accent-light border-l-4 border-accent p-4 rounded-r-lg">
                 <p className="font-semibold text-accent-hover">Result: {study.result}</p>
             </div>
@@ -25,8 +25,8 @@ const CaseStudiesPage: React.FC = () => {
     const [loading, setLoading] = useState(true);
 
     usePageMetadata(
-        "EMPHZ GRP Success Stories | Proven Composite Solutions",
-        "See EMPHZ GRP in action. Our case studies showcase the proven performance and reliability of our GRP solutions for global clients in demanding environments.",
+        "EMPHZ GRP Success Stories | Proven Composite Solutions for Global Clients",
+        "See EMPHZ GRP in action. Our case studies prove the performance of our GRP enclosures, kiosks, and cabins for global clients in demanding environments.",
         "EMPHZ GRP case studies, GRP success stories, composite solutions, GRP performance, EMPHZ projects, The GRP Company"
     );
 
@@ -56,7 +56,7 @@ const CaseStudiesPage: React.FC = () => {
                     <Breadcrumbs links={breadcrumbLinks} />
                     <div className="container mx-auto px-6 py-12 text-center">
                         <h1 className="text-4xl font-bold font-heading text-primary mb-2">EMPHZ GRP Success Stories</h1>
-                        <p className="text-lg text-text-secondary">See how our GRP solutions deliver tangible results for industry leaders. Proven performance, engineered by EMPHZ.</p>
+                        <p className="text-lg text-text-secondary">Proven Composite Solutions for Global Clients. See how our GRP solutions deliver tangible results for industry leaders.</p>
                     </div>
                 </div>
             </div>

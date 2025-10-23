@@ -119,7 +119,7 @@ const HomePage: React.FC = () => {
     usePageMetadata(
         "EMPHZ Global | The GRP Company – Enclosures, Kiosks & Composite Solutions",
         "When it’s GRP, it’s EMPHZ. EMPHZ Global is India’s leading manufacturer of high-performance Glass Reinforced Plastic (GRP) enclosures, kiosks, and modular cabins — engineered for durability, safety, and sustainability across global industries.",
-        "EMPHZ GRP, The GRP Company, GRP enclosures, GRP kiosks, GRP manufacturer India, composite solutions, Glass Reinforced Plastic, EMPHZ Global"
+        "EMPHZ GRP, The GRP Company, GRP enclosures, GRP kiosks, GRP cabins, GRP manufacturer India, composite solutions, Glass Reinforced Plastic, EMPHZ Global"
     );
 
     useEffect(() => {

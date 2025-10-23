@@ -23,8 +23,8 @@ const CompanyPage: React.FC = () => {
     const timelineRefs = useRef<(HTMLDivElement | null)[]>([]);
 
     usePageMetadata(
-        "About EMPHZ Global | The GRP Company",
-        "Learn about EMPHZ Global, the company redefining GRP manufacturing in India and beyond. Our mission is to be the world's most trusted GRP engineering partner.",
+        "About EMPHZ | Redefining GRP Manufacturing in India & Beyond",
+        "Learn about EMPHZ Global, The GRP Company. Our mission is to engineer confidence in composites, establishing EMPHZ as the global synonym for GRP innovation and reliability.",
         "About EMPHZ, The GRP Company, GRP manufacturer India, composite engineering, EMPHZ team, GRP experts"
     );
 
@@ -73,8 +73,8 @@ const CompanyPage: React.FC = () => {
                     <Breadcrumbs links={breadcrumbLinks} />
                     <div className="container mx-auto px-6 py-16">
                         <div className="text-center max-w-4xl mx-auto">
-                            <h1 className="text-4xl md:text-5xl font-bold font-heading text-primary mb-4">EMPHZ Global: The GRP Company</h1>
-                            <p className="text-lg text-text-secondary">We are dedicated to delivering high-performance GRP solutions for critical infrastructure. Our work is defined by precision engineering, relentless quality, and a commitment to making EMPHZ the global synonym for GRP.</p>
+                            <h1 className="text-4xl md:text-5xl font-bold font-heading text-primary mb-4">About EMPHZ: The GRP Company</h1>
+                            <p className="text-lg text-text-secondary">Redefining GRP manufacturing in India and beyond. Our mission is to establish EMPHZ as the global synonym for trust, safety, and innovation in composite manufacturing.</p>
                         </div>
 
                         <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-12 text-center">

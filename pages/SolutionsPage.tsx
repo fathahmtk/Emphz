@@ -16,9 +16,9 @@ const SolutionsPage: React.FC = () => {
     const [loading, setLoading] = useState(true);
 
     usePageMetadata(
-        "Industry Solutions by EMPHZ | The GRP Company",
-        "When it's GRP, it's EMPHZ. We provide tailored GRP solutions for critical industries like utilities, renewable energy, and infrastructure, solving challenges where metal fails.",
-        "EMPHZ GRP solutions, GRP for industry, GRP utilities, GRP renewable energy, composite solutions, The GRP Company"
+        "GRP Applications by EMPHZ | Power, Energy, Telecom & Infrastructure",
+        "Discover how EMPHZ GRP solutions are engineered for critical applications in Power, Energy, Telecom, and Infrastructure. When it's GRP, it's EMPHZ.",
+        "EMPHZ GRP applications, GRP for utilities, GRP for energy, GRP for telecom, EMPHZ infrastructure solutions, The GRP Company"
     );
 
     useEffect(() => {
@@ -72,8 +72,8 @@ const SolutionsPage: React.FC = () => {
                 <div className="relative">
                     <Breadcrumbs links={breadcrumbLinks} />
                     <div className="container mx-auto px-6 py-12 text-center">
-                        <h1 className="text-4xl font-bold font-heading text-primary mb-2">Industry-Specific EMPHZ GRP Solutions</h1>
-                        <p className="text-lg text-text-secondary max-w-3xl mx-auto">We engineer GRP systems to solve challenges where traditional materials fail, reinforcing our commitment: when it's GRP, it's EMPHZ.</p>
+                        <h1 className="text-4xl font-bold font-heading text-primary mb-2">GRP Applications by EMPHZ</h1>
+                        <p className="text-lg text-text-secondary max-w-3xl mx-auto">Engineered solutions for Power, Energy, Telecom & Infrastructure. We solve challenges where traditional materials fail.</p>
                     </div>
                 </div>
             </div>

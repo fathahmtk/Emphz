@@ -30,7 +30,7 @@ const InsightsPage: React.FC = () => {
     const [loading, setLoading] = useState(true);
 
     usePageMetadata(
-        "EMPHZ Engineering Blog | GRP Technology & Innovation",
+        "EMPHZ Engineering Blog | GRP Technology, Innovation & Sustainability",
         "Read the latest on GRP technology from the experts at EMPHZ, The GRP Company. Our insights cover composite engineering, sustainability, and market trends.",
         "EMPHZ GRP insights, GRP technology, composite engineering blog, GRP trends, The GRP Company, EMPHZ Global"
     );
@@ -60,8 +60,8 @@ const InsightsPage: React.FC = () => {
                 <div className="relative">
                     <Breadcrumbs links={breadcrumbLinks} />
                     <div className="container mx-auto px-6 py-12 text-center">
-                        <h1 className="text-4xl font-bold font-heading text-primary mb-2">EMPHZ GRP Engineering Insights</h1>
-                        <p className="text-lg text-text-secondary">Explore our latest thinking on composite engineering, industry trends, and the future of GRP technology.</p>
+                        <h1 className="text-4xl font-bold font-heading text-primary mb-2">EMPHZ Engineering Blog</h1>
+                        <p className="text-lg text-text-secondary">GRP Technology, Innovation, and Sustainability from The GRP Company.</p>
                     </div>
                 </div>
             </div>
