@@ -1,4 +1,5 @@
 
+
 import React, { useState, useEffect } from 'react';
 import { User } from '../../types';
 import { getUsers, addUser, updateUser, deleteUser } from '../../services/mockApi';
@@ -117,15 +118,15 @@ const AdminUsersPage: React.FC = () => {
                                         <td className="px-6 py-4 font-medium text-text-DEFAULT dark:text-slate-200 whitespace-nowrap">{user.name}</td>
                                         <td className="px-6 py-4">{user.email}</td>
                                         <td className="px-6 py-4">
-                                            <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-300">
+                                            <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-accent/10 text-accent">
                                                 {user.role}
                                             </span>
                                         </td>
                                         <td className="px-6 py-4 whitespace-nowrap">{new Date(user.createdAt).toLocaleDateString()}</td>
                                         <td className="px-6 py-4">
                                             <div className="flex space-x-4">
-                                                <button onClick={() => handleEdit(user)} className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"><Edit size={18}/></button>
-                                                <button onClick={() => handleDelete(user.id, user.name || '')} disabled={user.id === 1} className="text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300 disabled:text-gray-400 dark:disabled:text-slate-600 disabled:cursor-not-allowed"><Trash size={18}/></button>
+                                                <button onClick={() => handleEdit(user)} className="text-accent hover:text-accent-hover"><Edit size={18}/></button>
+                                                <button onClick={() => handleDelete(user.id, user.name || '')} disabled={user.id === 1} className="text-danger hover:opacity-80 disabled:text-steel/50 disabled:cursor-not-allowed"><Trash size={18}/></button>
                                             </div>
                                         </td>
                                     </tr>

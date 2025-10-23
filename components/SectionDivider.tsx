@@ -7,10 +7,10 @@ export const SectionDivider: React.FC = () => {
         <div className="container mx-auto px-6">
             <div className="relative my-12 md:my-16" role="separator">
                 <div className="absolute inset-0 flex items-center" aria-hidden="true">
-                    <div className="w-full border-t border-border dark:border-slate-700" />
+                    <div className="w-full border-t border-border" />
                 </div>
                 <div className="relative flex justify-center">
-                    <span className="bg-background-light dark:bg-slate-900 px-3 text-accent" title={locale === 'ar' ? 'فاصل قسم' : 'Section Divider'}>
+                    <span className="bg-background-light px-3 text-teal" title={locale === 'ar' ? 'فاصل قسم' : 'Section Divider'}>
                          <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
                             <circle cx="10" cy="10" r="10" />
                         </svg>

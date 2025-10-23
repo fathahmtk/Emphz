@@ -106,7 +106,7 @@ const ContactPage: React.FC = () => {
     const inputClasses = (hasError: boolean) =>
         `mt-1 block w-full px-4 py-3 border rounded-md shadow-sm focus:outline-none bg-white dark:bg-slate-700 dark:text-white ${
             hasError
-                ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
+                ? 'border-danger focus:border-danger focus:ring-danger'
                 : 'border-gray-300 dark:border-slate-600 focus:border-accent focus:ring-accent'
         }`;
 
@@ -137,12 +137,12 @@ const ContactPage: React.FC = () => {
                             <div>
                                 <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-slate-300">Name</label>
                                 <input ref={nameInputRef} type="text" name="name" id="name" required value={formData.name} onChange={handleChange} onBlur={handleBlur} className={inputClasses(!!errors.name)}/>
-                                {errors.name && <p className="text-red-600 text-sm mt-1">{errors.name}</p>}
+                                {errors.name && <p className="text-danger text-sm mt-1">{errors.name}</p>}
                             </div>
                             <div>
                                 <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-slate-300">Email</label>
                                 <input ref={emailInputRef} type="email" name="email" id="email" required value={formData.email} onChange={handleChange} onBlur={handleBlur} className={inputClasses(!!errors.email)}/>
-                                {errors.email && <p className="text-red-600 text-sm mt-1">{errors.email}</p>}
+                                {errors.email && <p className="text-danger text-sm mt-1">{errors.email}</p>}
                             </div>
                             <div>
                                 <label htmlFor="company" className="block text-sm font-medium text-gray-700 dark:text-slate-300">Company (Optional)</label>
@@ -155,7 +155,7 @@ const ContactPage: React.FC = () => {
                             <div>
                                 <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-slate-300">Message</label>
                                 <textarea ref={messageInputRef} name="message" id="message" rows={4} required value={formData.message} onChange={handleChange} onBlur={handleBlur} className={inputClasses(!!errors.message)}></textarea>
-                                {errors.message && <p className="text-red-600 text-sm mt-1">{errors.message}</p>}
+                                {errors.message && <p className="text-danger text-sm mt-1">{errors.message}</p>}
                             </div>
                             <button type="submit" disabled={status === 'submitting'} className="w-full bg-accent text-white py-3 px-4 border border-transparent rounded-md shadow-sm font-semibold hover:bg-accent-hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent disabled:bg-gray-400 disabled:cursor-not-allowed text-base">
                                 {status === 'submitting' ? 'Sending...' : 'Send Enquiry'}
@@ -175,7 +175,7 @@ const ContactPage: React.FC = () => {
                             <a href="tel:+918648881888" className="flex items-center text-lg text-text-secondary dark:text-slate-400 hover:text-accent mb-4"><Phone className="mr-3"/>+91 86488 81888</a>
                             <a href="mailto:info@emphz.com" className="flex items-center text-lg text-text-secondary dark:text-slate-400 hover:text-accent"><Mail className="mr-3"/>info@emphz.com</a>
                          </div>
-                         <a href="https://wa.me/918648881888" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-full bg-green-500 text-white py-3 px-4 rounded-md shadow-sm font-semibold hover:bg-green-600 transition">
+                         <a href="https://wa.me/918648881888" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-full bg-success text-white py-3 px-4 rounded-md shadow-sm font-semibold hover:opacity-90 transition">
                             <MessageSquare className="mr-2"/> Chat on WhatsApp
                          </a>
                     </div>

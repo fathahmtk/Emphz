@@ -10,13 +10,13 @@ import { usePageMetadata } from '../hooks/usePageMetadata';
 const InsightCard: React.FC<{ post: BlogPost }> = ({ post }) => {
     return (
         <div className="group [perspective:1000px] h-full">
-            <div className="relative bg-white rounded-lg border border-border overflow-hidden flex flex-col h-full transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(5deg)] shadow-md hover:shadow-2xl">
+            <div className="relative bg-white dark:bg-slate-800 rounded-lg border border-border dark:border-slate-700 overflow-hidden flex flex-col h-full transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(5deg)] shadow-md hover:shadow-2xl">
                 <div className="relative">
                     <img src={post.coverUrl} alt={post.title} className="w-full h-48 object-cover" />
                 </div>
                 <div className="p-6 flex flex-col flex-grow">
-                    <p className="text-xs text-text-secondary mb-2">{new Date(post.publishedAt!).toLocaleDateString()}</p>
-                    <h3 className="text-lg font-bold font-heading text-text-DEFAULT mb-2 flex-grow">{post.title}</h3>
+                    <p className="text-xs text-text-secondary dark:text-slate-400 mb-2">{new Date(post.publishedAt!).toLocaleDateString()}</p>
+                    <h3 className="text-lg font-bold font-heading text-text-DEFAULT dark:text-white mb-2 flex-grow">{post.title}</h3>
                     <NavLink to={`/insights/${post.slug}`} className="relative z-10 mt-4 font-semibold text-accent hover:text-accent-hover flex items-center group-hover:gap-3 transition-all duration-300">
                         Read More <ArrowRight size={16} className="ms-1" />
                     </NavLink>
@@ -33,9 +33,9 @@ const InsightDetailPage: React.FC = () => {
     const [loading, setLoading] = useState(true);
 
     usePageMetadata(
-        post ? `${post.title} | An EMPHZ GRP Engineering Insight` : "EMPHZ GRP Insight",
-        post ? `${post.excerpt} - A deep dive from EMPHZ, The GRP Company.` : "Expert insights from EMPHZ Global.",
-        post ? `${post.title}, EMPHZ GRP, GRP insights, composite engineering, The GRP Company` : "EMPHZ GRP"
+        post ? `${post.title} | EMPHZ GRP Engineering Insights` : "EMPHZ Engineering Insight",
+        post ? `${post.excerpt} An expert analysis on GRP technology from EMPHZ, The GRP Company.` : "Expert insights on GRP technology from EMPHZ Global.",
+        post ? `${post.title}, EMPHZ GRP, GRP technology, composite engineering, ${post.slug.replace(/-/g, ' ')}, EMPHZ engineering insights` : "EMPHZ GRP"
     );
 
     useEffect(() => {
@@ -60,13 +60,13 @@ const InsightDetailPage: React.FC = () => {
     if (loading) {
         return (
              <div className="container mx-auto px-6 py-12 animate-pulse">
-                <div className="h-6 w-1/3 bg-gray-300 rounded mb-4"></div>
-                <div className="h-10 w-3/4 bg-gray-300 rounded mx-auto mt-4"></div>
-                <div className="mt-8 h-96 bg-gray-300 rounded-lg"></div>
+                <div className="h-6 w-1/3 bg-gray-300 dark:bg-slate-700 rounded mb-4"></div>
+                <div className="h-10 w-3/4 bg-gray-300 dark:bg-slate-700 rounded mx-auto mt-4"></div>
+                <div className="mt-8 h-96 bg-gray-300 dark:bg-slate-700 rounded-lg"></div>
                 <div className="mt-8 space-y-4">
-                    <div className="h-6 w-full bg-gray-300 rounded"></div>
-                    <div className="h-6 w-full bg-gray-300 rounded"></div>
-                    <div className="h-6 w-5/6 bg-gray-300 rounded"></div>
+                    <div className="h-6 w-full bg-gray-300 dark:bg-slate-700 rounded"></div>
+                    <div className="h-6 w-full bg-gray-300 dark:bg-slate-700 rounded"></div>
+                    <div className="h-6 w-5/6 bg-gray-300 dark:bg-slate-700 rounded"></div>
                 </div>
              </div>
         )
@@ -93,13 +93,13 @@ const InsightDetailPage: React.FC = () => {
     ];
 
     return (
-        <div className="bg-white">
+        <div className="bg-white dark:bg-primary-dark">
             <Breadcrumbs links={breadcrumbLinks} />
             <div className="container mx-auto px-6 py-12 max-w-4xl">
                 <article>
                     <header className="mb-8 text-center">
-                        <h1 className="text-4xl md:text-5xl font-bold font-heading text-primary mb-4 leading-tight tracking-tight">{post.title}</h1>
-                        <div className="flex justify-center items-center space-x-6 text-gray-500 text-sm">
+                        <h1 className="text-4xl md:text-5xl font-bold font-heading text-primary dark:text-white mb-4 leading-tight tracking-tight">{post.title}</h1>
+                        <div className="flex justify-center items-center space-x-6 text-gray-500 dark:text-slate-400 text-sm">
                             <div className="flex items-center">
                                 <User size={14} className="mr-2"/>
                                 <span>By {post.author}</span>
@@ -115,7 +115,7 @@ const InsightDetailPage: React.FC = () => {
                     
                     <img src={post.coverUrl} alt={post.title} className="w-full h-auto max-h-96 object-cover rounded-lg shadow-xl mb-8" />
                     
-                    <div className="prose lg:prose-xl max-w-none text-text-DEFAULT leading-relaxed">
+                    <div className="prose lg:prose-xl max-w-none text-text-DEFAULT dark:text-steel-DEFAULT leading-relaxed">
                         {/* A real app might use a markdown renderer here */}
                         {post.content.split('\n').map((paragraph, index) => (
                            <p key={index} className="mb-4">{paragraph}</p>
@@ -125,10 +125,10 @@ const InsightDetailPage: React.FC = () => {
             </div>
 
             {latestPosts.length > 0 && (
-                <div className="bg-background-light pt-12 pb-20">
+                <div className="bg-background-light dark:bg-primary pt-12 pb-20">
                     <SectionDivider />
                     <div className="container mx-auto px-6">
-                        <h2 className="text-3xl font-bold font-heading text-primary mb-8 text-center">Latest Insights</h2>
+                        <h2 className="text-3xl font-bold font-heading text-primary dark:text-white mb-8 text-center">Latest Insights</h2>
                          <div className="grid grid-cols-1 md:grid-cols-2 max-w-4xl mx-auto gap-8">
                            {latestPosts.map((post) => (
                                <InsightCard key={post.id} post={post} />

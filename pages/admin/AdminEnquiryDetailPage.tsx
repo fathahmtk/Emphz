@@ -94,7 +94,7 @@ const AdminEnquiryDetailPage: React.FC = () => {
         <div>
              {isQuoteModalOpen && <QuotationForm quote={quotePrefillData as Quotation} onSave={handleSaveQuote} onCancel={handleCancelQuote} />}
             <div className="mb-6 flex justify-between items-center">
-                <NavLink to="/admin/enquiries" className="flex items-center text-primary dark:text-blue-400 hover:underline font-semibold">
+                <NavLink to="/admin/enquiries" className="flex items-center text-accent dark:text-neon hover:underline font-semibold">
                     <ArrowLeft size={18} className="mr-2" />
                     Back to Enquiries
                 </NavLink>

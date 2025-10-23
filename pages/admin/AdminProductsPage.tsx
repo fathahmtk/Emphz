@@ -112,14 +112,14 @@ const AdminProductsPage: React.FC = () => {
                                         <td className="px-6 py-4 font-medium text-text-DEFAULT dark:text-slate-200 whitespace-nowrap">{product.name}</td>
                                         <td className="px-6 py-4">{product.categoryName}</td>
                                         <td className="px-6 py-4">
-                                            <span className={`px-2 py-1 text-xs font-semibold rounded-full ${product.isFeatured ? 'bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-300' : 'bg-gray-100 text-gray-800 dark:bg-slate-700 dark:text-slate-300'}`}>
+                                            <span className={`px-2 py-1 text-xs font-semibold rounded-full ${product.isFeatured ? 'bg-success/10 text-success' : 'bg-steel/20 text-steel'}`}>
                                                {product.isFeatured ? 'Yes' : 'No'}
                                             </span>
                                         </td>
                                         <td className="px-6 py-4 text-right">
                                             <div className="flex space-x-4 justify-end">
-                                                <button onClick={() => handleEdit(product)} className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"><Edit size={18}/></button>
-                                                <button onClick={() => handleDelete(product.id, product.name)} className="text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300"><Trash size={18}/></button>
+                                                <button onClick={() => handleEdit(product)} className="text-accent hover:text-accent-hover"><Edit size={18}/></button>
+                                                <button onClick={() => handleDelete(product.id, product.name)} className="text-danger hover:opacity-80"><Trash size={18}/></button>
                                             </div>
                                         </td>
                                     </tr>

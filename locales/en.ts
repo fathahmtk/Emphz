@@ -19,10 +19,6 @@ export default {
         followUs: 'Follow Us',
         copyright: '© {year} EMPHZ Global. All Rights Reserved.'
     },
-    theme: {
-        switchToDark: 'Switch to dark mode',
-        switchToLight: 'Switch to light mode',
-    },
     toasts: {
         enquirySuccess: 'Thank you! Your enquiry has been sent.',
         enquiryError: 'Something went wrong. Please try again.',
@@ -34,19 +30,31 @@ export default {
         downloadSimulation: 'Simulating download of a submittal pack for: {files}',
         deleteAdminProhibited: 'The main admin user cannot be deleted.',
     },
+    cookies: {
+        title: 'We Value Your Privacy',
+        bannerText: 'This website uses cookies to enhance user experience and to analyze performance and traffic on our website. We also share information about your use of our site with our social media, advertising, and analytics partners.',
+        accept: 'Accept',
+        decline: 'Decline',
+    },
+    chat: {
+        title: 'Live Chat Support',
+        welcomeMessage: "Hello! How can we help you today with our GRP solutions?",
+        inputPlaceholder: "Type your message...",
+        agentReply: "Thank you for your message! An EMPHZ expert will be with you shortly. Please provide your name and contact details so we can assist you better."
+    },
     home: {
         hero: {
             slide1: {
-                title: "When it’s GRP, it’s EMPHZ.",
-                subtitle: "From electrical enclosures to modular kiosks, we set the benchmark in composite innovation, outperforming metal in every metric.",
+                title: "Welcome to the World of GRP",
+                subtitle: "Where innovation in composite engineering meets global infrastructure challenges. When it's GRP, it's EMPHZ.",
             },
             slide2: {
-                title: "Engineered for Any Environment",
-                subtitle: "Our GRP modular cabins and villas provide durable, rapid-deployment solutions for housing and commercial use worldwide.",
+                title: "Global Solutions, Engineered in India",
+                subtitle: "From the GCC to Europe, our GRP enclosures, cabins, and villas are setting new standards for durability and performance.",
             },
             slide3: {
-                title: "The Standard in Composite Engineering",
-                subtitle: "We deliver custom, high-performance GRP solutions that meet rigorous international standards for safety and reliability.",
+                title: "Your Vision, Our Composite Expertise",
+                subtitle: "Partner with us to create custom GRP solutions that are lighter, stronger, and more sustainable than any alternative.",
             },
             exploreProducts: 'Explore Our Products',
             getQuote: 'Get a Custom Quote'
@@ -84,6 +92,11 @@ export default {
             industry2: 'Renewable Energy',
             industry3: 'Infrastructure',
             industry4: 'Telecom'
+        },
+        global: {
+            title: 'Global Reach & Certified Excellence',
+            subtitle: 'Our GRP solutions are trusted by industries worldwide, meeting the highest international standards for quality and safety.',
+            regions: 'Exporting to GCC, Africa & Europe'
         },
         ceo: {
             quote: '“We don’t just mold GRP — we engineer confidence. Our mission is to establish EMPHZ as the global synonym for trust, safety, and innovation in composite manufacturing.”',

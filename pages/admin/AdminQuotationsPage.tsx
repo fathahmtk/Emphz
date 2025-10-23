@@ -8,10 +8,10 @@ import { useToast } from '../../hooks/useToast';
 import { useI18n } from '../../hooks/useI18n';
 
 const statusColors = {
-    Draft: 'bg-gray-200 text-gray-800 dark:bg-slate-700 dark:text-slate-300',
-    Sent: 'bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-300',
-    Approved: 'bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-300',
-    Rejected: 'bg-red-100 text-red-800 dark:bg-red-900/50 dark:text-red-300',
+    Draft: 'bg-steel/20 text-steel-DEFAULT',
+    Sent: 'bg-warning/10 text-warning',
+    Approved: 'bg-success/10 text-success',
+    Rejected: 'bg-danger/10 text-danger',
 };
 
 const AdminQuotationsPage: React.FC = () => {
@@ -131,9 +131,9 @@ const AdminQuotationsPage: React.FC = () => {
                                         </td>
                                         <td className="px-6 py-4">
                                             <div className="flex space-x-3">
-                                                <NavLink to={`/admin/quotations/${quote.id}`} className="text-gray-500 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400" title="View Details"><Eye size={18}/></NavLink>
-                                                <button onClick={() => handleEdit(quote)} className="text-gray-500 hover:text-green-600 dark:text-slate-400 dark:hover:text-green-400" title="Edit Quote"><Edit size={18}/></button>
-                                                <button onClick={() => handleDelete(quote.id)} className="text-gray-500 hover:text-red-600 dark:text-slate-400 dark:hover:text-red-400" title="Delete"><Trash size={18}/></button>
+                                                <NavLink to={`/admin/quotations/${quote.id}`} className="text-steel-DEFAULT hover:text-accent" title="View Details"><Eye size={18}/></NavLink>
+                                                <button onClick={() => handleEdit(quote)} className="text-steel-DEFAULT hover:text-success" title="Edit Quote"><Edit size={18}/></button>
+                                                <button onClick={() => handleDelete(quote.id)} className="text-steel-DEFAULT hover:text-danger" title="Delete"><Trash size={18}/></button>
                                             </div>
                                         </td>
                                     </tr>

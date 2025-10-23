@@ -3,9 +3,9 @@ import { Enquiry } from '../types';
 import { ChevronDown } from 'lucide-react';
 
 const statusColors: Record<Enquiry['status'], string> = {
-    New: 'bg-cyan-100 text-cyan-800 hover:bg-cyan-200 dark:bg-cyan-900/50 dark:text-cyan-300 dark:hover:bg-cyan-900',
-    'In Progress': 'bg-yellow-100 text-yellow-800 hover:bg-yellow-200 dark:bg-yellow-900/50 dark:text-yellow-300 dark:hover:bg-yellow-900',
-    Closed: 'bg-green-100 text-green-800 hover:bg-green-200 dark:bg-green-900/50 dark:text-green-300 dark:hover:bg-green-900',
+    New: 'bg-steel/20 text-steel-DEFAULT hover:bg-steel/30',
+    'In Progress': 'bg-warning/10 text-warning hover:bg-warning/20',
+    Closed: 'bg-success/10 text-success hover:bg-success/20',
 };
 
 const statusOptions: Enquiry['status'][] = ['New', 'In Progress', 'Closed'];

@@ -17,36 +17,36 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, isSelectedFor
 
     return (
         <div className="group [perspective:1000px] h-full">
-            <div className="relative bg-background dark:bg-slate-800 rounded-lg border border-border dark:border-slate-700 flex flex-col transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(5deg)] h-full shadow-md hover:shadow-2xl">
+            <div className="relative bg-background dark:bg-primary-medium rounded-lg flex flex-col transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(5deg)] h-full shadow-md hover:shadow-2xl">
                 <NavLink to={`/products/${product.slug}`} className="absolute inset-0 z-10" aria-label={`View details for ${product.name}`}/>
                 <div className="relative">
                     <img src={product.imageUrls[0].url} alt={product.name} className="w-full h-60 object-cover rounded-t-lg" />
                     <div className="absolute top-4 left-4 bg-primary text-white text-xs font-semibold px-3 py-1.5 rounded-full z-20">{product.categoryName}</div>
                     <div 
-                        className="absolute top-4 right-4 z-20 bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm p-2 rounded-lg flex items-center cursor-pointer transition-colors hover:bg-white dark:hover:bg-slate-900"
+                        className="absolute top-4 right-4 z-20 bg-white/80 dark:bg-primary/80 backdrop-blur-sm p-2 rounded-lg flex items-center cursor-pointer transition-colors hover:bg-white dark:hover:bg-primary-dark"
                         onClick={handleCheckboxClick}
                     >
                         <input
                             type="checkbox"
                             readOnly
                             checked={isSelectedForCompare}
-                            className="h-4 w-4 rounded border-gray-400 dark:border-slate-500 text-accent focus:ring-accent cursor-pointer bg-transparent dark:bg-slate-700"
+                            className="h-4 w-4 rounded border-gray-400 dark:border-steel-DEFAULT text-accent focus:ring-accent cursor-pointer bg-transparent dark:bg-primary-medium"
                             aria-label={`Compare ${product.name}`}
                         />
-                        <label className="ml-2 text-xs font-semibold text-text-DEFAULT dark:text-slate-200 select-none cursor-pointer">Compare</label>
+                        <label className="ml-2 text-xs font-semibold text-text-DEFAULT dark:text-white select-none cursor-pointer">Compare</label>
                     </div>
                 </div>
                 <div className="p-6 flex flex-col flex-grow">
-                    <h3 className="text-xl font-bold font-heading text-text-DEFAULT dark:text-slate-200 mb-2">{product.name}</h3>
-                    <p className="text-text-secondary dark:text-slate-400 text-sm mb-4 flex-grow">{product.summary}</p>
+                    <h3 className="text-xl font-bold font-heading text-text-DEFAULT dark:text-white mb-2">{product.name}</h3>
+                    <p className="text-text-secondary dark:text-steel-DEFAULT text-sm mb-4 flex-grow">{product.summary}</p>
                     
-                    <div className="mb-4 border-t border-border dark:border-slate-700 pt-4">
-                        <h4 className="text-xs font-bold text-text-secondary dark:text-slate-400 uppercase tracking-wider mb-2">Key Specs</h4>
+                    <div className="mb-4 border-t border-border dark:border-primary-dark pt-4">
+                        <h4 className="text-xs font-bold text-text-secondary dark:text-steel-DEFAULT uppercase tracking-wider mb-2">Key Specs</h4>
                         <dl className="text-sm grid grid-cols-2 gap-x-4 gap-y-1">
                             {Object.entries(product.specs).slice(0, 2).map(([key, value]) => (
                                 <React.Fragment key={key}>
-                                    <dt className="font-semibold text-text-secondary dark:text-slate-400 truncate">{key}</dt>
-                                    <dd className="text-text-DEFAULT dark:text-slate-300 font-medium truncate">{value}</dd>
+                                    <dt className="font-semibold text-text-secondary dark:text-steel-DEFAULT truncate">{key}</dt>
+                                    <dd className="text-text-DEFAULT dark:text-white font-medium truncate">{value}</dd>
                                 </React.Fragment>
                             ))}
                         </dl>

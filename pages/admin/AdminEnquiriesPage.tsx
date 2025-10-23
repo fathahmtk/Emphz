@@ -144,7 +144,7 @@ const AdminEnquiriesPage: React.FC = () => {
                                              <div className="flex items-center gap-4">
                                                 <NavLink 
                                                     to={`/admin/enquiries/${enquiry.id}`}
-                                                    className="text-primary dark:text-blue-400 hover:text-primary-dark dark:hover:text-blue-300 font-semibold text-xs flex items-center gap-1"
+                                                    className="text-accent dark:text-neon hover:underline font-semibold text-xs flex items-center gap-1"
                                                 >
                                                     <Eye size={14}/> View
                                                 </NavLink>
