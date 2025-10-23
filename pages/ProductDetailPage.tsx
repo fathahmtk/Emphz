@@ -1,24 +1,41 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, NavLink } from 'react-router-dom';
 import { Product } from '../types';
-import { getProductBySlug } from '../services/mockApi';
+import { getProductBySlug, getProducts } from '../services/mockApi';
 import { CheckCircle, Download } from 'lucide-react';
+import { ProductCard } from '../components/ProductCard';
 
 const ProductDetailPage: React.FC = () => {
     const { slug } = useParams<{ slug: string }>();
     const [product, setProduct] = useState<Product | null>(null);
+    const [relatedProducts, setRelatedProducts] = useState<Product[]>([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const fetchProduct = async () => {
+        const fetchProductData = async () => {
             if (slug) {
                 setLoading(true);
-                const data = await getProductBySlug(slug);
-                setProduct(data || null);
+                window.scrollTo(0, 0);
+
+                const [productData, allProducts] = await Promise.all([
+                    getProductBySlug(slug),
+                    getProducts()
+                ]);
+
+                if (productData) {
+                    setProduct(productData);
+                    const related = allProducts
+                        .filter(p => p.id !== productData.id && p.categoryId === productData.categoryId)
+                        .slice(0, 3);
+                    setRelatedProducts(related);
+                } else {
+                    setProduct(null);
+                    setRelatedProducts([]);
+                }
                 setLoading(false);
             }
         };
-        fetchProduct();
+        fetchProductData();
     }, [slug]);
 
     useEffect(() => {
@@ -109,6 +126,19 @@ const ProductDetailPage: React.FC = () => {
                     </div>
                 </div>
             </div>
+
+            {relatedProducts.length > 0 && (
+                <div className="bg-background-light py-20">
+                    <div className="container mx-auto px-6">
+                        <h2 className="text-3xl font-bold font-heading text-primary mb-8 text-center">You Might Also Like</h2>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            {relatedProducts.map(relatedProduct => (
+                                <ProductCard key={relatedProduct.id} product={relatedProduct} />
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

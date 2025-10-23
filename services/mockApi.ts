@@ -8,7 +8,7 @@ let products: Product[] = [
     tags: ["IP66", "UL94 V-0", "RAL7035", "SS304"],
     specs: { Material: 'GRP (SMC)', Protection: 'IP66 (IEC 60529)', 'Fire Rating': 'UL 94 V-0', Colour: 'RAL7035', 'Temp Range': '–40°C to +120°C', 'Mounting': 'Wall/Pole/Floor' },
     imageUrls: ['https://picsum.photos/seed/product1/800/600', 'https://picsum.photos/seed/product1_detail/800/600'],
-    pdfUrls: [{ title: 'Datasheet', url: '#' }, { title: 'Installation Guide', url: '#' }],
+    pdfUrls: [{ title: 'Technical Data Sheet', url: '#' }, { title: 'Installation Guide', url: '#' }],
     isFeatured: true, createdAt: new Date(), updatedAt: new Date(),
   },
   {
@@ -18,7 +18,7 @@ let products: Product[] = [
     tags: ["IP65", "UL94 V-0", "RAL7035"],
     specs: { Material: 'GRP (SMC)', Protection: 'IP65', 'Fire Rating': 'UL 94 V-0', Colour: 'RAL7035', 'Temp Range': '–40°C to +120°C', 'Hardware': 'SS316' },
     imageUrls: ['https://picsum.photos/seed/product2/800/600'],
-    pdfUrls: [{ title: 'Datasheet', url: '#' }],
+    pdfUrls: [{ title: 'Technical Data Sheet', url: '#' }],
     isFeatured: true, createdAt: new Date(), updatedAt: new Date(),
   },
   {
@@ -28,7 +28,7 @@ let products: Product[] = [
     tags: ["IP55", "Utility Grade", "Anti-Corrosion"],
     specs: { Material: 'GRP (SMC)', Protection: 'IP55', 'Impact Resistance': 'IK10', Colour: 'RAL7035 / Green', 'Locking': 'Utility Triangle Lock' },
     imageUrls: ['https://picsum.photos/seed/product3/800/600'],
-    pdfUrls: [{ title: 'Datasheet', url: '#' }],
+    pdfUrls: [{ title: 'Technical Data Sheet', url: '#' }],
     isFeatured: true, createdAt: new Date(), updatedAt: new Date(),
   },
   {
@@ -48,7 +48,7 @@ let products: Product[] = [
     tags: ["IP67", "UL94 V-0", "Corrosion-Proof"],
     specs: { Material: 'GRP (SMC/DMC)', Protection: 'IP67', 'Fire Rating': 'UL 94 V-0', 'Gasket': 'EPDM/Neoprene', 'Lid': 'Hinged or Screw-lid' },
     imageUrls: ['https://picsum.photos/seed/product5/800/600'],
-    pdfUrls: [{ title: 'Datasheet', url: '#' }],
+    pdfUrls: [{ title: 'Technical Data Sheet', url: '#' }],
     isFeatured: true, createdAt: new Date(), updatedAt: new Date(),
   },
    {
