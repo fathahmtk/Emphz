@@ -8,6 +8,53 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+      .timeline-item {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      }
+      .timeline-item.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      /* Success Animation Styles */
+      .success-animation-svg {
+          width: 80px;
+          height: 80px;
+          display: block;
+          margin: 0 auto 1rem;
+      }
+      .success-animation-circle {
+          stroke-dasharray: 166;
+          stroke-dashoffset: 166;
+          stroke-width: 4;
+          stroke-miterlimit: 10;
+          stroke: #10B981; /* accent color */
+          fill: none;
+          animation: draw-circle 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+      }
+      .success-animation-checkmark {
+          stroke-dasharray: 48;
+          stroke-dashoffset: 48;
+          stroke-width: 5;
+          stroke-linecap: round;
+          stroke-miterlimit: 10;
+          stroke: #10B981; /* accent color */
+          fill: none;
+          animation: draw-checkmark 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.6s forwards;
+      }
+      @keyframes draw-circle {
+          to {
+              stroke-dashoffset: 0;
+          }
+      }
+      @keyframes draw-checkmark {
+          to {
+              stroke-dashoffset: 0;
+          }
+      }
+    </style>
     <script>
       tailwind.config = {
         theme: {
@@ -15,11 +62,13 @@
             colors: {
               primary: {
                 DEFAULT: '#1A237E', // Deep Navy
-                medium: '#3F51B5',
+                medium: '#3F51B5', // A lighter, vibrant blue
+                dark: '#10185E',   // A darker shade for hovers
               },
               accent: {
-                DEFAULT: '#2962FF',  // Action Blue
-                hover: '#0039CB',
+                DEFAULT: '#10B981',  // Vibrant Emerald Green
+                hover: '#059669',
+                light: '#E0F2F1', // Very light green for backgrounds/highlights
               },
               text: {
                 DEFAULT: '#212121', // Charcoal
@@ -27,13 +76,28 @@
               },
               background: {
                 DEFAULT: '#FFFFFF',
-                light: '#F5F7FA',
+                light: '#F5F7FA', // Cool off-white
               },
               border: '#E0E0E0',
             },
             fontFamily: {
               sans: ['Inter', 'sans-serif'],
               arabic: ['Tajawal', 'sans-serif'],
+            },
+            animation: {
+                'gradient-xy': 'gradient-xy 15s ease infinite',
+            },
+            keyframes: {
+                'gradient-xy': {
+                    '0%, 100%': {
+                        'background-size': '400% 400%',
+                        'background-position': 'left center'
+                    },
+                    '50%': {
+                        'background-size': '200% 200%',
+                        'background-position': 'right center'
+                    }
+                }
             }
           }
         }

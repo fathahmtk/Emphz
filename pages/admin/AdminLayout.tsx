@@ -23,7 +23,7 @@ const AdminSidebar: React.FC<{onLinkClick: () => void}> = ({ onLinkClick }) => {
     };
 
     return (
-         <div className="w-64 bg-primary text-blue-100 flex flex-col min-h-screen">
+         <div className="w-64 bg-primary text-gray-200 flex flex-col min-h-screen">
             <div className="px-6 py-5 border-b border-primary-medium">
                 <NavLink to="/admin" className="text-2xl font-bold text-white">EMPHZ Admin</NavLink>
             </div>
@@ -34,7 +34,7 @@ const AdminSidebar: React.FC<{onLinkClick: () => void}> = ({ onLinkClick }) => {
                         to={link.path}
                         onClick={onLinkClick}
                         className={({ isActive }) =>
-                            `flex items-center px-4 py-2.5 mt-2 rounded-lg hover:bg-primary-medium hover:text-white transition-colors duration-200 ${isActive ? 'bg-accent text-white' : 'text-blue-200'}`
+                            `flex items-center px-4 py-2.5 mt-2 rounded-lg hover:bg-primary-medium hover:text-white transition-colors duration-200 ${isActive ? 'bg-accent text-white' : 'text-gray-300'}`
                         }
                     >
                         {link.icon}
@@ -44,10 +44,10 @@ const AdminSidebar: React.FC<{onLinkClick: () => void}> = ({ onLinkClick }) => {
             </nav>
             <div className="p-4 border-t border-primary-medium">
                 <div className="flex items-center mb-4 p-2 rounded-lg bg-primary-medium">
-                     <UserIcon className="mr-3 text-blue-300"/>
+                     <UserIcon className="mr-3 text-gray-300"/>
                      <div>
                         <p className="font-semibold text-white">{user?.name}</p>
-                        <p className="text-xs text-blue-300">{user?.role}</p>
+                        <p className="text-xs text-gray-300">{user?.role}</p>
                      </div>
                 </div>
                 <button

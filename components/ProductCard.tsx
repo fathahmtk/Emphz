@@ -21,7 +21,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                         <span key={tag} className="bg-background-light text-text-secondary text-xs font-semibold px-3 py-1 rounded-full">{tag}</span>
                     ))}
                 </div>
-                <NavLink to={`/products/${product.slug}`} className="mt-auto bg-primary-medium text-white text-center font-semibold py-3 px-4 rounded-lg hover:bg-primary transition-all duration-300 group-hover:bg-accent">
+                <NavLink to={`/products/${product.slug}`} className="mt-auto bg-accent text-white text-center font-semibold py-3 px-4 rounded-lg hover:bg-accent-hover transition-all duration-300">
                     View Details
                 </NavLink>
             </div>

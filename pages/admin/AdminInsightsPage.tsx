@@ -27,7 +27,7 @@ const AdminInsightsPage: React.FC = () => {
                 <h1 className="text-2xl sm:text-3xl font-bold text-gray-800">Manage Insights (Blog)</h1>
                 <button 
                     onClick={() => alert("Add new post form would appear here.")}
-                    className="bg-primary text-white px-4 py-2 rounded-md font-semibold hover:bg-blue-800 transition duration-300 flex items-center self-end sm:self-auto">
+                    className="bg-accent text-white px-4 py-2 rounded-md font-semibold hover:bg-accent-hover transition duration-300 flex items-center self-end sm:self-auto">
                     <Plus size={18} className="mr-2"/> Add New Post
                 </button>
             </div>

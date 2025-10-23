@@ -69,37 +69,37 @@ const Header: React.FC = () => {
 };
 
 const Footer: React.FC = () => (
-    <footer className="bg-gray-900 text-white">
+    <footer className="bg-primary text-gray-200">
         <div className="container mx-auto px-6 py-12">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <div>
                     <h3 className="text-2xl font-bold text-white mb-4">EMPHZ</h3>
-                    <p className="text-gray-400 text-sm">Engineering Tomorrow’s Infrastructure — Today.</p>
+                    <p className="text-gray-300 text-sm">Engineering Tomorrow’s Infrastructure — Today.</p>
                 </div>
                  <div>
-                    <h4 className="font-semibold text-lg mb-4">Quick Links</h4>
+                    <h4 className="font-semibold text-lg text-white mb-4">Quick Links</h4>
                     <ul className="space-y-3 text-sm">
                         {publicNavLinks.slice(0, 5).map(link => (
-                           <li key={link.path}><NavLink to={link.path} className="text-gray-400 hover:text-white transition-colors">{link.name}</NavLink></li>
+                           <li key={link.path}><NavLink to={link.path} className="text-gray-300 hover:text-white transition-colors">{link.name}</NavLink></li>
                         ))}
                     </ul>
                 </div>
                  <div>
-                    <h4 className="font-semibold text-lg mb-4">Contact Us</h4>
-                    <address className="text-gray-400 not-italic text-sm space-y-3">
+                    <h4 className="font-semibold text-lg text-white mb-4">Contact Us</h4>
+                    <address className="text-gray-300 not-italic text-sm space-y-3">
                         <p>Head Office – Kerala, India</p>
                         <a href="tel:+918648881888" className="flex items-center hover:text-white transition-colors"><Phone size={14} className="mr-2"/>+91 86488 81888</a>
                         <a href="mailto:info@emphz.com" className="flex items-center hover:text-white transition-colors"><Mail size={14} className="mr-2"/>info@emphz.com</a>
                     </address>
                 </div>
                  <div>
-                    <h4 className="font-semibold text-lg mb-4">Follow Us</h4>
+                    <h4 className="font-semibold text-lg text-white mb-4">Follow Us</h4>
                      <div className="flex space-x-4">
                         {/* Add Social media icons here */}
                      </div>
                 </div>
             </div>
-            <div className="mt-12 border-t border-gray-700 pt-8 text-center text-gray-500 text-sm">
+            <div className="mt-12 border-t border-primary-medium pt-8 text-center text-gray-400 text-sm">
                 <p>&copy; {new Date().getFullYear()} EMPHZ Private Limited. All Rights Reserved.</p>
             </div>
         </div>
