@@ -23,6 +23,9 @@ const getInitialFormData = () => ({
     pdfUrl: undefined,
 });
 
+const inputClasses = "mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-slate-600 rounded-md shadow-sm focus:outline-none focus:ring-accent focus:border-accent bg-white dark:bg-slate-700 dark:text-white";
+const itemInputClasses = "w-full px-2 py-1 border border-gray-300 dark:border-slate-600 rounded-md bg-white dark:bg-slate-700 dark:text-white focus:outline-none focus:ring-1 focus:ring-accent focus:border-accent";
+
 export const QuotationForm: React.FC<QuotationFormProps> = ({ quote, onSave, onCancel }) => {
     const isEditing = quote && 'id' in quote;
     const [formData, setFormData] = useState(getInitialFormData());
@@ -81,28 +84,28 @@ export const QuotationForm: React.FC<QuotationFormProps> = ({ quote, onSave, onC
 
     return (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-start pt-10 pb-10 overflow-y-auto">
-            <div className="bg-white rounded-lg shadow-xl w-full max-w-4xl m-4">
-                <div className="p-6 border-b flex justify-between items-center">
-                    <h2 className="text-2xl font-bold text-gray-800">{isEditing ? `Edit Quotation QT-${String((quote as Quotation)?.id).padStart(4, '0')}` : 'Create New Quotation'}</h2>
-                    <button onClick={onCancel} className="text-gray-500 hover:text-gray-800"><X size={24} /></button>
+            <div className="bg-white dark:bg-slate-800 rounded-lg shadow-xl w-full max-w-4xl m-4">
+                <div className="p-6 border-b dark:border-slate-700 flex justify-between items-center">
+                    <h2 className="text-2xl font-bold text-gray-800 dark:text-slate-200">{isEditing ? `Edit Quotation QT-${String((quote as Quotation)?.id).padStart(4, '0')}` : 'Create New Quotation'}</h2>
+                    <button onClick={onCancel} className="text-gray-500 hover:text-gray-800 dark:text-slate-400 dark:hover:text-slate-200"><X size={24} /></button>
                 </div>
-                <form onSubmit={handleSubmit} className="p-6 space-y-4 max-h-[75vh] overflow-y-auto">
+                <form onSubmit={handleSubmit} className="p-6 space-y-6 max-h-[75vh] overflow-y-auto">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                            <label htmlFor="customer" className="block text-sm font-medium text-gray-700">Customer Name</label>
-                            <input type="text" name="customer" id="customer" value={formData.customer} onChange={handleChange} required className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-accent focus:border-accent"/>
+                            <label htmlFor="customer" className="block text-sm font-medium text-gray-700 dark:text-slate-300">Customer Name</label>
+                            <input type="text" name="customer" id="customer" value={formData.customer} onChange={handleChange} required className={inputClasses}/>
                         </div>
                         <div>
-                            <label htmlFor="email" className="block text-sm font-medium text-gray-700">Customer Email</label>
-                            <input type="email" name="email" id="email" value={formData.email} onChange={handleChange} required className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-accent focus:border-accent"/>
+                            <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-slate-300">Customer Email</label>
+                            <input type="email" name="email" id="email" value={formData.email} onChange={handleChange} required className={inputClasses}/>
                         </div>
                         <div>
-                            <label htmlFor="validUntil" className="block text-sm font-medium text-gray-700">Valid Until</label>
-                            <input type="date" name="validUntil" id="validUntil" value={formData.validUntil} onChange={handleChange} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-accent focus:border-accent"/>
+                            <label htmlFor="validUntil" className="block text-sm font-medium text-gray-700 dark:text-slate-300">Valid Until</label>
+                            <input type="date" name="validUntil" id="validUntil" value={formData.validUntil} onChange={handleChange} className={inputClasses}/>
                         </div>
                         <div>
-                            <label htmlFor="status" className="block text-sm font-medium text-gray-700">Status</label>
-                            <select name="status" id="status" value={formData.status} onChange={handleChange} className="mt-1 block w-full px-3 py-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-accent focus:border-accent">
+                            <label htmlFor="status" className="block text-sm font-medium text-gray-700 dark:text-slate-300">Status</label>
+                            <select name="status" id="status" value={formData.status} onChange={handleChange} className={inputClasses}>
                                 <option value="Draft">Draft</option>
                                 <option value="Sent">Sent</option>
                                 <option value="Approved">Approved</option>
@@ -112,14 +115,14 @@ export const QuotationForm: React.FC<QuotationFormProps> = ({ quote, onSave, onC
                     </div>
 
                     <div className="pt-4">
-                        <h3 className="text-lg font-semibold text-gray-800 mb-2">Line Items</h3>
+                        <h3 className="text-lg font-semibold text-gray-800 dark:text-slate-200 mb-2">Line Items</h3>
                         <div className="space-y-2">
                             {formData.items.map((item, index) => (
                                 <div key={index} className="grid grid-cols-12 gap-2 items-center">
-                                    <input type="text" name="name" placeholder="Item Name" value={item.name} onChange={e => handleItemChange(index, e)} className="col-span-5 px-2 py-1 border border-gray-300 rounded-md"/>
-                                    <input type="number" name="qty" placeholder="Qty" value={item.qty} onChange={e => handleItemChange(index, e)} className="col-span-2 px-2 py-1 border border-gray-300 rounded-md"/>
-                                    <input type="text" name="unit" placeholder="Unit" value={item.unit} onChange={e => handleItemChange(index, e)} className="col-span-2 px-2 py-1 border border-gray-300 rounded-md"/>
-                                    <input type="number" name="price" placeholder="Price" value={item.price} onChange={e => handleItemChange(index, e)} className="col-span-2 px-2 py-1 border border-gray-300 rounded-md"/>
+                                    <input type="text" name="name" placeholder="Item Name" value={item.name} onChange={e => handleItemChange(index, e)} className={`${itemInputClasses} col-span-5`}/>
+                                    <input type="number" name="qty" placeholder="Qty" value={item.qty} onChange={e => handleItemChange(index, e)} className={`${itemInputClasses} col-span-2`}/>
+                                    <input type="text" name="unit" placeholder="Unit" value={item.unit} onChange={e => handleItemChange(index, e)} className={`${itemInputClasses} col-span-2`}/>
+                                    <input type="number" name="price" placeholder="Price" value={item.price} onChange={e => handleItemChange(index, e)} className={`${itemInputClasses} col-span-2`}/>
                                     <button type="button" onClick={() => removeItem(index)} className="col-span-1 text-red-500 hover:text-red-700 flex justify-center"><Trash size={18}/></button>
                                 </div>
                             ))}
@@ -129,18 +132,18 @@ export const QuotationForm: React.FC<QuotationFormProps> = ({ quote, onSave, onC
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4">
                          <div>
-                            <label htmlFor="notes" className="block text-sm font-medium text-gray-700">Notes</label>
-                            <textarea name="notes" id="notes" rows={4} value={formData.notes || ''} onChange={handleChange} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-accent focus:border-accent"></textarea>
+                            <label htmlFor="notes" className="block text-sm font-medium text-gray-700 dark:text-slate-300">Notes</label>
+                            <textarea name="notes" id="notes" rows={4} value={formData.notes || ''} onChange={handleChange} className={inputClasses}></textarea>
                         </div>
                          <div className="text-right space-y-1 pt-5">
-                            <p>Subtotal: <span className="font-semibold">{new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(formData.subtotal)}</span></p>
-                            <p>Tax (18%): <span className="font-semibold">{new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(formData.tax)}</span></p>
-                            <p className="text-xl font-bold">Total: <span className="font-bold">{new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(formData.total)}</span></p>
+                            <p className="dark:text-slate-300">Subtotal: <span className="font-semibold">{new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(formData.subtotal)}</span></p>
+                            <p className="dark:text-slate-300">Tax (18%): <span className="font-semibold">{new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(formData.tax)}</span></p>
+                            <p className="text-xl font-bold dark:text-white">Total: <span className="font-bold">{new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR' }).format(formData.total)}</span></p>
                         </div>
                     </div>
 
-                    <div className="pt-4 border-t flex justify-end gap-3">
-                        <button type="button" onClick={onCancel} className="bg-gray-200 text-gray-800 px-4 py-2 rounded-lg font-semibold hover:bg-gray-300 transition-colors">Cancel</button>
+                    <div className="pt-4 border-t dark:border-slate-700 flex justify-end gap-3">
+                        <button type="button" onClick={onCancel} className="bg-gray-200 dark:bg-slate-600 text-gray-800 dark:text-slate-200 px-4 py-2 rounded-lg font-semibold hover:bg-gray-300 dark:hover:bg-slate-500 transition-colors">Cancel</button>
                         <button type="submit" className="bg-accent text-white px-4 py-2 rounded-lg font-semibold hover:bg-accent-hover transition-colors">Save Quotation</button>
                     </div>
                 </form>

@@ -12,12 +12,27 @@ export default {
         search: 'Search'
     },
     footer: {
-        tagline: 'The GRP Company.',
+        tagline: 'Engineering Tomorrow’s Infrastructure — Today.',
         quickLinks: 'Quick Links',
         contactUs: 'Contact Us',
         office: 'Head Office – Kerala, India',
         followUs: 'Follow Us',
         copyright: '© {year} EMPHZ Global. All Rights Reserved.'
+    },
+    theme: {
+        switchToDark: 'Switch to dark mode',
+        switchToLight: 'Switch to light mode',
+    },
+    toasts: {
+        enquirySuccess: 'Thank you! Your enquiry has been sent.',
+        enquiryError: 'Something went wrong. Please try again.',
+        deleteSuccess: '"{name}" deleted successfully.',
+        deleteError: 'Failed to delete: {error}',
+        saveSuccess: 'Saved successfully.',
+        saveError: 'Failed to save: {error}',
+        selectionRequired: 'Please select at least one file to download.',
+        downloadSimulation: 'Simulating download of a submittal pack for: {files}',
+        deleteAdminProhibited: 'The main admin user cannot be deleted.',
     },
     home: {
         hero: {

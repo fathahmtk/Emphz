@@ -3,6 +3,8 @@ import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import { LayoutDashboard, Package, Mail, LogOut, User as UserIcon, FileText, DownloadCloud, ClipboardList, Menu, X, Users, BookOpen, Lightbulb, Users2 } from 'lucide-react';
 import { useAuth } from '../../hooks/useAuth';
 import { useI18n } from '../../hooks/useI18n';
+import { ThemeToggle } from '../../components/ThemeToggle';
+import { ToastContainer } from '../../components/Toast';
 
 const AdminSidebar: React.FC<{onLinkClick: () => void; onClose?: () => void;}> = ({ onLinkClick, onClose }) => {
     const { user, logout } = useAuth();
@@ -22,6 +24,9 @@ const AdminSidebar: React.FC<{onLinkClick: () => void; onClose?: () => void;}> =
       { name: t('admin.sidebar.users'), path: '/admin/users', icon: <Users2 size={20} /> },
     ];
 
+    const lightLogo = `data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCAyNTAgNTAiPgogICAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNSwgNSkiPgogICAgICAgIDxwYXRoIGQ9Ik0yMCAwIEw0MCAxMS41NSBW oncologistNC42NCBMMjAgNDYuMTkgTDAgMzQuNjQgVjExLjU1eiIgZmlsbD0iIzFDMUUyMiIvPgogICAgICAgIDxwYXRoIGQ9Ik0yMCAwIEw0MCAxMS41NSBW oncologistNC42NCBMMjAgNDYuMTkiIGZpbGw9IiMwMEE2QjUiIC8+CiAgICAgICAgPHRleHQgeD0iMTAiIHk9IjMxIiBmb250LWZhbWlseT0iJ09yYml0cm9uJywgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyMCIgZm9udC13ZWlnaHQ9IjkwMCIgZmlsbD0iI0I0QkVDO SI+RTwvdGV4dD4KICAgICAgICA8dGV4dCB4PSIyMyIgeT0iMzEiIGZvbnQtZmFtaWx5PSInT3JiaXRyb24nLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjIwIiBmb250LXdlaWdodD0iOTAwIiBmaWxsPSIjMUMxRTIyIj5HPC90ZXh0PgogICAgPC9nPgogICAgPHRleHQgeD0iNTUiIHk9IjM2IiBmb250LWZhbWlseT0iJ09yYml0cm9uJywgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyNiIgZm9udC13ZWlnaHQ9IjkwMCIgZmlsbD0iIzFDMUUyMiI+RU1QSFo8L3RleHQ+CiAgICA8dGV4dCB4PSIxNzUiIHk9IjM2IiBmb250LWZhbWlseT0iJ1BvcHBpbnMnLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjI2IiBmb250LXdlaWdodD0iNDAwIiBsZXR0ZXItc3BhY2luZz0iMSIgZmlsbD0iIzQ3NTU2OSI+R0xPQkFMPC90ZXh0Pgo8L3N2Zz4=`;
+    const darkLogo = `data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCAyNTAgNTAiPgogICAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNSwgNSkiPgogICAgICAgIDxwYXRoIGQ9Ik0yMCAwIEw0MCAxMS41NSBW oncologistNC42NCBMMjAgNDYuMTkgTDAgMzQuNjQgVjExLjU1eiIgZmlsbD0iI0I0QkVDO SIvPgogICAgICAgIDxwYXRoIGQ9Ik0yMCAwIEw0MCAxMS41NSBW oncologistNC42NCBMMjAgNDYuMTkiIGZpbGw9IiMwMEE2QjUiIC8+CiAgICAgICAgPHRleHQgeD0iMTAiIHk9IjMxIiBmb250LWZhbWlseT0iJ09yYml0cm9uJywgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyMCIgZm9udC13ZWlnaHQ9IjkwMCIgZmlsbD0iIzFDMUUyMiI+RTwvdGV4dD4KICAgICAgICA8dGV4dCB4PSIyMyIgeT0iMzEiIGZvbnQtZmFtaWx5PSInT3JiaXRyb24nLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjIwIiBmb250LXdlaWdodD0iOTAwIiBmaWxsPSIjQjRCRUM5Ij5HPC90ZXh0PgogICAgPC9nPgogICAgPHRleHQgeD0iNTUiIHk9IjM2IiBmb250LWZhbWlseT0iJ09yYml0cm9uJywgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyNiIgZm9udC13ZWlnaHQ9IjkwMCIgZmlsbD0iI0I0QkVDO SI+RU1QSFo8L3RleHQ+CiAgICA8dGV4dCB4PSIxNzUiIHk9IjM2IiBmb250LWZhbWlseT0iJ1BvcHBpbnMnLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjI2IiBmb250LXdlaWdodD0iNDAwIiBsZXR0ZXItc3BhY2luZz0iMSIgZmlsbD0iI0I0QkVDO SI+R0xPQkFMPC90ZXh0Pgo8L3N2Zz4=`;
+
     const handleLogout = () => {
         onLinkClick(); // Close sidebar on logout
         logout();
@@ -29,9 +34,9 @@ const AdminSidebar: React.FC<{onLinkClick: () => void; onClose?: () => void;}> =
     };
 
     return (
-         <div className="w-64 bg-primary text-gray-200 flex flex-col h-full">
-            <div className="px-6 py-5 border-b border-primary-medium flex justify-between items-center">
-                <NavLink to="/admin" onClick={onLinkClick}><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNzAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCAyNzAgNTAiPjxzdHlsZT4udGV4dC1lbXBoeiB7IGZvbnQ6IGJvbGQgMzZweCAnUG9wcGlucycsIHNhbnMtc2VyaWY7IGZpbGw6ICNmOGZhZmM7IH0gLnRleHQtZ2xvYmFsIHsgZm9udDogNTAwIDM2cHggJ1BvcHBpbnMnLCBzYW5zLXNlcmlmOyBmaWxsOiAjY2JkNWUxOyB9IC5kb3QgeyBmaWxsOiAjQzlBMjI3OyB9PC9zdHlsZT48dGV4dCB4PSIxMCIgeT0iMzgiIGNsYXNzPSJ0ZXh0LWVtcGh6Ij5FTVBIWjwvdGV4dD48dGV4dCB4PSIxNDgiIHk9IjM4IiBjbGFzcz0idGV4dC1nbG9iYWwiPkdsb2JhbDwvdGV4dD48Y2lyY2xlIGN4PSIyNTUiIGN5PSIzNSIgcj0iNSIgY2xhc3M9ImRvdCIvPjwvc3ZnPg==" alt="EMPHZ Global Admin Logo" className="h-9" /></NavLink>
+         <div className="w-64 bg-primary dark:bg-slate-900 text-gray-200 flex flex-col h-full">
+            <div className="px-6 py-5 border-b border-primary-medium dark:border-slate-800 flex justify-between items-center">
+                <NavLink to="/admin" onClick={onLinkClick}><img src={darkLogo} alt="EMPHZ Global Admin Logo" className="h-9" /></NavLink>
                 {onClose && (
                      <button onClick={onClose} className="text-gray-300 hover:text-white md:hidden" aria-label="Close menu">
                         <X size={24} />
@@ -45,7 +50,7 @@ const AdminSidebar: React.FC<{onLinkClick: () => void; onClose?: () => void;}> =
                         to={link.path}
                         onClick={onLinkClick}
                         className={({ isActive }) =>
-                            `flex items-center px-4 py-2.5 mt-2 rounded-lg hover:bg-primary-dark hover:text-white transition-colors duration-200 ${isActive ? 'bg-accent text-white' : 'text-gray-300'}`
+                            `flex items-center px-4 py-2.5 mt-2 rounded-lg transition-colors duration-200 ${isActive ? 'bg-accent text-white font-semibold' : 'text-gray-300 hover:bg-primary-dark dark:hover:bg-slate-800 hover:text-white'}`
                         }
                     >
                         {link.icon}
@@ -53,13 +58,16 @@ const AdminSidebar: React.FC<{onLinkClick: () => void; onClose?: () => void;}> =
                     </NavLink>
                 ))}
             </nav>
-            <div className="p-4 border-t border-primary-medium">
-                <div className="flex items-center mb-4 p-2 rounded-lg bg-primary-dark">
-                     <UserIcon className="me-3 text-gray-300"/>
-                     <div>
-                        <p className="font-semibold text-white">{user?.name}</p>
-                        <p className="text-xs text-gray-300">{user?.role}</p>
-                     </div>
+            <div className="p-4 border-t border-primary-medium dark:border-slate-800">
+                <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center p-2 rounded-lg bg-primary-dark dark:bg-slate-800">
+                         <UserIcon className="me-3 text-gray-300"/>
+                         <div>
+                            <p className="font-semibold text-white">{user?.name}</p>
+                            <p className="text-xs text-gray-300">{user?.role}</p>
+                         </div>
+                    </div>
+                    <ThemeToggle />
                 </div>
                 <button
                     onClick={handleLogout}
@@ -74,11 +82,12 @@ const AdminSidebar: React.FC<{onLinkClick: () => void; onClose?: () => void;}> =
 };
 
 const AdminHeader: React.FC<{ onMenuClick: () => void }> = ({ onMenuClick }) => (
-    <header className="md:hidden bg-background border-b border-border p-4 flex items-center sticky top-0 z-30">
-        <button onClick={onMenuClick} className="text-text-DEFAULT me-4" aria-label="Open menu">
+    <header className="md:hidden bg-background dark:bg-slate-800 border-b border-border dark:border-slate-700 p-4 flex items-center sticky top-0 z-30">
+        <button onClick={onMenuClick} className="text-text-DEFAULT dark:text-white me-4" aria-label="Open menu">
             <Menu size={24} />
         </button>
-        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNzAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCAyNzAgNTAiPjxzdHlsZT4udGV4dC1lbXBoeiB7IGZvbnQ6IGJvbGQgMzZweCAnUG9wcGlucycsIHNhbnMtc2VyaWY7IGZpbGw6ICMwQjNEOTE7IH0gLnRleHQtZ2xvYmFsIHsgZm9udDogNTAwIDM2cHggJ1BvcHBpbnMnLCBzYW5zLXNlcmlmOyBmaWxsOiAjNjQ3NDhiOyB9IC5kb3QgeyBmaWxsOiAjQzlBMjI3OyB9PC9zdHlsZT48dGV4dCB4PSIxMCIgeT0iMzgiIGNsYXNzPSJ0ZXh0LWVtcGh6Ij5FTVBIWjwvdGV4dD48dGV4dCB4PSIxNDgiIHk9IjM4IiBjbGFzcz0idGV4dC1nbG9iYWwiPkdsb2JhbDwvdGV4dD48Y2lyY2xlIGN4PSIyNTUiIGN5PSIzNSIgcj0iNSIgY2xhc3M9ImRvdCIvPjwvc3ZnPg==" alt="EMPHZ Global Admin Logo" className="h-8" />
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCAyNTAgNTAiPgogICAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNSwgNSkiPgogICAgICAgIDxwYXRoIGQ9Ik0yMCAwIEw0MCAxMS41NSBW oncologistNC42NCBMMjAgNDYuMTkgTDAgMzQuNjQgVjExLjU1eiIgZmlsbD0iIzFDMUUyMiIvPgogICAgICAgIDxwYXRoIGQ9Ik0yMCAwIEw0MCAxMS41NSBW oncologistNC42NCBMMjAgNDYuMTkiIGZpbGw9IiMwMEE2QjUiIC8+CiAgICAgICAgPHRleHQgeD0iMTAiIHk9IjMxIiBmb250LWZhbWlseT0iJ09yYml0cm9uJywgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyMCIgZm9udC13ZWlnaHQ9IjkwMCIgZmlsbD0iI0I0QkVDO SI+RTwvdGV4dD4KICAgICAgICA8dGV4dCB4PSIyMyIgeT0iMzEiIGZvbnQtZmFtaWx5PSInT3JiaXRyb24nLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjIwIiBmb250LXdlaWdodD0iOTAwIiBmaWxsPSIjMUMxRTIyIj5HPC90ZXh0PgogICAgPC9nPgogICAgPHRleHQgeD0iNTUiIHk9IjM2IiBmb250LWZhbWlseT0iJ09yYml0cm9uJywgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyNiIgZm9udC13ZWlnaHQ9IjkwMCIgZmlsbD0iIzFDMUUyMiI+RU1QSFo8L3RleHQ+CiAgICA8dGV4dCB4PSIxNzUiIHk9IjM2IiBmb250LWZhbWlseT0iJ1BvcHBpbnMnLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjI2IiBmb250LXdlaWdodD0iNDAwIiBsZXR0ZXItc3BhY2luZz0iMSIgZmlsbD0iIzQ3NTU2OSI+R0xPQkFMPC90ZXh0Pgo8L3N2Zz4=" alt="EMPHZ Global Admin Logo" className="h-8 dark:hidden" />
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCAyNTAgNTAiPgogICAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNSwgNSkiPgogICAgICAgIDxwYXRoIGQ9Ik0yMCAwIEw0MCAxMS41NSBW oncologistNC42NCBMMjAgNDYuMTkgTDAgMzQuNjQgVjExLjU1eiIgZmlsbD0iI0I0QkVDO SIvPgogICAgICAgIDxwYXRoIGQ9Ik0yMCAwIEw0MCAxMS41NSBW oncologistNC42NCBMMjAgNDYuMTkiIGZpbGw9IiMwMEE2QjUiIC8+CiAgICAgICAgPHRleHQgeD0iMTAiIHk9IjMxIiBmb250LWZhbWlseT0iJ09yYml0cm9uJywgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyMCIgZm9udC13ZWlnaHQ9IjkwMCIgZmlsbD0iIzFDMUUyMiI+RTwvdGV4dD4KICAgICAgICA8dGV4dCB4PSIyMyIgeT0iMzEiIGZvbnQtZmFtaWx5PSInT3JiaXRyb24nLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjIwIiBmb250LXdlaWdodD0iOTAwIiBmaWxsPSIjQjRCRUM5Ij5HPC90ZXh0PgogICAgPC9nPgogICAgPHRleHQgeD0iNTUiIHk9IjM2IiBmb250LWZhbWlseT0iJ09yYml0cm9uJywgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyNiIgZm9udC13ZWlnaHQ9IjkwMCIgZmlsbD0iI0I0QkVDO SI+RU1QSFo8L3RleHQ+CiAgICA8dGV4dCB4PSIxNzUiIHk9IjM2IiBmb250LWZhbWlseT0iJ1BvcHBpbnMnLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjI2IiBmb250LXdlaWdodD0iNDAwIiBsZXR0ZXItc3BhY2luZz0iMSIgZmlsbD0iI0I0QkVDO SI+R0xPQkFMPC90ZXh0Pgo8L3N2Zz4=" alt="EMPHZ Global Admin Logo" className="h-8 hidden dark:block" />
     </header>
 );
 
@@ -97,7 +106,7 @@ const AdminLayout: React.FC = () => {
   }, [isSidebarOpen]);
 
   return (
-    <div className="flex bg-background-light min-h-screen">
+    <div className="flex bg-background-light dark:bg-slate-900 min-h-screen">
         {/* Mobile Sidebar */}
         <div 
           className={`fixed inset-y-0 left-0 z-50 transform md:hidden ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 ease-in-out`}
@@ -126,6 +135,7 @@ const AdminLayout: React.FC = () => {
         <div className="flex flex-col flex-1 w-full min-w-0">
             <AdminHeader onMenuClick={() => setIsSidebarOpen(true)} />
             <main className="flex-1 p-4 sm:p-8 overflow-y-auto">
+                <ToastContainer />
                 <Outlet />
             </main>
         </div>

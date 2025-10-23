@@ -11,12 +11,12 @@ const NotFoundPage: React.FC = () => {
     );
 
     return (
-        <div className="bg-background-light flex-grow flex items-center justify-center py-16">
+        <div className="bg-background-light dark:bg-slate-900 flex-grow flex items-center justify-center py-20 px-6">
             <div className="text-center">
-                <AlertTriangle className="mx-auto h-20 w-20 text-accent mb-4" />
-                <h1 className="text-6xl font-extrabold font-heading text-primary tracking-tighter">404</h1>
-                <p className="text-2xl font-semibold text-text-DEFAULT mt-2">Page Not Found</p>
-                <p className="text-text-secondary mt-4 max-w-sm mx-auto">
+                <AlertTriangle className="mx-auto h-20 w-20 text-accent mb-6" />
+                <h1 className="text-6xl font-extrabold font-heading text-primary dark:text-white tracking-tighter">404</h1>
+                <p className="text-2xl font-semibold text-text-DEFAULT dark:text-slate-200 mt-2">Page Not Found</p>
+                <p className="text-text-secondary dark:text-slate-400 mt-4 max-w-sm mx-auto">
                     Sorry, the page you are looking for doesn't exist or has been moved.
                 </p>
                 <div className="mt-8">

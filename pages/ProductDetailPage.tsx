@@ -60,13 +60,13 @@ const ProductDetailPage: React.FC = () => {
     if (loading) {
         return (
              <div className="container mx-auto px-6 py-12 animate-pulse">
-                <div className="h-6 w-1/3 bg-gray-300 rounded mb-4"></div>
+                <div className="h-6 w-1/3 bg-gray-300 dark:bg-slate-700 rounded mb-4"></div>
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-4">
-                    <div className="h-[500px] bg-gray-300 rounded-lg"></div>
+                    <div className="h-[500px] bg-gray-300 dark:bg-slate-700 rounded-lg"></div>
                     <div>
-                        <div className="h-12 w-3/4 bg-gray-300 rounded mb-4"></div>
-                        <div className="h-6 w-1/2 bg-gray-300 rounded mb-8"></div>
-                        <div className="h-48 bg-gray-300 rounded"></div>
+                        <div className="h-12 w-3/4 bg-gray-300 dark:bg-slate-700 rounded mb-4"></div>
+                        <div className="h-6 w-1/2 bg-gray-300 dark:bg-slate-700 rounded mb-8"></div>
+                        <div className="h-48 bg-gray-300 dark:bg-slate-700 rounded"></div>
                     </div>
                 </div>
              </div>
@@ -94,47 +94,47 @@ const ProductDetailPage: React.FC = () => {
     ];
 
     return (
-        <div className="bg-background">
+        <div className="bg-background dark:bg-slate-900">
             <Breadcrumbs links={breadcrumbLinks} />
-            <div className="container mx-auto px-6 pt-8 pb-16">
+            <div className="container mx-auto px-6 pt-12 pb-24">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
                     <div>
-                        <img src={product.imageUrls[0].url} alt={product.name} className="w-full rounded-lg shadow-xl mb-4 border border-border" />
+                        <img src={product.imageUrls[0].url} alt={product.name} className="w-full rounded-lg shadow-xl mb-4 border border-border dark:border-slate-700" />
                         {/* Add thumbnail images if available */}
                     </div>
                     <div>
-                        <h1 className="text-3xl sm:text-4xl font-bold font-heading text-primary mb-3 tracking-tight">{product.name}</h1>
-                        <p className="text-lg text-text-secondary mb-8">{product.summary}</p>
+                        <h1 className="text-3xl sm:text-4xl font-extrabold font-heading text-primary dark:text-white mb-3 tracking-tight">{product.name}</h1>
+                        <p className="text-lg text-text-secondary dark:text-slate-400 mb-8">{product.summary}</p>
                         
-                        <div className="bg-background-light p-6 rounded-lg border border-border mb-8">
-                            <h3 className="text-xl font-bold font-heading text-text-DEFAULT mb-4">Key Specifications</h3>
+                        <div className="bg-background-light dark:bg-slate-800 p-6 rounded-lg border border-border dark:border-slate-700 mb-8">
+                            <h3 className="text-xl font-bold font-heading text-text-DEFAULT dark:text-slate-200 mb-4">Key Specifications</h3>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4 text-sm">
                                 {Object.entries(product.specs).map(([key, value]) => (
                                     <div key={key}>
-                                        <p className="font-semibold text-text-secondary">{key}</p>
-                                        <p className="text-text-DEFAULT font-medium">{value}</p>
+                                        <p className="font-semibold text-text-secondary dark:text-slate-400">{key}</p>
+                                        <p className="text-text-DEFAULT dark:text-slate-300 font-medium">{value}</p>
                                     </div>
                                 ))}
                             </div>
                         </div>
 
                         <div className="mb-8">
-                            <h3 className="text-xl font-bold font-heading text-text-DEFAULT mb-4">Features</h3>
+                            <h3 className="text-xl font-bold font-heading text-text-DEFAULT dark:text-slate-200 mb-4">Features</h3>
                             <ul className="space-y-3">
-                                <li className="flex items-center"><CheckCircle className="text-accent mr-3" size={20}/>Weatherproof & IP-Rated</li>
-                                <li className="flex items-center"><CheckCircle className="text-accent mr-3" size={20}/>Non-conductive & Safe</li>
-                                <li className="flex items-center"><CheckCircle className="text-accent mr-3" size={20}/>Fire-safe & Self-extinguishing</li>
-                                <li className="flex items-center"><CheckCircle className="text-accent mr-3" size={20}/>UV & Corrosion Resistant</li>
-                                <li className="flex items-center"><CheckCircle className="text-accent mr-3" size={20}/>High Impact Strength</li>
-                                <li className="flex items-center"><CheckCircle className="text-accent mr-3" size={20}/>Maintenance-free Lifecycle</li>
+                                <li className="flex items-center text-text-secondary dark:text-slate-300"><CheckCircle className="text-accent mr-3" size={20}/>Weatherproof & IP-Rated</li>
+                                <li className="flex items-center text-text-secondary dark:text-slate-300"><CheckCircle className="text-accent mr-3" size={20}/>Non-conductive & Safe</li>
+                                <li className="flex items-center text-text-secondary dark:text-slate-300"><CheckCircle className="text-accent mr-3" size={20}/>Fire-safe & Self-extinguishing</li>
+                                <li className="flex items-center text-text-secondary dark:text-slate-300"><CheckCircle className="text-accent mr-3" size={20}/>UV & Corrosion Resistant</li>
+                                <li className="flex items-center text-text-secondary dark:text-slate-300"><CheckCircle className="text-accent mr-3" size={20}/>High Impact Strength</li>
+                                <li className="flex items-center text-text-secondary dark:text-slate-300"><CheckCircle className="text-accent mr-3" size={20}/>Maintenance-free Lifecycle</li>
                             </ul>
                         </div>
                         
                         <div className="mb-10">
-                             <h3 className="text-xl font-bold font-heading text-text-DEFAULT mb-4">Downloads</h3>
+                             <h3 className="text-xl font-bold font-heading text-text-DEFAULT dark:text-slate-200 mb-4">Downloads</h3>
                              <div className="flex flex-wrap gap-4">
                                 {product.pdfUrls.map(pdf => (
-                                    <a key={pdf.title} href={pdf.url} target="_blank" rel="noopener noreferrer" className="flex items-center bg-gray-200 text-text-secondary px-4 py-2 rounded-lg hover:bg-gray-300 transition-colors font-medium">
+                                    <a key={pdf.title} href={pdf.url} target="_blank" rel="noopener noreferrer" className="flex items-center bg-gray-200 dark:bg-slate-700 text-text-secondary dark:text-slate-300 px-4 py-2 rounded-lg hover:bg-gray-300 dark:hover:bg-slate-600 transition-colors font-medium">
                                         <Download size={18} className="mr-2"/>{pdf.title}
                                     </a>
                                 ))}
@@ -148,13 +148,12 @@ const ProductDetailPage: React.FC = () => {
             </div>
 
             {relatedProducts.length > 0 && (
-                <div className="bg-background-light py-20">
+                <div className="bg-background-light dark:bg-slate-900 py-24">
                     <SectionDivider />
                     <div className="container mx-auto px-6">
-                        <h2 className="text-3xl font-bold font-heading text-primary mb-8 text-center">You Might Also Like</h2>
+                        <h2 className="text-3xl font-extrabold font-heading text-primary dark:text-white mb-12 text-center">You Might Also Like</h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                             {relatedProducts.map(relatedProduct => (
-                                // Dummy values for compare props as it's not used on this page
                                 <ProductCard key={relatedProduct.id} product={relatedProduct} isSelectedForCompare={false} onToggleCompare={() => {}}/>
                             ))}
                         </div>

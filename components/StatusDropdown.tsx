@@ -3,9 +3,9 @@ import { Enquiry } from '../types';
 import { ChevronDown } from 'lucide-react';
 
 const statusColors: Record<Enquiry['status'], string> = {
-    New: 'bg-cyan-100 text-cyan-800 hover:bg-cyan-200',
-    'In Progress': 'bg-yellow-100 text-yellow-800 hover:bg-yellow-200',
-    Closed: 'bg-green-100 text-green-800 hover:bg-green-200',
+    New: 'bg-cyan-100 text-cyan-800 hover:bg-cyan-200 dark:bg-cyan-900/50 dark:text-cyan-300 dark:hover:bg-cyan-900',
+    'In Progress': 'bg-yellow-100 text-yellow-800 hover:bg-yellow-200 dark:bg-yellow-900/50 dark:text-yellow-300 dark:hover:bg-yellow-900',
+    Closed: 'bg-green-100 text-green-800 hover:bg-green-200 dark:bg-green-900/50 dark:text-green-300 dark:hover:bg-green-900',
 };
 
 const statusOptions: Enquiry['status'][] = ['New', 'In Progress', 'Closed'];
@@ -51,7 +51,7 @@ export const StatusDropdown: React.FC<StatusDropdownProps> = ({ currentStatus, o
 
             {isOpen && (
                 <div
-                    className="origin-top-right absolute right-0 mt-2 w-full rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-10"
+                    className="origin-top-right absolute right-0 mt-2 w-full rounded-md shadow-lg bg-white dark:bg-slate-700 ring-1 ring-black ring-opacity-5 dark:ring-slate-600 focus:outline-none z-10"
                     role="menu"
                 >
                     <div className="py-1" role="none">
@@ -61,8 +61,8 @@ export const StatusDropdown: React.FC<StatusDropdownProps> = ({ currentStatus, o
                                 onClick={() => handleSelect(status)}
                                 className={`w-full text-left px-4 py-2 text-sm ${
                                     status === currentStatus
-                                        ? 'bg-gray-100 text-gray-900'
-                                        : 'text-gray-700 hover:bg-gray-50'
+                                        ? 'bg-gray-100 dark:bg-slate-600 text-gray-900 dark:text-white'
+                                        : 'text-gray-700 dark:text-slate-300 hover:bg-gray-50 dark:hover:bg-slate-600'
                                 }`}
                                 role="menuitem"
                             >

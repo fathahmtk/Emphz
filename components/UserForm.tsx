@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { User, Role } from '../types';
 import { X } from 'lucide-react';
@@ -16,6 +15,8 @@ const getInitialFormData = () => ({
     email: '',
     role: Role.VIEWER,
 });
+
+const inputClasses = "mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-slate-600 rounded-md shadow-sm focus:outline-none focus:ring-accent focus:border-accent bg-white dark:bg-slate-700 dark:text-white";
 
 export const UserForm: React.FC<UserFormProps> = ({ user, onSave, onCancel }) => {
     const isEditing = user && 'id' in user;
@@ -46,28 +47,28 @@ export const UserForm: React.FC<UserFormProps> = ({ user, onSave, onCancel }) =>
 
     return (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-start pt-20">
-            <div className="bg-white rounded-lg shadow-xl w-full max-w-lg m-4">
-                <div className="p-6 border-b flex justify-between items-center">
-                    <h2 className="text-2xl font-bold text-gray-800">{isEditing ? 'Edit User' : 'Add New User'}</h2>
-                    <button onClick={onCancel} className="text-gray-500 hover:text-gray-800"><X size={24} /></button>
+            <div className="bg-white dark:bg-slate-800 rounded-lg shadow-xl w-full max-w-lg m-4">
+                <div className="p-6 border-b dark:border-slate-700 flex justify-between items-center">
+                    <h2 className="text-2xl font-bold text-gray-800 dark:text-slate-200">{isEditing ? 'Edit User' : 'Add New User'}</h2>
+                    <button onClick={onCancel} className="text-gray-500 hover:text-gray-800 dark:text-slate-400 dark:hover:text-slate-200"><X size={24} /></button>
                 </div>
                 <form onSubmit={handleSubmit} className="p-6 space-y-4">
                     <div>
-                        <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
-                        <input type="text" name="name" id="name" value={formData.name} onChange={handleChange} required className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-accent focus:border-accent"/>
+                        <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-slate-300">Name</label>
+                        <input type="text" name="name" id="name" value={formData.name} onChange={handleChange} required className={inputClasses}/>
                     </div>
                      <div>
-                        <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
-                        <input type="email" name="email" id="email" value={formData.email} onChange={handleChange} required className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-accent focus:border-accent"/>
+                        <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-slate-300">Email</label>
+                        <input type="email" name="email" id="email" value={formData.email} onChange={handleChange} required className={inputClasses}/>
                     </div>
                      <div>
-                        <label htmlFor="role" className="block text-sm font-medium text-gray-700">Role</label>
-                        <select name="role" id="role" value={formData.role} onChange={handleChange} className="mt-1 block w-full px-3 py-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-accent focus:border-accent">
+                        <label htmlFor="role" className="block text-sm font-medium text-gray-700 dark:text-slate-300">Role</label>
+                        <select name="role" id="role" value={formData.role} onChange={handleChange} className={inputClasses}>
                            {userRoles.map(role => <option key={role} value={role}>{role}</option>)}
                         </select>
                     </div>
-                    <div className="pt-4 border-t flex justify-end gap-3">
-                        <button type="button" onClick={onCancel} className="bg-gray-200 text-gray-800 px-4 py-2 rounded-lg font-semibold hover:bg-gray-300 transition-colors">Cancel</button>
+                    <div className="pt-4 border-t dark:border-slate-700 flex justify-end gap-3">
+                        <button type="button" onClick={onCancel} className="bg-gray-200 dark:bg-slate-600 text-gray-800 dark:text-slate-200 px-4 py-2 rounded-lg font-semibold hover:bg-gray-300 dark:hover:bg-slate-500 transition-colors">Cancel</button>
                         <button type="submit" className="bg-accent text-white px-4 py-2 rounded-lg font-semibold hover:bg-accent-hover transition-colors">Save User</button>
                     </div>
                 </form>

@@ -1,4 +1,5 @@
 
+
 import React, { useMemo } from 'react';
 import { Product } from '../types';
 import { X } from 'lucide-react';
@@ -20,52 +21,52 @@ export const ComparisonModal: React.FC<ComparisonModalProps> = ({ products, onCl
 
     return (
         <div className="fixed inset-0 bg-black bg-opacity-60 z-50 flex justify-center items-center p-4" onClick={onClose} role="dialog" aria-modal="true">
-            <div className="bg-white rounded-xl shadow-2xl w-full max-w-6xl max-h-[90vh] flex flex-col" onClick={e => e.stopPropagation()}>
-                <div className="p-6 border-b flex justify-between items-center flex-shrink-0">
-                    <h2 className="text-2xl font-bold text-primary font-heading">Product Comparison</h2>
-                    <button onClick={onClose} className="text-gray-500 hover:text-gray-800 transition-colors">
+            <div className="bg-white dark:bg-slate-800 rounded-xl shadow-2xl w-full max-w-6xl max-h-[90vh] flex flex-col" onClick={e => e.stopPropagation()}>
+                <div className="p-6 border-b dark:border-slate-700 flex justify-between items-center flex-shrink-0">
+                    <h2 className="text-2xl font-bold text-primary dark:text-white font-heading">Product Comparison</h2>
+                    <button onClick={onClose} className="text-gray-500 dark:text-slate-400 hover:text-gray-800 dark:hover:text-white transition-colors">
                         <X size={28} />
                     </button>
                 </div>
                 <div className="overflow-auto">
                     <table className="w-full text-sm text-left border-collapse">
-                        <thead className="bg-background-light sticky top-0">
+                        <thead className="bg-background-light dark:bg-slate-700 sticky top-0">
                             <tr>
-                                <th className="p-4 font-semibold text-text-DEFAULT border-b border-r border-border w-1/5">Feature</th>
+                                <th className="p-4 font-semibold text-text-DEFAULT dark:text-slate-200 border-b border-r border-border dark:border-slate-600 w-1/5">Feature</th>
                                 {products.map(product => (
-                                    <th key={product.id} className="p-4 font-semibold text-text-DEFAULT border-b border-r border-border">
-                                        <NavLink to={`/products/${product.slug}`} className="hover:underline text-primary">{product.name}</NavLink>
+                                    <th key={product.id} className="p-4 font-semibold text-text-DEFAULT dark:text-slate-200 border-b border-r border-border dark:border-slate-600">
+                                        <NavLink to={`/products/${product.slug}`} className="hover:underline text-primary dark:text-blue-400">{product.name}</NavLink>
                                     </th>
                                 ))}
                             </tr>
                         </thead>
-                        <tbody className="divide-y divide-border">
-                            <tr className="bg-white">
-                                <td className="p-4 font-semibold border-r border-border">Image</td>
+                        <tbody className="divide-y divide-border dark:divide-slate-700">
+                            <tr className="bg-white dark:bg-slate-800">
+                                <td className="p-4 font-semibold border-r border-border dark:border-slate-600 dark:text-slate-300">Image</td>
                                 {products.map(product => (
-                                    <td key={product.id} className="p-4 border-r border-border text-center">
+                                    <td key={product.id} className="p-4 border-r border-border dark:border-slate-600 text-center">
                                         <img src={product.imageUrls[0].url} alt={product.name} className="w-32 h-32 object-contain mx-auto rounded-md"/>
                                     </td>
                                 ))}
                             </tr>
-                            <tr className="bg-background-light">
-                                <td className="p-4 font-semibold border-r border-border">Summary</td>
+                            <tr className="bg-background-light dark:bg-slate-700/50">
+                                <td className="p-4 font-semibold border-r border-border dark:border-slate-600 dark:text-slate-300">Summary</td>
                                 {products.map(product => (
-                                    <td key={product.id} className="p-4 border-r border-border text-text-secondary">{product.summary}</td>
+                                    <td key={product.id} className="p-4 border-r border-border text-text-secondary dark:text-slate-400">{product.summary}</td>
                                 ))}
                             </tr>
                             {allSpecKeys.map((key, index) => (
-                                <tr key={key} className={index % 2 === 0 ? 'bg-white' : 'bg-background-light'}>
-                                    <td className="p-4 font-semibold border-r border-border">{key}</td>
+                                <tr key={key} className={index % 2 === 0 ? 'bg-white dark:bg-slate-800' : 'bg-background-light dark:bg-slate-700/50'}>
+                                    <td className="p-4 font-semibold border-r border-border dark:border-slate-600 dark:text-slate-300">{key}</td>
                                     {products.map(product => (
-                                        <td key={product.id} className="p-4 border-r border-border text-text-secondary">{product.specs[key] || '—'}</td>
+                                        <td key={product.id} className="p-4 border-r border-border text-text-secondary dark:text-slate-400">{product.specs[key] || '—'}</td>
                                     ))}
                                 </tr>
                             ))}
-                             <tr className="bg-white">
-                                <td className="p-4 font-semibold border-r border-border"></td>
+                             <tr className="bg-white dark:bg-slate-800">
+                                <td className="p-4 font-semibold border-r border-border dark:border-slate-600"></td>
                                 {products.map(product => (
-                                    <td key={product.id} className="p-4 border-r border-border text-center">
+                                    <td key={product.id} className="p-4 border-r border-border dark:border-slate-600 text-center">
                                          <NavLink to={`/products/${product.slug}`} className="bg-accent text-white text-center font-semibold py-2 px-4 rounded-lg hover:bg-accent-hover transition-all duration-300">
                                             View Details
                                         </NavLink>

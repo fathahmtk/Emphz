@@ -5,14 +5,16 @@ import { getEnquiryById, updateEnquiryStatus, addQuotation } from '../../service
 import { ArrowLeft, User, Building, Mail as MailIcon, Phone, FileText, MessageSquare } from 'lucide-react';
 import { QuotationForm } from '../../components/QuotationForm';
 import { StatusDropdown } from '../../components/StatusDropdown';
+import { useToast } from '../../hooks/useToast';
+import { useI18n } from '../../hooks/useI18n';
 
 const DetailItem: React.FC<{ icon: React.ReactNode, label: string, value?: string | null }> = ({ icon, label, value }) => (
     <div>
-        <dt className="text-sm font-medium text-text-secondary flex items-center">
+        <dt className="text-sm font-medium text-text-secondary dark:text-slate-400 flex items-center">
             {icon}
             <span className="ml-2">{label}</span>
         </dt>
-        <dd className="mt-1 text-md text-text-DEFAULT font-semibold">{value || 'N/A'}</dd>
+        <dd className="mt-1 text-md text-text-DEFAULT dark:text-slate-200 font-semibold">{value || 'N/A'}</dd>
     </div>
 );
 
@@ -23,6 +25,8 @@ const AdminEnquiryDetailPage: React.FC = () => {
     const [enquiry, setEnquiry] = useState<Enquiry | null>(null);
     const [loading, setLoading] = useState(true);
     const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
+    const { addToast } = useToast();
+    const { t } = useI18n();
     
     useEffect(() => {
         const fetchEnquiry = async () => {
@@ -41,8 +45,10 @@ const AdminEnquiryDetailPage: React.FC = () => {
             try {
                 const updatedEnquiry = await updateEnquiryStatus(enquiry.id, newStatus);
                 setEnquiry(updatedEnquiry);
+                addToast(t('toasts.saveSuccess'), 'success');
             } catch (error) {
-                alert(`Failed to update status: ${(error as Error).message}`);
+                const err = error as Error;
+                addToast(t('toasts.saveError').replace('{error}', err.message), 'error');
             }
         }
     };
@@ -57,10 +63,11 @@ const AdminEnquiryDetailPage: React.FC = () => {
         try {
             await addQuotation(quoteData as Omit<Quotation, 'id' | 'createdAt'>);
             setIsQuoteModalOpen(false);
-            alert('Quotation created successfully!');
+            addToast(t('toasts.saveSuccess'), 'success');
             navigate('/admin/quotations');
         } catch (error) {
-             alert(`Failed to create quote: ${(error as Error).message}`);
+             const err = error as Error;
+             addToast(t('toasts.saveError').replace('{error}', err.message), 'error');
         }
     };
 
@@ -70,7 +77,7 @@ const AdminEnquiryDetailPage: React.FC = () => {
 
 
     if (loading) {
-        return <div className="text-center p-8">Loading enquiry details...</div>;
+        return <div className="text-center p-8 dark:text-slate-300">Loading enquiry details...</div>;
     }
 
     if (!enquiry) {
@@ -87,7 +94,7 @@ const AdminEnquiryDetailPage: React.FC = () => {
         <div>
              {isQuoteModalOpen && <QuotationForm quote={quotePrefillData as Quotation} onSave={handleSaveQuote} onCancel={handleCancelQuote} />}
             <div className="mb-6 flex justify-between items-center">
-                <NavLink to="/admin/enquiries" className="flex items-center text-primary hover:underline font-semibold">
+                <NavLink to="/admin/enquiries" className="flex items-center text-primary dark:text-blue-400 hover:underline font-semibold">
                     <ArrowLeft size={18} className="mr-2" />
                     Back to Enquiries
                 </NavLink>
@@ -99,14 +106,14 @@ const AdminEnquiryDetailPage: React.FC = () => {
                 </button>
             </div>
 
-            <div className="bg-white p-6 rounded-lg shadow-sm border border-border">
-                <div className="border-b border-border pb-4 mb-6 flex justify-between items-start">
+            <div className="bg-white dark:bg-slate-800 p-6 rounded-lg shadow-sm border border-border dark:border-slate-700">
+                <div className="border-b border-border dark:border-slate-700 pb-4 mb-6 flex justify-between items-start">
                     <div>
-                        <h1 className="text-2xl font-bold text-text-DEFAULT">Enquiry from {enquiry.name}</h1>
-                        <p className="text-sm text-text-secondary">Received on {new Date(enquiry.createdAt).toLocaleString()}</p>
+                        <h1 className="text-2xl font-bold text-text-DEFAULT dark:text-slate-200">Enquiry from {enquiry.name}</h1>
+                        <p className="text-sm text-text-secondary dark:text-slate-400">Received on {new Date(enquiry.createdAt).toLocaleString()}</p>
                     </div>
                      <div>
-                        <label className="text-sm font-medium text-text-secondary block mb-1">Status</label>
+                        <label className="text-sm font-medium text-text-secondary dark:text-slate-400 block mb-1">Status</label>
                         <StatusDropdown
                             currentStatus={enquiry.status}
                             onStatusChange={handleStatusChange}
@@ -123,11 +130,11 @@ const AdminEnquiryDetailPage: React.FC = () => {
                 </div>
                 
                 <div>
-                    <h2 className="text-lg font-semibold text-text-DEFAULT flex items-center mb-2">
+                    <h2 className="text-lg font-semibold text-text-DEFAULT dark:text-slate-200 flex items-center mb-2">
                          <MessageSquare size={16} className="mr-2"/> Message
                     </h2>
-                    <div className="bg-background-light p-4 rounded-md border border-border">
-                        <p className="text-text-secondary whitespace-pre-wrap">{enquiry.message}</p>
+                    <div className="bg-background-light dark:bg-slate-700 p-4 rounded-md border border-border dark:border-slate-600">
+                        <p className="text-text-secondary dark:text-slate-300 whitespace-pre-wrap">{enquiry.message}</p>
                     </div>
                 </div>
 

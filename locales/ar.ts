@@ -12,12 +12,27 @@ export default {
         search: 'بحث'
     },
     footer: {
-        tagline: 'شركة GRP.',
+        tagline: 'نهندس بنية الغد التحتية — اليوم.',
         quickLinks: 'روابط سريعة',
         contactUs: 'اتصل بنا',
         office: 'المكتب الرئيسي - كيرالا، الهند',
         followUs: 'تابعنا',
         copyright: '© {year} إمفز جلوبال. جميع الحقوق محفوظة.'
+    },
+    theme: {
+        switchToDark: 'التبديل إلى الوضع الداكن',
+        switchToLight: 'التبديل إلى الوضع الفاتح',
+    },
+    toasts: {
+        enquirySuccess: 'شكرًا لك! تم إرسال استفسارك.',
+        enquiryError: 'حدث خطأ ما. يرجى المحاولة مرة أخرى.',
+        deleteSuccess: 'تم حذف "{name}" بنجاح.',
+        deleteError: 'فشل الحذف: {error}',
+        saveSuccess: 'تم الحفظ بنجاح.',
+        saveError: 'فشل الحفظ: {error}',
+        selectionRequired: 'يرجى تحديد ملف واحد على الأقل للتنزيل.',
+        downloadSimulation: 'محاكاة تنزيل حزمة التقديم لـ: {files}',
+        deleteAdminProhibited: 'لا يمكن حذف المستخدم المسؤول الرئيسي.',
     },
     home: {
         hero: {
