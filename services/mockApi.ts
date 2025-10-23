@@ -8,8 +8,8 @@ let products: Product[] = [
     tags: ["IP66", "UL94 V-0", "RAL7035", "SS304"],
     specs: { Material: 'GRP (SMC)', Protection: 'IP66 (IEC 60529)', 'Fire Rating': 'UL 94 V-0', Colour: 'RAL7035', 'Temp Range': '–40°C to +120°C', 'Mounting': 'Wall/Pole/Floor' },
     imageUrls: [
-        { view: 'front', url: 'https://images.unsplash.com/photo-1617714541355-566b6a48f4a3?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=tinysrgb&w=800&h=800&fit=crop' },
-        { view: 'internal', url: 'https://images.unsplash.com/photo-1581092921462-697de703b449?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=tinysrgb&w=800&h=800&fit=crop' },
+        { view: 'front', url: 'https://dl.dropboxusercontent.com/scl/fi/qw4y5jznrfkjlvrrsu5z3/Emphz-GRP-Single-door-enclosure.png?rlkey=xiy2y9bmobq14losztoeipgcz&st=75a40qw3' },
+        { view: 'internal', url: 'https://dl.dropboxusercontent.com/scl/fi/r42j664ik0qzwgk6b98zy/Emphz-GRP-Single-door-enclosure-Open.png?rlkey=4szqk2rqkbinm2wq4e9zr9288&dl=0' },
         { view: 'side', url: 'https://images.unsplash.com/photo-1616628188583-df2bf52c35a7?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=tinysrgb&w=800&h=800&fit=crop' }
     ],
     pdfUrls: [{ title: 'Technical Data Sheet', url: '#' }, { title: 'Installation Guide', url: '#' }],
@@ -22,7 +22,7 @@ let products: Product[] = [
     tags: ["IP65", "UL94 V-0", "RAL7035"],
     specs: { Material: 'GRP (SMC)', Protection: 'IP65', 'Fire Rating': 'UL 94 V-0', Colour: 'RAL7035', 'Temp Range': '–40°C to +120°C', 'Hardware': 'SS316' },
     imageUrls: [
-        { view: 'front', url: 'https://images.unsplash.com/photo-1526394931762-92eb3c573559?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=tinysrgb&w=800&h=800&fit=crop' },
+        { view: 'front', url: 'https://dl.dropboxusercontent.com/scl/fi/rdjc4ppeb575uu4jzp9sw/Emphz-GRP-Electrical-Enclosures.png?rlkey=qk70gdenb7dhcxyajkerv4q0o&st=65tg7laa' },
         { view: 'internal', url: 'https://images.unsplash.com/photo-1621905252507-b25492cc269a?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=tinysrgb&w=800&h=800&fit=crop' },
     ],
     pdfUrls: [{ title: 'Technical Data Sheet', url: '#' }],
@@ -83,7 +83,7 @@ let products: Product[] = [
     tags: ["Insulated", "Portable", "Weatherproof"],
     specs: { 'Panel': 'PUF Insulated GRP', 'Standard Sizes': '1.2x1.2m, 1.5x1.5m, 2x2m', 'Features': 'Integrated wiring, windows, desk', 'Base': 'MS/GRP Frame' },
     imageUrls: [
-        { view: 'front', url: 'https://images.unsplash.com/photo-1588796123498-f29a02a4e135?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=tinysrgb&w=800&h=800&fit=crop' },
+        { view: 'front', url: 'https://dl.dropboxusercontent.com/scl/fi/n8oehkcdl285y302ceg0s/Emphz-GRP-Security-Cabin.png?rlkey=bf6eiom7iyw8nrtivddb8jdz9&dl=0' },
         { view: 'side', url: 'https://images.unsplash.com/photo-1517495306984-f84210f9daa8?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=tinysrgb&w=800&h=800&fit=crop' },
     ],
     pdfUrls: [{ title: 'Technical Data Sheet', url: '#' }, { title: 'Brochure', url: '#' }],
@@ -102,13 +102,25 @@ let products: Product[] = [
     isFeatured: false, createdAt: new Date(), updatedAt: new Date(),
   },
   {
+    id: 11, name: 'GRP Food Kiosk', slug: 'food-kiosk', categoryId: 2, categoryName: 'Kiosks',
+    summary: 'Customizable, hygienic, and durable food kiosks for indoor and outdoor use.',
+    description: 'Our GRP food kiosks are the perfect solution for food vendors, offering a clean, weather-resistant, and low-maintenance setup. The modular design allows for rapid deployment and customization to fit specific branding and equipment needs.',
+    tags: ["Hygienic", "Modular", "Customizable"],
+    specs: { 'Material': 'GRP Composite', 'Countertop': 'Food-grade SS304', 'Features': 'Integrated plumbing & wiring, branding space', 'Base': 'MS Frame' },
+    imageUrls: [
+        { view: 'front', url: 'https://dl.dropboxusercontent.com/scl/fi/5wh2pvyqxhum4c9ox56vf/Emphz-GRP-Food-Kiosk.png?rlkey=cbj4j22gfwyww5uzjprm1zsm3&dl=0' },
+    ],
+    pdfUrls: [{ title: 'Brochure', url: '#' }],
+    isFeatured: true, createdAt: new Date(), updatedAt: new Date(),
+  },
+  {
     id: 6, name: 'Prefab GRP Villas', slug: 'prefab-villa', categoryId: 4, categoryName: 'Housing',
     summary: 'Energy-efficient modular homes from studio to 3-BHK.',
     description: 'Revolutionizing housing with rapid-deployment GRP villas. These modular structures are energy-efficient, fire-retardant, and built to last, offering a sustainable and quick alternative to traditional construction.',
     tags: ["Modular", "Energy-Efficient", "Rapid Deployment"],
     specs: { 'Structure': 'GRP Composite Panels', 'Insulation': 'PUF/EPS Core', 'Configurations': 'Studio, 1-BHK, 2-BHK, 3-BHK', 'Lifespan': '50+ Years' },
     imageUrls: [
-        { view: 'front', url: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=tinysrgb&w=800&h=800&fit=crop' },
+        { view: 'front', url: 'https://dl.dropboxusercontent.com/scl/fi/5lu0674nt2lsvtsc1nvda/Emphz-GRP-Modular-Villa.png?rlkey=7lt8i2dbzj6lyuer8fkm1wigm&st=irrjs3xf&dl=0' },
     ],
     pdfUrls: [{ title: 'Brochure', url: '#' }],
     isFeatured: true, createdAt: new Date(), updatedAt: new Date(),
@@ -120,7 +132,7 @@ let products: Product[] = [
     tags: ["Sanitation", "Modular", "Hygienic"],
     specs: { 'Structure': 'GRP Panels', 'Fittings': 'Standard sanitary ware', 'Plumbing': 'Pre-plumbed', 'Sizes': '2-seater, 4-seater, custom' },
     imageUrls: [
-        { view: 'front', url: 'https://images.unsplash.com/photo-1599818498305-b0728c8dbf54?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=tinysrgb&w=800&h=800&fit=crop' },
+        { view: 'front', url: 'https://dl.dropboxusercontent.com/scl/fi/vlwpfxt3fm5c69716bala/Emphz-GRP-Portable-Toilet.png?rlkey=g1x6sp9m1j2tqufl2l4najz1j&dl=0' },
     ],
     pdfUrls: [{ title: 'Technical Data Sheet', url: '#' }],
     isFeatured: false, createdAt: new Date(), updatedAt: new Date(),
@@ -231,8 +243,33 @@ let blogPosts: BlogPost[] = [
     content: "Sustainability is no longer a buzzword; it's a core business imperative. At EMPHZ, we are committed to minimizing our environmental impact throughout our manufacturing lifecycle. Our GRP products have a lower embodied carbon footprint compared to steel and aluminum. We are continuously innovating, incorporating recyclable core materials and optimizing our closed-molding processes to drastically reduce VOC emissions and material waste. Our Mysore factory is partially powered by solar energy, and we have implemented a comprehensive water recycling program. Our goal is to achieve carbon-neutral operations by 2030, proving that high-performance engineering and environmental stewardship can, and must, go hand in hand.",
     author: 'Muhammed Rashik P',
     coverUrl: 'https://images.unsplash.com/photo-1592398231248-9366113b2fab?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=tinysrgb&w=800&h=600&fit=crop',
-    published: false,
+    published: true,
+    publishedAt: new Date('2023-12-01'),
     createdAt: new Date('2023-12-01'),
+  },
+  {
+    id: 4,
+    title: 'EMPHZ GRP Enclosures Powering India’s Smart Infrastructure',
+    slug: 'grp-enclosures-smart-infrastructure',
+    excerpt: 'A look into how EMPHZ GRP enclosures are becoming the backbone of smart city projects, protecting critical electronics for traffic management, public Wi-Fi, and surveillance systems.',
+    content: "India's push towards smart cities requires a robust and reliable infrastructure. At the heart of these systems are sensitive electronic components that need maximum protection. EMPHZ GRP enclosures provide the ideal solution, offering IP66-rated protection against dust and water, superior thermal insulation, and resistance to vandalism. Unlike metal boxes, our GRP enclosures do not interfere with RF signals, making them perfect for housing communication equipment for public Wi-Fi and 5G networks. From Jaipur to Bangalore, EMPHZ is providing the unseen, yet critical, foundation for a smarter, more connected India.",
+    author: 'Jithin',
+    coverUrl: 'https://images.unsplash.com/photo-1599375839933-c40c8f5215f9?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=tinysrgb&w=800&h=600&fit=crop',
+    published: true,
+    publishedAt: new Date('2024-01-10'),
+    createdAt: new Date('2024-01-10'),
+  },
+   {
+    id: 5,
+    title: 'From Kerala to the World — EMPHZ Global GRP Solutions',
+    slug: 'kerala-to-the-world-export',
+    excerpt: 'Discover the journey of EMPHZ from its roots in Vadakara, Kerala, to becoming a trusted exporter of high-quality GRP solutions to the GCC and African markets.',
+    content: "EMPHZ Global began with a simple vision in Kerala: to create world-class composite products. Today, that vision has crossed borders. Our commitment to international standards like IEC and UL, combined with our ability to engineer solutions for diverse climates, has made us a preferred partner for projects in the GCC, Africa, and parts of Europe. This post explores our export journey, the logistical challenges we've overcome, and how our 'Made in India' GRP products are competing and winning on a global stage. It's a story of quality, innovation, and the relentless pursuit of engineering excellence.",
+    author: 'Muhammed Rafeeque',
+    coverUrl: 'https://images.unsplash.com/photo-1588195538326-c5e1e9f80a1b?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=tinysrgb&w=800&h=600&fit=crop',
+    published: true,
+    publishedAt: new Date('2024-02-22'),
+    createdAt: new Date('2024-02-22'),
   },
 ];
 
@@ -241,7 +278,7 @@ let downloads: Download[] = [
     { id: 2, title: 'EMPHZ Composite Kiosks – Durable, Customizable, Smart', category: 'Datasheet', fileUrl: '#', views: 95, createdAt: new Date() },
     { id: 3, title: 'ISO 9001:2015 Certificate', category: 'Certificate', fileUrl: '#', views: 210, createdAt: new Date() },
     { id: 4, title: 'IEC 61439 Certificate', category: 'Certificate', fileUrl: '#', views: 180, createdAt: new Date() },
-    { id: 5, title: 'Enclosure Installation Guide', category: 'Guide', fileUrl: '#', views: 120, createdAt: new Date() },
+    { id: 5, title: 'EMPHZ Modular Villas – Sustainable Prefab Living', category: 'Guide', fileUrl: '#', views: 120, createdAt: new Date() },
     { id: 6, title: 'Single-Door Enclosure (STP/3D)', category: 'CAD', fileUrl: '#', views: 75, createdAt: new Date() },
     { id: 7, title: 'EMPHZ Global: The GRP Company - Profile 2024', category: 'Company Profile', fileUrl: '#', views: 300, createdAt: new Date() },
 ];

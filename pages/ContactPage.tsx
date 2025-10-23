@@ -118,7 +118,7 @@ const ContactPage: React.FC = () => {
                     <Breadcrumbs links={breadcrumbLinks} />
                     <div className="container mx-auto px-6 py-12 text-center">
                         <h1 className="text-4xl font-bold font-heading text-primary mb-2">Contact EMPHZ Global</h1>
-                        <p className="text-lg text-text-secondary">Get a custom GRP solution or quotation from The GRP Experts.</p>
+                        <p className="text-lg text-text-secondary">Get a Custom GRP Solution or Quotation from The GRP Experts.</p>
                     </div>
                 </div>
             </div>

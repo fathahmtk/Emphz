@@ -78,8 +78,8 @@ const ProductsPage: React.FC = () => {
                 <div className="relative">
                     <Breadcrumbs links={breadcrumbLinks} />
                     <div className="container mx-auto px-6 py-12 text-center">
-                        <h1 className="text-4xl sm:text-5xl font-bold font-heading text-primary mb-3 tracking-tight">EMPHZ GRP Product Catalog</h1>
-                        <p className="text-lg text-text-secondary max-w-3xl mx-auto">Engineered Composite Solutions from The GRP Company. Explore our complete range of high-performance GRP enclosures, kiosks, and composite solutions.</p>
+                        <h1 className="text-4xl sm:text-5xl font-bold font-heading text-primary mb-3 tracking-tight">EMPHZ GRP Enclosures & Cabins</h1>
+                        <p className="text-lg text-text-secondary max-w-3xl mx-auto">Engineered Composite Solutions. Explore our complete catalog of high-performance GRP enclosures, modular cabins, and feeder pillars.</p>
                     </div>
                 </div>
             </div>

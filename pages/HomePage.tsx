@@ -107,6 +107,12 @@ const InsightCard: React.FC<{ post: BlogPost }> = ({ post }) => {
     );
 };
 
+const heroImages = [
+    { url: 'https://dl.dropboxusercontent.com/scl/fi/p9nv1veh2fxa52ymwtghl/Emphz-GRP-Hero-Image-1.png?rlkey=dxhpiufpindtycgfv0ch48w48&dl=0', alt: 'EMPHZ GRP Electrical Enclosures' },
+    { url: 'https://dl.dropboxusercontent.com/scl/fi/i3jblkxsh97yoq6b61i1k/Emphz-GRP-Hero-Image-2.png?rlkey=wudzy7fl1pquzayw3yd2865mt&dl=0', alt: 'EMPHZ GRP Modular Cabins' },
+    { url: 'https://dl.dropboxusercontent.com/scl/fi/i0r4s035cvcc8v8ykg9ba/Emphz-GRP-Hero-Image-3.png?rlkey=obfwaz3804vodjbnk2rpgmdj9&dl=0', alt: 'EMPHZ GRP Industrial Solutions' },
+];
+
 const HomePage: React.FC = () => {
     const [featuredProducts, setFeaturedProducts] = useState<Product[]>([]);
     const [latestPosts, setLatestPosts] = useState<BlogPost[]>([]);
@@ -115,12 +121,21 @@ const HomePage: React.FC = () => {
     const [loading, setLoading] = useState(true);
     const animatedRef = useScrollAnimation();
     const { t } = useI18n();
+    const [currentSlide, setCurrentSlide] = useState(0);
 
     usePageMetadata(
         "EMPHZ Global | The GRP Company – Enclosures, Kiosks & Composite Solutions",
         "When it’s GRP, it’s EMPHZ. EMPHZ Global is India’s leading manufacturer of high-performance Glass Reinforced Plastic (GRP) enclosures, kiosks, and modular cabins — engineered for durability, safety, and sustainability across global industries.",
         "EMPHZ GRP, The GRP Company, GRP enclosures, GRP kiosks, GRP cabins, GRP manufacturer India, composite solutions, Glass Reinforced Plastic, EMPHZ Global"
     );
+    
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setCurrentSlide((prevSlide) => (prevSlide + 1) % heroImages.length);
+        }, 5000); // Change slide every 5 seconds
+        return () => clearTimeout(timer);
+    }, [currentSlide]);
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -150,8 +165,22 @@ const HomePage: React.FC = () => {
         <div className="bg-background overflow-x-hidden">
             {/* Hero Section */}
             <section className="relative bg-primary-dark text-white py-20 md:py-32 overflow-hidden">
-                 <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary-dark to-black opacity-80"></div>
-                 <img src="https://images.unsplash.com/photo-1567705295554-536c4b9982a5?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=tinysrgb&w=1920&h=1080&fit=crop" alt="Advanced Composite Manufacturing Facility" className="absolute inset-0 w-full h-full object-cover mix-blend-overlay"/>
+                {/* Background Images Slider */}
+                {heroImages.map((image, index) => (
+                    <div
+                        key={index}
+                        className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === currentSlide ? 'opacity-100' : 'opacity-0'}`}
+                        aria-hidden={index !== currentSlide}
+                    >
+                        <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary-dark to-black opacity-80"></div>
+                        <img 
+                            src={image.url} 
+                            alt={image.alt} 
+                            className="absolute inset-0 w-full h-full object-cover mix-blend-overlay"
+                        />
+                    </div>
+                ))}
+
                 <div className="container mx-auto px-6 text-center relative z-10">
                     <h1 ref={animatedRef} className="timeline-item text-4xl sm:text-5xl md:text-7xl font-extrabold font-heading mb-6 leading-tight tracking-tighter">
                         {t('home.hero.title')}
@@ -167,6 +196,18 @@ const HomePage: React.FC = () => {
                             {t('home.hero.getQuote')}
                         </NavLink>
                     </div>
+                </div>
+
+                 {/* Navigation Dots */}
+                <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex space-x-3">
+                    {heroImages.map((_, index) => (
+                        <button
+                            key={index}
+                            onClick={() => setCurrentSlide(index)}
+                            className={`w-3 h-3 rounded-full transition-colors duration-300 ${index === currentSlide ? 'bg-white scale-125' : 'bg-white/50 hover:bg-white/75'}`}
+                            aria-label={`Go to slide ${index + 1}`}
+                        />
+                    ))}
                 </div>
             </section>
             

@@ -73,7 +73,7 @@ const SolutionsPage: React.FC = () => {
                     <Breadcrumbs links={breadcrumbLinks} />
                     <div className="container mx-auto px-6 py-12 text-center">
                         <h1 className="text-4xl font-bold font-heading text-primary mb-2">GRP Applications by EMPHZ</h1>
-                        <p className="text-lg text-text-secondary max-w-3xl mx-auto">Engineered solutions for Power, Energy, Telecom & Infrastructure. We solve challenges where traditional materials fail.</p>
+                        <p className="text-lg text-text-secondary max-w-3xl mx-auto">Power, Energy, Telecom & Infrastructure. We engineer GRP solutions for the world's most demanding industries.</p>
                     </div>
                 </div>
             </div>
