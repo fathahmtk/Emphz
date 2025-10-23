@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -14,13 +13,23 @@
         theme: {
           extend: {
             colors: {
-              primary: '#0B3D91', // Deep Blue
-              accent: '#C9A227',  // Gold
-              neutral: {
-                light: '#F7F8FA',
-                DEFAULT: '#F7F8FA',
-                dark: '#EAEBEE',
+              primary: {
+                DEFAULT: '#1A237E', // Deep Navy
+                medium: '#3F51B5',
               },
+              accent: {
+                DEFAULT: '#2962FF',  // Action Blue
+                hover: '#0039CB',
+              },
+              text: {
+                DEFAULT: '#212121', // Charcoal
+                secondary: '#616161',
+              },
+              background: {
+                DEFAULT: '#FFFFFF',
+                light: '#F5F7FA',
+              },
+              border: '#E0E0E0',
             },
             fontFamily: {
               sans: ['Inter', 'sans-serif'],
@@ -42,7 +51,7 @@
 }
 </script>
 </head>
-  <body class="bg-neutral-light font-sans">
+  <body class="bg-background-light font-sans text-text-DEFAULT">
     <div id="root"></div>
     <!-- This app is a single-page application. To see the full functionality including routing, please run it in a development environment. -->
     <script type="module" src="/index.tsx"></script>

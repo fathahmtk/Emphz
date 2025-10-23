@@ -7,6 +7,7 @@ import ProductsPage from './pages/ProductsPage';
 import ProductDetailPage from './pages/ProductDetailPage';
 import SolutionsPage from './pages/SolutionsPage';
 import CaseStudiesPage from './pages/CaseStudiesPage';
+import ResourcesPage from './pages/ResourcesPage';
 import InsightsPage from './pages/InsightsPage';
 import InsightDetailPage from './pages/InsightDetailPage';
 import CompanyPage from './pages/CompanyPage';
@@ -17,6 +18,9 @@ import AdminDashboardPage from './pages/admin/AdminDashboardPage';
 import AdminProductsPage from './pages/admin/AdminProductsPage';
 import AdminEnquiriesPage from './pages/admin/AdminEnquiriesPage';
 import AdminInsightsPage from './pages/admin/AdminInsightsPage';
+import AdminDownloadsPage from './pages/admin/AdminDownloadsPage';
+import AdminQuotationsPage from './pages/admin/AdminQuotationsPage';
+import AdminCustomersPage from './pages/admin/AdminCustomersPage';
 import { AuthProvider, useAuth } from './hooks/useAuth';
 
 const ProtectedRoute: React.FC = () => {
@@ -36,6 +40,7 @@ const App: React.FC = () => {
             <Route path="products/:slug" element={<ProductDetailPage />} />
             <Route path="solutions" element={<SolutionsPage />} />
             <Route path="case-studies" element={<CaseStudiesPage />} />
+            <Route path="resources" element={<ResourcesPage />} />
             <Route path="insights" element={<InsightsPage />} />
             <Route path="insights/:slug" element={<InsightDetailPage />} />
             <Route path="company" element={<CompanyPage />} />
@@ -48,7 +53,10 @@ const App: React.FC = () => {
               <Route path="dashboard" element={<AdminDashboardPage />} />
               <Route path="products" element={<AdminProductsPage />} />
               <Route path="enquiries" element={<AdminEnquiriesPage />} />
+              <Route path="quotations" element={<AdminQuotationsPage />} />
+              <Route path="customers" element={<AdminCustomersPage />} />
               <Route path="insights" element={<AdminInsightsPage />} />
+              <Route path="downloads" element={<AdminDownloadsPage />} />
               <Route index element={<Navigate to="/admin/dashboard" />} />
           </Route>
 

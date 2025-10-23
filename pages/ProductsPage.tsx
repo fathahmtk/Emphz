@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useMemo } from 'react';
 import { Product } from '../types';
 import { getProducts } from '../services/mockApi';
@@ -31,25 +30,25 @@ const ProductsPage: React.FC = () => {
     }, [products, searchTerm, categoryFilter]);
 
     return (
-        <div className="bg-neutral-light min-h-screen">
-            <div className="container mx-auto px-6 py-12">
-                <div className="text-center mb-12">
-                    <h1 className="text-4xl font-extrabold text-primary mb-2">Engineered GRP Systems</h1>
-                    <p className="text-lg text-gray-600">Filter by rating, size, mounting, and environment. Export comparison tables or one-click datasheets.</p>
+        <div className="bg-background-light min-h-screen">
+            <div className="container mx-auto px-6 py-16">
+                <div className="text-center mb-12 max-w-3xl mx-auto">
+                    <h1 className="text-4xl sm:text-5xl font-extrabold text-primary mb-3 tracking-tight">Engineered GRP Systems</h1>
+                    <p className="text-lg text-text-secondary">Explore our comprehensive catalog. Filter by rating, size, mounting, and environment to find the perfect solution for your project.</p>
                 </div>
 
-                <div className="bg-white p-4 rounded-lg shadow-md mb-8 flex flex-col md:flex-row gap-4 items-center">
+                <div className="bg-background p-6 rounded-lg shadow-sm border border-border mb-10 flex flex-col md:flex-row gap-4 items-center">
                     <input
                         type="text"
-                        placeholder="Search products..."
+                        placeholder="Search products by name or feature..."
                         value={searchTerm}
                         onChange={e => setSearchTerm(e.target.value)}
-                        className="w-full md:w-1/3 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                        className="w-full md:flex-1 px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent"
                     />
                     <select
                         value={categoryFilter}
                         onChange={e => setCategoryFilter(e.target.value)}
-                         className="w-full md:w-1/3 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-white"
+                         className="w-full md:w-auto px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-accent bg-background"
                     >
                         {categories.map(cat => <option key={cat} value={cat}>{cat}</option>)}
                     </select>
@@ -58,7 +57,7 @@ const ProductsPage: React.FC = () => {
                 {loading ? (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                        {Array.from({ length: 6 }).map((_, index) => (
-                           <div key={index} className="bg-white rounded-lg shadow-md animate-pulse h-96"></div>
+                           <div key={index} className="bg-white rounded-lg border border-border animate-pulse h-[450px]"></div>
                        ))}
                    </div>
                 ) : (
@@ -70,8 +69,8 @@ const ProductsPage: React.FC = () => {
                 )}
                  {filteredProducts.length === 0 && !loading && (
                     <div className="text-center py-20">
-                        <h3 className="text-2xl font-semibold text-gray-700">No products found</h3>
-                        <p className="text-gray-500 mt-2">Try adjusting your search or filter criteria.</p>
+                        <h3 className="text-2xl font-semibold text-text-DEFAULT">No products found</h3>
+                        <p className="text-text-secondary mt-2">Try adjusting your search or filter criteria.</p>
                     </div>
                 )}
             </div>

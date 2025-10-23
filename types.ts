@@ -1,4 +1,5 @@
 
+
 export enum Role {
   ADMIN = 'ADMIN',
   EDITOR = 'EDITOR',
@@ -99,7 +100,7 @@ export interface Quotation {
 export interface Download {
   id: number;
   title: string;
-  category: 'Datasheet' | 'Certificate' | 'CAD' | 'Guide';
+  category: 'Datasheet' | 'Certificate' | 'CAD' | 'Guide' | 'Company Profile';
   fileUrl: string;
   views: number;
   createdAt: Date;
@@ -113,4 +114,15 @@ export interface Solution {
     outcomes: string[];
     products: string[];
     caseStudies: string[];
+}
+
+export interface Customer {
+  id: string; // email can serve as a unique id for this mock setup
+  name: string;
+  company?: string;
+  email: string;
+  phone?: string;
+  enquiryCount: number;
+  quotationCount: number;
+  firstSeen: Date;
 }

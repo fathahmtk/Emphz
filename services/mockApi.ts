@@ -1,4 +1,4 @@
-import { Product, CaseStudy, Enquiry, Solution, BlogPost } from '../types';
+import { Product, CaseStudy, Enquiry, Solution, BlogPost, Download, Quotation, Customer } from '../types';
 
 const products: Product[] = [
   {
@@ -146,9 +146,48 @@ const blogPosts: BlogPost[] = [
   },
 ];
 
+const downloads: Download[] = [
+    { id: 1, title: 'Single-Door Enclosure Datasheet', category: 'Datasheet', fileUrl: '#', views: 150, createdAt: new Date() },
+    { id: 2, title: 'Double-Door Enclosure Datasheet', category: 'Datasheet', fileUrl: '#', views: 95, createdAt: new Date() },
+    { id: 3, title: 'ISO 9001:2015 Certificate', category: 'Certificate', fileUrl: '#', views: 210, createdAt: new Date() },
+    { id: 4, title: 'IEC 61439 Certificate', category: 'Certificate', fileUrl: '#', views: 180, createdAt: new Date() },
+    { id: 5, title: 'Enclosure Installation Guide', category: 'Guide', fileUrl: '#', views: 120, createdAt: new Date() },
+    { id: 6, title: 'Single-Door Enclosure (STP/3D)', category: 'CAD', fileUrl: '#', views: 75, createdAt: new Date() },
+    { id: 7, title: 'EMPHZ Company Profile 2024', category: 'Company Profile', fileUrl: '#', views: 300, createdAt: new Date() },
+];
+
 let enquiries: Enquiry[] = [
     { id: 1, name: 'John Doe', email: 'john.doe@example.com', company: 'Example Corp', message: 'Need a quote for 10 single-door enclosures.', status: 'New', createdAt: new Date() },
     { id: 2, name: 'Jane Smith', email: 'jane.smith@example.com', company: 'Test Inc.', message: 'Information about security cabins.', status: 'In Progress', createdAt: new Date() },
+];
+
+const quotations: Quotation[] = [
+    {
+        id: 1,
+        enquiryId: 1,
+        customer: 'John Doe',
+        email: 'john.doe@example.com',
+        status: 'Sent',
+        subtotal: 15000,
+        tax: 2700,
+        total: 17700,
+        currency: 'INR',
+        items: [{ name: 'GRP Single-Door Enclosure', qty: 10, unit: 'pcs', price: 1500 }],
+        createdAt: new Date(),
+        validUntil: new Date(new Date().setDate(new Date().getDate() + 30)),
+    },
+    {
+        id: 2,
+        customer: 'New Client',
+        email: 'client@newcorp.com',
+        status: 'Draft',
+        subtotal: 85000,
+        tax: 15300,
+        total: 100300,
+        currency: 'INR',
+        items: [{ name: 'Security Guard Cabins', qty: 1, unit: 'pcs', price: 85000 }],
+        createdAt: new Date(),
+    }
 ];
 
 export const getProducts = async (): Promise<Product[]> => {
@@ -179,6 +218,10 @@ export const getBlogPostBySlug = async (slug: string): Promise<BlogPost | undefi
     return new Promise(resolve => setTimeout(() => resolve(blogPosts.find(p => p.slug === slug)), 500));
 };
 
+export const getDownloads = async (): Promise<Download[]> => {
+    return new Promise(resolve => setTimeout(() => resolve(downloads), 500));
+};
+
 export const getEnquiries = async (): Promise<Enquiry[]> => {
     return new Promise(resolve => setTimeout(() => resolve(enquiries), 500));
 };
@@ -194,4 +237,57 @@ export const addEnquiry = async (enquiry: Omit<Enquiry, 'id' | 'createdAt' | 'st
     // In a real app, this would also trigger sending emails.
     console.log("Simulating email to admin and user for new enquiry:", newEnquiry);
     return new Promise(resolve => setTimeout(() => resolve(newEnquiry), 500));
+};
+
+export const getQuotations = async (): Promise<Quotation[]> => {
+    return new Promise(resolve => setTimeout(() => resolve(quotations), 500));
+};
+
+export const getCustomers = async (): Promise<Customer[]> => {
+    const customerMap = new Map<string, Customer>();
+
+    // Process enquiries
+    enquiries.forEach(enquiry => {
+      if (!customerMap.has(enquiry.email)) {
+        customerMap.set(enquiry.email, {
+          id: enquiry.email,
+          name: enquiry.name,
+          company: enquiry.company,
+          email: enquiry.email,
+          phone: enquiry.phone,
+          enquiryCount: 0,
+          quotationCount: 0,
+          firstSeen: enquiry.createdAt,
+        });
+      }
+      const customer = customerMap.get(enquiry.email)!;
+      customer.enquiryCount++;
+      if (enquiry.createdAt < customer.firstSeen) {
+          customer.firstSeen = enquiry.createdAt;
+      }
+    });
+
+    // Process quotations
+    quotations.forEach(quote => {
+       if (!customerMap.has(quote.email)) {
+        customerMap.set(quote.email, {
+          id: quote.email,
+          name: quote.customer,
+          company: undefined, 
+          email: quote.email,
+          phone: undefined,
+          enquiryCount: 0,
+          quotationCount: 0,
+          firstSeen: quote.createdAt,
+        });
+      }
+      const customer = customerMap.get(quote.email)!;
+      customer.quotationCount++;
+       if (quote.createdAt < customer.firstSeen) {
+          customer.firstSeen = quote.createdAt;
+      }
+    });
+
+    const customers = Array.from(customerMap.values());
+    return new Promise(resolve => setTimeout(() => resolve(customers), 500));
 };

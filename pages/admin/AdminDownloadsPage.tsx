@@ -1,34 +1,34 @@
 import React, { useState, useEffect } from 'react';
-import { BlogPost } from '../../types';
-import { getBlogPosts } from '../../services/mockApi';
+import { Download } from '../../types';
+import { getDownloads } from '../../services/mockApi';
 import { Plus, Edit, Trash } from 'lucide-react';
 
-const AdminInsightsPage: React.FC = () => {
-    const [posts, setPosts] = useState<BlogPost[]>([]);
+const AdminDownloadsPage: React.FC = () => {
+    const [downloads, setDownloads] = useState<Download[]>([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const fetchPosts = async () => {
+        const fetchDownloads = async () => {
             setLoading(true);
-            const data = await getBlogPosts();
-            setPosts(data);
+            const data = await getDownloads();
+            setDownloads(data);
             setLoading(false);
         };
-        fetchPosts();
+        fetchDownloads();
     }, []);
 
-    const handleActionClick = (action: string, postTitle: string) => {
-        alert(`${action} clicked for "${postTitle}". This is a UI demonstration; no data will be changed.`);
+    const handleActionClick = (action: string, fileName: string) => {
+        alert(`${action} clicked for "${fileName}". This is a UI demonstration; no data will be changed.`);
     };
 
     return (
         <div>
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
-                <h1 className="text-2xl sm:text-3xl font-bold text-gray-800">Manage Insights (Blog)</h1>
+                <h1 className="text-2xl sm:text-3xl font-bold text-gray-800">Manage Downloads</h1>
                 <button 
-                    onClick={() => alert("Add new post form would appear here.")}
+                    onClick={() => alert("Add new download form would appear here.")}
                     className="bg-primary text-white px-4 py-2 rounded-md font-semibold hover:bg-blue-800 transition duration-300 flex items-center self-end sm:self-auto">
-                    <Plus size={18} className="mr-2"/> Add New Post
+                    <Plus size={18} className="mr-2"/> Add New Download
                 </button>
             </div>
             
@@ -38,15 +38,15 @@ const AdminInsightsPage: React.FC = () => {
                         <thead className="text-xs text-gray-700 uppercase bg-gray-50">
                             <tr>
                                 <th scope="col" className="px-6 py-3 whitespace-nowrap">Title</th>
-                                <th scope="col" className="px-6 py-3">Author</th>
-                                <th scope="col" className="px-6 py-3">Status</th>
+                                <th scope="col" className="px-6 py-3">Category</th>
+                                <th scope="col" className="px-6 py-3">Views</th>
                                 <th scope="col" className="px-6 py-3 whitespace-nowrap">Created At</th>
                                 <th scope="col" className="px-6 py-3">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             {loading ? (
-                                Array.from({ length: 3 }).map((_, index) => (
+                                Array.from({ length: 5 }).map((_, index) => (
                                     <tr key={index} className="bg-white border-b">
                                         <td className="px-6 py-4"><div className="h-4 bg-gray-200 rounded animate-pulse w-48"></div></td>
                                         <td className="px-6 py-4"><div className="h-4 bg-gray-200 rounded animate-pulse w-24"></div></td>
@@ -56,20 +56,16 @@ const AdminInsightsPage: React.FC = () => {
                                     </tr>
                                 ))
                             ) : (
-                                posts.map(post => (
-                                    <tr key={post.id} className="bg-white border-b hover:bg-gray-50">
-                                        <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">{post.title}</td>
-                                        <td className="px-6 py-4">{post.author}</td>
-                                        <td className="px-6 py-4">
-                                            <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${post.published ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'}`}>
-                                                {post.published ? 'Published' : 'Draft'}
-                                            </span>
-                                        </td>
-                                        <td className="px-6 py-4 whitespace-nowrap">{new Date(post.createdAt).toLocaleDateString()}</td>
+                                downloads.map(download => (
+                                    <tr key={download.id} className="bg-white border-b hover:bg-gray-50">
+                                        <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">{download.title}</td>
+                                        <td className="px-6 py-4">{download.category}</td>
+                                        <td className="px-6 py-4">{download.views}</td>
+                                        <td className="px-6 py-4 whitespace-nowrap">{new Date(download.createdAt).toLocaleDateString()}</td>
                                         <td className="px-6 py-4">
                                             <div className="flex space-x-2">
-                                                <button onClick={() => handleActionClick('Edit', post.title)} className="text-blue-600 hover:text-blue-800"><Edit size={18}/></button>
-                                                <button onClick={() => handleActionClick('Delete', post.title)} className="text-red-600 hover:text-red-800"><Trash size={18}/></button>
+                                                <button onClick={() => handleActionClick('Edit', download.title)} className="text-blue-600 hover:text-blue-800"><Edit size={18}/></button>
+                                                <button onClick={() => handleActionClick('Delete', download.title)} className="text-red-600 hover:text-red-800"><Trash size={18}/></button>
                                             </div>
                                         </td>
                                     </tr>
@@ -83,4 +79,4 @@ const AdminInsightsPage: React.FC = () => {
     );
 };
 
-export default AdminInsightsPage;
+export default AdminDownloadsPage;

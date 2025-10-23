@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Product } from '../types';
@@ -9,20 +8,20 @@ interface ProductCardProps {
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     return (
-        <div className="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col group transition-transform duration-300 hover:scale-105">
+        <div className="bg-background rounded-lg border border-border overflow-hidden flex flex-col group transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
             <div className="relative">
-                <img src={product.imageUrls[0]} alt={product.name} className="w-full h-56 object-cover" />
-                <div className="absolute top-0 right-0 bg-primary text-white text-xs font-semibold px-3 py-1 m-2 rounded-full">{product.categoryName}</div>
+                <img src={product.imageUrls[0]} alt={product.name} className="w-full h-60 object-cover" />
+                 <div className="absolute top-4 left-4 bg-primary text-white text-xs font-semibold px-3 py-1.5 rounded-full">{product.categoryName}</div>
             </div>
             <div className="p-6 flex flex-col flex-grow">
-                <h3 className="text-xl font-bold text-gray-800 mb-2">{product.name}</h3>
-                <p className="text-gray-600 text-sm mb-4 flex-grow">{product.summary}</p>
-                <div className="flex flex-wrap gap-2 mb-4">
+                <h3 className="text-xl font-bold text-text-DEFAULT mb-2">{product.name}</h3>
+                <p className="text-text-secondary text-sm mb-4 flex-grow">{product.summary}</p>
+                <div className="flex flex-wrap gap-2 mb-6">
                     {product.tags.slice(0, 3).map(tag => (
-                        <span key={tag} className="bg-neutral-dark text-gray-700 text-xs font-semibold px-2.5 py-1 rounded-full">{tag}</span>
+                        <span key={tag} className="bg-background-light text-text-secondary text-xs font-semibold px-3 py-1 rounded-full">{tag}</span>
                     ))}
                 </div>
-                <NavLink to={`/products/${product.slug}`} className="mt-auto bg-primary text-white text-center font-semibold py-2 px-4 rounded-md hover:bg-blue-800 transition duration-300">
+                <NavLink to={`/products/${product.slug}`} className="mt-auto bg-primary-medium text-white text-center font-semibold py-3 px-4 rounded-lg hover:bg-primary transition-all duration-300 group-hover:bg-accent">
                     View Details
                 </NavLink>
             </div>
