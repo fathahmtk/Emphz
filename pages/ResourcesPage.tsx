@@ -11,6 +11,19 @@ const ResourcesPage: React.FC = () => {
     const [categoryFilter, setCategoryFilter] = useState('All');
 
     useEffect(() => {
+        document.title = "Resources Library | EMPHZ Private Limited";
+        const setMetaTag = (name: string, content: string) => {
+            let element = document.querySelector(`meta[name="${name}"]`);
+            if (!element) {
+                element = document.createElement('meta');
+                element.setAttribute('name', name);
+                document.head.appendChild(element);
+            }
+            element.setAttribute('content', content);
+        };
+        setMetaTag('description', "Access technical resources for our GRP solutions. Download datasheets, CAD files, installation guides, and certifications from EMPHZ Private Limited.");
+        setMetaTag('keywords', "GRP datasheets, CAD files, technical resources, certifications, GRP guides, EMPHZ Private Limited");
+
         const fetchDownloads = async () => {
             setLoading(true);
             const data = await getDownloads();
@@ -34,6 +47,8 @@ const ResourcesPage: React.FC = () => {
     }, [downloads, categoryFilter, searchTerm]);
 
     const groupedDownloads = useMemo(() => {
+        // FIX: By providing a generic type argument to `reduce`, we ensure the accumulator `acc` and
+        // the final result are correctly typed, resolving the error with `files.map` downstream.
         return filteredDownloads.reduce<Record<string, DownloadType[]>>((acc, download) => {
             const category = download.category;
             if (!acc[category]) {
@@ -64,7 +79,7 @@ const ResourcesPage: React.FC = () => {
         <div className="bg-background-light min-h-screen">
             <div className="container mx-auto px-6 py-12">
                 <div className="text-center mb-12">
-                    <h1 className="text-4xl font-bold text-primary mb-2">Resources Library</h1>
+                    <h1 className="text-4xl font-bold font-heading text-primary mb-2">Resources Library</h1>
                     <p className="text-lg text-text-secondary max-w-3xl mx-auto">Access datasheets, CAD files, installation guides, and certifications. Select multiple files to create a custom submittal pack.</p>
                 </div>
 
@@ -110,7 +125,7 @@ const ResourcesPage: React.FC = () => {
                     <div className="space-y-10">
                         {Object.entries(groupedDownloads).map(([category, files]) => (
                             <div key={category}>
-                                <h2 className="text-2xl font-bold text-text-DEFAULT mb-4 pb-2 border-b-2 border-accent">{category}</h2>
+                                <h2 className="text-2xl font-bold font-heading text-text-DEFAULT mb-4 pb-2 border-b-2 border-accent">{category}</h2>
                                 <ul className="space-y-3">
                                     {files.map(file => (
                                         <li key={file.id} className="bg-white p-4 rounded-md shadow-sm flex items-center justify-between hover:bg-background-light transition-colors border border-border">
@@ -133,7 +148,7 @@ const ResourcesPage: React.FC = () => {
                     </div>
                 ) : (
                      <div className="text-center py-16">
-                        <h3 className="text-2xl font-semibold text-text-DEFAULT">No downloads found</h3>
+                        <h3 className="text-2xl font-semibold font-heading text-text-DEFAULT">No downloads found</h3>
                         <p className="text-text-secondary mt-2">Try adjusting your search or filter criteria.</p>
                     </div>
                 )}

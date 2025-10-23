@@ -9,6 +9,21 @@ const ContactPage: React.FC = () => {
     const [errors, setErrors] = useState({ name: '', email: '', message: '' });
 
     useEffect(() => {
+        document.title = "Contact Us | EMPHZ Private Limited";
+        const setMetaTag = (name: string, content: string) => {
+            let element = document.querySelector(`meta[name="${name}"]`);
+            if (!element) {
+                element = document.createElement('meta');
+                element.setAttribute('name', name);
+                document.head.appendChild(element);
+            }
+            element.setAttribute('content', content);
+        };
+        setMetaTag('description', "Get in touch with EMPHZ Private Limited for your GRP solution needs. Contact our team for a quote, project discussion, or any enquiry.");
+        setMetaTag('keywords', "Contact EMPHZ, get a quote, enquiry, GRP solutions, EMPHZ Private Limited");
+    }, []);
+
+    useEffect(() => {
         if (status === 'success') {
             const timer = setTimeout(() => {
                 setStatus('idle');
@@ -72,13 +87,13 @@ const ContactPage: React.FC = () => {
         <div className="bg-background-light">
             <div className="container mx-auto px-6 py-16">
                 <div className="text-center mb-12">
-                    <h1 className="text-4xl font-bold text-primary mb-2">Get in Touch</h1>
+                    <h1 className="text-4xl font-bold font-heading text-primary mb-2">Get in Touch</h1>
                     <p className="text-lg text-text-secondary">We're here to help with your project needs. Contact us or fill out the form below.</p>
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
                     <div className="bg-white p-8 rounded-lg shadow-lg border border-border">
-                        <h2 className="text-2xl font-bold text-primary mb-6">Contact Form</h2>
+                        <h2 className="text-2xl font-bold font-heading text-primary mb-6">Contact Form</h2>
                         {status === 'success' ? (
                             <SuccessAnimation message="Thank you! Your enquiry has been sent." />
                         ) : (
@@ -115,11 +130,11 @@ const ContactPage: React.FC = () => {
                     </div>
                      <div className="space-y-8">
                          <div className="bg-white p-8 rounded-lg shadow-lg border border-border">
-                             <h3 className="text-xl font-bold text-text-DEFAULT flex items-center mb-4"><MapPin className="text-accent mr-3"/>Head Office – Kerala</h3>
+                             <h3 className="text-xl font-bold font-heading text-text-DEFAULT flex items-center mb-4"><MapPin className="text-accent mr-3"/>Head Office – Kerala</h3>
                              <address className="text-text-secondary not-italic">C/o Kunhi Ebrayi, Government Hospital Road, Nut Street, Vadakara – 673104, India</address>
                          </div>
                           <div className="bg-white p-8 rounded-lg shadow-lg border border-border">
-                             <h3 className="text-xl font-bold text-text-DEFAULT flex items-center mb-4"><MapPin className="text-accent mr-3"/>Factory – Mysore, Karnataka</h3>
+                             <h3 className="text-xl font-bold font-heading text-text-DEFAULT flex items-center mb-4"><MapPin className="text-accent mr-3"/>Factory – Mysore, Karnataka</h3>
                              <address className="text-text-secondary not-italic">260/A, Hebbal Industrial Area, Mysore – 570016, India</address>
                          </div>
                           <div className="bg-white p-8 rounded-lg shadow-lg border border-border">

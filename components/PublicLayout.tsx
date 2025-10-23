@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
+import { NavLink, Outlet, useLocation } from 'react-router-dom';
 import { Phone, Mail, MessageSquare, Menu, X, Linkedin, Twitter, Facebook } from 'lucide-react';
 
 const publicNavLinks = [
@@ -25,14 +25,14 @@ const Header: React.FC = () => {
                     {publicNavLinks.map(link => (
                         <NavLink key={link.name} to={link.path} 
                             className={({ isActive }) => 
-                                `text-text-secondary hover:text-primary transition-colors duration-300 font-semibold pb-2 ${isActive ? 'border-b-2 border-accent text-primary' : 'border-b-2 border-transparent'}`
+                                `text-text-secondary hover:text-primary transition-colors duration-300 font-heading font-semibold pb-2 ${isActive ? 'border-b-2 border-accent text-primary' : 'border-b-2 border-transparent'}`
                             }>
                             {link.name}
                         </NavLink>
                     ))}
                  </nav>
                  <div className="hidden md:flex items-center space-x-4">
-                    <NavLink to="/contact" className="bg-accent text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-accent-hover shadow-sm hover:shadow-md transition-all duration-300">
+                    <NavLink to="/contact" className="bg-accent text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-accent-hover shadow-sm hover:shadow-md transition-all duration-300 font-heading">
                         Request a Quote
                     </NavLink>
                  </div>
@@ -52,12 +52,12 @@ const Header: React.FC = () => {
                                 to={link.path} 
                                 onClick={() => setIsMobileMenuOpen(false)}
                                 className={({ isActive }) => 
-                                    `px-4 py-2 rounded-md font-semibold ${isActive ? 'bg-accent text-white' : 'text-text-secondary hover:bg-background-light'}`
+                                    `px-4 py-2 rounded-md font-heading font-semibold ${isActive ? 'bg-accent text-white' : 'text-text-secondary hover:bg-background-light'}`
                                 }>
                                 {link.name}
                             </NavLink>
                         ))}
-                        <NavLink to="/contact" onClick={() => setIsMobileMenuOpen(false)} className="bg-accent text-white text-center px-5 py-2.5 rounded-lg font-semibold hover:bg-accent-hover shadow-sm transition-all duration-300 mt-2">
+                        <NavLink to="/contact" onClick={() => setIsMobileMenuOpen(false)} className="bg-accent text-white text-center px-5 py-2.5 rounded-lg font-semibold hover:bg-accent-hover shadow-sm transition-all duration-300 mt-2 font-heading">
                             Request a Quote
                         </NavLink>
                     </nav>
@@ -77,7 +77,7 @@ const Footer: React.FC = () => (
                     <p className="text-gray-400 text-sm">Engineering Tomorrow’s Infrastructure — Today.</p>
                 </div>
                  <div>
-                    <h4 className="font-semibold text-lg text-white mb-4">Quick Links</h4>
+                    <h4 className="font-heading font-semibold text-lg text-white mb-4">Quick Links</h4>
                     <ul className="space-y-3 text-sm">
                         {publicNavLinks.slice(0, 5).map(link => (
                            <li key={link.path}><NavLink to={link.path} className="text-gray-400 hover:text-white transition-colors">{link.name}</NavLink></li>
@@ -85,7 +85,7 @@ const Footer: React.FC = () => (
                     </ul>
                 </div>
                  <div>
-                    <h4 className="font-semibold text-lg text-white mb-4">Contact Us</h4>
+                    <h4 className="font-heading font-semibold text-lg text-white mb-4">Contact Us</h4>
                     <address className="text-gray-400 not-italic text-sm space-y-3">
                         <p>Head Office – Kerala, India</p>
                         <a href="tel:+918648881888" className="flex items-center hover:text-white transition-colors"><Phone size={14} className="mr-2"/>+91 86488 81888</a>
@@ -93,7 +93,7 @@ const Footer: React.FC = () => (
                     </address>
                 </div>
                  <div>
-                    <h4 className="font-semibold text-lg text-white mb-4">Follow Us</h4>
+                    <h4 className="font-heading font-semibold text-lg text-white mb-4">Follow Us</h4>
                      <div className="flex space-x-4">
                         <a href="#" className="text-gray-400 hover:text-white transition-colors" aria-label="LinkedIn"><Linkedin size={24}/></a>
                         <a href="#" className="text-gray-400 hover:text-white transition-colors" aria-label="Twitter"><Twitter size={24}/></a>
@@ -110,11 +110,14 @@ const Footer: React.FC = () => (
 
 
 const PublicLayout: React.FC = () => {
+  const location = useLocation();
   return (
     <div className="flex flex-col min-h-screen bg-background">
       <Header />
       <main className="flex-grow">
-        <Outlet />
+        <div key={location.pathname} className="page-transition">
+          <Outlet />
+        </div>
       </main>
       <Footer />
        <a href="#/contact" className="fixed bottom-6 right-6 bg-accent text-white p-4 rounded-full shadow-lg hover:bg-accent-hover transition-all duration-300 z-40 transform hover:scale-110">

@@ -21,6 +21,23 @@ const ProductDetailPage: React.FC = () => {
         fetchProduct();
     }, [slug]);
 
+    useEffect(() => {
+        if (product) {
+            document.title = `${product.name} | EMPHZ Private Limited`;
+            const setMetaTag = (name: string, content: string) => {
+                let element = document.querySelector(`meta[name="${name}"]`);
+                if (!element) {
+                    element = document.createElement('meta');
+                    element.setAttribute('name', name);
+                    document.head.appendChild(element);
+                }
+                element.setAttribute('content', content);
+            };
+            setMetaTag('description', `${product.summary} Discover the specifications and features of our high-performance GRP solutions.`);
+            setMetaTag('keywords', `${product.name}, GRP, ${product.categoryName}, ${product.tags.join(', ')}, EMPHZ Private Limited, GRP solutions`);
+        }
+    }, [product]);
+
     if (loading) {
         return (
              <div className="container mx-auto px-6 py-12 animate-pulse">
@@ -49,11 +66,11 @@ const ProductDetailPage: React.FC = () => {
                         {/* Add thumbnail images if available */}
                     </div>
                     <div>
-                        <h1 className="text-3xl sm:text-4xl font-bold text-primary mb-3 tracking-tight">{product.name}</h1>
+                        <h1 className="text-3xl sm:text-4xl font-bold font-heading text-primary mb-3 tracking-tight">{product.name}</h1>
                         <p className="text-lg text-text-secondary mb-8">{product.summary}</p>
                         
                         <div className="bg-background-light p-6 rounded-lg border border-border mb-8">
-                            <h3 className="text-xl font-bold text-text-DEFAULT mb-4">Key Specifications</h3>
+                            <h3 className="text-xl font-bold font-heading text-text-DEFAULT mb-4">Key Specifications</h3>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4 text-sm">
                                 {Object.entries(product.specs).map(([key, value]) => (
                                     <div key={key}>
@@ -65,7 +82,7 @@ const ProductDetailPage: React.FC = () => {
                         </div>
 
                         <div className="mb-8">
-                            <h3 className="text-xl font-bold text-text-DEFAULT mb-4">Features</h3>
+                            <h3 className="text-xl font-bold font-heading text-text-DEFAULT mb-4">Features</h3>
                             <ul className="space-y-3">
                                 <li className="flex items-center"><CheckCircle className="text-accent mr-3" size={20}/>Weatherproof & IP-Rated</li>
                                 <li className="flex items-center"><CheckCircle className="text-accent mr-3" size={20}/>Non-conductive & Safe</li>
@@ -77,7 +94,7 @@ const ProductDetailPage: React.FC = () => {
                         </div>
                         
                         <div className="mb-10">
-                             <h3 className="text-xl font-bold text-text-DEFAULT mb-4">Downloads</h3>
+                             <h3 className="text-xl font-bold font-heading text-text-DEFAULT mb-4">Downloads</h3>
                              <div className="flex flex-wrap gap-4">
                                 {product.pdfUrls.map(pdf => (
                                     <a key={pdf.title} href={pdf.url} target="_blank" rel="noopener noreferrer" className="flex items-center bg-gray-200 text-text-secondary px-4 py-2 rounded-lg hover:bg-gray-300 transition-colors font-medium">
@@ -86,7 +103,7 @@ const ProductDetailPage: React.FC = () => {
                                 ))}
                              </div>
                         </div>
-                         <NavLink to="/contact" className="inline-block bg-accent text-white w-full text-center py-4 rounded-lg font-semibold hover:bg-accent-hover shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                         <NavLink to="/contact" className="inline-block bg-accent text-white w-full text-center py-4 rounded-lg font-semibold hover:bg-accent-hover shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 font-heading">
                             Request a Quote for this Product
                         </NavLink>
                     </div>

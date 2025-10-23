@@ -12,7 +12,7 @@ const BlogPostCard: React.FC<{ post: BlogPost }> = ({ post }) => (
             <p className="text-sm font-semibold text-accent mb-2">
                 {post.publishedAt ? new Date(post.publishedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : 'Draft'}
             </p>
-            <h3 className="text-xl font-bold text-text-DEFAULT mb-3">{post.title}</h3>
+            <h3 className="text-xl font-bold font-heading text-text-DEFAULT mb-3">{post.title}</h3>
             <p className="text-text-secondary text-sm mb-4 flex-grow">{post.excerpt}</p>
             <NavLink to={`/insights/${post.slug}`} className="mt-auto font-semibold text-accent hover:text-accent-hover self-start">
                 Read More &rarr;
@@ -27,6 +27,19 @@ const InsightsPage: React.FC = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        document.title = "Insights & Articles | EMPHZ Private Limited";
+        const setMetaTag = (name: string, content: string) => {
+            let element = document.querySelector(`meta[name="${name}"]`);
+            if (!element) {
+                element = document.createElement('meta');
+                element.setAttribute('name', name);
+                document.head.appendChild(element);
+            }
+            element.setAttribute('content', content);
+        };
+        setMetaTag('description', "Explore the latest insights, articles, and thinking on composite engineering, GRP solutions, and industry trends from the experts at EMPHZ Private Limited.");
+        setMetaTag('keywords', "Composite engineering, GRP trends, industry insights, GRP articles, sustainability, EMPHZ Private Limited");
+
         const fetchPosts = async () => {
             setLoading(true);
             const data = await getBlogPosts();
@@ -40,7 +53,7 @@ const InsightsPage: React.FC = () => {
         <div className="bg-background-light min-h-screen">
             <div className="container mx-auto px-6 py-12">
                 <div className="text-center mb-12">
-                    <h1 className="text-4xl font-bold text-primary mb-2">Insights & Articles</h1>
+                    <h1 className="text-4xl font-bold font-heading text-primary mb-2">Insights & Articles</h1>
                     <p className="text-lg text-text-secondary">Explore our latest thinking on composite engineering, industry trends, and sustainability.</p>
                 </div>
 

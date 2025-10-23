@@ -21,6 +21,23 @@ const InsightDetailPage: React.FC = () => {
         fetchPost();
     }, [slug]);
 
+    useEffect(() => {
+        if (post) {
+            document.title = `${post.title} | EMPHZ Insights`;
+            const setMetaTag = (name: string, content: string) => {
+                let element = document.querySelector(`meta[name="${name}"]`);
+                if (!element) {
+                    element = document.createElement('meta');
+                    element.setAttribute('name', name);
+                    document.head.appendChild(element);
+                }
+                element.setAttribute('content', content);
+            };
+            setMetaTag('description', `${post.excerpt} - Read the full article from EMPHZ Private Limited on GRP solutions and composite engineering.`);
+            setMetaTag('keywords', `${post.title}, GRP insights, composite engineering, EMPHZ Private Limited, GRP solutions`);
+        }
+    }, [post]);
+
     if (loading) {
         return (
              <div className="container mx-auto px-6 py-12 animate-pulse">
@@ -44,7 +61,7 @@ const InsightDetailPage: React.FC = () => {
             <div className="container mx-auto px-6 py-12 max-w-4xl">
                 <article>
                     <header className="mb-8 text-center">
-                        <h1 className="text-4xl md:text-5xl font-bold text-primary mb-4 leading-tight">{post.title}</h1>
+                        <h1 className="text-4xl md:text-5xl font-bold font-heading text-primary mb-4 leading-tight tracking-tight">{post.title}</h1>
                         <div className="flex justify-center items-center space-x-6 text-gray-500 text-sm">
                             <div className="flex items-center">
                                 <User size={14} className="mr-2"/>

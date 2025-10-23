@@ -14,7 +14,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                  <div className="absolute top-4 left-4 bg-primary text-white text-xs font-semibold px-3 py-1.5 rounded-full">{product.categoryName}</div>
             </div>
             <div className="p-6 flex flex-col flex-grow">
-                <h3 className="text-xl font-bold text-text-DEFAULT mb-2">{product.name}</h3>
+                <h3 className="text-xl font-bold font-heading text-text-DEFAULT mb-2">{product.name}</h3>
                 <p className="text-text-secondary text-sm mb-4 flex-grow">{product.summary}</p>
                 <div className="flex flex-wrap gap-2 mb-6">
                     {product.tags.slice(0, 3).map(tag => (

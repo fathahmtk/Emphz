@@ -1,5 +1,3 @@
-
-
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Solution } from '../types';
@@ -11,6 +9,19 @@ const SolutionsPage: React.FC = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        document.title = "Industry Solutions | EMPHZ Private Limited";
+        const setMetaTag = (name: string, content: string) => {
+            let element = document.querySelector(`meta[name="${name}"]`);
+            if (!element) {
+                element = document.createElement('meta');
+                element.setAttribute('name', name);
+                document.head.appendChild(element);
+            }
+            element.setAttribute('content', content);
+        };
+        setMetaTag('description', "Discover industry-specific GRP solutions from EMPHZ Private Limited. We engineer high-performance composite systems for Electrical, Utilities, Renewable Energy, and Infrastructure sectors.");
+        setMetaTag('keywords', "Industry solutions, GRP for utilities, GRP for renewable energy, electrical infrastructure, composite solutions, EMPHZ Private Limited");
+
         const fetchSolutions = async () => {
             setLoading(true);
             const data = await getSolutions();
@@ -24,7 +35,7 @@ const SolutionsPage: React.FC = () => {
         <div className="bg-background-light min-h-screen">
             <div className="container mx-auto px-6 py-12">
                 <div className="text-center mb-12">
-                    <h1 className="text-4xl font-bold text-primary mb-2">Industry-Specific Solutions</h1>
+                    <h1 className="text-4xl font-bold font-heading text-primary mb-2">Industry-Specific Solutions</h1>
                     <p className="text-lg text-text-secondary max-w-3xl mx-auto">We engineer GRP systems to solve challenges in the world's most demanding sectors.</p>
                 </div>
                 
@@ -36,16 +47,16 @@ const SolutionsPage: React.FC = () => {
                 ) : (
                     solutions.map(solution => (
                         <div key={solution.slug} className="bg-white p-8 rounded-lg shadow-lg border border-border">
-                            <h2 className="text-3xl font-bold text-primary mb-4">{solution.name}</h2>
+                            <h2 className="text-3xl font-bold font-heading text-primary mb-4">{solution.name}</h2>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                                 <div>
-                                    <h4 className="font-semibold text-lg text-text-DEFAULT mb-2">The Challenge</h4>
+                                    <h4 className="font-semibold font-heading text-lg text-text-DEFAULT mb-2">The Challenge</h4>
                                     <p className="text-text-secondary">{solution.problem}</p>
-                                    <h4 className="font-semibold text-lg text-text-DEFAULT mt-6 mb-2">The EMPHZ Approach</h4>
+                                    <h4 className="font-semibold font-heading text-lg text-text-DEFAULT mt-6 mb-2">The EMPHZ Approach</h4>
                                     <p className="text-text-secondary">{solution.approach}</p>
                                 </div>
                                 <div>
-                                    <h4 className="font-semibold text-lg text-text-DEFAULT mb-2">Key Outcomes</h4>
+                                    <h4 className="font-semibold font-heading text-lg text-text-DEFAULT mb-2">Key Outcomes</h4>
                                     <ul className="space-y-2 mb-6">
                                         {solution.outcomes.map(outcome => (
                                             <li key={outcome} className="flex items-start">

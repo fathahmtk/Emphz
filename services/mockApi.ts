@@ -268,6 +268,15 @@ export const getBlogPosts = async (): Promise<BlogPost[]> => {
     return new Promise(resolve => setTimeout(() => resolve(blogPosts), 500));
 };
 
+export const getLatestBlogPosts = async (limit: number): Promise<BlogPost[]> => {
+    return new Promise(resolve => setTimeout(() => {
+        const published = blogPosts
+            .filter(post => post.published && post.publishedAt)
+            .sort((a, b) => new Date(b.publishedAt!).getTime() - new Date(a.publishedAt!).getTime());
+        resolve(published.slice(0, limit));
+    }, 500));
+};
+
 export const getBlogPostBySlug = async (slug: string): Promise<BlogPost | undefined> => {
     return new Promise(resolve => setTimeout(() => resolve(blogPosts.find(p => p.slug === slug)), 500));
 };
