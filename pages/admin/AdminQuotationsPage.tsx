@@ -6,6 +6,9 @@ import { Plus, Eye, FileText, Trash, Edit } from 'lucide-react';
 import { QuotationForm } from '../../components/QuotationForm';
 import { useToast } from '../../hooks/useToast';
 import { useI18n } from '../../hooks/useI18n';
+import { Pagination } from '../../components/Pagination';
+
+const ITEMS_PER_PAGE = 10;
 
 const statusColors = {
     Draft: 'bg-gray-200 text-gray-800 dark:bg-slate-700 dark:text-slate-300',
@@ -19,6 +22,7 @@ const AdminQuotationsPage: React.FC = () => {
     const [loading, setLoading] = useState(true);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [editingQuote, setEditingQuote] = useState<Quotation | null>(null);
+    const [currentPage, setCurrentPage] = useState(1);
     const { addToast } = useToast();
     const { t } = useI18n();
 
@@ -32,6 +36,12 @@ const AdminQuotationsPage: React.FC = () => {
     useEffect(() => {
         fetchQuotationsData();
     }, []);
+
+    const totalPages = Math.ceil(quotations.length / ITEMS_PER_PAGE);
+    const paginatedQuotations = quotations.slice(
+        (currentPage - 1) * ITEMS_PER_PAGE,
+        currentPage * ITEMS_PER_PAGE
+    );
 
     const handleAddNew = (prefillData?: Partial<Quotation>) => {
         setEditingQuote(prefillData ? prefillData as Quotation : null);
@@ -118,7 +128,7 @@ const AdminQuotationsPage: React.FC = () => {
                                     </tr>
                                 ))
                             ) : (
-                                quotations.map(quote => (
+                                paginatedQuotations.map(quote => (
                                     <tr key={quote.id} className="bg-white dark:bg-slate-800 border-b dark:border-slate-700 hover:bg-background-light dark:hover:bg-slate-700/50">
                                         <td className="px-6 py-4 font-medium text-text-DEFAULT dark:text-slate-200 whitespace-nowrap">QT-{String(quote.id).padStart(4, '0')}</td>
                                         <td className="px-6 py-4 whitespace-nowrap">{quote.customer}</td>
@@ -142,6 +152,11 @@ const AdminQuotationsPage: React.FC = () => {
                         </tbody>
                     </table>
                 </div>
+                <Pagination
+                    currentPage={currentPage}
+                    totalPages={totalPages}
+                    onPageChange={setCurrentPage}
+                />
             </div>
         </div>
     );

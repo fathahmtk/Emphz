@@ -1,7 +1,3 @@
-
-
-
-
 import React, { useState, useEffect } from 'react';
 import { User } from '../../types';
 import { getUsers, addUser, updateUser, deleteUser } from '../../services/mockApi';
@@ -9,12 +5,16 @@ import { Plus, Edit, Trash } from 'lucide-react';
 import { UserForm } from '../../components/UserForm';
 import { useToast } from '../../hooks/useToast';
 import { useI18n } from '../../hooks/useI18n';
+import { Pagination } from '../../components/Pagination';
+
+const ITEMS_PER_PAGE = 10;
 
 const AdminUsersPage: React.FC = () => {
     const [users, setUsers] = useState<User[]>([]);
     const [loading, setLoading] = useState(true);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [editingUser, setEditingUser] = useState<User | null>(null);
+    const [currentPage, setCurrentPage] = useState(1);
     const { addToast } = useToast();
     const { t } = useI18n();
 
@@ -28,6 +28,12 @@ const AdminUsersPage: React.FC = () => {
     useEffect(() => {
         fetchUsersData();
     }, []);
+
+    const totalPages = Math.ceil(users.length / ITEMS_PER_PAGE);
+    const paginatedUsers = users.slice(
+        (currentPage - 1) * ITEMS_PER_PAGE,
+        currentPage * ITEMS_PER_PAGE
+    );
 
     const handleAddNew = () => {
         setEditingUser(null);
@@ -115,7 +121,7 @@ const AdminUsersPage: React.FC = () => {
                                     </tr>
                                 ))
                             ) : (
-                                users.map(user => (
+                                paginatedUsers.map(user => (
                                     <tr key={user.id} className="bg-white dark:bg-slate-800 border-b dark:border-slate-700 hover:bg-background-light dark:hover:bg-slate-700/50">
                                         <td className="px-6 py-4 font-medium text-text-DEFAULT dark:text-slate-200 whitespace-nowrap">{user.name}</td>
                                         <td className="px-6 py-4">{user.email}</td>
@@ -137,6 +143,11 @@ const AdminUsersPage: React.FC = () => {
                         </tbody>
                     </table>
                 </div>
+                 <Pagination
+                    currentPage={currentPage}
+                    totalPages={totalPages}
+                    onPageChange={setCurrentPage}
+                />
             </div>
         </div>
     );

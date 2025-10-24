@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Solution } from '../../types';
 import { getSolutions, addSolution, updateSolution, deleteSolution } from '../../services/mockApi';
@@ -6,12 +5,16 @@ import { Plus, Edit, Trash } from 'lucide-react';
 import { SolutionForm } from '../../components/SolutionForm';
 import { useToast } from '../../hooks/useToast';
 import { useI18n } from '../../hooks/useI18n';
+import { Pagination } from '../../components/Pagination';
+
+const ITEMS_PER_PAGE = 10;
 
 const AdminSolutionsPage: React.FC = () => {
     const [solutions, setSolutions] = useState<Solution[]>([]);
     const [loading, setLoading] = useState(true);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [editingSolution, setEditingSolution] = useState<Solution | null>(null);
+    const [currentPage, setCurrentPage] = useState(1);
     const { addToast } = useToast();
     const { t } = useI18n();
 
@@ -25,6 +28,12 @@ const AdminSolutionsPage: React.FC = () => {
     useEffect(() => {
         fetchSolutionsData();
     }, []);
+
+    const totalPages = Math.ceil(solutions.length / ITEMS_PER_PAGE);
+    const paginatedSolutions = solutions.slice(
+        (currentPage - 1) * ITEMS_PER_PAGE,
+        currentPage * ITEMS_PER_PAGE
+    );
 
     const handleAddNew = () => {
         setEditingSolution(null);
@@ -108,7 +117,7 @@ const AdminSolutionsPage: React.FC = () => {
                                     </tr>
                                 ))
                             ) : (
-                                solutions.map(solution => (
+                                paginatedSolutions.map(solution => (
                                     <tr key={solution.slug} className="bg-white dark:bg-slate-800 border-b dark:border-slate-700 hover:bg-background-light dark:hover:bg-slate-700/50">
                                         <td className="px-6 py-4 font-medium text-text-DEFAULT dark:text-slate-200 whitespace-nowrap">{solution.name}</td>
                                         <td className="px-6 py-4 font-mono text-xs">{solution.slug}</td>
@@ -125,6 +134,11 @@ const AdminSolutionsPage: React.FC = () => {
                         </tbody>
                     </table>
                 </div>
+                 <Pagination
+                    currentPage={currentPage}
+                    totalPages={totalPages}
+                    onPageChange={setCurrentPage}
+                />
             </div>
         </div>
     );

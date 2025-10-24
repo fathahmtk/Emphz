@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useMemo } from 'react';
 import { useNavigate, NavLink, useLocation } from 'react-router-dom';
 import { Enquiry, Quotation } from '../../types';
@@ -8,6 +7,9 @@ import { Eye } from 'lucide-react';
 import { StatusDropdown } from '../../components/StatusDropdown';
 import { useToast } from '../../hooks/useToast';
 import { useI18n } from '../../hooks/useI18n';
+import { Pagination } from '../../components/Pagination';
+
+const ITEMS_PER_PAGE = 10;
 
 const AdminEnquiriesPage: React.FC = () => {
     const [enquiries, setEnquiries] = useState<Enquiry[]>([]);
@@ -15,6 +17,7 @@ const AdminEnquiriesPage: React.FC = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
     const [quotePrefill, setQuotePrefill] = useState<Partial<Quotation> | null>(null);
+    const [currentPage, setCurrentPage] = useState(1);
     const navigate = useNavigate();
     const location = useLocation();
     const { addToast } = useToast();
@@ -47,6 +50,16 @@ const AdminEnquiriesPage: React.FC = () => {
             enquiry.email.toLowerCase().includes(lowercasedTerm)
         );
     }, [enquiries, searchTerm]);
+
+    useEffect(() => {
+        setCurrentPage(1);
+    }, [searchTerm]);
+
+    const totalPages = Math.ceil(filteredEnquiries.length / ITEMS_PER_PAGE);
+    const paginatedEnquiries = filteredEnquiries.slice(
+        (currentPage - 1) * ITEMS_PER_PAGE,
+        currentPage * ITEMS_PER_PAGE
+    );
 
 
     const handleStatusChange = async (id: number, newStatus: Enquiry['status']) => {
@@ -127,7 +140,7 @@ const AdminEnquiriesPage: React.FC = () => {
                                     </tr>
                                 ))
                             ) : (
-                                filteredEnquiries.map(enquiry => (
+                                paginatedEnquiries.map(enquiry => (
                                     <tr key={enquiry.id} className="bg-white dark:bg-slate-800 border-b dark:border-slate-700 hover:bg-background-light dark:hover:bg-slate-700/50">
                                         <td className="px-6 py-4 whitespace-nowrap">
                                             <p className="font-medium text-text-DEFAULT dark:text-slate-200">{enquiry.name}</p>
@@ -168,6 +181,11 @@ const AdminEnquiriesPage: React.FC = () => {
                         </div>
                     )}
                 </div>
+                 <Pagination
+                    currentPage={currentPage}
+                    totalPages={totalPages}
+                    onPageChange={setCurrentPage}
+                />
             </div>
         </div>
     );

@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { BlogPost } from '../../types';
 import { getBlogPosts, addBlogPost, updateBlogPost, deleteBlogPost } from '../../services/mockApi';
@@ -6,12 +5,16 @@ import { Plus, Edit, Trash } from 'lucide-react';
 import { InsightForm } from '../../components/InsightForm';
 import { useToast } from '../../hooks/useToast';
 import { useI18n } from '../../hooks/useI18n';
+import { Pagination } from '../../components/Pagination';
+
+const ITEMS_PER_PAGE = 10;
 
 const AdminInsightsPage: React.FC = () => {
     const [posts, setPosts] = useState<BlogPost[]>([]);
     const [loading, setLoading] = useState(true);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [editingPost, setEditingPost] = useState<BlogPost | null>(null);
+    const [currentPage, setCurrentPage] = useState(1);
     const { addToast } = useToast();
     const { t } = useI18n();
 
@@ -25,6 +28,12 @@ const AdminInsightsPage: React.FC = () => {
     useEffect(() => {
         fetchPostsData();
     }, []);
+
+    const totalPages = Math.ceil(posts.length / ITEMS_PER_PAGE);
+    const paginatedPosts = posts.slice(
+        (currentPage - 1) * ITEMS_PER_PAGE,
+        currentPage * ITEMS_PER_PAGE
+    );
 
     const handleAddNew = () => {
         setEditingPost(null);
@@ -108,7 +117,7 @@ const AdminInsightsPage: React.FC = () => {
                                     </tr>
                                 ))
                             ) : (
-                                posts.map(post => (
+                                paginatedPosts.map(post => (
                                     <tr key={post.id} className="bg-white dark:bg-slate-800 border-b dark:border-slate-700 hover:bg-background-light dark:hover:bg-slate-700/50">
                                         <td className="px-6 py-4 font-medium text-text-DEFAULT dark:text-slate-200 whitespace-nowrap">{post.title}</td>
                                         <td className="px-6 py-4">{post.author}</td>
@@ -130,6 +139,11 @@ const AdminInsightsPage: React.FC = () => {
                         </tbody>
                     </table>
                 </div>
+                <Pagination
+                    currentPage={currentPage}
+                    totalPages={totalPages}
+                    onPageChange={setCurrentPage}
+                />
             </div>
         </div>
     );

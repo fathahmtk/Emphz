@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Download } from '../../types';
 import { getDownloads, addDownload, updateDownload, deleteDownload } from '../../services/mockApi';
@@ -6,12 +5,16 @@ import { Plus, Edit, Trash } from 'lucide-react';
 import { DownloadForm } from '../../components/DownloadForm';
 import { useToast } from '../../hooks/useToast';
 import { useI18n } from '../../hooks/useI18n';
+import { Pagination } from '../../components/Pagination';
+
+const ITEMS_PER_PAGE = 10;
 
 const AdminDownloadsPage: React.FC = () => {
     const [downloads, setDownloads] = useState<Download[]>([]);
     const [loading, setLoading] = useState(true);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [editingDownload, setEditingDownload] = useState<Download | null>(null);
+    const [currentPage, setCurrentPage] = useState(1);
     const { addToast } = useToast();
     const { t } = useI18n();
 
@@ -25,6 +28,12 @@ const AdminDownloadsPage: React.FC = () => {
     useEffect(() => {
         fetchDownloadsData();
     }, []);
+
+    const totalPages = Math.ceil(downloads.length / ITEMS_PER_PAGE);
+    const paginatedDownloads = downloads.slice(
+        (currentPage - 1) * ITEMS_PER_PAGE,
+        currentPage * ITEMS_PER_PAGE
+    );
 
     const handleAddNew = () => {
         setEditingDownload(null);
@@ -108,7 +117,7 @@ const AdminDownloadsPage: React.FC = () => {
                                     </tr>
                                 ))
                             ) : (
-                                downloads.map(download => (
+                                paginatedDownloads.map(download => (
                                     <tr key={download.id} className="bg-white dark:bg-slate-800 border-b dark:border-slate-700 hover:bg-background-light dark:hover:bg-slate-700/50">
                                         <td className="px-6 py-4 font-medium text-text-DEFAULT dark:text-slate-200 whitespace-nowrap">{download.title}</td>
                                         <td className="px-6 py-4">{download.category}</td>
@@ -126,6 +135,11 @@ const AdminDownloadsPage: React.FC = () => {
                         </tbody>
                     </table>
                 </div>
+                <Pagination
+                    currentPage={currentPage}
+                    totalPages={totalPages}
+                    onPageChange={setCurrentPage}
+                />
             </div>
         </div>
     );

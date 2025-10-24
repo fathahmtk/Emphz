@@ -93,7 +93,7 @@ const Header: React.FC = () => {
 
             {/* Mobile Menu */}
             {isMobileMenuOpen && (
-                <div className="fixed inset-0 bg-primary/50 z-50 lg:hidden" onClick={() => setIsMobileMenuOpen(false)}>
+                <div className="fixed inset-0 bg-primary/[.50] z-50 lg:hidden" onClick={() => setIsMobileMenuOpen(false)}>
                     <div className="absolute top-0 end-0 h-full w-full max-w-sm bg-background-default dark:bg-primary-dark p-6" onClick={e => e.stopPropagation()}>
                         <div className="flex justify-between items-center mb-8">
                             <img src={logoSvg} alt="EMPHZ Global Logo" className="h-12" />

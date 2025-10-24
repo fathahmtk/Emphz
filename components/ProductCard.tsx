@@ -24,7 +24,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, isSelectedFor
                     <img src={product.imageUrls[0].url} alt={product.name} className="w-full h-60 object-cover rounded-t-lg" />
                     <div className="absolute top-4 left-4 bg-primary text-white text-xs font-semibold px-3 py-1.5 rounded-full z-20">{product.categoryName}</div>
                     <div 
-                        className="absolute top-4 right-4 z-20 bg-background-default/80 dark:bg-primary/[.80] backdrop-blur-sm p-2 rounded-lg flex items-center cursor-pointer transition-colors hover:bg-background-light dark:hover:bg-primary-dark"
+                        className="absolute top-4 right-4 z-20 bg-white/80 dark:bg-primary/[.80] backdrop-blur-sm p-2 rounded-lg flex items-center cursor-pointer transition-colors hover:bg-background-light dark:hover:bg-primary-dark"
                         onClick={handleCheckboxClick}
                     >
                         <input

@@ -3,10 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import { Customer } from '../../types';
 import { getCustomers } from '../../services/mockApi';
 import { Eye } from 'lucide-react';
+import { Pagination } from '../../components/Pagination';
+
+const ITEMS_PER_PAGE = 10;
 
 const AdminCustomersPage: React.FC = () => {
     const [customers, setCustomers] = useState<Customer[]>([]);
     const [loading, setLoading] = useState(true);
+    const [currentPage, setCurrentPage] = useState(1);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -19,6 +23,12 @@ const AdminCustomersPage: React.FC = () => {
         };
         fetchCustomers();
     }, []);
+
+    const totalPages = Math.ceil(customers.length / ITEMS_PER_PAGE);
+    const paginatedCustomers = customers.slice(
+        (currentPage - 1) * ITEMS_PER_PAGE,
+        currentPage * ITEMS_PER_PAGE
+    );
 
     const handleViewHistory = (customerEmail: string) => {
         navigate(`/admin/enquiries?search=${encodeURIComponent(customerEmail)}`);
@@ -56,7 +66,7 @@ const AdminCustomersPage: React.FC = () => {
                                     </tr>
                                 ))
                             ) : (
-                                customers.map(customer => (
+                                paginatedCustomers.map(customer => (
                                     <tr key={customer.id} className="bg-white border-b border-border hover:bg-background-light">
                                         <td className="px-6 py-4 whitespace-nowrap">
                                             <p className="font-medium text-text-DEFAULT">{customer.name}</p>
@@ -82,6 +92,11 @@ const AdminCustomersPage: React.FC = () => {
                         </div>
                     )}
                 </div>
+                <Pagination
+                    currentPage={currentPage}
+                    totalPages={totalPages}
+                    onPageChange={setCurrentPage}
+                />
             </div>
         </div>
     );

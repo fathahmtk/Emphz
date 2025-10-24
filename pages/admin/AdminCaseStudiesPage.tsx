@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { CaseStudy } from '../../types';
 import { getCaseStudies, addCaseStudy, updateCaseStudy, deleteCaseStudy } from '../../services/mockApi';
@@ -6,12 +5,16 @@ import { Plus, Edit, Trash } from 'lucide-react';
 import { CaseStudyForm } from '../../components/CaseStudyForm';
 import { useToast } from '../../hooks/useToast';
 import { useI18n } from '../../hooks/useI18n';
+import { Pagination } from '../../components/Pagination';
+
+const ITEMS_PER_PAGE = 10;
 
 const AdminCaseStudiesPage: React.FC = () => {
     const [caseStudies, setCaseStudies] = useState<CaseStudy[]>([]);
     const [loading, setLoading] = useState(true);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [editingStudy, setEditingStudy] = useState<CaseStudy | null>(null);
+    const [currentPage, setCurrentPage] = useState(1);
     const { addToast } = useToast();
     const { t } = useI18n();
 
@@ -25,6 +28,12 @@ const AdminCaseStudiesPage: React.FC = () => {
     useEffect(() => {
         fetchCaseStudiesData();
     }, []);
+    
+    const totalPages = Math.ceil(caseStudies.length / ITEMS_PER_PAGE);
+    const paginatedCaseStudies = caseStudies.slice(
+        (currentPage - 1) * ITEMS_PER_PAGE,
+        currentPage * ITEMS_PER_PAGE
+    );
 
     const handleAddNew = () => {
         setEditingStudy(null);
@@ -108,7 +117,7 @@ const AdminCaseStudiesPage: React.FC = () => {
                                     </tr>
                                 ))
                             ) : (
-                                caseStudies.map(study => (
+                                paginatedCaseStudies.map(study => (
                                     <tr key={study.id} className="bg-white dark:bg-slate-800 border-b dark:border-slate-700 hover:bg-background-light dark:hover:bg-slate-700/50">
                                         <td className="px-6 py-4 font-medium text-text-DEFAULT dark:text-slate-200 whitespace-nowrap">{study.title}</td>
                                         <td className="px-6 py-4">{study.client}</td>
@@ -125,6 +134,11 @@ const AdminCaseStudiesPage: React.FC = () => {
                         </tbody>
                     </table>
                 </div>
+                 <Pagination
+                    currentPage={currentPage}
+                    totalPages={totalPages}
+                    onPageChange={setCurrentPage}
+                />
             </div>
         </div>
     );
