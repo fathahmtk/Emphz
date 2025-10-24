@@ -371,6 +371,7 @@ export const addProduct = async (productData: Omit<Product, 'id' | 'createdAt' |
         const category = productCategories.find(c => c.id === productData.categoryId);
         const newProduct: Product = {
             ...productData,
+            // Safely generate ID, starting from 1 if no products exist
             id: products.length > 0 ? Math.max(...products.map(p => p.id)) + 1 : 1,
             categoryName: category ? category.name : 'Unknown',
             createdAt: new Date(),
@@ -420,6 +421,7 @@ export const addCaseStudy = async (studyData: Omit<CaseStudy, 'id' | 'createdAt'
     return new Promise(resolve => setTimeout(() => {
         const newStudy: CaseStudy = {
             ...studyData,
+            // Safely generate ID, starting from 1 if no case studies exist
             id: caseStudies.length > 0 ? Math.max(...caseStudies.map(s => s.id)) + 1 : 1,
             createdAt: new Date(),
         };
@@ -516,6 +518,7 @@ export const addBlogPost = async (postData: Omit<BlogPost, 'id' | 'createdAt'>):
     return new Promise(resolve => setTimeout(() => {
         const newPost: BlogPost = {
             ...postData,
+            // Safely generate ID, starting from 1 if no blog posts exist
             id: blogPosts.length > 0 ? Math.max(...blogPosts.map(p => p.id)) + 1 : 1,
             createdAt: new Date(),
         };
@@ -556,6 +559,7 @@ export const addDownload = async (downloadData: Omit<Download, 'id' | 'createdAt
     return new Promise(resolve => setTimeout(() => {
         const newDownload: Download = {
             ...downloadData,
+            // Safely generate ID, starting from 1 if no downloads exist
             id: downloads.length > 0 ? Math.max(...downloads.map(d => d.id)) + 1 : 1,
             views: 0,
             createdAt: new Date(),
@@ -601,6 +605,7 @@ export const getEnquiryById = async (id: number): Promise<Enquiry | undefined> =
 export const addEnquiry = async (enquiry: Omit<Enquiry, 'id' | 'createdAt' | 'status'>): Promise<Enquiry> => {
     const newEnquiry: Enquiry = {
         ...enquiry,
+        // Safely generate ID, starting from 1 if no enquiries exist
         id: enquiries.length > 0 ? Math.max(...enquiries.map(e => e.id)) + 1 : 1,
         createdAt: new Date(),
         status: 'New',
@@ -636,6 +641,7 @@ export const addQuotation = async (quoteData: Omit<Quotation, 'id' | 'createdAt'
     return new Promise(resolve => setTimeout(() => {
         const newQuote: Quotation = {
             ...quoteData,
+            // Safely generate ID, starting from 1 if no quotations exist
             id: quotations.length > 0 ? Math.max(...quotations.map(q => q.id)) + 1 : 1,
             createdAt: new Date(),
         };
@@ -759,6 +765,7 @@ export const addUser = async (userData: Omit<User, 'id' | 'createdAt' | 'updated
     return new Promise(resolve => setTimeout(() => {
         const newUser: User = {
             ...userData,
+            // Safely generate ID, starting from 1 if no users exist
             id: users.length > 0 ? Math.max(...users.map(u => u.id)) + 1 : 1,
             createdAt: new Date(),
             updatedAt: new Date(),

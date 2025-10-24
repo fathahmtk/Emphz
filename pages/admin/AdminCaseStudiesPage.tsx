@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { CaseStudy } from '../../types';
 import { getCaseStudies, addCaseStudy, updateCaseStudy, deleteCaseStudy } from '../../services/mockApi';
@@ -114,8 +115,8 @@ const AdminCaseStudiesPage: React.FC = () => {
                                         <td className="px-6 py-4">{study.industry}</td>
                                         <td className="px-6 py-4">
                                             <div className="flex space-x-4">
-                                                <button onClick={() => handleEdit(study)} className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"><Edit size={18}/></button>
-                                                <button onClick={() => handleDelete(study.id, study.title)} className="text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300"><Trash size={18}/></button>
+                                                <button onClick={() => handleEdit(study)} className="text-accent hover:text-accent-hover"><Edit size={18}/></button>
+                                                <button onClick={() => handleDelete(study.id, study.title)} className="text-danger hover:opacity-80"><Trash size={18}/></button>
                                             </div>
                                         </td>
                                     </tr>

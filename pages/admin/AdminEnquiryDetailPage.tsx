@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, NavLink } from 'react-router-dom';
 import { Enquiry, Quotation } from '../../types';
@@ -94,7 +95,7 @@ const AdminEnquiryDetailPage: React.FC = () => {
         <div>
              {isQuoteModalOpen && <QuotationForm quote={quotePrefillData as Quotation} onSave={handleSaveQuote} onCancel={handleCancelQuote} />}
             <div className="mb-6 flex justify-between items-center">
-                <NavLink to="/admin/enquiries" className="flex items-center text-accent dark:text-neon hover:underline font-semibold">
+                <NavLink to="/admin/enquiries" className="flex items-center text-accent dark:text-accent hover:underline font-semibold">
                     <ArrowLeft size={18} className="mr-2" />
                     Back to Enquiries
                 </NavLink>

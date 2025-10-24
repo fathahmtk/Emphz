@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef } from 'react';
 import { MapPin, Phone, Mail, MessageSquare } from 'lucide-react';
 import { addEnquiry } from '../services/mockApi';
@@ -104,25 +105,25 @@ const ContactPage: React.FC = () => {
     ];
 
     const inputClasses = (hasError: boolean) =>
-        `mt-1 block w-full px-4 py-3 border rounded-md shadow-sm focus:outline-none bg-white dark:bg-slate-700 dark:text-white ${
+        `mt-1 block w-full px-4 py-3 border rounded-md shadow-sm focus:outline-none bg-background-default dark:bg-primary-dark dark:text-text-DEFAULT ${
             hasError
                 ? 'border-danger focus:border-danger focus:ring-danger'
-                : 'border-gray-300 dark:border-slate-600 focus:border-accent focus:ring-accent'
+                : 'border-border-default dark:border-border-dark focus:border-accent focus:ring-accent'
         }`;
 
 
     return (
-        <div className="bg-background-light dark:bg-slate-900">
-            <div className="bg-background dark:bg-slate-800 relative overflow-hidden">
+        <div className="bg-background-light dark:bg-primary-dark">
+            <div className="bg-background-default dark:bg-primary-dark relative overflow-hidden">
                 <div className="absolute inset-0">
                     <img src="https://images.unsplash.com/photo-1604147706283-d7119b5b822c?q=80&w=1920&auto=format&fit=crop" alt="Abstract background texture" className="w-full h-full object-cover opacity-50 dark:opacity-10" />
-                    <div className="absolute inset-0 bg-white/95 dark:bg-slate-800/95"></div>
+                    <div className="absolute inset-0 bg-white/95 dark:bg-primary-dark/[.95]"></div>
                 </div>
                 <div className="relative">
                     <Breadcrumbs links={breadcrumbLinks} />
                     <div className="container mx-auto px-6 py-16 text-center">
-                        <h1 className="text-4xl sm:text-5xl font-extrabold font-heading text-primary dark:text-white mb-3 tracking-tight">Contact EMPHZ Global</h1>
-                        <p className="text-lg text-text-secondary dark:text-slate-400">Get a Custom GRP Solution or Quotation from The GRP Experts.</p>
+                        <h1 className="text-4xl sm:text-5xl font-extrabold font-heading text-text-DEFAULT dark:text-text-DEFAULT mb-3 tracking-tight">Contact EMPHZ Global</h1>
+                        <p className="text-lg text-text-secondary dark:text-text-secondary">Get a Custom GRP Solution or Quotation from The GRP Experts.</p>
                     </div>
                 </div>
             </div>
@@ -131,29 +132,29 @@ const ContactPage: React.FC = () => {
 
             <div className="container mx-auto px-6 py-20">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-                    <div className="bg-white dark:bg-slate-800 p-8 rounded-lg shadow-lg border border-border dark:border-slate-700">
-                        <h2 className="text-3xl font-bold font-heading text-primary dark:text-white mb-6">Contact Form</h2>
+                    <div className="bg-background-default dark:bg-primary p-8 rounded-lg shadow-lg border border-border-default dark:border-border-dark">
+                        <h2 className="text-3xl font-bold font-heading text-text-DEFAULT dark:text-text-DEFAULT mb-6">Contact Form</h2>
                         <form onSubmit={handleSubmit} className="space-y-6" noValidate>
                             <div>
-                                <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-slate-300">Name</label>
+                                <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-text-secondary">Name</label>
                                 <input ref={nameInputRef} type="text" name="name" id="name" required value={formData.name} onChange={handleChange} onBlur={handleBlur} className={inputClasses(!!errors.name)}/>
                                 {errors.name && <p className="text-danger text-sm mt-1">{errors.name}</p>}
                             </div>
                             <div>
-                                <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-slate-300">Email</label>
+                                <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-text-secondary">Email</label>
                                 <input ref={emailInputRef} type="email" name="email" id="email" required value={formData.email} onChange={handleChange} onBlur={handleBlur} className={inputClasses(!!errors.email)}/>
                                 {errors.email && <p className="text-danger text-sm mt-1">{errors.email}</p>}
                             </div>
                             <div>
-                                <label htmlFor="company" className="block text-sm font-medium text-gray-700 dark:text-slate-300">Company (Optional)</label>
+                                <label htmlFor="company" className="block text-sm font-medium text-gray-700 dark:text-text-secondary">Company (Optional)</label>
                                 <input type="text" name="company" id="company" value={formData.company} onChange={handleChange} className={inputClasses(false)}/>
                             </div>
                             <div>
-                                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 dark:text-slate-300">Phone (Optional)</label>
+                                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 dark:text-text-secondary">Phone (Optional)</label>
                                 <input type="tel" name="phone" id="phone" value={formData.phone} onChange={handleChange} className={inputClasses(false)}/>
                             </div>
                             <div>
-                                <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-slate-300">Message</label>
+                                <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-text-secondary">Message</label>
                                 <textarea ref={messageInputRef} name="message" id="message" rows={4} required value={formData.message} onChange={handleChange} onBlur={handleBlur} className={inputClasses(!!errors.message)}></textarea>
                                 {errors.message && <p className="text-danger text-sm mt-1">{errors.message}</p>}
                             </div>
@@ -163,17 +164,17 @@ const ContactPage: React.FC = () => {
                         </form>
                     </div>
                      <div className="space-y-8">
-                         <div className="bg-white dark:bg-slate-800 p-8 rounded-lg shadow-lg border border-border dark:border-slate-700">
-                             <h3 className="text-xl font-bold font-heading text-text-DEFAULT dark:text-slate-200 flex items-center mb-4"><MapPin className="text-accent mr-3"/>Head Office – Kerala</h3>
-                             <address className="text-text-secondary dark:text-slate-400 not-italic">C/o Kunhi Ebrayi, Government Hospital Road, Nut Street, Vadakara – 673104, India</address>
+                         <div className="bg-background-default dark:bg-primary p-8 rounded-lg shadow-lg border border-border-default dark:border-border-dark">
+                             <h3 className="text-xl font-bold font-heading text-text-DEFAULT dark:text-text-DEFAULT flex items-center mb-4"><MapPin className="text-accent mr-3"/>Head Office – Kerala</h3>
+                             <address className="text-text-secondary dark:text-text-secondary not-italic">C/o Kunhi Ebrayi, Government Hospital Road, Nut Street, Vadakara – 673104, India</address>
                          </div>
-                          <div className="bg-white dark:bg-slate-800 p-8 rounded-lg shadow-lg border border-border dark:border-slate-700">
-                             <h3 className="text-xl font-bold font-heading text-text-DEFAULT dark:text-slate-200 flex items-center mb-4"><MapPin className="text-accent mr-3"/>Factory – Mysore, Karnataka</h3>
-                             <address className="text-text-secondary dark:text-slate-400 not-italic">260/A, Hebbal Industrial Area, Mysore – 570016, India</address>
+                          <div className="bg-background-default dark:bg-primary p-8 rounded-lg shadow-lg border border-border-default dark:border-border-dark">
+                             <h3 className="text-xl font-bold font-heading text-text-DEFAULT dark:text-text-DEFAULT flex items-center mb-4"><MapPin className="text-accent mr-3"/>Factory – Mysore, Karnataka</h3>
+                             <address className="text-text-secondary dark:text-text-secondary not-italic">260/A, Hebbal Industrial Area, Mysore – 570016, India</address>
                          </div>
-                          <div className="bg-white dark:bg-slate-800 p-8 rounded-lg shadow-lg border border-border dark:border-slate-700">
-                            <a href="tel:+918648881888" className="flex items-center text-lg text-text-secondary dark:text-slate-400 hover:text-accent mb-4"><Phone className="mr-3"/>+91 86488 81888</a>
-                            <a href="mailto:info@emphz.com" className="flex items-center text-lg text-text-secondary dark:text-slate-400 hover:text-accent"><Mail className="mr-3"/>info@emphz.com</a>
+                          <div className="bg-background-default dark:bg-primary p-8 rounded-lg shadow-lg border border-border-default dark:border-border-dark">
+                            <a href="tel:+918648881888" className="flex items-center text-lg text-text-secondary dark:text-text-secondary hover:text-accent mb-4"><Phone className="mr-3"/>+91 86488 81888</a>
+                            <a href="mailto:info@emphz.com" className="flex items-center text-lg text-text-secondary dark:text-text-secondary hover:text-accent"><Mail className="mr-3"/>info@emphz.com</a>
                          </div>
                          <a href="https://wa.me/918648881888" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-full bg-success text-white py-3 px-4 rounded-md shadow-sm font-semibold hover:opacity-90 transition">
                             <MessageSquare className="mr-2"/> Chat on WhatsApp

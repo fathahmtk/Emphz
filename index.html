@@ -4,10 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>EMPHZ Global</title>
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Poppins:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/index.css">
     <style>
       .timeline-item {
         opacity: 0;
@@ -84,71 +84,6 @@
         animation: bounce 2s infinite;
       }
     </style>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              graphite: '#1A1C1F',
-              teal: '#00979F',
-              silver: '#BAC5B3',
-              'neon-green': '#4A8266',
-              
-              text: {
-                DEFAULT: '#1A1C1F', // Graphite
-                secondary: '#52525b', // zinc-600
-              },
-              background: {
-                DEFAULT: '#FFFFFF',
-                light: '#F7F8FA',
-              },
-              border: '#E2E8F0', // slate-200
-              success: '#10B981', 
-              warning: '#F59E0B', 
-              danger: '#EF4444', 
-            },
-            fontFamily: {
-              sans: ['Poppins', 'sans-serif'],
-              heading: ['Orbitron', 'sans-serif'],
-              arabic: ['Tajawal', 'sans-serif'],
-            },
-             fontSize: {
-              'xs': '.75rem',
-              'sm': '.875rem',
-              'base': '1rem', // 16px
-              'lg': '1.125rem',
-              'xl': '1.25rem',
-              '2xl': '1.5rem',
-              '3xl': '1.875rem',
-              '4xl': '2.5rem',
-              '5xl': '3.25rem',
-              '6xl': '4rem',
-              '7xl': '5rem',
-            },
-            letterSpacing: {
-              tight: '-0.025em',
-              tighter: '-0.05em',
-            },
-            animation: {
-                'gradient-xy': 'gradient-xy 15s ease infinite',
-                'float': 'float 6s ease-in-out infinite',
-            },
-            keyframes: {
-                'gradient-xy': {
-                    '0%, 100%': {
-                        'background-size': '400% 400%',
-                        'background-position': 'left center'
-                    },
-                    '50%': {
-                        'background-size': '200% 200%',
-                        'background-position': 'right center'
-                    }
-                },
-            }
-          }
-        }
-      }
-    </script>
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -170,15 +105,33 @@
     "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
     "react/": "https://aistudiocdn.com/react@^19.2.0/",
     "lucide-react": "https://aistudiocdn.com/lucide-react@^0.546.0",
-    "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.9.4"
+    "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.9.4",
+    "@google/genai": "https://aistudiocdn.com/google-genai@^0.18.0",
+    "tailwindcss": "https://aistudiocdn.com/tailwindcss@^4.1.16"
   }
 }
 </script>
+<style>
+  /* CSS Variables for better dark mode management */
+  :root {
+    --color-text-default: #1A1C1F;
+    --color-text-secondary: #52525b;
+    --color-background-default: #FFFFFF;
+    --color-background-light: #F7F8FA;
+    --color-border-default: #E2E8F0;
+  }
+  .dark {
+    --color-text-default: #E0E0E0; /* Light gray for dark mode text */
+    --color-text-secondary: #9CA3AF; /* Muted gray for dark mode secondary text */
+    --color-background-default: #121417; /* Dark primary for dark mode background */
+    --color-background-light: #1A1C1F; /* Slightly lighter dark for light backgrounds */
+    --color-border-default: #374151; /* Darker border for dark mode */
+  }
+</style>
 </head>
-  <body class="bg-background-light font-sans text-base text-text-secondary">
+  <body class="bg-background-default font-sans text-base text-text-secondary">
     <div id="root"></div>
     <!-- This app is a single-page application. To see the full functionality including routing, please run it in a development environment. -->
-    <script src="/emphz_global.js"></script>
     <script type="module" src="/index.tsx"></script>
   </body>
 </html>

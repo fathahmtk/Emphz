@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Product } from '../../types';
 import { getProducts, addProduct, updateProduct, deleteProduct } from '../../services/mockApi';
@@ -112,7 +113,7 @@ const AdminProductsPage: React.FC = () => {
                                         <td className="px-6 py-4 font-medium text-text-DEFAULT dark:text-slate-200 whitespace-nowrap">{product.name}</td>
                                         <td className="px-6 py-4">{product.categoryName}</td>
                                         <td className="px-6 py-4">
-                                            <span className={`px-2 py-1 text-xs font-semibold rounded-full ${product.isFeatured ? 'bg-success/10 text-success' : 'bg-steel/20 text-steel'}`}>
+                                            <span className={`px-2 py-1 text-xs font-semibold rounded-full ${product.isFeatured ? 'bg-success/10 text-success' : 'bg-gray-100 text-gray-700 dark:bg-slate-700 dark:text-slate-300'}`}>
                                                {product.isFeatured ? 'Yes' : 'No'}
                                             </span>
                                         </td>

@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useMemo } from 'react';
 import { Product } from '../types';
 import { getProducts } from '../services/mockApi';
@@ -84,16 +85,16 @@ const ProductsPage: React.FC = () => {
                     onClose={() => setIsCompareModalOpen(false)}
                 />
             )}
-            <div className="bg-background dark:bg-primary-dark relative overflow-hidden">
+            <div className="bg-background-default dark:bg-primary-dark relative overflow-hidden">
                 <div className="absolute inset-0">
                     <img src="https://images.unsplash.com/photo-1604147706283-d7119b5b822c?q=80&w=1920&auto=format&fit=crop" alt="Abstract background texture" className="w-full h-full object-cover opacity-50 dark:opacity-10" />
-                    <div className="absolute inset-0 bg-white/95 dark:bg-primary-dark/95"></div>
+                    <div className="absolute inset-0 bg-white/95 dark:bg-primary-dark/[.95]"></div>
                 </div>
                 <div className="relative">
                     <Breadcrumbs links={breadcrumbLinks} />
                     <div className="container mx-auto px-6 py-24 text-center">
-                        <h1 className="text-4xl sm:text-5xl font-extrabold font-heading text-primary dark:text-white mb-3 tracking-tight">EMPHZ GRP Enclosures & Cabins</h1>
-                        <p className="text-lg text-text-secondary dark:text-steel-DEFAULT max-w-3xl mx-auto">Engineered Composite Solutions. Explore our complete catalog of high-performance GRP enclosures, modular cabins, and feeder pillars.</p>
+                        <h1 className="text-4xl sm:text-5xl font-extrabold font-heading text-text-DEFAULT dark:text-text-DEFAULT mb-3 tracking-tight">EMPHZ GRP Enclosures & Cabins</h1>
+                        <p className="text-lg text-text-secondary dark:text-text-secondary max-w-3xl mx-auto">Engineered Composite Solutions. Explore our complete catalog of high-performance GRP enclosures, modular cabins, and feeder pillars.</p>
                     </div>
                 </div>
             </div>
@@ -101,13 +102,13 @@ const ProductsPage: React.FC = () => {
             <SectionDivider />
 
             <div className="container mx-auto px-6 py-24">
-                <div className="bg-background dark:bg-primary-medium p-4 sm:p-6 rounded-lg shadow-sm border border-border dark:border-slate-700 mb-12 sticky top-[100px] z-30">
+                <div className="bg-background-default dark:bg-primary p-4 sm:p-6 rounded-lg shadow-sm border border-border-default dark:border-border-dark mb-12 sticky top-[100px] z-30">
                      <input
                         type="text"
                         placeholder="Search by name, summary, or tag..."
                         value={searchTerm}
                         onChange={e => setSearchTerm(e.target.value)}
-                        className="w-full px-4 py-3 border border-border dark:border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent mb-4 bg-white dark:bg-slate-700 dark:text-white"
+                        className="w-full px-4 py-3 border border-border-default dark:border-border-dark rounded-lg focus:outline-none focus:ring-2 focus:ring-accent mb-4 bg-background-default dark:bg-primary-dark dark:text-text-DEFAULT"
                     />
                     <div className="flex flex-wrap gap-2 justify-center">
                         {categories.map(cat => {
@@ -121,7 +122,7 @@ const ProductsPage: React.FC = () => {
                                 <button
                                     key={cat}
                                     onClick={() => handleCategoryToggle(cat)}
-                                    className={`px-4 py-2 text-sm font-semibold rounded-full transition-all duration-200 ${isActive ? 'bg-primary text-white shadow-md' : 'bg-white dark:bg-primary-dark text-text-secondary dark:text-steel-DEFAULT border border-border dark:border-slate-600 hover:bg-background-light dark:hover:bg-primary hover:border-gray-300 dark:hover:border-slate-500'}`}
+                                    className={`px-4 py-2 text-sm font-semibold rounded-full transition-all duration-200 ${isActive ? 'bg-primary text-white shadow-md' : 'bg-background-default dark:bg-primary-dark text-text-secondary border border-border-default dark:border-border-dark hover:bg-background-light dark:hover:bg-primary hover:border-gray-300 dark:hover:border-border-dark'}`}
                                 >
                                     {cat}
                                 </button>
@@ -133,7 +134,7 @@ const ProductsPage: React.FC = () => {
                 {loading ? (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                        {Array.from({ length: 6 }).map((_, index) => (
-                           <div key={index} className="bg-white dark:bg-primary-medium rounded-lg border border-border dark:border-slate-700 animate-pulse h-[450px]"></div>
+                           <div key={index} className="bg-background-default dark:bg-primary-light rounded-lg border border-border-default dark:border-border-dark animate-pulse h-[450px]"></div>
                        ))}
                    </div>
                 ) : (
@@ -150,14 +151,14 @@ const ProductsPage: React.FC = () => {
                 )}
                  {filteredProducts.length === 0 && !loading && (
                     <div className="text-center py-20">
-                        <h3 className="text-2xl font-semibold font-heading text-text-DEFAULT dark:text-white">No products found</h3>
-                        <p className="text-text-secondary dark:text-steel-DEFAULT mt-2">Try adjusting your search or filter criteria.</p>
+                        <h3 className="text-2xl font-semibold font-heading text-text-DEFAULT dark:text-text-DEFAULT">No products found</h3>
+                        <p className="text-text-secondary dark:text-text-secondary mt-2">Try adjusting your search or filter criteria.</p>
                     </div>
                 )}
             </div>
 
             {comparisonList.length > 0 && (
-                <div className="fixed bottom-6 right-6 z-50">
+                <div className="fixed bottom-6 end-6 z-50">
                     <button
                         onClick={() => setIsCompareModalOpen(true)}
                         disabled={comparisonList.length < 2}

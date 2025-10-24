@@ -1,9 +1,10 @@
+
 import React, { useState, useRef, useEffect } from 'react';
 import { Enquiry } from '../types';
 import { ChevronDown } from 'lucide-react';
 
 const statusColors: Record<Enquiry['status'], string> = {
-    New: 'bg-steel/20 text-steel-DEFAULT hover:bg-steel/30',
+    New: 'bg-gray-200 text-text-secondary hover:bg-gray-300',
     'In Progress': 'bg-warning/10 text-warning hover:bg-warning/20',
     Closed: 'bg-success/10 text-success hover:bg-success/20',
 };

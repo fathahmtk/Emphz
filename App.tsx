@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 
@@ -15,7 +16,8 @@ import ContactPage from './pages/ContactPage';
 import SearchResultsPage from './pages/SearchResultsPage';
 import NotFoundPage from './pages/NotFoundPage';
 
-import AdminLoginPage from './pages/admin/AdminLoginPage';
+// Fix: Changed AdminLoginPage import from default to named.
+import { AdminLoginPage } from './pages/admin/AdminLoginPage';
 import AdminLayout from './pages/admin/AdminLayout';
 import AdminDashboardPage from './pages/admin/AdminDashboardPage';
 import AdminProductsPage from './pages/admin/AdminProductsPage';

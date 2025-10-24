@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Download } from '../../types';
 import { getDownloads, addDownload, updateDownload, deleteDownload } from '../../services/mockApi';
@@ -115,8 +116,8 @@ const AdminDownloadsPage: React.FC = () => {
                                         <td className="px-6 py-4 whitespace-nowrap">{new Date(download.createdAt).toLocaleDateString()}</td>
                                         <td className="px-6 py-4">
                                             <div className="flex space-x-4">
-                                                <button onClick={() => handleEdit(download)} className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"><Edit size={18}/></button>
-                                                <button onClick={() => handleDelete(download.id, download.title)} className="text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300"><Trash size={18}/></button>
+                                                <button onClick={() => handleEdit(download)} className="text-accent hover:text-accent-hover"><Edit size={18}/></button>
+                                                <button onClick={() => handleDelete(download.id, download.title)} className="text-danger hover:opacity-80"><Trash size={18}/></button>
                                             </div>
                                         </td>
                                     </tr>

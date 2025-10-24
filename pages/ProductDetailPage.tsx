@@ -82,7 +82,7 @@ const ProductDetailPage: React.FC = () => {
         return (
             <div>
                 <Breadcrumbs links={notFoundBreadcrumbs} />
-                <div className="text-center py-20">Product not found.</div>
+                <div className="text-center py-20 text-text-DEFAULT dark:text-text-DEFAULT">Product not found.</div>
             </div>
         );
     }
@@ -94,47 +94,47 @@ const ProductDetailPage: React.FC = () => {
     ];
 
     return (
-        <div className="bg-background dark:bg-slate-900">
+        <div className="bg-background-default dark:bg-primary-dark">
             <Breadcrumbs links={breadcrumbLinks} />
             <div className="container mx-auto px-6 pt-12 pb-24">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
                     <div>
-                        <img src={product.imageUrls[0].url} alt={product.name} className="w-full rounded-lg shadow-xl mb-4 border border-border dark:border-slate-700" />
+                        <img src={product.imageUrls[0].url} alt={product.name} className="w-full rounded-lg shadow-xl mb-4 border border-border-default dark:border-border-dark" />
                         {/* Add thumbnail images if available */}
                     </div>
                     <div>
-                        <h1 className="text-3xl sm:text-4xl font-extrabold font-heading text-primary dark:text-white mb-3 tracking-tight">{product.name}</h1>
-                        <p className="text-lg text-text-secondary dark:text-slate-400 mb-8">{product.summary}</p>
+                        <h1 className="text-3xl sm:text-4xl font-extrabold font-heading text-text-DEFAULT dark:text-text-DEFAULT mb-3 tracking-tight">{product.name}</h1>
+                        <p className="text-lg text-text-secondary dark:text-text-secondary mb-8">{product.summary}</p>
                         
-                        <div className="bg-background-light dark:bg-slate-800 p-6 rounded-lg border border-border dark:border-slate-700 mb-8">
-                            <h3 className="text-xl font-bold font-heading text-text-DEFAULT dark:text-slate-200 mb-4">Key Specifications</h3>
+                        <div className="bg-background-light dark:bg-primary p-6 rounded-lg border border-border-default dark:border-border-dark mb-8">
+                            <h3 className="text-xl font-bold font-heading text-text-DEFAULT dark:text-text-DEFAULT mb-4">Key Specifications</h3>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4 text-sm">
                                 {Object.entries(product.specs).map(([key, value]) => (
                                     <div key={key}>
-                                        <p className="font-semibold text-text-secondary dark:text-slate-400">{key}</p>
-                                        <p className="text-text-DEFAULT dark:text-slate-300 font-medium">{value}</p>
+                                        <p className="font-semibold text-text-secondary dark:text-text-secondary">{key}</p>
+                                        <p className="text-text-DEFAULT dark:text-text-DEFAULT font-medium">{value}</p>
                                     </div>
                                 ))}
                             </div>
                         </div>
 
                         <div className="mb-8">
-                            <h3 className="text-xl font-bold font-heading text-text-DEFAULT dark:text-slate-200 mb-4">Features</h3>
+                            <h3 className="text-xl font-bold font-heading text-text-DEFAULT dark:text-text-DEFAULT mb-4">Features</h3>
                             <ul className="space-y-3">
-                                <li className="flex items-center text-text-secondary dark:text-slate-300"><CheckCircle className="text-accent mr-3" size={20}/>Weatherproof & IP-Rated</li>
-                                <li className="flex items-center text-text-secondary dark:text-slate-300"><CheckCircle className="text-accent mr-3" size={20}/>Non-conductive & Safe</li>
-                                <li className="flex items-center text-text-secondary dark:text-slate-300"><CheckCircle className="text-accent mr-3" size={20}/>Fire-safe & Self-extinguishing</li>
-                                <li className="flex items-center text-text-secondary dark:text-slate-300"><CheckCircle className="text-accent mr-3" size={20}/>UV & Corrosion Resistant</li>
-                                <li className="flex items-center text-text-secondary dark:text-slate-300"><CheckCircle className="text-accent mr-3" size={20}/>High Impact Strength</li>
-                                <li className="flex items-center text-text-secondary dark:text-slate-300"><CheckCircle className="text-accent mr-3" size={20}/>Maintenance-free Lifecycle</li>
+                                <li className="flex items-center text-text-secondary dark:text-text-secondary"><CheckCircle className="text-accent mr-3" size={20}/>Weatherproof & IP-Rated</li>
+                                <li className="flex items-center text-text-secondary dark:text-text-secondary"><CheckCircle className="text-accent mr-3" size={20}/>Non-conductive & Safe</li>
+                                <li className="flex items-center text-text-secondary dark:text-text-secondary"><CheckCircle className="text-accent mr-3" size={20}/>Fire-safe & Self-extinguishing</li>
+                                <li className="flex items-center text-text-secondary dark:text-text-secondary"><CheckCircle className="text-accent mr-3" size={20}/>UV & Corrosion Resistant</li>
+                                <li className="flex items-center text-text-secondary dark:text-text-secondary"><CheckCircle className="text-accent mr-3" size={20}/>High Impact Strength</li>
+                                <li className="flex items-center text-text-secondary dark:text-text-secondary"><CheckCircle className="text-accent mr-3" size={20}/>Maintenance-free Lifecycle</li>
                             </ul>
                         </div>
                         
                         <div className="mb-10">
-                             <h3 className="text-xl font-bold font-heading text-text-DEFAULT dark:text-slate-200 mb-4">Downloads</h3>
+                             <h3 className="text-xl font-bold font-heading text-text-DEFAULT dark:text-text-DEFAULT mb-4">Downloads</h3>
                              <div className="flex flex-wrap gap-4">
                                 {product.pdfUrls.map(pdf => (
-                                    <a key={pdf.title} href={pdf.url} target="_blank" rel="noopener noreferrer" className="flex items-center bg-gray-200 dark:bg-slate-700 text-text-secondary dark:text-slate-300 px-4 py-2 rounded-lg hover:bg-gray-300 dark:hover:bg-slate-600 transition-colors font-medium">
+                                    <a key={pdf.title} href={pdf.url} target="_blank" rel="noopener noreferrer" className="flex items-center bg-gray-200 dark:bg-primary-light text-text-secondary dark:text-text-secondary px-4 py-2 rounded-lg hover:bg-gray-300 dark:hover:bg-primary transition-colors font-medium">
                                         <Download size={18} className="mr-2"/>{pdf.title}
                                     </a>
                                 ))}
@@ -148,10 +148,10 @@ const ProductDetailPage: React.FC = () => {
             </div>
 
             {relatedProducts.length > 0 && (
-                <div className="bg-background-light dark:bg-slate-900 py-24">
+                <div className="bg-background-light dark:bg-primary py-24">
                     <SectionDivider />
                     <div className="container mx-auto px-6">
-                        <h2 className="text-3xl font-extrabold font-heading text-primary dark:text-white mb-12 text-center">You Might Also Like</h2>
+                        <h2 className="text-3xl font-extrabold font-heading text-text-DEFAULT dark:text-text-DEFAULT mb-12 text-center">You Might Also Like</h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                             {relatedProducts.map(relatedProduct => (
                                 <ProductCard key={relatedProduct.id} product={relatedProduct} isSelectedForCompare={false} onToggleCompare={() => {}}/>

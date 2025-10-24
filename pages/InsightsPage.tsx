@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { BlogPost } from '../types';
@@ -55,7 +56,7 @@ const InsightsPage: React.FC = () => {
             <div className="bg-background dark:bg-slate-800 relative overflow-hidden">
                  <div className="absolute inset-0">
                     <img src="https://images.unsplash.com/photo-1604147706283-d7119b5b822c?q=80&w=1920&auto=format&fit=crop" alt="Abstract background texture" className="w-full h-full object-cover opacity-50 dark:opacity-10" />
-                    <div className="absolute inset-0 bg-white/95 dark:bg-slate-800/95"></div>
+                    <div className="absolute inset-0 bg-white/95 dark:bg-slate-800/[.95]"></div>
                 </div>
                 <div className="relative">
                     <Breadcrumbs links={breadcrumbLinks} />

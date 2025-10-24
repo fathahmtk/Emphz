@@ -1,5 +1,7 @@
 
 
+
+
 import React, { useState, useEffect } from 'react';
 import { User } from '../../types';
 import { getUsers, addUser, updateUser, deleteUser } from '../../services/mockApi';
@@ -118,7 +120,7 @@ const AdminUsersPage: React.FC = () => {
                                         <td className="px-6 py-4 font-medium text-text-DEFAULT dark:text-slate-200 whitespace-nowrap">{user.name}</td>
                                         <td className="px-6 py-4">{user.email}</td>
                                         <td className="px-6 py-4">
-                                            <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-accent/10 text-accent">
+                                            <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-accent/[.10] text-accent">
                                                 {user.role}
                                             </span>
                                         </td>
@@ -126,7 +128,7 @@ const AdminUsersPage: React.FC = () => {
                                         <td className="px-6 py-4">
                                             <div className="flex space-x-4">
                                                 <button onClick={() => handleEdit(user)} className="text-accent hover:text-accent-hover"><Edit size={18}/></button>
-                                                <button onClick={() => handleDelete(user.id, user.name || '')} disabled={user.id === 1} className="text-danger hover:opacity-80 disabled:text-steel/50 disabled:cursor-not-allowed"><Trash size={18}/></button>
+                                                <button onClick={() => handleDelete(user.id, user.name || '')} disabled={user.id === 1} className="text-danger hover:opacity-80 disabled:text-gray-400 disabled:cursor-not-allowed"><Trash size={18}/></button>
                                             </div>
                                         </td>
                                     </tr>

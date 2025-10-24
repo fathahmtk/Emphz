@@ -8,7 +8,7 @@ import { useToast } from '../../hooks/useToast';
 import { useI18n } from '../../hooks/useI18n';
 
 const statusColors = {
-    Draft: 'bg-steel/20 text-steel-DEFAULT',
+    Draft: 'bg-gray-200 text-gray-800 dark:bg-slate-700 dark:text-slate-300',
     Sent: 'bg-warning/10 text-warning',
     Approved: 'bg-success/10 text-success',
     Rejected: 'bg-danger/10 text-danger',

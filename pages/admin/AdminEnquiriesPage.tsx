@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useMemo } from 'react';
 import { useNavigate, NavLink, useLocation } from 'react-router-dom';
 import { Enquiry, Quotation } from '../../types';
@@ -144,7 +145,7 @@ const AdminEnquiriesPage: React.FC = () => {
                                              <div className="flex items-center gap-4">
                                                 <NavLink 
                                                     to={`/admin/enquiries/${enquiry.id}`}
-                                                    className="text-accent dark:text-neon hover:underline font-semibold text-xs flex items-center gap-1"
+                                                    className="text-accent dark:text-accent hover:underline font-semibold text-xs flex items-center gap-1"
                                                 >
                                                     <Eye size={14}/> View
                                                 </NavLink>

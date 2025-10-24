@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Solution, Product } from '../types';
 import { getSolutions, getProductsBySlugs } from '../services/mockApi';
@@ -63,17 +64,17 @@ const SolutionsPage: React.FC = () => {
     ];
 
     return (
-        <div className="bg-background-light dark:bg-slate-900 min-h-screen">
-            <div className="bg-background dark:bg-slate-800 relative overflow-hidden">
+        <div className="bg-background-light dark:bg-primary-dark min-h-screen">
+            <div className="bg-background-default dark:bg-primary-dark relative overflow-hidden">
                 <div className="absolute inset-0">
                     <img src="https://images.unsplash.com/photo-1604147706283-d7119b5b822c?q=80&w=1920&auto=format&fit=crop" alt="Abstract background texture" className="w-full h-full object-cover opacity-50 dark:opacity-10" />
-                    <div className="absolute inset-0 bg-white/95 dark:bg-slate-800/95"></div>
+                    <div className="absolute inset-0 bg-white/95 dark:bg-primary-dark/[.95]"></div>
                 </div>
                 <div className="relative">
                     <Breadcrumbs links={breadcrumbLinks} />
                     <div className="container mx-auto px-6 py-16 text-center">
-                        <h1 className="text-4xl sm:text-5xl font-extrabold font-heading text-primary dark:text-white mb-3 tracking-tight">GRP Applications by EMPHZ</h1>
-                        <p className="text-lg text-text-secondary dark:text-slate-400 max-w-3xl mx-auto">Power, Energy, Telecom & Infrastructure. We engineer GRP solutions for the world's most demanding industries.</p>
+                        <h1 className="text-4xl sm:text-5xl font-extrabold font-heading text-text-DEFAULT dark:text-text-DEFAULT mb-3 tracking-tight">GRP Applications by EMPHZ</h1>
+                        <p className="text-lg text-text-secondary dark:text-text-secondary max-w-3xl mx-auto">Power, Energy, Telecom & Infrastructure. We engineer GRP solutions for the world's most demanding industries.</p>
                     </div>
                 </div>
             </div>
@@ -84,30 +85,30 @@ const SolutionsPage: React.FC = () => {
                 <div className="space-y-16">
                 {loading ? (
                     Array.from({ length: 2 }).map((_, index) => (
-                        <div key={index} className="bg-white dark:bg-slate-800 p-8 rounded-lg shadow-lg animate-pulse h-80"></div>
+                        <div key={index} className="bg-background-default dark:bg-primary p-8 rounded-lg shadow-lg animate-pulse h-80"></div>
                     ))
                 ) : (
                     solutions.map(solution => (
-                        <div key={solution.slug} className="bg-white dark:bg-slate-800 p-8 rounded-lg shadow-lg border border-border dark:border-slate-700">
-                            <h2 className="text-3xl font-bold font-heading text-primary dark:text-white mb-6">{solution.name}</h2>
+                        <div key={solution.slug} className="bg-background-default dark:bg-primary p-8 rounded-lg shadow-lg border border-border-default dark:border-border-dark">
+                            <h2 className="text-3xl font-bold font-heading text-text-DEFAULT dark:text-text-DEFAULT mb-6">{solution.name}</h2>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
                                 <div>
-                                    <h4 className="font-semibold font-heading text-lg text-text-DEFAULT dark:text-slate-200 mb-2">The Challenge</h4>
-                                    <p className="text-text-secondary dark:text-slate-400">{solution.problem}</p>
-                                    <h4 className="font-semibold font-heading text-lg text-text-DEFAULT dark:text-slate-200 mt-6 mb-2">The EMPHZ Approach</h4>
-                                    <p className="text-text-secondary dark:text-slate-400">{solution.approach}</p>
+                                    <h4 className="font-semibold font-heading text-lg text-text-DEFAULT dark:text-text-DEFAULT mb-2">The Challenge</h4>
+                                    <p className="text-text-secondary dark:text-text-secondary">{solution.problem}</p>
+                                    <h4 className="font-semibold font-heading text-lg text-text-DEFAULT dark:text-text-DEFAULT mt-6 mb-2">The EMPHZ Approach</h4>
+                                    <p className="text-text-secondary dark:text-text-secondary">{solution.approach}</p>
                                 </div>
                                 <div>
-                                    <h4 className="font-semibold font-heading text-lg text-text-DEFAULT dark:text-slate-200 mb-2">Key Outcomes</h4>
+                                    <h4 className="font-semibold font-heading text-lg text-text-DEFAULT dark:text-text-DEFAULT mb-2">Key Outcomes</h4>
                                     <ul className="space-y-2 mb-6">
                                         {solution.outcomes.map(outcome => (
                                             <li key={outcome} className="flex items-start">
                                                 <Check className="text-accent mr-2 mt-1 flex-shrink-0" size={20}/>
-                                                <span className="text-text-secondary dark:text-slate-400">{outcome}</span>
+                                                <span className="text-text-secondary dark:text-text-secondary">{outcome}</span>
                                             </li>
                                         ))}
                                     </ul>
-                                    <h4 className="font-semibold font-heading text-lg text-text-DEFAULT dark:text-slate-200 mt-6 mb-3">Recommended Products</h4>
+                                    <h4 className="font-semibold font-heading text-lg text-text-DEFAULT dark:text-text-DEFAULT mt-6 mb-3">Recommended Products</h4>
                                     {solution.productDetails ? (
                                         solution.productDetails.length > 0 ? (
                                             <div className="grid grid-cols-2 gap-4">
@@ -116,12 +117,12 @@ const SolutionsPage: React.FC = () => {
                                                 ))}
                                             </div>
                                         ) : (
-                                            <p className="text-sm text-text-secondary dark:text-slate-400">No specific products recommended for this solution.</p>
+                                            <p className="text-sm text-text-secondary dark:text-text-secondary">No specific products recommended for this solution.</p>
                                         )
                                     ) : (
                                         <div className="grid grid-cols-2 gap-4 animate-pulse">
-                                            <div className="h-40 bg-gray-200 dark:bg-slate-700 rounded-lg"></div>
-                                            <div className="h-40 bg-gray-200 dark:bg-slate-700 rounded-lg"></div>
+                                            <div className="h-40 bg-gray-200 dark:bg-primary-light rounded-lg"></div>
+                                            <div className="h-40 bg-gray-200 dark:bg-primary-light rounded-lg"></div>
                                         </div>
                                     )}
                                 </div>

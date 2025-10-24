@@ -8,7 +8,7 @@ import { useToast } from '../../hooks/useToast';
 import { useI18n } from '../../hooks/useI18n';
 
 const statusColors = {
-    Draft: 'bg-steel/20 text-steel-DEFAULT',
+    Draft: 'bg-gray-200 text-gray-800 dark:bg-slate-700 dark:text-slate-300',
     Sent: 'bg-warning/10 text-warning',
     Approved: 'bg-success/10 text-success',
     Rejected: 'bg-danger/10 text-danger',
@@ -88,14 +88,14 @@ const AdminQuotationDetailPage: React.FC = () => {
         <div>
             {isModalOpen && <QuotationForm quote={quote} onSave={handleSave} onCancel={handleCancel} />}
             <div className="mb-6 flex flex-col sm:flex-row justify-between items-center gap-4">
-                <NavLink to="/admin/quotations" className="flex items-center text-accent dark:text-neon hover:underline font-semibold self-start">
+                <NavLink to="/admin/quotations" className="flex items-center text-accent dark:text-accent hover:underline font-semibold self-start">
                     <ArrowLeft size={18} className="mr-2" />
                     Back to Quotations
                 </NavLink>
                 <div className="flex gap-4 self-end sm:self-auto">
                         <button
                         onClick={handleDownloadPdf}
-                        className="bg-primary-medium text-white px-4 py-2 rounded-lg font-semibold hover:bg-primary-dark shadow-sm transition-all duration-300 flex items-center"
+                        className="bg-primary text-white px-4 py-2 rounded-lg font-semibold hover:bg-primary-dark shadow-sm transition-all duration-300 flex items-center"
                     >
                         <Download size={16} className="mr-2" />
                         Download PDF

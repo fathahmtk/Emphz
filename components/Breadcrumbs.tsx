@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { ChevronRight } from 'lucide-react';
@@ -24,7 +25,7 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ links }) => {
             <li key={index} className="flex items-center">
               {index > 0 && <ChevronRight size={16} className="mx-1 text-gray-400" />}
               {link.path ? (
-                <NavLink to={link.path} className="hover:underline hover:text-graphite transition-colors">
+                <NavLink to={link.path} className="hover:underline hover:text-primary transition-colors">
                   {link.name}
                 </NavLink>
               ) : (

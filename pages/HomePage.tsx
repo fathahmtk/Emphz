@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import {
@@ -51,8 +52,8 @@ const useScrollAnimation = () => {
 };
 
 const InfoCard: React.FC<{ icon: React.ReactNode; title: string; children: React.ReactNode }> = ({ icon, title, children }) => (
-    <div className="bg-white p-8 rounded-xl shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 h-full text-center">
-        <div className="text-teal w-16 h-16 mx-auto mb-6 flex items-center justify-center">
+    <div className="bg-background-default dark:bg-primary-dark p-8 rounded-xl shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 h-full text-center">
+        <div className="text-accent w-16 h-16 mx-auto mb-6 flex items-center justify-center">
             {icon}
         </div>
         <h3 className="text-xl font-bold font-heading text-text-DEFAULT mb-2">{title}</h3>
@@ -63,7 +64,7 @@ const InfoCard: React.FC<{ icon: React.ReactNode; title: string; children: React
 const IndustryCard: React.FC<{ name: string; imageUrl: string }> = ({ name, imageUrl }) => (
     <div className="relative rounded-lg overflow-hidden group aspect-w-1 aspect-h-1">
         <img src={imageUrl} alt={name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-primary/[.70] to-transparent"></div>
         <div className="absolute bottom-0 left-0 p-6">
             <h3 className="text-white text-2xl font-bold font-heading">{name}</h3>
         </div>
@@ -72,13 +73,13 @@ const IndustryCard: React.FC<{ name: string; imageUrl: string }> = ({ name, imag
 );
 
 const TestimonialCard: React.FC<{ testimonial: Testimonial }> = ({ testimonial }) => (
-    <div className="bg-white p-8 rounded-lg h-full flex flex-col transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
-        <Quote className="w-10 h-10 text-teal mb-4" />
+    <div className="bg-background-default dark:bg-primary-dark p-8 rounded-lg h-full flex flex-col transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+        <Quote className="w-10 h-10 text-accent mb-4" />
         <blockquote className="text-text-secondary italic mb-6 flex-grow">
             “{testimonial.quote}”
         </blockquote>
         <div className="flex items-center mt-auto">
-            <img src={testimonial.avatarUrl} alt={testimonial.name} className="w-14 h-14 rounded-full me-4 border-2 border-teal" />
+            <img src={testimonial.avatarUrl} alt={testimonial.name} className="w-14 h-14 rounded-full me-4 border-2 border-accent" />
             <div>
                 <p className="font-bold font-heading text-text-DEFAULT">{testimonial.name}</p>
                 <p className="text-sm text-text-secondary">{testimonial.company}</p>
@@ -91,14 +92,14 @@ const InsightCard: React.FC<{ post: BlogPost }> = ({ post }) => {
     const { t } = useI18n();
     return (
         <div className="group [perspective:1000px] h-full">
-            <div className="relative bg-white rounded-lg overflow-hidden flex flex-col h-full transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(5deg)] shadow-md hover:shadow-2xl">
+            <div className="relative bg-background-default dark:bg-primary-dark rounded-lg overflow-hidden flex flex-col h-full transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(5deg)] shadow-md hover:shadow-2xl">
                 <div className="relative">
                     <img src={post.coverUrl} alt={post.title} className="w-full h-48 object-cover" />
                 </div>
                 <div className="p-6 flex flex-col flex-grow">
                     <p className="text-xs text-text-secondary mb-2">{new Date(post.publishedAt!).toLocaleDateString()}</p>
                     <h3 className="text-lg font-bold font-heading text-text-DEFAULT mb-2 flex-grow">{post.title}</h3>
-                    <NavLink to={`/insights/${post.slug}`} className="relative z-10 mt-4 font-semibold text-teal hover:opacity-80 flex items-center group-hover:gap-3 transition-all duration-300">
+                    <NavLink to={`/insights/${post.slug}`} className="relative z-10 mt-4 font-semibold text-accent hover:opacity-80 flex items-center group-hover:gap-3 transition-all duration-300">
                         Read More <ArrowRight size={16} className="ms-1" />
                     </NavLink>
                 </div>
@@ -114,7 +115,7 @@ const heroImages = [
 ];
 
 const certificationLogos = {
-    iso: `data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXN0YW1wIj48cGF0aCBkPSJNMjAgMTN2NkEyIDEgMCAwIDEgMTggMjFIMmEyIDEgMCAwIDEgLTItMlY5YTIgMSAwIDAgMSAyLTdoOG0yIDJoOGEyIDEgMCAwIDEgMiAydjJjMCAxLjc0LTIuMDIgMy41LTYgMy41cy02LTEuNzYtNi0zLjVWMjAiLz48L3N2Zz4=`,
+    iso: `data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWZpbGUtY2hlY2siPjxwYXRoIGQ9Ik0xNSAySDZhMiAyIDAgMCAwLTIgMnYxNmEyIDIgMCAwIDAgMiAyaDEyYTIgMiAwIDAgMCAyLTJWN1oiLz48cGF0aCBkPSJNMTQgMnY0YTIgMiAwIDAgMCAyIDJoNCIvPjxwYXRoIGQ9Im05IDE1IDIgMiA0LTQiLz48L3N2Zz4=`,
     iec: `data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXNoaWVsZCI+PHBhdGggZD0iTTEyIDIyUzggMTcgOCAxMS41VjVhMSAxIDAgMCAxIDEtMWg2YTEgMSAwIDAgMSAxIDF2Ni41QzE2IDE3IDEyIDIyIDEyIDIyWiIvPjwvc3ZnPg==`,
     ul: `data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWF3YXJkIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjgiIHI9IjYiLz48cG9seWdvbiBwb2ludHM9IjEyIDIyIDkgMTIgMTUgMTIgMTIgMjIiLz48cG9seWdvbiBwb2ludHM9IjEwIDEyIDcgMjIgMTMgMjIiLz48L3N2Zz4=`,
 };
@@ -132,7 +133,7 @@ const HomePage: React.FC = () => {
     usePageMetadata(
         "EMPHZ Global | The GRP Company – Enclosures, Kiosks & Composite Solutions",
         "When it’s GRP, it’s EMPHZ. EMPHZ Global is India’s leading manufacturer of high-performance Glass Reinforced Plastic (GRP) enclosures, kiosks, and modular cabins — engineered for durability, safety, and sustainability across global industries.",
-        "EMPHZ GRP, The GRP Company, GRP enclosures, GRP kiosks, GRP cabins, GRP manufacturer India, composite solutions, Glass Reinforced Plastic, EMPHZ Global"
+        "EMPHZ GRP, The GRP Company, GRP enclosures, GRP kiosks, GRP cabins, composite solutions, Glass Reinforced Plastic, EMPHZ Global"
     );
     
     useEffect(() => {
@@ -168,7 +169,7 @@ const HomePage: React.FC = () => {
     }, []);
 
     return (
-        <div className="bg-background overflow-x-hidden">
+        <div className="bg-background-default dark:bg-primary min-h-screen overflow-x-hidden">
             {/* Hero Section */}
             <section className="relative min-h-screen flex flex-col justify-center items-center text-white overflow-hidden">
                 {/* Background Images Slider */}
@@ -178,7 +179,7 @@ const HomePage: React.FC = () => {
                         className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === currentSlide ? 'opacity-100' : 'opacity-0'}`}
                         aria-hidden={index !== currentSlide}
                     >
-                        <div className="absolute inset-0 bg-gradient-to-br from-graphite via-graphite to-black opacity-80"></div>
+                        <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-black opacity-80"></div>
                         <img 
                             src={image.url} 
                             alt={image.alt} 
@@ -195,7 +196,7 @@ const HomePage: React.FC = () => {
                         {t(`home.hero.slide${currentSlide + 1}.subtitle`)}
                     </p>
                     <div ref={animatedRef} className="timeline-item flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4" style={{transitionDelay: '600ms'}}>
-                        <NavLink to="/products" className="w-full sm:w-auto bg-teal text-white px-8 py-4 rounded-lg font-semibold hover:opacity-90 shadow-lg transition-all duration-300 transform hover:-translate-y-1 cta-glow font-heading">
+                        <NavLink to="/products" className="w-full sm:w-auto bg-accent text-white px-8 py-4 rounded-lg font-semibold hover:bg-accent-hover shadow-lg transition-all duration-300 transform hover:-translate-y-1 cta-glow font-heading">
                             {t('home.hero.exploreProducts')}
                         </NavLink>
                         <NavLink to="/contact" className="w-full sm:w-auto bg-white/20 backdrop-blur-sm text-white px-8 py-4 rounded-lg font-semibold hover:bg-white/30 transition-colors duration-300 font-heading">
@@ -222,7 +223,7 @@ const HomePage: React.FC = () => {
             </section>
             
             {/* Why GRP? Section */}
-            <section className="py-32 bg-background-light">
+            <section className="py-32 bg-background-light dark:bg-primary">
                  <div className="container mx-auto px-6">
                     <div className="text-center max-w-3xl mx-auto mb-16">
                         <h2 ref={animatedRef} className="timeline-item text-4xl font-extrabold font-heading tracking-tight text-text-DEFAULT mb-4">{t('home.advantage.title')}</h2>
@@ -240,7 +241,7 @@ const HomePage: React.FC = () => {
             <SectionDivider />
 
             {/* Featured Products */}
-            <section className="py-32 bg-background">
+            <section className="py-32 bg-background-default dark:bg-primary-dark">
                 <div className="container mx-auto px-6">
                     <div className="text-center max-w-3xl mx-auto">
                         <h2 ref={animatedRef} className="timeline-item text-4xl font-extrabold font-heading tracking-tight text-text-DEFAULT mb-4">{t('home.featuredProducts.title')}</h2>
@@ -249,7 +250,7 @@ const HomePage: React.FC = () => {
                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                        {loading ? (
                          Array.from({ length: 3 }).map((_, index) => (
-                           <div key={index} className="bg-white rounded-lg border border-border animate-pulse h-[450px]"></div>
+                           <div key={index} className="bg-background-default dark:bg-primary-light rounded-lg border border-border-default dark:border-border-dark animate-pulse h-[450px]"></div>
                          ))
                        ) : (
                          featuredProducts.map((product, index) => (
@@ -263,27 +264,27 @@ const HomePage: React.FC = () => {
             </section>
 
             {/* Our Process Section */}
-            <section className="py-32 bg-graphite text-white pattern-bg">
+            <section className="py-32 bg-primary dark:bg-primary-dark text-white pattern-bg">
                 <div className="container mx-auto px-6">
                      <h2 ref={animatedRef} className="timeline-item text-4xl font-extrabold font-heading tracking-tight text-center mb-16">{t('home.process.title')}</h2>
                      <div ref={animatedRef} className="timeline-item grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12" style={{transitionDelay: '200ms'}}>
                         <div className="text-center">
-                            <Wrench size={40} className="mx-auto mb-4 text-teal"/>
+                            <Wrench size={40} className="mx-auto mb-4 text-accent"/>
                             <h3 className="font-bold font-heading text-xl mb-2">{t('home.process.step1Title')}</h3>
                             <p className="text-gray-300 text-sm">{t('home.process.step1Text')}</p>
                         </div>
                          <div className="text-center">
-                            <Cpu size={40} className="mx-auto mb-4 text-teal"/>
+                            <Cpu size={40} className="mx-auto mb-4 text-accent"/>
                             <h3 className="font-bold font-heading text-xl mb-2">{t('home.process.step2Title')}</h3>
                             <p className="text-gray-300 text-sm">{t('home.process.step2Text')}</p>
                         </div>
                          <div className="text-center">
-                            <GitMerge size={40} className="mx-auto mb-4 text-teal"/>
+                            <GitMerge size={40} className="mx-auto mb-4 text-accent"/>
                             <h3 className="font-bold font-heading text-xl mb-2">{t('home.process.step3Title')}</h3>
                             <p className="text-gray-300 text-sm">{t('home.process.step3Text')}</p>
                         </div>
                         <div className="text-center">
-                            <PackageCheck size={40} className="mx-auto mb-4 text-teal"/>
+                            <PackageCheck size={40} className="mx-auto mb-4 text-accent"/>
                             <h3 className="font-bold font-heading text-xl mb-2">{t('home.process.step4Title')}</h3>
                             <p className="text-gray-300 text-sm">{t('home.process.step4Text')}</p>
                         </div>
@@ -292,7 +293,7 @@ const HomePage: React.FC = () => {
             </section>
 
             {/* Industries We Serve Section */}
-            <section className="py-32 bg-background-light">
+            <section className="py-32 bg-background-light dark:bg-primary">
                 <div className="container mx-auto px-6">
                     <h2 ref={animatedRef} className="timeline-item text-4xl font-extrabold font-heading tracking-tight text-center text-text-DEFAULT mb-16">{t('home.industries.title')}</h2>
                     <div ref={animatedRef} className="timeline-item grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" style={{transitionDelay: '200ms'}}>
@@ -307,7 +308,7 @@ const HomePage: React.FC = () => {
             <SectionDivider />
             
             {/* Global Reach & Certifications */}
-            <section className="py-32 bg-background">
+            <section className="py-32 bg-background-default dark:bg-primary-dark">
                 <div className="container mx-auto px-6">
                     <div className="text-center max-w-3xl mx-auto mb-16">
                         <h2 ref={animatedRef} className="timeline-item text-4xl font-extrabold font-heading tracking-tight text-text-DEFAULT mb-4">{t('home.global.title')}</h2>
@@ -316,22 +317,22 @@ const HomePage: React.FC = () => {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                         <div ref={animatedRef} className="timeline-item" style={{transitionDelay: '200ms'}}>
                             <div className="relative">
-                               <Globe size={150} className="mx-auto text-gray-200"/>
+                               <Globe size={150} className="mx-auto text-gray-200 dark:text-gray-700"/>
                                <p className="text-center mt-4 font-semibold text-text-secondary">{t('home.global.regions')}</p>
                             </div>
                         </div>
                         <div ref={animatedRef} className="timeline-item" style={{transitionDelay: '300ms'}}>
                             <div className="grid grid-cols-2 md:grid-cols-3 gap-8 text-center">
-                                <div className="flex flex-col items-center justify-center bg-background-light p-6 rounded-lg">
-                                    <img src={certificationLogos.iso} alt="ISO 9001:2015" className="h-16 w-16 mb-2 text-text-secondary"/>
+                                <div className="flex flex-col items-center justify-center bg-background-light dark:bg-primary p-6 rounded-lg">
+                                    <img src={certificationLogos.iso} alt="ISO 9001:2015" className="h-16 w-16 mb-2 text-text-secondary dark:text-steel-dark"/>
                                     <p className="font-semibold text-sm text-text-secondary">ISO 9001:2015</p>
                                 </div>
-                                <div className="flex flex-col items-center justify-center bg-background-light p-6 rounded-lg">
-                                    <img src={certificationLogos.iec} alt="IEC Certified" className="h-16 w-16 mb-2 text-text-secondary"/>
+                                <div className="flex flex-col items-center justify-center bg-background-light dark:bg-primary p-6 rounded-lg">
+                                    <img src={certificationLogos.iec} alt="IEC Certified" className="h-16 w-16 mb-2 text-text-secondary dark:text-steel-dark"/>
                                     <p className="font-semibold text-sm text-text-secondary">IEC Certified</p>
                                 </div>
-                                <div className="flex flex-col items-center justify-center bg-background-light p-6 rounded-lg">
-                                    <img src={certificationLogos.ul} alt="UL Listed" className="h-16 w-16 mb-2 text-text-secondary"/>
+                                <div className="flex flex-col items-center justify-center bg-background-light dark:bg-primary p-6 rounded-lg">
+                                    <img src={certificationLogos.ul} alt="UL Listed" className="h-16 w-16 mb-2 text-text-secondary dark:text-steel-dark"/>
                                     <p className="font-semibold text-sm text-text-secondary">UL Listed</p>
                                 </div>
                             </div>
@@ -343,10 +344,10 @@ const HomePage: React.FC = () => {
             <SectionDivider />
 
             {/* CEO Message */}
-             <section className="bg-background-light">
+             <section className="bg-background-light dark:bg-primary">
                 <div className="container mx-auto px-6 py-32 text-center">
                     <div ref={animatedRef} className="timeline-item">
-                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=tinysrgb&w=120&h=120&fit=crop" alt="Muhammed Rashik P, CEO" className="w-28 h-28 rounded-full mx-auto mb-8 border-4 border-white shadow-lg"/>
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=tinysrgb&w=120&h=120&fit=crop" alt="Muhammed Rashik P, CEO" className="w-28 h-28 rounded-full mx-auto mb-8 border-4 border-background-default dark:border-primary-dark shadow-lg"/>
                         <blockquote className="text-2xl sm:text-3xl font-medium font-heading max-w-4xl mx-auto mb-6 leading-snug text-text-DEFAULT">
                             {t('home.ceo.quote')}
                         </blockquote>
@@ -358,13 +359,13 @@ const HomePage: React.FC = () => {
             <SectionDivider />
 
             {/* Testimonials Section */}
-            <section className="py-32 bg-background">
+            <section className="py-32 bg-background-default dark:bg-primary-dark">
                 <div className="container mx-auto px-6">
                     <h2 ref={animatedRef} className="timeline-item text-4xl font-extrabold font-heading tracking-tight text-center text-text-DEFAULT mb-16">{t('home.testimonials.title')}</h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                        {loading ? (
                          Array.from({ length: 3 }).map((_, index) => (
-                           <div key={index} className="bg-white rounded-lg animate-pulse h-[350px]"></div>
+                           <div key={index} className="bg-background-default dark:bg-primary-light rounded-lg animate-pulse h-[350px]"></div>
                          ))
                        ) : (
                          testimonials.map((testimonial, index) => (
@@ -380,13 +381,13 @@ const HomePage: React.FC = () => {
             <SectionDivider />
 
             {/* Latest Insights */}
-            <section className="py-32 bg-background-light">
+            <section className="py-32 bg-background-light dark:bg-primary">
                 <div className="container mx-auto px-6">
                     <h2 ref={animatedRef} className="timeline-item text-4xl font-extrabold font-heading tracking-tight text-center text-text-DEFAULT mb-16">{t('home.insights.title')}</h2>
                      <div className="grid grid-cols-1 md:grid-cols-2 max-w-4xl mx-auto gap-8">
                        {loading ? (
                          Array.from({ length: 2 }).map((_, index) => (
-                           <div key={index} className="bg-white rounded-lg animate-pulse h-[350px]"></div>
+                           <div key={index} className="bg-background-default dark:bg-primary-light rounded-lg animate-pulse h-[350px]"></div>
                          ))
                        ) : (
                          latestPosts.map((post, index) => (
@@ -400,14 +401,14 @@ const HomePage: React.FC = () => {
             </section>
 
             {/* Final CTA */}
-            <section className="bg-graphite text-white pattern-bg">
+            <section className="bg-primary dark:bg-primary-dark text-white pattern-bg">
                 <div className="container mx-auto px-6 py-24 text-center">
                     <h2 ref={animatedRef} className="timeline-item text-4xl font-extrabold font-heading tracking-tight mb-4">{t('home.cta.title')}</h2>
                     <p ref={animatedRef} className="timeline-item text-lg text-gray-200 max-w-2xl mx-auto mb-8" style={{transitionDelay: '150ms'}}>
                         {t('home.cta.subtitle')}
                     </p>
                     <div ref={animatedRef} className="timeline-item flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4" style={{transitionDelay: '300ms'}}>
-                        <NavLink to="/contact" className="w-full sm:w-auto bg-teal text-white px-8 py-3 rounded-lg font-bold hover:opacity-90 shadow-lg transition-colors duration-300 transform hover:-translate-y-1 font-heading">
+                        <NavLink to="/contact" className="w-full sm:w-auto bg-accent text-white px-8 py-3 rounded-lg font-bold hover:bg-accent-hover shadow-lg transition-colors duration-300 transform hover:-translate-y-1 font-heading">
                             {t('home.cta.discussProject')}
                         </NavLink>
                         <a href={companyProfileUrl} download className="w-full sm:w-auto bg-transparent border-2 border-white text-white px-8 py-3 rounded-lg font-bold hover:bg-white/10 transition-colors duration-300 font-heading">
