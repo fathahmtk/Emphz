@@ -148,7 +148,7 @@ const SearchModal: React.FC<{ isOpen: boolean; onClose: () => void; }> = ({ isOp
   
   return (
     <div
-      className="fixed inset-0 z-[100] bg-black/50 backdrop-blur-sm flex items-start justify-center p-4 pt-[15vh] animate-fadeIn"
+      className="fixed inset-0 z-[100] bg-black/30 backdrop-blur-sm flex items-start justify-center p-4 pt-[15vh] animate-fadeIn"
       style={{ animationDuration: '0.3s' }}
       onClick={onClose}
       onKeyDown={handleKeyDown}
@@ -156,7 +156,7 @@ const SearchModal: React.FC<{ isOpen: boolean; onClose: () => void; }> = ({ isOp
       aria-modal="true"
     >
       <div
-        className="relative bg-[var(--color-surface-primary)] w-full max-w-2xl rounded-lg shadow-2xl overflow-hidden flex flex-col border border-[var(--color-border)]"
+        className="relative bg-[var(--color-surface-primary)] backdrop-blur-xl saturate-150 w-full max-w-2xl rounded-lg shadow-2xl overflow-hidden flex flex-col border border-[var(--color-border)]"
         onClick={e => e.stopPropagation()}
       >
         <div className="relative flex-shrink-0">
@@ -180,7 +180,7 @@ const SearchModal: React.FC<{ isOpen: boolean; onClose: () => void; }> = ({ isOp
             <div className="p-8 text-center text-[var(--color-text-secondary)]"><p>No results found for "{debouncedQuery}".</p></div>
           ) : sortedResults.length > 0 && (
             <>
-              <div className="p-2 bg-[var(--color-background)] border-b border-[var(--color-border)] flex items-center justify-between text-sm sticky top-0 z-10">
+              <div className="p-2 bg-black/5 border-b border-[var(--color-border)] flex items-center justify-between text-sm sticky top-0 z-10">
                 <span className="text-[var(--color-text-secondary)] font-medium px-2">{sortedResults.length} results</span>
                 <select value={sortOrder} onChange={e => setSortOrder(e.target.value as any)} className="text-sm rounded border-[var(--color-border)] focus:ring-2 focus:ring-[var(--color-brand)]/50 focus:border-[var(--color-brand)] p-1 bg-[var(--color-surface-primary)] text-[var(--color-text-secondary)]">
                   <option value="relevance">Sort by: Relevance</option>
@@ -193,7 +193,7 @@ const SearchModal: React.FC<{ isOpen: boolean; onClose: () => void; }> = ({ isOp
               <ul>
                 {sortedResults.map((result, index) => (
                   <li key={`${result.type}-${result.code}`}>
-                    <Link to={result.link} onClick={onClose} className={`flex items-start gap-4 p-4 border-b border-[var(--color-border)] transition-colors duration-150 ${activeIndex === index ? 'bg-[var(--color-brand)]/10' : 'hover:bg-[var(--color-background)]'}`}>
+                    <Link to={result.link} onClick={onClose} className={`flex items-start gap-4 p-4 border-b border-black/10 transition-colors duration-150 ${activeIndex === index ? 'bg-[var(--color-brand)]/10' : 'hover:bg-black/5'}`}>
                       <div className={`mt-1 flex-shrink-0 rounded-md flex items-center justify-center h-8 w-8 ${result.type === 'Product' ? 'bg-[var(--color-brand)]/20 text-[var(--color-brand)]' : 'bg-gray-400/20 text-gray-500'}`}>
                         {result.type === 'Product' ? <Icon name="engineering" className="h-5 w-5" /> : <Icon name="customization" className="h-5 w-5" />}
                       </div>
@@ -209,8 +209,8 @@ const SearchModal: React.FC<{ isOpen: boolean; onClose: () => void; }> = ({ isOp
             </>
           )}
         </div>
-        <div className="text-xs text-center p-2 bg-[var(--color-background)] text-[var(--color-text-secondary)] flex-shrink-0 border-t border-[var(--color-border)]">
-          Tip: Press <kbd className="font-sans border rounded px-1.5 py-0.5 bg-white border-gray-300 shadow-sm">Ctrl+K</kbd> to open search.
+        <div className="text-xs text-center p-2 bg-black/5 text-[var(--color-text-secondary)] flex-shrink-0 border-t border-[var(--color-border)]">
+          Tip: Press <kbd className="font-sans border rounded px-1.5 py-0.5 bg-white/50 border-gray-300 shadow-sm">Ctrl+K</kbd> to open search.
         </div>
       </div>
     </div>

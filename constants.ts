@@ -112,7 +112,11 @@ export const PRODUCT_CATALOG: ProductCategory[] = [
         code: 'E-101',
         name: 'GRP Single-Door Enclosure',
         description: 'Compact IP66 cabinet for small control panels, CCTV power boxes, and sensors.',
-        image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726a?q=80&w=2070&auto=format&fit=crop',
+        image: [
+          'https://images.unsplash.com/photo-1550745165-9bc0b252726a?q=80&w=2070&auto=format&fit=crop',
+          'https://images.unsplash.com/photo-1617789255069-eda08a55e4e8?q=80&w=2070&auto=format&fit=crop',
+          'https://images.unsplash.com/photo-1581093582415-998f8287894a?q=80&w=1974&auto=format&fit=crop'
+        ],
       },
       {
         code: 'E-102',
@@ -200,7 +204,11 @@ export const PRODUCT_CATALOG: ProductCategory[] = [
         name: 'GRP Security / Guard Cabin',
         useCase: 'Prefab sentry units for factories, offices, and gated communities.',
         description: 'Prefab sentry units for factories, offices, and gated communities.',
-        image: 'https://images.unsplash.com/photo-1589112447279-3c35b89a8523?q=80&w=2070&auto=format&fit=crop',
+        image: [
+          'https://images.unsplash.com/photo-1589112447279-3c35b89a8523?q=80&w=2070&auto=format&fit=crop',
+          'https://images.unsplash.com/photo-1583593223533-0c4c4b92b0c3?q=80&w=1935&auto=format&fit=crop',
+          'https://images.unsplash.com/photo-1520092352425-9699925a2b33?q=80&w=2070&auto=format&fit=crop'
+        ],
       },
       {
         code: 'M-202',
@@ -557,7 +565,11 @@ export const PRODUCT_CATALOG: ProductCategory[] = [
         code: 'A-701',
         name: 'GRP Bus Body Panels & Front Fascia',
         description: 'Complete GRP panel kits, roofs, and aerodynamic front fascias for city buses and coaches, offering significant weight reduction and fuel efficiency.',
-        image: 'https://images.unsplash.com/photo-1570125909232-eb263c186922?q=80&w=2070&auto=format&fit=crop',
+        image: [
+          'https://images.unsplash.com/photo-1570125909232-eb263c186922?q=80&w=2070&auto=format&fit=crop',
+          'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=2070&auto=format&fit=crop',
+          'https://images.unsplash.com/photo-1559234994-0193b2a2a7f5?q=80&w=2070&auto=format&fit=crop'
+        ],
       },
       {
         code: 'A-702',

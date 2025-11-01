@@ -1,8 +1,7 @@
-import React, { useRef, useState, useEffect, useCallback } from 'react';
-import { PRODUCT_CATALOG } from '../constants';
+import React, { useRef, useState, useEffect, useCallback, useMemo } from 'react';
 import ProductCard from './ProductCard';
 import { useUIState } from '../UIStateContext';
-import SkeletonProductCard from './SkeletonProductCard';
+import { useProductCatalog } from '../hooks/useProductCatalog';
 
 interface RelatedProductsCarouselProps {
   currentProductCode: string;
@@ -14,11 +13,14 @@ const RelatedProductsCarousel: React.FC<RelatedProductsCarouselProps> = ({ curre
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
+  const productCatalog = useProductCatalog();
 
-  const relatedProducts = PRODUCT_CATALOG
-    .find(cat => cat.code === categoryCode)
-    ?.products.filter(p => p.code !== currentProductCode)
-    .slice(0, 4) || [];
+  const relatedProducts = useMemo(() => {
+    return productCatalog
+      .find(cat => cat.code === categoryCode)
+      ?.products.filter(p => p.code !== currentProductCode)
+      .slice(0, 4) || [];
+  }, [productCatalog, categoryCode, currentProductCode]);
 
   const checkScrollability = useCallback(() => {
     const el = scrollContainerRef.current;

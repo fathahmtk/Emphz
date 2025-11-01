@@ -1,9 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { PRODUCT_CATALOG, SEO_DATA, FALLBACK_LOGO_URL } from '../constants';
+import { SEO_DATA, FALLBACK_LOGO_URL } from '../constants';
 import MetaTags from '../components/MetaTags';
+import { useProductCatalog } from '../hooks/useProductCatalog';
 
 const ProductsPage: React.FC = () => {
+  const productCatalog = useProductCatalog();
+
   return (
     <>
       <MetaTags
@@ -21,7 +24,7 @@ const ProductsPage: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {PRODUCT_CATALOG.map((category) => {
+          {productCatalog.map((category) => {
             const hasRealImage = !!category.image;
             const imageUrl = category.image || FALLBACK_LOGO_URL;
             

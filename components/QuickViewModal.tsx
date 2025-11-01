@@ -40,7 +40,7 @@ const QuickViewModal: React.FC<QuickViewModalProps> = ({ product, onClose }) => 
 
   return (
     <div
-      className="fixed inset-0 z-[100] bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 animate-fadeIn"
+      className="fixed inset-0 z-[100] bg-black/30 backdrop-blur-sm flex items-center justify-center p-4 animate-fadeIn"
       style={{ animationDuration: '0.3s' }}
       onClick={onClose}
       role="dialog"
@@ -48,12 +48,12 @@ const QuickViewModal: React.FC<QuickViewModalProps> = ({ product, onClose }) => 
       aria-labelledby="quick-view-title"
     >
       <div
-        className="relative bg-[var(--color-surface-primary)] w-full max-w-4xl rounded-[var(--radius)] shadow-2xl overflow-hidden flex flex-col md:flex-row border border-[var(--color-border)]"
+        className="relative bg-[var(--color-surface-primary)] backdrop-blur-xl saturate-150 w-full max-w-4xl rounded-[var(--radius)] shadow-2xl overflow-hidden flex flex-col md:flex-row border border-[var(--color-border)]"
         onClick={e => e.stopPropagation()}
       >
         <button
           onClick={onClose}
-          className="absolute top-3 right-3 text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors z-10 p-2 rounded-full hover:bg-[var(--color-background)]"
+          className="absolute top-3 right-3 text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors z-10 p-2 rounded-full hover:bg-black/10"
           aria-label="Close quick view"
         >
           <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -61,7 +61,7 @@ const QuickViewModal: React.FC<QuickViewModalProps> = ({ product, onClose }) => 
           </svg>
         </button>
 
-        <div className={`w-full md:w-1/2 ${!hasRealImage ? 'bg-gray-100 p-8' : ''}`}>
+        <div className={`w-full md:w-1/2 ${!hasRealImage ? 'bg-gray-100/50 p-8' : ''}`}>
           <img
             src={imageUrl}
             alt={product.name}
@@ -80,7 +80,7 @@ const QuickViewModal: React.FC<QuickViewModalProps> = ({ product, onClose }) => 
             )}
           </div>
           
-          <div className="mt-6 pt-6 border-t border-[var(--color-border)]">
+          <div className="mt-6 pt-6 border-t border-black/10">
             <Button href={`/products/${product.code}`} onClick={onClose} variant="primary" className="w-full">
               View Full Details
             </Button>

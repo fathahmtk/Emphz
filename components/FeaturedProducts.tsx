@@ -1,23 +1,24 @@
 import React from 'react';
-import { PRODUCT_CATALOG } from '../constants';
 import { useUIState } from '../UIStateContext';
 import ProductCard from './ProductCard';
 import Button from './Button';
 import { Product } from '../types';
-
-// Helper to find a product by code
-const findProduct = (code: string): { product: Product, categoryName: string } | null => {
-    for (const category of PRODUCT_CATALOG) {
-        const product = category.products.find(p => p.code === code);
-        if (product) {
-            return { product, categoryName: category.name };
-        }
-    }
-    return null;
-}
+import { useProductCatalog } from '../hooks/useProductCatalog';
 
 const FeaturedProducts: React.FC = () => {
     const { openQuickView } = useUIState();
+    const productCatalog = useProductCatalog();
+
+    // Helper to find a product by code from the reactive catalog
+    const findProduct = (code: string): { product: Product, categoryName: string } | null => {
+        for (const category of productCatalog) {
+            const product = category.products.find(p => p.code === code);
+            if (product) {
+                return { product, categoryName: category.name };
+            }
+        }
+        return null;
+    }
 
     const featuredProductCodes = ['E-101', 'M-203', 'A-701', 'S-601'];
     const featuredProducts = featuredProductCodes.map(code => findProduct(code)).filter(Boolean);

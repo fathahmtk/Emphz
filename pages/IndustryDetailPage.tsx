@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Industry } from '../types';
-import { SEO_DATA, PRODUCT_CATALOG } from '../constants';
+import { SEO_DATA } from '../constants';
 import MetaTags from '../components/MetaTags';
 import ProductCard from '../components/ProductCard';
 import { useUIState } from '../UIStateContext';
 import Button from '../components/Button';
 import Breadcrumbs, { BreadcrumbItem } from '../components/Breadcrumbs';
+import { useProductCatalog } from '../hooks/useProductCatalog';
 
 interface IndustryDetailPageProps {
   industry: Industry;
@@ -14,10 +15,11 @@ interface IndustryDetailPageProps {
 
 const IndustryDetailPage: React.FC<IndustryDetailPageProps> = ({ industry }) => {
   const { openQuickView } = useUIState();
+  const productCatalog = useProductCatalog();
 
   const featuredProducts = React.useMemo(() => {
     const products = [];
-    for (const category of PRODUCT_CATALOG) {
+    for (const category of productCatalog) {
       for (const product of category.products) {
         if (industry.featuredProducts.includes(product.code)) {
           products.push({ product, categoryName: category.name });
@@ -25,11 +27,11 @@ const IndustryDetailPage: React.FC<IndustryDetailPageProps> = ({ industry }) => 
       }
     }
     return products;
-  }, [industry.featuredProducts]);
+  }, [industry.featuredProducts, productCatalog]);
 
   const relatedCategories = React.useMemo(() => {
-    return PRODUCT_CATALOG.filter(cat => industry.relatedCategories.includes(cat.code));
-  }, [industry.relatedCategories]);
+    return productCatalog.filter(cat => industry.relatedCategories.includes(cat.code));
+  }, [industry.relatedCategories, productCatalog]);
 
   const breadcrumbItems: BreadcrumbItem[] = [
     { label: 'Home', path: '/' },

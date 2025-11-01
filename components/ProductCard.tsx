@@ -1,4 +1,4 @@
-import React, { memo, useRef, useState, useEffect, useMemo } from 'react';
+import React, { memo, useRef, useState, useEffect, useMemo, useCallback } from 'react';
 import { Link } from "react-router-dom";
 import { Product } from '../types';
 import Button from './Button';
@@ -12,7 +12,7 @@ interface ProductCardProps {
 }
 
 const ImagePlaceholder: React.FC = () => (
-    <div className="w-full h-full bg-gray-200 animate-pulse"></div>
+    <div className="w-full h-full bg-gray-200 shimmer-bg"></div>
 );
 
 const ImageError: React.FC = () => (
@@ -30,69 +30,75 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onQuickViewClick, ca
   const descriptionText = product.description || product.useCase || product.innovation;
   const cardRef = useRef<HTMLDivElement>(null);
   const isVisible = useIntersectionObserver(cardRef);
-  const [loadingStatus, setLoadingStatus] = useState<'pending' | 'loading' | 'loaded' | 'error'>('pending');
-
+  
+  const [imageStatus, setImageStatus] = useState<'pending' | 'loading' | 'loaded' | 'error'>('pending');
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
   const images = useMemo(() => (
       Array.isArray(product.image) ? product.image : (product.image ? [product.image] : [])
   ), [product.image]);
 
-  const finalImageSrc = images[currentImageIndex];
+  const activeImageSrc = images[currentImageIndex];
 
+  // Effect to reset image loading state when the product prop changes
   useEffect(() => {
-    setLoadingStatus('pending');
+    setImageStatus('pending');
     setCurrentImageIndex(0);
   }, [product.code]);
 
+  // Effect to trigger image loading when the card becomes visible
   useEffect(() => {
-    if (isVisible && loadingStatus === 'pending') {
+    if (isVisible && imageStatus === 'pending') {
       if (images.length > 0 && images[0]) {
-        setLoadingStatus('loading');
+        setImageStatus('loading');
       } else {
-        setLoadingStatus('error');
+        setImageStatus('error');
       }
     }
-  }, [isVisible, loadingStatus, images]);
+  }, [isVisible, imageStatus, images]);
 
-  const handleImageLoad = () => setLoadingStatus('loaded');
-  const handleImageError = () => setLoadingStatus('error');
+  const handleImageLoad = useCallback(() => setImageStatus('loaded'), []);
+  const handleImageError = useCallback(() => setImageStatus('error'), []);
 
-  const handlePrev = (e: React.MouseEvent) => {
+  const handlePrev = useCallback((e: React.MouseEvent) => {
     e.preventDefault(); e.stopPropagation();
     const newIndex = (currentImageIndex - 1 + images.length) % images.length;
-    setCurrentImageIndex(newIndex); setLoadingStatus('loading');
-  };
+    setCurrentImageIndex(newIndex); 
+    setImageStatus('loading');
+  }, [currentImageIndex, images.length]);
 
-  const handleNext = (e: React.MouseEvent) => {
+  const handleNext = useCallback((e: React.MouseEvent) => {
     e.preventDefault(); e.stopPropagation();
     const newIndex = (currentImageIndex + 1) % images.length;
-    setCurrentImageIndex(newIndex); setLoadingStatus('loading');
-  };
+    setCurrentImageIndex(newIndex); 
+    setImageStatus('loading');
+  }, [currentImageIndex, images.length]);
 
   return (
     <div
       ref={cardRef}
       className={`h-full group opacity-0 ${isVisible ? 'animate-fadeInScaleUp' : ''}`}
     >
-      <div className="bg-[var(--color-surface-primary)] rounded-[var(--radius)] shadow-[var(--shadow-md)] group-hover:shadow-[var(--shadow-lg)] transition-all duration-300 border border-[var(--color-border)] h-full flex flex-col hover:-translate-y-1 group-hover:border-[var(--color-border-hover)] overflow-hidden">
+      <div className="bg-[var(--color-surface-primary)] backdrop-blur-lg rounded-[var(--radius)] shadow-[var(--shadow-md)] group-hover:shadow-[var(--shadow-lg)] transition-all duration-300 border border-[var(--color-border)] h-full flex flex-col hover:-translate-y-1 group-hover:border-[var(--color-border-hover)] overflow-hidden">
         {/* Image Section */}
-        <Link to={`/products/${product.code}`} className="block aspect-[4/3] bg-gray-100 relative group/image overflow-hidden">
+        <Link to={`/products/${product.code}`} className="block aspect-[4/3] bg-gray-100/50 relative group/image overflow-hidden">
             <div className="absolute inset-0">
-                {(loadingStatus === 'pending' || loadingStatus === 'loading') && <ImagePlaceholder />}
-                {loadingStatus === 'error' && <ImageError />}
+                {(imageStatus === 'pending' || imageStatus === 'loading') && <ImagePlaceholder />}
+                {imageStatus === 'error' && <ImageError />}
             </div>
             
-            {(loadingStatus !== 'pending') && finalImageSrc && (
+            {(imageStatus !== 'pending') && activeImageSrc && (
                 <img 
-                    src={finalImageSrc}
+                    src={activeImageSrc}
                     alt={product.name} 
                     onLoad={handleImageLoad}
                     onError={handleImageError}
+                    loading="lazy"
                     decoding="async"
                     fetchPriority="low"
                     width="400"
                     height="300"
-                    className={`absolute inset-0 w-full h-full object-cover transition-all duration-500 ease-in-out group-hover:scale-110 ${loadingStatus === 'loaded' ? 'opacity-100' : 'opacity-0'}`}
+                    className={`absolute inset-0 w-full h-full object-cover transition-all duration-500 ease-in-out group-hover:scale-110 ${imageStatus === 'loaded' ? 'opacity-100' : 'opacity-0'}`}
                 />
             )}
             
@@ -124,17 +130,17 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onQuickViewClick, ca
           
           {descriptionText && <p className="text-[var(--color-text-secondary)] text-sm mb-4 line-clamp-2 flex-grow">{descriptionText}</p>}
           
-          <div className="mt-auto pt-4 border-t border-[var(--color-border)] flex items-center gap-3">
+          <div className="mt-auto pt-4 border-t border-black/10 flex items-center gap-3">
             <Button
                 href={`/products/${product.code}`}
-                variant="secondary"
+                variant="primary"
                 className="px-4 py-2 text-sm flex-1"
             >
-                Details
+                View Details
             </Button>
             <Button
                 onClick={() => onQuickViewClick(product)}
-                variant="primary"
+                variant="secondary"
                 className="px-4 py-2 text-sm flex-1"
                 aria-label={`Quick view of ${product.name}`}
             >

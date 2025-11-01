@@ -2,6 +2,7 @@ import React from 'react';
 import InsightsKnowledge from '../components/InsightsKnowledge';
 import MetaTags from '../components/MetaTags';
 import { SEO_DATA } from '../constants';
+import GrpApplicationsList from '../components/GrpApplicationsList';
 
 const KnowledgePage: React.FC = () => {
   return (
@@ -12,6 +13,7 @@ const KnowledgePage: React.FC = () => {
       />
       <div className="bg-[var(--color-background)]">
         <InsightsKnowledge />
+        <GrpApplicationsList />
       </div>
     </>
   );

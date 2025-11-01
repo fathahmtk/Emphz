@@ -3,12 +3,14 @@ import { useLocation } from 'react-router-dom';
 import ContactRFQ from '../components/ContactRFQ';
 import Button from '../components/Button';
 import MetaTags from '../components/MetaTags';
-import { SEO_DATA, PRODUCT_CATALOG } from '../constants';
+import { SEO_DATA } from '../constants';
 import { useToast } from '../ToastContext';
+import { useProductCatalog } from '../hooks/useProductCatalog';
 
 const ContactPage: React.FC = () => {
   const { addToast } = useToast();
   const location = useLocation();
+  const productCatalog = useProductCatalog();
 
   useEffect(() => {
     if (location.state?.scrollTo) {
@@ -205,7 +207,7 @@ const ContactPage: React.FC = () => {
                   className={`${inputBaseClasses} ${inputBorderClasses}`}
                 >
                   <option value="">Select a product or category</option>
-                  {PRODUCT_CATALOG.map(cat => <option key={cat.code} value={cat.name}>{cat.name}</option>)}
+                  {productCatalog.map(cat => <option key={cat.code} value={cat.name}>{cat.name}</option>)}
                   <option value="Other / Custom Project">Other / Custom Project</option>
                 </select>
               </div>

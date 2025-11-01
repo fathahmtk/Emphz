@@ -1,9 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import Button from './Button';
 import { HERO_SECTION } from '../constants';
 
+const kenburnsAnimations = [
+  'animate-kenburns-center',
+  'animate-kenburns-top-left',
+  'animate-kenburns-bottom-right',
+];
+
 const HeroSection: React.FC = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  // Memoize the animation class so it doesn't change on every render, only when the image index changes.
+  const animationClass = useMemo(() => {
+    return kenburnsAnimations[currentImageIndex % kenburnsAnimations.length];
+  }, [currentImageIndex]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -32,7 +43,7 @@ const HeroSection: React.FC = () => {
             {index === currentImageIndex && (
               <div
                 key={currentImageIndex} // Use index to force re-mount and restart animation
-                className="w-full h-full bg-cover bg-center animate-kenburns-zoom"
+                className={`w-full h-full bg-cover bg-center ${animationClass}`}
                 style={{ backgroundImage: `url('${image}')` }}
               />
             )}

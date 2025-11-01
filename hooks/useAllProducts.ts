@@ -1,8 +1,8 @@
 
-import { useState, useEffect } from 'react';
-import { fetchAllProducts } from '../api';
+import { useMemo } from 'react';
 import { Product, ProductCategory } from '../types';
 import { useToast } from '../ToastContext';
+import { useProductCatalog } from './useProductCatalog';
 
 export interface ProductWithCategoryContext {
   product: Product;
@@ -10,32 +10,23 @@ export interface ProductWithCategoryContext {
 }
 
 /**
- * Custom hook to fetch all products from the API.
- * Manages loading and error states.
+ * Custom hook to get a reactive list of all products from the central store.
  */
 export const useAllProducts = () => {
-  const [data, setData] = useState<ProductWithCategoryContext[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<Error | null>(null);
-  const { addToast } = useToast();
+  const catalog = useProductCatalog();
 
-  useEffect(() => {
-    const loadProducts = async () => {
-      try {
-        setIsLoading(true);
-        const fetchedData = await fetchAllProducts();
-        setData(fetchedData);
-      } catch (err) {
-        const error = err instanceof Error ? err : new Error('An unknown error occurred while fetching products.');
-        setError(error);
-        addToast('Failed to load product catalog. Please try again later.', 'error');
-      } finally {
-        setIsLoading(false);
-      }
-    };
+  const data = useMemo(() => {
+    if (!catalog) return [];
+    try {
+      return catalog.flatMap(category =>
+        category.products.map(product => ({ product, category }))
+      );
+    } catch (e) {
+      console.error("Error processing product catalog:", e);
+      return [];
+    }
+  }, [catalog]);
 
-    loadProducts();
-  }, [addToast]);
-
-  return { data, isLoading, error };
+  // The hook now returns data synchronously. isLoading is always false.
+  return { data, isLoading: false, error: null };
 };
