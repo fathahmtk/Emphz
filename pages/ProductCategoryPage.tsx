@@ -77,13 +77,13 @@ const ProductCategoryPage: React.FC = () => {
       />
 
       {/* New Category Hero Section */}
-      <section className="relative h-[45vh] bg-[var(--color-surface-secondary)] text-white flex items-center justify-center text-center overflow-hidden">
-        <div className={`absolute inset-0 ${!hasRealImage ? 'bg-[var(--color-background)]' : ''}`}>
+      <section className="relative h-[45vh] bg-[var(--color-background)] text-white flex items-center justify-center text-center overflow-hidden">
+        <div className={`absolute inset-0 ${!hasRealImage ? 'bg-transparent' : ''}`}>
           <img
             src={imageUrl}
             alt={`Background for ${category.name}`}
             loading="eager"
-            className={`w-full h-full ${hasRealImage ? 'object-cover' : 'object-contain p-12 opacity-40'}`}
+            className={`w-full h-full ${hasRealImage ? 'object-cover' : 'object-contain p-12 opacity-10'}`}
           />
           {hasRealImage && <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-black/20"></div>}
         </div>
@@ -119,7 +119,7 @@ const ProductCategoryPage: React.FC = () => {
               <h3 className="text-2xl font-semibold text-[var(--color-text-primary)] mb-6 text-center">Technical Snapshot</h3>
               <div className="overflow-x-auto">
                 <table className="min-w-full">
-                  <thead className="bg-[var(--color-surface-secondary)]">
+                  <thead className="bg-black/20">
                     <tr>
                       <th className="py-3 px-6 text-left font-semibold text-sm text-[var(--color-text-secondary)]">Parameter</th>
                       <th className="py-3 px-6 text-left font-semibold text-sm text-[var(--color-text-secondary)]">Specification</th>

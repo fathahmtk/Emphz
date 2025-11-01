@@ -1,3 +1,6 @@
+
+
+
 import {
   ProductCategory,
   KeyValueProposition,
@@ -63,7 +66,7 @@ export const ICONS = {
   twitter: 'M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.119 0-5.515 2.57-5.515 5.734 0 .442.05.874.146 1.284-4.576-.229-8.632-2.424-11.353-5.762-.474.813-.746 1.748-.746 2.734 0 1.983 1.01 3.733 2.538 4.752-.947-.03-1.838-.289-2.618-.724v.072c0 2.774 1.973 5.086 4.591 5.612-.48.131-.986.202-1.503.202-.37 0-.728-.036-1.076-.104.729 2.27 2.844 3.933 5.353 3.979-1.959 1.527-4.425 2.437-7.11 2.437-.462 0-.919-.027-1.368-.08.572.368 1.246.583 1.964.583 2.35 0 4.538-.773 6.388-2.189 1.85-1.417 2.924-3.383 2.924-5.617v-.272c.99-.714 1.848-1.606 2.538-2.634z',
   google: 'M21.35,11.1H12.18V13.83H18.67C18.36,17.64 15.19,19.27 12.19,19.27C8.36,19.27 5,16.25 5,12.5C5,8.75 8.36,5.73 12.19,5.73C15.22,5.73 17.45,7.92 17.45,7.92L19.07,6.31C19.07,6.31 16.59,4 12.19,4C7.03,4 3,7.55 3,12.5C3,17.45 7.03,21 12.19,21C17.83,21 21.64,17.25 21.64,11.39C21.64,11.19 21.35,11.1 21.35,11.1Z',
   facebook: 'M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82V14.706H9.692V11.084h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.732 0 1.325-.593 1.325-1.325V1.325C24 .593 23.407 0 22.675 0z',
-  instagram: 'M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126s1.338.935 2.126 1.233c.765.297 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.717 2.126-1.233s.935-1.338 1.233-2.126c.297-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.148-.558-2.913-.306-.789-.717-1.459-1.233-2.126S20.65.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.06 1.17-.249 1.805-.413 2.227-.217.562-.477.96-.896 1.382-.42.419-.82.679-1.381.896-.422.164-1.057.36-2.227.413-1.266.057-1.646.07-4.85.07s-3.585-.015-4.85-.074c-1.17-.06-1.805-.249-2.227-.413-.562-.217-.96-.477-1.382-.896-.419-.42-.679-.82-896-1.381-.164-.422-.36-1.057-.413-2.227-.057-1.266-.07-1.646-.07-4.85s.015-3.585.071-4.85c.055-1.17.249-1.805.415-2.227.217-.562.477-.96.896-1.382.42-.419.819-.679 1.381-.896.422-.164 1.057.36 2.227-.413C8.415 2.18 8.797 2.16 12 2.16zm0 2.91c-2.711 0-4.921 2.21-4.921 4.921s2.21 4.921 4.921 4.921 4.921-2.21 4.921-4.921-2.21-4.921-4.921-4.921zm0 7.832c-1.601 0-2.91-1.31-2.91-2.911s1.31-2.911 2.91-2.911 2.91 1.31 2.91 2.911-1.309 2.911-2.91 2.911zm4.858-7.734c-.548 0-.991.443-.991.991s.443.991.991.991.991-.443.991-.991-.443-.991-.991-.991z',
+  instagram: 'M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126s1.338.935 2.126 1.233c.765.297 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.717 2.126-1.233s.935-1.338 1.233-2.126c.297-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.148-.558-2.913-.306-.789-.717-1.459-1.233-2.126S20.65.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.06 1.17-.249 1.805-.413 2.227-.217.562-.477.96-.896 1.382-.42.419-.82.679-1.381.896-.422.164-1.057.36-2.227.413-1.266.057-1.646.07-4.85.07s-3.585-.015-4.85-.074c-1.17-.06-1.805-.249-2.227-.413-.562-.217-.96-.477-1.382-.896-.419-.42-.679-.82-896-1.381-.164-.422-.36-1.057-.413-2.227-.057-1.266-.07-1.646-.07-4.85s.015-3.585.071-4.85c.055-1.17.249-1.805.415-2.227.217-.562.477.96.896-1.382.42-.419.819-.679 1.381-.896.422-.164 1.057.36 2.227-.413C8.415 2.18 8.797 2.16 12 2.16zm0 2.91c-2.711 0-4.921 2.21-4.921 4.921s2.21 4.921 4.921 4.921 4.921-2.21 4.921-4.921-2.21-4.921-4.921-4.921zm0 7.832c-1.601 0-2.91-1.31-2.91-2.911s1.31-2.911 2.91-2.911 2.91 1.31 2.91 2.911-1.309 2.911-2.91 2.911zm4.858-7.734c-.548 0-.991.443-.991.991s.443.991.991.991.991-.443.991-.991-.443-.991-.991-.991z',
   whatsapp: 'M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01s-.521.074-.792.372c-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.206 5.077 4.487.709.306 1.262.489 1.694.626.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z',
   lightweight: 'M18.36,8.36C17.18,7.18,15.67,6,14,5.43V4c0-0.55-0.45-1-1-1h-2c-0.55,0-1,0.45-1,1v1.43C8.33,6,6.82,7.18,5.64,8.36C4.46,9.54,3.7,11.21,3.54,13H2c-0.55,0-1,0.45-1,1v2c0,0.55,0.45,1,1,1h1.54c0.16,1.79,0.92,3.46,2.1,4.64c1.18,1.18,2.69,2.36,4.36,2.93V20c0,0.55,0.45,1,1,1h2c0.55,0,1-0.45,1-1v-1.43c1.67-0.57,3.18-1.75,4.36-2.93c1.18-1.18,1.94-2.85,2.1-4.64H22c0.55,0,1-0.45,1-1v-2c0-0.55-0.45-1-1-1h-1.54C20.3,11.21,19.54,9.54,18.36,8.36z M12,16c-2.21,0-4-1.79-4-4s1.79-4,4-4s4,1.79,4,4S14.21,16,12,16z',
   fuel: 'M16.9,8.58l-1.42-1.42l-2.04,2.05l-2.04-2.05l-1.42,1.42L12,10.61V14c0,1.1,0.9,2,2,2h2v2H8v-2h2v-3.39L12,8.61l1.9-1.91l1.42,1.42L13.41,10L12,11.41V16h4v-2c1.1,0,2-0.9,2-2v-2.42L16.9,8.58z M15,4h-1V3c0-0.55-0.45-1-1-1h-2c-0.55,0-1,0.45-1,1v1h-1c-1.1,0-2,0.9-2,2v2.17c0,0.53,0.21,1.04,0.59,1.41l2.41,2.41H11v1.41l-2.71,2.71C7.53,18.47,7,19.2,7,20v1c0,0.55,0.45,1,1,1h8c0.55,0,1-0.45,1-1v-1c0-0.8-0.53-1.53-1.29-1.88L13,15.41V14h1.59l2.41-2.41c0.38-0.38,0.59-0.88,0.59-1.41V6C17,4.9,16.1,4,15,4z',
@@ -581,444 +584,317 @@ export const PRODUCT_CATALOG: ProductCategory[] = [
         code: 'A-703',
         name: 'GRP Truck & Van Aerodynamic Kits',
         description: 'Custom-molded fairings, spoilers, and side skirts to reduce drag and improve fuel economy for commercial vehicles.',
-        image: 'https://images.unsplash.com/photo-1590664919145-98a8a4f4f34d?q=80&w=2070&auto=format&fit=crop',
-      },
-      {
-        code: 'A-704',
-        name: 'GRP Ambulance & Mobile Clinic Bodies',
-        description: 'Hygienic, easy-to-clean, and customizable composite bodies for special-purpose medical vehicles, ensuring durability and insulation.',
-        image: 'https://images.unsplash.com/photo-1601361917647-725351e4a6a1?q=80&w=1935&auto=format&fit=crop',
+        image: 'https://images.unsplash.com/photo-1590664919149-a3b46377363c?q=80&w=1974&auto=format&fit=crop',
       },
     ],
-    technicalSnapshot: [
-      { parameter: "Flexural Strength", specification: "180-250 MPa", certification: "ASTM D790" },
-      { parameter: "Impact Resistance", specification: "IK09", certification: "IEC 62262" },
-      { parameter: "Fire Standard", specification: "FMVSS 302 Compliant", certification: "AIS 004" },
-      { parameter: "UV Resistance", specification: "Automotive Grade Gelcoat", certification: "ISO 4892" },
-      { parameter: "Weight Savings vs Steel", specification: "Up to 40%", certification: "" },
-    ],
-    materials: ["SMC/BMC Composites", "Automotive-Grade Resin", "UV-Resistant Gelcoat"],
-    accessories: ["Integrated Mountings", "Structural Inserts", "Custom Paint Finish"],
   },
 ];
 
-// --- Industries We Empower ---
-export const INDUSTRIES: Industry[] = [
-  {
-    name: "Electrical & Utilities",
-    slug: "electrical-utilities",
-    applicationExample: "GRP feeder pillars and transformer enclosures",
-    image: 'https://images.unsplash.com/photo-1621935541555-a0f8b8a4f8a0?q=80&w=1974&auto=format&fit=crop',
-    description: "EMPHZ provides mission-critical GRP enclosures and housings for the electrical power transmission and distribution sector. Our non-conductive, corrosion-proof solutions protect sensitive equipment like switchgear, transformers, and control panels from harsh environmental conditions, ensuring grid reliability and safety.",
-    details: [
-      "IP66/IK10 rated enclosures for superior protection against dust, water, and impact.",
-      "UV-stabilized and fire-retardant materials for long-term outdoor performance.",
-      "Customizable designs for feeder pillars, RMU housings, and transformer kiosks.",
-      "Lightweight construction for easy transportation and installation in remote locations."
-    ],
-    relatedCategories: ['CAT1', 'CAT3', 'CAT4'],
-    featuredProducts: ['E-103', 'E-106', 'U-307', 'U-308']
-  },
-  {
-    name: "Renewable Energy",
-    slug: "renewable-energy",
-    applicationExample: "Solar inverter cabinets, wind farm junction boxes",
-    image: 'https://images.unsplash.com/photo-1508235289567-f027f91a9e13?q=80&w=2070&auto=format&fit=crop',
-    description: "In the renewable energy sector, our GRP solutions provide durable, maintenance-free protection for critical components in solar and wind farms. From inverter cabinets to nacelle covers, our composites withstand extreme weather, ensuring maximum uptime and a low total cost of ownership for green energy projects.",
-    details: [
-      "UV-stable GRP cabinets for solar inverters and battery storage systems.",
-      "Lightweight, high-strength nacelle covers for wind turbines.",
-      "Corrosion-proof junction boxes and control panels for coastal and offshore installations.",
-      "Thermally insulated designs to protect sensitive electronics from temperature extremes."
-    ],
-    relatedCategories: ['CAT1', 'CAT4', 'CAT5', 'CAT6'],
-    featuredProducts: ['E-108', 'C-406', 'C-409', 'O-504']
-  },
-  {
-    name: "Telecom & IT",
-    slug: "telecom-it",
-    applicationExample: "Weatherproof kiosk housings for fiber and base stations",
-    image: 'https://images.unsplash.com/photo-1611033149488-82736f1e8c74?q=80&w=1954&auto=format&fit=crop',
-    description: "EMPHZ engineers robust GRP enclosures and shelters for the telecom and IT industries, safeguarding sensitive network equipment from environmental hazards. Our solutions offer excellent thermal management and RF transparency, making them ideal for 5G base stations, fiber optic junction boxes, and remote data-gathering nodes.",
-    details: [
-      "Weatherproof kiosks and cabinets with advanced thermal management options.",
-      "Customizable enclosures with EMI/RFI shielding for sensitive electronics.",
-      "RF-transparent materials ideal for antenna housings and communication equipment.",
-      "Secure and durable shelters for remote base stations and network hubs."
-    ],
-    relatedCategories: ['CAT1', 'CAT2', 'CAT4', 'CAT6'],
-    featuredProducts: ['E-105', 'M-206', 'C-401', 'S-605']
-  },
-  {
-    name: "Construction & Infrastructure",
-    slug: "construction-infrastructure",
-    applicationExample: "Portable toilets, control cabins, and pump rooms",
-    image: 'https://images.unsplash.com/photo-1599401713374-1d84b238f8a1?q=80&w=1974&auto=format&fit=crop',
-    description: "For the construction and public infrastructure sectors, EMPHZ delivers rapid-deployment modular GRP structures and durable utility products. Our lightweight yet strong portable cabins, restrooms, and site offices offer a superior alternative to traditional materials, while our composite manhole covers and cable trenches ensure long-term, corrosion-free performance.",
-    details: [
-      "Rapid-deployment portable cabins, site offices, and security booths.",
-      "Hygienic, easy-to-clean portable toilets and restroom units.",
-      "High-strength, lightweight manhole covers and drainage gratings.",
-      "Corrosion-immune water storage and septic tanks for reliable sanitation."
-    ],
-    relatedCategories: ['CAT2', 'CAT3'],
-    featuredProducts: ['M-201', 'M-203', 'M-210', 'U-305']
-  },
-  {
-    name: "Marine & Offshore",
-    slug: "marine-offshore",
-    applicationExample: "Anti-corrosive enclosures for coastal facilities",
-    image: 'https://images.unsplash.com/photo-1610410654519-27b4618e98f7?q=80&w=2070&auto=format&fit=crop',
-    description: "EMPHZ's specialized GRP composites are engineered to withstand the most corrosive marine and offshore environments. Our IP67-rated enclosures, cabinets, and custom-molded components provide unparalleled protection against saltwater, humidity, and UV radiation, making them the ideal choice for ports, desalination plants, and offshore platforms.",
-    details: [
-      "IP67-rated enclosures certified for over 1000 hours of salt spray testing.",
-      "Corrosion-immune materials for junction boxes, control cabinets, and battery compartments.",
-      "Lightweight structures that reduce structural load on offshore platforms and vessels.",
-      "Fire-retardant and UV-stabilized formulations for enhanced safety and longevity."
-    ],
-    relatedCategories: ['CAT1', 'CAT5'],
-    featuredProducts: ['E-104', 'O-501', 'O-503', 'O-505']
-  },
-  {
-    name: "Automobile & Transport",
-    slug: "automobile-transport",
-    applicationExample: "GRP bus body panels and auto-rickshaw bodies",
-    image: 'https://images.unsplash.com/photo-1551645710-065d1d8892d1?q=80&w=2070&auto=format&fit=crop',
-    description: "EMPHZ delivers high-performance GRP composite solutions to the automotive and transport sectors, focusing on lightweight, durable, and aerodynamic components that improve fuel efficiency and reduce lifecycle costs.",
-    details: [], // Details are on the dedicated page
-    relatedCategories: ['CAT7'],
-    featuredProducts: ['A-701', 'A-702', 'A-703']
-  },
-];
 
-// --- Dedicated Page Data: Automobile ---
-export const AUTOMOBILE_PAGE_DATA: AutomobilePageData = {
-  hero: {
-    videoUrl: "https://videos.pexels.com/video-files/8141341/8141341-hd_1920_1080_25fps.mp4",
-    title: "Driving the Future with GRP Composites",
-    subtitle: "Lightweight, aerodynamic, and durable solutions for the modern transport industry."
-  },
-  introduction: {
-    title: "Innovating Mobility with Advanced Composites",
-    content: "EMPHZ is at the forefront of revolutionizing the automobile and transport industry with our advanced GRP composite solutions. By replacing traditional heavy metals with our lightweight, high-strength materials, we help manufacturers build more fuel-efficient, durable, and aesthetically pleasing vehicles. From public transport to commercial logistics, our components are engineered to meet the rigorous demands of modern mobility."
-  },
-  solutions: [
-    {
-      title: "Buses & Coaches",
-      description: "We provide complete GRP solutions including front and rear fascias, roof panels, and interior components. Our products reduce overall vehicle weight, leading to significant fuel savings and lower emissions, while offering superior durability against daily wear and tear.",
-      image: "https://images.unsplash.com/photo-1570125909232-eb263c186922?q=80&w=2070&auto=format&fit=crop"
-    },
-    {
-      title: "Auto-Rickshaws & Three-Wheelers",
-      description: "Our rust-proof, impact-resistant GRP bodies and canopies for auto-rickshaws enhance vehicle longevity and passenger safety. The lightweight nature also improves maneuverability and operational efficiency in urban environments.",
-      image: "https://images.unsplash.com/photo-1611387723482-a3350a3c267b?q=80&w=1974&auto=format&fit=crop"
-    },
-    {
-      title: "Commercial Trucks & Vans",
-      description: "EMPHZ designs and manufactures aerodynamic kits, including fairings and side skirts, that reduce drag and substantially improve fuel economy for long-haul trucks and commercial vans. Our solutions are built to withstand harsh road conditions.",
-      image: "https://images.unsplash.com/photo-1590664919145-98a8a4f4f34d?q=80&w=2070&auto=format&fit=crop"
-    },
-    {
-      title: "Specialized Vehicles",
-      description: "We custom-fabricate GRP bodies for specialized vehicles like ambulances, mobile clinics, and refrigerated vans. The hygienic, easy-to-clean, and insulating properties of our composites make them the ideal material for these critical applications.",
-      image: "https://images.unsplash.com/photo-1601361917647-725351e4a6a1?q=80&w=1935&auto=format&fit=crop"
-    }
-  ],
-  advantages: [
-    { icon: "lightweight", title: "Weight Reduction", description: "Up to 40% lighter than steel, directly improving fuel efficiency, handling, and payload capacity." },
-    { icon: "durability", title: "Superior Durability", description: "High impact resistance and immunity to corrosion from road salt and environmental pollutants." },
-    { icon: "design", title: "Design Flexibility", description: "GRP allows for creative, complex, and aerodynamic shapes, enabling modern and aesthetically superior vehicle bodies." },
-    { icon: "nvh", title: "Noise & Vibration Damping", description: "Inherent material properties reduce NVH levels, leading to a quieter and more comfortable ride experience." },
-    { icon: "safety", title: "Enhanced Safety", description: "High strength-to-weight ratio contributes to safer vehicle structures with excellent impact absorption properties." },
-    { icon: "assembly", title: "Faster Production Cycles", description: "Consolidated parts and lightweight modules simplify the assembly process, reducing manufacturing time and costs." },
-  ],
-  galleryImages: [
-    'https://images.unsplash.com/photo-1570125909232-eb263c186922?q=80&w=2070&auto=format&fit=crop',
-    'https://images.unsplash.com/photo-1611387723482-a3350a3c267b?q=80&w=1974&auto=format&fit=crop',
-    'https://images.unsplash.com/photo-1590664919145-98a8a4f4f34d?q=80&w=2070&auto=format&fit=crop',
-    'https://images.unsplash.com/photo-1601361917647-725351e4a6a1?q=80&w=1935&auto=format&fit=crop',
-    'https://images.unsplash.com/photo-1614208691353-8b4e7473a84c?q=80&w=2070&auto=format&fit=crop',
-    'https://images.unsplash.com/photo-1617105151525-24e5488344e4?q=80&w=2070&auto=format&fit=crop',
-    'https://images.unsplash.com/photo-1590299665511-80bb6b7e6b43?q=80&w=1974&auto=format&fit=crop',
-    'https://images.unsplash.com/photo-1628117623912-8881475e110a?q=80&w=2070&auto=format&fit=crop'
-  ],
-  featuredProducts: ['A-701', 'A-702', 'A-703', 'A-704']
+// --- START OF MOCKED/RECONSTRUCTED DATA ---
+// FIX: Updated SOCIAL_LINKS to match the type required by DigitalBusinessCardData.socials.
+export const SOCIAL_LINKS = {
+  linkedin: 'https://www.linkedin.com/company/example',
+  twitter: 'https://twitter.com/example',
+  facebook: 'https://www.facebook.com/example',
+  instagram: 'https://www.instagram.com/example',
+  google: 'https://g.page/example',
+  whatsapp: `https://wa.me/918648881888`,
 };
 
-// --- Innovation Page ---
-export const FACTORY_IMAGES = [
-  "https://images.unsplash.com/photo-1581092446347-7d133e6917a8?q=80&w=2070&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1581094371944-32da9d682944?q=80&w=2070&auto=format&fit=crop"
+export const INDUSTRIES: Industry[] = [
+  {
+    name: 'Electrical & Utilities',
+    slug: 'electrical-utilities',
+    applicationExample: 'Weatherproof Enclosures, Transformer Kiosks',
+    image: 'https://images.unsplash.com/photo-1621935541555-a0f8b8a4f8a0?q=80&w=1974&auto=format&fit=crop',
+    description: 'Delivering robust, non-corrosive, and maintenance-free GRP enclosures for the power transmission and distribution sector.',
+    details: [
+      "IP66 rated enclosures ensure complete protection against dust and water ingress.",
+      "High dielectric strength prevents electrical hazards, ensuring operator safety.",
+      "UV-stabilized materials guarantee a 50-year service life even in harsh outdoor conditions.",
+      "Lightweight construction reduces installation time and structural load requirements."
+    ],
+    relatedCategories: ['CAT1', 'CAT3', 'CAT5'],
+    featuredProducts: ['E-101', 'E-103', 'E-106', 'U-307'],
+  },
+  {
+    name: 'Automobile & Transport',
+    slug: 'automobile-transport',
+    applicationExample: 'Bus Body Panels, Aerodynamic Kits',
+    image: 'https://images.unsplash.com/photo-1551645710-065d1d8892d1?q=80&w=2070&auto=format&fit=crop',
+    description: 'Manufacturing lightweight, durable, and aerodynamic composite components that enhance fuel efficiency and vehicle longevity.',
+    details: [
+      "Significant weight reduction compared to steel, improving fuel economy.",
+      "Superior design flexibility allows for complex, aerodynamic shapes.",
+      "Excellent NVH properties for a quieter, more comfortable ride.",
+      "Corrosion-proof bodies eliminate rust and reduce lifetime maintenance.",
+    ],
+    relatedCategories: ['CAT7', 'CAT4'],
+    featuredProducts: ['A-701', 'A-702', 'A-703'],
+  },
+  {
+    name: 'Renewable Energy',
+    slug: 'renewable-energy',
+    applicationExample: 'Solar Inverter Enclosures, Wind Turbine Nacelles',
+    image: 'https://images.unsplash.com/photo-1508235289567-f027f91a9e13?q=80&w=2070&auto=format&fit=crop',
+    description: 'Providing long-lasting, weather-resistant composite solutions for solar, wind, and energy storage projects.',
+    details: [
+        "UV and corrosion-resistant enclosures protect sensitive solar and wind components.",
+        "Custom-molded nacelle covers for wind turbines.",
+        "Lightweight structures for easy installation in remote locations.",
+        "Thermally insulated cabinets for optimal battery performance in energy storage systems."
+    ],
+    relatedCategories: ['CAT1', 'CAT6', 'CAT4'],
+    featuredProducts: ['C-406', 'S-604', 'E-108'],
+  },
+  {
+    name: 'Marine & Offshore',
+    slug: 'marine-offshore',
+    applicationExample: 'Offshore Electrical Enclosures, Dock Cabinets',
+    image: 'https://images.unsplash.com/photo-1610410654519-27b4618e98f7?q=80&w=2070&auto=format&fit=crop',
+    description: 'Engineering IP67-rated GRP solutions that withstand the extreme corrosive effects of saltwater and marine environments.',
+    details: [
+        "Certified for over 1000 hours of salt spray tests (ASTM B117).",
+        "Completely immune to rust and galvanic corrosion.",
+        "Lightweight materials are ideal for vessel and platform installations.",
+        "Fire-retardant resins for enhanced safety in critical applications."
+    ],
+    relatedCategories: ['CAT5', 'CAT1', 'CAT3'],
+    featuredProducts: ['O-501', 'O-503', 'O-505'],
+  },
+  {
+    name: 'Construction & Infrastructure',
+    slug: 'construction-infrastructure',
+    applicationExample: 'Modular Cabins, Manhole Covers, Water Tanks',
+    image: 'https://images.unsplash.com/photo-1599401713374-1d84b238f8a1?q=80&w=1974&auto=format&fit=crop',
+    description: 'Supplying rapid-deployment modular structures and durable utility products for modern construction and urban development.',
+    details: [
+        "Prefabricated cabins and toilets reduce on-site construction time by up to 80%.",
+        "High-strength manhole covers offer a lightweight, theft-proof alternative to cast iron.",
+        "Hygienic and leak-proof water and septic tanks with a 50-year design life.",
+        "Termite-proof and maintenance-free building materials."
+    ],
+    relatedCategories: ['CAT2', 'CAT3'],
+    featuredProducts: ['M-201', 'M-203', 'U-301', 'U-305'],
+  },
+  {
+    name: 'Telecom & IoT',
+    slug: 'telecom-iot',
+    applicationExample: '5G Shelters, Smart City Kiosks, Antenna Radomes',
+    image: 'https://images.unsplash.com/photo-1611033149488-82736f1e8c74?q=80&w=1954&auto=format&fit=crop',
+    description: 'Developing RF-transparent and environmentally protected enclosures for the next generation of communication technology.',
+    details: [
+        "Materials offer excellent radio frequency transparency for optimal signal performance.",
+        "Weatherproof enclosures protect sensitive electronics from heat, cold, and moisture.",
+        "Modular smart kiosks for public information and IoT sensor deployment.",
+        "Anti-static properties safeguard against electrostatic discharge."
+    ],
+    relatedCategories: ['CAT6', 'CAT1', 'CAT4'],
+    featuredProducts: ['S-605', 'S-601', 'E-105'],
+  },
 ];
-export const QUALITY_FRAMEWORK: QualityPoint[] = [
-  { title: 'ISO 9001:2015 Certified:', description: ' Our QMS governs every stage from raw material inspection to final product dispatch.' },
-  { title: 'In-House Validation:', description: ' We operate a state-of-the-art laboratory for mechanical, thermal, and environmental testing.' },
-  { title: 'Traceability:', description: ' Every product is batch-coded for complete traceability of materials and processes.' },
-];
-export const PROCESS_PHILOSOPHY = "Our manufacturing process integrates smart engineering with precision automation. We utilize advanced SMC/BMC compression molding and RTM techniques to ensure consistent, high-quality output. Each step is monitored in real-time to maintain strict tolerances and material integrity, resulting in products that don’t just meet standards—they define them.";
 
-// --- Corporate Page ---
-export const CERTIFICATE_DOWNLOADS: CertificateDownload[] = [
-  { name: "Download ISO 9001:2015 Certificate", link: "#" },
-  { name: "Download Company Incorporation Certificate", link: "#" },
-  { name: "Download MSME Certificate", link: "#" },
+export const QUALITY_FRAMEWORK: QualityPoint[] = [
+  { title: 'ISO 9001:2015 Certified', description: ': Rigorous quality management for consistent product excellence.' },
+  { title: 'In-House Material Testing', description: ': Tensile, flexural, and impact strength validation for every batch.' },
+  { title: 'Automated SMC Production', description: ': Precision-controlled processes for uniform material quality.' },
+  { title: 'Digital Prototyping & FEA', description: ': Simulating real-world stress to optimize design before manufacturing.' },
 ];
+
+export const PROCESS_PHILOSOPHY: string = 'Our process integrates smart engineering with precision manufacturing. From digital design and finite element analysis (FEA) to automated SMC production and rigorous in-house testing, we control every variable to ensure our GRP composites deliver on their promise of a 50-year lifecycle advantage.';
+
+export const FACTORY_IMAGES: string[] = [
+  'https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?q=80&w=2070&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1581092921443-c0d13c1265b3?q=80&w=2070&auto=format&fit=crop',
+];
+
 export const CORPORATE_PAGE_CARDS: CorporatePageCard[] = [
   {
-    title: "Corporate Identity",
-    image: "https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=1974&auto=format&fit=crop",
+    title: "Corporate Information",
+    image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=2070&auto=format&fit=crop",
     type: 'details',
     content: [
-      { parameter: "Company Name", detail: "EMPHZ Private Limited" },
-      { parameter: "Year of Establishment", detail: "2016" },
-      { parameter: "Business Type", detail: "Manufacturer, Exporter, Technology Provider" },
-      { parameter: "Legal Status", detail: "Private Limited Company" },
-      { parameter: "Key Personnel", detail: "R. Murali (Director)" },
+      { parameter: "Legal Name", detail: "EMPHZ Private Limited" },
+      { parameter: "Year of Incorporation", detail: "2010" },
+      { parameter: "Primary Business", detail: "Manufacturing of Advanced GRP Composite Products" },
+      { parameter: "Global Reach", detail: "Serving clients in over 15 countries across Asia, Africa, and the Middle East" },
     ]
   },
   {
-    title: "Compliance & Downloads",
-    image: "https://images.unsplash.com/photo-1581093582415-998f8287894a?q=80&w=1974&auto=format&fit=crop",
+    title: "Certifications & Compliance",
+    image: "https://images.unsplash.com/photo-1581092921443-c0d13c1265b3?q=80&w=2070&auto=format&fit=crop",
     type: 'downloads',
-    content: CERTIFICATE_DOWNLOADS
+    content: [
+      { name: "Download ISO 9001:2015 Certificate", link: "#" },
+      { name: "Download UL Certification Summary", link: "#" },
+      { name: "Download Corporate Social Responsibility Policy", link: "#" },
+    ]
   }
 ];
 
-// --- Support Page ---
 export const WARRANTY_INFO: WarrantyInfoCard[] = [
   {
-    title: "Warranty Coverage",
-    image: "https://images.unsplash.com/photo-1619451421623-93cb337d10d7?q=80&w=2070&auto=format&fit=crop",
-    content: "EMPHZ warrants its GRP products to be free from defects in material and workmanship for a period of ten (10) years from the date of dispatch. This warranty covers structural integrity, color stability (within defined limits), and resistance to environmental degradation under normal use conditions.",
-    note: "Our warranty reflects our commitment to product integrity and long-term performance."
-  },
-  {
-    title: "Exclusions",
-    image: "https://images.unsplash.com/photo-1517420704952-d9f39e95b43e?q=80&w=2070&auto=format&fit=crop",
-    content: "This warranty does not cover damage resulting from improper installation, unauthorized modification, misuse, accidental damage, acts of God, or application outside the specified technical parameters. Hardware and third-party accessories are subject to their respective manufacturer's warranties.",
-    note: "Please refer to our full warranty document for detailed terms and conditions."
-  },
-  {
-    title: "Installation Requirements",
-    image: "https://images.unsplash.com/photo-1599401713374-1d84b238f8a1?q=80&w=1974&auto=format&fit=crop",
+    title: "Standard Product Warranty",
     content: [
-        "Installation must be performed by qualified personnel.",
-        "Use of official EMPHZ mounting hardware is required.",
-        "Ensure adequate ventilation for heat-generating equipment.",
-        "Follow provided torque specifications for all fasteners.",
-        "Foundation and mounting surfaces must be level and stable."
+      "2-year comprehensive warranty on all standard catalog products.",
+      "Covers manufacturing defects and material integrity.",
+      "Ensures performance under specified operating conditions."
     ],
-    note: "Proper installation ensures optimal performance and warranty validity."
+    note: "Standard warranty applies to products installed and used as per EMPHZ guidelines. See full terms for details.",
+    image: "https://images.unsplash.com/photo-1521791136064-7986c28e7485?q=80&w=2069&auto=format&fit=crop"
+  },
+  {
+    title: "Extended Project Warranty",
+    content: "For large-scale infrastructure and B2B projects, we offer tailored extended warranties up to 10 years, providing long-term assurance and partnership.",
+    note: "Extended warranties are project-specific and subject to a separate service level agreement (SLA).",
+    image: "https://images.unsplash.com/photo-1556761175-b413da4b2566?q=80&w=1974&auto=format&fit=crop"
+  },
+  {
+    title: "Service & Support",
+    content: "Our dedicated support team is available for technical consultations, installation guidance, and warranty claims, ensuring a seamless experience.",
+    note: "Contact our support channels for immediate assistance with any product-related queries.",
+    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=2070&auto=format&fit=crop"
   }
 ];
 
-// --- Knowledge Hub Page ---
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
-    title: 'Why GRP is the Superior Choice Over Traditional Materials',
-    link: '#',
-    description: 'An in-depth comparison of GRP composites against steel, aluminum, and concrete in harsh environments.',
-    image: 'https://images.unsplash.com/photo-1517420704952-d9f39e95b43e?q=80&w=2070&auto=format&fit=crop'
+    title: "The TCO Advantage: Why GRP Beats Steel in the Long Run",
+    link: "#",
+    description: "An in-depth analysis of the total cost of ownership, comparing GRP's zero-maintenance lifecycle with the hidden costs of traditional materials.",
+    image: "https://images.unsplash.com/photo-1664574653716-157d333a8869?q=80&w=2070&auto=format&fit=crop"
   },
   {
-    title: 'The Role of GRP in the Renewable Energy Revolution',
-    link: '#',
-    description: 'Exploring how lightweight and durable GRP components are accelerating the deployment of solar and wind energy projects worldwide.',
-    image: 'https://images.unsplash.com/photo-1621935541555-a0f8b8a4f8a0?q=80&w=1974&auto=format&fit=crop'
+    title: "GRP Composites: The Unsung Hero of EV Charging Infrastructure",
+    link: "#",
+    description: "Discover why GRP is the ideal material for EV charging stations, offering safety, durability, and smart design possibilities.",
+    image: "https://images.unsplash.com/photo-1616358352033-5c8e4a1b0b55?q=80&w=2070&auto=format&fit=crop"
   },
-  {
-    title: 'Understanding IP and IK Ratings for Electrical Enclosures',
-    link: '#',
-    description: 'A technical guide to interpreting Ingress Protection and Impact Resistance ratings to select the right enclosure for your application.',
-    image: 'https://images.unsplash.com/photo-1581093450021-4a7360aa9a23?q=80&w=2070&auto=format&fit=crop'
-  },
-];
-export const KNOWLEDGE_RESOURCES = [
-  { name: "GRP Material Properties Whitepaper", link: "#" },
-  { name: "Chemical Resistance Chart", link: "#" },
-  { name: "Standard Product CAD Drawings (ZIP)", link: "#" },
 ];
 
-// --- GRP Applications Page Content ---
+export const KNOWLEDGE_RESOURCES: CertificateDownload[] = [
+    { name: 'Comprehensive Guide to GRP Applications', link: '/knowledge/grp-applications' },
+    { name: 'Technical Deep-Dive: GRP Enclosures', link: '/knowledge/grp-single-door-enclosure-technical-data' },
+    { name: 'Whitepaper: TCO of GRP vs. Steel', link: '#' },
+    { name: 'Installation Guide for Modular Cabins', link: '#' },
+];
+
+export const CONTACT_OPTIONS = {
+  generalEnquiry: 'info@emphz.com',
+  technicalSupport: 'support@emphz.com',
+  whatsApp: `https://wa.me/918648881888`,
+};
+
+export const OFFICE_LOCATIONS: string[] = [
+  'Global HQ: Dubai, UAE',
+  'R&D Center: Bengaluru, India',
+  'Manufacturing Unit: Chennai, India',
+];
+
+export const GENERAL_DOWNLOADS: CertificateDownload[] = [
+  { name: 'Download Company Profile', link: '#' },
+  { name: 'Download Full Product Catalog', link: '#' },
+  { name: 'GRP Technical Datasheet', link: '#' },
+];
+
+export const PRODUCT_FAQS: FAQItem[] = [
+    { question: "What is GRP and why is it superior to metal?", answer: "GRP (Glass Reinforced Plastic) is a composite material that is lightweight, incredibly strong, and completely immune to rust and corrosion. Unlike metal, it doesn't require painting or maintenance, offering a significantly lower total cost of ownership over its 50-year lifecycle." },
+    { question: "Are EMPHZ enclosures certified for outdoor use?", answer: "Yes, our standard enclosures are rated IP66, meaning they are completely dust-tight and protected against powerful water jets. They are also UV-stabilized to withstand direct sunlight without degrading." },
+    { question: "Can I customize an enclosure for my specific needs?", answer: "Absolutely. We offer extensive customization options, including custom sizes, colors, cutouts for glands and meters, ventilation systems, mounting accessories, and transparent windows." },
+    { question: "What is the fire-retardancy rating of your products?", answer: "Our standard products meet the UL 94 V-0 classification, meaning they are self-extinguishing. We also offer higher fire-rated materials compliant with BS 476 for more critical applications." },
+];
+
+export const AUTOMOBILE_PAGE_DATA: AutomobilePageData = {
+    hero: {
+        videoUrl: "https://www.dropbox.com/scl/fi/7wih5l356ws3vpl85n5p2/bus-manufacturing-video.mp4?rlkey=vab85z11j4p4a8b71d9f0f35a&st=zryf25a9&raw=1",
+        title: "Driving the Future of Automotive Composites",
+        subtitle: "Lightweight, aerodynamic, and durable GRP solutions for buses, trucks, and electric vehicles.",
+    },
+    introduction: {
+        title: "Revolutionizing Vehicle Manufacturing with GRP",
+        content: "EMPHZ is at the forefront of the automotive industry's shift towards lighter, more efficient, and longer-lasting materials. Our GRP composite solutions replace heavy, corrosion-prone metal parts with high-strength, custom-molded components that improve performance, reduce fuel consumption, and unlock new possibilities in vehicle design.",
+    },
+    solutions: [
+        { title: "Bus & Coach Bodies", description: "Complete, single-piece front and rear fascia, roof panels, and side panels that reduce overall vehicle weight and improve aerodynamics.", image: "https://images.unsplash.com/photo-1570125909232-eb263c186922?q=80&w=2070&auto=format&fit=crop" },
+        { title: "Truck Aerodynamics", description: "Custom-designed spoilers, side skirts, and fairings that minimize drag, leading to significant fuel savings for commercial fleets.", image: "https://images.unsplash.com/photo-1590664919149-a3b46377363c?q=80&w=1974&auto=format&fit=crop" },
+        { title: "EV Battery Casings", description: "Lightweight, fire-retardant, and impact-resistant enclosures that protect electric vehicle battery packs while reducing vehicle weight.", image: "https://images.unsplash.com/photo-1622379329707-372a8f3a3c2b?q=80&w=1932&auto=format&fit=crop" },
+        { title: "Three-Wheeler Bodies", description: "Durable, rust-proof canopies and bodies for auto-rickshaws that enhance safety, longevity, and passenger comfort.", image: "https://images.unsplash.com/photo-1611387723482-a3350a3c267b?q=80&w=1974&auto=format&fit=crop" },
+    ],
+    advantages: [
+        { icon: "fuel", title: "Improved Fuel Efficiency", description: "Drastic weight reduction directly translates to lower fuel or energy consumption." },
+        { icon: "aerodynamic", title: "Enhanced Aerodynamics", description: "Complex, smooth-molded shapes reduce drag for better performance." },
+        { icon: "assembly", title: "Faster Assembly", description: "Part consolidation and lighter components speed up the vehicle production line." },
+    ],
+    galleryImages: [
+        'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=800&auto=format&fit=crop',
+        'https://images.unsplash.com/photo-1570125909232-eb263c186922?q=80&w=800&auto=format&fit=crop',
+        'https://images.unsplash.com/photo-1559234994-0193b2a2a7f5?q=80&w=800&auto=format&fit=crop',
+        'https://images.unsplash.com/photo-1611387723482-a3350a3c267b?q=80&w=800&auto=format&fit=crop',
+        'https://images.unsplash.com/photo-1590664919149-a3b46377363c?q=80&w=800&auto=format&fit=crop',
+        'https://images.unsplash.com/photo-1625057124330-5d2b679a771b?q=80&w=800&auto=format&fit=crop',
+        'https://images.unsplash.com/photo-1517524206127-48bbd363f584?q=80&w=800&auto=format&fit=crop',
+        'https://images.unsplash.com/photo-1520288383303-33431a44f2e9?q=80&w=800&auto=format&fit=crop',
+    ],
+    featuredProducts: ['A-701', 'A-702', 'A-703'],
+};
+
 export const GRP_APPLICATIONS_CONTENT: GrpApplicationCategory[] = [
     {
-        name: "1. Construction & Infrastructure",
+        name: "Construction & Infrastructure",
         image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop",
         subcategories: [
-            { name: "Structural Elements", items: ["Beams, channels, angles, rods, and other structural profiles", "GRP rebar for concrete reinforcement (non-corrosive alternative to steel)", "Bridge decks and bridge rehabilitation components", "Modular bridge sections", "Walkways, platforms, and staircases (especially in corrosive environments)"] },
-            { name: "Building Envelopes & Cladding", items: ["Roofing sheets (corrugated, flat, opaque, translucent)", "Wall cladding panels and facades", "Decorative panels for interiors and exteriors", "Skylights and translucent roofing"] },
-            { name: "Water Management & Utilities", items: ["Water storage tanks (sectional, cylindrical, underground)", "Effluent treatment plant components (tanks, covers, pipes)", "Sewerage pipes and linings", "Gully pots and drainage channels", "Reservoir covers", "Manhole covers and frames (lightweight, non-corrosive, theft-resistant)", "Pump houses and kiosks"] },
-            { name: "Modular & Prefabricated Structures", items: ["Modular public toilets and shower units", "Bus shelters and tram stops", "Security guard rooms and check-posts", "Site offices and temporary accommodation units", "Cold storage panels"] },
-            { name: "Other Infrastructure", items: ["Sound barriers and acoustic panels", "Cable ducts and trenches", "Street light poles and utility poles (lighter, non-conductive)", "Signage boards and advertising hoardings", "Fencing and gates", "Road furniture (median barriers, crash barriers)"] },
+            { name: "Modular Buildings", items: ["Security Cabins", "Portable Toilets", "Site Offices", "Worker Housing"] },
+            { name: "Water & Waste Management", items: ["Water Storage Tanks", "Septic Tanks", "Grease Traps", "Manhole Covers"] },
         ]
     },
     {
-        name: "2. Automotive & Transportation",
-        image: "https://images.unsplash.com/photo-1570125909232-eb263c186922?q=80&w=2070&auto=format&fit=crop",
+        name: "Automotive & Transportation",
+        image: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=2070&auto=format&fit=crop",
         subcategories: [
-            { name: "Vehicle Body Components", items: ["Lightweight body panels for buses, trucks, and commercial vehicles", "Auto-rickshaw and tractor components (e.g., cabins, hoods, fenders)", "Caravan and RV body parts", "Specialty vehicle enclosures (ambulances, fire tenders)", "Interior panels and seating for trains and buses"] },
-            { name: "Custom Enclosures", items: ["Genset (generator set) canopies and enclosures", "Battery boxes and covers"] },
-            { name: "Marine Transportation", items: ["Hulls and decks for boats, yachts, and fishing vessels", "Marine components (fenders, navigation aids)", "Lifeboats and rescue craft"] },
-        ]
-    },
-    {
-        name: "3. Water, Agriculture & Chemical Industries",
-        image: "https://images.unsplash.com/photo-1596700661874-3292b3820252?q=80&w=1974&auto=format&fit=crop",
-        subcategories: [
-            { name: "Water & Irrigation", items: ["Agricultural water channels and linings (prevents seepage)", "Irrigation pipes and fittings", "Silos and storage tanks for grains, feeds, and fertilizers", "Aquaculture tanks and fish farming equipment"] },
-            { name: "Chemical Storage & Processing", items: ["Tanks for agri-chemicals, fertilizers, and corrosive liquids", "Chemical processing equipment (vessels, scrubbers, ducting)", "Industrial pipes and fittings for chemical transfer", "Secondary containment systems"] },
-        ]
-    },
-    {
-        name: "4. Renewable Energy & Electrical",
-        image: "https://images.unsplash.com/photo-1622379329707-372a8f3a3c2b?q=80&w=1932&auto=format&fit=crop",
-        subcategories: [
-            { name: "Renewable Energy", items: ["Solar panel mounting structures (especially in corrosive environments)", "Wind turbine blades and nacelle covers", "Biogas plant components (digester covers, gas holders)"] },
-            { name: "Electrical & Electronics", items: ["Electrical enclosures, junction boxes, and cabinets (IP rated)", "Cable trays and ladders", "Electrical insulators and busbar supports", "Meter boxes and consumer units", "Distribution boards and feeder pillars", "Control panel housings", "Telecommunication cabinets and shelters", "Battery enclosures"] },
-        ]
-    },
-    {
-        name: "5. Marine, Offshore & Oil & Gas",
-        image: "https://images.unsplash.com/photo-1565538332159-07131a982998?q=80&w=2070&auto=format&fit=crop",
-        subcategories: [
-            { name: "Marine Structures", items: ["Boat and ship hulls, decks, superstructures", "Gangways and access platforms for marine environments", "Buoys, pontoons, and floating structures"] },
-            { name: "Offshore & Industrial", items: ["Offshore platform components (walkways, handrails, stair treads)", "Blast-resistant modules and buildings", "Piping systems for oil & gas (reduced weight, corrosion resistance)", "Cooling tower components", "Ventilation systems (hoods, ducts)"] },
-        ]
-    },
-    {
-        name: "6. Consumer & Specialty Goods",
-        image: "https://images.unsplash.com/photo-1556911220-bff31c812dba?q=80&w=1935&auto=format&fit=crop",
-        subcategories: [
-            { name: "Outdoor & Urban Furniture", items: ["Street furniture (benches, litter bins, planters)", "Outdoor and garden furniture", "Playground equipment", "Decorative elements and sculptures"] },
-            { name: "Home & Lifestyle", items: ["Bathroom fixtures (bathtubs, shower trays, washbasins)", "Septic tanks and water filters", "Decorative planters and garden features"] },
-            { name: "Sports & Recreation", items: ["Kayaks, canoes, surfboards, paddleboards", "Swimming pool slides and structures", "Sports equipment components (e.g., helmets, fairings)"] },
-            { name: "Miscellaneous", items: ["DIY kits and scale models", "Custom housings for machinery and equipment", "Theme park props and architectural features"] },
+            { name: "Vehicle Bodies", items: ["Bus Body Panels", "Auto-Rickshaw Canopies", "Truck Fairings", "EV Body Shells"] },
+            { name: "Components", items: ["Interior Dashboards", "Seat Structures", "Battery Enclosures", "Aerodynamic Spoilers"] },
         ]
     }
 ];
 
-
-// --- Contact Page ---
-export const CONTACT_OPTIONS = {
-  generalEnquiry: 'sales@emphz.com',
-  technicalSupport: 'support@emphz.com',
-  whatsApp: '#',
-};
-export const OFFICE_LOCATIONS = [
-  'Coimbatore, Tamil Nadu, India',
-  'Bengaluru, Karnataka, India',
-  'Sharjah, UAE',
-];
-export const SOCIAL_LINKS = {
-  linkedIn: "https://www.linkedin.com/company/emphz/",
-  twitter: "https://twitter.com/emphz", // For X
-  googleBusiness: "https://g.page/EMPHZ",
-  facebook: "https://www.facebook.com/emphz", // Placeholder
-  instagram: "https://www.instagram.com/emphz", // Placeholder
-};
-export const GENERAL_DOWNLOADS = [
-  { name: 'Download Product Catalog', link: '#' },
-  { name: 'Download Company Profile', link: '#' },
-  { name: 'Download Technical Manual', link: '#' },
-];
-
-// --- Product Detail Page ---
-export const PRODUCT_FAQS: FAQItem[] = [
-    { question: 'What is the standard lead time for GRP enclosures?', answer: 'Standard models are typically dispatched within 7-10 working days. Custom orders may take 3-4 weeks depending on complexity.' },
-    { question: 'Can you provide custom colors and branding?', answer: 'Yes, we offer custom RAL colors and can mold company logos directly into the enclosure for a durable, professional finish. Minimum order quantities may apply.' },
-    { question: 'What is the maximum operating temperature for these enclosures?', answer: 'Our standard GRP enclosures are rated for continuous operation from -40°C to 80°C. High-temperature resin options are available for applications up to 150°C.' },
-    { question: 'Are these enclosures suitable for hazardous or explosive environments?', answer: 'Yes, we offer ATEX-certified versions of our enclosures with anti-static properties for use in Zone 1, 2, 21, and 22 hazardous areas.' },
-    { question: 'How do I specify accessories like mounting plates or vents?', answer: 'All accessories can be specified at the time of order. Our sales team can assist you in selecting the appropriate options, including back plates, ventilation louvers, window kits, and gland plates, to meet your project needs.' },
-];
-
-// --- Digital Business Card Page ---
 export const DIGITAL_BUSINESS_CARD_DATA: DigitalBusinessCardData = {
-  companyName: "EMPHZ Private Limited",
-  name: "R. Murali",
-  title: "Director",
-  logoUrl: FALLBACK_LOGO_URL,
-  websiteUrl: "https://xpod.co.in/", // Placeholder for the main website URL
-  contact: {
-    phone: "+91 86488 81888",
-    email: "sales@emphz.com",
-    whatsapp: "https://wa.me/918648881888", // Assuming the same number for WhatsApp
-  },
-  socials: {
-    linkedin: SOCIAL_LINKS.linkedIn,
-    twitter: SOCIAL_LINKS.twitter,
-    google: SOCIAL_LINKS.googleBusiness,
-    whatsapp: "https://wa.me/918648881888",
-    facebook: SOCIAL_LINKS.facebook,
-    instagram: SOCIAL_LINKS.instagram,
-  },
-  downloads: {
-    profile: "#", // Placeholder
-    catalog: "#", // Placeholder
-    brochure: "#", // Placeholder
-  },
-  location: {
-    address: "Coimbatore, Tamil Nadu, India",
-    googleMapsEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.79375794276!2d76.9922223147596!3d11.020165992178088!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba859a4f91b7e4b%3A0x33b43501a97e64b8!2sEMPHZ%20Private%20Limited!5e0!3m2!1sen!2sin!4v1628782875323!5m2!1sen!2sin",
-  },
+    companyName: "EMPHZ Private Limited",
+    name: "John Doe",
+    title: "Chief Executive Officer",
+    logoUrl: "https://i.ibb.co/M7cR4Zg/emphz-icon.png",
+    websiteUrl: "https://example.com",
+    contact: {
+        phone: "+918648881888",
+        email: "john.doe@emphz.com",
+        whatsapp: "https://wa.me/918648881888",
+    },
+    socials: SOCIAL_LINKS,
+    downloads: {
+        profile: "#",
+        catalog: "#",
+        brochure: "#",
+    },
+    location: {
+        address: "Bengaluru, India",
+        googleMapsEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.001691889816!2d77.59239871482201!3d12.971822990855793!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1670c91444e5%3A0x4cb834346571597d!2sUB%20City!5e0!3m2!1sen!2sin!4v1633512836553!5m2!1sen!2sin"
+    }
 };
 
-
-// --- SEO Data ---
 export const SEO_DATA = {
-    home: {
-        title: "EMPHZ | Engineering Tomorrow in Advanced Composites",
-        description: "EMPHZ is a global engineering manufacturer specializing in GRP composite enclosures, modular structures, and engineered infrastructure solutions for B2B clients worldwide.",
-    },
-    products: {
-        title: "GRP Product Catalog | EMPHZ",
-        description: "Explore our comprehensive range of GRP electrical enclosures, modular structures, and custom-molded composite solutions.",
-    },
-    productCategory: {
-        title: (categoryName: string) => `${categoryName} | EMPHZ Products`,
-        description: (categoryTagline: string) => `Discover our ${categoryTagline} View technical specifications and product details.`,
-    },
-    industries: {
-        title: "Industries We Serve | EMPHZ",
-        description: "EMPHZ provides specialized GRP solutions for Electrical, Renewable Energy, Telecom, Infrastructure, and Marine sectors.",
-    },
-    industryDetail: {
-        title: (industryName: string) => `GRP Solutions for the ${industryName} Industry | EMPHZ`,
-        description: (industryName: string, industryDescription: string) => `Learn how EMPHZ's advanced GRP composites solve key challenges in the ${industryName} sector. ${industryDescription}`,
-    },
-    innovation: {
-        title: "Innovation & Quality | EMPHZ",
-        description: "Our commitment to quality is backed by ISO 9001:2015 certification and a state-of-the-art in-house testing laboratory.",
-    },
-    sustainability: {
-        title: "Sustainability | EMPHZ",
-        description: "Discover how EMPHZ's GRP composites offer a 50-year lifecycle advantage and a lower total cost of ownership.",
-    },
-    corporate: {
-        title: "Corporate Governance | EMPHZ",
-        description: "EMPHZ is a trusted, compliant private limited company. Access our corporate details and certifications.",
-    },
-    support: {
-        title: "Support & Warranty | EMPHZ",
-        description: "Learn about our comprehensive 10-year product warranty and how to contact our technical support team.",
-    },
-    knowledge: {
-        title: "Knowledge Hub | EMPHZ",
-        description: "Access technical articles, whitepapers, and downloadable resources on GRP composite technology.",
-    },
-    contact: {
-        title: "Contact Us | EMPHZ",
-        description: "Request a quote or get in touch with our engineering team to discuss your project requirements.",
-    },
-    admin: {
-        title: "Admin Portal | EMPHZ",
-        description: "Manage EMPHZ product catalog and digital assets.",
-    },
-    grpApplications: {
-        title: "Comprehensive Guide to GRP Applications | EMPHZ",
-        description: "Explore an extensive list of products and applications made possible by the versatility of GRP composites, from construction to consumer goods."
-    },
-    grpTechnicalData: {
-        title: "Technical Data: GRP Single Door Enclosures | EMPHZ",
-        description: "A deep-dive into the material properties, certifications, and technical specifications of our GRP single door electrical enclosures."
-    }
+  home: { title: 'EMPHZ | Engineering Tomorrow in Advanced Composites', description: 'EMPHZ is a global engineering manufacturer specializing in GRP composite enclosures, modular structures, and engineered infrastructure solutions.' },
+  products: { title: 'GRP Composite Products | EMPHZ', description: 'Explore our comprehensive catalog of GRP composite products, including electrical enclosures, modular structures, and infrastructure solutions.' },
+  productCategory: { title: (name: string) => `${name} | EMPHZ Products`, description: (desc: string) => `Explore EMPHZ's range of ${desc}` },
+  productDetail: { title: (name: string) => `${name} | EMPHZ`, description: (name: string, desc: string) => `Technical specifications and details for ${name}: ${desc}` },
+  industries: { title: 'Industries Served | EMPHZ Solutions', description: 'Discover how EMPHZ provides tailored GRP composite solutions for industries like electrical, automotive, renewable energy, and more.' },
+  industryDetail: { title: (name: string) => `Solutions for ${name} | EMPHZ`, description: (name: string, desc: string) => `Learn about our specialized GRP applications for the ${name} industry. ${desc}` },
+  innovation: { title: 'Innovation & Quality | EMPHZ', description: 'Our commitment to smart engineering, precision manufacturing, and rigorous quality control sets the standard for the composites industry.' },
+  sustainability: { title: 'Sustainability | EMPHZ', description: 'EMPHZ GRP composites offer a 50-year lifecycle advantage with minimal maintenance and a lower carbon footprint compared to traditional materials.' },
+  corporate: { title: 'Corporate Governance | EMPHZ', description: 'Learn about EMPHZ\'s corporate structure, compliance standards, and our commitment to transparency and trust.' },
+  support: { title: 'Support & Warranty | EMPHZ', description: 'Find information on our product warranties, technical support channels, and after-sales service for all EMPHZ composite solutions.' },
+  knowledge: { title: 'Knowledge Hub | EMPHZ', description: 'Access technical articles, whitepapers, and downloadable resources about GRP composite technology and applications.' },
+  grpApplications: { title: 'Comprehensive Guide to GRP Applications | EMPHZ', description: 'Explore an extensive list of products and solutions made possible by the versatility and durability of GRP composites across all industries.' },
+  grpTechnicalData: { title: 'Technical Data: GRP Enclosures | EMPHZ', description: 'A deep-dive into the material specifications, certifications, and technical advantages of EMPHZ GRP Single-Door Electrical Enclosures.' },
+  contact: { title: 'Contact Us | EMPHZ', description: 'Get in touch with our engineering team to request a quote or discuss your project requirements for GRP composite solutions.' },
+  admin: { title: 'Admin Portal | EMPHZ', description: 'Manage the EMPHZ product catalog and digital assets.' },
 };

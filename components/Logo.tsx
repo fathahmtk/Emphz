@@ -16,7 +16,7 @@ const Logo: React.FC<{ className?: string }> = ({ className = 'h-12 w-auto' }) =
           <g>
             <path fill="var(--color-brand)" d="M0 0 H18 V18 H0 Z" transform="translate(0 0)"/>
             <path fill="var(--color-brand)" d="M0 0 H18 V18 H0 Z" transform="translate(22 0)"/>
-            <path fill="var(--color-text-primary)" d="M0 0 H18 V18 H0 Z" transform="translate(0 22)"/>
+            <path fill="var(--color-text-secondary)" d="M0 0 H18 V18 H0 Z" transform="translate(0 22)"/>
             <path fill="var(--color-brand)" d="M0 0 H18 V18 H0 Z" transform="translate(22 22)"/>
           </g>
           <text x="52" y="34" style={{ fontSize: "32px", fill: "var(--color-text-primary)" }}>EMPHZ</text>

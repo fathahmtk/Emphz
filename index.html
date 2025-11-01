@@ -22,34 +22,34 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
         
-        /* New 'Glass Effect' Theme */
+        /* New 'Monochrome Glass' Theme */
         :root {
-            --color-background: #f1f5f9; /* Tailwind Slate-100 as a fallback */
-            --color-surface-primary: rgba(255, 255, 255, 0.45);
-            --color-surface-secondary: rgba(17, 24, 39, 0.7); /* Dark glass for footer */
-            --color-border: rgba(255, 255, 255, 0.4);
-            --color-border-hover: rgba(255, 255, 255, 0.8);
+            --color-background: #111827; /* Tailwind Gray-900 */
+            --color-surface-primary: rgba(255, 255, 255, 0.05);
+            --color-surface-secondary: rgba(255, 255, 255, 0.1);
+            --color-border: rgba(255, 255, 255, 0.15);
+            --color-border-hover: rgba(255, 255, 255, 0.3);
 
-            --color-text-primary: #1e293b;   /* Tailwind Slate-800 for high contrast on light glass */
-            --color-text-secondary: #475569; /* Tailwind Slate-600 */
-            --color-text-light: #F1F5F9; /* Tailwind Slate-100 for use on dark backgrounds */
+            --color-text-primary: #f9fafb;   /* Tailwind Gray-50 for high contrast on dark glass */
+            --color-text-secondary: #d1d5db; /* Tailwind Gray-300 */
+            --color-text-dark: #111827; /* Tailwind Gray-900 for text on light backgrounds */
             
-            --color-brand: #2563EB;      /* Tailwind Blue-600 */
-            --color-brand-accent: #1D4ED8; /* Tailwind Blue-700 */
+            --color-brand: #ffffff; /* White for primary accents */
+            --color-brand-accent: #e5e7eb; /* Tailwind Gray-200 for hover */
 
             --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.08), 0 2px 4px -2px rgb(0 0 0 / 0.08);
-            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.15), 0 4px 6px -4px rgb(0 0 0 / 0.15);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.2), 0 8px 10px -6px rgb(0 0 0 / 0.2);
             
-            --shadow-brand: 0 10px 15px -3px rgb(37 99 235 / 0.15), 0 4px 6px -4px rgb(37 99 235 / 0.15);
+            --shadow-brand: 0 0 20px 0 rgb(255 255 255 / 0.1);
             
-            --radius: 0.75rem; /* 12px - a slightly softer radius for the glass effect */
+            --radius: 0.75rem;
         }
 
         ::selection {
             background-color: var(--color-brand);
-            color: var(--color-surface-primary);
+            color: var(--color-text-dark);
         }
 
         html {
@@ -60,7 +60,7 @@
             font-family: 'Inter', sans-serif;
             color: var(--color-text-secondary);
             background-color: var(--color-background);
-            background-image: linear-gradient(to top right, #c7d2fe, #fbcfe8, #d1fae5);
+            background-image: linear-gradient(to bottom right, #1a1a1a, #0d0d0d);
             background-attachment: fixed;
             transition: background-color 0.3s ease, color 0.3s ease;
             -webkit-font-smoothing: antialiased;
@@ -179,7 +179,7 @@
             top: -100px;
             left: 0.5rem;
             background: var(--color-brand);
-            color: var(--color-surface-primary);
+            color: var(--color-text-dark);
             padding: 0.5rem 1rem;
             z-index: 1000;
             transition: top 0.3s ease-in-out;

@@ -58,7 +58,7 @@ const ContactFAB: React.FC = () => {
         `}
         aria-hidden={!isOpen}
       >
-        <div className="p-4 bg-[var(--color-brand)] text-white flex items-center gap-3 rounded-t-lg">
+        <div className="p-4 bg-black/30 text-white flex items-center gap-3 rounded-t-lg backdrop-blur-sm">
           <Logo className="h-10 w-auto" />
           <div>
             <h3 className="font-bold text-lg">EMPHZ Support</h3>
@@ -76,7 +76,7 @@ const ContactFAB: React.FC = () => {
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             placeholder="Type a message..."
-            className="flex-grow w-full px-3 py-2 border rounded-full focus:ring-2 focus:ring-[var(--color-brand)]/50 focus:border-[var(--color-brand)] transition-colors duration-200 text-sm bg-white text-[var(--color-text-primary)] placeholder:text-gray-400 border-[var(--color-border)]"
+            className="flex-grow w-full px-3 py-2 border rounded-full focus:ring-2 focus:ring-[var(--color-brand)]/50 focus:border-[var(--color-brand)] transition-colors duration-200 text-sm bg-white text-[var(--color-text-dark)] placeholder:text-gray-400 border-[var(--color-border)]"
             aria-label="Your message"
           />
           <button
@@ -92,7 +92,7 @@ const ContactFAB: React.FC = () => {
       {/* Floating Action Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-16 h-16 rounded-full bg-[var(--color-brand)] text-white shadow-lg flex items-center justify-center transition-all duration-300 transform hover:scale-110 hover:shadow-xl"
+        className="w-16 h-16 rounded-full bg-white text-black shadow-lg flex items-center justify-center transition-all duration-300 transform hover:scale-110 hover:shadow-xl"
         aria-label={isOpen ? "Close chat widget" : "Open chat widget"}
         aria-expanded={isOpen}
       >

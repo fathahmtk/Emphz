@@ -66,7 +66,7 @@ const HeroSection: React.FC = () => {
           <Button variant="primary" href="/contact" className="px-8 py-4 text-lg">
             {HERO_SECTION.cta1}
           </Button>
-          <Button variant="secondary" href="/products" className="px-8 py-4 text-lg bg-white/10 backdrop-blur-sm border-white/50 text-white hover:bg-white/20 hover:border-white">
+          <Button variant="secondary" href="/products" className="px-8 py-4 text-lg">
             {HERO_SECTION.cta2}
           </Button>
         </div>

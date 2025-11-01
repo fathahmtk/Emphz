@@ -51,19 +51,20 @@ const DigitalBusinessCardPage: React.FC = () => {
             <section>
                 <h2 className="text-xs uppercase font-bold text-gray-400 mb-3">Connect With Us</h2>
                 <div className="flex justify-around items-center p-3 bg-gray-100 rounded-lg">
-                    <a href={SOCIAL_LINKS.linkedIn} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-blue-700 transition-colors" aria-label="LinkedIn Profile">
+                    {/* FIX: Consistently use data.socials and updated keys to match type definition */}
+                    <a href={data.socials.linkedin} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-blue-700 transition-colors" aria-label="LinkedIn Profile">
                         <Icon name="linkedin" className={socialIconClasses} />
                     </a>
-                    <a href={SOCIAL_LINKS.twitter} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-blue-400 transition-colors" aria-label="X (formerly Twitter) Profile">
+                    <a href={data.socials.twitter} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-blue-400 transition-colors" aria-label="X (formerly Twitter) Profile">
                         <Icon name="twitter" className={socialIconClasses} />
                     </a>
-                    <a href={SOCIAL_LINKS.facebook} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-blue-800 transition-colors" aria-label="Facebook Profile">
+                    <a href={data.socials.facebook} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-blue-800 transition-colors" aria-label="Facebook Profile">
                         <Icon name="facebook" className={socialIconClasses} />
                     </a>
-                    <a href={SOCIAL_LINKS.instagram} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-pink-600 transition-colors" aria-label="Instagram Profile">
+                    <a href={data.socials.instagram} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-pink-600 transition-colors" aria-label="Instagram Profile">
                         <Icon name="instagram" className={socialIconClasses} />
                     </a>
-                    <a href={SOCIAL_LINKS.googleBusiness} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-red-600 transition-colors" aria-label="Google Business Profile">
+                    <a href={data.socials.google} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-red-600 transition-colors" aria-label="Google Business Profile">
                         <Icon name="google" className={socialIconClasses} />
                     </a>
                     <a href={data.socials.whatsapp} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-green-500 transition-colors" aria-label="WhatsApp">

@@ -24,8 +24,8 @@ const Button: React.FC<ButtonProps> = ({
 }) => {
   const baseStyles = `inline-block px-6 py-3 rounded-[var(--radius)] text-base font-semibold transition-all duration-300 ease-in-out focus:outline-none focus:ring-4 transform hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] active:shadow-sm disabled:opacity-60 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-none`;
 
-  const primaryStyles = `bg-[var(--color-brand)] text-white hover:bg-[var(--color-brand-accent)] focus:ring-[var(--color-brand)]/50 shadow-[var(--shadow-brand)]`;
-  const secondaryStyles = `bg-black/5 border border-black/10 text-[var(--color-text-primary)] hover:bg-black/10 focus:ring-[var(--color-brand)]/50 shadow-sm backdrop-blur-sm`;
+  const primaryStyles = `bg-[var(--color-brand)] text-[var(--color-text-dark)] hover:bg-[var(--color-brand-accent)] focus:ring-gray-300 shadow-md shadow-black/20`;
+  const secondaryStyles = `bg-white/5 border border-[var(--color-border)] text-[var(--color-text-primary)] hover:bg-white/10 hover:border-[var(--color-border-hover)] focus:ring-white/30 backdrop-blur-sm`;
   
   let variantStyles = '';
   // Map old variants to new ones for compatibility
