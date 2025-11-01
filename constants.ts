@@ -1,6 +1,8 @@
 
 
 
+
+
 import {
   ProductCategory,
   KeyValueProposition,
@@ -76,6 +78,7 @@ export const ICONS = {
   safety: 'M13,14h-2v-2h2V14z M13,10h-2V4h2V10z M12,2C6.48,2,2,6.48,2,12s4.48,10,10,10s10-4.48,10-10S17.52,2,12,2z M12,20c-4.41,0-8-3.59-8-8s3.59-8,8-8s8,3.59,8,8S16.41,20,12,20z',
   nvh: 'M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z',
   assembly: 'M11 17h2v-1.17l6.78-6.78-7.95-7.95L4.05 8.88 2.64 7.46 4.05 6.05l1.41 1.41L11 1.83l9.17 9.17-6.78 6.78V17zm-7-2h2v2H4v-2zm4 0h2v2H8v-2zm4 0h2v2h-2v-2z',
+  download: 'M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z',
 };
 
 
@@ -125,7 +128,11 @@ export const PRODUCT_CATALOG: ProductCategory[] = [
         code: 'E-102',
         name: 'GRP Double-Door Enclosure',
         description: 'Medium-size cabinet for MCCs, switchgear assemblies, and distribution boards.',
-        image: 'https://images.unsplash.com/photo-1621935541555-a0f8b8a4f8a0?q=80&w=1974&auto=format&fit=crop',
+        image: [
+            'https://images.unsplash.com/photo-1621935541555-a0f8b8a4f8a0?q=80&w=1974&auto=format&fit=crop',
+            'https://images.unsplash.com/photo-1581093450021-4a7360aa9a23?q=80&w=2070&auto=format&fit=crop',
+            'https://images.unsplash.com/photo-1517420704952-d9f39e95b43e?q=80&w=2070&auto=format&fit=crop',
+        ],
       },
       {
         code: 'E-103',
@@ -143,7 +150,10 @@ export const PRODUCT_CATALOG: ProductCategory[] = [
         code: 'E-105',
         name: 'GRP Meter Box / Junction Box',
         description: 'Utility meter housings and telecom termination boxes.',
-        image: 'https://images.unsplash.com/photo-1617789255069-eda08a55e4e8?q=80&w=2070&auto=format&fit=crop',
+        image: [
+          'https://images.unsplash.com/photo-1617789255069-eda08a55e4e8?q=80&w=2070&auto=format&fit=crop',
+          'https://images.unsplash.com/photo-1631562725287-73a0a382e73a?q=80&w=1974&auto=format&fit=crop',
+        ],
       },
       {
         code: 'E-106',
@@ -218,7 +228,10 @@ export const PRODUCT_CATALOG: ProductCategory[] = [
         name: 'GRP Information / Ticket Kiosk',
         useCase: 'Public information booths, toll and ticket counters.',
         description: 'Public information booths, toll and ticket counters.',
-        image: 'https://images.unsplash.com/photo-1555465052-1b50d5c83f98?q=80&w=2070&auto=format&fit=crop',
+        image: [
+          'https://images.unsplash.com/photo-1555465052-1b50d5c83f98?q=80&w=2070&auto=format&fit=crop',
+          'https://images.unsplash.com/photo-1610464222044-2453f3e18055?q=80&w=1974&auto=format&fit=crop',
+        ],
       },
       {
         code: 'M-203',
@@ -305,7 +318,10 @@ export const PRODUCT_CATALOG: ProductCategory[] = [
         code: 'U-301',
         name: 'GRP Water Storage Tanks',
         description: 'Cylindrical or rectangular, 500 L–50 000 L, UV-resistant.',
-        image: 'https://images.unsplash.com/photo-1596700661874-3292b3820252?q=80&w=1974&auto=format&fit=crop',
+        image: [
+          'https://images.unsplash.com/photo-1596700661874-3292b3820252?q=80&w=1974&auto=format&fit=crop',
+          'https://images.unsplash.com/photo-1597545415392-28c0361a5b88?q=80&w=2070&auto=format&fit=crop',
+        ],
       },
       {
         code: 'U-302',
@@ -329,7 +345,10 @@ export const PRODUCT_CATALOG: ProductCategory[] = [
         code: 'U-305',
         name: 'GRP Manholes & Chambers',
         description: 'Load class A15–D400, slip-resistant, non-sparking.',
-        image: 'https://images.unsplash.com/photo-1619451421623-93cb337d10d7?q=80&w=2070&auto=format&fit=crop',
+        image: [
+          'https://images.unsplash.com/photo-1619451421623-93cb337d10d7?q=80&w=2070&auto=format&fit=crop',
+          'https://images.unsplash.com/photo-1599401713374-1d84b238f8a1?q=80&w=1974&auto=format&fit=crop',
+        ],
       },
       {
         code: 'U-306',
@@ -844,16 +863,49 @@ export const GRP_APPLICATIONS_CONTENT: GrpApplicationCategory[] = [
         name: "Construction & Infrastructure",
         image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop",
         subcategories: [
-            { name: "Modular Buildings", items: ["Security Cabins", "Portable Toilets", "Site Offices", "Worker Housing"] },
-            { name: "Water & Waste Management", items: ["Water Storage Tanks", "Septic Tanks", "Grease Traps", "Manhole Covers"] },
+            { name: "Modular Buildings", items: ["Security Cabins", "Portable Toilets & Showers", "Site Offices", "Worker Housing", "Information Kiosks", "ATM Booths"] },
+            { name: "Water & Waste Management", items: ["Potable Water Storage Tanks", "Septic Tanks", "Chemical Storage Tanks", "Grease Traps & Interceptors", "Manhole Covers & Frames", "Drainage Channels & Gratings"] },
+            { name: "Urban & Civil", items: ["Cable Trays & Trenches", "Street Light Poles", "Public Seating & Benches", "Decorative Cladding Panels", "Planter Boxes"] },
         ]
     },
     {
         name: "Automotive & Transportation",
         image: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=2070&auto=format&fit=crop",
         subcategories: [
-            { name: "Vehicle Bodies", items: ["Bus Body Panels", "Auto-Rickshaw Canopies", "Truck Fairings", "EV Body Shells"] },
-            { name: "Components", items: ["Interior Dashboards", "Seat Structures", "Battery Enclosures", "Aerodynamic Spoilers"] },
+            { name: "Vehicle Bodies", items: ["Bus Body Panels (Front/Rear Fascia)", "Auto-Rickshaw Canopies", "Truck Aerodynamic Fairings", "EV Body Shells & Panels", "Train Interior Panels"] },
+            { name: "Components", items: ["Interior Dashboards", "Seat Structures", "Battery Enclosures", "Engine Covers", "Lightweight Floor Panels", "Spare Wheel Covers"] },
+        ]
+    },
+    {
+        name: "Electrical & Utilities",
+        image: "https://images.unsplash.com/photo-1621935541555-a0f8b8a4f8a0?q=80&w=1974&auto=format&fit=crop",
+        subcategories: [
+            { name: "Enclosures & Housings", items: ["Feeder Pillars", "Single/Double Door Enclosures", "Meter Boxes", "Junction Boxes", "Transformer Kiosks", "RMU Housings"] },
+            { name: "Insulation & Safety", items: ["Busbar Supports & Barriers", "Switchgear Components", "Insulating Ladders", "Cable Trays"] },
+        ]
+    },
+    {
+        name: "Renewable Energy",
+        image: "https://images.unsplash.com/photo-1508235289567-f027f91a9e13?q=80&w=2070&auto=format&fit=crop",
+        subcategories: [
+            { name: "Wind Energy", items: ["Wind Turbine Nacelle Covers", "Spinner Hubs", "Blade Components"] },
+            { name: "Solar Energy", items: ["Solar Panel Mounting Structures", "Inverter & Battery Enclosures", "Floating Solar Farm Pontoons"] },
+        ]
+    },
+    {
+        name: "Marine & Offshore",
+        image: "https://images.unsplash.com/photo-1565538332159-07131a982998?q=80&w=2070&auto=format&fit=crop",
+        subcategories: [
+            { name: "Vessel Components", items: ["Boat Hulls & Superstructures", "Battery Compartments", "Interior Panels", "Storage Lockers"] },
+            { name: "Platform & Dock Equipment", items: ["IP67 Offshore Enclosures", "Walkway Gratings", "Handrails", "Cable Ladders", "Navigation Light Housings"] },
+        ]
+    },
+    {
+        name: "Chemical & Industrial",
+        image: "https://images.unsplash.com/photo-1604008133345-84b39675278c?q=80&w=1964&auto=format&fit=crop",
+        subcategories: [
+            { name: "Storage & Processing", items: ["Corrosion-Resistant Chemical Tanks", "Industrial Scrubbers & Ducts", "Pump Housings", "Motor Canopies"] },
+            { name: "Custom Fabrication", items: ["Machine Guards & Covers", "Acoustic Enclosures", "Fire-Resistant Panels", "Instrument Housings"] },
         ]
     }
 ];

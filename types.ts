@@ -1,3 +1,4 @@
+
 export interface Product {
   code: string;
   name: string;
@@ -31,7 +32,7 @@ export interface KeyValueProposition {
 
 // FIX: Create a specific type for icon names to ensure type safety.
 // This must be kept in sync with the keys of the ICONS object in constants.ts.
-export type IconName = "sustainability" | "engineering" | "strength" | "customization" | "linkedin" | "twitter" | "google" | "facebook" | "instagram" | "whatsapp" | "lightweight" | "fuel" | "aerodynamic" | "durability" | "design" | "safety" | "nvh" | "assembly";
+export type IconName = "sustainability" | "engineering" | "strength" | "customization" | "linkedin" | "twitter" | "google" | "facebook" | "instagram" | "whatsapp" | "lightweight" | "fuel" | "aerodynamic" | "durability" | "design" | "safety" | "nvh" | "assembly" | "download";
 
 export interface BrandPillar {
   icon: IconName;

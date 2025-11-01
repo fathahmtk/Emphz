@@ -12,23 +12,21 @@ interface ProductCardProps {
 }
 
 const ImagePlaceholder: React.FC = () => (
-    <div className="w-full h-full bg-gray-200 shimmer-bg"></div>
+    <div className="w-full h-full bg-gray-200 shimmer-bg" role="status" aria-live="polite" aria-label="Loading product image"></div>
 );
 
 const ImageError: React.FC = () => (
     <div className="w-full h-full bg-gray-100 flex flex-col items-center justify-center p-4 text-center">
-        <img
-            src={FALLBACK_LOGO_URL}
-            alt="EMPHZ Logo"
-            className="w-1/2 h-auto object-contain opacity-20 mb-2"
-        />
-        <p className="text-xs text-[var(--color-text-secondary)]">Image not available</p>
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+        </svg>
+        <p className="text-xs text-[var(--color-text-secondary)]">Image Unavailable</p>
     </div>
 );
 
 const ProductCard: React.FC<ProductCardProps> = ({ product, onQuickViewClick, categoryName }) => {
   const descriptionText = product.description || product.useCase || product.innovation;
-  const cardRef = useRef<HTMLDivElement>(null);
+  const cardRef = useRef<HTMLElement>(null);
   const isVisible = useIntersectionObserver(cardRef);
   
   const [imageStatus, setImageStatus] = useState<'pending' | 'loading' | 'loaded' | 'error'>('pending');
@@ -73,15 +71,20 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onQuickViewClick, ca
     setCurrentImageIndex(newIndex); 
     setImageStatus('loading');
   }, [currentImageIndex, images.length]);
+  
+  const productNameId = `product-name-${product.code}`;
+  const productDescId = `product-desc-${product.code}`;
 
   return (
-    <div
+    <article
       ref={cardRef}
       className={`h-full group opacity-0 ${isVisible ? 'animate-fadeInScaleUp' : ''}`}
+      aria-labelledby={productNameId}
+      aria-describedby={productDescId}
     >
       <div className="bg-[var(--color-surface-primary)] backdrop-blur-lg rounded-[var(--radius)] shadow-[var(--shadow-md)] group-hover:shadow-[var(--shadow-lg)] transition-all duration-300 border border-[var(--color-border)] h-full flex flex-col hover:-translate-y-1 group-hover:border-[var(--color-border-hover)] overflow-hidden">
         {/* Image Section */}
-        <Link to={`/products/${product.code}`} className="block aspect-[4/3] bg-gray-100/50 relative group/image overflow-hidden">
+        <Link to={`/products/${product.code}`} className="block aspect-[4/3] bg-gray-100/50 relative group/image overflow-hidden" aria-hidden="true" tabIndex={-1}>
             <div className="absolute inset-0">
                 {(imageStatus === 'pending' || imageStatus === 'loading') && <ImagePlaceholder />}
                 {imageStatus === 'error' && <ImageError />}
@@ -124,17 +127,18 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onQuickViewClick, ca
               </p>
           )}
           <Link to={`/products/${product.code}`} className="block">
-              <h4 className="text-lg font-bold text-[var(--color-text-primary)] group-hover:text-[var(--color-brand)] transition-colors duration-300 mb-1">{product.name}</h4>
+              <h4 id={productNameId} className="text-lg font-bold text-[var(--color-text-primary)] group-hover:text-[var(--color-brand)] transition-colors duration-300 mb-1">{product.name}</h4>
           </Link>
           <p className="text-sm text-gray-400 font-medium mb-3">Code: {product.code}</p>
           
-          {descriptionText && <p className="text-[var(--color-text-secondary)] text-sm mb-4 line-clamp-2 flex-grow">{descriptionText}</p>}
+          {descriptionText && <p id={productDescId} className="text-[var(--color-text-secondary)] text-sm mb-4 line-clamp-2 flex-grow">{descriptionText}</p>}
           
           <div className="mt-auto pt-4 border-t border-black/10 flex items-center gap-3">
             <Button
                 href={`/products/${product.code}`}
                 variant="primary"
                 className="px-4 py-2 text-sm flex-1"
+                aria-describedby={productNameId}
             >
                 View Details
             </Button>
@@ -149,7 +153,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onQuickViewClick, ca
           </div>
         </div>
       </div>
-    </div>
+    </article>
   );
 };
 
