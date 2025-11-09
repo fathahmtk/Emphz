@@ -12,7 +12,7 @@ export type Product = {
 };
 
 export type Project = {
-  id: string;
+  id:string;
   title: string;
   description: string;
   clientType: string;

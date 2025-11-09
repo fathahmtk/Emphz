@@ -1,7 +1,7 @@
 
 'use client';
 
-import { BarChart as BarChartIcon, BookText, Bot, ShoppingBag } from 'lucide-react';
+import { BarChart as BarChartIcon, BookText, Bot, ShoppingBag, LogOut, User } from 'lucide-react';
 import Link from 'next/link';
 
 import {
@@ -16,12 +16,15 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from '@/components/ui/chart';
-import { useCollection } from '@/firebase';
+import { useAuth, useCollection } from '@/firebase';
 import { type Lead } from '@/lib/types';
-import { useMemo } from 'react';
+import { useMemo, useEffect } from 'react';
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from 'recharts';
 import { collection, orderBy, query } from 'firebase/firestore';
 import { useFirestore, useMemoFirebase } from '@/firebase';
+import { useRouter } from 'next/navigation';
+import { Button } from '@/components/ui/button';
+import { signOut } from 'firebase/auth';
 
 const stats = [
   {
@@ -41,12 +44,26 @@ const stats = [
 ];
 
 export default function AdminDashboardPage() {
+  const { user, loading: authLoading } = useAuth();
+  const auth = useAuth();
+  const router = useRouter();
   const firestore = useFirestore();
   const leadsQuery = useMemoFirebase(() => {
     if (!firestore) return null;
     return query(collection(firestore, 'leads'), orderBy('submittedAt', 'desc'));
   }, [firestore]);
   const { data: leads } = useCollection<Lead>(leadsQuery);
+
+  useEffect(() => {
+    if (!authLoading && !user) {
+      router.push('/admin/login');
+    }
+  }, [user, authLoading, router]);
+
+  const handleSignOut = () => {
+    signOut(auth);
+    router.push('/admin/login');
+  }
 
   const chartData = useMemo(() => {
     if (!leads) return [];
@@ -63,12 +80,34 @@ export default function AdminDashboardPage() {
     ];
   }, [leads]);
 
+  if (authLoading || !user) {
+    return (
+      <div className="flex h-screen items-center justify-center">
+        <p>Loading...</p>
+      </div>
+    )
+  }
+
   return (
     <div className="p-4 md:p-8">
       <header className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold font-headline">Admin Dashboard</h1>
           <p className="text-muted-foreground">Welcome to the Emphz CMS.</p>
+        </div>
+        <div className='flex items-center gap-4'>
+            <div className='text-right'>
+                <p className='font-semibold'>{user.email}</p>
+                <p className='text-xs text-muted-foreground'>Administrator</p>
+            </div>
+            <Button variant="outline" size="icon" onClick={handleSignOut}>
+                <LogOut className="h-4 w-4"/>
+            </Button>
+             <Button variant="secondary" size="icon" asChild>
+                <Link href="/admin/create-account">
+                    <User className="h-4 w-4"/>
+                </Link>
+            </Button>
         </div>
       </header>
 

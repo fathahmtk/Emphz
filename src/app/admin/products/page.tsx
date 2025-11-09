@@ -34,20 +34,31 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { Button } from '@/components/ui/button';
-import { MoreHorizontal } from 'lucide-react';
+import { MoreHorizontal, PlusCircle } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { useToast } from '@/hooks/use-toast';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
 export default function AdminProductsPage() {
+  const { user, loading: authLoading } = useAuth();
+  const router = useRouter();
   const firestore = useFirestore();
-  const { user } = useAuth();
   const { toast } = useToast();
+
+  useEffect(() => {
+    if (!authLoading && !user) {
+      router.push('/admin/login');
+    }
+  }, [user, authLoading, router]);
 
   const productsQuery = useMemoFirebase(() => {
     if (!firestore) return null;
     return query(collection(firestore, 'products'), orderBy('name'));
   }, [firestore]);
-  const { data: products, loading } = useCollection<Product>(productsQuery);
+  const { data: products, isLoading: productsLoading } = useCollection<Product>(productsQuery);
+
+  const loading = authLoading || productsLoading;
 
   const handleDelete = async (productId: string, productName: string) => {
     if (!firestore || !user) {
@@ -79,11 +90,19 @@ export default function AdminProductsPage() {
   return (
     <div className="p-4 md:p-8">
       <Card>
-        <CardHeader>
-          <CardTitle>Products</CardTitle>
-          <CardDescription>
-            Manage your products and view their details.
-          </CardDescription>
+        <CardHeader className="flex flex-row items-center justify-between">
+            <div>
+                <CardTitle>Products</CardTitle>
+                <CardDescription>
+                    Manage your products and view their details.
+                </CardDescription>
+            </div>
+            <Button asChild>
+                <Link href="/admin/products/new">
+                    <PlusCircle className="mr-2 h-4 w-4" />
+                    Add Product
+                </Link>
+            </Button>
         </CardHeader>
         <CardContent>
           <Table>

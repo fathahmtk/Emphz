@@ -1,8 +1,9 @@
+
 'use client'
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { BarChart, BookText, BotMessageSquare, Home, PanelLeft, Settings, ShoppingBag } from "lucide-react"
+import { BarChart, BookText, Home, LogOut, PanelLeft, ShoppingBag } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -16,8 +17,12 @@ import {
   SidebarInset,
   SidebarTrigger,
   SidebarRail,
+  SidebarFooter,
 } from "@/components/ui/sidebar"
 import { Logo } from "@/components/icons"
+import { useAuth } from "@/firebase"
+import { useRouter } from "next/navigation"
+import { signOut } from "firebase/auth"
 
 const adminNavItems = [
   { href: "/admin", label: "Dashboard", icon: Home },
@@ -32,6 +37,17 @@ export default function AdminLayout({
   children: React.ReactNode
 }) {
   const pathname = usePathname()
+  const router = useRouter();
+  const { auth } = useAuth();
+  
+  if (pathname.includes('/login') || pathname.includes('/create-account')) {
+    return <>{children}</>;
+  }
+
+  const handleSignOut = () => {
+    signOut(auth);
+    router.push('/admin/login');
+  }
 
   return (
       <Sidebar variant="inset" collapsible="icon">
@@ -62,6 +78,16 @@ export default function AdminLayout({
             ))}
           </SidebarMenu>
         </SidebarContent>
+        <SidebarFooter>
+            <SidebarMenu>
+                <SidebarMenuItem>
+                    <SidebarMenuButton onClick={handleSignOut} tooltip={{ children: "Sign Out"}}>
+                        <LogOut />
+                        <span>Sign Out</span>
+                    </SidebarMenuButton>
+                </SidebarMenuItem>
+            </SidebarMenu>
+        </SidebarFooter>
         <SidebarInset>{children}</SidebarInset>
       </Sidebar>
   )

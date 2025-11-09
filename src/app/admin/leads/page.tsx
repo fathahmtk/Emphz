@@ -20,9 +20,11 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { formatDistanceToNow } from 'date-fns';
 import { cn } from '@/lib/utils';
-import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
+import { useAuth, useCollection, useFirestore, useMemoFirebase } from '@/firebase';
 import { type Lead } from '@/lib/types';
 import { Timestamp } from 'firebase/firestore';
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
 const priorityColors = {
   high: 'bg-red-500 text-white hover:bg-red-500',
@@ -31,12 +33,22 @@ const priorityColors = {
 };
 
 export default function AdminLeadsPage() {
+  const { user, loading: authLoading } = useAuth();
+  const router = useRouter();
   const firestore = useFirestore();
   const leadsQuery = useMemoFirebase(() => {
     if (!firestore) return null;
     return query(collection(firestore, 'leads'), orderBy('submittedAt', 'desc'));
   }, [firestore]);
-  const { data: leads, loading } = useCollection<Lead>(leadsQuery);
+  const { data: leads, isLoading: leadsLoading } = useCollection<Lead>(leadsQuery);
+
+  const loading = authLoading || leadsLoading;
+  
+  useEffect(() => {
+    if (!authLoading && !user) {
+      router.push('/admin/login');
+    }
+  }, [user, authLoading, router]);
 
   const formatSubmissionTime = (timestamp: Timestamp | Date) => {
     if (timestamp instanceof Timestamp) {

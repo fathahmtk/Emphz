@@ -1,34 +1,64 @@
 
 'use client';
 import Link from 'next/link';
-import { notFound } from 'next/navigation';
+import { notFound, useRouter } from 'next/navigation';
 import { ChevronLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { EditProductForm } from './edit-product-form';
 import { doc } from 'firebase/firestore';
 import { useDoc, useFirestore, useMemoFirebase } from '@/firebase';
 import { type Product } from '@/lib/types';
+import { useAuth } from '@/firebase/auth/use-user';
+import { useEffect } from 'react';
 
 export default function AdminEditProductPage({
   params,
 }: {
   params: { id: string };
 }) {
+  const { user, loading: authLoading } = useAuth();
+  const router = useRouter();
   const firestore = useFirestore();
-  const productRef = useMemoFirebase(() => (firestore ? doc(firestore, 'products', params.id) : null), [firestore, params.id]);
-  const { data: product, loading } = useDoc<Product>(productRef);
+
+  const isNewProduct = params.id === 'new';
+
+  const productRef = useMemoFirebase(() => {
+    if (authLoading || isNewProduct) return null;
+    return firestore ? doc(firestore, 'products', params.id) : null
+  }, [firestore, params.id, authLoading, isNewProduct]);
+  
+  const { data: product, loading: productLoading } = useDoc<Product>(productRef);
+
+  useEffect(() => {
+    if (!authLoading && !user) {
+      router.push('/admin/login');
+    }
+  }, [user, authLoading, router]);
+
+  const loading = authLoading || (!isNewProduct && productLoading);
 
   if (loading) {
     return (
       <div className="p-4 md:p-8">
-        <p>Loading product...</p>
+        <p>Loading...</p>
       </div>
     );
   }
 
-  if (!product) {
+  if (!isNewProduct && !product) {
     notFound();
   }
+
+  const productData = isNewProduct ? {
+    id: 'new',
+    name: 'New Product',
+    description: '',
+    specifications: {},
+    imageUrl: '',
+    imageHint: '',
+    category: '',
+  } : product!;
+
 
   return (
     <div className="p-4 md:p-8">
@@ -40,10 +70,10 @@ export default function AdminEditProductPage({
           </Link>
         </Button>
         <h1 className="flex-1 shrink-0 whitespace-nowrap text-xl font-semibold tracking-tight sm:grow-0">
-          {product.name}
+          {productData.name}
         </h1>
       </div>
-      <EditProductForm product={product} />
+      <EditProductForm product={productData} />
     </div>
   );
 }

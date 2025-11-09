@@ -28,7 +28,7 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { Badge } from '@/components/ui/badge';
-import { MoreHorizontal } from 'lucide-react';
+import { MoreHorizontal, PlusCircle } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -37,17 +37,28 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { useToast } from '@/hooks/use-toast';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
 export default function AdminProjectsPage() {
+  const { user, loading: authLoading } = useAuth();
+  const router = useRouter();
   const firestore = useFirestore();
-  const { user } = useAuth();
   const { toast } = useToast();
+
+  useEffect(() => {
+    if (!authLoading && !user) {
+      router.push('/admin/login');
+    }
+  }, [user, authLoading, router]);
 
   const projectsQuery = useMemoFirebase(() => {
     if (!firestore) return null;
     return query(collection(firestore, 'projects'), orderBy('title'));
   }, [firestore]);
-  const { data: projects, loading } = useCollection<Project>(projectsQuery);
+  const { data: projects, isLoading: projectsLoading } = useCollection<Project>(projectsQuery);
+
+  const loading = authLoading || projectsLoading;
 
   const handleDelete = async (projectId: string, projectTitle: string) => {
     if (!firestore || !user) {
@@ -80,9 +91,17 @@ export default function AdminProjectsPage() {
   return (
     <div className="p-4 md:p-8">
       <Card>
-        <CardHeader>
-          <CardTitle>Projects</CardTitle>
-          <CardDescription>Manage your project case studies.</CardDescription>
+        <CardHeader className='flex flex-row items-center justify-between'>
+          <div>
+            <CardTitle>Projects</CardTitle>
+            <CardDescription>Manage your project case studies.</CardDescription>
+          </div>
+          <Button asChild>
+            <Link href="/admin/projects/new">
+                <PlusCircle className="mr-2 h-4 w-4"/>
+                Add Project
+            </Link>
+          </Button>
         </CardHeader>
         <CardContent>
           <Table>
