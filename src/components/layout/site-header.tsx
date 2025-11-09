@@ -33,7 +33,7 @@ export function SiteHeader() {
         <div className="flex flex-1 items-center justify-end gap-4">
            <Button asChild className="hidden md:flex group">
             <Link href="/contact">
-              Contact Us <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                <span>Contact Us <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform inline" /></span>
             </Link>
           </Button>
           <MobileNav />

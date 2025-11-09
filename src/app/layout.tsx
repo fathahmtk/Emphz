@@ -6,6 +6,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { SiteHeader } from '@/components/layout/site-header';
 import { SiteFooter } from '@/components/layout/site-footer';
 import { SidebarProvider } from '@/components/ui/sidebar';
+import { ReactNode } from 'react';
 
 export const metadata: Metadata = {
   title: {
@@ -48,14 +49,32 @@ export const metadata: Metadata = {
   },
 };
 
+// Using a separate component for the conditional rendering based on pathname
+// This allows the RootLayout to remain a sync component
+function Layout({ children }: { children: ReactNode }) {
+  const headersList = headers();
+  const pathname = headersList.get('next-url') || '';
+  const isAdminPage = pathname.startsWith('/admin');
+
+  if (isAdminPage) {
+    return <div className='bg-background text-foreground'>{children}</div>
+  }
+
+  return (
+    <div className="relative flex min-h-dvh flex-col bg-background">
+      <SiteHeader />
+      <main className="flex-1">{children}</main>
+      <SiteFooter />
+    </div>
+  );
+}
+
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const pathname = headers().get('next-url') || '';
-  const isAdminPage = pathname.startsWith('/admin');
-
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -65,15 +84,7 @@ export default function RootLayout({
       </head>
       <body className={cn('min-h-screen font-body antialiased')}>
         <SidebarProvider>
-          {isAdminPage ? (
-            <div className='bg-background text-foreground'>{children}</div>
-          ) : (
-            <div className="relative flex min-h-dvh flex-col bg-background">
-              <SiteHeader />
-              <main className="flex-1">{children}</main>
-              <SiteFooter />
-            </div>
-          )}
+          <Layout>{children}</Layout>
         </SidebarProvider>
         <Toaster />
       </body>
