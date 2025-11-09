@@ -40,8 +40,10 @@ export default function Home() {
               <div className="mt-8 flex flex-col sm:flex-row gap-4">
                 <Button size="lg" asChild className="group">
                   <Link href="/products">
-                    Explore Products
-                    <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                    <span>
+                      Explore Products
+                      <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                    </span>
                   </Link>
                 </Button>
                 <Button size="lg" variant="secondary" asChild>
@@ -129,9 +131,12 @@ export default function Home() {
             <div className="text-center mt-12">
               <Button size="lg" asChild className="group">
                 <Link href="/products">
-                  View All Products
-                  <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                </Link>              </Button>
+                  <span>
+                    View All Products
+                    <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                  </span>
+                </Link>
+              </Button>
             </div>
           </ScrollReveal>
         </div>
@@ -161,8 +166,10 @@ export default function Home() {
             <div className="text-center mt-12">
               <Button size="lg" asChild className="group">
                 <Link href="/projects">
-                  View All Projects
-                  <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                  <span>
+                    View All Projects
+                    <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                  </span>
                 </Link>
               </Button>
             </div>

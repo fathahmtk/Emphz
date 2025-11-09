@@ -34,8 +34,10 @@ export function ProductCard({ product }: ProductCardProps) {
             </Button>
             <Button asChild className="w-full group">
                 <Link href={`/products#${product.id}`}>
-                    Details
-                    <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                    <span>
+                        Details
+                        <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                    </span>
                 </Link>
             </Button>
         </div>
