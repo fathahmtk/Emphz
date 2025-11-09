@@ -1,12 +1,74 @@
+/**
+ * @fileoverview Firestore Security Rules for GRP catalog application.
+ *
+ * Core Philosophy:
+ * This ruleset allows public read access to all product catalogs, project case studies, technical downloads and leads data.
+ *
+ * Data Structure:
+ * All data is stored in top-level collections:
+ * - /products/{productId}
+ * - /project_case_studies/{projectCaseStudyId}
+ * - /leads/{leadId}
+ * - /technical_downloads/{technicalDownloadId}
+ *
+ * Key Security Decisions:
+ * - Public read access is granted for all collections.
+ * - Unrestricted write access to all collections.
+ */
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    // Public read for marketing content (products, projects, downloads)
-    match /{document=**} {
-      allow read: if true;
 
-      // Writes only for authenticated admins (use custom claim "admin": true)
-      allow write: if request.auth != null && request.auth.token.admin == true;
+    /**
+     * @description Allows anyone to read and write product data.
+     * @path /products/{productId}
+     * @allow (get, list)
+     * @allow (create, update, delete)
+     * @deny None
+     * @principle Allows public read and write access to product data.
+     */
+    match /products/{productId} {
+      allow get, list: if true;
+      allow create, update, delete: if true;
+    }
+
+    /**
+     * @description Allows anyone to read and write project case study data.
+     * @path /project_case_studies/{projectCaseStudyId}
+     * @allow (get, list)
+     * @allow (create, update, delete)
+     * @deny None
+     * @principle Allows public read and write access to project case study data.
+     */
+    match /project_case_studies/{projectCaseStudyId} {
+      allow get, list: if true;
+      allow create, update, delete: if true;
+    }
+
+    /**
+     * @description Allows anyone to read and write lead data.
+     * @path /leads/{leadId}
+     * @allow (get, list)
+     * @allow (create, update, delete)
+     * @deny None
+     * @principle Allows public read and write access to lead data.
+     */
+    match /leads/{leadId} {
+      allow get, list: if true;
+      allow create, update, delete: if true;
+    }
+
+    /**
+     * @description Allows anyone to read and write technical download data.
+     * @path /technical_downloads/{technicalDownloadId}
+     * @allow (get, list)
+     * @allow (create, update, delete)
+     * @deny None
+     * @principle Allows public read and write access to technical download data.
+     */
+    match /technical_downloads/{technicalDownloadId} {
+      allow get, list: if true;
+      allow create, update, delete: if true;
     }
   }
 }

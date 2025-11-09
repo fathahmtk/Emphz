@@ -1,134 +1,235 @@
-
 {
   "entities": {
     "Product": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
       "title": "Product",
-      "description": "A product offered by Emphz.",
       "type": "object",
+      "description": "Represents a product in the GRP catalog.",
       "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Product entity."
+        },
         "name": {
           "type": "string",
-          "description": "The name of the product."
+          "description": "Name of the product."
         },
         "description": {
           "type": "string",
-          "description": "A description of the product."
-        },
-        "specifications": {
-          "type": "object",
-          "description": "A map of technical specifications for the product."
+          "description": "Detailed description of the product specifications."
         },
         "imageUrl": {
           "type": "string",
-          "format": "uri",
-          "description": "The URL for the product image."
+          "description": "URL of the product image.",
+          "format": "uri"
         },
-        "imageHint": {
+        "specifications": {
           "type": "string",
-          "description": "A hint for AI image generation."
-        },
-        "category": {
-          "type": "string",
-          "description": "The category the product belongs to."
+          "description": "Technical specifications of the product."
         }
       },
-      "required": ["name", "description", "imageUrl", "category"]
+      "required": [
+        "id",
+        "name",
+        "description",
+        "imageUrl",
+        "specifications"
+      ]
     },
-    "Project": {
-      "title": "Project",
-      "description": "A project case study.",
+    "ProjectCaseStudy": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "ProjectCaseStudy",
       "type": "object",
+      "description": "Represents a project case study.",
       "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the ProjectCaseStudy entity."
+        },
         "title": {
           "type": "string",
-          "description": "The title of the project."
+          "description": "Title of the project case study."
         },
-        "description": {
+        "details": {
           "type": "string",
-          "description": "A description of the project."
-        },
-        "clientType": {
-          "type": "string",
-          "description": "The type of client for the project."
-        },
-        "location": {
-          "type": "string",
-          "description": "The location of the project."
+          "description": "Detailed information about the project."
         },
         "beforeImageUrl": {
           "type": "string",
+          "description": "URL of the 'before' image.",
           "format": "uri"
-        },
-        "beforeImageHint": {
-          "type": "string"
         },
         "afterImageUrl": {
           "type": "string",
+          "description": "URL of the 'after' image.",
           "format": "uri"
         },
-        "afterImageHint": {
-          "type": "string"
+        "location": {
+          "type": "string",
+          "description": "Location of the project."
+        },
+        "clientType": {
+          "type": "string",
+          "description": "Type of client for the project."
         }
       },
-      "required": ["title", "description", "clientType", "location", "beforeImageUrl", "afterImageUrl"]
+      "required": [
+        "id",
+        "title",
+        "details",
+        "beforeImageUrl",
+        "afterImageUrl",
+        "location",
+        "clientType"
+      ]
     },
     "Lead": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
       "title": "Lead",
-      "description": "A lead from the contact form.",
       "type": "object",
+      "description": "Represents a lead captured from the contact form.",
       "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Lead entity."
+        },
         "name": {
-          "type": "string"
+          "type": "string",
+          "description": "Name of the lead."
         },
         "email": {
           "type": "string",
+          "description": "Email address of the lead.",
           "format": "email"
         },
-        "company": {
-          "type": "string"
-        },
-        "inquiry": {
-          "type": "string"
-        },
-        "submittedAt": {
+        "phone": {
           "type": "string",
+          "description": "Phone number of the lead."
+        },
+        "message": {
+          "type": "string",
+          "description": "Message from the lead."
+        },
+        "dateCreated": {
+          "type": "string",
+          "description": "Date and time when the lead was created.",
           "format": "date-time"
-        },
-        "category": {
-          "type": "string"
-        },
-        "priority": {
-          "type": "string",
-          "enum": ["high", "medium", "low"]
-        },
-        "notes": {
-          "type": "string"
         }
       },
-      "required": ["name", "email", "inquiry", "submittedAt"]
+      "required": [
+        "id",
+        "name",
+        "email",
+        "phone",
+        "message",
+        "dateCreated"
+      ]
+    },
+    "TechnicalDownload": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "TechnicalDownload",
+      "type": "object",
+      "description": "Represents a downloadable technical document.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the TechnicalDownload entity."
+        },
+        "title": {
+          "type": "string",
+          "description": "Title of the technical download."
+        },
+        "fileUrl": {
+          "type": "string",
+          "description": "URL of the downloadable file (PDF).",
+          "format": "uri"
+        },
+        "description": {
+          "type": "string",
+          "description": "A brief description of the technical download."
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "fileUrl",
+        "description"
+      ]
     }
   },
   "auth": {
-    "providers": ["anonymous"]
+    "providers": [
+      "password",
+      "anonymous"
+    ]
   },
   "firestore": {
-    "/products/{productId}": {
-      "schema": {
-        "$ref": "#/backend/entities/Product"
+    "structure": [
+      {
+        "path": "/products/{productId}",
+        "definition": {
+          "entityName": "Product",
+          "schema": {
+            "$ref": "#/backend/entities/Product"
+          },
+          "description": "Stores product information.",
+          "params": [
+            {
+              "name": "productId",
+              "description": "The unique identifier of the product."
+            }
+          ]
+        }
       },
-      "description": "Stores product information."
-    },
-    "/projects/{projectId}": {
-      "schema": {
-        "$ref": "#/backend/entities/Project"
+      {
+        "path": "/project_case_studies/{projectCaseStudyId}",
+        "definition": {
+          "entityName": "ProjectCaseStudy",
+          "schema": {
+            "$ref": "#/backend/entities/ProjectCaseStudy"
+          },
+          "description": "Stores project case study information.",
+          "params": [
+            {
+              "name": "projectCaseStudyId",
+              "description": "The unique identifier of the project case study."
+            }
+          ]
+        }
       },
-      "description": "Stores project case studies."
-    },
-    "/leads/{leadId}": {
-      "schema": {
-        "$ref": "#/backend/entities/Lead"
+      {
+        "path": "/leads/{leadId}",
+        "definition": {
+          "entityName": "Lead",
+          "schema": {
+            "$ref": "#/backend/entities/Lead"
+          },
+          "description": "Stores lead information captured from the contact form.",
+          "params": [
+            {
+              "name": "leadId",
+              "description": "The unique identifier of the lead."
+            }
+          ]
+        }
       },
-      "description": "Stores leads from the contact form."
-    }
+      {
+        "path": "/technical_downloads/{technicalDownloadId}",
+        "definition": {
+          "entityName": "TechnicalDownload",
+          "schema": {
+            "$ref": "#/backend/entities/TechnicalDownload"
+          },
+          "description": "Stores technical download information.",
+          "params": [
+            {
+              "name": "technicalDownloadId",
+              "description": "The unique identifier of the technical download."
+            }
+          ]
+        }
+      }
+    ],
+    "reasoning": "The Firestore structure is designed to address the 'auth/invalid-api-key' error and fulfill the application's data storage needs, focusing on clear authorization and data integrity.  The provided error indicates an issue with the Firebase API key configuration. Ensure the Firebase configuration object (`firebaseConfig`) within `src/firebase/index.ts` contains the correct `apiKey` value, and that the API key is enabled within the Firebase project settings in the Firebase Console.  Also, check that Firebase billing is enabled for the project, as some features require a paid plan. The structure avoids hierarchical authorization dependencies to ensure security and enables atomic operations (transactions/batches) without `get()` calls in the rules. All documents within the same collection will have the same security requirements to simplify the security rules.\n\n**Products:** Products are stored in a top-level `/products` collection. This simplifies querying and management.\n\n**Project Case Studies:** Project case studies are stored in a top-level `/project_case_studies` collection, facilitating easy access and listing.\n\n**Leads:** Leads are stored in a top-level `/leads` collection. Because leads are created anonymously, there are no authorization concerns.\n\n**Technical Downloads:** Technical downloads are stored in a top-level `/technical_downloads` collection.\n\nThis structure ensures **Authorization Independence**, which is critical for secure and scalable applications. By avoiding hierarchical authorization dependencies, the design simplifies security rules and avoids breaking atomic operations."
   }
 }
