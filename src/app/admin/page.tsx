@@ -1,11 +1,12 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { BookText, ShoppingBag, BarChart } from "lucide-react";
+import { BookText, ShoppingBag, BarChart, Bot } from "lucide-react";
 import Link from "next/link";
 
 const stats = [
     { title: "Products", value: 4, icon: ShoppingBag, href: "/admin/products" },
     { title: "Projects", value: 2, icon: BookText, href: "/admin/projects" },
     { title: "Leads", value: 2, icon: BarChart, href: "/admin/leads" },
+    { title: "AI Content", value: "Chat with Ron", icon: Bot, href: "/ai-persona-chat" },
 ]
 
 export default function AdminDashboardPage() {
@@ -19,7 +20,7 @@ export default function AdminDashboardPage() {
       </header>
 
       <main className="mt-8">
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             {stats.map((stat) => (
                 <Card key={stat.title} className="hover:bg-muted/50 transition-colors">
                     <Link href={stat.href}>
@@ -29,7 +30,10 @@ export default function AdminDashboardPage() {
                         </CardHeader>
                         <CardContent>
                             <div className="text-2xl font-bold">{stat.value}</div>
-                            <p className="text-xs text-muted-foreground">items managed</p>
+                             {stat.title === "AI Content" ? 
+                                <p className="text-xs text-muted-foreground">AI-assisted content generation</p> :
+                                <p className="text-xs text-muted-foreground">items managed</p>
+                             }
                         </CardContent>
                     </Link>
                 </Card>
@@ -46,6 +50,7 @@ export default function AdminDashboardPage() {
                     <li><span className="font-semibold text-foreground">Products:</span> Add, edit, or remove items from your product catalog.</li>
                     <li><span className="font-semibold text-foreground">Projects:</span> Showcase your work by managing project case studies.</li>
                     <li><span className="font-semibold text-foreground">Leads:</span> View inquiries submitted through the contact form.</li>
+                     <li><span className="font-semibold text-foreground">AI Content:</span> Chat with Ron to generate content.</li>
                 </ul>
             </CardContent>
         </Card>
