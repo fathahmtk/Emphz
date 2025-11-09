@@ -51,7 +51,7 @@ export const metadata: Metadata = {
 
 // Using a separate component for the conditional rendering based on pathname
 // This allows the RootLayout to remain a sync component
-async function Layout({ children }: { children: ReactNode }) {
+function Layout({ children }: { children: ReactNode }) {
   const headersList = headers();
   const pathname = headersList.get('x-pathname') || '';
   const isAdminPage = pathname.startsWith('/admin');
