@@ -7,6 +7,17 @@ import { SiteHeader } from '@/components/layout/site-header';
 import { SiteFooter } from '@/components/layout/site-footer';
 import { SidebarProvider } from '@/components/ui/sidebar';
 import { ReactNode } from 'react';
+import { Orbitron, Inter } from 'next/font/google';
+
+const orbitron = Orbitron({
+  subsets: ['latin'],
+  variable: '--font-headline',
+});
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-body',
+})
 
 export const metadata: Metadata = {
   title: {
@@ -14,7 +25,7 @@ export const metadata: Metadata = {
     template: '%s | Emphz',
   },
   description: 'Emphz specializes in Glass Reinforced Plastic (GRP) products, offering a wide range of solutions from pipes to custom-molded items. Discover our projects and technical expertise.',
-  keywords: ['GRP', 'Glass Reinforced Plastic', 'GRP pipes', 'GRP tanks', 'Industrial Solutions'],
+  keywords: ['GRP', 'Glass Reinforced Plastic', 'GRP pipes', 'GRP tanks', 'Industrial Solutions', 'AI Chat'],
   openGraph: {
     title: 'Emphz - High-Performance GRP Solutions',
     description: 'Specializing in Glass Reinforced Plastic (GRP) products for industrial applications.',
@@ -63,7 +74,7 @@ function Layout({ children }: { children: ReactNode }) {
 
   return (
     <div className="relative flex min-h-dvh flex-col bg-background">
-      {!isHomePage && <SiteHeader />}
+       <SiteHeader />
       <main className="flex-1">{children}</main>
       <SiteFooter />
     </div>
@@ -78,12 +89,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
-      </head>
-      <body className={cn('min-h-screen font-body antialiased')}>
+      <body className={cn('min-h-screen font-body antialiased', orbitron.variable, inter.variable)}>
         <SidebarProvider>
           <Layout>{children}</Layout>
         </SidebarProvider>

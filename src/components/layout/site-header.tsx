@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { type NavItem } from "@/lib/types";
 import { MobileNav } from "@/components/layout/mobile-nav";
 import { Logo } from "../icons";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Bot } from "lucide-react";
 
 const navItems: NavItem[] = [
   { title: "Products", href: "/products" },
@@ -29,6 +29,12 @@ export function SiteHeader() {
                 {item.title}
               </Link>
             ))}
+             <Button variant="ghost" asChild>
+              <Link href="/ai-persona-chat">
+                <Bot className="w-4 h-4 mr-2" />
+                AI Chat
+              </Link>
+            </Button>
              <Button asChild className="group">
               <Link href="/contact">
                 <span>
