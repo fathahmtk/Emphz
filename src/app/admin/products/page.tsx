@@ -1,20 +1,90 @@
-import Image from "next/image";
-import Link from "next/link";
-import { products } from "@/lib/data";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Badge } from "@/components/ui/badge";
-import { MoreHorizontal } from "lucide-react";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+
+'use client';
+import Image from 'next/image';
+import Link from 'next/link';
+import {
+  collection,
+  deleteDoc,
+  doc,
+  orderBy,
+  query,
+} from 'firebase/firestore';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
+import { useAuth, useCollection, useFirestore } from '@/firebase';
+import { type Product } from '@/lib/types';
+import { useMemo } from 'react';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table';
+import { Button } from '@/components/ui/button';
+import { MoreHorizontal } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import { useToast } from '@/hooks/use-toast';
 
 export default function AdminProductsPage() {
+  const firestore = useFirestore();
+  const { user } = useAuth();
+  const { toast } = useToast();
+
+  const productsQuery = useMemo(() => {
+    if (!firestore) return;
+    return query(collection(firestore, 'products'), orderBy('name'));
+  }, [firestore]);
+  const { data: products, loading } = useCollection<Product>(productsQuery);
+
+  const handleDelete = async (productId: string, productName: string) => {
+    if (!firestore || !user) {
+      toast({
+        variant: 'destructive',
+        title: 'Error',
+        description: 'Authentication error. Please try again.',
+      });
+      return;
+    }
+    if (!window.confirm(`Are you sure you want to delete "${productName}"?`)) {
+      return;
+    }
+    try {
+      await deleteDoc(doc(firestore, 'products', productId));
+      toast({
+        title: 'Product Deleted',
+        description: `"${productName}" has been successfully deleted.`,
+      });
+    } catch (error) {
+      console.error('Error deleting product: ', error);
+      toast({
+        variant: 'destructive',
+        title: 'Error',
+        description: 'Failed to delete product. Please try again.',
+      });
+    }
+  };
   return (
     <div className="p-4 md:p-8">
       <Card>
         <CardHeader>
           <CardTitle>Products</CardTitle>
-          <CardDescription>Manage your products and view their details.</CardDescription>
+          <CardDescription>
+            Manage your products and view their details.
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <Table>
@@ -25,14 +95,23 @@ export default function AdminProductsPage() {
                 </TableHead>
                 <TableHead>Name</TableHead>
                 <TableHead>Category</TableHead>
-                <TableHead className="hidden md:table-cell">Description</TableHead>
+                <TableHead className="hidden md:table-cell">
+                  Description
+                </TableHead>
                 <TableHead>
                   <span className="sr-only">Actions</span>
                 </TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
-              {products.map((product) => (
+              {loading && (
+                <TableRow>
+                  <TableCell colSpan={5} className="text-center">
+                    Loading products...
+                  </TableCell>
+                </TableRow>
+              )}
+              {products?.map((product) => (
                 <TableRow key={product.id}>
                   <TableCell className="hidden sm:table-cell">
                     <Image
@@ -48,13 +127,17 @@ export default function AdminProductsPage() {
                   <TableCell>
                     <Badge variant="outline">{product.category}</Badge>
                   </TableCell>
-                  <TableCell className="hidden md:table-cell max-w-sm truncate">
+                  <TableCell className="hidden max-w-sm truncate md:table-cell">
                     {product.description}
                   </TableCell>
                   <TableCell>
                     <DropdownMenu>
                       <DropdownMenuTrigger asChild>
-                        <Button aria-haspopup="true" size="icon" variant="ghost">
+                        <Button
+                          aria-haspopup="true"
+                          size="icon"
+                          variant="ghost"
+                        >
                           <MoreHorizontal className="h-4 w-4" />
                           <span className="sr-only">Toggle menu</span>
                         </Button>
@@ -62,9 +145,16 @@ export default function AdminProductsPage() {
                       <DropdownMenuContent align="end">
                         <DropdownMenuLabel>Actions</DropdownMenuLabel>
                         <DropdownMenuItem asChild>
-                          <Link href={`/admin/products/${product.id}`}>Edit</Link>
+                          <Link href={`/admin/products/${product.id}`}>
+                            Edit
+                          </Link>
                         </DropdownMenuItem>
-                        <DropdownMenuItem>Delete</DropdownMenuItem>
+                        <DropdownMenuItem
+                          onClick={() => handleDelete(product.id, product.name)}
+                          className="text-destructive"
+                        >
+                          Delete
+                        </DropdownMenuItem>
                       </DropdownMenuContent>
                     </DropdownMenu>
                   </TableCell>

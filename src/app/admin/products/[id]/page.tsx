@@ -1,12 +1,30 @@
-import Link from "next/link";
-import { products } from "@/lib/data";
-import { notFound } from "next/navigation";
-import { ChevronLeft } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { EditProductForm } from "./edit-product-form";
 
-export default function AdminEditProductPage({ params }: { params: { id: string } }) {
-  const product = products.find(p => p.id === params.id);
+'use client';
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
+import { ChevronLeft } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { EditProductForm } from './edit-product-form';
+import { doc } from 'firebase/firestore';
+import { useDoc, useFirestore } from '@/firebase';
+import { type Product } from '@/lib/types';
+
+export default function AdminEditProductPage({
+  params,
+}: {
+  params: { id: string };
+}) {
+  const firestore = useFirestore();
+  const productRef = firestore ? doc(firestore, 'products', params.id) : null;
+  const { data: product, loading } = useDoc<Product>(productRef);
+
+  if (loading) {
+    return (
+      <div className="p-4 md:p-8">
+        <p>Loading product...</p>
+      </div>
+    );
+  }
 
   if (!product) {
     notFound();
@@ -14,7 +32,7 @@ export default function AdminEditProductPage({ params }: { params: { id: string 
 
   return (
     <div className="p-4 md:p-8">
-      <div className="flex items-center gap-4 mb-8">
+      <div className="mb-8 flex items-center gap-4">
         <Button variant="outline" size="icon" className="h-7 w-7" asChild>
           <Link href="/admin/products">
             <ChevronLeft className="h-4 w-4" />

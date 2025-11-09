@@ -1,0 +1,134 @@
+
+{
+  "entities": {
+    "Product": {
+      "title": "Product",
+      "description": "A product offered by Emphz.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the product."
+        },
+        "description": {
+          "type": "string",
+          "description": "A description of the product."
+        },
+        "specifications": {
+          "type": "object",
+          "description": "A map of technical specifications for the product."
+        },
+        "imageUrl": {
+          "type": "string",
+          "format": "uri",
+          "description": "The URL for the product image."
+        },
+        "imageHint": {
+          "type": "string",
+          "description": "A hint for AI image generation."
+        },
+        "category": {
+          "type": "string",
+          "description": "The category the product belongs to."
+        }
+      },
+      "required": ["name", "description", "imageUrl", "category"]
+    },
+    "Project": {
+      "title": "Project",
+      "description": "A project case study.",
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "The title of the project."
+        },
+        "description": {
+          "type": "string",
+          "description": "A description of the project."
+        },
+        "clientType": {
+          "type": "string",
+          "description": "The type of client for the project."
+        },
+        "location": {
+          "type": "string",
+          "description": "The location of the project."
+        },
+        "beforeImageUrl": {
+          "type": "string",
+          "format": "uri"
+        },
+        "beforeImageHint": {
+          "type": "string"
+        },
+        "afterImageUrl": {
+          "type": "string",
+          "format": "uri"
+        },
+        "afterImageHint": {
+          "type": "string"
+        }
+      },
+      "required": ["title", "description", "clientType", "location", "beforeImageUrl", "afterImageUrl"]
+    },
+    "Lead": {
+      "title": "Lead",
+      "description": "A lead from the contact form.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string",
+          "format": "email"
+        },
+        "company": {
+          "type": "string"
+        },
+        "inquiry": {
+          "type": "string"
+        },
+        "submittedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "category": {
+          "type": "string"
+        },
+        "priority": {
+          "type": "string",
+          "enum": ["high", "medium", "low"]
+        },
+        "notes": {
+          "type": "string"
+        }
+      },
+      "required": ["name", "email", "inquiry", "submittedAt"]
+    }
+  },
+  "auth": {
+    "providers": ["anonymous"]
+  },
+  "firestore": {
+    "/products/{productId}": {
+      "schema": {
+        "$ref": "#/backend/entities/Product"
+      },
+      "description": "Stores product information."
+    },
+    "/projects/{projectId}": {
+      "schema": {
+        "$ref": "#/backend/entities/Project"
+      },
+      "description": "Stores project case studies."
+    },
+    "/leads/{leadId}": {
+      "schema": {
+        "$ref": "#/backend/entities/Lead"
+      },
+      "description": "Stores leads from the contact form."
+    }
+  }
+}

@@ -1,12 +1,32 @@
-import Link from "next/link";
-import { projects } from "@/lib/data";
-import { notFound } from "next/navigation";
-import { ChevronLeft } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { EditProjectForm } from "./edit-project-form";
 
-export default function AdminEditProjectPage({ params }: { params: { id: string } }) {
-  const project = projects.find(p => p.id === params.id);
+'use client';
+
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
+import { ChevronLeft } from 'lucide-react';
+import { doc } from 'firebase/firestore';
+
+import { Button } from '@/components/ui/button';
+import { EditProjectForm } from './edit-project-form';
+import { useDoc, useFirestore } from '@/firebase';
+import { type Project } from '@/lib/types';
+
+export default function AdminEditProjectPage({
+  params,
+}: {
+  params: { id: string };
+}) {
+  const firestore = useFirestore();
+  const projectRef = firestore ? doc(firestore, 'projects', params.id) : null;
+  const { data: project, loading } = useDoc<Project>(projectRef);
+
+  if (loading) {
+    return (
+      <div className="p-4 md:p-8">
+        <p>Loading project...</p>
+      </div>
+    );
+  }
 
   if (!project) {
     notFound();
@@ -14,7 +34,7 @@ export default function AdminEditProjectPage({ params }: { params: { id: string 
 
   return (
     <div className="p-4 md:p-8">
-      <div className="flex items-center gap-4 mb-8">
+      <div className="mb-8 flex items-center gap-4">
         <Button variant="outline" size="icon" className="h-7 w-7" asChild>
           <Link href="/admin/projects">
             <ChevronLeft className="h-4 w-4" />

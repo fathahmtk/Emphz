@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 import { headers } from 'next/headers';
 import './globals.css';
@@ -8,6 +9,7 @@ import { SiteFooter } from '@/components/layout/site-footer';
 import { SidebarProvider } from '@/components/ui/sidebar';
 import { ReactNode } from 'react';
 import { Orbitron, Inter } from 'next/font/google';
+import { FirebaseClientProvider } from '@/firebase';
 
 const orbitron = Orbitron({
   subsets: ['latin'],
@@ -74,7 +76,7 @@ function Layout({ children }: { children: ReactNode }) {
 
   return (
     <div className="relative flex min-h-dvh flex-col bg-background">
-       <SiteHeader />
+       {!isHomePage && <SiteHeader />}
       <main className="flex-1">{children}</main>
       <SiteFooter />
     </div>
@@ -90,9 +92,11 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={cn('min-h-screen font-body antialiased', orbitron.variable, inter.variable)}>
-        <SidebarProvider>
-          <Layout>{children}</Layout>
-        </SidebarProvider>
+        <FirebaseClientProvider>
+          <SidebarProvider>
+            <Layout>{children}</Layout>
+          </SidebarProvider>
+        </FirebaseClientProvider>
         <Toaster />
       </body>
     </html>

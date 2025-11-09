@@ -1,3 +1,6 @@
+
+import { Timestamp } from 'firebase/firestore';
+
 export type Product = {
   id: string;
   name: string;
@@ -38,7 +41,7 @@ export type Lead = {
   email: string;
   company: string;
   inquiry: string;
-  submittedAt: Date;
+  submittedAt: Timestamp | Date;
   category?: string;
   priority?: 'high' | 'medium' | 'low';
   notes?: string;

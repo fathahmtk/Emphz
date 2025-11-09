@@ -1,23 +1,60 @@
-import { leads } from "@/lib/data";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Badge } from "@/components/ui/badge";
+
+'use client';
+
+import { useMemo } from 'react';
+import { collection, orderBy, query } from 'firebase/firestore';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table';
+import { Badge } from '@/components/ui/badge';
 import { formatDistanceToNow } from 'date-fns';
-import { cn } from "@/lib/utils";
+import { cn } from '@/lib/utils';
+import { useCollection, useFirestore } from '@/firebase';
+import { type Lead } from '@/lib/types';
+import { Timestamp } from 'firebase/firestore';
 
 const priorityColors = {
-    high: "bg-red-500 hover:bg-red-500 text-white",
-    medium: "bg-amber-500 hover:bg-amber-500 text-white",
-    low: "bg-blue-500 hover:bg-blue-500 text-white",
-}
+  high: 'bg-red-500 text-white hover:bg-red-500',
+  medium: 'bg-amber-500 text-white hover:bg-amber-500',
+  low: 'bg-blue-500 text-white hover:bg-blue-500',
+};
 
 export default function AdminLeadsPage() {
+  const firestore = useFirestore();
+  const leadsQuery = useMemo(() => {
+    if (!firestore) return;
+    return query(collection(firestore, 'leads'), orderBy('submittedAt', 'desc'));
+  }, [firestore]);
+  const { data: leads, loading } = useCollection<Lead>(leadsQuery);
+
+  const formatSubmissionTime = (timestamp: Timestamp | Date) => {
+    if (timestamp instanceof Timestamp) {
+      return formatDistanceToNow(timestamp.toDate(), { addSuffix: true });
+    }
+    // Fallback for Date object, though Firestore will give Timestamp
+    return formatDistanceToNow(timestamp, { addSuffix: true });
+  };
+
   return (
     <div className="p-4 md:p-8">
       <Card>
         <CardHeader>
           <CardTitle>Leads</CardTitle>
-          <CardDescription>Categorized inquiries from the contact form.</CardDescription>
+          <CardDescription>
+            Categorized inquiries from the contact form.
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <Table>
@@ -31,22 +68,37 @@ export default function AdminLeadsPage() {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {leads.map((lead) => (
+              {loading && (
+                <TableRow>
+                  <TableCell colSpan={5} className="text-center">
+                    Loading leads...
+                  </TableCell>
+                </TableRow>
+              )}
+              {leads?.map((lead) => (
                 <TableRow key={lead.id}>
                   <TableCell>
                     <div className="font-medium">{lead.name}</div>
-                    <div className="text-sm text-muted-foreground">{lead.email}</div>
+                    <div className="text-sm text-muted-foreground">
+                      {lead.email}
+                    </div>
                   </TableCell>
                   <TableCell>
                     <Badge variant="outline">{lead.category}</Badge>
                   </TableCell>
                   <TableCell>
-                    <Badge className={cn(priorityColors[lead.priority ?? 'low'])}>{lead.priority}</Badge>
+                    <Badge
+                      className={cn(priorityColors[lead.priority ?? 'low'])}
+                    >
+                      {lead.priority}
+                    </Badge>
                   </TableCell>
                   <TableCell className="hidden md:table-cell">
-                    {formatDistanceToNow(lead.submittedAt, { addSuffix: true })}
+                    {formatSubmissionTime(lead.submittedAt)}
                   </TableCell>
-                   <TableCell className="max-w-sm truncate">{lead.inquiry}</TableCell>
+                  <TableCell className="max-w-sm truncate">
+                    {lead.inquiry}
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>

@@ -1,14 +1,83 @@
-import Image from "next/image";
-import Link from "next/link";
-import { projects } from "@/lib/data";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Badge } from "@/components/ui/badge";
-import { MoreHorizontal } from "lucide-react";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+
+'use client';
+
+import { useMemo } from 'react';
+import Link from 'next/link';
+import {
+  collection,
+  deleteDoc,
+  doc,
+  orderBy,
+  query,
+} from 'firebase/firestore';
+import { useAuth, useCollection, useFirestore } from '@/firebase';
+import { type Project } from '@/lib/types';
+import { Button } from '@/components/ui/button';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table';
+import { Badge } from '@/components/ui/badge';
+import { MoreHorizontal } from 'lucide-react';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
+import { useToast } from '@/hooks/use-toast';
 
 export default function AdminProjectsPage() {
+  const firestore = useFirestore();
+  const { user } = useAuth();
+  const { toast } = useToast();
+
+  const projectsQuery = useMemo(() => {
+    if (!firestore) return;
+    return query(collection(firestore, 'projects'), orderBy('title'));
+  }, [firestore]);
+  const { data: projects, loading } = useCollection<Project>(projectsQuery);
+
+  const handleDelete = async (projectId: string, projectTitle: string) => {
+    if (!firestore || !user) {
+      toast({
+        variant: 'destructive',
+        title: 'Error',
+        description: 'Authentication error. Please try again.',
+      });
+      return;
+    }
+    if (!window.confirm(`Are you sure you want to delete "${projectTitle}"?`)) {
+      return;
+    }
+    try {
+      await deleteDoc(doc(firestore, 'projects', projectId));
+      toast({
+        title: 'Project Deleted',
+        description: `"${projectTitle}" has been successfully deleted.`,
+      });
+    } catch (error) {
+      console.error('Error deleting project: ', error);
+      toast({
+        variant: 'destructive',
+        title: 'Error',
+        description: 'Failed to delete project. Please try again.',
+      });
+    }
+  };
+
   return (
     <div className="p-4 md:p-8">
       <Card>
@@ -29,17 +98,30 @@ export default function AdminProjectsPage() {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {projects.map((project) => (
+              {loading && (
+                <TableRow>
+                  <TableCell colSpan={4} className="text-center">
+                    Loading projects...
+                  </TableCell>
+                </TableRow>
+              )}
+              {projects?.map((project) => (
                 <TableRow key={project.id}>
                   <TableCell className="font-medium">{project.title}</TableCell>
                   <TableCell>
                     <Badge variant="secondary">{project.clientType}</Badge>
                   </TableCell>
-                  <TableCell className="hidden md:table-cell">{project.location}</TableCell>
+                  <TableCell className="hidden md:table-cell">
+                    {project.location}
+                  </TableCell>
                   <TableCell>
                     <DropdownMenu>
                       <DropdownMenuTrigger asChild>
-                        <Button aria-haspopup="true" size="icon" variant="ghost">
+                        <Button
+                          aria-haspopup="true"
+                          size="icon"
+                          variant="ghost"
+                        >
                           <MoreHorizontal className="h-4 w-4" />
                           <span className="sr-only">Toggle menu</span>
                         </Button>
@@ -47,9 +129,18 @@ export default function AdminProjectsPage() {
                       <DropdownMenuContent align="end">
                         <DropdownMenuLabel>Actions</DropdownMenuLabel>
                         <DropdownMenuItem asChild>
-                          <Link href={`/admin/projects/${project.id}`}>Edit</Link>
+                          <Link href={`/admin/projects/${project.id}`}>
+                            Edit
+                          </Link>
                         </DropdownMenuItem>
-                        <DropdownMenuItem>Delete</DropdownMenuItem>
+                        <DropdownMenuItem
+                          onClick={() =>
+                            handleDelete(project.id, project.title)
+                          }
+                          className="text-destructive"
+                        >
+                          Delete
+                        </DropdownMenuItem>
                       </DropdownMenuContent>
                     </DropdownMenu>
                   </TableCell>
