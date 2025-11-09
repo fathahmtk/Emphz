@@ -1,7 +1,6 @@
 
 'use client';
 
-import { useMemo } from 'react';
 import Link from 'next/link';
 import {
   collection,
@@ -10,7 +9,7 @@ import {
   orderBy,
   query,
 } from 'firebase/firestore';
-import { useAuth, useCollection, useFirestore } from '@/firebase';
+import { useAuth, useCollection, useFirestore, useMemoFirebase } from '@/firebase';
 import { type Project } from '@/lib/types';
 import { Button } from '@/components/ui/button';
 import {
@@ -44,8 +43,8 @@ export default function AdminProjectsPage() {
   const { user } = useAuth();
   const { toast } = useToast();
 
-  const projectsQuery = useMemo(() => {
-    if (!firestore) return;
+  const projectsQuery = useMemoFirebase(() => {
+    if (!firestore) return null;
     return query(collection(firestore, 'projects'), orderBy('title'));
   }, [firestore]);
   const { data: projects, loading } = useCollection<Project>(projectsQuery);

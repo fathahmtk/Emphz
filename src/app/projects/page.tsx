@@ -1,11 +1,10 @@
 
 'use client';
-import { useMemo } from 'react';
 import { collection, orderBy, query } from 'firebase/firestore';
 
 import { ProjectCard } from '@/components/project-card';
 import { ScrollReveal } from '@/components/scroll-reveal';
-import { useCollection, useFirestore } from '@/firebase';
+import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
 import { type Project } from '@/lib/types';
 import { SiteHeader } from '@/components/layout/site-header';
 import { SiteFooter } from '@/components/layout/site-footer';
@@ -20,8 +19,8 @@ export const metadata: Metadata = {
 
 export default function ProjectsPage() {
   const firestore = useFirestore();
-  const projectsQuery = useMemo(() => {
-    if (!firestore) return;
+  const projectsQuery = useMemoFirebase(() => {
+    if (!firestore) return null;
     return query(collection(firestore, 'projects'), orderBy('title'));
   }, [firestore]);
 

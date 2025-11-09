@@ -5,7 +5,7 @@ import { collection, orderBy, query } from 'firebase/firestore';
 
 import { ProductCard } from '@/components/product-card';
 import { ScrollReveal } from '@/components/scroll-reveal';
-import { useCollection, useFirestore } from '@/firebase';
+import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
 import { type Product } from '@/lib/types';
 import { type Metadata } from 'next';
 import { SiteHeader } from '@/components/layout/site-header';
@@ -19,8 +19,8 @@ export const metadata: Metadata = {
 
 export default function ProductsPage() {
   const firestore = useFirestore();
-  const productsQuery = useMemo(() => {
-    if (!firestore) return;
+  const productsQuery = useMemoFirebase(() => {
+    if (!firestore) return null;
     return query(collection(firestore, 'products'), orderBy('name'));
   }, [firestore]);
 

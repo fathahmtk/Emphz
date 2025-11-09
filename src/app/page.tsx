@@ -3,14 +3,13 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
-import { useMemo } from 'react';
 import { collection, orderBy, query } from 'firebase/firestore';
 
 import { Button } from '@/components/ui/button';
 import { ProductCard } from '@/components/product-card';
 import { ProjectCard } from '@/components/project-card';
 import { ScrollReveal } from '@/components/scroll-reveal';
-import { useCollection, useFirestore } from '@/firebase';
+import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
 import { type Product, type Project } from '@/lib/types';
 import { SiteHeader } from '@/components/layout/site-header';
 import { SiteFooter } from '@/components/layout/site-footer';
@@ -18,14 +17,14 @@ import { SiteFooter } from '@/components/layout/site-footer';
 export default function Home() {
   const firestore = useFirestore();
 
-  const productsQuery = useMemo(() => {
-    if (!firestore) return;
+  const productsQuery = useMemoFirebase(() => {
+    if (!firestore) return null;
     return query(collection(firestore, 'products'), orderBy('name'));
   }, [firestore]);
   const { data: products } = useCollection<Product>(productsQuery);
 
-  const projectsQuery = useMemo(() => {
-    if (!firestore) return;
+  const projectsQuery = useMemoFirebase(() => {
+    if (!firestore) return null;
     return query(collection(firestore, 'projects'), orderBy('title'));
   }, [firestore]);
   const { data: projects } = useCollection<Project>(projectsQuery);

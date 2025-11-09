@@ -16,9 +16,8 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { useAuth, useCollection, useFirestore } from '@/firebase';
+import { useAuth, useCollection, useFirestore, useMemoFirebase } from '@/firebase';
 import { type Product } from '@/lib/types';
-import { useMemo } from 'react';
 import {
   Card,
   CardContent,
@@ -44,8 +43,8 @@ export default function AdminProductsPage() {
   const { user } = useAuth();
   const { toast } = useToast();
 
-  const productsQuery = useMemo(() => {
-    if (!firestore) return;
+  const productsQuery = useMemoFirebase(() => {
+    if (!firestore) return null;
     return query(collection(firestore, 'products'), orderBy('name'));
   }, [firestore]);
   const { data: products, loading } = useCollection<Product>(productsQuery);

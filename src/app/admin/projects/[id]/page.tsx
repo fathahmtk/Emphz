@@ -8,7 +8,7 @@ import { doc } from 'firebase/firestore';
 
 import { Button } from '@/components/ui/button';
 import { EditProjectForm } from './edit-project-form';
-import { useDoc, useFirestore } from '@/firebase';
+import { useDoc, useFirestore, useMemoFirebase } from '@/firebase';
 import { type Project } from '@/lib/types';
 
 export default function AdminEditProjectPage({
@@ -17,7 +17,7 @@ export default function AdminEditProjectPage({
   params: { id: string };
 }) {
   const firestore = useFirestore();
-  const projectRef = firestore ? doc(firestore, 'projects', params.id) : null;
+  const projectRef = useMemoFirebase(() => (firestore ? doc(firestore, 'projects', params.id) : null), [firestore, params.id]);
   const { data: project, loading } = useDoc<Project>(projectRef);
 
   if (loading) {

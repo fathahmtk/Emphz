@@ -21,7 +21,7 @@ import { type Lead } from '@/lib/types';
 import { useMemo } from 'react';
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from 'recharts';
 import { collection, orderBy, query } from 'firebase/firestore';
-import { useFirestore } from '@/firebase';
+import { useFirestore, useMemoFirebase } from '@/firebase';
 
 const stats = [
   {
@@ -42,8 +42,8 @@ const stats = [
 
 export default function AdminDashboardPage() {
   const firestore = useFirestore();
-  const leadsQuery = useMemo(() => {
-    if (!firestore) return;
+  const leadsQuery = useMemoFirebase(() => {
+    if (!firestore) return null;
     return query(collection(firestore, 'leads'), orderBy('submittedAt', 'desc'));
   }, [firestore]);
   const { data: leads } = useCollection<Lead>(leadsQuery);

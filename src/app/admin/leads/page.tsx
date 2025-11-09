@@ -1,7 +1,6 @@
 
 'use client';
 
-import { useMemo } from 'react';
 import { collection, orderBy, query } from 'firebase/firestore';
 import {
   Card,
@@ -21,7 +20,7 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { formatDistanceToNow } from 'date-fns';
 import { cn } from '@/lib/utils';
-import { useCollection, useFirestore } from '@/firebase';
+import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
 import { type Lead } from '@/lib/types';
 import { Timestamp } from 'firebase/firestore';
 
@@ -33,8 +32,8 @@ const priorityColors = {
 
 export default function AdminLeadsPage() {
   const firestore = useFirestore();
-  const leadsQuery = useMemo(() => {
-    if (!firestore) return;
+  const leadsQuery = useMemoFirebase(() => {
+    if (!firestore) return null;
     return query(collection(firestore, 'leads'), orderBy('submittedAt', 'desc'));
   }, [firestore]);
   const { data: leads, loading } = useCollection<Lead>(leadsQuery);

@@ -6,7 +6,7 @@ import { ChevronLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { EditProductForm } from './edit-product-form';
 import { doc } from 'firebase/firestore';
-import { useDoc, useFirestore } from '@/firebase';
+import { useDoc, useFirestore, useMemoFirebase } from '@/firebase';
 import { type Product } from '@/lib/types';
 
 export default function AdminEditProductPage({
@@ -15,7 +15,7 @@ export default function AdminEditProductPage({
   params: { id: string };
 }) {
   const firestore = useFirestore();
-  const productRef = firestore ? doc(firestore, 'products', params.id) : null;
+  const productRef = useMemoFirebase(() => (firestore ? doc(firestore, 'products', params.id) : null), [firestore, params.id]);
   const { data: product, loading } = useDoc<Product>(productRef);
 
   if (loading) {
