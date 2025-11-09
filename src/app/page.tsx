@@ -32,7 +32,7 @@ export default function Home() {
             </ScrollReveal>
             <ScrollReveal delay={200}>
               <p className="mt-6 text-lg md:text-xl text-foreground/80">
-                Emphz delivers high-performance, corrosion-resistant Glass Reinforced Plastic (GRP) products tailored for the most demanding environments.
+                High-performance GRP products for the most demanding environments.
               </p>
             </ScrollReveal>
             <ScrollReveal delay={400}>
@@ -60,7 +60,7 @@ export default function Home() {
                 <div className="inline-block rounded-lg bg-secondary px-3 py-1 text-sm text-secondary-foreground">Our Products</div>
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl font-headline">Dynamic Product Catalog</h2>
                 <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Browse our extensive catalog of GRP products, engineered for performance and reliability.
+                  Engineered for performance and reliability.
                 </p>
               </div>
             </div>
@@ -95,7 +95,7 @@ export default function Home() {
                 <div className="inline-block rounded-lg bg-secondary px-3 py-1 text-sm text-secondary-foreground">Case Studies</div>
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl font-headline">Proven in the Field</h2>
                 <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  See how Emphz solutions have solved real-world challenges for our clients across various industries.
+                  Our GRP solutions solve real-world challenges.
                 </p>
               </div>
             </div>
