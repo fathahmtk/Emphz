@@ -5,81 +5,81 @@
 body {
   /* Using a subtle gradient to make glassmorphism pop */
   background-color: hsl(var(--background));
-  background-image: radial-gradient(circle at top left, hsl(205 100% 14% / 0.05), transparent 40%),
-                    radial-gradient(circle at bottom right, hsl(52 56% 82% / 0.1), transparent 50%);
+  background-image: radial-gradient(circle at top left, hsl(240 5% 26% / 0.05), transparent 40%),
+                    radial-gradient(circle at bottom right, hsl(240 5% 10% / 0.1), transparent 50%);
   background-attachment: fixed;
 }
 
 @layer base {
   :root {
-    --background: 48 33% 96%; /* Lighter Beige */
-    --foreground: 205 100% 14%; /* Deep Navy Blue */
+    --background: 240 5% 96%;
+    --foreground: 240 5% 10%;
 
-    --card: 48 33% 99%; /* Almost-white beige for cards */
-    --card-foreground: 205 100% 14%;
+    --card: 240 5% 100%;
+    --card-foreground: 240 5% 10%;
 
-    --popover: 48 33% 99%;
-    --popover-foreground: 205 100% 14%;
+    --popover: 240 5% 100%;
+    --popover-foreground: 240 5% 10%;
 
-    --primary: 205 100% 14%; /* Deep Navy Blue */
-    --primary-foreground: 52 56% 92%; /* Light Beige, brightened for better contrast */
+    --primary: 240 5% 10%;
+    --primary-foreground: 240 5% 98%;
 
-    --secondary: 52 56% 82%; /* Light Beige */
-    --secondary-foreground: 205 100% 14%;
+    --secondary: 240 5% 90%;
+    --secondary-foreground: 240 5% 10%;
 
-    --muted: 52 20% 88%;
-    --muted-foreground: 205 30% 40%;
+    --muted: 240 5% 90%;
+    --muted-foreground: 240 5% 45%;
 
-    --accent: 0 66% 50%; /* Burnt Orange */
-    --accent-foreground: 0 0% 100%;
+    --accent: 250 60% 50%;
+    --accent-foreground: 240 5% 98%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 205 10% 85%;
-    --input: 205 10% 90%;
-    --ring: 0 66% 50%; /* Burnt Orange for focus rings */
+    --border: 240 5% 85%;
+    --input: 240 5% 90%;
+    --ring: 250 60% 50%;
     
     --radius: 0.5rem;
     
-    --sidebar-background: 205 100% 8%;
-    --sidebar-foreground: 48 33% 96%;
-    --sidebar-primary: 52 56% 82%;
-    --sidebar-primary-foreground: 205 100% 14%;
-    --sidebar-accent: 205 100% 14%;
-    --sidebar-accent-foreground: 52 56% 82%;
-    --sidebar-border: 205 30% 20%;
-    --sidebar-ring: 0 66% 50%;
+    --sidebar-background: 240 5% 10%;
+    --sidebar-foreground: 240 5% 96%;
+    --sidebar-primary: 240 5% 90%;
+    --sidebar-primary-foreground: 240 5% 10%;
+    --sidebar-accent: 250 60% 50%;
+    --sidebar-accent-foreground: 240 5% 98%;
+    --sidebar-border: 240 5% 20%;
+    --sidebar-ring: 250 60% 50%;
   }
 
   .dark {
-    --background: 205 100% 5%;
-    --foreground: 48 33% 96%;
+    --background: 240 5% 10%;
+    --foreground: 240 5% 96%;
 
-    --card: 205 100% 8%;
-    --card-foreground: 48 33% 96%;
+    --card: 240 5% 14%;
+    --card-foreground: 240 5% 96%;
 
-    --popover: 205 100% 8%;
-    --popover-foreground: 48 33% 96%;
+    --popover: 240 5% 14%;
+    --popover-foreground: 240 5% 96%;
 
-    --primary: 52 56% 82%;
-    --primary-foreground: 205 100% 14%;
+    --primary: 240 5% 98%;
+    --primary-foreground: 240 5% 10%;
 
-    --secondary: 205 100% 14%;
-    --secondary-foreground: 52 56% 82%;
+    --secondary: 240 5% 20%;
+    --secondary-foreground: 240 5% 98%;
 
-    --muted: 205 30% 15%;
-    --muted-foreground: 205 10% 60%;
+    --muted: 240 5% 20%;
+    --muted-foreground: 240 5% 65%;
 
-    --accent: 0 66% 50%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 250 60% 50%;
+    --accent-foreground: 240 5% 98%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 205 30% 20%;
-    --input: 205 30% 20%;
-    --ring: 0 66% 50%;
+    --border: 240 5% 20%;
+    --input: 240 5% 20%;
+    --ring: 250 60% 50%;
   }
 }
 
