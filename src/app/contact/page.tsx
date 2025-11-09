@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { ContactForm } from "@/components/contact-form";
 import { ScrollReveal } from "@/components/scroll-reveal";
-import { Card, CardContent, CardHeader, CardTitle } from "@/componentsui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Factory, LocateFixed, Mail, Phone } from "lucide-react";
 import type { Metadata } from "next";
 

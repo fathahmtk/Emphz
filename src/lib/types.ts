@@ -21,7 +21,7 @@ export type Project = {
 };
 
 export type DownloadLink = {
-  id string;
+  id: string;
   title: string;
   description: string;
   fileUrl: string; // Will be a placeholder '#'

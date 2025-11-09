@@ -131,8 +131,7 @@ export default function Home() {
                 <Link href="/products">
                   View All Products
                   <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                </Link>
-              </Button>
+                </Link>              </Button>
             </div>
           </ScrollReveal>
         </div>
