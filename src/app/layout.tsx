@@ -55,6 +55,7 @@ function Layout({ children }: { children: ReactNode }) {
   const headersList = headers();
   const pathname = headersList.get('x-pathname') || '';
   const isAdminPage = pathname.startsWith('/admin');
+  const isHomePage = pathname === '/';
 
   if (isAdminPage) {
     return <div className='bg-background text-foreground'>{children}</div>
@@ -62,7 +63,7 @@ function Layout({ children }: { children: ReactNode }) {
 
   return (
     <div className="relative flex min-h-dvh flex-col bg-background">
-      <SiteHeader />
+      {!isHomePage && <SiteHeader />}
       <main className="flex-1">{children}</main>
       <SiteFooter />
     </div>

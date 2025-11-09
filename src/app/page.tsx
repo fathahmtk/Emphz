@@ -11,7 +11,7 @@ import { GlassCard } from "@/components/glass-card";
 export default function Home() {
   return (
     <div className="flex flex-col">
-      <section className="relative w-full py-24 md:py-32 lg:py-40 overflow-hidden">
+      <section className="relative h-dvh w-full flex items-center justify-center text-center overflow-hidden">
         <div className="absolute inset-0">
            <Image
               src="https://picsum.photos/seed/herobg/1920/1080"
@@ -25,7 +25,7 @@ export default function Home() {
             <div className="absolute inset-0 bg-black/50" />
         </div>
         <div className="container max-w-7xl px-4 md:px-6 relative">
-          <div className="max-w-3xl text-primary-foreground">
+          <div className="max-w-3xl mx-auto text-primary-foreground">
             <ScrollReveal>
               <h1 className="text-4xl font-headline tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl !leading-tight font-bold text-white shadow-lg">
                 Engineered GRP Solutions for Modern Industry
@@ -37,7 +37,7 @@ export default function Home() {
               </p>
             </ScrollReveal>
             <ScrollReveal delay={400}>
-              <div className="mt-8 flex flex-col sm:flex-row gap-4">
+              <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
                 <Button size="lg" asChild className="group">
                   <Link href="/products">
                     <span>
