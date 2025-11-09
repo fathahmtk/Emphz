@@ -22,7 +22,7 @@ export default function Home() {
               priority
             />
             <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent" />
-            <div className="absolute inset-0 bg-primary/40" />
+            <div className="absolute inset-0 bg-black/50" />
         </div>
         <div className="container max-w-7xl px-4 md:px-6 relative">
           <div className="max-w-3xl text-primary-foreground">
@@ -32,7 +32,7 @@ export default function Home() {
               </h1>
             </ScrollReveal>
             <ScrollReveal delay={200}>
-              <p className="mt-6 text-lg md:text-xl text-secondary">
+              <p className="mt-6 text-lg md:text-xl text-foreground/80">
                 Emphz delivers high-performance, corrosion-resistant Glass Reinforced Plastic (GRP) products tailored for the most demanding environments.
               </p>
             </ScrollReveal>
@@ -107,7 +107,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="products" className="w-full py-12 md:py-24 lg:py-32 bg-primary/5">
+      <section id="products" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/30">
         <div className="container px-4 md:px-6 max-w-7xl">
           <ScrollReveal>
             <div className="flex flex-col items-center justify-center space-y-4 text-center">

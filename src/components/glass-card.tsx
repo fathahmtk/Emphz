@@ -5,10 +5,10 @@ export function GlassCard({ className, ...props }: CardProps) {
   return (
     <Card
       className={cn(
-        'bg-card/60 backdrop-blur-sm',
-        'border-white/20',
+        'bg-card/70 backdrop-blur-xl',
+        'border',
         'transition-all duration-300 ease-out',
-        'hover:shadow-xl hover:shadow-primary/10 hover:bg-card/80 hover:-translate-y-1',
+        'hover:shadow-2xl hover:shadow-primary/10 hover:bg-card/90 hover:-translate-y-1',
         className
       )}
       {...props}
