@@ -62,39 +62,27 @@ export const metadata: Metadata = {
   },
 };
 
-// Using a separate component for the conditional rendering based on pathname
-// This allows the RootLayout to remain a sync component
-function Layout({ children }: { children: ReactNode }) {
-  const headersList = headers();
-  const pathname = headersList.get('x-pathname') || '';
-  const isAdminPage = pathname.startsWith('/admin');
-  const isHomePage = pathname === '/';
-
-  if (isAdminPage) {
-    return <div className='bg-background text-foreground'>{children}</div>
-  }
-
-  return (
-    <div className="relative flex min-h-dvh flex-col bg-background">
-       {!isHomePage && <SiteHeader />}
-      <main className="flex-1">{children}</main>
-      <SiteFooter />
-    </div>
-  );
-}
-
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const headersList = headers();
+  const pathname = headersList.get('x-pathname') || '';
+  const isAdminPage = pathname.startsWith('/admin');
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={cn('min-h-screen font-body antialiased', orbitron.variable, inter.variable)}>
         <FirebaseClientProvider>
           <SidebarProvider>
-            <Layout>{children}</Layout>
+            {isAdminPage ? (
+               <div className='bg-background text-foreground'>{children}</div>
+            ) : (
+              <div className="relative flex min-h-dvh flex-col bg-background">
+                {children}
+              </div>
+            )}
           </SidebarProvider>
         </FirebaseClientProvider>
         <Toaster />

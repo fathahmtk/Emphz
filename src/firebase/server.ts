@@ -2,13 +2,16 @@
 import { initializeApp, getApps, App } from 'firebase-admin/app';
 import { getFirestore, Firestore } from 'firebase-admin/firestore';
 import { getAuth, Auth } from 'firebase-admin/auth';
+import { firebaseConfig } from './config';
 
 let app: App;
 let firestore: Firestore;
 let auth: Auth;
 
 if (getApps().length === 0) {
-  app = initializeApp();
+  app = initializeApp({
+    projectId: firebaseConfig.projectId,
+  });
   firestore = getFirestore(app);
   auth = getAuth(app);
 } else {
