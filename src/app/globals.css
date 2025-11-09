@@ -5,81 +5,81 @@
 body {
   /* Using a subtle gradient to make glassmorphism pop */
   background-color: hsl(var(--background));
-  background-image: radial-gradient(circle at top left, hsl(240 5% 26% / 0.05), transparent 40%),
-                    radial-gradient(circle at bottom right, hsl(240 5% 10% / 0.1), transparent 50%);
+  background-image: radial-gradient(circle at top left, hsl(150 50% 90% / 0.05), transparent 40%),
+                    radial-gradient(circle at bottom right, hsl(150 50% 80% / 0.1), transparent 50%);
   background-attachment: fixed;
 }
 
 @layer base {
   :root {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
+    --background: 224 71% 4%;
+    --foreground: 210 40% 98%;
 
-    --card: 240 4.8% 12%;
-    --card-foreground: 0 0% 98%;
+    --card: 224 71% 9%;
+    --card-foreground: 210 40% 98%;
 
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 224 71% 4%;
+    --popover-foreground: 210 40% 98%;
 
-    --primary: 0 0% 98%;
-    --primary-foreground: 240 5.9% 10%;
+    --primary: 150 100% 50%;
+    --primary-foreground: 224 71% 4%;
 
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 215 28% 17%;
+    --secondary-foreground: 210 40% 98%;
     
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
+    --muted: 215 28% 17%;
+    --muted-foreground: 215 20% 65%;
 
-    --accent: 262.1 83.3% 57.8%;
-    --accent-foreground: 0 0% 98%;
+    --accent: 150 100% 50%;
+    --accent-foreground: 224 71% 4%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
 
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 262.1 83.3% 57.8%;
+    --border: 215 28% 17%;
+    --input: 215 28% 17%;
+    --ring: 150 100% 50%;
     
     --radius: 0.5rem;
     
-    --sidebar-background: 240 10% 3.9%;
-    --sidebar-foreground: 0 0% 98%;
-    --sidebar-primary: 0 0% 98%;
-    --sidebar-primary-foreground: 240 5.9% 10%;
-    --sidebar-accent: 262.1 83.3% 57.8%;
-    --sidebar-accent-foreground: 0 0% 98%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 262.1 83.3% 57.8%;
+    --sidebar-background: 224 71% 4%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 150 100% 50%;
+    --sidebar-primary-foreground: 224 71% 4%;
+    --sidebar-accent: 150 100% 50%;
+    --sidebar-accent-foreground: 224 71% 4%;
+    --sidebar-border: 215 28% 17%;
+    --sidebar-ring: 150 100% 50%;
   }
 
   .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
+    --background: 224 71% 4%;
+    --foreground: 210 40% 98%;
 
-    --card: 240 4.8% 12%;
-    --card-foreground: 0 0% 98%;
+    --card: 224 71% 9%;
+    --card-foreground: 210 40% 98%;
 
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 224 71% 4%;
+    --popover-foreground: 210 40% 98%;
 
-    --primary: 0 0% 98%;
-    --primary-foreground: 240 5.9% 10%;
+    --primary: 150 100% 50%;
+    --primary-foreground: 224 71% 4%;
 
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 215 28% 17%;
+    --secondary-foreground: 210 40% 98%;
     
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
+    --muted: 215 28% 17%;
+    --muted-foreground: 215 20% 65%;
 
-    --accent: 262.1 83.3% 57.8%;
-    --accent-foreground: 0 0% 98%;
+    --accent: 150 100% 50%;
+    --accent-foreground: 224 71% 4%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
 
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 262.1 83.3% 57.8%;
+    --border: 215 28% 17%;
+    --input: 215 28% 17%;
+    --ring: 150 100% 50%;
   }
 }
 
