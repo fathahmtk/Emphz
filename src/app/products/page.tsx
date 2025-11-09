@@ -7,15 +7,8 @@ import { ProductCard } from '@/components/product-card';
 import { ScrollReveal } from '@/components/scroll-reveal';
 import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
 import { type Product } from '@/lib/types';
-import { type Metadata } from 'next';
 import { SiteHeader } from '@/components/layout/site-header';
 import { SiteFooter } from '@/components/layout/site-footer';
-
-export const metadata: Metadata = {
-  title: 'Products',
-  description:
-    'Explore our comprehensive catalog of Glass Reinforced Plastic (GRP) products, including pipes, tanks, fittings, and custom-molded solutions.',
-};
 
 export default function ProductsPage() {
   const firestore = useFirestore();

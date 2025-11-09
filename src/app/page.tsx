@@ -13,6 +13,7 @@ import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
 import { type Product, type Project } from '@/lib/types';
 import { SiteHeader } from '@/components/layout/site-header';
 import { SiteFooter } from '@/components/layout/site-footer';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 export default function Home() {
   const firestore = useFirestore();
@@ -29,20 +30,24 @@ export default function Home() {
   }, [firestore]);
   const { data: projects } = useCollection<Project>(projectsQuery);
 
+  const heroImage = PlaceHolderImages.find(p => p.id === 'hero-background');
+
   return (
     <>
       <SiteHeader />
       <main className="flex-1">
         <section className="relative h-dvh w-full flex items-center justify-center text-center overflow-hidden">
           <div className="absolute inset-0">
-            <Image
-              src="https://picsum.photos/seed/herobg/1920/1080"
-              alt="Industrial background"
-              data-ai-hint="industrial design"
-              fill
-              className="object-cover"
-              priority
-            />
+            {heroImage && 
+              <Image
+                src={heroImage.imageUrl}
+                alt={heroImage.description}
+                data-ai-hint={heroImage.imageHint}
+                fill
+                className="object-cover"
+                priority
+              />
+            }
             <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent" />
             <div className="absolute inset-0 bg-black/50" />
           </div>

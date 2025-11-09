@@ -9,14 +9,6 @@ import { type Project } from '@/lib/types';
 import { SiteHeader } from '@/components/layout/site-header';
 import { SiteFooter } from '@/components/layout/site-footer';
 
-import { type Metadata } from 'next';
-
-export const metadata: Metadata = {
-  title: 'Projects',
-  description:
-    'Discover our portfolio of successful GRP solution implementations across various industries. See our expertise in action with detailed case studies.',
-};
-
 export default function ProjectsPage() {
   const firestore = useFirestore();
   const projectsQuery = useMemoFirebase(() => {

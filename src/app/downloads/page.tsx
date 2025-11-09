@@ -4,14 +4,8 @@ import { ScrollReveal } from "@/components/scroll-reveal";
 import { Button } from "@/components/ui/button";
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Download, FileText } from "lucide-react";
-import { type Metadata } from "next";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
-
-export const metadata: Metadata = {
-  title: "Downloads",
-  description: "Access technical datasheets, brochures, and guides for Emphz's GRP products. Download the resources you need for your project planning.",
-};
 
 export default function DownloadsPage() {
   return (

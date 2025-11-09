@@ -4,8 +4,6 @@ import { headers } from 'next/headers';
 import './globals.css';
 import { cn } from '@/lib/utils';
 import { Toaster } from "@/components/ui/toaster";
-import { SiteHeader } from '@/components/layout/site-header';
-import { SiteFooter } from '@/components/layout/site-footer';
 import { SidebarProvider } from '@/components/ui/sidebar';
 import { ReactNode } from 'react';
 import { Orbitron, Inter } from 'next/font/google';
@@ -32,7 +30,6 @@ export const metadata: Metadata = {
     title: 'Emphz - High-Performance GRP Solutions',
     description: 'Specializing in Glass Reinforced Plastic (GRP) products for industrial applications.',
     url: 'https://emphz.com', // Replace with actual domain
-    siteName: 'Emphz',
     images: [
       {
         url: 'https://picsum.photos/seed/ogimage/1200/630',

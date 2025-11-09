@@ -7,6 +7,7 @@ import { Factory, LocateFixed, Mail, Phone } from "lucide-react";
 import type { Metadata } from "next";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
+import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 export const metadata: Metadata = {
   title: "Contact Us",
@@ -18,15 +19,15 @@ const locations = [
     icon: LocateFixed,
     title: "Head Office",
     address: "123 Innovation Drive, Metropolis, USA 12345",
-    image: "https://picsum.photos/seed/office/600/400",
-    imageHint: "office building"
+    image: PlaceHolderImages.find(p => p.id === 'office-location')?.imageUrl || '',
+    imageHint: PlaceHolderImages.find(p => p.id === 'office-location')?.imageHint || '',
   },
   {
     icon: Factory,
     title: "Manufacturing Plant",
     address: "456 Industrial Ave, Tecumseh, USA 67890",
-    image: "https://picsum.photos/seed/bigfactory/600/400",
-    imageHint: "factory exterior"
+    image: PlaceHolderImages.find(p => p.id === 'factory-location')?.imageUrl || '',
+    imageHint: PlaceHolderImages.find(p => p.id === 'factory-location')?.imageHint || '',
   },
 ];
 

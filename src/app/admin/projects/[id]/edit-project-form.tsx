@@ -145,7 +145,7 @@ export function EditProjectForm({ project: initialProject }: { project: Project 
               <Label>Before Image URL</Label>
                <Input value={project.beforeImageUrl} onChange={(e) => handleInputChange('beforeImageUrl', e.target.value)} className="mt-2" />
               <div className="relative aspect-video w-full mt-2">
-                <Image src={project.beforeImageUrl || "https://placehold.co/600x400"} alt="Before" data-ai-hint={project.beforeImageHint} fill className="object-cover rounded-md" />
+                <Image src={project.beforeImageUrl || "https://picsum.photos/seed/placeholder/600/400"} alt="Before" data-ai-hint={project.beforeImageHint} fill className="object-cover rounded-md" />
                 <Badge variant="destructive" className="absolute top-2 left-2">Before</Badge>
               </div>
             </div>
@@ -153,7 +153,7 @@ export function EditProjectForm({ project: initialProject }: { project: Project 
               <Label>After Image URL</Label>
               <Input value={project.afterImageUrl} onChange={(e) => handleInputChange('afterImageUrl', e.target.value)} className="mt-2" />
               <div className="relative aspect-video w-full mt-2">
-                <Image src={project.afterImageUrl || "https://placehold.co/600x400"} alt="After" data-ai-hint={project.afterImageHint} fill className="object-cover rounded-md" />
+                <Image src={project.afterImageUrl || "https://picsum.photos/seed/placeholder/600/400"} alt="After" data-ai-hint={project.afterImageHint} fill className="object-cover rounded-md" />
                 <Badge variant="default" className="bg-green-600 absolute top-2 left-2">After</Badge>
               </div>
             </div>
