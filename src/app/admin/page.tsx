@@ -90,22 +90,20 @@ export default function AdminDashboardPage() {
 
   return (
     <div className="p-4 md:p-8">
-      <header className="flex items-center justify-between">
+      <header className="flex items-start justify-between">
         <div>
           <h1 className="text-3xl font-bold font-headline">Admin Dashboard</h1>
-          <p className="text-muted-foreground">Welcome to the Emphz CMS.</p>
+          <p className="text-muted-foreground">Welcome back, {user.email}.</p>
         </div>
-        <div className='flex items-center gap-4'>
-            <div className='text-right'>
-                <p className='font-semibold'>{user.email}</p>
-                <p className='text-xs text-muted-foreground'>Administrator</p>
-            </div>
-            <Button variant="outline" size="icon" onClick={handleSignOut}>
-                <LogOut className="h-4 w-4"/>
+        <div className='flex items-center gap-2'>
+            <Button variant="outline" size="sm" onClick={handleSignOut}>
+                <LogOut className="mr-2 h-4 w-4"/>
+                Sign Out
             </Button>
-             <Button variant="secondary" size="icon" asChild>
+             <Button variant="secondary" size="sm" asChild>
                 <Link href="/admin/create-account">
-                    <User className="h-4 w-4"/>
+                    <User className="mr-2 h-4 w-4"/>
+                    Add Admin
                 </Link>
             </Button>
         </div>
@@ -142,77 +140,79 @@ export default function AdminDashboardPage() {
           ))}
         </div>
 
-        <Card className="mt-8">
-          <CardHeader>
-            <CardTitle>Lead Priority Overview</CardTitle>
-            <CardDescription>
-              A visual breakdown of your contact form leads by priority.
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            {leads ? (
-               <ChartContainer config={{}} className="h-64 w-full">
-                <BarChart data={chartData} accessibilityLayer>
-                  <CartesianGrid vertical={false} />
-                  <XAxis
-                    dataKey="priority"
-                    tickLine={false}
-                    axisLine={false}
-                    tickMargin={8}
-                  />
-                   <YAxis 
-                    tickLine={false}
-                    axisLine={false}
-                    tickMargin={8}
-                    allowDecimals={false}
-                  />
-                  <ChartTooltip
-                    cursor={false}
-                    content={<ChartTooltipContent />}
-                  />
-                  <Bar dataKey="count" radius={4} />
-                </BarChart>
-              </ChartContainer>
-            ) : (
-                <p>Loading chart...</p>
-            )}
-          </CardContent>
-        </Card>
+        <div className="grid gap-8 md:grid-cols-2 mt-8">
+            <Card>
+            <CardHeader>
+                <CardTitle>Lead Priority Overview</CardTitle>
+                <CardDescription>
+                A visual breakdown of your contact form leads by priority.
+                </CardDescription>
+            </CardHeader>
+            <CardContent>
+                {leads ? (
+                <ChartContainer config={{}} className="h-64 w-full">
+                    <BarChart data={chartData} accessibilityLayer>
+                    <CartesianGrid vertical={false} />
+                    <XAxis
+                        dataKey="priority"
+                        tickLine={false}
+                        axisLine={false}
+                        tickMargin={8}
+                    />
+                    <YAxis 
+                        tickLine={false}
+                        axisLine={false}
+                        tickMargin={8}
+                        allowDecimals={false}
+                    />
+                    <ChartTooltip
+                        cursor={false}
+                        content={<ChartTooltipContent />}
+                    />
+                    <Bar dataKey="count" radius={4} />
+                    </BarChart>
+                </ChartContainer>
+                ) : (
+                    <p>Loading chart...</p>
+                )}
+            </CardContent>
+            </Card>
 
-        <Card className="mt-8">
-          <CardHeader>
-            <CardTitle>Getting Started</CardTitle>
-            <CardDescription>
-              Use the sidebar to manage your website content.
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <ul className="list-disc space-y-2 pl-5 text-muted-foreground">
-              <li>
-                <span className="font-semibold text-foreground">
-                  Products:
-                </span>{' '}
-                Add, edit, or remove items from your product catalog.
-              </li>
-              <li>
-                <span className="font-semibold text-foreground">
-                  Projects:
-                </span>{' '}
-                Showcase your work by managing project case studies.
-              </li>
-              <li>
-                <span className="font-semibold text-foreground">Leads:</span>{' '}
-                View inquiries submitted through the contact form.
-              </li>
-              <li>
-                <span className="font-semibold text-foreground">
-                  AI Content:
-                </span>{' '}
-                Chat with Ron to generate content.
-              </li>
-            </ul>
-          </CardContent>
-        </Card>
+            <Card>
+            <CardHeader>
+                <CardTitle>Getting Started</CardTitle>
+                <CardDescription>
+                Use the sidebar to manage your website content.
+                </CardDescription>
+            </CardHeader>
+            <CardContent>
+                <ul className="list-disc space-y-2 pl-5 text-muted-foreground">
+                <li>
+                    <span className="font-semibold text-foreground">
+                    Products:
+                    </span>{' '}
+                    Add, edit, or remove items from your product catalog.
+                </li>
+                <li>
+                    <span className="font-semibold text-foreground">
+                    Projects:
+                    </span>{' '}
+                    Showcase your work by managing project case studies.
+                </li>
+                <li>
+                    <span className="font-semibold text-foreground">Leads:</span>{' '}
+                    View inquiries submitted through the contact form.
+                </li>
+                <li>
+                    <span className="font-semibold text-foreground">
+                    AI Content:
+                    </span>{' '}
+                    Chat with Ron to generate content.
+                </li>
+                </ul>
+            </CardContent>
+            </Card>
+        </div>
       </main>
     </div>
   );
