@@ -1,0 +1,54 @@
+"use client";
+
+import { cn } from "@/lib/utils";
+import { type ReactNode, useEffect, useRef, useState } from "react";
+
+interface ScrollRevealProps {
+  children: ReactNode;
+  className?: string;
+  delay?: number;
+  threshold?: number;
+}
+
+export function ScrollReveal({ children, className, delay = 0, threshold = 0.1 }: ScrollRevealProps) {
+  const [isVisible, setIsVisible] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const element = ref.current;
+    if (!element) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(element);
+        }
+      },
+      { threshold }
+    );
+
+    observer.observe(element);
+
+    return () => {
+      observer.unobserve(element);
+    };
+  }, [threshold]);
+
+  return (
+    <div
+      ref={ref}
+      className={cn(
+        "transition-all ease-in-out duration-700",
+        {
+          "opacity-0 translate-y-5": !isVisible,
+          "opacity-100 translate-y-0": isVisible,
+        },
+        className
+      )}
+      style={{ transitionDelay: `${delay}ms` }}
+    >
+      {children}
+    </div>
+  );
+}
