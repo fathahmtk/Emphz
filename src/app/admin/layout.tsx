@@ -52,8 +52,10 @@ export default function AdminLayout({
                   tooltip={{ children: item.label }}
                 >
                   <Link href={item.href}>
-                    <item.icon />
-                    <span>{item.label}</span>
+                    <>
+                      <item.icon />
+                      <span>{item.label}</span>
+                    </>
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
