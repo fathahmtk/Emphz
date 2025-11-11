@@ -7,6 +7,7 @@ import Header from './components/Header';
 import Hero from './components/Hero';
 import Solutions from './components/Solutions';
 import WhyGRP from './components/WhyGRP';
+import IndustriesSection from "./components/IndustriesSection";
 import Products from './components/Products';
 import QA from './components/QA';
 import Logistics from './components/Logistics';
@@ -22,13 +23,12 @@ export default function App() {
   return (
     <HelmetProvider>
       <ErrorBoundary>
-        <div className="min-h-screen bg-zinc-950 text-zinc-100">
+        <div className="min-h-screen bg-slate-50 text-slate-800">
           <Helmet>
-            <title>Emphz Private Limited | Advanced GRP/FRP Solutions</title>
-            <meta name="description" content="Emphz engineers high‑durability GRP/FRP enclosures, portable kiosks, security cabins, villa toilet pods, and rural bus‑stop modules — export‑ready, corrosion‑proof, rapid‑deployment." />
-            <meta property="og:title" content="Emphz – Advanced GRP Infrastructure" />
-            <meta property="og:description" content="Global GRP/FRP solutions: enclosures, kiosks & modular cabins." />
-            <meta property="og:type" content="website" />
+            <title>Emphz | GRP/FRP Solutions for Utilities, Transport & Telecom</title>
+            <meta name="description" content="Emphz engineers high‑durability GRP/FRP solutions for the utility, transport, telecom, and hospitality industries. Our portfolio includes enclosures, kiosks, security cabins, and custom OEM components." />
+            <meta property="og:title" content="Emphz – GRP/FRP Solutions for Critical Industries" />
+            <meta property="og:description" content="One-stop solution for GRP infrastructure: serving utilities, transport, telecom, and OEM with corrosion-proof enclosures, cabins, and kiosks." />
             <link rel="canonical" href="https://emphz.example" />
             <script type="application/ld+json">{JSON.stringify(ORG_JSON_LD)}</script>
           </Helmet>
@@ -39,6 +39,7 @@ export default function App() {
             <Hero />
             <Solutions />
             <WhyGRP />
+            <IndustriesSection />
             <Products />
             <QA />
             <Logistics />

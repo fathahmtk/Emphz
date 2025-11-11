@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 export const ORG_JSON_LD = {
@@ -13,8 +12,9 @@ export const ORG_JSON_LD = {
 export const NAV_LINKS = [
   { label: "Home", href: "#home" },
   { label: "Solutions", href: "#solutions" },
-  { label: "Products", href: "#products" },
   { label: "Why GRP", href: "#why-grp" },
+  { label: "Industries", href: "#industries" },
+  { label: "Products", href: "#products" },
   { label: "Projects", href: "#projects" },
   { label: "QA & Compliance", href: "#qa" },
   { label: "Logistics", href: "#logistics" },
@@ -98,6 +98,17 @@ export const WHY_GRP_DATA = {
       ["Coastal suitability", "High", "Medium (with coatings)", "High"],
     ],
   },
+};
+
+export const INDUSTRIES_DATA = {
+    title: "Industry Focus",
+    items: [
+      { h: "Utilities & Power", p: "Switchgear enclosures, feeder pillars, metering cabinets." },
+      { h: "Transport & Public Realm", p: "Bus-stop modules, wayfinding kiosks, service points." },
+      { h: "Telecom & ICT", p: "Outdoor cabinets, FTTX distribution, battery enclosures." },
+      { h: "Hospitality & Residential", p: "Villa toilets, resort pods, service kiosks." },
+      { h: "Automotive & OEM", p: "Specialty vehicle body panels, custom machinery covers." }
+    ]
 };
 
 export const PRODUCTS_DATA = {
