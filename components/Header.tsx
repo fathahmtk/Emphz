@@ -42,12 +42,13 @@ const Header: React.FC = () => {
     }
   };
 
-  const LinkEl = ({ href, label }: { href: string; label: string }) => (
+  // A versatile link component for both desktop and mobile navigation.
+  const LinkEl = ({ href, label, baseClassName }: { href: string; label: string; baseClassName: string; }) => (
     <a
       href={href}
       onClick={(e) => handleAnchorClick(e, href)}
       aria-current={active === href.replace('#','') ? "page" : undefined}
-      className={`px-3 py-2 text-sm font-medium transition-colors hover:text-teal-400 ${active === href.replace('#','') ? 'text-teal-400' : ''}`}
+      className={`${baseClassName} ${active === href.replace('#','') ? 'text-teal-400' : ''}`}
     >
       {label}
     </a>
@@ -63,7 +64,13 @@ const Header: React.FC = () => {
           <Pill>GRP First</Pill>
         </a>
         <nav className="hidden lg:flex flex-wrap items-center" aria-label="Primary">
-          {NAV_LINKS.map(link => <LinkEl key={link.href} {...link} />)}
+          {NAV_LINKS.map(link => (
+            <LinkEl 
+              key={link.href} 
+              {...link}
+              baseClassName="px-3 py-2 text-sm font-medium transition-colors hover:text-teal-400"
+            />
+          ))}
         </nav>
         <div className="flex items-center gap-2">
           <a href="#contact" onClick={(e)=>handleAnchorClick(e, '#contact')} className="hidden rounded-xl bg-teal-500 px-4 py-2 text-sm font-semibold text-zinc-950 hover:bg-teal-400 md:inline-block">Request Quote</a>
@@ -81,10 +88,12 @@ const Header: React.FC = () => {
       {open && (
         <div className="border-t border-zinc-900/60 bg-zinc-950 lg:hidden" role="dialog" aria-modal="true">
           <nav className="mx-auto grid max-w-7xl gap-1 px-4 py-3 text-sm" aria-label="Mobile">
-            {NAV_LINKS.map(({ label, href }) => (
-              <a key={href} href={href} className={`rounded-lg px-3 py-2 hover:bg-zinc-900 ${active === href.replace('#','') ? 'text-teal-400' : ''}`} onClick={(e) => handleAnchorClick(e, href)}>
-                {label}
-              </a>
+            {NAV_LINKS.map((link) => (
+              <LinkEl
+                key={link.href}
+                {...link}
+                baseClassName="rounded-lg px-3 py-2 hover:bg-zinc-900"
+              />
             ))}
             <a href="#contact" onClick={(e)=>handleAnchorClick(e, '#contact')} className="mt-2 rounded-lg bg-teal-500 px-3 py-2 text-center font-semibold text-zinc-900">Request Quote</a>
           </nav>

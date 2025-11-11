@@ -33,8 +33,3 @@ export const Card = ({ title, copy, bullets }: { title: string; copy: string; bu
     </ul>
   </article>
 );
-
-// FIX: Add missing NavLink component, which was causing an import error in TestPanel.tsx.
-export const NavLink = ({ href, label }: { href: string; label: string }) => (
-  <a href={href} className="rounded-full bg-zinc-800 px-3 py-1 hover:bg-zinc-700">{label}</a>
-);
