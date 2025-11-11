@@ -1,12 +1,12 @@
 import React from 'react';
 
-export const Stat = ({ value, label }: { value?: React.ReactNode; label?: React.ReactNode }) => {
+export const Stat = ({ value, label, valueColor = 'text-slate-900', labelColor = 'text-slate-600' }: { value?: React.ReactNode; label?: React.ReactNode; valueColor?: string; labelColor?: string }) => {
   const safeValue = value ?? "—";
   const safeLabel = label ?? "";
   return (
     <div className="text-left sm:text-center">
-      <div className="text-3xl font-extrabold text-slate-900">{safeValue}</div>
-      <div className="mt-1 text-sm text-slate-600">{safeLabel}</div>
+      <div className={`text-3xl font-extrabold ${valueColor}`}>{safeValue}</div>
+      <div className={`mt-1 text-sm ${labelColor}`}>{safeLabel}</div>
     </div>
   );
 };

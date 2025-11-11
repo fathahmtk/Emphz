@@ -25,7 +25,7 @@ const Products = () => {
 
             <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
                 {PRODUCTS_DATA.items.map((p) => (
-                <div key={p.sku} className="rounded-2xl border border-slate-200 bg-white p-5 transition-[transform,box-shadow] duration-300 ease-in-out hover:scale-105 hover:shadow-lg hover:shadow-blue-500/20">
+                <div key={p.sku} className="rounded-2xl border border-slate-200 bg-white p-5 transition-[transform,box-shadow] duration-300 ease-in-out hover:scale-[1.03] hover:shadow-lg hover:shadow-blue-500/20">
                     <div className="aspect-[4/3] rounded-lg bg-slate-200" />
                     <div className="mt-3 text-sm text-slate-500">{p.sku}</div>
                     <div className="text-lg font-semibold text-slate-800">{p.name}</div>

@@ -10,20 +10,67 @@ export const ORG_JSON_LD = {
 };
 
 export const NAV_LINKS = [
-  { label: "Home", href: "#home" },
-  { label: "Solutions", href: "#solutions" },
-  { label: "Why GRP", href: "#why-grp" },
-  { label: "Industries", href: "#industries" },
-  { label: "Products", href: "#products" },
-  { label: "Projects", href: "#projects" },
-  { label: "QA & Compliance", href: "#qa" },
-  { label: "Logistics", href: "#logistics" },
-  { label: "Warranty", href: "#warranty" },
-  { label: "Downloads", href: "#downloads" },
-  { label: "Partners", href: "#partners" },
-  { label: "Company", href: "#company" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/" },
+  { label: "Solutions", href: "/solutions.html" },
+  { label: "Why GRP", href: "/why-grp.html" },
+  { label: "Industries", href: "/industries.html" },
+  { label: "Projects", href: "/projects.html" },
+  { label: "Company", href: "/company.html" },
+  { label: "Contact", href: "/contact.html" },
 ];
+
+export const SEO_DATA = {
+  home: {
+    title: "Emphz | Advanced GRP/FRP Infrastructure Solutions",
+    description: "Emphz engineers high‑durability GRP/FRP solutions for the utility, transport, telecom, and hospitality industries. Our portfolio includes enclosures, kiosks, security cabins, and custom OEM components.",
+    ogTitle: "Emphz – GRP/FRP Solutions for Critical Industries",
+    ogDescription: "One-stop solution for GRP infrastructure: serving utilities, transport, telecom, and OEM with corrosion-proof enclosures, cabins, and kiosks.",
+    canonical: "https://emphz.example/",
+  },
+  solutions: {
+    title: "Solutions | GRP Product Portfolio | Emphz Private Limited",
+    description: "Explore our comprehensive portfolio of GRP/FRP solutions, including IP-rated electrical enclosures, modular public cabins, and a filterable product catalogue for B2B needs.",
+    ogTitle: "GRP/FRP Solutions & Product Catalogue | Emphz",
+    ogDescription: "Detailed specifications for GRP enclosures, bus-stop modules, kiosks, cabins, and custom fabrication for industrial and civic projects.",
+    canonical: "https://emphz.example/solutions.html",
+  },
+  why_grp: {
+    title: "Why GRP? | Technical Advantages vs. Steel & Aluminium | Emphz",
+    description: "A technical deep-dive into the benefits of GRP, comparing its performance on corrosion resistance, weight, electrical insulation, and lifecycle cost against legacy materials.",
+    ogTitle: "Why GRP is Superior to Traditional Materials | Emphz",
+    ogDescription: "Learn why GRP's intrinsic properties make it the ideal choice for modern infrastructure projects.",
+    canonical: "https://emphz.example/why-grp.html",
+  },
+  industries: {
+    title: "Industries Served | Emphz Private Limited",
+    description: "Emphz provides specialized GRP solutions for Utilities, Power, Transport, Public Realm, Telecom, ICT, Hospitality, and OEM sectors.",
+    ogTitle: "GRP Solutions for Utilities, Transport, & Telecom | Emphz",
+    ogDescription: "Discover how our GRP products are engineered for the specific demands of your industry.",
+    canonical: "https://emphz.example/industries.html",
+  },
+  projects: {
+    title: "Projects & Case Studies | Emphz Private Limited",
+    description: "View recent deployments of our GRP infrastructure, including coastal bus-stop modules, security cabins, and food kiosks.",
+    ogTitle: "GRP Project Deployments & Case Studies | Emphz",
+    ogDescription: "See real-world examples of how Emphz GRP solutions deliver durability and performance.",
+    canonical: "https://emphz.example/projects.html",
+  },
+  company: {
+    title: "About Emphz | GRP Manufacturing & QA | Emphz Private Limited",
+    description: "Learn about Emphz, our engineering-led approach, quality assurance, logistics, warranty, and partner programs for GRP/FRP infrastructure.",
+    ogTitle: "Company Profile: Engineering-Led GRP Manufacturing | Emphz",
+    ogDescription: "Discover our commitment to quality, compliance, and global logistics for all GRP projects.",
+    canonical: "https://emphz.example/company.html",
+  },
+  contact: {
+    title: "Contact Us | Request a Quote | Emphz Private Limited",
+    description: "Get in touch with the Emphz engineering team to scope your GRP requirement or request a technical quote for your project.",
+    ogTitle: "Contact Emphz for a GRP Project Quote",
+    ogDescription: "Share your project specifications and get a detailed proposal from our engineering experts.",
+    canonical: "https://emphz.example/contact.html",
+  }
+};
+
 
 export const HERO_DATA = {
   title: "Advanced GRP Infrastructure —",
@@ -73,7 +120,7 @@ export const SOLUTIONS_DATA = {
     {
       title: "Drainage & Utility Boxes",
       copy: "Load‑rated GRP chambers and covers for public‑realm durability with non‑conductive, non‑corrosive performance.",
-      bullets: ["Anti‑skid textures", "Non‑conductive", "Colour‑through body"],
+      bullets: ["Anti‑textures", "Non‑conductive", "Colour‑through body"],
     },
   ],
 };
