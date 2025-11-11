@@ -1,9 +1,5 @@
 import React from 'react';
 
-export const NavLink = ({ href, label }: { href: string; label: string }) => (
-  <a href={href} className="px-3 py-2 text-sm font-medium hover:text-teal-400 transition-colors" aria-label={label}>{label}</a>
-);
-
 export const Stat = ({ value, label }: { value?: React.ReactNode; label?: React.ReactNode }) => {
   const safeValue = value ?? "—";
   const safeLabel = label ?? "";
@@ -36,4 +32,9 @@ export const Card = ({ title, copy, bullets }: { title: string; copy: string; bu
       ))}
     </ul>
   </article>
+);
+
+// FIX: Add missing NavLink component, which was causing an import error in TestPanel.tsx.
+export const NavLink = ({ href, label }: { href: string; label: string }) => (
+  <a href={href} className="rounded-full bg-zinc-800 px-3 py-1 hover:bg-zinc-700">{label}</a>
 );

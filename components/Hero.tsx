@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { HERO_DATA } from '../constants';
 import { Stat } from './ui';

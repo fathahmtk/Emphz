@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { WARRANTY_DATA } from '../constants';
 

@@ -1,3 +1,4 @@
+
 import React from 'react';
 
 export default class ErrorBoundary extends React.Component<{ children: React.ReactNode }, { hasError: boolean; info?: string }>{
