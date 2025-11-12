@@ -8,8 +8,9 @@ const WhyGRP = () => {
       <div className="mx-auto max-w-7xl px-4 py-16">
         <h2 className="text-3xl font-bold text-slate-900">{WHY_GRP_DATA.title}</h2>
         <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3">
+          {/* FIX: Explicitly pass props instead of spreading to avoid key prop issue */}
           {WHY_GRP_DATA.features.map((f) => (
-            <Feature key={f.h} {...f} />
+            <Feature key={f.h} h={f.h} p={f.p} />
           ))}
         </div>
 

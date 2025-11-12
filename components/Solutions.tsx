@@ -17,8 +17,9 @@ const Solutions = () => {
         </div>
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {/* FIX: Explicitly pass props instead of spreading to avoid key prop issue */}
           {SOLUTIONS_DATA.cards.map((card) => (
-            <Card key={card.title} {...card} />
+            <Card key={card.title} title={card.title} copy={card.copy} bullets={card.bullets} />
           ))}
         </div>
       </div>

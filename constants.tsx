@@ -1,5 +1,39 @@
 import React from 'react';
 
+// --- ICONS for Industries Section ---
+const IconUtilities = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+  </svg>
+);
+
+const IconTransport = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+    </svg>
+);
+
+const IconTelecom = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071a10 10 0 0114.142 0M1.394 8.529a15 15 0 0121.212 0" />
+  </svg>
+);
+
+const IconHospitality = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+  </svg>
+);
+
+const IconAutomotive = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+    <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+  </svg>
+);
+
+
 export const ORG_JSON_LD = {
   "@context": "https://schema.org",
   "@type": "Organization",
@@ -84,7 +118,7 @@ export const HERO_DATA = {
     { value: ">60%", label: "Lower lifecycle maintenance*" },
   ],
   statsNote: "*vs. painted mild‑steel in coastal climates. Indicative.",
-  image: "https://images.unsplash.com/photo-1581092580497-c9a421b4a919?q=80&w=2070&auto=format&fit=crop",
+  image: "https://images.unsplash.com/photo-1581092580497-c9a421b4a919?q=80&w=2070&auto-format&fit=crop",
 };
 
 export const SOLUTIONS_DATA = {
@@ -150,11 +184,11 @@ export const WHY_GRP_DATA = {
 export const INDUSTRIES_DATA = {
     title: "Industry Focus",
     items: [
-      { h: "Utilities & Power", p: "Switchgear enclosures, feeder pillars, metering cabinets." },
-      { h: "Transport & Public Realm", p: "Bus-stop modules, wayfinding kiosks, service points." },
-      { h: "Telecom & ICT", p: "Outdoor cabinets, FTTX distribution, battery enclosures." },
-      { h: "Hospitality & Residential", p: "Villa toilets, resort pods, service kiosks." },
-      { h: "Automotive & OEM", p: "Specialty vehicle body panels, custom machinery covers." }
+      { h: "Utilities & Power", p: "Switchgear enclosures, feeder pillars, metering cabinets.", icon: <IconUtilities /> },
+      { h: "Transport & Public Realm", p: "Bus-stop modules, wayfinding kiosks, service points.", icon: <IconTransport /> },
+      { h: "Telecom & ICT", p: "Outdoor cabinets, FTTX distribution, battery enclosures.", icon: <IconTelecom /> },
+      { h: "Hospitality & Residential", p: "Villa toilets, resort pods, service kiosks.", icon: <IconHospitality /> },
+      { h: "Automotive & OEM", p: "Specialty vehicle body panels, custom machinery covers.", icon: <IconAutomotive /> }
     ]
 };
 

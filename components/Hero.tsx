@@ -38,7 +38,8 @@ const Hero = () => {
             </a>
           </div>
           <div className="mt-12 grid max-w-xl grid-cols-1 gap-8 text-left sm:grid-cols-3">
-            {HERO_DATA.stats.map(stat => <Stat key={stat.label} {...stat} valueColor="text-white" labelColor="text-slate-300" />)}
+            {/* FIX: Explicitly pass props instead of spreading to avoid key prop issue */}
+            {HERO_DATA.stats.map(stat => <Stat key={stat.label} value={stat.value} label={stat.label} valueColor="text-white" labelColor="text-slate-300" />)}
           </div>
            <p className="mt-4 text-left text-xs text-slate-400">{HERO_DATA.statsNote}</p>
         </div>

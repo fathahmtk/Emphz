@@ -1,16 +1,15 @@
 import React from 'react';
 
+// FIX: Refactored to use modern class property for state and added proper types
 export default class ErrorBoundary extends React.Component<{ children: React.ReactNode }, { hasError: boolean; info?: string }>{
-  constructor(props: any) {
-    super(props);
-    this.state = { hasError: false };
-  }
+  state: { hasError: boolean; info?: string } = { hasError: false };
+  
   static getDerivedStateFromError() {
     return { hasError: true };
   }
-  componentDidCatch(error: any, info: any) {
+  componentDidCatch(error: Error, info: React.ErrorInfo) {
     console.error("EmphzSite runtime error:", error, info);
-    this.setState({ info: String(info?.componentStack || "") });
+    this.setState({ info: info.componentStack });
   }
   render() {
     if (this.state.hasError) {
@@ -22,6 +21,6 @@ export default class ErrorBoundary extends React.Component<{ children: React.Rea
         </section>
       );
     }
-    return this.props.children as any;
+    return this.props.children;
   }
 }

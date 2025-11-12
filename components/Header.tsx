@@ -65,10 +65,12 @@ const Header: React.FC = () => {
           <div className={`inline-block rounded-full border px-3 py-1 text-xs font-semibold tracking-wide transition-colors ${pillClasses}`}>GRP First</div>
         </a>
         <nav className="hidden lg:flex flex-wrap items-center" aria-label="Primary">
+          {/* FIX: Explicitly pass props instead of spreading to avoid key prop issue */}
           {NAV_LINKS.map(link => (
             <LinkEl 
               key={link.href} 
-              {...link}
+              href={link.href}
+              label={link.label}
               baseClassName="px-3 py-2 text-sm font-medium transition-colors"
             />
           ))}
@@ -89,10 +91,12 @@ const Header: React.FC = () => {
       {open && (
         <div className={`border-t lg:hidden ${scrolled || !isHomePage ? 'border-slate-200 bg-white/95' : 'border-white/20 bg-slate-900/95 backdrop-blur'}`} role="dialog" aria-modal="true">
           <nav className="mx-auto grid max-w-7xl gap-1 px-4 py-3 text-sm" aria-label="Mobile">
+            {/* FIX: Explicitly pass props instead of spreading to avoid key prop issue */}
             {NAV_LINKS.map((link) => (
               <LinkEl
                 key={link.href}
-                {...link}
+                href={link.href}
+                label={link.label}
                 baseClassName="rounded-lg px-3 py-2"
               />
             ))}
