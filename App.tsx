@@ -1,16 +1,17 @@
+
 import React from "react";
 import { HelmetProvider } from "react-helmet-async";
 
-import ErrorBoundary from './components/ErrorBoundary';
-import Layout from './components/Layout';
+import ErrorBoundary from './components/ErrorBoundary.tsx';
+import Layout from './components/Layout.tsx';
 
-import HomePage from './components/pages/HomePage';
-import SolutionsPage from './components/pages/SolutionsPage';
-import WhyGRPPage from './components/pages/WhyGRPPage';
-import IndustriesPage from './components/pages/IndustriesPage';
-import ProjectsPage from './components/pages/ProjectsPage';
-import CompanyPage from './components/pages/CompanyPage';
-import ContactPage from './components/pages/ContactPage';
+import HomePage from './components/pages/HomePage.tsx';
+import SolutionsPage from './components/pages/SolutionsPage.tsx';
+import WhyGRPPage from './components/pages/WhyGRPPage.tsx';
+import IndustriesPage from './components/pages/IndustriesPage.tsx';
+import ProjectsPage from './components/pages/ProjectsPage.tsx';
+import CompanyPage from './components/pages/CompanyPage.tsx';
+import ContactPage from './components/pages/ContactPage.tsx';
 
 const AppRouter = () => {
     const path = window.location.pathname;

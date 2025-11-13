@@ -1,16 +1,28 @@
-import React from 'react';
+import React, { Component, ErrorInfo, ReactNode } from 'react';
 
-// FIX: Refactored to use modern class property for state and added proper types
-export default class ErrorBoundary extends React.Component<{ children: React.ReactNode }, { hasError: boolean; info?: string }>{
-  state: { hasError: boolean; info?: string } = { hasError: false };
-  
-  static getDerivedStateFromError() {
+interface ErrorBoundaryProps {
+  children: ReactNode;
+}
+
+interface ErrorBoundaryState {
+  hasError: boolean;
+  info?: string;
+}
+
+export default class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
+  // FIX: Initialize state as a class property instead of in the constructor.
+  // This is a more modern syntax and should resolve the type errors by ensuring 'this' is correctly scoped.
+  state: ErrorBoundaryState = { hasError: false };
+
+  static getDerivedStateFromError(_error: Error): ErrorBoundaryState {
     return { hasError: true };
   }
-  componentDidCatch(error: Error, info: React.ErrorInfo) {
+  
+  componentDidCatch(error: Error, info: ErrorInfo) {
     console.error("EmphzSite runtime error:", error, info);
     this.setState({ info: info.componentStack });
   }
+  
   render() {
     if (this.state.hasError) {
       return (

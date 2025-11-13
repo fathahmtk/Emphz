@@ -1,6 +1,7 @@
+
 import React from 'react';
-import { SOLUTIONS_DATA } from '../constants';
-import { Pill, Card } from './ui';
+import { SOLUTIONS_DATA } from './constants.tsx';
+import { Pill, Card } from './ui.tsx';
 
 const Solutions = () => {
   return (
@@ -17,7 +18,6 @@ const Solutions = () => {
         </div>
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {/* FIX: Explicitly pass props instead of spreading to avoid key prop issue */}
           {SOLUTIONS_DATA.cards.map((card) => (
             <Card key={card.title} title={card.title} copy={card.copy} bullets={card.bullets} />
           ))}

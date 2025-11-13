@@ -1,6 +1,6 @@
 import React from 'react';
 
-// --- ICONS for Industries Section ---
+// --- ICONS for Industries & Social ---
 const IconUtilities = () => (
   <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
     <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -31,6 +31,24 @@ const IconAutomotive = () => (
     <path strokeLinecap="round" strokeLinejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
     <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
   </svg>
+);
+
+const IconLinkedIn = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.705-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.931c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"/>
+    </svg>
+);
+
+const IconTwitter = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15"/>
+    </svg>
+);
+
+const IconFacebook = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05S0 3.603 0 8.05C0 12.006 2.923 15.11 6.75 15.579V9.932H4.718V8.05h2.032V6.44c0-2.007 1.193-3.111 3.022-3.111.875 0 1.791.157 1.791.157v1.723h-.988c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 1.882h-1.864v5.647C13.077 15.11 16 12.006 16 8.049"/>
+    </svg>
 );
 
 
@@ -184,11 +202,11 @@ export const WHY_GRP_DATA = {
 export const INDUSTRIES_DATA = {
     title: "Industry Focus",
     items: [
-      { h: "Utilities & Power", p: "Switchgear enclosures, feeder pillars, metering cabinets.", icon: <IconUtilities /> },
-      { h: "Transport & Public Realm", p: "Bus-stop modules, wayfinding kiosks, service points.", icon: <IconTransport /> },
-      { h: "Telecom & ICT", p: "Outdoor cabinets, FTTX distribution, battery enclosures.", icon: <IconTelecom /> },
-      { h: "Hospitality & Residential", p: "Villa toilets, resort pods, service kiosks.", icon: <IconHospitality /> },
-      { h: "Automotive & OEM", p: "Specialty vehicle body panels, custom machinery covers.", icon: <IconAutomotive /> }
+      { h: "Utilities & Power", p: "Switchgear enclosures, feeder pillars, metering cabinets.", icon: IconUtilities },
+      { h: "Transport & Public Realm", p: "Bus-stop modules, wayfinding kiosks, service points.", icon: IconTransport },
+      { h: "Telecom & ICT", p: "Outdoor cabinets, FTTX distribution, battery enclosures.", icon: IconTelecom },
+      { h: "Hospitality & Residential", p: "Villa toilets, resort pods, service kiosks.", icon: IconHospitality },
+      { h: "Automotive & OEM", p: "Specialty vehicle body panels, custom machinery covers.", icon: IconAutomotive }
     ]
 };
 
@@ -252,9 +270,30 @@ export const PROJECTS_DATA = {
     title: "Recent Deployments",
     tag: "Case studies",
     items: [
-      { src: "https://images.unsplash.com/photo-1570125909239-74182456459e?q=80&w=800&auto=format&fit=crop", cap: "GRP bus‑stop module – coastal district installation" },
-      { src: "https://images.unsplash.com/photo-1599691880348-88b14a275493?q=80&w=800&auto=format&fit=crop", cap: "Security cabin with insulated panels and HVAC provision" },
-      { src: "https://images.unsplash.com/photo-1579435349453-35fb5c88344e?q=80&w=800&auto=format&fit=crop", cap: "Food kiosk – hygiene‑friendly interior fit‑out" },
+      { 
+        images: [
+          "https://images.unsplash.com/photo-1570125909239-74182456459e?q=80&w=800&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1544675229-e474fe432d59?q=80&w=800&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1569922933013-9092d6e3e4a2?q=80&w=800&auto=format&fit=crop",
+        ], 
+        cap: "GRP bus‑stop module – coastal district installation" 
+      },
+      { 
+        images: [
+          "https://images.unsplash.com/photo-1599691880348-88b14a275493?q=80&w=800&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1560415339-22a4b868f047?q=80&w=800&auto=format&fit=crop",
+        ], 
+        cap: "Security cabin with insulated panels and HVAC provision" 
+      },
+      { 
+        images: [
+          "https://images.unsplash.com/photo-1579435349453-35fb5c88344e?q=80&w=800&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1621232353995-f2c21c75c13b?q=80&w=800&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1616084435164-f6b048701042?q=80&w=800&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1589578167383-b755b7d6a782?q=80&w=800&auto=format&fit=crop",
+        ], 
+        cap: "Food kiosk – hygiene‑friendly interior fit‑out" 
+      },
     ]
 };
 
@@ -284,3 +323,9 @@ export const CONTACT_DATA = {
     note: "By submitting, you consent to be contacted about your enquiry.",
     whatsappLink: "https://wa.me/00000000000",
 };
+
+export const SOCIAL_LINKS = [
+    { name: "LinkedIn", href: "#", icon: IconLinkedIn },
+    { name: "Twitter", href: "#", icon: IconTwitter },
+    { name: "Facebook", href: "#", icon: IconFacebook },
+];

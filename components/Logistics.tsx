@@ -1,5 +1,6 @@
+
 import React from 'react';
-import { LOGISTICS_DATA } from '../constants';
+import { LOGISTICS_DATA } from './constants.tsx';
 
 const Logistics = () => {
     return (

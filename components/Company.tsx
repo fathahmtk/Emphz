@@ -1,5 +1,6 @@
+
 import React from 'react';
-import { COMPANY_DATA } from '../constants';
+import { COMPANY_DATA } from './constants.tsx';
 
 const Company = () => {
     return (

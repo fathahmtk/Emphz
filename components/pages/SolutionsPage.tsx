@@ -1,9 +1,10 @@
+
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { SEO_DATA } from '../../constants';
+import { SEO_DATA } from '../constants.tsx';
 
-import Solutions from '../Solutions';
-import Products from '../Products';
+import Solutions from '../Solutions.tsx';
+import Products from '../Products.tsx';
 
 const SolutionsPage = () => {
     const seo = SEO_DATA.solutions;

@@ -1,5 +1,6 @@
+
 import React from 'react';
-import { CONTACT_DATA } from '../constants';
+import { CONTACT_DATA } from './constants.tsx';
 
 const Contact = () => {
     return (
@@ -11,14 +12,22 @@ const Contact = () => {
                 <input type="hidden" name="form-name" value="rfq" />
                 <input name="name" className="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500" placeholder="Full name" required />
                 <input name="contact" className="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500" placeholder="Email / Phone" required />
-                <select name="product" className="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
-                <option>Rural Bus‑Stop Module</option>
-                <option>GRP Electrical Enclosure</option>
-                <option>Portable Kiosk</option>
-                <option>Security Cabin</option>
-                <option>Villa Toilet Pod</option>
-                <option>Utility Box / Chamber</option>
-                </select>
+                <input 
+                    name="product" 
+                    list="product-list"
+                    className="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500" 
+                    placeholder="Select or type product name" 
+                    required 
+                />
+                <datalist id="product-list">
+                    <option value="Rural Bus‑Stop Module" />
+                    <option value="GRP Electrical Enclosure" />
+                    <option value="Portable Kiosk" />
+                    <option value="Security Cabin" />
+                    <option value="Villa Toilet Pod" />
+                    <option value="Utility Box / Chamber" />
+                    <option value="Other / Custom" />
+                </datalist>
                 <input name="dims" className="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500" placeholder="Target dimensions / Qty" />
                 <textarea name="notes" className="md:col-span-2 h-28 w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500" placeholder="Notes: accessories, standards, site conditions" />
                 <button className="md:col-span-2 rounded-xl bg-blue-600 px-6 py-3 font-semibold text-white hover:bg-blue-500 transition-colors">Request Quote</button>

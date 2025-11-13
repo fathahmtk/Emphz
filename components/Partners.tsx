@@ -1,5 +1,6 @@
+
 import React from 'react';
-import { PARTNERS_DATA } from '../constants';
+import { PARTNERS_DATA } from './constants.tsx';
 
 const Partners = () => {
     return (

@@ -1,5 +1,6 @@
+
 import React from 'react';
-import { WARRANTY_DATA } from '../constants';
+import { WARRANTY_DATA } from './constants.tsx';
 
 const Warranty = () => {
     return (

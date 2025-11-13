@@ -1,13 +1,14 @@
+
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { SEO_DATA } from '../../constants';
+import { SEO_DATA } from '../constants.tsx';
 
-import Company from '../Company';
-import QA from '../QA';
-import Logistics from '../Logistics';
-import Warranty from '../Warranty';
-import Partners from '../Partners';
-import Downloads from '../Downloads';
+import Company from '../Company.tsx';
+import QA from '../QA.tsx';
+import Logistics from '../Logistics.tsx';
+import Warranty from '../Warranty.tsx';
+import Partners from '../Partners.tsx';
+import Downloads from '../Downloads.tsx';
 
 const CompanyPage = () => {
     const seo = SEO_DATA.company;

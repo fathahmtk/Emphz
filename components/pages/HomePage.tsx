@@ -1,12 +1,13 @@
+
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { SEO_DATA, ORG_JSON_LD } from '../../constants';
+import { SEO_DATA, ORG_JSON_LD } from '../constants.tsx';
 
-import Hero from '../Hero';
-import Solutions from '../Solutions';
-import WhyGRP from '../WhyGRP';
-import IndustriesSection from '../IndustriesSection';
-import Projects from '../Projects';
+import Hero from '../Hero.tsx';
+import Solutions from '../Solutions.tsx';
+import WhyGRP from '../WhyGRP.tsx';
+import SolutionFinder from '../SolutionFinder.tsx';
+import Projects from '../Projects.tsx';
 
 const HomePage = () => {
     const seo = SEO_DATA.home;
@@ -23,7 +24,7 @@ const HomePage = () => {
             <Hero />
             <Solutions />
             <WhyGRP />
-            <IndustriesSection />
+            <SolutionFinder />
             <Projects />
         </>
     );

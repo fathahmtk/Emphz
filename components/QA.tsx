@@ -1,5 +1,6 @@
+
 import React from 'react';
-import { QA_DATA } from '../constants';
+import { QA_DATA } from './constants.tsx';
 
 const QA = () => {
     return (

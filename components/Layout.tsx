@@ -1,6 +1,7 @@
+
 import React, { useEffect } from 'react';
-import Header from './Header';
-import Footer from './Footer';
+import Header from './Header.tsx';
+import Footer from './Footer.tsx';
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     useEffect(() => {

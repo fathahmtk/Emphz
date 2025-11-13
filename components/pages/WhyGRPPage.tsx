@@ -1,8 +1,9 @@
+
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { SEO_DATA } from '../../constants';
+import { SEO_DATA } from '../constants.tsx';
 
-import WhyGRP from '../WhyGRP';
+import WhyGRP from '../WhyGRP.tsx';
 
 const WhyGRPPage = () => {
     const seo = SEO_DATA.why_grp;

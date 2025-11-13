@@ -1,5 +1,6 @@
+
 import React from 'react';
-import { NAV_LINKS } from '../constants';
+import { NAV_LINKS } from './constants.tsx';
 
 const Header: React.FC = () => {
   const [open, setOpen] = React.useState(false);
@@ -41,7 +42,7 @@ const Header: React.FC = () => {
   const logoClasses = headerIsOverlay ? 'bg-white text-slate-900' : 'bg-gradient-to-br from-slate-800 to-slate-900 text-white';
   const quoteButtonClasses = headerIsOverlay ? 'bg-white text-slate-900 hover:bg-slate-200' : 'bg-blue-600 text-white hover:bg-blue-500';
 
-  const LinkEl = ({ href, label, baseClassName }: { href: string; label: string; baseClassName: string; }) => {
+  const LinkEl: React.FC<{ href: string; label: string; baseClassName: string; }> = ({ href, label, baseClassName }) => {
     const isActive = activePath.endsWith(href) || (href === '/' && activePath.endsWith('/index.html'));
     const isHomeLinkActive = href === '/' && isHomePage;
     return (
@@ -65,7 +66,6 @@ const Header: React.FC = () => {
           <div className={`inline-block rounded-full border px-3 py-1 text-xs font-semibold tracking-wide transition-colors ${pillClasses}`}>GRP First</div>
         </a>
         <nav className="hidden lg:flex flex-wrap items-center" aria-label="Primary">
-          {/* FIX: Explicitly pass props instead of spreading to avoid key prop issue */}
           {NAV_LINKS.map(link => (
             <LinkEl 
               key={link.href} 
@@ -91,7 +91,6 @@ const Header: React.FC = () => {
       {open && (
         <div className={`border-t lg:hidden ${scrolled || !isHomePage ? 'border-slate-200 bg-white/95' : 'border-white/20 bg-slate-900/95 backdrop-blur'}`} role="dialog" aria-modal="true">
           <nav className="mx-auto grid max-w-7xl gap-1 px-4 py-3 text-sm" aria-label="Mobile">
-            {/* FIX: Explicitly pass props instead of spreading to avoid key prop issue */}
             {NAV_LINKS.map((link) => (
               <LinkEl
                 key={link.href}

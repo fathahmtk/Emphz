@@ -1,5 +1,6 @@
+
 import React from 'react';
-import { DOWNLOADS_DATA } from '../constants';
+import { DOWNLOADS_DATA } from './constants.tsx';
 
 const Downloads = () => {
     return (

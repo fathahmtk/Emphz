@@ -1,8 +1,9 @@
+
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { SEO_DATA } from '../../constants';
+import { SEO_DATA } from '../constants.tsx';
 
-import Projects from '../Projects';
+import Projects from '../Projects.tsx';
 
 const ProjectsPage = () => {
     const seo = SEO_DATA.projects;

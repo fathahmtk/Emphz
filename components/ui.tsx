@@ -1,6 +1,7 @@
+
 import React from 'react';
 
-export const Stat = ({ value, label, valueColor = 'text-slate-900', labelColor = 'text-slate-600' }: { value?: React.ReactNode; label?: React.ReactNode; valueColor?: string; labelColor?: string }) => {
+export const Stat: React.FC<{ value?: React.ReactNode; label?: React.ReactNode; valueColor?: string; labelColor?: string }> = ({ value, label, valueColor = 'text-slate-900', labelColor = 'text-slate-600' }) => {
   const safeValue = value ?? "—";
   const safeLabel = label ?? "";
   return (
@@ -11,18 +12,18 @@ export const Stat = ({ value, label, valueColor = 'text-slate-900', labelColor =
   );
 };
 
-export const Pill = ({ children }: { children: React.ReactNode }) => (
+export const Pill: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   <span className="inline-block rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-xs font-semibold tracking-wide text-blue-700">{children}</span>
 );
 
-export const Feature = ({ h, p }: { h: string; p: string }) => (
+export const Feature: React.FC<{ h: string; p: string }> = ({ h, p }) => (
   <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6">
     <div className="text-lg font-semibold text-blue-600">{h}</div>
     <p className="mt-2 text-slate-600">{p}</p>
   </div>
 );
 
-export const Card = ({ title, copy, bullets }: { title: string; copy: string; bullets: string[] }) => (
+export const Card: React.FC<{ title: string; copy: string; bullets: string[] }> = ({ title, copy, bullets }) => (
   <article className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md">
     <h3 className="text-xl font-semibold text-slate-900">{title}</h3>
     <p className="mt-3 text-slate-600">{copy}</p>
