@@ -1,13 +1,14 @@
 
 import { ContactForm } from "@/components/contact-form";
 import { ScrollReveal } from "@/components/scroll-reveal";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Mail, Phone, MessageSquare } from "lucide-react";
 import type { Metadata } from "next";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { GlassCard } from "@/components/glass-card";
 
 export const metadata: Metadata = {
   title: "Contact Us",
@@ -44,7 +45,7 @@ export default function ContactPage() {
                 <ContactForm />
               </ScrollReveal>
               <ScrollReveal delay={400} className="lg:col-span-2 space-y-8">
-                <Card className="bg-card/80">
+                <GlassCard>
                   <CardHeader>
                     <CardTitle>Contact Channels</CardTitle>
                   </CardHeader>
@@ -57,8 +58,8 @@ export default function ContactPage() {
                     ))}
                     <p className="text-sm pt-2">Operating Hours: Sun-Thu, 8:00 AM - 6:00 PM (GMT+4)</p>
                   </CardContent>
-                </Card>
-                <Card className="bg-card/80">
+                </GlassCard>
+                <GlassCard>
                   <CardHeader>
                     <CardTitle>Looking for documentation?</CardTitle>
                   </CardHeader>
@@ -68,7 +69,7 @@ export default function ContactPage() {
                         <Link href="/downloads">Request Specifications Pack</Link>
                     </Button>
                   </CardContent>
-                </Card>
+                </GlassCard>
               </ScrollReveal>
             </div>
           </div>

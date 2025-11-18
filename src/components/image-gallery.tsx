@@ -4,8 +4,9 @@ import { useState } from "react";
 import Image from "next/image";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { type ImagePlaceholder } from "@/lib/placeholder-images";
-import { Card, CardContent } from "./ui/card";
+import { CardContent } from "./ui/card";
 import { cn } from "@/lib/utils";
+import { GlassCard } from "./glass-card";
 
 interface ImageGalleryProps {
   images: ImagePlaceholder[];
@@ -19,7 +20,7 @@ export function ImageGallery({ images, className }: ImageGalleryProps) {
     <>
       <div className={cn("grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4", className)}>
         {images.map((image) => (
-          <Card 
+          <GlassCard 
             key={image.id}
             className="overflow-hidden cursor-pointer group"
             onClick={() => setSelectedImage(image)}
@@ -36,7 +37,7 @@ export function ImageGallery({ images, className }: ImageGalleryProps) {
                     />
                 </div>
             </CardContent>
-          </Card>
+          </GlassCard>
         ))}
       </div>
 

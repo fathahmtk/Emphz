@@ -8,13 +8,14 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Alert, AlertDescription, AlertTitle } from "./ui/alert";
 import { Terminal, Upload } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
 import { useCollection, useFirestore, useMemoFirebase } from "@/firebase";
 import type { Product } from "@/lib/types";
 import { collection, orderBy, query } from "firebase/firestore";
+import { GlassCard } from "./glass-card";
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -61,7 +62,7 @@ export function ContactForm() {
   }
 
   return (
-    <Card>
+    <GlassCard>
       <CardHeader>
         <CardTitle className="text-2xl">Submit Inquiry</CardTitle>
         <CardDescription>Our technical engineering team will review your requirements and respond promptly.</CardDescription>
@@ -127,6 +128,6 @@ export function ContactForm() {
           <SubmitButton />
         </form>
       </CardContent>
-    </Card>
+    </GlassCard>
   );
 }

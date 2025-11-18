@@ -11,7 +11,8 @@ import { type Product } from '@/lib/types';
 import { SiteHeader } from '@/components/layout/site-header';
 import { SiteFooter } from '@/components/layout/site-footer';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { GlassCard } from '@/components/glass-card';
 import dynamic from 'next/dynamic';
 
 const HeroCarousel = dynamic(() => import('@/components/hero-carousel').then(m => m.HeroCarousel), { ssr: false });
@@ -108,7 +109,7 @@ export default function Home() {
             <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
               {corporatePillars.map((pillar, i) => (
                 <ScrollReveal key={pillar.title} delay={i * 150}>
-                  <Card className="text-center h-full hover:shadow-lg transition-shadow">
+                  <GlassCard className="text-center h-full">
                     <CardHeader>
                       <div className="mx-auto mb-4 inline-flex items-center justify-center rounded-lg bg-primary/10 p-3 text-primary">
                         <pillar.icon className="h-8 w-8" />
@@ -118,7 +119,7 @@ export default function Home() {
                     <CardContent>
                       <p className="text-muted-foreground">{pillar.description}</p>
                     </CardContent>
-                  </Card>
+                  </GlassCard>
                 </ScrollReveal>
               ))}
             </div>
