@@ -6,11 +6,19 @@ export type Product = {
   name: string;
   category: string;
   overview: string;
-  specifications: Record<string, string>;
-  imageUrl: string;
-  imageHint: string;
+  specifications: {
+    Material: string;
+    "IP Rating": string;
+    "Impact Resistance": string;
+    "Operating Temperature": string;
+  };
+  imageUrls: string[];
+  imageHint?: string;
   datasheetUrl?: string;
+  model3dUrl?: string;
   applications: string[];
+  colors?: string[];
+  sizes?: string[];
 };
 
 export type Project = {

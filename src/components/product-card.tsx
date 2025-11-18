@@ -23,7 +23,7 @@ export function ProductCard({ product }: ProductCardProps) {
         <CardHeader className="p-0">
           <div className="relative aspect-[4/3] w-full">
             <Image
-              src={product.imageUrl}
+              src={product.imageUrls[0]}
               alt={product.name}
               data-ai-hint={product.imageHint}
               fill

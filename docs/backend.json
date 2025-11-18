@@ -15,26 +15,63 @@
           "type": "string",
           "description": "Name of the product."
         },
-        "description": {
+        "category": {
           "type": "string",
-          "description": "Detailed description of the product specifications."
+          "description": "Category of the product."
         },
-        "imageUrl": {
+        "overview": {
           "type": "string",
-          "description": "URL of the product image.",
-          "format": "uri"
+          "description": "A brief overview of the product."
+        },
+        "imageUrls": {
+            "type": "array",
+            "description": "URLs of the product images.",
+            "items": { "type": "string", "format": "uri" }
+        },
+        "imageHint": {
+          "type": "string",
+          "description": "Hint for AI to find similar images."
         },
         "specifications": {
-          "type": "string",
-          "description": "Technical specifications of the product."
+          "type": "object",
+          "description": "Technical specifications of the product.",
+          "properties": {
+              "Material": { "type": "string" },
+              "IP Rating": { "type": "string" },
+              "Impact Resistance": { "type": "string" },
+              "Operating Temperature": { "type": "string" }
+          }
+        },
+        "applications": {
+            "type": "array",
+            "items": { "type": "string" }
+        },
+        "datasheetUrl": {
+            "type": "string",
+            "format": "uri"
+        },
+        "model3dUrl": {
+            "type": "string",
+            "format": "uri"
+        },
+        "colors": {
+            "type": "array",
+            "items": { "type": "string" }
+        },
+        "sizes": {
+            "type": "array",
+            "items": { "type": "string" }
         }
       },
       "required": [
         "id",
         "name",
-        "description",
-        "imageUrl",
-        "specifications"
+        "category",
+        "overview",
+        "imageUrls",
+        "specifications",
+        "applications",
+        "datasheetUrl"
       ]
     },
     "ProjectCaseStudy": {
