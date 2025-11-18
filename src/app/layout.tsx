@@ -3,7 +3,7 @@
 
 import type { ReactNode } from 'react';
 import { usePathname } from 'next/navigation';
-import { Urbanist } from 'next/font/google';
+import { Urbanist, Playfair_Display } from 'next/font/google';
 
 import './globals.css';
 import { cn } from '@/lib/utils';
@@ -17,6 +17,11 @@ const urbanist = Urbanist({
   variable: '--font-body',
 });
 
+const playfairDisplay = Playfair_Display({
+    subsets: ['latin'],
+    variable: '--font-headline',
+});
+
 
 // This component uses client-side hooks, so it must be a client component.
 function RootBody({
@@ -27,7 +32,7 @@ function RootBody({
     const pathname = usePathname();
     
     return (
-        <body className={cn('min-h-screen font-body antialiased', urbanist.variable)}>
+        <body className={cn('min-h-screen font-body antialiased', urbanist.variable, playfairDisplay.variable)}>
             <FirebaseClientProvider>
                 <ClientOnly>
                     <div className="relative flex min-h-dvh flex-col bg-background">

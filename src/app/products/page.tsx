@@ -154,11 +154,11 @@ export default function ProductsPage() {
             {productCards.map((category, i) => (
               <ScrollReveal key={category.name} delay={i * 100}>
                 <Link href={category.href} className="h-full block">
-                  <Card className="flex h-full flex-col group overflow-hidden transition-shadow hover:shadow-xl hover:border-accent">
+                  <Card className="flex h-full flex-col group overflow-hidden transition-all duration-300 hover:shadow-xl hover:border-primary/30 hover:bg-accent/50">
                     <CardHeader>
-                      <CardTitle className="text-xl font-headline group-hover:text-primary">{category.name}</CardTitle>
+                      <CardTitle className="text-xl font-headline transition-colors group-hover:text-primary">{category.name}</CardTitle>
                     </CardHeader>
-                    <CardContent>
+                    <CardContent className="flex-grow">
                       <CardDescription>{category.description}</CardDescription>
                     </CardContent>
                   </Card>
@@ -172,5 +172,3 @@ export default function ProductsPage() {
     </>
   );
 }
-
-    

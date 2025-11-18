@@ -21,6 +21,7 @@ import {
 } from "@/components/ui/accordion"
 import { Logo } from "@/components/icons"
 import { menuData } from "@/lib/menu-data"
+import { Separator } from "../ui/separator"
 
 export function MobileNav() {
     return (
@@ -45,45 +46,41 @@ export function MobileNav() {
                     </SheetClose>
                 </div>
                 <div className="flex-1 overflow-y-auto">
-                    <Accordion type="multiple" className="w-full px-6 py-4">
+                    <nav className="grid gap-2 p-4">
                         {menuData.map((item) => (
-                            <AccordionItem value={item.title} key={item.title}>
-                                <AccordionTrigger className="text-lg font-medium">
-                                    <SheetClose asChild>
-                                        <Link href={item.href}>{item.title}</Link>
-                                    </SheetClose>
-                                </AccordionTrigger>
-                                <AccordionContent>
-                                    <nav className="grid gap-4 pt-2">
-                                        {item.columns.map(col => (
-                                            <div key={col.title}>
-                                                <h4 className="font-semibold text-muted-foreground mb-2">{col.title}</h4>
-                                                {col.links.map((link) => (
-                                                    <SheetClose asChild key={link.href}>
-                                                        <Link
-                                                            href={link.href}
-                                                            className="flex w-full items-center py-2 text-foreground/80 hover:text-foreground"
-                                                        >
-                                                            {link.title}
-                                                        </Link>
-                                                    </SheetClose>
-                                                ))}
-                                            </div>
-                                        ))}
-                                         {item.cta && (
-                                            <SheetClose asChild>
-                                                <Button asChild className="w-full mt-4">
-                                                    <Link href={item.cta.href}>{item.cta.text}</Link>
-                                                </Button>
-                                            </SheetClose>
-                                         )}
-                                    </nav>
-                                </AccordionContent>
-                            </AccordionItem>
+                           <Accordion type="single" collapsible className="w-full" key={item.title}>
+                             <AccordionItem value={item.title} className="border-b-0">
+                               <AccordionTrigger className="flex w-full items-center justify-between rounded-md px-3 py-2 text-base font-medium text-foreground/80 hover:bg-accent hover:text-accent-foreground hover:no-underline [&[data-state=open]>svg]:rotate-180">
+                                 <SheetClose asChild>
+                                    <Link href={item.href} className="flex-1 text-left">{item.title}</Link>
+                                 </SheetClose>
+                               </AccordionTrigger>
+                               <AccordionContent className="pt-2">
+                                  <div className="grid gap-2 pl-7">
+                                     {item.columns.map(col => (
+                                        <div key={col.title}>
+                                            <h4 className="font-semibold text-muted-foreground mb-2 text-sm">{col.title}</h4>
+                                            {col.links.map((link) => (
+                                                <SheetClose asChild key={link.href}>
+                                                    <Link
+                                                        href={link.href}
+                                                        className="flex w-full items-center py-2 text-sm text-foreground/70 hover:text-foreground"
+                                                    >
+                                                        {link.title}
+                                                    </Link>
+                                                </SheetClose>
+                                            ))}
+                                        </div>
+                                    ))}
+                                  </div>
+                               </AccordionContent>
+                             </AccordionItem>
+                           </Accordion>
                         ))}
-                    </Accordion>
+                    </nav>
                 </div>
-                <SheetFooter className="p-4 border-t gap-2">
+                 <Separator />
+                <SheetFooter className="p-4 gap-2">
                     <Button className="w-full">Request Spec Pack</Button>
                 </SheetFooter>
             </SheetContent>
