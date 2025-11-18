@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { ArrowRight, Factory, HardHat, ShieldCheck, Award, Fingerprint, Building } from 'lucide-react';
 import { collection, orderBy, query, limit } from 'firebase/firestore';
+import dynamic from 'next/dynamic';
 
 import { Button } from '@/components/ui/button';
 import { ProductCard } from '@/components/product-card';
@@ -14,7 +15,6 @@ import { SiteFooter } from '@/components/layout/site-footer';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { GlassCard } from '@/components/glass-card';
-import dynamic from 'next/dynamic';
 
 const HeroCarousel = dynamic(() => import('@/components/hero-carousel').then(m => m.HeroCarousel), { ssr: false });
 
