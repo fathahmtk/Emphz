@@ -3,8 +3,8 @@
 
 import Link from "next/link";
 import { Linkedin, Twitter } from "lucide-react";
-import { useFormState, useFormStatus } from "react-dom";
-import { useEffect } from "react";
+import { useActionState, useEffect } from "react";
+import { useFormStatus } from "react-dom";
 import { useToast } from "@/hooks/use-toast";
 import { subscribeToNewsletter } from "@/app/actions/newsletter";
 
@@ -29,7 +29,7 @@ function SubmitButton() {
 
 export function SiteFooter() {
     const initialState = { status: "idle" as const, message: "" };
-    const [state, formAction] = useFormState(subscribeToNewsletter, initialState);
+    const [state, formAction] = useActionState(subscribeToNewsletter, initialState);
     const { toast } = useToast();
 
     useEffect(() => {
