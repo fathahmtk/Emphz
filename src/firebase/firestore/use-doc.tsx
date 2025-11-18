@@ -11,7 +11,7 @@ import {
 } from 'firebase/firestore';
 import { errorEmitter } from '@/firebase/error-emitter';
 import { FirestorePermissionError } from '@/firebase/errors';
-import { type MemoizedFirebase } from '../provider';
+import { type MemoizedFirebase, isMemoized } from '../provider';
 
 
 /** Utility type to add an 'id' field to a given type T. */
@@ -25,15 +25,6 @@ export interface UseDocResult<T> {
   data: WithId<T> | null; // Document data with ID, or null.
   isLoading: boolean;       // True if loading.
   error: FirestoreError | Error | null; // Error object, or null.
-}
-
-
-// A unique symbol to identify memoized Firebase objects
-const MEMOIZED_SYMBOL = Symbol('memoized');
-
-// Type guard to check if a value is a MemoizedFirebase object
-function isMemoized<T>(value: any): value is MemoizedFirebase<T> {
-  return value && value[MEMOIZED_SYMBOL];
 }
 
 /**
@@ -53,7 +44,7 @@ function isMemoized<T>(value: any): value is MemoizedFirebase<T> {
 export function useDoc<T = any>(
   memoizedHookInput: MemoizedFirebase<DocumentReference<DocumentData> | null | undefined>,
 ): UseDocResult<T> {
-  if (memoizedHookInput && !isMemoized(memoizedHookInput)) {
+  if (memoizedHookInput !== null && memoizedHookInput !== undefined && !isMemoized(memoizedHookInput)) {
     throw new Error('Input to useDoc was not properly memoized using useMemoFirebase. This can lead to infinite loops.');
   }
   const docRef = memoizedHookInput ? memoizedHookInput.value : null;
