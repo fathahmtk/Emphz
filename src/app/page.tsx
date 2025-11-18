@@ -64,21 +64,20 @@ export default function Home() {
       <SiteHeader />
       <main className="flex-1">
         <section className="relative h-dvh w-full flex items-center justify-center text-center overflow-hidden">
-           {heroImage && (
-            <div className="absolute inset-0">
-                <Image
-                    src={heroImage.imageUrl}
-                    alt={heroImage.description}
-                    data-ai-hint={heroImage.imageHint}
-                    fill
-                    className="object-cover"
-                    priority
-                />
-            </div>
-           )}
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent" />
-          <div className="absolute inset-0 bg-black/60" />
-          <div className="container absolute px-4 md:px-6">
+           <div className="absolute inset-0 z-0">
+             <video 
+                autoPlay 
+                loop 
+                muted 
+                playsInline 
+                className="w-full h-full object-cover"
+                poster="/video-poster.jpg"
+              >
+                <source src="https://storage.googleapis.com/stabl-media/pexels-laker-5792902%20(2160p).mp4" type="video/mp4" />
+             </video>
+           </div>
+          <div className="absolute inset-0 bg-black/30" />
+          <div className="container relative px-4 md:px-6 z-10">
             <div className="mx-auto max-w-4xl text-primary-foreground">
               <ScrollReveal>
                 <h1 className="!leading-tight text-4xl font-bold font-headline tracking-tighter text-white shadow-lg sm:text-5xl md:text-6xl lg:text-7xl">
@@ -98,7 +97,7 @@ export default function Home() {
                       <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                     </Link>
                   </Button>
-                  <Button size="lg" variant="outline" asChild>
+                  <Button size="lg" variant="outline" className='bg-background/20 backdrop-blur-sm border-white/50 text-white hover:bg-white hover:text-primary' asChild>
                     <Link href="/products">Explore Product Catalogue</Link>
                   </Button>
                 </div>
@@ -241,3 +240,5 @@ export default function Home() {
     </>
   );
 }
+
+    
