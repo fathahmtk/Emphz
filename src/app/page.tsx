@@ -12,7 +12,9 @@ import { SiteHeader } from '@/components/layout/site-header';
 import { SiteFooter } from '@/components/layout/site-footer';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { HeroCarousel } from '@/components/hero-carousel';
+import dynamic from 'next/dynamic';
+
+const HeroCarousel = dynamic(() => import('@/components/hero-carousel').then(m => m.HeroCarousel), { ssr: false });
 
 const corporatePillars = [
   {
