@@ -1,3 +1,4 @@
+
 'use client';
 import Link from 'next/link';
 import { ArrowRight, Factory, HardHat, ShieldCheck, Award, Fingerprint, Building } from 'lucide-react';
@@ -50,31 +51,12 @@ export default function Home() {
     return query(collection(firestore, 'products'), orderBy('name'), limit(3));
   }, [firestore]);
   const { data: products } = useCollection<Product>(productsQuery);
-  
-  const heroImages = PlaceHolderImages.filter(p => [
-    'hero-main',
-    'gallery-factory-3',
-    'gallery-project-1',
-    'gallery-instrumentation',
-    'gallery-project-4',
-    'hero-industrial-plant',
-    'hero-extra-1',
-    'hero-extra-2',
-    'hero-extra-3',
-    'hero-extra-4',
-    'hero-extra-5',
-    'hero-extra-6',
-    'hero-extra-7',
-    'hero-extra-8'
-  ].includes(p.id));
 
   return (
     <>
       <SiteHeader />
       <main className="flex-1">
         <section className="relative h-dvh w-full flex items-center justify-center text-center overflow-hidden">
-           <HeroCarousel images={heroImages} />
-          <div className="absolute inset-0 bg-black/50 z-10" />
           <div className="container relative px-4 md:px-6 z-20">
             <div className="mx-auto max-w-4xl text-primary-foreground">
               <ScrollReveal>
@@ -95,7 +77,7 @@ export default function Home() {
                       <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                     </Link>
                   </Button>
-                  <Button size="lg" variant="outline" className='bg-background/20 backdrop-blur-sm border-white/50 text-white hover:bg-white hover:text-primary' asChild>
+                  <Button size="lg" variant="outline" className='bg-transparent backdrop-blur-sm border-white/50 text-white hover:bg-white hover:text-primary' asChild>
                     <Link href="/products">Explore Product Catalogue</Link>
                   </Button>
                 </div>
