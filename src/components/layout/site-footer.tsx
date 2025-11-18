@@ -74,7 +74,6 @@ export function SiteFooter() {
             <div className="flex flex-col items-start mt-5 space-y-2">
               <Link href="/about" className="text-muted-foreground transition-colors duration-300 hover:text-accent">About EMPHZ</Link>
               <Link href="/products" className="text-muted-foreground transition-colors duration-300 hover:text-accent">Products</Link>
-              <Link href="/projects" className="text-muted-foreground transition-colors duration-300 hover:text-accent">Portfolio</Link>
               <Link href="/contact" className="text-muted-foreground transition-colors duration-300 hover:text-accent">Contact</Link>
             </div>
           </div>
