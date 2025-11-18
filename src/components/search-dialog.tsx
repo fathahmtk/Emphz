@@ -3,7 +3,7 @@
 
 import * as React from "react"
 import { useRouter } from "next/navigation"
-import { File } from "lucide-react"
+import { File, Folder, HardHat } from "lucide-react"
 
 import {
   CommandDialog,
@@ -14,11 +14,28 @@ import {
   CommandList,
 } from "@/components/ui/command"
 import { menuData, type NavLink } from "@/lib/menu-data"
+import { useCollection, useFirestore, useMemoFirebase } from "@/firebase"
+import type { Product, ProjectCaseStudy } from "@/lib/types"
+import { collection } from "firebase/firestore"
 
 export function SearchDialog({ open, onOpenChange }: { open: boolean; onOpenChange: (open: boolean) => void; }) {
   const router = useRouter()
-  
   const [searchPages, setSearchPages] = React.useState<NavLink[]>([]);
+
+  const firestore = useFirestore();
+
+  const productsQuery = useMemoFirebase(() => {
+    if (!firestore) return null;
+    return collection(firestore, 'products');
+  }, [firestore]);
+  const { data: products } = useCollection<Product>(productsQuery);
+
+  const projectsQuery = useMemoFirebase(() => {
+    if (!firestore) return null;
+    return collection(firestore, 'project_case_studies');
+  }, [firestore]);
+  const { data: projects } = useCollection<ProjectCaseStudy>(projectsQuery);
+
 
   React.useEffect(() => {
     const allLinks: NavLink[] = [];
@@ -61,6 +78,38 @@ export function SearchDialog({ open, onOpenChange }: { open: boolean; onOpenChan
             </CommandItem>
           ))}
         </CommandGroup>
+        {products && (
+            <CommandGroup heading="Products">
+                 {products.map((product) => (
+                    <CommandItem
+                        key={product.id}
+                        value={product.name}
+                        onSelect={() => {
+                            runCommand(() => router.push(`/products`))
+                        }}
+                        >
+                        <HardHat className="mr-2 h-4 w-4" />
+                        {product.name}
+                    </CommandItem>
+                ))}
+            </CommandGroup>
+        )}
+        {projects && (
+            <CommandGroup heading="Projects">
+                 {projects.map((project) => (
+                    <CommandItem
+                        key={project.id}
+                        value={project.title}
+                        onSelect={() => {
+                            runCommand(() => router.push(`/projects`))
+                        }}
+                        >
+                        <Folder className="mr-2 h-4 w-4" />
+                        {project.title}
+                    </CommandItem>
+                ))}
+            </CommandGroup>
+        )}
       </CommandList>
     </CommandDialog>
   )
