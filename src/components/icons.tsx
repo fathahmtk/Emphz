@@ -22,7 +22,7 @@ export function Logo({ className, ...props }: HTMLAttributes<SVGSVGElement>) {
         <polygon fill="currentColor" points="80,12 126,12 98,60 124,60 70,130 86,76 58,76"/>
       </g>
       <g transform="translate(170,40)">
-        <text x="0" y="70" fill="currentColor" fontFamily="Jost,Poppins,system-ui" fontSize="72" fontWeight="700" letter-spacing="1.5">Emphz</text>
+        <text x="0" y="70" fill="currentColor" fontFamily="Jost,Poppins,system-ui" fontSize="72" fontWeight="700" letterSpacing="1.5">Emphz</text>
       </g>
     </svg>
   );
