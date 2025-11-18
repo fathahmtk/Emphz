@@ -7,63 +7,98 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Filter } from 'lucide-react';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
+import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
+import type { Product } from '@/lib/types';
+import { collection, orderBy, query } from 'firebase/firestore';
 
-const productCategories = [
-  {
-    name: 'GRP Electrical Enclosures',
-    description: 'High-durability GRP enclosures engineered for electrical distribution, control systems, and field installations.',
-    href: '/products/enclosures'
-  },
-  {
-    name: 'Utility-Approved Enclosures',
-    description: 'Certified GRP enclosures meeting the compliance requirements of regional power & water authorities.',
-    href: '/products/utility-approved'
-  },
-  {
-    name: 'Fire & Safety Enclosures',
-    description: 'Fire-rated GRP enclosures designed for housing safety and emergency equipment.',
-    href: '/products/fire-safety'
-  },
-  {
-    name: 'Instrumentation Enclosures',
-    description: 'Precision-built GRP boxes for sensitive instruments that require stable, insulated, and corrosion-proof housings.',
-    href: '/products/instrumentation'
-  },
-  {
-    name: 'Battery Enclosures',
-    description: 'GRP battery containers engineered for solar energy systems, telecom backup batteries, and industrial UPS units.',
-    href: '/products/battery-enclosures'
-  },
-  {
-    name: 'Customized GRP Enclosures',
-    description: 'Tailor-made GRP enclosures engineered to meet unique dimensional, operational, or environmental requirements.',
-    href: '/products/custom'
-  },
-  {
-    name: 'GRP/FRP Kiosks',
-    description: 'Fully-moulded GRP kiosks for utilities, security, ticketing, temporary offices, and field operations.',
-    href: '/products/kiosks'
-  },
-  {
-    name: 'GRP Roofing Systems',
-    description: 'Durable, corrosion-proof roofing solutions for industrial, utility, and coastal structures.',
-    href: '/products/roofing'
-  }
+
+const productPageLinks = [
+  { name: 'GRP Electrical Enclosures', href: '/products/enclosures' },
+  { name: 'Utility-Approved Enclosures', href: '/products/utility-approved' },
+  { name: 'Fire & Safety Enclosures', href: '/products/fire-safety' },
+  { name: 'Instrumentation Enclosures', href: '/products/instrumentation' },
+  { name: 'Battery Enclosures', href: '/products/battery-enclosures' },
+  { name: 'Customized GRP Enclosures', href: '/products/custom' },
+  { name: 'GRP/FRP Kiosks', href: '/products/kiosks' },
+  { name: 'GRP Roofing Systems', href: '/products/roofing' }
 ];
 
 export default function ProductsPage() {
   const [filters, setFilters] = useState<Record<string, boolean>>({});
+
+  const firestore = useFirestore();
+  const productsQuery = useMemoFirebase(() => {
+    if (!firestore) return null;
+    return query(collection(firestore, 'products'), orderBy('name'));
+  }, [firestore]);
+  const { data: products } = useCollection<Product>(productsQuery);
+
+  const productCategories = useMemo(() => {
+    if (!products) return [];
+    const categories = new Set(products.map(p => p.category));
+    return Array.from(categories);
+  }, [products]);
+
 
   const handleFilterChange = (categoryName: string, checked: boolean) => {
     setFilters(prev => ({...prev, [categoryName]: checked}));
   }
 
   const activeFilters = Object.entries(filters).filter(([,isActive]) => isActive).map(([key]) => key);
-  const filteredCategories = activeFilters.length === 0 ? productCategories : productCategories.filter(cat => activeFilters.includes(cat.name));
+  
+  const filteredProducts = useMemo(() => {
+    if (activeFilters.length === 0) return products;
+    return products?.filter(p => activeFilters.includes(p.category));
+  }, [products, activeFilters]);
+
+  const productCards = useMemo(() => {
+    if (!products) return [];
+
+    // Create a map of categories to their descriptions and links
+    const categoryDetailsMap = new Map<string, { description?: string, href: string }>();
+
+    // Start with page links
+    for (const link of productPageLinks) {
+      // A bit of a hack to map card to link
+      const catName = products.find(p => p.category === link.name || p.name === link.name)?.category;
+      const key = catName || link.name;
+      if (!categoryDetailsMap.has(key)) {
+         categoryDetailsMap.set(key, { href: link.href });
+      }
+    }
+    
+    // Add product data
+    for (const product of products) {
+        if (!categoryDetailsMap.has(product.category)) {
+             categoryDetailsMap.set(product.category, { href: `/products` });
+        }
+        const existing = categoryDetailsMap.get(product.category);
+        if (existing && !existing.description) {
+            categoryDetailsMap.set(product.category, { ...existing, description: product.overview });
+        }
+    }
+
+    if (activeFilters.length > 0) {
+        return Array.from(categoryDetailsMap.entries())
+            .filter(([category]) => activeFilters.includes(category))
+            .map(([category, details]) => ({
+                name: category,
+                description: details.description || `Explore ${category} products.`,
+                href: details.href,
+            }));
+    }
+
+    return Array.from(categoryDetailsMap.entries()).map(([category, details]) => ({
+        name: category,
+        description: details.description || `Explore ${category} products.`,
+        href: details.href,
+    }));
+
+  }, [products, activeFilters]);
 
 
   return (
@@ -99,14 +134,14 @@ export default function ProductsPage() {
                 </SheetHeader>
                 <div className="py-4 space-y-4">
                   {productCategories.map(category => (
-                    <div key={category.name} className="flex items-center space-x-2">
+                    <div key={category} className="flex items-center space-x-2">
                        <Checkbox 
-                        id={category.name} 
-                        checked={filters[category.name] || false}
-                        onCheckedChange={(checked) => handleFilterChange(category.name, !!checked)}
+                        id={category} 
+                        checked={filters[category] || false}
+                        onCheckedChange={(checked) => handleFilterChange(category, !!checked)}
                        />
-                       <Label htmlFor={category.name} className="flex-1 text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                         {category.name}
+                       <Label htmlFor={category} className="flex-1 text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                         {category}
                        </Label>
                     </div>
                   ))}
@@ -116,7 +151,7 @@ export default function ProductsPage() {
           </div>
           
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {filteredCategories.map((category, i) => (
+            {productCards.map((category, i) => (
               <ScrollReveal key={category.name} delay={i * 100}>
                 <Link href={category.href} className="h-full block">
                   <Card className="flex h-full flex-col group overflow-hidden transition-shadow hover:shadow-xl hover:border-accent">
