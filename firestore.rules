@@ -2,10 +2,17 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    // Public read for all content
+    
+    // Allow public write for newsletter subscriptions
+    match /subscriptions/{subscriptionId} {
+      allow read: if false;
+      allow write: if true;
+    }
+
+    // Public read for all other content
     match /{document=**} {
       allow read: if true;
-      allow write: if false; // Disallow all writes from the client
+      allow write: if false; // Disallow all other writes from the client
     }
   }
 }
