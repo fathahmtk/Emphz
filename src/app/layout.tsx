@@ -21,47 +21,6 @@ const inter = Inter({
   variable: '--font-body',
 })
 
-// Metadata needs to be exported from a server component, so we keep it separate.
-export const metadata: Metadata = {
-  title: {
-    default: 'Emphz - High-Performance GRP Solutions',
-    template: '%s | Emphz',
-  },
-  description: 'Emphz specializes in Glass Reinforced Plastic (GRP) products, offering a wide range of solutions from pipes to custom-molded items. Discover our projects and technical expertise.',
-  keywords: ['GRP', 'Glass Reinforced Plastic', 'GRP pipes', 'GRP tanks', 'Industrial Solutions', 'AI Chat'],
-  openGraph: {
-    title: 'Emphz - High-Performance GRP Solutions',
-    description: 'Specializing in Glass Reinforced Plastic (GRP) products for industrial applications.',
-    url: 'https://emphz.com', // Replace with actual domain
-    images: [
-      {
-        url: 'https://picsum.photos/seed/ogimage/1200/630',
-        width: 1200,
-        height: 630,
-      },
-    ],
-    locale: 'en_US',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Emphz - High-Performance GRP Solutions',
-    description: 'Specializing in Glass Reinforced Plastic (GRP) products for industrial applications.',
-    images: ['https://picsum.photos/seed/twitterimage/1200/630'],
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  },
-};
-
 // This component uses client-side hooks, so it must be a client component.
 function RootBody({
   children,
