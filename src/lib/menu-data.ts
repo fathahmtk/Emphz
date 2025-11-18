@@ -65,7 +65,7 @@ export const menuData: MegaMenu[] = [
         title: "Kiosks & Modular",
         links: [
           { title: "GRP/FRP Kiosks", href: "/products/kiosks" },
-          { title: "Customized Kiosk Solutions", href: "/products/kiosks" },
+          { title: "Customized Kiosk Solutions", href: "/products/custom" },
         ],
       },
       {
@@ -81,7 +81,7 @@ export const menuData: MegaMenu[] = [
         links: [
           { title: "View All Products", href: "/products" },
           { title: "Datasheet Library", href: "/downloads" },
-          { title: "CAD & DWG Download Portal", href: "/downloads" },
+          { title: "CAD & DWG Downloads", href: "/downloads" },
         ],
       },
     ],
@@ -89,7 +89,7 @@ export const menuData: MegaMenu[] = [
   },
   {
     title: "Industries",
-    href: "#",
+    href: "/industries/power-generation",
     columns: [
       {
         title: "Primary Sectors",
@@ -121,7 +121,7 @@ export const menuData: MegaMenu[] = [
   },
    {
     title: "Quality",
-    href: "#",
+    href: "/quality/certification",
     columns: [
         {
             title: "Assurance Content",
@@ -165,7 +165,7 @@ export const menuData: MegaMenu[] = [
   },
   {
       title: "Media",
-      href: "#",
+      href: "/media/gallery",
       columns: [
           {
               title: "Content",
