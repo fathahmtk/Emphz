@@ -16,7 +16,7 @@ export interface NavCta {
 }
 
 export interface MegaMenu {
-  title: string;
+  title:string;
   href: string;
   columns: NavSection[];
   cta?: NavCta;
@@ -100,50 +100,6 @@ export const menuData: MegaMenu[] = [
             ]
         }
     ]
-  },
-   {
-    title: "Quality",
-    href: "/quality/certification",
-    columns: [
-        {
-            title: "Assurance Content",
-            links: [
-                 { title: "Product Certification", href: "/quality/certification" },
-                { title: "Integrated Management System (IMS)", href: "/quality/ims" },
-                { title: "Standard Operating Procedures", href: "/quality/sop" },
-                { title: "QA/QC Framework", href: "/quality/qa-qc" },
-            ]
-        },
-        {
-            title: "Downloads & Trust",
-            links: [
-                { title: "Certifications & Test Reports", href: "/downloads" },
-            ]
-        }
-    ],
-    cta: { text: "Download Compliance Pack", href: "/downloads" },
-  },
-  {
-      title: "Media",
-      href: "/media/gallery",
-      columns: [
-          {
-              title: "Content",
-              links: [
-                  { title: "News", href: "/media/news" },
-                  { title: "Blog", href: "/media/blog" },
-                  { title: "Video", href: "/media/video" },
-              ]
-          },
-          {
-              title: "Visuals",
-              links: [
-                  { title: "Photo Gallery", href: "/media/gallery" },
-                  { title: "Events & Exhibitions", href: "/media/gallery" },
-              ]
-          }
-      ],
-      cta: { text: "Subscribe for Technical Updates", href: "#footer-subscribe" },
   },
    {
       title: "Contact",

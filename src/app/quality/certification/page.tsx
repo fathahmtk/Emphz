@@ -31,7 +31,7 @@ export default function CertificationPage() {
             <SiteHeader />
             <main className="container py-12 md:py-20">
                 <ScrollReveal>
-                    <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl font-headline">Quality Product Certification</h1>
+                    <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl font-headline">Quality & Product Certification</h1>
                     <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
                         EMPHZ operates under a zero-compromise quality philosophy. Every product is engineered, moulded, and tested to meet international performance standards and regional utility requirements.
                     </p>

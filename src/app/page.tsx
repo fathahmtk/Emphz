@@ -1,19 +1,21 @@
+
 'use client';
 import Link from 'next/link';
-import { ArrowRight, CheckCircle, Factory, HardHat, ShieldCheck, Award, Fingerprint, Building } from 'lucide-react';
+import { ArrowRight, CheckCircle, Factory, HardHat, ShieldCheck, Award, Fingerprint, Building, Users, MapPin, Newspaper, Video, GalleryVertical } from 'lucide-react';
 import { collection, orderBy, query, limit } from 'firebase/firestore';
 
 import { Button } from '@/components/ui/button';
-import { ProductCard } from '@/components/product-card';
 import { ScrollReveal } from '@/components/scroll-reveal';
 import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
-import { type Product } from '@/lib/types';
+import type { Product, ProjectCaseStudy } from '@/lib/types';
 import { SiteHeader } from '@/components/layout/site-header';
 import { SiteFooter } from '@/components/layout/site-footer';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { HeroCarousel } from '@/components/hero-carousel';
 import Image from 'next/image';
+import { Badge } from '@/components/ui/badge';
+import { Separator } from '@/components/ui/separator';
 
 const corporatePillars = [
   {
@@ -44,13 +46,52 @@ const values = [
     { title: "Integrity", description: "Zero-compromise approach to quality, compliance, and customer commitments." },
     { title: "Innovation", description: "Advancing GRP engineering through R&D and modern production methods." },
     { title: "Reliability", description: "Delivering products that perform consistently across extreme conditions." },
-    { title: "Customer Focus", description: "Providing technical clarity, responsive support, and project-specific customization." },
-    { title: "Sustainability", description: "Designing solutions that reduce corrosion, maintenance, and environmental impact." },
+];
+
+const newsItems = [
+    { icon: Newspaper, title: 'EMPHZ Launches New Fire-Retardant Enclosure Line', date: 'Oct 2023', href: '/media/news' },
+    { icon: Video, title: 'Virtual Factory Tour: See Our GRP Process in Action', date: 'Sep 2023', href: '/media/video' },
+    { icon: GalleryVertical, title: 'Project Spotlight: Solar Farm Installation Gallery', date: 'Aug 2023', href: '/media/gallery' },
 ]
 
 const heroImages = PlaceHolderImages.filter(img => img.id.startsWith('hero-'));
 const aboutImage = PlaceHolderImages.find(p => p.id === 'hero-industrial-plant');
 const missionImage = PlaceHolderImages.find(p => p.id === 'hero-extra-1');
+
+
+function CaseStudyCard({ project }: { project: ProjectCaseStudy }) {
+    return (
+        <Card className="overflow-hidden bg-card/50">
+            <div className="grid md:grid-cols-2">
+                <div className="relative aspect-video">
+                    <Image src={project.beforeImageUrl} alt={`Before image for ${project.title}`} fill className="object-cover" />
+                     <Badge className="absolute top-2 left-2" variant="destructive">Before</Badge>
+                </div>
+                <div className="relative aspect-video">
+                    <Image src={project.afterImageUrl} alt={`After image for ${project.title}`} fill className="object-cover" />
+                    <Badge className="absolute top-2 left-2" variant="default">After</Badge>
+                </div>
+            </div>
+            <CardHeader>
+                <CardTitle className="font-headline text-xl">{project.title}</CardTitle>
+            </CardHeader>
+            <CardContent>
+                <CardDescription className="text-sm">{project.details}</CardDescription>
+                <Separator className="my-4" />
+                <div className="flex items-center justify-between text-xs text-muted-foreground">
+                    <div className="flex items-center gap-2">
+                        <Users className="h-4 w-4" />
+                        <span>{project.clientType}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                        <MapPin className="h-4 w-4" />
+                         <span>{project.location}</span>
+                    </div>
+                </div>
+            </CardContent>
+        </Card>
+    );
+}
 
 
 export default function Home() {
@@ -61,6 +102,12 @@ export default function Home() {
     return query(collection(firestore, 'products'), orderBy('name'), limit(3));
   }, [firestore]);
   const { data: products } = useCollection<Product>(productsQuery);
+  
+  const projectsQuery = useMemoFirebase(() => {
+    if (!firestore) return null;
+    return query(collection(firestore, 'project_case_studies'), orderBy('title'), limit(2));
+  }, [firestore]);
+  const { data: projects } = useCollection<ProjectCaseStudy>(projectsQuery);
 
   return (
     <>
@@ -128,32 +175,25 @@ export default function Home() {
             </div>
         </section>
 
-        {aboutImage && <section className="relative py-20 md:py-40">
-            <div className="absolute inset-0 -z-10 h-full w-full">
-                <Image src={aboutImage.imageUrl} alt={aboutImage.description} data-ai-hint={aboutImage.imageHint} fill className="object-cover" />
-                <div className="absolute inset-0 bg-black/60" />
-            </div>
-            <div className="container px-4 md:px-6 text-center text-primary-foreground">
-                <ScrollReveal>
-                <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-white">Our History</h2>
-                <p className="mt-4 max-w-3xl mx-auto md:text-lg">
-                    Established with a clear mandate to engineer composite solutions that outperform traditional materials, EMPHZ has evolved into a fully-integrated manufacturing platform delivering high-grade enclosures, kiosks, and industrial composite systems recognized for their discipline and engineering depth.
-                </p>
-                </ScrollReveal>
-            </div>
-        </section>}
-
         <section id="mission-vision" className="py-12 md:py-24 lg:py-32 bg-secondary/20">
             <div className="container px-4 md:px-6 grid md:grid-cols-2 gap-12 items-center">
                 <ScrollReveal>
                     <div>
-                        <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl">Mission & Vision</h2>
+                        <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl">Our Mission & Values</h2>
                         <p className="mt-4 text-muted-foreground md:text-lg">
                             <strong className="text-foreground">Mission:</strong> To engineer world-class GRP solutions that enable resilient, safe, and efficient infrastructure for industries and communities.
                         </p>
-                        <p className="mt-4 text-muted-foreground md:text-lg">
-                            <strong className="text-foreground">Vision:</strong> To be the region’s leading GRP/FRP manufacturing authority — delivering innovative, certified, and globally benchmarked composite solutions.
-                        </p>
+                        <div className="mt-8 grid gap-6">
+                            {values.map((value, i) => (
+                                <div key={value.title} className="flex items-start gap-4">
+                                    <CheckCircle className="h-6 w-6 text-primary mt-1 shrink-0"/>
+                                    <div>
+                                        <h3 className="font-semibold text-lg">{value.title}</h3>
+                                        <p className="text-muted-foreground">{value.description}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </ScrollReveal>
                  <ScrollReveal delay={200} className='hidden md:block'>
@@ -163,107 +203,49 @@ export default function Home() {
                 </ScrollReveal>
             </div>
         </section>
-
-        <section id="values" className="py-12 md:py-24 lg:py-32">
+        
+        <section id="projects" className="py-12 md:py-24 lg:py-32">
             <div className="container px-4 md:px-6">
                 <ScrollReveal>
                     <div className="text-center mb-12">
-                        <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl">Our Values</h2>
+                         <div className="inline-block rounded-lg bg-secondary px-3 py-1 text-sm text-secondary-foreground mb-2">
+                            Featured Projects
+                          </div>
+                        <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-5xl">Proven Field Performance</h2>
+                        <p className="mt-4 max-w-3xl mx-auto text-muted-foreground md:text-lg">
+                           From corrosive coastal environments to high-traffic industrial sites, our GRP solutions deliver unmatched durability and performance.
+                        </p>
                     </div>
                 </ScrollReveal>
-                <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-                    {values.slice(0,3).map((value, i) => (
-                        <ScrollReveal key={value.title} delay={i * 150}>
-                            <Card className="h-full bg-card/50">
-                                <CardHeader>
-                                    <CardTitle>{value.title}</CardTitle>
-                                </CardHeader>
-                                <CardContent>
-                                    <p className="text-muted-foreground">{value.description}</p>
-                                </CardContent>
-                            </Card>
+                 <div className="mx-auto max-w-5xl grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    {projects?.map((project, i) => (
+                        <ScrollReveal key={project.id} delay={i * 200}>
+                            <CaseStudyCard project={project} />
                         </ScrollReveal>
                     ))}
-                </div>
-                 <div className="grid gap-8 sm:grid-cols-1 lg:grid-cols-2 mt-8 max-w-4xl mx-auto">
-                    {values.slice(3,5).map((value, i) => (
-                        <ScrollReveal key={value.title} delay={i * 150}>
-                            <Card className="h-full bg-card/50">
-                                <CardHeader>
-                                    <CardTitle>{value.title}</CardTitle>
-                                </CardHeader>
-                                <CardContent>
-                                    <p className="text-muted-foreground">{value.description}</p>
-                                </CardContent>
-                            </Card>
-                        </ScrollReveal>
-                    ))}
-                </div>
+                  </div>
+                   <ScrollReveal>
+                      <div className="mt-12 text-center">
+                        <Button size="lg" asChild className="group">
+                          <Link href="/projects">
+                            <span>
+                              View All Projects
+                              <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                            </span>
+                          </Link>
+                        </Button>
+                      </div>
+                    </ScrollReveal>
             </div>
         </section>
 
-        <section id="ceo-message" className="py-12 md:py-24 lg:py-32 bg-secondary/20">
-             <div className="container px-4 md:px-6 text-center">
-                <ScrollReveal>
-                    <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl">A Message From Our CEO</h2>
-                    <blockquote className="mt-6 max-w-3xl mx-auto text-lg md:text-xl text-foreground italic border-l-4 border-primary pl-6 text-left">
-                        "At EMPHZ, our mission is straightforward: deliver engineered GRP solutions that stand the test of time and elevate infrastructure reliability for the industries we serve. Our promise is simple: uncompromising quality, sustained performance, and solutions built for the long term."
-                    </blockquote>
-                    <p className="mt-4 font-semibold text-foreground">— CEO, EMPHZ</p>
-                </ScrollReveal>
-             </div>
-        </section>
-
-
-        <section
-          id="products"
-          className="w-full py-12 md:py-24 lg:py-32"
-        >
-          <div className="container px-4 md:px-6">
-            <ScrollReveal>
-              <div className="flex flex-col items-center justify-center space-y-4 text-center">
-                <div className="space-y-2">
-                  <div className="inline-block rounded-lg bg-secondary px-3 py-1 text-sm text-secondary-foreground">
-                    Product Catalogue
-                  </div>
-                  <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-5xl">
-                    Engineered for Excellence
-                  </h2>
-                  <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                    Explore our range of GRP enclosures, modular units, kiosks, and more.
-                  </p>
-                </div>
-              </div>
-            </ScrollReveal>
-            <ScrollReveal delay={200}>
-              <div className="mx-auto mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-                {products?.map((product) => (
-                  <ProductCard key={product.id} product={product} />
-                ))}
-              </div>
-            </ScrollReveal>
-            <ScrollReveal>
-              <div className="mt-12 text-center">
-                <Button size="lg" asChild className="group">
-                  <Link href="/products">
-                    <span>
-                      View All Products
-                      <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                    </span>
-                  </Link>
-                </Button>
-              </div>
-            </ScrollReveal>
-          </div>
-        </section>
-
-        <section id="trust-layer" className="w-full bg-secondary/20 py-12 md:py-24 lg:py-32">
+        <section id="quality-trust" className="w-full bg-secondary/20 py-12 md:py-24 lg:py-32">
           <div className="container px-4 md:px-6">
             <ScrollReveal>
               <div className="text-center">
-                <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl">Compliance & Trust</h2>
+                <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl">Quality, Compliance & Trust</h2>
                 <p className="mx-auto mt-4 max-w-3xl text-muted-foreground md:text-xl/relaxed">
-                  Our commitment to quality is backed by industry-leading certifications and approvals.
+                  Our commitment to quality is backed by industry-leading certifications and approvals, ensuring every product meets rigorous standards for safety and performance.
                 </p>
               </div>
             </ScrollReveal>
@@ -280,12 +262,51 @@ export default function Home() {
                   ))}
                 </div>
             </ScrollReveal>
+             <ScrollReveal>
+              <div className="mt-12 text-center">
+                <Button size="lg" variant="outline" asChild>
+                    <Link href="/quality/certification">View Quality Framework</Link>
+                </Button>
+              </div>
+            </ScrollReveal>
           </div>
         </section>
+
+        <section id="news" className="py-12 md:py-24 lg:py-32">
+            <div className="container px-4 md:px-6">
+                 <ScrollReveal>
+                    <div className="text-center mb-12">
+                         <div className="inline-block rounded-lg bg-secondary px-3 py-1 text-sm text-secondary-foreground mb-2">
+                           News & Media
+                          </div>
+                        <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-5xl">Latest Updates</h2>
+                         <p className="mt-4 max-w-3xl mx-auto text-muted-foreground md:text-lg">
+                          Stay informed on our latest product innovations, project milestones, and company news.
+                        </p>
+                    </div>
+                </ScrollReveal>
+                 <div className="mx-auto grid max-w-5xl gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                    {newsItems.map((item, i) => (
+                        <ScrollReveal key={item.title} delay={i * 150}>
+                            <Link href={item.href}>
+                                <Card className="h-full group hover:border-primary/50 transition-colors">
+                                    <CardHeader className="flex-row items-center gap-4">
+                                        <item.icon className="h-8 w-8 text-primary" />
+                                        <CardTitle className="text-base font-semibold group-hover:text-primary transition-colors">{item.title}</CardTitle>
+                                    </CardHeader>
+                                    <CardContent>
+                                        <p className="text-xs text-muted-foreground">{item.date}</p>
+                                    </CardContent>
+                                </Card>
+                            </Link>
+                        </ScrollReveal>
+                    ))}
+                 </div>
+            </div>
+        </section>
+
       </main>
       <SiteFooter />
     </>
   );
 }
-
-    
