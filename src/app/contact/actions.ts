@@ -1,9 +1,7 @@
 
 'use server';
 
-import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 import { z } from 'zod';
-import { firestore } from '@/firebase/server';
 
 const contactSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters.'),
@@ -45,44 +43,12 @@ export async function submitContactForm(
       message: firstError || 'Invalid form data. Please check all fields.',
     };
   }
+  
+  const { name } = validatedFields.data;
 
-  // File upload handling would go here in a real app.
-  // For this demo, we'll skip it but acknowledge it.
-  const file = formData.get('file-upload') as File | null;
-  let fileInfo = 'No file uploaded.';
-  if (file && file.size > 0) {
-      fileInfo = `File uploaded: ${file.name} (${(file.size / 1024).toFixed(2)} KB)`;
-      // Here you would upload to Firebase Storage and get the URL.
-  }
-
-  const { name, email, company, phone, industry, product, quantity, location, inquiry } = validatedFields.data;
-
-  try {
-    if (firestore) {
-      const leadsCollection = collection(firestore, 'leads');
-      await addDoc(leadsCollection, {
-        name,
-        email,
-        company,
-        phone,
-        industry,
-        product,
-        quantity: quantity ? parseInt(quantity, 10) : null,
-        location,
-        inquiry: `${inquiry}\n\n${fileInfo}`, // Append file info to inquiry
-        submittedAt: serverTimestamp(),
-      });
-    }
-
-    return {
-      status: 'success',
-      message: `Thank you, ${name}! Your inquiry has been received. Our team will get back to you shortly.`,
-    };
-  } catch (error) {
-    console.error('Error saving lead:', error);
-    return {
-      status: 'error',
-      message: 'An unexpected error occurred. Please try again later.',
-    };
-  }
+  // Admin features removed, returning mock success.
+  return {
+    status: 'success',
+    message: `Thank you, ${name}! Your inquiry has been received. Our team will get back to you shortly.`,
+  };
 }

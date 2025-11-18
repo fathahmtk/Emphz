@@ -9,7 +9,7 @@ import {
   FirestoreError,
   DocumentSnapshot,
 } from 'firebase/firestore';
-import { type MemoizedFirebase, isMemoized } from '../client-provider';
+import { type MemoizedFirebase, isMemoized } from '..';
 
 
 /** Utility type to add an 'id' field to a given type T. */

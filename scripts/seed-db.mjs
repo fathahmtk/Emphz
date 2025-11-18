@@ -1,52 +1,47 @@
 
-import { initializeApp, cert } from 'firebase-admin/app';
+import { initializeApp } from 'firebase-admin/app';
 import { getFirestore } from 'firebase-admin/firestore';
-import { productsSeed, projectsSeed } from '../src/lib/seed-data.js';
+import { getProductsWithIds, getProjectsWithIds } from '../src/lib/seed-data.js';
 
-// IMPORTANT: Replace with your service account credentials
-// You can generate this file from the Firebase console:
-// Project settings > Service accounts > Generate new private key
-import serviceAccount from './service-account.json' assert { type: 'json' };
+// Initialize Firebase Admin SDK
+initializeApp();
 
-async function seedDatabase() {
-  try {
-    // Check if the app is already initialized
-    if (!global._firebaseApp) {
-        global._firebaseApp = initializeApp({
-            credential: cert(serviceAccount),
-        });
-    }
-    const db = getFirestore(global._firebaseApp);
+const db = getFirestore();
 
-    console.log('Starting to seed database...');
+async function seedProducts() {
+  const productsCollection = db.collection('products');
+  const products = getProductsWithIds();
+  console.log(`Starting to seed ${products.length} products...`);
 
-    // Seed Products
-    console.log('Seeding products...');
-    const productsCollection = db.collection('products');
-    for (const product of productsSeed) {
-      const { id, ...productData } = product;
-      await productsCollection.doc(id).set(productData);
-      console.log(`  - Seeded product: ${product.name}`);
-    }
-    console.log('Products seeded successfully.');
-    
-    // Seed Projects
-    console.log('Seeding projects...');
+  for (const product of products) {
+    await productsCollection.doc(product.id).set(product);
+    console.log(`- Seeded ${product.name}`);
+  }
+
+  console.log('Product seeding complete.');
+}
+
+async function seedProjects() {
     const projectsCollection = db.collection('project_case_studies');
-    for (const project of projectsSeed) {
-      const { id, ...projectData } = project;
-      await projectsCollection.doc(id).set(projectData);
-      console.log(`  - Seeded project: ${project.title}`);
+    const projects = getProjectsWithIds();
+    console.log(`Starting to seed ${projects.length} projects...`);
+
+    for (const project of projects) {
+        await projectsCollection.doc(project.id).set(project);
+        console.log(`- Seeded ${project.title}`);
     }
-    console.log('Projects seeded successfully.');
+    console.log('Project seeding complete.');
+}
 
 
-    console.log('Database seeding complete!');
-    process.exit(0);
+async function main() {
+  try {
+    await seedProducts();
+    await seedProjects();
+    console.log('\nDatabase seeded successfully!');
   } catch (error) {
     console.error('Error seeding database:', error);
-    process.exit(1);
   }
 }
 
-seedDatabase();
+main();

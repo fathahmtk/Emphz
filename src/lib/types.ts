@@ -21,7 +21,7 @@ export type Product = {
   sizes?: string[];
 };
 
-export type Project = {
+export type ProjectCaseStudy = {
   id:string;
   title: string;
   details: string;

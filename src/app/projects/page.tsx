@@ -9,7 +9,7 @@ import { Badge } from '@/components/ui/badge';
 import { MapPin } from 'lucide-react';
 import { collection, orderBy, query } from 'firebase/firestore';
 import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
-import { type Project } from '@/lib/types';
+import { type ProjectCaseStudy as Project } from '@/lib/types';
 import { Skeleton } from '@/components/ui/skeleton';
 
 

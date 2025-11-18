@@ -1,7 +1,16 @@
 
-import { SiteHeader } from "@/components/layout/site-header";
-import { SiteFooter } from "@/components/layout/site-footer";
+import dynamic from "next/dynamic";
 import { ScrollReveal } from "@/components/scroll-reveal";
+
+const SiteHeader = dynamic(
+  () => import("@/components/layout/site-header").then(m => m.SiteHeader),
+  { ssr: false }
+);
+
+const SiteFooter = dynamic(
+  () => import("@/components/layout/site-footer").then(m => m.SiteFooter),
+  { ssr: false }
+);
 
 export default function AboutPage() {
     return (
