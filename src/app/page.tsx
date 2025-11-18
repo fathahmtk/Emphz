@@ -74,8 +74,8 @@ export default function Home() {
                 priority
              />
            </div>}
-          <div className="absolute inset-0 bg-black/30" />
-          <div className="container relative px-4 md:px-6 z-10">
+          <div className="absolute inset-0 bg-black/30 z-10" />
+          <div className="container relative px-4 md:px-6 z-20">
             <div className="mx-auto max-w-4xl text-primary-foreground">
               <ScrollReveal>
                 <h1 className="!leading-tight text-4xl font-bold font-headline tracking-tighter text-white shadow-lg sm:text-5xl md:text-6xl lg:text-7xl">
@@ -238,5 +238,3 @@ export default function Home() {
     </>
   );
 }
-
-    
