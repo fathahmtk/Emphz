@@ -1,3 +1,6 @@
+
+'use client'
+
 import type { Metadata } from 'next';
 import './globals.css';
 import { cn } from '@/lib/utils';
@@ -18,6 +21,7 @@ const inter = Inter({
   variable: '--font-body',
 })
 
+// Metadata needs to be exported from a server component, so we keep it separate.
 export const metadata: Metadata = {
   title: {
     default: 'Emphz - High-Performance GRP Solutions',
@@ -58,13 +62,14 @@ export const metadata: Metadata = {
   },
 };
 
+// This component uses client-side hooks, so it must be a client component.
 function RootBody({
   children,
 }: {
   children: ReactNode,
 }) {
     const pathname = usePathname();
-    const isAdminPage = pathname.startsWith('/admin');
+    const isAdminPage = pathname ? pathname.startsWith('/admin') : false;
 
     return (
         <body className={cn('min-h-screen font-body antialiased', orbitron.variable, inter.variable)}>
