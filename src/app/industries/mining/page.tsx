@@ -2,7 +2,7 @@
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { ScrollReveal } from "@/components/scroll-reveal";
-import { CheckCircle } from "lucide-react";
+import { CheckCircle, XCircle } from "lucide-react";
 
 const recommendedProducts = [
     "GRP Heavy-Duty Enclosures",
@@ -33,10 +33,10 @@ export default function MiningPage() {
                     <ScrollReveal delay={200}>
                         <h2 className="text-2xl font-bold font-headline">Industry Challenges</h2>
                         <ul className="mt-4 space-y-2 text-muted-foreground">
-                            <li className="flex items-start gap-2"><CheckCircle className="h-5 w-5 mt-1 shrink-0 text-destructive" /> <span>Abrasive dust and particulate exposure</span></li>
-                            <li className="flex items-start gap-2"><CheckCircle className="h-5 w-5 mt-1 shrink-0 text-destructive" /> <span>Corrosion from chemicals and groundwater minerals</span></li>
-                            <li className="flex items-start gap-2"><CheckCircle className="h-5 w-5 mt-1 shrink-0 text-destructive" /> <span>Heavy vibrations and mechanical shocks</span></li>
-                            <li className="flex items-start gap-2"><CheckCircle className="h-5 w-5 mt-1 shrink-0 text-destructive" /> <span>Remote-site maintenance constraints</span></li>
+                            <li className="flex items-start gap-2"><XCircle className="h-5 w-5 mt-1 shrink-0 text-destructive/80" /> <span>Abrasive dust and particulate exposure</span></li>
+                            <li className="flex items-start gap-2"><XCircle className="h-5 w-5 mt-1 shrink-0 text-destructive/80" /> <span>Corrosion from chemicals and groundwater minerals</span></li>
+                            <li className="flex items-start gap-2"><XCircle className="h-5 w-5 mt-1 shrink-0 text-destructive/80" /> <span>Heavy vibrations and mechanical shocks</span></li>
+                            <li className="flex items-start gap-2"><XCircle className="h-5 w-5 mt-1 shrink-0 text-destructive/80" /> <span>Remote-site maintenance constraints</span></li>
                         </ul>
                     </ScrollReveal>
 
@@ -55,7 +55,7 @@ export default function MiningPage() {
                             <h3 className="text-xl font-semibold">Recommended Products</h3>
                             <ul className="mt-4 space-y-2 text-muted-foreground">
                                 {recommendedProducts.map(product => (
-                                    <li key={product} className="flex items-center gap-3"><CheckCircle className="h-5 w-5 text-accent" /> {product}</li>
+                                    <li key={product} className="flex items-center gap-3"><CheckCircle className="h-5 w-5 text-foreground/60" /> {product}</li>
                                 ))}
                             </ul>
                         </div>
@@ -63,7 +63,7 @@ export default function MiningPage() {
                              <h3 className="text-xl font-semibold">Why EMPHZ</h3>
                             <ul className="mt-4 space-y-2 text-muted-foreground">
                                 {whyEmphz.map(point => (
-                                    <li key={point} className="flex items-center gap-3"><CheckCircle className="h-5 w-5 text-accent" /> {point}</li>
+                                    <li key={point} className="flex items-center gap-3"><CheckCircle className="h-5 w-5 text-foreground/60" /> {point}</li>
                                 ))}
                             </ul>
                         </div>

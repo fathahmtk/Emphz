@@ -49,7 +49,7 @@ export default function EnclosuresPage() {
                         <h2 className="text-2xl font-bold font-headline">Key Features</h2>
                         <ul className="mt-4 space-y-3 text-muted-foreground">
                             {keyFeatures.map(feature => (
-                                <li key={feature} className="flex items-center gap-3"><CheckCircle className="h-5 w-5 text-accent" /> {feature}</li>
+                                <li key={feature} className="flex items-center gap-3"><CheckCircle className="h-5 w-5 text-foreground/60" /> {feature}</li>
                             ))}
                         </ul>
                     </ScrollReveal>
@@ -58,7 +58,7 @@ export default function EnclosuresPage() {
                         <h2 className="text-2xl font-bold font-headline">Applications</h2>
                          <ul className="mt-4 space-y-3 text-muted-foreground">
                             {applications.map(app => (
-                                <li key={app} className="flex items-center gap-3"><CheckCircle className="h-5 w-5 text-accent" /> {app}</li>
+                                <li key={app} className="flex items-center gap-3"><CheckCircle className="h-5 w-5 text-foreground/60" /> {app}</li>
                             ))}
                         </ul>
                     </ScrollReveal>

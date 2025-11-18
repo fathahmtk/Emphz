@@ -53,12 +53,12 @@ export default function QaQcPage() {
                     <ScrollReveal delay={200}>
                         <Card className="h-full bg-card/50">
                             <CardHeader className="flex-row items-center gap-4">
-                                <Truck className="w-8 h-8 text-accent" />
+                                <Truck className="w-8 h-8 text-foreground/60" />
                                 <CardTitle className="font-headline text-xl">Incoming Quality Control (IQC)</CardTitle>
                             </CardHeader>
                             <CardContent>
                                 <ul className="space-y-3 text-muted-foreground">
-                                    {iqcItems.map(item => <li key={item} className="flex items-start gap-3"><Check className="w-4 h-4 mt-1 text-accent" /><span>{item}</span></li>)}
+                                    {iqcItems.map(item => <li key={item} className="flex items-start gap-3"><Check className="w-4 h-4 mt-1 text-foreground/60" /><span>{item}</span></li>)}
                                 </ul>
                             </CardContent>
                         </Card>
@@ -66,12 +66,12 @@ export default function QaQcPage() {
                      <ScrollReveal delay={300}>
                         <Card className="h-full bg-card/50">
                             <CardHeader className="flex-row items-center gap-4">
-                                <Microscope className="w-8 h-8 text-accent" />
+                                <Microscope className="w-8 h-8 text-foreground/60" />
                                 <CardTitle className="font-headline text-xl">In-Process Quality Control (IPQC)</CardTitle>
                             </CardHeader>
                             <CardContent>
                                 <ul className="space-y-3 text-muted-foreground">
-                                    {ipqcItems.map(item => <li key={item} className="flex items-start gap-3"><Check className="w-4 h-4 mt-1 text-accent" /><span>{item}</span></li>)}
+                                    {ipqcItems.map(item => <li key={item} className="flex items-start gap-3"><Check className="w-4 h-4 mt-1 text-foreground/60" /><span>{item}</span></li>)}
                                 </ul>
                             </CardContent>
                         </Card>
@@ -79,12 +79,12 @@ export default function QaQcPage() {
                      <ScrollReveal delay={400}>
                         <Card className="h-full bg-card/50">
                             <CardHeader className="flex-row items-center gap-4">
-                                <PackageCheck className="w-8 h-8 text-accent" />
+                                <PackageCheck className="w-8 h-8 text-foreground/60" />
                                 <CardTitle className="font-headline text-xl">Final Quality Control (FQC)</CardTitle>
                             </CardHeader>
                             <CardContent>
                                 <ul className="space-y-3 text-muted-foreground">
-                                    {fqcItems.map(item => <li key={item} className="flex items-start gap-3"><Check className="w-4 h-4 mt-1 text-accent" /><span>{item}</span></li>)}
+                                    {fqcItems.map(item => <li key={item} className="flex items-start gap-3"><Check className="w-4 h-4 mt-1 text-foreground/60" /><span>{item}</span></li>)}
                                 </ul>
                             </CardContent>
                         </Card>
@@ -103,7 +103,7 @@ export default function QaQcPage() {
                 
                 <ScrollReveal delay={600} className="mt-12">
                     <h2 className="text-3xl font-bold font-headline text-center">Quality Commitment</h2>
-                    <p className="mt-4 text-xl bg-primary/5 border-l-4 border-accent p-6 rounded-r-lg text-foreground max-w-5xl mx-auto text-center font-semibold">
+                    <p className="mt-4 text-xl bg-primary/5 border-l-4 border-foreground/60 p-6 rounded-r-lg text-foreground max-w-5xl mx-auto text-center font-semibold">
                        Every enclosure, kiosk, cabinet, and GRP component is manufactured with the same standard: Long-lasting, corrosion-proof, compliant, dependable.
                     </p>
                 </ScrollReveal>

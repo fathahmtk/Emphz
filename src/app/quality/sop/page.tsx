@@ -48,12 +48,12 @@ export default function SopPage() {
                     <ScrollReveal delay={200}>
                         <Card className="h-full bg-card/50">
                             <CardHeader className="flex-row items-center gap-4">
-                                <Factory className="w-8 h-8 text-accent" />
+                                <Factory className="w-8 h-8 text-foreground/60" />
                                 <CardTitle className="font-headline text-2xl">Manufacturing</CardTitle>
                             </CardHeader>
                             <CardContent>
                                 <ul className="space-y-3 text-muted-foreground">
-                                    {manufacturingSops.map(item => <li key={item} className="flex items-start gap-3"><Check className="w-4 h-4 mt-1 text-accent" /><span>{item}</span></li>)}
+                                    {manufacturingSops.map(item => <li key={item} className="flex items-start gap-3"><Check className="w-4 h-4 mt-1 text-foreground/60" /><span>{item}</span></li>)}
                                 </ul>
                             </CardContent>
                         </Card>
@@ -61,12 +61,12 @@ export default function SopPage() {
                      <ScrollReveal delay={300}>
                         <Card className="h-full bg-card/50">
                             <CardHeader className="flex-row items-center gap-4">
-                                <Microscope className="w-8 h-8 text-accent" />
+                                <Microscope className="w-8 h-8 text-foreground/60" />
                                 <CardTitle className="font-headline text-2xl">Quality Control</CardTitle>
                             </CardHeader>
                             <CardContent>
                                 <ul className="space-y-3 text-muted-foreground">
-                                    {qcSops.map(item => <li key={item} className="flex items-start gap-3"><Check className="w-4 h-4 mt-1 text-accent" /><span>{item}</span></li>)}
+                                    {qcSops.map(item => <li key={item} className="flex items-start gap-3"><Check className="w-4 h-4 mt-1 text-foreground/60" /><span>{item}</span></li>)}
                                 </ul>
                             </CardContent>
                         </Card>
@@ -74,12 +74,12 @@ export default function SopPage() {
                      <ScrollReveal delay={400}>
                         <Card className="h-full bg-card/50">
                             <CardHeader className="flex-row items-center gap-4">
-                                <Truck className="w-8 h-8 text-accent" />
+                                <Truck className="w-8 h-8 text-foreground/60" />
                                 <CardTitle className="font-headline text-2xl">Operational</CardTitle>
                             </CardHeader>
                             <CardContent>
                                 <ul className="space-y-3 text-muted-foreground">
-                                    {operationalSops.map(item => <li key={item} className="flex items-start gap-3"><Check className="w-4 h-4 mt-1 text-accent" /><span>{item}</span></li>)}
+                                    {operationalSops.map(item => <li key={item} className="flex items-start gap-3"><Check className="w-4 h-4 mt-1 text-foreground/60" /><span>{item}</span></li>)}
                                 </ul>
                             </CardContent>
                         </Card>
@@ -88,7 +88,7 @@ export default function SopPage() {
                 
                 <ScrollReveal delay={500} className="mt-12">
                      <h2 className="text-3xl font-bold font-headline text-center">Outcome</h2>
-                    <p className="mt-4 text-lg bg-primary/5 border-l-4 border-accent p-6 rounded-r-lg text-foreground max-w-5xl mx-auto">
+                    <p className="mt-4 text-lg bg-primary/5 border-l-4 border-foreground/60 p-6 rounded-r-lg text-foreground max-w-5xl mx-auto">
                        Every product that leaves the factory is consistent, compliant, and production-controlled.
                     </p>
                 </ScrollReveal>

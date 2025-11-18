@@ -58,7 +58,7 @@ export default function KiosksPage() {
                         <h2 className="text-2xl font-bold font-headline">Key Features</h2>
                         <ul className="mt-4 space-y-3 text-muted-foreground">
                             {keyFeatures.map(feature => (
-                                <li key={feature} className="flex items-center gap-3"><CheckCircle className="h-5 w-5 text-accent" /> {feature}</li>
+                                <li key={feature} className="flex items-center gap-3"><CheckCircle className="h-5 w-5 text-foreground/60" /> {feature}</li>
                             ))}
                         </ul>
                     </ScrollReveal>
@@ -67,7 +67,7 @@ export default function KiosksPage() {
                         <h2 className="text-2xl font-bold font-headline">Applications</h2>
                          <ul className="mt-4 space-y-3 text-muted-foreground">
                             {applications.map(app => (
-                                <li key={app} className="flex items-center gap-3"><CheckCircle className="h-5 w-5 text-accent" /> {app}</li>
+                                <li key={app} className="flex items-center gap-3"><CheckCircle className="h-5 w-5 text-foreground/60" /> {app}</li>
                             ))}
                         </ul>
                     </ScrollReveal>
@@ -79,7 +79,7 @@ export default function KiosksPage() {
                     </p>
                     <ul className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4 text-muted-foreground">
                         {customCapabilities.map(capability => (
-                            <li key={capability} className="flex items-center gap-3 p-4 bg-card/50 rounded-lg"><CheckCircle className="h-5 w-5 text-accent" /> {capability}</li>
+                            <li key={capability} className="flex items-center gap-3 p-4 bg-card/50 rounded-lg"><CheckCircle className="h-5 w-5 text-foreground/60" /> {capability}</li>
                         ))}
                     </ul>
                 </ScrollReveal>
@@ -88,5 +88,3 @@ export default function KiosksPage() {
         </>
     );
 }
-
-    

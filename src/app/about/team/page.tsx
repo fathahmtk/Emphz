@@ -22,12 +22,12 @@ export default function TeamPage() {
                 <ScrollReveal delay={300} className="mt-10">
                     <h2 className="text-2xl font-bold font-headline">Key competencies inside EMPHZ include:</h2>
                     <ul className="mt-4 space-y-3 text-lg text-muted-foreground">
-                        <li className="flex items-center gap-3"><CheckCircle className="h-5 w-5 text-accent" />Composite technology specialists</li>
-                        <li className="flex items-center gap-3"><CheckCircle className="h-5 w-5 text-accent" />Mechanical and electrical design engineers</li>
-                        <li className="flex items-center gap-3"><CheckCircle className="h-5 w-5 text-accent" />Moulding and production technicians</li>
-                        <li className="flex items-center gap-3"><CheckCircle className="h-5 w-5 text-accent" />Quality assurance & testing teams</li>
-                        <li className="flex items-center gap-3"><CheckCircle className="h-5 w-5 text-accent" />Project and tender support engineers</li>
-                        <li className="flex items-center gap-3"><CheckCircle className="h-5 w-5 text-accent" />Customer operations & after-sales support</li>
+                        <li className="flex items-center gap-3"><CheckCircle className="h-5 w-5 text-foreground/60" />Composite technology specialists</li>
+                        <li className="flex items-center gap-3"><CheckCircle className="h-5 w-5 text-foreground/60" />Mechanical and electrical design engineers</li>
+                        <li className="flex items-center gap-3"><CheckCircle className="h-5 w-5 text-foreground/60" />Moulding and production technicians</li>
+                        <li className="flex items-center gap-3"><CheckCircle className="h-5 w-5 text-foreground/60" />Quality assurance & testing teams</li>
+                        <li className="flex items-center gap-3"><CheckCircle className="h-5 w-5 text-foreground/60" />Project and tender support engineers</li>
+                        <li className="flex items-center gap-3"><CheckCircle className="h-5 w-5 text-foreground/60" />Customer operations & after-sales support</li>
                     </ul>
                 </ScrollReveal>
 

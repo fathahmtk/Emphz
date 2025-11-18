@@ -42,7 +42,7 @@ export default function CertificationPage() {
                     <p className="mt-2 text-muted-foreground">Our GRP/FRP products comply with:</p>
                     <ul className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4 text-muted-foreground">
                         {complianceList.map(item => (
-                            <li key={item} className="flex items-center gap-3 p-4 bg-card/50 rounded-lg"><CheckCircle className="h-5 w-5 text-accent" /> {item}</li>
+                            <li key={item} className="flex items-center gap-3 p-4 bg-card/50 rounded-lg"><CheckCircle className="h-5 w-5 text-foreground/60" /> {item}</li>
                         ))}
                     </ul>
                 </ScrollReveal>
@@ -51,14 +51,14 @@ export default function CertificationPage() {
                     <h2 className="text-3xl font-bold font-headline">Testing & Inspection</h2>
                     <ul className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4 text-muted-foreground">
                          {testingList.map(item => (
-                            <li key={item} className="flex items-center gap-3 p-4 bg-card/50 rounded-lg"><CheckCircle className="h-5 w-5 text-accent" /> {item}</li>
+                            <li key={item} className="flex items-center gap-3 p-4 bg-card/50 rounded-lg"><CheckCircle className="h-5 w-5 text-foreground/60" /> {item}</li>
                         ))}
                     </ul>
                 </ScrollReveal>
                 
                 <ScrollReveal delay={400} className="mt-12">
                      <h2 className="text-3xl font-bold font-headline">Outcome</h2>
-                    <p className="mt-4 text-lg bg-primary/5 border-l-4 border-accent p-6 rounded-r-lg text-foreground">
+                    <p className="mt-4 text-lg bg-primary/5 border-l-4 border-foreground/60 p-6 rounded-r-lg text-foreground">
                        A certified product lineage trusted by utilities, EPC contractors, and industrial clients across high-risk and high-performance environments.
                     </p>
                 </ScrollReveal>

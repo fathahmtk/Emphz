@@ -2,7 +2,7 @@
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { ScrollReveal } from "@/components/scroll-reveal";
-import { CheckCircle } from "lucide-react";
+import { CheckCircle, XCircle } from "lucide-react";
 
 const recommendedProducts = [
     "GRP Electrical Enclosures",
@@ -35,11 +35,11 @@ export default function PowerGenerationPage() {
                     <ScrollReveal delay={200}>
                         <h2 className="text-2xl font-bold font-headline">Industry Challenges</h2>
                         <ul className="mt-4 space-y-2 text-muted-foreground">
-                            <li className="flex items-start gap-2"><CheckCircle className="h-5 w-5 mt-1 shrink-0 text-destructive" /> <span>Exposure to heat, humidity, UV, corrosive gases</span></li>
-                            <li className="flex items-start gap-2"><CheckCircle className="h-5 w-5 mt-1 shrink-0 text-destructive" /> <span>Electrical safety and insulation requirements</span></li>
-                            <li className="flex items-start gap-2"><CheckCircle className="h-5 w-5 mt-1 shrink-0 text-destructive" /> <span>Field failures due to corroded metal housings</span></li>
-                            <li className="flex items-start gap-2"><CheckCircle className="h-5 w-5 mt-1 shrink-0 text-destructive" /> <span>Demanding compliance standards from utilities</span></li>
-                            <li className="flex items-start gap-2"><CheckCircle className="h-5 w-5 mt-1 shrink-0 text-destructive" /> <span>High penalties for downtime or equipment malfunction</span></li>
+                            <li className="flex items-start gap-2"><XCircle className="h-5 w-5 mt-1 shrink-0 text-destructive/80" /> <span>Exposure to heat, humidity, UV, corrosive gases</span></li>
+                            <li className="flex items-start gap-2"><XCircle className="h-5 w-5 mt-1 shrink-0 text-destructive/80" /> <span>Electrical safety and insulation requirements</span></li>
+                            <li className="flex items-start gap-2"><XCircle className="h-5 w-5 mt-1 shrink-0 text-destructive/80" /> <span>Field failures due to corroded metal housings</span></li>
+                            <li className="flex items-start gap-2"><XCircle className="h-5 w-5 mt-1 shrink-0 text-destructive/80" /> <span>Demanding compliance standards from utilities</span></li>
+                            <li className="flex items-start gap-2"><XCircle className="h-5 w-5 mt-1 shrink-0 text-destructive/80" /> <span>High penalties for downtime or equipment malfunction</span></li>
                         </ul>
                     </ScrollReveal>
 
@@ -58,7 +58,7 @@ export default function PowerGenerationPage() {
                             <h3 className="text-xl font-semibold">Recommended Products</h3>
                             <ul className="mt-4 space-y-2 text-muted-foreground">
                                 {recommendedProducts.map(product => (
-                                    <li key={product} className="flex items-center gap-3"><CheckCircle className="h-5 w-5 text-accent" /> {product}</li>
+                                    <li key={product} className="flex items-center gap-3"><CheckCircle className="h-5 w-5 text-foreground/60" /> {product}</li>
                                 ))}
                             </ul>
                         </div>
@@ -66,7 +66,7 @@ export default function PowerGenerationPage() {
                              <h3 className="text-xl font-semibold">Why EMPHZ</h3>
                             <ul className="mt-4 space-y-2 text-muted-foreground">
                                 {whyEmphz.map(point => (
-                                    <li key={point} className="flex items-center gap-3"><CheckCircle className="h-5 w-5 text-accent" /> {point}</li>
+                                    <li key={point} className="flex items-center gap-3"><CheckCircle className="h-5 w-5 text-foreground/60" /> {point}</li>
                                 ))}
                             </ul>
                         </div>

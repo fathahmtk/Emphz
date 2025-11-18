@@ -2,7 +2,7 @@
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { ScrollReveal } from "@/components/scroll-reveal";
-import { CheckCircle } from "lucide-react";
+import { CheckCircle, XCircle } from "lucide-react";
 
 const recommendedProducts = [
     "GRP Telecom Enclosures",
@@ -32,10 +32,10 @@ export default function TelecomPage() {
                     <ScrollReveal delay={200}>
                         <h2 className="text-2xl font-bold font-headline">Industry Challenges</h2>
                         <ul className="mt-4 space-y-2 text-muted-foreground">
-                            <li className="flex items-start gap-2"><CheckCircle className="h-5 w-5 mt-1 shrink-0 text-destructive" /> <span>Continuous heat and UV exposure</span></li>
-                            <li className="flex items-start gap-2"><CheckCircle className="h-5 w-5 mt-1 shrink-0 text-destructive" /> <span>Moisture infiltration risks</span></li>
-                            <li className="flex items-start gap-2"><CheckCircle className="h-5 w-5 mt-1 shrink-0 text-destructive" /> <span>Need for tamper-proof protection</span></li>
-                            <li className="flex items-start gap-2"><CheckCircle className="h-5 w-5 mt-1 shrink-0 text-destructive" /> <span>Sensitive electronics requiring insulation</span></li>
+                            <li className="flex items-start gap-2"><XCircle className="h-5 w-5 mt-1 shrink-0 text-destructive/80" /> <span>Continuous heat and UV exposure</span></li>
+                            <li className="flex items-start gap-2"><XCircle className="h-5 w-5 mt-1 shrink-0 text-destructive/80" /> <span>Moisture infiltration risks</span></li>
+                            <li className="flex items-start gap-2"><XCircle className="h-5 w-5 mt-1 shrink-0 text-destructive/80" /> <span>Need for tamper-proof protection</span></li>
+                            <li className="flex items-start gap-2"><XCircle className="h-5 w-5 mt-1 shrink-0 text-destructive/80" /> <span>Sensitive electronics requiring insulation</span></li>
                         </ul>
                     </ScrollReveal>
 
@@ -54,7 +54,7 @@ export default function TelecomPage() {
                             <h3 className="text-xl font-semibold">Recommended Products</h3>
                             <ul className="mt-4 space-y-2 text-muted-foreground">
                                 {recommendedProducts.map(product => (
-                                    <li key={product} className="flex items-center gap-3"><CheckCircle className="h-5 w-5 text-accent" /> {product}</li>
+                                    <li key={product} className="flex items-center gap-3"><CheckCircle className="h-5 w-5 text-foreground/60" /> {product}</li>
                                 ))}
                             </ul>
                         </div>
@@ -62,7 +62,7 @@ export default function TelecomPage() {
                              <h3 className="text-xl font-semibold">Why EMPHZ</h3>
                             <ul className="mt-4 space-y-2 text-muted-foreground">
                                 {whyEmphz.map(point => (
-                                    <li key={point} className="flex items-center gap-3"><CheckCircle className="h-5 w-5 text-accent" /> {point}</li>
+                                    <li key={point} className="flex items-center gap-3"><CheckCircle className="h-5 w-5 text-foreground/60" /> {point}</li>
                                 ))}
                             </ul>
                         </div>

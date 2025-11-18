@@ -34,7 +34,7 @@ export default function MarketsPage() {
 
                 <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-12">
                     <ScrollReveal delay={200}>
-                        <h2 className="text-3xl font-bold font-headline flex items-center gap-3"><Globe className="h-8 w-8 text-accent" /> Primary Markets</h2>
+                        <h2 className="text-3xl font-bold font-headline flex items-center gap-3"><Globe className="h-8 w-8 text-foreground/60" /> Primary Markets</h2>
                         <div className="mt-6 flex flex-wrap gap-3">
                             {primaryMarkets.map((market) => (
                                 <Badge key={market} variant="secondary" className="text-lg py-2 px-4">{market}</Badge>
@@ -45,7 +45,7 @@ export default function MarketsPage() {
                         <h2 className="text-3xl font-bold font-headline">Market Drivers</h2>
                         <ul className="mt-4 space-y-3">
                             {marketDrivers.map(driver => (
-                                <li key={driver} className="flex items-center gap-3 text-lg"><CheckCircle className="h-5 w-5 text-accent shrink-0" /> <span className="text-muted-foreground">{driver}</span></li>
+                                <li key={driver} className="flex items-center gap-3 text-lg"><CheckCircle className="h-5 w-5 text-foreground/60 shrink-0" /> <span className="text-muted-foreground">{driver}</span></li>
                             ))}
                         </ul>
                     </ScrollReveal>

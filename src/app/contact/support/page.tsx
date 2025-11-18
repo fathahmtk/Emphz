@@ -37,7 +37,7 @@ export default function SupportPage() {
                         <Card>
                             <CardHeader>
                                 <CardTitle className="font-headline text-2xl flex items-center gap-3">
-                                    <HelpCircle className="h-7 w-7 text-accent" />
+                                    <HelpCircle className="h-7 w-7 text-foreground/60" />
                                     Submit a Support Ticket
                                 </CardTitle>
                             </CardHeader>
@@ -85,7 +85,7 @@ export default function SupportPage() {
                                 <ul className="space-y-4">
                                     {supportServices.map(service => (
                                         <li key={service} className="flex items-start gap-3 text-muted-foreground">
-                                            <CheckCircle className="h-5 w-5 mt-1 text-accent" />
+                                            <CheckCircle className="h-5 w-5 mt-1 text-foreground/60" />
                                             <span>{service}</span>
                                         </li>
                                     ))}

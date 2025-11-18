@@ -38,7 +38,7 @@ export default function ImsPage() {
                         <h2 className="text-3xl font-bold font-headline">IMS Scope</h2>
                         <ul className="mt-4 space-y-3 text-muted-foreground">
                             {imsScope.map(item => (
-                                <li key={item} className="flex items-start gap-3"><CheckCircle className="h-5 w-5 mt-1 text-accent" /> {item}</li>
+                                <li key={item} className="flex items-start gap-3"><CheckCircle className="h-5 w-5 mt-1 text-foreground/60" /> {item}</li>
                             ))}
                         </ul>
                     </ScrollReveal>
@@ -46,7 +46,7 @@ export default function ImsPage() {
                         <h2 className="text-3xl font-bold font-headline">IMS Objectives</h2>
                         <ul className="mt-4 space-y-3 text-muted-foreground">
                             {imsObjectives.map(item => (
-                                <li key={item} className="flex items-start gap-3"><CheckCircle className="h-5 w-5 mt-1 text-accent" /> {item}</li>
+                                <li key={item} className="flex items-start gap-3"><CheckCircle className="h-5 w-5 mt-1 text-foreground/60" /> {item}</li>
                             ))}
                         </ul>
                     </ScrollReveal>

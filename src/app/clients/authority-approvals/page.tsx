@@ -37,7 +37,7 @@ export default function AuthorityApprovalsPage() {
                     <ul className="mt-4 space-y-4 text-lg">
                         {sectorsWithApprovals.map(sector => (
                              <li key={sector} className="flex items-start gap-4">
-                                <CheckCircle className="mt-1 h-6 w-6 shrink-0 text-accent" />
+                                <CheckCircle className="mt-1 h-6 w-6 shrink-0 text-foreground/60" />
                                 <span className="text-muted-foreground">{sector}</span>
                             </li>
                         ))}
@@ -49,7 +49,7 @@ export default function AuthorityApprovalsPage() {
                     <ul className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4 text-lg">
                         {approvalBenefits.map(benefit => (
                             <li key={benefit} className="flex items-center gap-3 p-4 bg-card/50 rounded-lg">
-                                <CheckCircle className="h-5 w-5 text-accent shrink-0" /> 
+                                <CheckCircle className="h-5 w-5 text-foreground/60 shrink-0" /> 
                                 <span className="text-foreground font-medium">{benefit}</span>
                             </li>
                         ))}

@@ -63,7 +63,7 @@ export default function ClientsPage() {
                             <CardContent>
                                 <ul className="space-y-3">
                                     {expectationAlignment.map(item => (
-                                         <li key={item} className="flex items-start gap-3"><CheckCircle className="h-5 w-5 mt-1 text-accent" /> <span className="text-muted-foreground">{item}</span></li>
+                                         <li key={item} className="flex items-start gap-3"><CheckCircle className="h-5 w-5 mt-1 text-foreground/60" /> <span className="text-muted-foreground">{item}</span></li>
                                     ))}
                                 </ul>
                             </CardContent>
@@ -75,7 +75,7 @@ export default function ClientsPage() {
                             <CardContent>
                                <ul className="space-y-3">
                                     {whyChooseEmphz.map(item => (
-                                         <li key={item} className="flex items-start gap-3"><CheckCircle className="h-5 w-5 mt-1 text-accent" /> <span className="text-muted-foreground">{item}</span></li>
+                                         <li key={item} className="flex items-start gap-3"><CheckCircle className="h-5 w-5 mt-1 text-foreground/60" /> <span className="text-muted-foreground">{item}</span></li>
                                     ))}
                                 </ul>
                             </CardContent>

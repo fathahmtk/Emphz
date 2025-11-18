@@ -43,7 +43,7 @@ export default function CustomPage() {
                     <h2 className="text-3xl font-bold font-headline">Common Customizations</h2>
                     <ul className="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-muted-foreground">
                         {capabilities.map(capability => (
-                            <li key={capability} className="flex items-center gap-3 p-4 bg-card/50 rounded-lg"><CheckCircle className="h-5 w-5 text-accent shrink-0" /> {capability}</li>
+                            <li key={capability} className="flex items-center gap-3 p-4 bg-card/50 rounded-lg"><CheckCircle className="h-5 w-5 text-foreground/60 shrink-0" /> {capability}</li>
                         ))}
                     </ul>
                 </ScrollReveal>
@@ -55,7 +55,7 @@ export default function CustomPage() {
                             <Card key={step.title} className="bg-card/50">
                                 <CardHeader>
                                     <CardTitle className="flex items-center gap-4 font-headline">
-                                        <span className="flex items-center justify-center w-8 h-8 rounded-full bg-accent text-accent-foreground font-bold">{index + 1}</span>
+                                        <span className="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary font-bold">{index + 1}</span>
                                         {step.title}
                                     </CardTitle>
                                 </CardHeader>

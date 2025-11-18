@@ -27,23 +27,23 @@ export default function MissionPage() {
                     <h2 className="text-3xl font-bold font-headline">Values</h2>
                     <ul className="mt-4 space-y-4 text-lg">
                         <li className="flex items-start gap-4">
-                            <CheckCircle className="mt-1 h-6 w-6 shrink-0 text-accent" />
+                            <CheckCircle className="mt-1 h-6 w-6 shrink-0 text-foreground/60" />
                             <span className="text-muted-foreground"><strong className="font-semibold text-foreground">Integrity:</strong> Zero-compromise approach to quality, compliance, and customer commitments.</span>
                         </li>
                         <li className="flex items-start gap-4">
-                            <CheckCircle className="mt-1 h-6 w-6 shrink-0 text-accent" />
+                            <CheckCircle className="mt-1 h-6 w-6 shrink-0 text-foreground/60" />
                             <span className="text-muted-foreground"><strong className="font-semibold text-foreground">Innovation:</strong> Advancing GRP engineering through R&D, material upgrades, and modern production methods.</span>
                         </li>
                         <li className="flex items-start gap-4">
-                            <CheckCircle className="mt-1 h-6 w-6 shrink-0 text-accent" />
+                            <CheckCircle className="mt-1 h-6 w-6 shrink-0 text-foreground/60" />
                             <span className="text-muted-foreground"><strong className="font-semibold text-foreground">Reliability:</strong> Delivering products that perform consistently across extreme environmental conditions.</span>
                         </li>
                         <li className="flex items-start gap-4">
-                            <CheckCircle className="mt-1 h-6 w-6 shrink-0 text-accent" />
+                            <CheckCircle className="mt-1 h-6 w-6 shrink-0 text-foreground/60" />
                             <span className="text-muted-foreground"><strong className="font-semibold text-foreground">Customer Focus:</strong> Providing technical clarity, responsive support, and project-specific customization.</span>
                         </li>
                         <li className="flex items-start gap-4">
-                            <CheckCircle className="mt-1 h-6 w-6 shrink-0 text-accent" />
+                            <CheckCircle className="mt-1 h-6 w-6 shrink-0 text-foreground/60" />
                             <span className="text-muted-foreground"><strong className="font-semibold text-foreground">Sustainability:</strong> Designing composite solutions that reduce corrosion, maintenance, and environmental impact.</span>
                         </li>
                     </ul>
