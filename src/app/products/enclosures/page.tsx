@@ -54,10 +54,16 @@ export default function EnclosuresPage() {
                 
                 <ScrollReveal delay={400} className="mt-12">
                     <h2 className="text-2xl font-bold font-headline">Downloads</h2>
-                    <div className="mt-4 flex gap-4">
-                        <Button variant="outline">Datasheet</Button>
-                        <Button variant="outline">CAD Drawings (DWG)</Button>
-                        <Button variant="outline">Installation Guide</Button>
+                    <div className="mt-4 flex flex-wrap gap-4">
+                        <Button variant="outline" asChild>
+                            <a href="/downloads/EMPHZ-Datasheet-GRP-Enclosures.pdf" download>Datasheet</a>
+                        </Button>
+                        <Button variant="outline" asChild>
+                             <a href="/downloads/EMPHZ-CAD-Drawings.zip" download>CAD Drawings (DWG)</a>
+                        </Button>
+                        <Button variant="outline" asChild>
+                            <a href="/downloads/EMPHZ-Installation-Guide.pdf" download>Installation Guide</a>
+                        </Button>
                     </div>
                 </ScrollReveal>
             </main>
