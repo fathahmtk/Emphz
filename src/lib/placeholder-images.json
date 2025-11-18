@@ -1,28 +1,10 @@
 {
   "placeholderImages": [
     {
-      "id": "hero-1",
-      "description": "A wind turbine farm with a green and blue sky.",
-      "imageUrl": "https://images.unsplash.com/photo-1523741543342-42d833d838a0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3aW5kJTIwdHVyYmluZXxlbnwwfHx8fDE3MTc1MzI0Mjd8MA&ixlib=rb-4.0.3&q=80&w=1080",
-      "imageHint": "wind turbine"
-    },
-    {
-      "id": "hero-2",
-      "description": "An industrial worker in a modern factory setting.",
-      "imageUrl": "https://images.unsplash.com/photo-1665686306574-1ace09918530?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxpbmR1c3RyaWFsJTIwd29ya2VyfGVufDB8fHx8MTcxNzUzMjQyN3ww&ixlib=rb-4.0.3&q=80&w=1080",
-      "imageHint": "industrial worker"
-    },
-    {
-      "id": "hero-3",
-      "description": "A modern water treatment facility with large tanks and pipes.",
-      "imageUrl": "https://images.unsplash.com/photo-1567319934691-6c24f595db68?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHx3YXRlciUyMHRyZWF0bWVudHxlbnwwfHx8fDE3MTc1MzI0MjV8MA&ixlib=rb-4.0.3&q=80&w=1080",
-      "imageHint": "water treatment"
-    },
-    {
-      "id": "hero-4",
-      "description": "A robotic arm working on a production line in a smart factory.",
-      "imageUrl": "https://images.unsplash.com/photo-1567789884554-0b844b597180?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxmYWN0b3J5JTIwYXV0b21hdGlvbnxlbnwwfHx8fDE3MTc1MzI0MjR8MA&ixlib=rb-4.0.3&q=80&w=1080",
-      "imageHint": "factory automation"
+      "id": "hero-main",
+      "description": "An array of modern modular buildings and kiosks in a park-like setting with green lawns and trees.",
+      "imageUrl": "https://storage.googleapis.com/stabl-media/6f183983-de3c-4740-8a1a-464a75399587.png",
+      "imageHint": "modular buildings"
     },
     {
       "id": "product-pipes",

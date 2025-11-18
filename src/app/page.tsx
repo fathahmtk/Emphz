@@ -15,15 +15,6 @@ import { SiteFooter } from '@/components/layout/site-footer';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Card, CardContent } from '@/components/ui/card';
 import { ProjectCard } from '@/components/project-card';
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-import Autoplay from "embla-carousel-autoplay";
-import React from 'react';
 
 const corporatePillars = [
   {
@@ -66,43 +57,27 @@ export default function Home() {
   const { data: projects } = useCollection<Project>(projectsQuery);
 
 
-  const heroImages = PlaceHolderImages.filter(p => p.id.startsWith('hero-'));
-  const plugin = React.useRef(
-    Autoplay({ delay: 5000, stopOnInteraction: true })
-  );
+  const heroImage = PlaceHolderImages.find(p => p.id === 'hero-main');
 
   return (
     <>
       <SiteHeader />
       <main className="flex-1">
         <section className="relative h-dvh w-full flex items-center justify-center text-center overflow-hidden">
-           <Carousel 
-             plugins={[plugin.current]}
-             className="w-full h-full"
-             onMouseEnter={plugin.current.stop}
-             onMouseLeave={plugin.current.reset}
-           >
-            <CarouselContent className="h-full">
-              {heroImages.map((image) => (
-                <CarouselItem key={image.id} className="h-full">
-                  <div className="relative w-full h-full">
-                    <Image
-                      src={image.imageUrl}
-                      alt={image.description}
-                      data-ai-hint={image.imageHint}
-                      fill
-                      className="object-cover"
-                      priority={heroImages.indexOf(image) === 0}
-                    />
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent" />
-            <div className="absolute inset-0 bg-black/60" />
-            <CarouselPrevious className="absolute left-4 text-white" />
-            <CarouselNext className="absolute right-4 text-white" />
-          </Carousel>
+           {heroImage && (
+            <div className="absolute inset-0">
+                <Image
+                    src={heroImage.imageUrl}
+                    alt={heroImage.description}
+                    data-ai-hint={heroImage.imageHint}
+                    fill
+                    className="object-cover"
+                    priority
+                />
+            </div>
+           )}
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent" />
+          <div className="absolute inset-0 bg-black/60" />
           <div className="container absolute px-4 md:px-6">
             <div className="mx-auto max-w-4xl text-primary-foreground">
               <ScrollReveal>
