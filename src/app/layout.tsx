@@ -3,7 +3,7 @@
 
 import type { ReactNode } from 'react';
 import { usePathname } from 'next/navigation';
-import { Orbitron, Exo_2 } from 'next/font/google';
+import { Jost, Manrope } from 'next/font/google';
 
 import './globals.css';
 import { cn } from '@/lib/utils';
@@ -11,12 +11,12 @@ import { Toaster } from "@/components/ui/toaster";
 import { FirebaseClientProvider } from '@/firebase';
 import { ClientOnly } from '@/components/client-only';
 
-const orbitron = Orbitron({
+const jost = Jost({
   subsets: ['latin'],
   variable: '--font-headline',
 });
 
-const exo2 = Exo_2({
+const manrope = Manrope({
   subsets: ['latin'],
   variable: '--font-body',
 })
@@ -30,7 +30,7 @@ function RootBody({
     const pathname = usePathname();
 
     return (
-        <body className={cn('min-h-screen font-body antialiased', orbitron.variable, exo2.variable)}>
+        <body className={cn('min-h-screen font-body antialiased', jost.variable, manrope.variable)}>
             <FirebaseClientProvider>
                 <ClientOnly>
                     <div className="relative flex min-h-dvh flex-col bg-background">
