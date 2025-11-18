@@ -19,8 +19,16 @@ import { ArrowRight, Search } from "lucide-react";
 import { SearchDialog } from "../search-dialog";
 
 export function SiteHeader() {
+    const [isScrolled, setIsScrolled] = useState(false);
     const [isSearchOpen, setIsSearchOpen] = useState(false);
 
+    useEffect(() => {
+        const handleScroll = () => {
+            setIsScrolled(window.scrollY > 10);
+        };
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
 
     useEffect(() => {
         const down = (e: KeyboardEvent) => {
@@ -38,18 +46,18 @@ export function SiteHeader() {
         <>
             <header className={cn(
                 "fixed top-0 z-50 w-full transition-all duration-300",
-                "border-b border-white/20 bg-black/20 backdrop-blur-lg"
+                isScrolled ? "border-b bg-background/80 backdrop-blur-lg" : "border-b border-transparent"
             )}>
                 <div className="container flex h-16 items-center px-4 md:px-6">
                     <Link href="/" className="mr-6 flex items-center space-x-2">
-                        <Logo className={cn("h-8 w-auto transition-colors", "text-white")} />
+                        <Logo className={cn("h-8 w-auto transition-colors", isScrolled ? "text-primary" : "text-white")} />
                     </Link>
                     
-                    <NavigationMenu className={cn("hidden md:flex", "text-white")}>
+                    <NavigationMenu className={cn("hidden md:flex", isScrolled ? "text-foreground" : "text-white")}>
                         <NavigationMenuList>
                             {menuData.map((item) => (
                                 <NavigationMenuItem key={item.title}>
-                                    <NavigationMenuTrigger className={cn("bg-transparent hover:bg-black/10 focus:bg-black/10 data-[active]:bg-black/10 data-[state=open]:bg-black/10", "text-white hover:bg-white/10 focus:bg-white/10 data-[active]:bg-white/20 data-[state=open]:bg-white/20")}>
+                                    <NavigationMenuTrigger className={cn("bg-transparent hover:bg-accent/50 focus:bg-accent/50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50", isScrolled ? "text-foreground" : "text-white hover:bg-black/10 focus:bg-black/10 data-[active]:bg-black/20 data-[state=open]:bg-black/20")}>
                                         <Link href={item.href}>{item.title}</Link>
                                     </NavigationMenuTrigger>
                                     <NavigationMenuContent>
@@ -88,9 +96,9 @@ export function SiteHeader() {
 
                     <div className="flex flex-1 items-center justify-end space-x-2">
                         <div className="hidden md:flex items-center space-x-2">
-                            <Button variant={'ghost'} className={cn('text-white hover:bg-white/10')}>Request Spec Pack</Button>
-                            <Button variant={'outline'} className={cn("text-white border-white/50 hover:bg-white hover:text-primary")}>Submit Tender</Button>
-                            <Button variant="outline" size="icon" onClick={() => setIsSearchOpen(true)} className={cn("text-white border-white/50 hover:bg-white hover:text-primary")}><Search className="h-4 w-4"/></Button>
+                            <Button variant={isScrolled ? 'ghost' : 'outline'} className={cn(!isScrolled && "text-white border-white/50 hover:bg-white hover:text-primary")}>Request Spec Pack</Button>
+                            <Button variant={isScrolled ? 'default' : 'outline'} className={cn(!isScrolled && "text-white border-white/50 hover:bg-white hover:text-primary")}>Submit Tender</Button>
+                            <Button variant="ghost" size="icon" onClick={() => setIsSearchOpen(true)} className={cn(!isScrolled && "text-white hover:bg-white/10")}><Search className="h-4 w-4"/></Button>
                         </div>
                         <MobileNav />
                     </div>
