@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import { headers } from 'next/headers';
 import './globals.css';
 import { cn } from '@/lib/utils';
 import { Toaster } from "@/components/ui/toaster";
@@ -7,6 +6,7 @@ import { SidebarProvider } from '@/components/ui/sidebar';
 import { ReactNode } from 'react';
 import { Orbitron, Inter } from 'next/font/google';
 import { FirebaseClientProvider } from '@/firebase';
+import { usePathname } from 'next/navigation';
 
 const orbitron = Orbitron({
   subsets: ['latin'],
@@ -58,31 +58,40 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function RootLayout({
+function RootBody({
+  children,
+}: {
+  children: ReactNode,
+}) {
+    const pathname = usePathname();
+    const isAdminPage = pathname.startsWith('/admin');
+
+    return (
+        <body className={cn('min-h-screen font-body antialiased', orbitron.variable, inter.variable)}>
+            <FirebaseClientProvider>
+                <SidebarProvider>
+                    {isAdminPage ? (
+                        <div className='bg-background text-foreground'>{children}</div>
+                    ) : (
+                        <div className="relative flex min-h-dvh flex-col bg-background">
+                            {children}
+                        </div>
+                    )}
+                </SidebarProvider>
+            </FirebaseClientProvider>
+            <Toaster />
+        </body>
+    )
+}
+
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const headersList = headers();
-  const pathname = headersList.get('x-pathname') || '';
-  const isAdminPage = pathname.startsWith('/admin');
-
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={cn('min-h-screen font-body antialiased', orbitron.variable, inter.variable)}>
-        <FirebaseClientProvider>
-          <SidebarProvider>
-            {isAdminPage ? (
-               <div className='bg-background text-foreground'>{children}</div>
-            ) : (
-              <div className="relative flex min-h-dvh flex-col bg-background">
-                {children}
-              </div>
-            )}
-          </SidebarProvider>
-        </FirebaseClientProvider>
-        <Toaster />
-      </body>
+      <RootBody>{children}</RootBody>
     </html>
   );
 }
