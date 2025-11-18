@@ -4,6 +4,8 @@ import { SiteFooter } from "@/components/layout/site-footer";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { Button } from "@/components/ui/button";
 import { CheckCircle } from "lucide-react";
+import { PageHero } from "@/components/layout/page-hero";
+import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 const keyFeatures = [
     "Single & double-door options",
@@ -30,16 +32,26 @@ const customCapabilities = [
 ]
 
 export default function KiosksPage() {
+    const heroImage = PlaceHolderImages.find(p => p.id === 'gallery-kiosk');
+
     return (
         <>
             <SiteHeader />
+             {heroImage && <PageHero 
+                title="GRP/FRP Kiosks"
+                description="Fully-moulded GRP kiosks for utilities, security, ticketing, temporary offices, and field operations. Built for long-term outdoor durability."
+                imageUrl={heroImage.imageUrl}
+                imageHint={heroImage.imageHint}
+             />}
             <main className="container py-12 md:py-20">
-                <ScrollReveal>
-                    <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl font-headline">GRP/FRP Kiosks</h1>
-                    <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
-                        Fully-moulded GRP kiosks for utilities, security, ticketing, temporary offices, and field operations. Built for long-term outdoor durability.
-                    </p>
-                </ScrollReveal>
+                {!heroImage && (
+                    <ScrollReveal>
+                        <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl font-headline">GRP/FRP Kiosks</h1>
+                        <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
+                            Fully-moulded GRP kiosks for utilities, security, ticketing, temporary offices, and field operations. Built for long-term outdoor durability.
+                        </p>
+                    </ScrollReveal>
+                )}
 
                 <div className="mt-12 grid gap-12 md:grid-cols-2">
                     <ScrollReveal delay={200}>
@@ -76,3 +88,5 @@ export default function KiosksPage() {
         </>
     );
 }
+
+    
