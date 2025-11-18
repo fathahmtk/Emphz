@@ -6,7 +6,7 @@ import { SiteFooter } from '@/components/layout/site-footer';
 import { ScrollReveal } from '@/components/scroll-reveal';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { CheckCircle, MapPin } from 'lucide-react';
+import { MapPin } from 'lucide-react';
 import { collection, orderBy, query } from 'firebase/firestore';
 import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
 import { type Project } from '@/lib/types';
@@ -43,28 +43,15 @@ export default function ProjectsPage() {
               <ScrollReveal key={project.id} delay={i * 150}>
                 <Card className="overflow-hidden">
                    <div className="grid grid-cols-1 lg:grid-cols-2">
-                     <div className="grid grid-cols-2">
-                        <div className="relative min-h-[300px] lg:min-h-0">
-                           <Image
-                            src={project.beforeImageUrl}
-                            alt={`Before - ${project.title}`}
-                            data-ai-hint={project.beforeImageHint}
-                            fill
-                            className="object-cover"
-                            />
-                            <Badge variant="destructive" className="absolute top-2 left-2">Before</Badge>
-                        </div>
-                         <div className="relative min-h-[300px] lg:min-h-0">
-                           <Image
-                            src={project.afterImageUrl}
-                            alt={`After - ${project.title}`}
-                            data-ai-hint={project.afterImageHint}
-                            fill
-                            className="object-cover"
-                            />
-                            <Badge variant="default" className="bg-green-600 absolute top-2 left-2">After</Badge>
-                        </div>
-                     </div>
+                     <div className="relative min-h-[300px] lg:min-h-0">
+                       <Image
+                        src={project.imageUrl}
+                        alt={project.title}
+                        data-ai-hint={project.imageHint}
+                        fill
+                        className="object-cover"
+                        />
+                    </div>
                      <div className="p-6 md:p-8">
                        <Badge variant="secondary" className="mb-2">{project.clientType}</Badge>
                        <h2 className="text-2xl font-bold font-headline">{project.title}</h2>

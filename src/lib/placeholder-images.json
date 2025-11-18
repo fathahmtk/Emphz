@@ -3,13 +3,13 @@
     {
       "id": "product-pipes",
       "description": "A collection of large industrial GRP pipes.",
-      "imageUrl": "https://images.unsplash.com/photo-1565555254018-852400658535?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxHUlAlMjBwaXBlc3xlbnwwfHx8fDE3NjI2NjMyMDV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1641630520184-8ea70bd9b3bc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxHUlAlMjBwaXBlc3xlbnwwfHx8fDE3NjM0NDQwMjh8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "GRP pipes"
     },
     {
       "id": "product-tank",
       "description": "A large cylindrical GRP tank in a factory setting.",
-      "imageUrl": "https://images.unsplash.com/photo-1639322534617-51f7e2612f33?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxHUlAlMjB0YW5rfGVufDB8fHx8MTc2MjY2MzIwNXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1580841554426-c4a28492865f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8R1JQJTIwdGFua3xlbnwwfHx8fDE3NjM0NDQwMjl8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "GRP tank"
     },
     {
@@ -21,49 +21,37 @@
     {
       "id": "product-custom-molding",
       "description": "A custom molded GRP component with a complex shape.",
-      "imageUrl": "https://images.unsplash.com/photo-1729507892411-997e43fbe77e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxjdXN0b20lMjBtb2xkaW5nfGVufDB8fHx8MTc2MjY2MzIwNXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1662845114342-256fdc45981d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxjdXN0b20lMjBtb2xkaW5nfGVufDB8fHx8MTc2MzQ0NDAyOHww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "custom molding"
     },
     {
-      "id": "project-factory-before",
-      "description": "An old, corroded metal pipe system in an industrial plant.",
-      "imageUrl": "https://images.unsplash.com/photo-1667324746638-7c7c3d9eb54a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8b2xkJTIwZmFjdG9yeXxlbnwwfHx8fDE3NjI2MTIyNzZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "old factory"
-    },
-    {
-      "id": "project-factory-after",
-      "description": "A new, clean GRP pipe system replacing the old one.",
-      "imageUrl": "https://images.unsplash.com/photo-1713990070481-5ac54e7bdda0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxuZXclMjBmYWN0b3J5fGVufDB8fHx8MTc2MjY2MzIwNXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "id": "project-factory",
+      "description": "A new, clean GRP pipe system in an industrial plant.",
+      "imageUrl": "https://images.unsplash.com/photo-1680027986434-65c9c0df8248?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxuZXclMjBmYWN0b3J5fGVufDB8fHx8MTc2MzQ0NDAyOHww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "new factory"
     },
     {
-      "id": "project-waterplant-before",
-      "description": "A water treatment plant with aging infrastructure.",
-      "imageUrl": "https://images.unsplash.com/photo-1612674051420-f4f600716f48?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHx3YXRlciUyMHBsYW50fGVufDB8fHx8MTc2MjY2MzIwNXww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "water plant"
-    },
-    {
-      "id": "project-waterplant-after",
-      "description": "The same water treatment plant upgraded with new GRP tanks and pipes.",
-      "imageUrl": "https://images.unsplash.com/photo-1628602813520-db19930a6157?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxtb2Rlcm4lMjBwbGFudHxlbnwwfHx8fDE3NjI2NjMyMDV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "id": "project-waterplant",
+      "description": "A water treatment plant upgraded with new GRP tanks and pipes.",
+      "imageUrl": "https://images.unsplash.com/photo-1680280135702-e89c634335ee?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxtb2Rlcm4lMjBwbGFudHxlbnwwfHx8fDE3NjMzNjQ3MjJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "modern plant"
     },
     {
       "id": "hero-background",
       "description": "An abstract, professional background showing industrial design.",
-      "imageUrl": "https://images.unsplash.com/photo-1600869009498-8d429f88d4f5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxpbmR1c3RyaWFsJTIwZGVzaWdufGVufDB8fHx8MTc2MjYxNjYwNHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1498262257252-c282316270bc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxpbmR1c3RyaWFsJTIwZGVzaWdufGVufDB8fHx8MTc2MzM3NTIwNHww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "industrial design"
     },
     {
       "id": "office-location",
       "description": "A modern office building exterior.",
-      "imageUrl": "https://images.unsplash.com/photo-1453230806017-56d81464b6c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxvZmZpY2UlMjBidWlsZGluZ3xlbnwwfHx8fDE3NjI2Mjg5MzN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1696738061271-401a7ef09e51?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxvZmZpY2UlMjBidWlsZGluZ3xlbnwwfHx8fDE3NjMzNjM2MDF8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "office building"
     },
     {
       "id": "factory-location",
       "description": "A large industrial factory exterior.",
-      "imageUrl": "https://images.unsplash.com/photo-1707798178393-802cecdf2389?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxmYWN0b3J5JTIwZXh0ZXJpb3J8ZW58MHx8fHwxNzYyNjYzMjA1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1714366449985-e4dd29959996?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxmYWN0b3J5JTIwZXh0ZXJpb3J8ZW58MHx8fHwxNzYzNDAwNTU3fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "factory exterior"
     }
   ]
