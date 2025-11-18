@@ -92,7 +92,7 @@ export default function AdminLayout({
             </SidebarMenu>
         </SidebarFooter>
         <SidebarInset>
-          <div className="w-full">
+          <div className="w-full max-w-7xl mx-auto">
             {children}
           </div>
         </SidebarInset>
