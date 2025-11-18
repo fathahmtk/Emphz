@@ -2,8 +2,9 @@
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { ScrollReveal } from "@/components/scroll-reveal";
-import { Button } from "@/components/ui/button";
 import { CheckCircle } from "lucide-react";
+import { PageHero } from "@/components/layout/page-hero";
+import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 const keyFeatures = [
     "Fire-retardant composite",
@@ -20,16 +21,26 @@ const applications = [
 ];
 
 export default function FireSafetyEnclosuresPage() {
+    const heroImage = PlaceHolderImages.find(p => p.id === 'gallery-fire-safety');
+
     return (
         <>
             <SiteHeader />
+             {heroImage && <PageHero 
+                title="Fire & Safety Enclosures"
+                description="Fire-rated GRP enclosures designed for housing safety and emergency equipment, engineered to remain operational in high-temperature and corrosive environments."
+                imageUrl={heroImage.imageUrl}
+                imageHint={heroImage.imageHint}
+             />}
             <main className="container py-12 md:py-20">
-                <ScrollReveal>
-                    <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl font-headline">Fire & Safety Enclosures</h1>
-                    <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
-                        Fire-rated GRP enclosures designed for housing safety and emergency equipment, engineered to remain operational in high-temperature and corrosive environments.
-                    </p>
-                </ScrollReveal>
+                {!heroImage && (
+                    <ScrollReveal>
+                        <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl font-headline">Fire & Safety Enclosures</h1>
+                        <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
+                            Fire-rated GRP enclosures designed for housing safety and emergency equipment, engineered to remain operational in high-temperature and corrosive environments.
+                        </p>
+                    </ScrollReveal>
+                )}
 
                 <div className="mt-12 grid gap-12 md:grid-cols-2">
                     <ScrollReveal delay={200}>
