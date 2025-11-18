@@ -7,7 +7,7 @@ export default function CEOMessagePage() {
     return (
         <>
             <SiteHeader />
-            <main className="container max-w-5xl py-12 md:py-20">
+            <main className="container py-12 md:py-20">
                 <ScrollReveal>
                     <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl font-headline">CEO's Message</h1>
                 </ScrollReveal>

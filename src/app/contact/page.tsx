@@ -29,7 +29,7 @@ export default function ContactPage() {
       <SiteHeader />
       <main className="flex-1">
         <div className="bg-primary/5">
-          <div className="container max-w-7xl px-4 md:px-6 py-12 md:py-20">
+          <div className="container px-4 md:px-6 py-12 md:py-20">
             <ScrollReveal>
               <div className="text-center mb-12">
                 <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl font-headline">Connect with EMPHZ</h1>

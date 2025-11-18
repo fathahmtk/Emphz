@@ -71,7 +71,7 @@ export default function Home() {
             <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent" />
             <div className="absolute inset-0 bg-black/50" />
           </div>
-          <div className="container relative max-w-7xl px-4 md:px-6">
+          <div className="container relative px-4 md:px-6">
             <div className="mx-auto max-w-4xl text-primary-foreground">
               <ScrollReveal>
                 <h1 className="!leading-tight text-4xl font-bold font-headline tracking-tighter text-white shadow-lg sm:text-5xl md:text-6xl lg:text-7xl">
@@ -101,7 +101,7 @@ export default function Home() {
         </section>
 
         <section id="pillars" className="py-12 md:py-24 lg:py-32">
-          <div className="container max-w-7xl px-4 md:px-6">
+          <div className="container px-4 md:px-6">
             <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
               {corporatePillars.map((pillar, i) => (
                 <ScrollReveal key={pillar.title} delay={i * 150}>
@@ -122,7 +122,7 @@ export default function Home() {
           id="products"
           className="w-full bg-secondary/30 py-12 md:py-24 lg:py-32"
         >
-          <div className="container max-w-7xl px-4 md:px-6">
+          <div className="container px-4 md:px-6">
             <ScrollReveal>
               <div className="flex flex-col items-center justify-center space-y-4 text-center">
                 <div className="space-y-2">
@@ -161,7 +161,7 @@ export default function Home() {
         </section>
         
         <section id="trust-layer" className="w-full py-12 md:py-24 lg:py-32">
-          <div className="container max-w-5xl px-4 md:px-6">
+          <div className="container px-4 md:px-6">
             <ScrollReveal>
               <div className="text-center">
                 <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl">Compliance & Trust</h2>

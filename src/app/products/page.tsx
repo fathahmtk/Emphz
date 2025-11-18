@@ -70,7 +70,7 @@ export default function ProductsPage() {
     <>
       <SiteHeader />
       <main className="flex-1">
-        <div className="container max-w-7xl px-4 py-12 md:px-6 md:py-20">
+        <div className="container px-4 py-12 md:px-6 md:py-20">
           <ScrollReveal>
             <div className="mb-12 text-center">
               <h1 className="text-4xl font-bold font-headline tracking-tighter sm:text-5xl md:text-6xl">
