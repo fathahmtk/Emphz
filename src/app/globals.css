@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -81,3 +82,15 @@ body {
     @apply font-headline tracking-wide;
   }
 }
+
+
+/* Embla Carousel Fade Animation */
+.embla__slide {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.embla__slide.is-selected {
+  opacity: 1;
+}
+

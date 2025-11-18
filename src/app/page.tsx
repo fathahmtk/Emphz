@@ -1,6 +1,5 @@
 
 'use client';
-import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, Factory, HardHat, ShieldCheck } from 'lucide-react';
 import { collection, orderBy, query, limit } from 'firebase/firestore';
@@ -15,6 +14,7 @@ import { SiteFooter } from '@/components/layout/site-footer';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Card, CardContent } from '@/components/ui/card';
 import { ProjectCard } from '@/components/project-card';
+import { HeroCarousel } from '@/components/hero-carousel';
 
 const corporatePillars = [
   {
@@ -57,23 +57,20 @@ export default function Home() {
   const { data: projects } = useCollection<Project>(projectsQuery);
 
 
-  const heroImage = PlaceHolderImages.find(p => p.id === 'hero-main');
+  const heroImages = PlaceHolderImages.filter(p => [
+    'hero-main',
+    'gallery-factory-3',
+    'gallery-project-1',
+    'gallery-instrumentation',
+    'gallery-project-4'
+  ].includes(p.id));
 
   return (
     <>
       <SiteHeader />
       <main className="flex-1">
         <section className="relative h-dvh w-full flex items-center justify-center text-center overflow-hidden">
-           {heroImage && <div className="absolute inset-0 z-0">
-             <Image 
-                src={heroImage.imageUrl}
-                alt={heroImage.description}
-                data-ai-hint={heroImage.imageHint}
-                fill
-                className="object-cover"
-                priority
-             />
-           </div>}
+           <HeroCarousel images={heroImages} />
           <div className="absolute inset-0 bg-black/30 z-10" />
           <div className="container relative px-4 md:px-6 z-20">
             <div className="mx-auto max-w-4xl text-primary-foreground">
