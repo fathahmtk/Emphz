@@ -1,3 +1,4 @@
+
 'use client';
     
 import { useState, useEffect } from 'react';
@@ -10,6 +11,8 @@ import {
 } from 'firebase/firestore';
 import { errorEmitter } from '@/firebase/error-emitter';
 import { FirestorePermissionError } from '@/firebase/errors';
+import { type MemoizedFirebase } from '../provider';
+
 
 /** Utility type to add an 'id' field to a given type T. */
 type WithId<T> = T & { id: string };
@@ -22,6 +25,15 @@ export interface UseDocResult<T> {
   data: WithId<T> | null; // Document data with ID, or null.
   isLoading: boolean;       // True if loading.
   error: FirestoreError | Error | null; // Error object, or null.
+}
+
+
+// A unique symbol to identify memoized Firebase objects
+const MEMOIZED_SYMBOL = Symbol('memoized');
+
+// Type guard to check if a value is a MemoizedFirebase object
+function isMemoized<T>(value: any): value is MemoizedFirebase<T> {
+  return value && value[MEMOIZED_SYMBOL];
 }
 
 /**
@@ -39,8 +51,13 @@ export interface UseDocResult<T> {
  * @returns {UseDocResult<T>} Object with data, isLoading, error.
  */
 export function useDoc<T = any>(
-  memoizedDocRef: DocumentReference<DocumentData> | null | undefined,
+  memoizedHookInput: MemoizedFirebase<DocumentReference<DocumentData> | null | undefined>,
 ): UseDocResult<T> {
+  if (memoizedHookInput && !isMemoized(memoizedHookInput)) {
+    throw new Error('Input to useDoc was not properly memoized using useMemoFirebase. This can lead to infinite loops.');
+  }
+  const docRef = memoizedHookInput ? memoizedHookInput.value : null;
+
   type StateDataType = WithId<T> | null;
 
   const [data, setData] = useState<StateDataType>(null);
@@ -48,7 +65,7 @@ export function useDoc<T = any>(
   const [error, setError] = useState<FirestoreError | Error | null>(null);
 
   useEffect(() => {
-    if (!memoizedDocRef) {
+    if (!docRef) {
       setData(null);
       setIsLoading(false);
       setError(null);
@@ -57,10 +74,9 @@ export function useDoc<T = any>(
 
     setIsLoading(true);
     setError(null);
-    // Optional: setData(null); // Clear previous data instantly
 
     const unsubscribe = onSnapshot(
-      memoizedDocRef,
+      docRef,
       (snapshot: DocumentSnapshot<DocumentData>) => {
         if (snapshot.exists()) {
           setData({ ...(snapshot.data() as T), id: snapshot.id });
@@ -74,7 +90,7 @@ export function useDoc<T = any>(
       (error: FirestoreError) => {
         const contextualError = new FirestorePermissionError({
           operation: 'get',
-          path: memoizedDocRef.path,
+          path: docRef.path,
         })
 
         setError(contextualError)
@@ -87,7 +103,7 @@ export function useDoc<T = any>(
     );
 
     return () => unsubscribe();
-  }, [memoizedDocRef]); // Re-run if the memoizedDocRef changes.
+  }, [docRef]); // Re-run if the memoizedDocRef changes.
 
   return { data, isLoading, error };
 }

@@ -171,15 +171,31 @@ export const useFirebaseApp = (): FirebaseApp => {
   return firebaseApp;
 };
 
-type MemoFirebase <T> = T & {__memo?: boolean};
+// A unique symbol to identify memoized Firebase objects
+const MEMOIZED_SYMBOL = Symbol('memoized');
 
-export function useMemoFirebase<T>(factory: () => T, deps: DependencyList): T | (MemoFirebase<T>) {
-  const memoized = useMemo(factory, deps);
-  
-  if(typeof memoized !== 'object' || memoized === null) return memoized;
-  (memoized as MemoFirebase<T>)._memo = true;
-  
-  return memoized;
+// Type for the object returned by useMemoFirebase
+export interface MemoizedFirebase<T> {
+  [MEMOIZED_SYMBOL]: boolean;
+  value: T;
+}
+
+// Type guard to check if a value is a MemoizedFirebase object
+function isMemoized<T>(value: any): value is MemoizedFirebase<T> {
+  return value && value[MEMOIZED_SYMBOL];
+}
+
+export function useMemoFirebase<T>(factory: () => T, deps: DependencyList): MemoizedFirebase<T> {
+  const memoizedValue = useMemo(factory, deps);
+
+  // Wrap the memoized value in a special object
+  return useMemo(
+    () => ({
+      [MEMOIZED_SYMBOL]: true,
+      value: memoizedValue,
+    }),
+    [memoizedValue]
+  );
 }
 
 /**
