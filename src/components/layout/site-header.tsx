@@ -1,4 +1,3 @@
-
 'use client';
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -16,9 +15,12 @@ import React, { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { menuData, type NavLink } from "@/lib/menu-data";
 import { ArrowRight, Search } from "lucide-react";
+import { SearchDialog } from "../search-dialog";
 
 export function SiteHeader() {
     const [scrolled, setScrolled] = useState(false);
+    const [isSearchOpen, setIsSearchOpen] = useState(false);
+
 
     useEffect(() => {
         const handleScroll = () => {
@@ -31,68 +33,82 @@ export function SiteHeader() {
         };
     }, []);
 
+    useEffect(() => {
+        const down = (e: KeyboardEvent) => {
+            if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
+                e.preventDefault()
+                setIsSearchOpen((open) => !open)
+            }
+        }
+        document.addEventListener("keydown", down)
+        return () => document.removeEventListener("keydown", down)
+    }, [])
+
 
     return (
-        <header className={cn(
-            "fixed top-0 z-50 w-full transition-all duration-300",
-            scrolled ? "border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60" : "bg-transparent"
-        )}>
-            <div className="container flex h-16 items-center px-4 md:px-6">
-                <Link href="/" className="mr-6 flex items-center space-x-2">
-                    <Logo className={cn("h-8 w-auto transition-colors", !scrolled && "text-white fill-white")} />
-                </Link>
-                
-                <NavigationMenu className={cn("hidden md:flex", !scrolled && "text-white")}>
-                    <NavigationMenuList>
-                        {menuData.map((item) => (
-                             <NavigationMenuItem key={item.title}>
-                                <NavigationMenuTrigger className={cn("bg-transparent hover:bg-white/10 focus:bg-white/10 data-[active]:bg-white/10 data-[state=open]:bg-white/10", scrolled && "text-foreground hover:bg-accent focus:bg-accent data-[active]:bg-accent/50 data-[state=open]:bg-accent/50")}>
-                                     <Link href={item.href}>{item.title}</Link>
-                                </NavigationMenuTrigger>
-                                <NavigationMenuContent>
-                                    <div className={`grid gap-x-6 gap-y-4 p-6 w-[--nav-width] grid-cols-${item.columns.length > 3 ? '4' : item.columns.length > 2 ? '3' : '2'}`} style={{'--nav-width': `${item.columns.length * 250}px`} as React.CSSProperties}>
-                                        {item.columns.map((col) => (
-                                            <div key={col.title} className="flex flex-col space-y-3">
-                                                <h3 className="font-bold text-lg text-foreground/90">{col.title}</h3>
-                                                <ul className="space-y-2">
-                                                {col.links.map(link => (
-                                                    <li key={link.href}>
-                                                        <ListItem href={link.href} title={link.title}>
-                                                            {link.description}
-                                                        </ListItem>
-                                                    </li>
-                                                ))}
-                                                </ul>
-                                            </div>
-                                        ))}
-                                        {item.cta && (
-                                            <div className={`col-span-${item.columns.length > 3 ? '4' : item.columns.length > 2 ? '3' : '2'} mt-4`}>
-                                                 <Button asChild className="w-full group">
-                                                    <Link href={item.cta.href}>
-                                                        {item.cta.text}
-                                                        <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"/>
-                                                    </Link>
-                                                </Button>
-                                            </div>
-                                        )}
-                                    </div>
-                                </NavigationMenuContent>
-                            </NavigationMenuItem>
-                        ))}
-                       
-                    </NavigationMenuList>
-                </NavigationMenu>
+        <>
+            <header className={cn(
+                "fixed top-0 z-50 w-full transition-all duration-300",
+                scrolled ? "border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60" : "bg-transparent"
+            )}>
+                <div className="container flex h-16 items-center px-4 md:px-6">
+                    <Link href="/" className="mr-6 flex items-center space-x-2">
+                        <Logo className={cn("h-8 w-auto transition-colors", !scrolled && "text-white fill-white")} />
+                    </Link>
+                    
+                    <NavigationMenu className={cn("hidden md:flex", !scrolled && "text-white")}>
+                        <NavigationMenuList>
+                            {menuData.map((item) => (
+                                <NavigationMenuItem key={item.title}>
+                                    <NavigationMenuTrigger className={cn("bg-transparent hover:bg-white/10 focus:bg-white/10 data-[active]:bg-white/10 data-[state=open]:bg-white/10", scrolled && "text-foreground hover:bg-accent focus:bg-accent data-[active]:bg-accent/50 data-[state=open]:bg-accent/50")}>
+                                        <Link href={item.href}>{item.title}</Link>
+                                    </NavigationMenuTrigger>
+                                    <NavigationMenuContent>
+                                        <div className={`grid gap-x-6 gap-y-4 p-6 w-[--nav-width] grid-cols-${item.columns.length > 3 ? '4' : item.columns.length > 2 ? '3' : '2'}`} style={{'--nav-width': `${item.columns.length * 250}px`} as React.CSSProperties}>
+                                            {item.columns.map((col) => (
+                                                <div key={col.title} className="flex flex-col space-y-3">
+                                                    <h3 className="font-bold text-lg text-foreground/90">{col.title}</h3>
+                                                    <ul className="space-y-2">
+                                                    {col.links.map(link => (
+                                                        <li key={link.href}>
+                                                            <ListItem href={link.href} title={link.title}>
+                                                                {link.description}
+                                                            </ListItem>
+                                                        </li>
+                                                    ))}
+                                                    </ul>
+                                                </div>
+                                            ))}
+                                            {item.cta && (
+                                                <div className={`col-span-${item.columns.length > 3 ? '4' : item.columns.length > 2 ? '3' : '2'} mt-4`}>
+                                                    <Button asChild className="w-full group">
+                                                        <Link href={item.cta.href}>
+                                                            {item.cta.text}
+                                                            <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"/>
+                                                        </Link>
+                                                    </Button>
+                                                </div>
+                                            )}
+                                        </div>
+                                    </NavigationMenuContent>
+                                </NavigationMenuItem>
+                            ))}
+                        
+                        </NavigationMenuList>
+                    </NavigationMenu>
 
-                <div className="flex flex-1 items-center justify-end space-x-2">
-                     <div className="hidden md:flex items-center space-x-2">
-                        <Button variant={scrolled ? 'ghost' : 'link'} className={cn(!scrolled && 'text-white hover:bg-white/10')}>Request Spec Pack</Button>
-                        <Button variant={scrolled ? 'default' : 'outline'} className={cn(!scrolled && "text-white border-white/50 hover:bg-white hover:text-primary")}>Submit Tender</Button>
-                        <Button variant="outline" size="icon" className={cn(!scrolled && "text-white border-white/50 hover:bg-white hover:text-primary")}><Search className="h-4 w-4"/></Button>
-                     </div>
-                    <MobileNav />
+                    <div className="flex flex-1 items-center justify-end space-x-2">
+                        <div className="hidden md:flex items-center space-x-2">
+                            <Button variant={scrolled ? 'ghost' : 'link'} className={cn(!scrolled && 'text-white hover:bg-white/10')}>Request Spec Pack</Button>
+                            <Button variant={scrolled ? 'default' : 'outline'} className={cn(!scrolled && "text-white border-white/50 hover:bg-white hover:text-primary")}>Submit Tender</Button>
+                            <Button variant="outline" size="icon" onClick={() => setIsSearchOpen(true)} className={cn(!scrolled && "text-white border-white/50 hover:bg-white hover:text-primary")}><Search className="h-4 w-4"/></Button>
+                        </div>
+                        <MobileNav />
+                    </div>
                 </div>
-            </div>
-        </header>
+            </header>
+            <SearchDialog open={isSearchOpen} onOpenChange={setIsSearchOpen} />
+        </>
     );
 }
 
@@ -119,5 +135,3 @@ const ListItem = React.forwardRef<
     )
 })
 ListItem.displayName = "ListItem"
-
-    
