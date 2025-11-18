@@ -45,7 +45,7 @@
     {
       "id": "project-waterplant",
       "description": "A water treatment plant upgraded with new GRP tanks and pipes.",
-      "imageUrl": "https://images.unsplash.com/photo-1680280135702-e89c634335ee?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxtb2Rlcm4lMjBwbGFudHxlbnwwfHx8fDE3NjMzNjQ3MjJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1680280135702-e89c634335ee?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxtb2Rlcm4lMjBwbGFudHxlbnwwfHx8fDE3NjMzNjQ3MjJ8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "modern plant"
     },
     {
@@ -57,7 +57,7 @@
     {
       "id": "factory-location",
       "description": "A large industrial factory exterior.",
-      "imageUrl": "https://images.unsplash.com/photo-1714366449985-e4dd29959996?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxmYWN0b3J5JTIwZXh0ZXJpb3J8ZW58MHx8fHwxNzYzNDAwNTU3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1714366449985-e4dd29959996?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxmYWN0b3J5JTIwZXh0ZXJpb3J8ZW58MHx8fHwxNzYzNDAwNTU3fDA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "factory exterior"
     },
     {
@@ -69,7 +69,7 @@
     {
       "id": "gallery-kiosk",
       "description": "A GRP kiosk in an outdoor setting.",
-      "imageUrl": "https://images.unsplash.com/photo-1476036604315-fed0874dfd55?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxHUlAlMjBraW9za3xlbnwwfHx8fDE3NjM0NTM2MzF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1476036604315-fed0874dfd55?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxHUlAlMjBraW9za3xlbnwwfHx8fDE3NjM0NTM2MzF8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "GRP kiosk"
     },
     {
@@ -245,6 +245,42 @@
       "description": "The same industrial site, now organized with new GRP infrastructure.",
       "imageUrl": "https://lh3.googleusercontent.com/pw/AP1GczNauezXtutn-NC8eX0l3owbOZZY25GmPn621gvIB59xKxDA9GHSSw0cm_WB5xYw-FO1HmuSdSdhc-h-TmybmLaBSku2nw5AfKWjGSSCPwbpuuCTPeoYPoVIz4AZFypNMC3qoR_yz9qLO4u33b7GUNdnCw=w1546-h870-s-no-gm?authuser=0",
       "imageHint": "industrial plant"
+    },
+    {
+      "id": "hero-new-1",
+      "description": "A sprawling array of solar panels under a clear blue sky.",
+      "imageUrl": "https://lh3.googleusercontent.com/pw/AP1GczPDRXHhmo1DelLxi0HtftJnSmJ5IkdKr2Ul0o4WqNdZC0aJLGTf3RDD6NY95soy12tjT-9X5MXLRdCBt8plfP21vC68xJgU31pGM52ih8yBsDP2UzyWWShp8haDaNLGCv-EGnHQMuwNSVEJe7G288whig=w1546-h870-s-no-gm?authuser=0",
+      "imageHint": "solar panels"
+    },
+    {
+      "id": "hero-new-2",
+      "description": "The intricate and clean interior of an industrial GRP pipe factory.",
+      "imageUrl": "https://lh3.googleusercontent.com/pw/AP1GczOM8UBdsXN3zOPpjgSVNI1-PEyfacTNf86bGU3jos0sJlxlA3rlPfURp35InkZg9Me6Ss85HrzabOqSeoSCsS4Ve6DAqOra4S5xN93t6RHK5fJ9SZa1S_5WukjWSmLWZf1KUptRiqTZKX_QKIGziS-5OA=w1546-h870-s-no-gm?authuser=0",
+      "imageHint": "pipe factory"
+    },
+    {
+      "id": "hero-new-3",
+      "description": "A wide-angle shot of a modern, efficient factory floor with GRP products.",
+      "imageUrl": "https://lh3.googleusercontent.com/pw/AP1GczMWUuvfj-Z0pxnraiQsK7Z4bbvDiaOeHZPUvsS1jNiq67Mmkhq-Diqg0QrEu732I_tPBkTC_BcMOWOBZoC0FzauNRcuVOi4P0Hco1Ugn_WBgC9Rc4OggIsyWpdKuYn4Uq4grSNvgyBSIBHoVwa8VBOD8g=w1546-h870-s-no-gm?authuser=0",
+      "imageHint": "factory floor"
+    },
+    {
+      "id": "hero-new-4",
+      "description": "A detailed close-up of a complex GRP pipe intersection.",
+      "imageUrl": "https://lh3.googleusercontent.com/pw/AP1GczNdSoy-ToED9S_slbJ41r8m40VRyBj75UX6HUzGLm1w3crS4nNA1sPbkauQ5SD_aUIIT_gq9YYXcXXzJpy5OR4wPhrmyW2wkrJHcZe9DnuCfUxSY9q2dltnhXi9XGc660pplN6HxjDBMPdZb0IFUKe4Dw=w1546-h870-s-no-gm?authuser=0",
+      "imageHint": "pipe intersection"
+    },
+    {
+      "id": "hero-new-5",
+      "description": "An aerial view of a large-scale industrial complex featuring GRP installations.",
+      "imageUrl": "https://lh3.googleusercontent.com/pw/AP1GczOUSZar1p4JYXdMSx6WUl8XGGoDw5bU5AOZ7Dhh6Y_riEoU4mYJ8viocKxe_5bn-Nj5ESqzTJDQvIyURYpydGXhaNPxTPCZ3nacQLwRsMAGJZRBQrSyTyMZnbouw0x363sejNpNWyuPepSuv_zmtzqm1g=w1546-h870-s-no-gm?authuser=0",
+      "imageHint": "industrial complex"
+    },
+    {
+      "id": "hero-new-6",
+      "description": "Clean, organized rows of GRP pipes ready for shipment in a warehouse.",
+      "imageUrl": "https://lh3.googleusercontent.com/pw/AP1GczNh0wx1t7SGsVWkAqcAkIoOmq7DpB5P0ohJ9Jphs4-1PwAV8fdQXk_d45k5N9Qni_upiMnNKlgDj7QLZ1fsN9iDI8StAHWHVAwxqrO3VV6xsq4bwrwlHEYmNVHmyp2DDrY110elhMhHHNU2qoAM8cgOag=w1546-h870-s-no-gm?authuser=0",
+      "imageHint": "pipe warehouse"
     }
   ]
 }
