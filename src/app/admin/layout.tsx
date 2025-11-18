@@ -46,8 +46,10 @@ export default function AdminLayout({
   }
 
   const handleSignOut = () => {
-    signOut(auth);
-    router.push('/admin/login');
+    if (auth) {
+        signOut(auth);
+        router.push('/admin/login');
+    }
   }
 
   return (

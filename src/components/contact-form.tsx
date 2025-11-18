@@ -2,7 +2,7 @@
 "use client";
 
 import { useFormState, useFormStatus } from "react-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { submitContactForm } from "@/app/contact/actions";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
@@ -13,7 +13,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Alert, AlertDescription, AlertTitle } from "./ui/alert";
 import { Terminal, Upload } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
-import { products } from "@/lib/data";
+import { useCollection, useFirestore, useMemoFirebase } from "@/firebase";
+import type { Product } from "@/lib/types";
+import { collection, orderBy, query } from "firebase/firestore";
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -28,6 +30,14 @@ export function ContactForm() {
   const initialState = { status: "idle" as const, message: "" };
   const [state, formAction] = useFormState(submitContactForm, initialState);
   const { toast } = useToast();
+  
+  const firestore = useFirestore();
+  const productsQuery = useMemoFirebase(() => {
+    if (!firestore) return null;
+    return query(collection(firestore, 'products'), orderBy('name'));
+  }, [firestore]);
+  const { data: products } = useCollection<Product>(productsQuery);
+
 
   useEffect(() => {
     if (state.status === "error") {
@@ -91,7 +101,7 @@ export function ContactForm() {
                     <SelectValue placeholder="Select a product" />
                 </SelectTrigger>
                 <SelectContent>
-                    {products.map(p => <SelectItem key={p.id} value={p.name}>{p.name}</SelectItem>)}
+                    {products?.map(p => <SelectItem key={p.id} value={p.name}>{p.name}</SelectItem>)}
                 </SelectContent>
               </Select>
             </div>
