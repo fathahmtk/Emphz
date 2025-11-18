@@ -17,7 +17,7 @@ import {
   ChartTooltipContent,
 } from '@/components/ui/chart';
 import { useAuth, useCollection } from '@/firebase';
-import { type Lead } from '@/lib/types';
+import { type Lead, type Product, type Project } from '@/lib/types';
 import { useMemo, useEffect } from 'react';
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from 'recharts';
 import { collection, orderBy, query } from 'firebase/firestore';
@@ -26,21 +26,24 @@ import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { signOut } from 'firebase/auth';
 
-const stats = [
-  {
-    title: 'Products',
-    value: 4,
-    icon: ShoppingBag,
-    href: '/admin/products',
-  },
-  { title: 'Projects', value: 2, icon: BookText, href: '/admin/projects' },
-  { title: 'Leads', value: 2, icon: BarChartIcon, href: '/admin/leads' },
-];
 
 export default function AdminDashboardPage() {
   const { user, loading: authLoading, auth } = useAuth();
   const router = useRouter();
   const firestore = useFirestore();
+
+  const productsQuery = useMemoFirebase(() => {
+    if (!firestore) return null;
+    return query(collection(firestore, 'products'));
+  }, [firestore]);
+  const { data: products } = useCollection<Product>(productsQuery);
+
+  const projectsQuery = useMemoFirebase(() => {
+    if (!firestore) return null;
+    return query(collection(firestore, 'projects'));
+  }, [firestore]);
+  const { data: projects } = useCollection<Project>(projectsQuery);
+
   const leadsQuery = useMemoFirebase(() => {
     if (!firestore) return null;
     return query(collection(firestore, 'leads'), orderBy('submittedAt', 'desc'));
@@ -62,12 +65,22 @@ export default function AdminDashboardPage() {
 
   const chartData = useMemo(() => {
     if (!leads) return [];
-    // This is a simplified chart now that priority is removed
     const leadCount = leads.length;
     return [
       { name: 'Leads', count: leadCount, fill: 'hsl(var(--primary))' },
     ];
   }, [leads]);
+
+  const stats = useMemo(() => [
+    {
+      title: 'Products',
+      value: products?.length ?? 0,
+      icon: ShoppingBag,
+      href: '/admin/products',
+    },
+    { title: 'Projects', value: projects?.length ?? 0, icon: BookText, href: '/admin/projects' },
+    { title: 'Leads', value: leads?.length ?? 0, icon: BarChartIcon, href: '/admin/leads' },
+  ], [products, projects, leads]);
 
   if (authLoading || !user) {
     return (

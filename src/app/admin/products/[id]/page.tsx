@@ -49,14 +49,19 @@ export default function AdminEditProductPage({
     notFound();
   }
 
-  const productData = isNewProduct ? {
+  const productData: Product = isNewProduct ? {
     id: 'new',
     name: 'New Product',
-    description: '',
-    specifications: {},
+    overview: '',
+    specifications: {
+        "Dimensions": "",
+        "Material": "GRP",
+        "IP Rating": "IP65"
+    },
     imageUrl: '',
     imageHint: '',
     category: '',
+    applications: [],
   } : product!;
 
 

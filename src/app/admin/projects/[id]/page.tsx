@@ -51,7 +51,7 @@ export default function AdminEditProjectPage({
     notFound();
   }
   
-  const projectData = isNewProject ? {
+  const projectData: Project = isNewProject ? {
     id: 'new',
     title: 'New Project',
     description: '',

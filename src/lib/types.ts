@@ -6,38 +6,30 @@ export type Product = {
   name: string;
   category: string;
   overview: string;
-  keyFeatures: string[];
-  applications: string[];
   specifications: Record<string, string>;
-  downloads?: Array<{ title: string; url: string; }>;
   imageUrl: string;
   imageHint: string;
-  compliance?: string[];
-  variants?: string[];
-  cadUrl?: string;
   datasheetUrl?: string;
+  applications: string[];
 };
 
 export type Project = {
   id:string;
   title: string;
   description: string;
-  industry: string;
+  clientType: string;
   location: string;
-  imageUrl: string;
-  imageHint: string;
-  beforeImageUrl?: string;
-  beforeImageHint?: string;
-  afterImageUrl?: string;
-  afterImageHint?: string;
+  beforeImageUrl: string;
+  beforeImageHint: string;
+  afterImageUrl: string;
+  afterImageHint: string;
 };
 
 export type DownloadLink = {
   id: string;
   title: string;
   description: string;
-  fileUrl: string; // Will be a placeholder '#'
-  category: 'Datasheet' | 'CAD' | 'Certificate' | 'Manual' | 'Case Study' | 'Other';
+  fileUrl: string; 
 };
 
 export type NavItem = {

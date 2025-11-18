@@ -98,7 +98,7 @@ export function EditProductForm({ product: initialProduct }: { product: Product 
               <div className="flex items-center justify-between">
                 <Label htmlFor="description">Description</Label>
               </div>
-              <Textarea id="description" value={product.description} onChange={(e) => handleInputChange('description', e.target.value)} rows={6} />
+              <Textarea id="description" value={product.overview} onChange={(e) => handleInputChange('overview', e.target.value)} rows={6} />
             </div>
           </CardContent>
         </Card>
