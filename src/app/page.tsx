@@ -15,6 +15,7 @@ import { SiteFooter } from '@/components/layout/site-footer';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Card, CardContent } from '@/components/ui/card';
 import { ProjectCard } from '@/components/project-card';
+import { FirestoreSeeder } from '@/components/firestore-seeder';
 
 const corporatePillars = [
   {
@@ -61,6 +62,7 @@ export default function Home() {
 
   return (
     <>
+      <FirestoreSeeder />
       <SiteHeader />
       <main className="flex-1">
         <section className="relative h-dvh w-full flex items-center justify-center text-center overflow-hidden">
