@@ -16,13 +16,11 @@ export type Product = {
 export type Project = {
   id:string;
   title: string;
-  description: string;
+  details: string;
   clientType: string;
   location: string;
   beforeImageUrl: string;
-  beforeImageHint: string;
   afterImageUrl: string;
-  afterImageHint: string;
 };
 
 export type NavItem = {

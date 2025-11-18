@@ -13,7 +13,6 @@ import { type Product, type Project } from '@/lib/types';
 import { SiteHeader } from '@/components/layout/site-header';
 import { SiteFooter } from '@/components/layout/site-footer';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
 import { ProjectCard } from '@/components/project-card';
 
@@ -53,7 +52,7 @@ export default function Home() {
   
   const projectsQuery = useMemoFirebase(() => {
     if (!firestore) return null;
-    return query(collection(firestore, 'projects'), orderBy('title'), limit(3));
+    return query(collection(firestore, 'project_case_studies'), orderBy('title'), limit(3));
   }, [firestore]);
   const { data: projects } = useCollection<Project>(projectsQuery);
 

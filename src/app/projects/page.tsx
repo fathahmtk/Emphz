@@ -17,7 +17,7 @@ export default function ProjectsPage() {
 
   const projectsQuery = useMemoFirebase(() => {
     if (!firestore) return null;
-    return query(collection(firestore, 'projects'), orderBy('title'));
+    return query(collection(firestore, 'project_case_studies'), orderBy('title'));
   }, [firestore]);
   const { data: projects, isLoading } = useCollection<Project>(projectsQuery);
 
@@ -50,14 +50,14 @@ export default function ProjectsPage() {
                           <MapPin className="h-4 w-4" />
                           <span>{project.location}</span>
                        </div>
-                       <p className="text-muted-foreground mt-4">{project.description}</p>
+                       <p className="text-muted-foreground mt-4">{project.details}</p>
                      </div>
                       <div className="grid grid-cols-2 gap-2 p-4">
                          <div className="relative min-h-[250px] lg:min-h-0">
                            <Image
                             src={project.beforeImageUrl}
                             alt={`Before image for ${project.title}`}
-                            data-ai-hint={project.beforeImageHint}
+                            data-ai-hint="old infrastructure"
                             fill
                             className="object-cover rounded-md"
                             />
@@ -67,7 +67,7 @@ export default function ProjectsPage() {
                            <Image
                             src={project.afterImageUrl}
                             alt={`After image for ${project.title}`}
-                            data-ai-hint={project.afterImageHint}
+                            data-ai-hint="new infrastructure"
                             fill
                             className="object-cover rounded-md"
                             />

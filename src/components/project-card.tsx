@@ -18,7 +18,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
            <Image
               src={project.afterImageUrl}
               alt={project.title}
-              data-ai-hint={project.afterImageHint}
+              data-ai-hint="new infrastructure"
               fill
               className="object-cover transition-transform duration-300 group-hover:scale-105"
             />
@@ -32,7 +32,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
                 <span>{project.location}</span>
                 </div>
             </div>
-            <CardDescription className="mt-3 flex-grow line-clamp-3">{project.description}</CardDescription>
+            <CardDescription className="mt-3 flex-grow line-clamp-3">{project.details}</CardDescription>
         </div>
       </Link>
     </Card>
