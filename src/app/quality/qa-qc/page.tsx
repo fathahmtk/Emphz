@@ -44,7 +44,7 @@ export default function QaQcPage() {
             <main className="container max-w-6xl py-12 md:py-20">
                 <ScrollReveal>
                     <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl font-headline">QA/QC Framework</h1>
-                    <p className="mt-4 text-lg text-muted-foreground max-w-4xl">
+                    <p className="mt-4 text-lg text-muted-foreground max-w-5xl">
                         EMPHZ runs a rigid, traceable quality control workflow from raw material to finished product.
                     </p>
                 </ScrollReveal>
@@ -103,7 +103,7 @@ export default function QaQcPage() {
                 
                 <ScrollReveal delay={600} className="mt-12">
                     <h2 className="text-3xl font-bold font-headline text-center">Quality Commitment</h2>
-                    <p className="mt-4 text-xl bg-primary/5 border-l-4 border-accent p-6 rounded-r-lg text-foreground max-w-4xl mx-auto text-center font-semibold">
+                    <p className="mt-4 text-xl bg-primary/5 border-l-4 border-accent p-6 rounded-r-lg text-foreground max-w-5xl mx-auto text-center font-semibold">
                        Every enclosure, kiosk, cabinet, and GRP component is manufactured with the same standard: Long-lasting, corrosion-proof, compliant, dependable.
                     </p>
                 </ScrollReveal>

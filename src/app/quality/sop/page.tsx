@@ -39,7 +39,7 @@ export default function SopPage() {
             <main className="container max-w-6xl py-12 md:py-20">
                 <ScrollReveal>
                     <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl font-headline">Standard Operating Procedures</h1>
-                    <p className="mt-4 text-lg text-muted-foreground max-w-4xl">
+                    <p className="mt-4 text-lg text-muted-foreground max-w-5xl">
                         EMPHZ maintains SOPs for every stage of production and operations to ensure repeatability, safety, and compliance.
                     </p>
                 </ScrollReveal>
@@ -88,7 +88,7 @@ export default function SopPage() {
                 
                 <ScrollReveal delay={500} className="mt-12">
                      <h2 className="text-3xl font-bold font-headline text-center">Outcome</h2>
-                    <p className="mt-4 text-lg bg-primary/5 border-l-4 border-accent p-6 rounded-r-lg text-foreground max-w-4xl mx-auto">
+                    <p className="mt-4 text-lg bg-primary/5 border-l-4 border-accent p-6 rounded-r-lg text-foreground max-w-5xl mx-auto">
                        Every product that leaves the factory is consistent, compliant, and production-controlled.
                     </p>
                 </ScrollReveal>

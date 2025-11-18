@@ -22,7 +22,7 @@ export default function DownloadsPage() {
     <>
       <SiteHeader />
       <main className="flex-1">
-        <div className="container max-w-4xl px-4 md:px-6 py-12 md:py-20">
+        <div className="container max-w-5xl px-4 md:px-6 py-12 md:py-20">
           <ScrollReveal>
             <div className="text-center mb-12">
               <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl font-headline">Technical Downloads</h1>
