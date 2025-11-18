@@ -34,7 +34,7 @@ export function HeroCarousel({ images, className }: HeroCarouselProps) {
     >
       <div className="flex h-full">
         {images.map((image, index) => (
-          <div className="relative min-w-0 flex-[0_0_100%] h-full" key={index}>
+          <div className="relative min-w-0 flex-[0_0_100%] h-full embla__slide" key={index}>
             <Image
               src={image.imageUrl}
               alt={image.description}

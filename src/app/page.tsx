@@ -2,8 +2,6 @@
 import Link from 'next/link';
 import { ArrowRight, Factory, HardHat, ShieldCheck, Award, Fingerprint, Building } from 'lucide-react';
 import { collection, orderBy, query, limit } from 'firebase/firestore';
-import { useMemo } from 'react';
-import Image from 'next/image';
 
 import { Button } from '@/components/ui/button';
 import { ProductCard } from '@/components/product-card';
@@ -14,6 +12,7 @@ import { SiteHeader } from '@/components/layout/site-header';
 import { SiteFooter } from '@/components/layout/site-footer';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { HeroCarousel } from '@/components/hero-carousel';
 
 const corporatePillars = [
   {
@@ -40,6 +39,8 @@ const trustBadges = [
   { icon: Building, name: 'Govt. Approved', description: 'Public Works Dept.' },
 ]
 
+const heroImages = PlaceHolderImages.filter(img => img.id.startsWith('hero-'));
+
 export default function Home() {
   const firestore = useFirestore();
 
@@ -49,25 +50,12 @@ export default function Home() {
   }, [firestore]);
   const { data: products } = useCollection<Product>(productsQuery);
 
-  const heroImage = useMemo(() => PlaceHolderImages.find(p => p.id === 'hero-main-single'), []);
-
   return (
     <>
       <SiteHeader />
       <main className="flex-1">
         <section className="relative h-dvh w-full flex items-end justify-start text-left overflow-hidden">
-          {heroImage && (
-             <div className="absolute inset-0 z-0">
-                <Image
-                  src={heroImage.imageUrl}
-                  alt={heroImage.description}
-                  data-ai-hint={heroImage.imageHint}
-                  fill
-                  className="object-cover"
-                  priority
-                />
-              </div>
-          )}
+          <HeroCarousel images={heroImages} />
           <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent z-10" />
           <div className="container relative px-4 md:px-6 z-20 pb-12 md:pb-20">
             <div className="max-w-2xl">
