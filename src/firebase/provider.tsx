@@ -161,11 +161,9 @@ type MemoizedFirebase<T> = T & { __memo?: boolean };
 export function useMemoFirebase<T extends Memoizable>(factory: () => T, deps: DependencyList): T {
     const memoized = useMemo(factory, deps);
 
-    useEffect(() => {
-        if (memoized && typeof memoized === 'object') {
-            (memoized as MemoizedFirebase<T>).__memo = true;
-        }
-    }, [memoized]);
+    if (memoized && typeof memoized === 'object') {
+        (memoized as MemoizedFirebase<T>).__memo = true;
+    }
 
     return memoized;
 }
