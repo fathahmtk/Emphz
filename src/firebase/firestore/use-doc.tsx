@@ -9,8 +9,6 @@ import {
   FirestoreError,
   DocumentSnapshot,
 } from 'firebase/firestore';
-import { errorEmitter } from '@/firebase/error-emitter';
-import { FirestorePermissionError } from '@/firebase/errors';
 import { type MemoizedFirebase, isMemoized } from '../provider';
 
 
@@ -79,17 +77,9 @@ export function useDoc<T = any>(
         setIsLoading(false);
       },
       (error: FirestoreError) => {
-        const contextualError = new FirestorePermissionError({
-          operation: 'get',
-          path: docRef.path,
-        })
-
-        setError(contextualError)
+        setError(error)
         setData(null)
         setIsLoading(false)
-
-        // trigger global error propagation
-        errorEmitter.emit('permission-error', contextualError);
       }
     );
 

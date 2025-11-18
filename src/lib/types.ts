@@ -25,13 +25,6 @@ export type Project = {
   afterImageHint: string;
 };
 
-export type TechnicalDownload = {
-  id: string;
-  title: string;
-  description: string;
-  fileUrl: string; 
-};
-
 export type NavItem = {
   title: string;
   href: string;
