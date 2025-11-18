@@ -71,7 +71,7 @@ export default function Home() {
                     alt={heroImage.description}
                     data-ai-hint={heroImage.imageHint}
                     fill
-                    className="object-cover grayscale"
+                    className="object-cover"
                     priority
                 />
             </div>

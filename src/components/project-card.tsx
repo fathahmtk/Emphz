@@ -21,7 +21,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
               alt={project.title}
               data-ai-hint="new infrastructure"
               fill
-              className="object-cover transition-transform duration-300 group-hover:scale-105 grayscale group-hover:grayscale-0"
+              className="object-cover transition-transform duration-300 group-hover:scale-105"
             />
         </div>
         <div className="p-6 flex flex-col flex-grow">
