@@ -45,13 +45,13 @@
     {
       "id": "office-location",
       "description": "A modern office building exterior.",
-      "imageUrl": "https://images.unsplash.com/photo-1696738061271-401a7ef09e51?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxvZmZpY2UlMjBidWlsZGluZ3xlbnwwfHx8fDE3NjMzNjM2MDF8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1696738061271-401a7ef09e51?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxvZmZpY2UlMjBidWlsZGluZ3xlbnwwfHx8fDE3NjMzNjM2MDF8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "office building"
     },
     {
       "id": "factory-location",
       "description": "A large industrial factory exterior.",
-      "imageUrl": "https://images.unsplash.com/photo-1714366449985-e4dd29959996?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxmYWN0b3J5JTIwZXh0ZXJpb3J8ZW58MHx8fHwxNzYzNDAwNTU3fDA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1714366449985-e4dd29959996?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxmYWN0b3J5JTIwZXh0ZXJpb3J8ZW58MHx8fHwxNzYzNDAwNTU3fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "factory exterior"
     },
     {
@@ -153,7 +153,7 @@
     {
       "id": "gallery-project-4",
       "description": "A GRP cabinet installed in a wastewater treatment facility.",
-      "imageUrl": "https://images.unsplash.com/photo-1705708551758-76b153fa536e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHx3YXN0ZXdhdGVyJTIwdHJlYXRtZW50fGVufDB8fHx8MTc2MzQ2Njk0Nnww&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1705708551758-76b153fa536e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHx3YXN0ZXdhdGVyJTIwdHJlYXRtZW50fGVufDB8fHx8MTc2MzQ2Njk0Nnww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "wastewater treatment"
     },
     {
