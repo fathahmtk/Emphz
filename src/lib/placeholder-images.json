@@ -51,7 +51,7 @@
     {
       "id": "factory-location",
       "description": "A large industrial factory exterior.",
-      "imageUrl": "https://images.unsplash.com/photo-1714366449985-e4dd29959996?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxmYWN0b3J5JTIwZXh0ZXJpb3J8ZW58MHx8fHwxNzYzNDAwNTU3fDA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1714366449985-e4dd29959996?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxmYWN0b3J5JTIwZXh0ZXJpb3J8ZW58MHx8fHwxNzYzNDAwNTU3fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "factory exterior"
     },
     {
@@ -81,13 +81,13 @@
     {
       "id": "gallery-project-1",
       "description": "EMPHZ enclosures installed at a large-scale solar farm.",
-      "imageUrl": "https://images.unsplash.com/photo-1509389928833-fe62aef36deb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxzb2xhciUyMGZhcm18ZW58MHx8fHwxNzYzNDUzNjMxfDA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1509389928833-fe62aef36deb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxzb2xhciUyMGZhcm18ZW58MHx8fHwxNzYzNDUzNjMxfDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "solar farm"
     },
     {
       "id": "gallery-roofing",
       "description": "Our GRP roofing system on an industrial building.",
-      "imageUrl": "https://images.unsplash.com/photo-1757401419592-29224c46ecef?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxHUlAlMjByb29maW5nfGVufDB8fHx8MTc2MzQ1MzYzMHww&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1757401419592-29224c46ecef?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxHUlAlMjByb29maW5nfGVufDB8fHx8MTc2MzQ1MzYzMHww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "GRP roofing"
     },
     {
@@ -107,6 +107,30 @@
       "description": "A robust battery enclosure for a solar energy system.",
       "imageUrl": "https://images.unsplash.com/photo-1632073248509-c3225a81a95a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "imageHint": "battery enclosure"
+    },
+    {
+      "id": "gallery-event",
+      "description": "People networking at a professional industry exhibition.",
+      "imageUrl": "https://images.unsplash.com/photo-1549590143-d5855148a9d5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "imageHint": "industry event"
+    },
+    {
+      "id": "gallery-team",
+      "description": "A diverse team of engineers collaborating in a modern office.",
+      "imageUrl": "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "imageHint": "engineering team"
+    },
+    {
+      "id": "gallery-project-2",
+      "description": "Installation of GRP components at a large construction site.",
+      "imageUrl": "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "imageHint": "construction site"
+    },
+    {
+      "id": "gallery-project-3",
+      "description": "A technician working on a complex control panel inside an enclosure.",
+      "imageUrl": "https://images.unsplash.com/photo-1666942910403-9549509f1874?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "imageHint": "control panel"
     }
   ]
 }
