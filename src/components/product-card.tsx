@@ -3,12 +3,13 @@
 
 import Image from 'next/image';
 import { type Product } from '@/lib/types';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
+import { CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { Button } from './ui/button';
 import { Eye } from 'lucide-react';
 import { useState } from 'react';
 import { ProductQuickView } from './product-quick-view';
 import { Badge } from './ui/badge';
+import { GlassCard } from './glass-card';
 
 interface ProductCardProps {
   product: Product;
@@ -19,7 +20,7 @@ export function ProductCard({ product }: ProductCardProps) {
 
   return (
     <>
-      <Card className="flex h-full flex-col group overflow-hidden">
+      <GlassCard className="flex h-full flex-col group overflow-hidden">
         <CardHeader className="p-0">
           <div className="relative aspect-[4/3] w-full">
             <Image
@@ -50,7 +51,7 @@ export function ProductCard({ product }: ProductCardProps) {
             </Button>
           </div>
         </CardContent>
-      </Card>
+      </GlassCard>
       <ProductQuickView
         product={product}
         isOpen={isQuickViewOpen}
