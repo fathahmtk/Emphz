@@ -39,55 +39,55 @@
     {
       "id": "project-waterplant",
       "description": "A water treatment plant upgraded with new GRP tanks and pipes.",
-      "imageUrl": "https://images.unsplash.com/photo-1680280135702-e89c634335ee?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxtb2Rlcm4lMjBwbGFudHxlbnwwfHx8fDE3NjMzNjQ3MjJ8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1680280135702-e89c634335ee?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxtb2Rlcm4lMjBwbGFudHxlbnwwfHx8fDE3NjMzNjQ3MjJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "modern plant"
     },
     {
       "id": "office-location",
       "description": "A modern office building exterior.",
-      "imageUrl": "https://images.unsplash.com/photo-1696738061271-401a7ef09e51?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxvZmZpY2UlMjBidWlsZGluZ3xlbnwwfHx8fDE3NjMzNjM2MDF8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1696738061271-401a7ef09e51?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxvZmZpY2UlMjBidWlsZGluZ3xlbnwwfHx8fDE3NjMzNjM2MDF8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "office building"
     },
     {
       "id": "factory-location",
       "description": "A large industrial factory exterior.",
-      "imageUrl": "https://images.unsplash.com/photo-1714366449985-e4dd29959996?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxmYWN0b3J5JTIwZXh0ZXJpb3J8ZW58MHx8fHwxNzYzNDAwNTU3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1714366449985-e4dd29959996?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxmYWN0b3J5JTIwZXh0ZXJpb3J8ZW58MHx8fHwxNzYzNDAwNTU3fDA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "factory exterior"
     },
     {
       "id": "gallery-product-1",
       "description": "A close-up of a GRP electrical enclosure with wiring.",
-      "imageUrl": "https://images.unsplash.com/photo-1640526569383-24ac00e0eae6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxHUlAlMjBlbmNsb3N1cmV8ZW58MHx8fHwxNzYzNDUzNjMxfDA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1640526569383-24ac00e0eae6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxHUlAlMjBlbmNsb3N1cmV8ZW58MHx8fHwxNzYzNDUzNjMxfDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "GRP enclosure"
     },
     {
       "id": "gallery-kiosk",
       "description": "A GRP kiosk in an outdoor setting.",
-      "imageUrl": "https://images.unsplash.com/photo-1476036604315-fed0874dfd55?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxHUlAlMjBraW9za3xlbnwwfHx8fDE3NjM0NTM2MzF8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1476036604315-fed0874dfd55?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxHUlAlMjBraW9za3xlbnwwfHx8fDE3NjM0NTM2MzF8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "GRP kiosk"
     },
     {
       "id": "gallery-factory-1",
       "description": "Inside the EMPHZ manufacturing facility, showing molding process.",
-      "imageUrl": "https://images.unsplash.com/photo-1741993677318-7c269b452379?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxmYWN0b3J5JTIwcHJvY2Vzc3xlbnwwfHx8fDE3NjM0NTM2MzF8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1741993677318-7c269b452379?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxmYWN0b3J5JTIwcHJvY2Vzc3xlbnwwfHx8fDE3NjM0NTM2MzF8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "factory process"
     },
     {
       "id": "gallery-factory-2",
       "description": "A quality control specialist inspecting a finished product.",
-      "imageUrl": "https://images.unsplash.com/photo-1624957485560-47747511b32f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxxdWFsaXR5JTIwY29udHJvbHxlbnwwfHx8fDE3NjM0NTM2MzB8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1624957485560-47747511b32f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxxdWFsaXR5JTIwY29udHJvbHxlbnwwfHx8fDE3NjM0NTM2MzB8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "quality control"
     },
     {
       "id": "gallery-project-1",
       "description": "EMPHZ enclosures installed at a large-scale solar farm.",
-      "imageUrl": "https://images.unsplash.com/photo-1509389928833-fe62aef36deb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxzb2xhciUyMGZhcm18ZW58MHx8fHwxNzYzNDUzNjMxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1509389928833-fe62aef36deb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxzb2xhciUyMGZhcm18ZW58MHx8fHwxNzYzNDUzNjMxfDA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "solar farm"
     },
     {
       "id": "gallery-roofing",
       "description": "Our GRP roofing system on an industrial building.",
-      "imageUrl": "https://images.unsplash.com/photo-1757401419592-29224c46ecef?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxHUlAlMjByb29maW5nfGVufDB8fHx8MTc2MzQ1MzYzMHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1757401419592-29224c46ecef?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxHUlAlMjByb29maW5nfGVufDB8fHx8MTc2MzQ1MzYzMHww&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "GRP roofing"
     },
     {
@@ -131,6 +131,36 @@
       "description": "A technician working on a complex control panel inside an enclosure.",
       "imageUrl": "https://images.unsplash.com/photo-1666942910403-9549509f1874?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "imageHint": "control panel"
+    },
+    {
+      "id": "gallery-product-2",
+      "description": "A stack of gray GRP electrical enclosures.",
+      "imageUrl": "https://images.unsplash.com/photo-1646800570508-172052920324?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxHUlAlMjBlbmNsb3N1cmVzfGVufDB8fHx8MTc2MzQ2Njk0Nnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "GRP enclosures"
+    },
+    {
+      "id": "gallery-kiosk-2",
+      "description": "The interior of a custom GRP operator kiosk.",
+      "imageUrl": "https://images.unsplash.com/photo-1560681610-b97792bd7cd9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxraW9zayUyMGludGVyaW9yfGVufDB8fHx8MTc2MzQ2Njk0Nnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "kiosk interior"
+    },
+    {
+      "id": "gallery-factory-3",
+      "description": "Automated machinery in the GRP production line.",
+      "imageUrl": "https://images.unsplash.com/photo-1675615822432-a52140d01248?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "imageHint": "factory machinery"
+    },
+    {
+      "id": "gallery-project-4",
+      "description": "A GRP cabinet installed in a wastewater treatment facility.",
+      "imageUrl": "https://images.unsplash.com/photo-1705708551758-76b153fa536e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHx3YXN0ZXdhdGVyJTIwdHJlYXRtZW50fGVufDB8fHx8MTc2MzQ2Njk0Nnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "wastewater treatment"
+    },
+    {
+      "id": "gallery-team-2",
+      "description": "A team meeting in a modern conference room.",
+      "imageUrl": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "imageHint": "team meeting"
     }
   ]
 }
