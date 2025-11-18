@@ -54,7 +54,10 @@ export default function Home() {
     'gallery-project-1',
     'gallery-instrumentation',
     'gallery-project-4',
-    'hero-industrial-plant'
+    'hero-industrial-plant',
+    'hero-extra-1',
+    'hero-extra-2',
+    'hero-extra-3'
   ].includes(p.id));
 
   return (
@@ -187,3 +190,5 @@ export default function Home() {
     </>
   );
 }
+
+    

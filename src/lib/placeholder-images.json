@@ -87,7 +87,7 @@
     {
       "id": "gallery-roofing",
       "description": "Our GRP roofing system on an industrial building.",
-      "imageUrl": "https://images.unsplash.com/photo-1757401419592-29224c46ecef?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxHUlAlMjByb29maW5nfGVufDB8fHx8MTc2MzQ1MzYzMHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1757401419592-29224c46ecef?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxHUlAlMjByb29maW5nfGVufDB8fHx8MTc2MzQ1MzYzMHww&ixlibrb-4.1.0&q=80&w=1080",
       "imageHint": "GRP roofing"
     },
     {
@@ -141,7 +141,7 @@
     {
       "id": "gallery-kiosk-2",
       "description": "The interior of a custom GRP operator kiosk.",
-      "imageUrl": "https://images.unsplash.com/photo-1560681610-b97792bd7cd9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxraW9zayUyMGludGVyaW9yfGVufDB8fHx8MTc2MzQ2Njk0Nnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1560681610-b97792bd7cd9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxraW9zayUyMGludGVyaW9yfGVufDB8fHx8MTc2MzQ2Njk0Nnww&ixlibrb-4.1.0&q=80&w=1080",
       "imageHint": "kiosk interior"
     },
     {
@@ -167,6 +167,24 @@
       "description": "Wide shot of a modern industrial plant with extensive piping.",
       "imageUrl": "https://lh3.googleusercontent.com/pw/AP1GczNauezXtutn-NC8eX0l3owbOZZY25GmPn621gvIB59xKxDA9GHSSw0cm_WB5xYw-FO1HmuSdSdhc-h-TmybmLaBSku2nw5AfKWjGSSCPwbpuuCTPeoYPoVIz4AZFypNMC3qoR_yz9qLO4u33b7GUNdnCw=w1546-h870-s-no-gm?authuser=0",
       "imageHint": "industrial plant"
+    },
+    {
+      "id": "hero-extra-1",
+      "description": "View of a water treatment facility with complex piping.",
+      "imageUrl": "https://lh3.googleusercontent.com/pw/AP1GczPbeNuPKX4f1fcLBcXPQiqlOOGIEuoQETateuyhWP1O1Iu_xQmmYjDhoMiUt3kWtomtuXmfNcSV-xMz4YYVeWcL0XdcnNh9-j9dxlS-cSDOezcZA5pHm4ZAWbMqcUebJPR7Mew_UM2IRvRW1A03HQeS1A=w1546-h870-s-no-gm?authuser=0",
+      "imageHint": "water treatment"
+    },
+    {
+      "id": "hero-extra-2",
+      "description": "Industrial GRP piping in a bright, modern factory.",
+      "imageUrl": "https://lh3.googleusercontent.com/pw/AP1GczM1hckqIUVw9IhQ89NuHm4s5MP18qBYn1Es4PrukI3kM5JUQLfBz0xVB46fB2NGtBL-qGIU96NN5Jp0TKJPNZqq8idRWdwdKwp90ZinmNZX3N8sTV8WZ4FTV8QNJkgO105umrKdwaVg3qB_6BKBoUxP0w=w1546-h870-s-no-gm?authuser=0",
+      "imageHint": "industrial piping"
+    },
+    {
+      "id": "hero-extra-3",
+      "description": "Close-up of a complex array of GRP pipes and valves.",
+      "imageUrl": "https://lh3.googleusercontent.com/pw/AP1GczM23e5IB401B6M-knj-n3x72djmOLjm9HE2awJAuhVdyaXmAjCeRkd4o0nWGsOVnODi-5OHDBbfFJGXHFAMQqLGJtY7Af4o8soGA9b6A92u04WXskUIwjtsXSdumMYO6nbUiX3N9CL7VwIqL25oti253g=w1546-h870-s-no-gm?authuser=0",
+      "imageHint": "pipe valves"
     }
   ]
 }
