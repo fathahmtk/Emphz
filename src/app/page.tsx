@@ -76,12 +76,12 @@ function CaseStudyCard({ project }: { project: ProjectCaseStudy }) {
                 </div>
             </div>
             <CardHeader>
-                <CardTitle className="font-headline text-xl">{project.title}</CardTitle>
+                <CardTitle className="font-headline text-xl text-primary-foreground">{project.title}</CardTitle>
             </CardHeader>
             <CardContent>
-                <CardDescription className="text-sm">{project.details}</CardDescription>
-                <Separator className="my-4" />
-                <div className="flex items-center justify-between text-xs text-muted-foreground">
+                <CardDescription className="text-sm text-primary-foreground/80">{project.details}</CardDescription>
+                <Separator className="my-4 bg-white/20" />
+                <div className="flex items-center justify-between text-xs text-primary-foreground/80">
                     <div className="flex items-center gap-2">
                         <Users className="h-4 w-4" />
                         <span>{project.clientType}</span>
@@ -248,7 +248,7 @@ export default function Home() {
             <div className="container px-4 md:px-6">
                 <ScrollReveal>
                     <div className="text-center mb-12 text-primary-foreground">
-                         <div className="inline-block rounded-lg bg-secondary px-3 py-1 text-sm text-secondary-foreground mb-2">
+                         <div className="inline-block rounded-lg bg-background/80 px-3 py-1 text-sm text-foreground mb-2">
                             Featured Projects
                           </div>
                         <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-5xl">Proven Field Performance</h2>
@@ -312,7 +312,7 @@ export default function Home() {
                   ))}
                 </div>
                  <div className="mt-12 text-center">
-                    <Button size="lg" variant="outline" asChild>
+                    <Button size="lg" variant="outline" className="text-primary-foreground border-primary-foreground hover:bg-primary-foreground hover:text-background" asChild>
                         <Link href="/quality/certification">View Quality Framework</Link>
                     </Button>
                 </div>
@@ -338,7 +338,7 @@ export default function Home() {
             <div className="container px-4 md:px-6">
                  <ScrollReveal>
                     <div className="text-center mb-12 text-primary-foreground">
-                         <div className="inline-block rounded-lg bg-secondary px-3 py-1 text-sm text-secondary-foreground mb-2">
+                         <div className="inline-block rounded-lg bg-background/80 px-3 py-1 text-sm text-foreground mb-2">
                            News & Media
                           </div>
                         <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-5xl">Latest Updates</h2>
