@@ -215,6 +215,30 @@
       "description": "Energy plant infrastructure.",
       "imageUrl": "https://lh3.googleusercontent.com/pw/AP1GczNHDRejNbFc9X-2_IqElBS_aQg3cWwycNVOBd0TN3_lbnuErIZJrV1JmDd377E8YsRbhwHy6MvzCODVnuY0yLxRwJlbXxxwt0WcH1addRK_Ffv5cIQKRu3kAgdutyJYMsYoqgGWsMSnqbmVo-BZy0_9Mg=w1546-h870-s-no-gm?authuser=0",
       "imageHint": "energy plant"
+    },
+    {
+      "id": "case-study-before-1",
+      "description": "An old, rusted metal enclosure in a state of disrepair.",
+      "imageUrl": "https://images.unsplash.com/photo-1567590248558-c8a7b9c9038a?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "imageHint": "rusted box"
+    },
+    {
+      "id": "case-study-after-1",
+      "description": "A new, clean GRP enclosure installed in the same location.",
+      "imageUrl": "https://images.unsplash.com/photo-1640526569383-24ac00e0eae6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxHUlAlMjBlbmNsb3N1cmV8ZW58MHx8fHwxNzYzNDUzNjMxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "GRP enclosure"
+    },
+    {
+      "id": "case-study-before-2",
+      "description": "A cluttered and disorganized industrial site.",
+      "imageUrl": "https://images.unsplash.com/photo-1526965622089-9a43a0f5a4a5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "imageHint": "cluttered site"
+    },
+    {
+      "id": "case-study-after-2",
+      "description": "The same industrial site, now organized with new GRP infrastructure.",
+      "imageUrl": "https://lh3.googleusercontent.com/pw/AP1GczNauezXtutn-NC8eX0l3owbOZZY25GmPn621gvIB59xKxDA9GHSSw0cm_WB5xYw-FO1HmuSdSdhc-h-TmybmLaBSku2nw5AfKWjGSSCPwbpuuCTPeoYPoVIz4AZFypNMC3qoR_yz9qLO4u33b7GUNdnCw=w1546-h870-s-no-gm?authuser=0",
+      "imageHint": "industrial plant"
     }
   ]
 }

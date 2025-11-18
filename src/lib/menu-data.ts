@@ -112,6 +112,18 @@ export const menuData: MegaMenu[] = [
     ],
     cta: { text: "Speak to Industry Specialist", href: "/contact" },
   },
+  {
+    title: "Projects",
+    href: "/projects",
+    columns: [
+        {
+            title: "Our Work",
+            links: [
+                { title: "Project Case Studies", href: "/projects" },
+            ]
+        }
+    ]
+  },
    {
     title: "Quality",
     href: "/quality/certification",
