@@ -30,7 +30,7 @@ function RootBody({
     const pathname = usePathname();
 
     return (
-        <body className={cn('min-h-screen font-body antialiased', jost.variable, manrope.variable)}>
+        <body className={cn('min-h-screen font-body antialiased dark', jost.variable, manrope.variable)}>
             <FirebaseClientProvider>
                 <ClientOnly>
                     <div className="relative flex min-h-dvh flex-col bg-background">

@@ -11,15 +11,15 @@ export function Logo({ className, ...props }: HTMLAttributes<SVGSVGElement>) {
       {...props}
     >
       <g transform="translate(20,20)">
-        <rect x="0" y="0" width="120" height="120" rx="28" fill="currentColor"/>
+        <rect x="0" y="0" width="120" height="120" rx="28" fill="hsl(var(--primary))"/>
         
-        <g fill="hsl(var(--background))">
+        <g fill="hsl(var(--primary-foreground))">
            <rect x="28" y="28" width="60" height="16" rx="8" />
            <rect x="28" y="52" width="50" height="16" rx="8" />
            <rect x="28" y="76" width="60" height="16" rx="8" />
         </g>
         
-        <polygon fill="currentColor" points="80,12 126,12 98,60 124,60 70,130 86,76 58,76"/>
+        <polygon fill="hsl(var(--primary))" points="80,12 126,12 98,60 124,60 70,130 86,76 58,76"/>
       </g>
       <g transform="translate(170,40)">
         <text x="0" y="70" fill="currentColor" fontFamily="Jost,Poppins,system-ui" fontSize="72" fontWeight="700" letterSpacing="1.5">Emphz</text>
