@@ -9,15 +9,14 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { Loader2, Sparkles, Trash2, ImageIcon } from "lucide-react";
-import { generateProjectDescription, saveProject, deleteProject } from "./actions";
+import { Loader2, Trash2 } from "lucide-react";
+import { saveProject, deleteProject } from "./actions";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { useRouter } from "next/navigation";
 
 export function EditProjectForm({ project: initialProject }: { project: Project }) {
   const [project, setProject] = useState(initialProject);
-  const [isGenerating, setIsGenerating] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
   const { toast } = useToast();
@@ -28,26 +27,6 @@ export function EditProjectForm({ project: initialProject }: { project: Project 
   const handleInputChange = (field: keyof Omit<Project, 'id'>, value: string) => {
     setProject(prev => ({...prev, [field]: value}));
   }
-
-  const handleGenerate = async () => {
-    setIsGenerating(true);
-    const result = await generateProjectDescription(project.description);
-    setIsGenerating(false);
-
-    if ("variation" in result) {
-      handleInputChange('description', result.variation);
-      toast({
-        title: "Content Generated",
-        description: "A new project description has been generated.",
-      });
-    } else {
-      toast({
-        variant: "destructive",
-        title: "Error",
-        description: result.error,
-      });
-    }
-  };
 
   const handleSaveChanges = async () => {
     setIsSaving(true);
@@ -60,8 +39,8 @@ export function EditProjectForm({ project: initialProject }: { project: Project 
             title: "Changes Saved",
             description: `Project "${project.title}" has been updated.`,
         });
-        if(isNewProject) {
-            router.push('/admin/projects');
+        if(isNewProject && result.id) {
+            router.push(`/admin/projects/${result.id}`);
         }
     } else {
          toast({
@@ -109,17 +88,7 @@ export function EditProjectForm({ project: initialProject }: { project: Project 
               <Input id="title" value={project.title} onChange={(e) => handleInputChange('title', e.target.value)} />
             </div>
             <div className="space-y-2">
-              <div className="flex items-center justify-between">
-                <Label htmlFor="description">Description</Label>
-                <Button variant="ghost" size="sm" onClick={handleGenerate} disabled={isGenerating}>
-                  {isGenerating ? (
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  ) : (
-                    <Sparkles className="mr-2 h-4 w-4 text-amber-500" />
-                  )}
-                  Generate with AI
-                </Button>
-              </div>
+              <Label htmlFor="description">Description</Label>
               <Textarea id="description" value={project.description} onChange={(e) => handleInputChange('description', e.target.value)} rows={6} />
             </div>
              <div className="grid gap-4 sm:grid-cols-2">
@@ -160,7 +129,7 @@ export function EditProjectForm({ project: initialProject }: { project: Project 
           </CardContent>
         </Card>
         <div className="flex flex-col gap-2">
-            <Button onClick={handleSaveChanges} size="lg" disabled={isSaving || isGenerating}>
+            <Button onClick={handleSaveChanges} size="lg" disabled={isSaving}>
                 {isSaving ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
                 {isNewProject ? 'Create Project' : 'Save Changes'}
             </Button>

@@ -9,15 +9,13 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { Bot, Loader2, Sparkles, Trash2, ImageIcon } from "lucide-react";
-import { generateProductDescription, generateImage, saveProduct, deleteProduct } from "./actions";
+import { Loader2, Trash2, ImageIcon } from "lucide-react";
+import { saveProduct, deleteProduct } from "./actions";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 export function EditProductForm({ product: initialProduct }: { product: Product }) {
   const [product, setProduct] = useState(initialProduct);
-  const [isGeneratingDesc, setIsGeneratingDesc] = useState(false);
-  const [isGeneratingImage, setIsGeneratingImage] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
   const { toast } = useToast();
@@ -25,7 +23,7 @@ export function EditProductForm({ product: initialProduct }: { product: Product 
 
   const isNewProduct = product.id === 'new';
 
-  const handleInputChange = (field: keyof Product, value: any) => {
+  const handleInputChange = (field: keyof Omit<Product, 'id'>, value: any) => {
     setProduct(prev => ({...prev, [field]: value}));
   }
 
@@ -33,55 +31,10 @@ export function EditProductForm({ product: initialProduct }: { product: Product 
     setProduct(prev => ({...prev, specifications: {...prev.specifications, [key]: value}}));
   }
 
-  const handleGenerateDesc = async () => {
-    setIsGeneratingDesc(true);
-    const result = await generateProductDescription(product.description);
-    setIsGeneratingDesc(false);
-
-    if ("variation" in result) {
-      handleInputChange('description', result.variation);
-      toast({
-        title: "Content Generated",
-        description: "A new product description has been generated.",
-      });
-    } else {
-      toast({
-        variant: "destructive",
-        title: "Error",
-        description: result.error,
-      });
-    }
-  };
-
-  const handleGenerateImage = async () => {
-    setIsGeneratingImage(true);
-    const result = await generateImage(product.name, product.description);
-    setIsGeneratingImage(false);
-
-    if ("imageUrl" in result) {
-        handleInputChange('imageUrl', result.imageUrl);
-      toast({
-        title: "Image Generated",
-        description: "A new product image has been generated.",
-      });
-    } else {
-      toast({
-        variant: "destructive",
-        title: "Error",
-        description: result.error,
-      });
-    }
-  };
-
   const handleSaveChanges = async () => {
     setIsSaving(true);
-    const result = await saveProduct(product.id, {
-        name: product.name,
-        description: product.description,
-        specifications: product.specifications,
-        imageUrl: product.imageUrl,
-        category: product.category,
-    });
+    const { id, ...productData } = product;
+    const result = await saveProduct(id, productData);
     setIsSaving(false);
 
     if("success" in result) {
@@ -89,8 +42,8 @@ export function EditProductForm({ product: initialProduct }: { product: Product 
             title: "Changes Saved",
             description: `Product "${product.name}" has been updated.`,
         })
-        if (isNewProduct) {
-            router.push('/admin/products');
+        if (isNewProduct && result.id) {
+            router.push(`/admin/products/${result.id}`);
         }
     } else {
         toast({
@@ -144,14 +97,6 @@ export function EditProductForm({ product: initialProduct }: { product: Product 
             <div className="space-y-2">
               <div className="flex items-center justify-between">
                 <Label htmlFor="description">Description</Label>
-                <Button variant="ghost" size="sm" onClick={handleGenerateDesc} disabled={isGeneratingDesc}>
-                  {isGeneratingDesc ? (
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  ) : (
-                    <Sparkles className="mr-2 h-4 w-4 text-amber-500" />
-                  )}
-                  Generate with AI
-                </Button>
               </div>
               <Textarea id="description" value={product.description} onChange={(e) => handleInputChange('description', e.target.value)} rows={6} />
             </div>
@@ -177,7 +122,11 @@ export function EditProductForm({ product: initialProduct }: { product: Product 
             <CardTitle>Product Image</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="relative aspect-video w-full">
+             <div className="space-y-2">
+                <Label>Image URL</Label>
+                <Input value={product.imageUrl} onChange={(e) => handleInputChange('imageUrl', e.target.value)} />
+            </div>
+            <div className="relative aspect-video w-full mt-2">
               {product.imageUrl ? (
                 <Image
                   src={product.imageUrl}
@@ -192,18 +141,10 @@ export function EditProductForm({ product: initialProduct }: { product: Product 
                 </div>
               )}
             </div>
-            <Button variant="ghost" className="w-full mt-4" onClick={handleGenerateImage} disabled={isGeneratingImage}>
-              {isGeneratingImage ? (
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-              ) : (
-                <Sparkles className="mr-2 h-4 w-4 text-amber-500" />
-              )}
-              Generate with AI
-            </Button>
           </CardContent>
         </Card>
         <div className="flex flex-col gap-2">
-            <Button onClick={handleSaveChanges} size="lg" disabled={isSaving || isGeneratingDesc || isGeneratingImage}>
+            <Button onClick={handleSaveChanges} size="lg" disabled={isSaving}>
                 {isSaving ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
                 {isNewProduct ? 'Create Product' : 'Save Changes'}
             </Button>

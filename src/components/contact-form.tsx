@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useFormState, useFormStatus } from "react-dom";
@@ -43,11 +44,6 @@ export function ContactForm() {
         <AlertTitle>Submission Successful!</AlertTitle>
         <AlertDescription>
           <p>{state.message}</p>
-          <div className="mt-4 text-xs bg-muted p-3 rounded-md">
-            <p className="font-semibold">AI Lead Analysis:</p>
-            <p><strong>Category:</strong> {state.leadCategory}</p>
-            <p><strong>Priority:</strong> {state.priority}</p>
-          </div>
         </AlertDescription>
       </Alert>
     );

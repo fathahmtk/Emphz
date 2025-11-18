@@ -17,20 +17,12 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import { Badge } from '@/components/ui/badge';
 import { formatDistanceToNow } from 'date-fns';
-import { cn } from '@/lib/utils';
 import { useAuth, useCollection, useFirestore, useMemoFirebase } from '@/firebase';
 import { type Lead } from '@/lib/types';
 import { Timestamp } from 'firebase/firestore';
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-
-const priorityColors = {
-  high: 'bg-red-500 text-white hover:bg-red-500',
-  medium: 'bg-amber-500 text-white hover:bg-amber-500',
-  low: 'bg-blue-500 text-white hover:bg-blue-500',
-};
 
 export default function AdminLeadsPage() {
   const { user, loading: authLoading } = useAuth();
@@ -64,7 +56,7 @@ export default function AdminLeadsPage() {
         <CardHeader>
           <CardTitle>Leads</CardTitle>
           <CardDescription>
-            Categorized inquiries from the contact form.
+            Inquiries from the contact form.
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -72,8 +64,7 @@ export default function AdminLeadsPage() {
             <TableHeader>
               <TableRow>
                 <TableHead>Contact</TableHead>
-                <TableHead>Category</TableHead>
-                <TableHead>Priority</TableHead>
+                <TableHead>Company</TableHead>
                 <TableHead className="hidden md:table-cell">Submitted</TableHead>
                 <TableHead>Inquiry</TableHead>
               </TableRow>
@@ -81,7 +72,7 @@ export default function AdminLeadsPage() {
             <TableBody>
               {loading && (
                 <TableRow>
-                  <TableCell colSpan={5} className="text-center">
+                  <TableCell colSpan={4} className="text-center">
                     Loading leads...
                   </TableCell>
                 </TableRow>
@@ -95,14 +86,7 @@ export default function AdminLeadsPage() {
                     </div>
                   </TableCell>
                   <TableCell>
-                    <Badge variant="outline">{lead.category}</Badge>
-                  </TableCell>
-                  <TableCell>
-                    <Badge
-                      className={cn(priorityColors[lead.priority ?? 'low'])}
-                    >
-                      {lead.priority}
-                    </Badge>
+                    {lead.company}
                   </TableCell>
                   <TableCell className="hidden md:table-cell">
                     {formatSubmissionTime(lead.submittedAt)}

@@ -39,10 +39,7 @@ export type Lead = {
   id: string;
   name: string;
   email: string;
-  company: string;
+  company?: string;
   inquiry: string;
   submittedAt: Timestamp | Date;
-  category?: string;
-  priority?: 'high' | 'medium' | 'low';
-  notes?: string;
 };

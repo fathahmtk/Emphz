@@ -1,48 +1,28 @@
 
 "use server";
 
-import { generateContentVariation } from "@/ai/flows/admin-assisted-content-creation";
-import { doc, updateDoc, setDoc, deleteDoc } from 'firebase/firestore';
+import { doc, updateDoc, setDoc, deleteDoc, collection, DocumentReference } from 'firebase/firestore';
 import { firestore } from '@/firebase/server';
 import type { Project } from "@/lib/types";
-
-export async function generateProjectDescription(
-  existingContent: string,
-  tone?: string
-): Promise<{ variation: string } | { error: string }> {
-  if (!existingContent) {
-    return { error: "Existing content is required." };
-  }
-
-  try {
-    const result = await generateContentVariation({
-      contentType: "projectCaseStudy",
-      existingContent,
-      tone: tone || "engaging and results-oriented",
-    });
-    return { variation: result.variation };
-  } catch (e) {
-    console.error(e);
-    return { error: "Failed to generate content. Please try again." };
-  }
-}
 
 export async function saveProject(
     projectId: string,
     projectData: Omit<Project, 'id'>
-): Promise<{ success: boolean } | { error: string }> {
+): Promise<{ success: boolean, id?: string } | { error: string }> {
   try {
+    let projectRef: DocumentReference;
     if (projectId === 'new') {
-        const newDocRef = doc(firestore, 'projects', new Date().getTime().toString());
-        await setDoc(newDocRef, projectData);
+        projectRef = doc(collection(firestore, 'projects'));
+        await setDoc(projectRef, projectData);
+        return { success: true, id: projectRef.id };
     } else {
-        const projectRef = doc(firestore, 'projects', projectId);
+        projectRef = doc(firestore, 'projects', projectId);
         await updateDoc(projectRef, projectData);
+        return { success: true };
     }
-    return { success: true };
-  } catch (e) {
+  } catch (e: any) {
     console.error(e);
-    return { error: "Failed to save project. Please try again." };
+    return { error: "Failed to save project. " + e.message };
   }
 }
 
@@ -53,8 +33,8 @@ export async function deleteProject(projectId: string): Promise<{ success: boole
     try {
         await deleteDoc(doc(firestore, 'projects', projectId));
         return { success: true };
-    } catch (e) {
+    } catch (e: any) {
         console.error(e);
-        return { error: 'Failed to delete project.' };
+        return { error: 'Failed to delete project. ' + e.message };
     }
 }

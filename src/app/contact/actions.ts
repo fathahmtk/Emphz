@@ -1,7 +1,6 @@
 
 'use server';
 
-import { categorizeLead } from '@/ai/flows/smart-lead-categorization';
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 import { z } from 'zod';
 import { firestore } from '@/firebase/server';
@@ -16,8 +15,6 @@ const contactSchema = z.object({
 type State = {
   status: 'idle' | 'success' | 'error';
   message: string;
-  leadCategory?: string;
-  priority?: 'high' | 'medium' | 'low';
 };
 
 export async function submitContactForm(
@@ -43,14 +40,6 @@ export async function submitContactForm(
   const { name, email, company, inquiry } = validatedFields.data;
 
   try {
-    const aiResult = await categorizeLead({
-      inquiry,
-      companyProfile: company || 'Not provided',
-      contactInformation: `Name: ${name}, Email: ${email}`,
-    });
-
-    console.log('AI Lead Categorization:', aiResult);
-
     if (firestore) {
       const leadsCollection = collection(firestore, 'leads');
       await addDoc(leadsCollection, {
@@ -59,20 +48,15 @@ export async function submitContactForm(
         company,
         inquiry,
         submittedAt: serverTimestamp(),
-        category: aiResult.leadCategory,
-        priority: aiResult.priority,
-        notes: aiResult.notes,
       });
     }
 
     return {
       status: 'success',
       message: `Thank you, ${name}! Your inquiry has been received. Our team will get back to you shortly.`,
-      leadCategory: aiResult.leadCategory,
-      priority: aiResult.priority,
     };
   } catch (error) {
-    console.error('Error categorizing lead:', error);
+    console.error('Error saving lead:', error);
     return {
       status: 'error',
       message: 'An unexpected error occurred. Please try again later.',

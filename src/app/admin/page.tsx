@@ -1,7 +1,7 @@
 
 'use client';
 
-import { BarChart as BarChartIcon, BookText, Bot, ShoppingBag, LogOut, User } from 'lucide-react';
+import { BarChart as BarChartIcon, BookText, Home, LogOut, PanelLeft, ShoppingBag, User } from 'lucide-react';
 import Link from 'next/link';
 
 import {
@@ -35,17 +35,10 @@ const stats = [
   },
   { title: 'Projects', value: 2, icon: BookText, href: '/admin/projects' },
   { title: 'Leads', value: 2, icon: BarChartIcon, href: '/admin/leads' },
-  {
-    title: 'AI Content',
-    value: 'Chat with Ron',
-    icon: Bot,
-    href: '/ai-persona-chat',
-  },
 ];
 
 export default function AdminDashboardPage() {
-  const { user, loading: authLoading } = useAuth();
-  const auth = useAuth();
+  const { user, loading: authLoading, auth } = useAuth();
   const router = useRouter();
   const firestore = useFirestore();
   const leadsQuery = useMemoFirebase(() => {
@@ -61,22 +54,18 @@ export default function AdminDashboardPage() {
   }, [user, authLoading, router]);
 
   const handleSignOut = () => {
-    signOut(auth);
-    router.push('/admin/login');
+    if (auth) {
+      signOut(auth);
+      router.push('/admin/login');
+    }
   }
 
   const chartData = useMemo(() => {
     if (!leads) return [];
-    const priorities = { high: 0, medium: 0, low: 0 };
-    leads.forEach((lead) => {
-      if (lead.priority) {
-        priorities[lead.priority]++;
-      }
-    });
+    // This is a simplified chart now that priority is removed
+    const leadCount = leads.length;
     return [
-      { priority: 'High', count: priorities.high, fill: 'hsl(var(--destructive))' },
-      { priority: 'Medium', count: priorities.medium, fill: 'hsl(var(--primary))' },
-      { priority: 'Low', count: priorities.low, fill: 'hsl(var(--muted))' },
+      { name: 'Leads', count: leadCount, fill: 'hsl(var(--primary))' },
     ];
   }, [leads]);
 
@@ -110,7 +99,7 @@ export default function AdminDashboardPage() {
       </header>
 
       <main className="mt-8">
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {stats.map((stat) => (
             <Card
               key={stat.title}
@@ -125,15 +114,9 @@ export default function AdminDashboardPage() {
                 </CardHeader>
                 <CardContent>
                   <div className="text-2xl font-bold">{stat.value}</div>
-                  {stat.title === 'AI Content' ? (
-                    <p className="text-xs text-muted-foreground">
-                      AI-assisted content generation
-                    </p>
-                  ) : (
-                    <p className="text-xs text-muted-foreground">
-                      items managed
-                    </p>
-                  )}
+                  <p className="text-xs text-muted-foreground">
+                    items managed
+                  </p>
                 </CardContent>
               </Link>
             </Card>
@@ -143,9 +126,9 @@ export default function AdminDashboardPage() {
         <div className="grid gap-8 md:grid-cols-2 mt-8">
             <Card>
             <CardHeader>
-                <CardTitle>Lead Priority Overview</CardTitle>
+                <CardTitle>Lead Overview</CardTitle>
                 <CardDescription>
-                A visual breakdown of your contact form leads by priority.
+                Total number of contact form leads.
                 </CardDescription>
             </CardHeader>
             <CardContent>
@@ -154,7 +137,7 @@ export default function AdminDashboardPage() {
                     <BarChart data={chartData} accessibilityLayer>
                     <CartesianGrid vertical={false} />
                     <XAxis
-                        dataKey="priority"
+                        dataKey="name"
                         tickLine={false}
                         axisLine={false}
                         tickMargin={8}
@@ -202,12 +185,6 @@ export default function AdminDashboardPage() {
                 <li>
                     <span className="font-semibold text-foreground">Leads:</span>{' '}
                     View inquiries submitted through the contact form.
-                </li>
-                <li>
-                    <span className="font-semibold text-foreground">
-                    AI Content:
-                    </span>{' '}
-                    Chat with Ron to generate content.
                 </li>
                 </ul>
             </CardContent>

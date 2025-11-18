@@ -24,6 +24,7 @@ export default function CreateAccountPage() {
 
   const handleCreateAccount = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!auth) return;
     setIsLoading(true);
     try {
       // In a real app, you would have a function to set custom claims.
