@@ -220,6 +220,23 @@
         "email",
         "subscribedAt"
       ]
+    },
+    "JobApplication": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "JobApplication",
+      "type": "object",
+      "description": "Represents a job application submitted through the careers page.",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "phone": { "type": "string" },
+        "position": { "type": "string" },
+        "coverLetter": { "type": "string" },
+        "cvInfo": { "type": "string", "description": "Information about the uploaded CV file (name, size). In a real app, this would be a URL to Firebase Storage." },
+        "submittedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "name", "email", "phone", "cvInfo", "submittedAt"]
     }
   },
   "auth": {
@@ -309,8 +326,24 @@
             }
           ]
         }
+      },
+       {
+        "path": "/job_applications/{applicationId}",
+        "definition": {
+          "entityName": "JobApplication",
+          "schema": {
+            "$ref": "#/backend/entities/JobApplication"
+          },
+          "description": "Stores job applications from the careers page.",
+          "params": [
+            {
+              "name": "applicationId",
+              "description": "The unique identifier of the job application."
+            }
+          ]
+        }
       }
     ],
-    "reasoning": "The Firestore structure is designed to address the 'auth/invalid-api-key' error and fulfill the application's data storage needs, focusing on clear authorization and data integrity.  The provided error indicates an issue with the Firebase API key configuration. Ensure the Firebase configuration object (`firebaseConfig`) within `src/firebase/index.ts` contains the correct `apiKey` value, and that the API key is enabled within the Firebase project settings in the Firebase Console.  Also, check that Firebase billing is enabled for the project, as some features require a paid plan. The structure avoids hierarchical authorization dependencies to ensure security and enables atomic operations (transactions/batches) without `get()` calls in the rules. All documents within the same collection will have the same security requirements to simplify the security rules.\n\n**Products:** Products are stored in a top-level `/products` collection. This simplifies querying and management.\n\n**Project Case Studies:** Project case studies are stored in a top-level `/project_case_studies` collection, facilitating easy access and listing.\n\n**Leads:** Leads are stored in a top-level `/leads` collection. Because leads are created anonymously, there are no authorization concerns.\n\n**Technical Downloads:** Technical downloads are stored in a top-level `/technical_downloads` collection.\n\n**Subscriptions:** Newsletter subscriptions are stored in a top-level `/subscriptions` collection. These are public writes.\n\nThis structure ensures **Authorization Independence**, which is critical for secure and scalable applications. By avoiding hierarchical authorization dependencies, the design simplifies security rules and avoids breaking atomic operations."
+    "reasoning": "The Firestore structure is designed to address the 'auth/invalid-api-key' error and fulfill the application's data storage needs, focusing on clear authorization and data integrity.  The provided error indicates an issue with the Firebase API key configuration. Ensure the Firebase configuration object (`firebaseConfig`) within `src/firebase/index.ts` contains the correct `apiKey` value, and that the API key is enabled within the Firebase project settings in the Firebase Console.  Also, check that Firebase billing is enabled for the project, as some features require a paid plan. The structure avoids hierarchical authorization dependencies to ensure security and enables atomic operations (transactions/batches) without `get()` calls in the rules. All documents within the same collection will have the same security requirements to simplify the security rules.\n\n**Products:** Products are stored in a top-level `/products` collection. This simplifies querying and management.\n\n**Project Case Studies:** Project case studies are stored in a top-level `/project_case_studies` collection, facilitating easy access and listing.\n\n**Leads:** Leads are stored in a top-level `/leads` collection. Because leads are created anonymously, there are no authorization concerns.\n\n**Technical Downloads:** Technical downloads are stored in a top-level `/technical_downloads` collection.\n\n**Subscriptions:** Newsletter subscriptions are stored in a top-level `/subscriptions` collection. These are public writes.\n\n**Job Applications:** Job applications are stored in a top-level `/job_applications` collection. These are also public writes, similar to leads and subscriptions.\n\nThis structure ensures **Authorization Independence**, which is critical for secure and scalable applications. By avoiding hierarchical authorization dependencies, the design simplifies security rules and avoids breaking atomic operations."
   }
 }

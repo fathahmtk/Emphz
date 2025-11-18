@@ -9,6 +9,12 @@ service cloud.firestore {
       allow write: if true;
     }
 
+    // Allow public write for job applications
+    match /job_applications/{applicationId} {
+      allow read: if false;
+      allow write: if true;
+    }
+
     // Public read for all other content
     match /{document=**} {
       allow read: if true;
