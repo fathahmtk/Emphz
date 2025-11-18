@@ -183,28 +183,6 @@ export const menuData: MegaMenu[] = [
       ],
       cta: { text: "Subscribe for Technical Updates", href: "#footer-subscribe" },
   },
-  {
-      title: "Approvals",
-      href: "/authority-approvals/power-water",
-      columns: [
-          {
-              title: "By Sector",
-              links: [
-                  { title: "Power & Water", href: "/authority-approvals/power-water" },
-                  { title: "Oil & Gas", href: "/authority-approvals/oil-gas" },
-                  { title: "Solar", href: "/authority-approvals/solar" },
-                  { title: "Others", href: "/authority-approvals/others" },
-              ]
-          },
-          {
-              title: "Utility Integrations",
-              links: [
-                  { title: "Authority Acceptance Letters", href: "/downloads" },
-              ]
-          }
-      ],
-      cta: { text: "Verify Approval", href: "/contact" },
-  },
    {
       title: "Contact",
       href: "/contact",
