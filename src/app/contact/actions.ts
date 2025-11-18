@@ -2,6 +2,11 @@
 'use server';
 
 import { z } from 'zod';
+import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
+import { getSdks } from '@/firebase';
+import { initializeApp } from 'firebase/app';
+import { firebaseConfig } from '@/firebase/config';
+import { getFirestore } from 'firebase/firestore';
 
 const contactSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters.'),
@@ -44,11 +49,25 @@ export async function submitContactForm(
     };
   }
   
-  const { name } = validatedFields.data;
+  try {
+    const firebaseApp = initializeApp(firebaseConfig);
+    const { firestore } = getSdks(firebaseApp);
+    const leadsCollection = collection(firestore, 'leads');
 
-  // Admin features removed, returning mock success.
-  return {
-    status: 'success',
-    message: `Thank you, ${name}! Your inquiry has been received. Our team will get back to you shortly.`,
-  };
+    await addDoc(leadsCollection, {
+        ...validatedFields.data,
+        submittedAt: serverTimestamp()
+    });
+    
+    const { name } = validatedFields.data;
+    return {
+      status: 'success',
+      message: `Thank you, ${name}! Your inquiry has been received. Our team will get back to you shortly.`,
+    };
+  } catch (e: any) {
+    return {
+        status: 'error',
+        message: e.message || 'Could not submit your inquiry. Please try again.',
+    }
+  }
 }
