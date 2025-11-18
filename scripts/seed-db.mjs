@@ -1,47 +1,37 @@
+import { initializeApp } from 'firebase/app';
+import { getFirestore, collection, writeBatch } from 'firebase/firestore';
+import { getProductsWithIds } from '../src/lib/seed-data.ts';
+import { firebaseConfig } from '../src/firebase/config.ts';
 
-import { initializeApp } from 'firebase-admin/app';
-import { getFirestore } from 'firebase-admin/firestore';
-import { getProductsWithIds, getProjectsWithIds } from '../src/lib/seed-data.js';
-
-// Initialize Firebase Admin SDK
-initializeApp();
-
-const db = getFirestore();
+// Initialize Firebase
+const firebaseApp = initializeApp(firebaseConfig);
+const db = getFirestore(firebaseApp);
 
 async function seedProducts() {
-  const productsCollection = db.collection('products');
+  const productsCollection = collection(db, 'products');
   const products = getProductsWithIds();
-  console.log(`Starting to seed ${products.length} products...`);
+  const batch = writeBatch(db);
 
-  for (const product of products) {
-    await productsCollection.doc(product.id).set(product);
-    console.log(`- Seeded ${product.name}`);
+  products.forEach((product) => {
+    const docRef = collection(productsCollection).doc(product.id);
+    batch.set(docRef, product);
+  });
+
+  try {
+    await batch.commit();
+    console.log(`✅ Successfully seeded ${products.length} products.`);
+  } catch (error) {
+    console.error('❌ Error seeding products:', error);
   }
-
-  console.log('Product seeding complete.');
 }
-
-async function seedProjects() {
-    const projectsCollection = db.collection('project_case_studies');
-    const projects = getProjectsWithIds();
-    console.log(`Starting to seed ${projects.length} projects...`);
-
-    for (const project of projects) {
-        await projectsCollection.doc(project.id).set(project);
-        console.log(`- Seeded ${project.title}`);
-    }
-    console.log('Project seeding complete.');
-}
-
 
 async function main() {
-  try {
-    await seedProducts();
-    await seedProjects();
-    console.log('\nDatabase seeded successfully!');
-  } catch (error) {
-    console.error('Error seeding database:', error);
-  }
+  console.log('🌱 Starting database seed...');
+  await seedProducts();
+  console.log('✅ Database seed complete.');
+  // The process will exit automatically when the script is done.
+  // We need to forcefully exit because the Firebase connection stays open.
+  process.exit(0);
 }
 
 main();

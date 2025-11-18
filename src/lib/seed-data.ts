@@ -1,4 +1,3 @@
-
 import type { Product } from './types';
 import { productsSeed } from './products-data';
 
