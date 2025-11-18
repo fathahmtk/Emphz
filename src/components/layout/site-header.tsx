@@ -167,7 +167,9 @@ export function SiteHeader() {
                                 </NavigationMenuContent>
                             </NavigationMenuItem>
                             <NavigationMenuItem>
-                                <NavigationMenuTrigger>Clients</NavigationMenuTrigger>
+                                <NavigationMenuTrigger>
+                                    <Link href="/clients">Clients</Link>
+                                </NavigationMenuTrigger>
                                 <NavigationMenuContent>
                                     <ul className="grid w-[400px] gap-3 p-4 md:w-[400px] lg:w-[500px] ">
                                         {clientsLinks.map((component) => (

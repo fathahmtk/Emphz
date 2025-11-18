@@ -72,6 +72,7 @@ const navItems = [
     {
         title: "Clients",
         links: [
+            { title: "Our Clients", href: "/clients" },
             { title: "Authority Approvals", href: "/clients/authority-approvals" },
             { title: "Major Projects", href: "/projects" },
             { title: "Our Markets", href: "/clients/markets" },
