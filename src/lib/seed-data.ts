@@ -1,5 +1,5 @@
 
-import type { Product, Project } from './types';
+import type { Product, ProjectCaseStudy as Project } from './types';
 import { productsSeed } from './products-data';
 
 export const projectsSeed: Omit<Project, 'id'>[] = [

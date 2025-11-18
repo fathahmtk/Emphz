@@ -109,12 +109,6 @@ export const menuData: MegaMenu[] = [
             { title: "Mining", href: "/industries/mining" },
         ],
       },
-      {
-          title: "Business Tools",
-          links: [
-              { title: "Case Studies", href: "/projects"},
-          ]
-      }
     ],
     cta: { text: "Speak to Industry Specialist", href: "/contact" },
   },
@@ -139,25 +133,6 @@ export const menuData: MegaMenu[] = [
         }
     ],
     cta: { text: "Download Compliance Pack", href: "/downloads" },
-  },
-  {
-    title: "Projects",
-    href: "/projects",
-    columns: [
-        {
-            title: "Project Navigation",
-            links: [
-                { title: "Major Projects", href: "/projects"},
-            ]
-        },
-        {
-            title: "Proof & Conversion",
-            links: [
-                { title: "Case Studies", href: "/projects"},
-            ]
-        }
-    ],
-    cta: { text: "Request Similar Solution", href: "/contact" },
   },
   {
       title: "Media",
