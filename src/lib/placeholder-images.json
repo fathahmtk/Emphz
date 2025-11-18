@@ -1,15 +1,15 @@
 {
   "placeholderImages": [
     {
-      "id": "hero-main",
+      "id": "hero-main-single",
       "description": "A close-up of industrial GRP pipes and fittings, showcasing material quality and engineering precision.",
-      "imageUrl": "https://lh3.googleusercontent.com/pw/AP1GczNNRMOa3iV4TcgGI3CYBYhlyPLtEmekfG9bVmVjZEt2Gaxtw1ODMbgSLVLbAkcXE7gmcx8CbFIqqpXDT--Zv20AMFsFk22CnwjkPYp4VgIvbE4l_gvPbqgBzl5G1Rekcd4o78qDaT0WeTQfzCMTjvHx3w=w1546-h870-s-no-gm?authuser=0",
+      "imageUrl": "https://lh3.googleusercontent.com/pw/AP1GczMV5hGEEEdpdnKLgB0DRqObV9cKXP6QKAncSrIbIQnQoJeXZl9eBjhd2sap19P0g52wKE_guoBLXeO69MZIbnjljuao0D0YXi2N3VvoMU1BeXn7d4l-kqoXag1lLPorlKp2DK5ndinicl1qigofgs9AXA=w1546-h870-s-no-gm?authuser=0",
       "imageHint": "industrial pipes"
     },
     {
-      "id": "hero-main-single",
+      "id": "hero-main",
       "description": "A close-up of industrial GRP pipes and fittings, showcasing material quality and engineering precision.",
-      "imageUrl": "https://lh3.googleusercontent.com/pw/AP1GczNNRMOa3iV4TcgGI3CYBYhlyPLtEmekfG9bVmVjZEt2Gaxtw1ODMbgSLVLbAkcXE7gmcx8CbFIqqpXDT--Zv20AMFsFk22CnwjkPYp4VgIvbE4l_gvPbqgBzl5G1Rekcd4o78qDaT0WeTQfzCMTjvHx3w=w1546-h870-s-no-gm?authuser=0",
+      "imageUrl": "https://lh3.googleusercontent.com/pw/AP1GczPKLlGy_f32-ZcCr2WGAalY8CPj-uzPWdlsOZM1WApUzVpfk2SAW-z9Pxdu3vGaEXShg2iWhiXtbRNE4sNJcC20DOLeSRVeHQksaHM2pAs1s6H7D9SkMCYEjx8-fwa30mAqtVr8IpLSblxtMocm1FzvmA=w1546-h870-s-no-gm?authuser=0",
       "imageHint": "industrial pipes"
     },
     {
@@ -45,7 +45,7 @@
     {
       "id": "project-waterplant",
       "description": "A water treatment plant upgraded with new GRP tanks and pipes.",
-      "imageUrl": "https://images.unsplash.com/photo-1680280135702-e89c634335ee?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxtb2Rlcm4lMjBwbGFudHxlbnwwfHx8fDE3NjMzNjQ3MjJ8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1680280135702-e89c634335ee?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxtb2Rlcm4lMjBwbGFudHxlbnwwfHx8fDE3NjMzNjQ3MjJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "modern plant"
     },
     {
@@ -57,7 +57,7 @@
     {
       "id": "factory-location",
       "description": "A large industrial factory exterior.",
-      "imageUrl": "https://images.unsplash.com/photo-1714366449985-e4dd29959996?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxmYWN0b3J5JTIwZXh0ZXJpb3J8ZW58MHx8fHwxNzYzNDAwNTU3fDA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1714366449985-e4dd29959996?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxmYWN0b3J5JTIwZXh0ZXJpb3J8ZW58MHx8fHwxNzYzNDAwNTU3fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "factory exterior"
     },
     {
@@ -69,7 +69,7 @@
     {
       "id": "gallery-kiosk",
       "description": "A GRP kiosk in an outdoor setting.",
-      "imageUrl": "https://images.unsplash.com/photo-1476036604315-fed0874dfd55?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxHUlAlMjBraW9za3xlbnwwfHx8fDE3NjM0NTM2MzF8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1476036604315-fed0874dfd55?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxHUlAlMjBraW9za3xlbnwwfHx8fDE3NjM0NTM2MzF8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "GRP kiosk"
     },
     {
@@ -81,7 +81,7 @@
     {
       "id": "gallery-factory-2",
       "description": "A quality control specialist inspecting a finished product.",
-      "imageUrl": "https://images.unsplash.com/photo-1624957485560-47747511b32f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxxdWFsaXR5JTIwY29udHJvbHxlbnwwfHx8fDE3NjM0NTM2MzB8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1624957485560-47747511b32f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxxdWFsaXR5JTIwY29udHJvbHxlbnwwfHx8fDE3NjM0NTM2MzB8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "quality control"
     },
     {
@@ -171,37 +171,37 @@
     {
       "id": "hero-industrial-plant",
       "description": "Wide shot of a modern industrial plant with extensive piping.",
-      "imageUrl": "https://lh3.googleusercontent.com/pw/AP1GczNauezXtutn-NC8eX0l3owbOZZY25GmPn621gvIB59xKxDA9GHSSw0cm_WB5xYw-FO1HmuSdSdhc-h-TmybmLaBSku2nw5AfKWjGSSCPwbpuuCTPeoYPoVIz4AZFypNMC3qoR_yz9qLO4u33b7GUNdnCw=w1546-h870-s-no-gm?authuser=0",
+      "imageUrl": "https://lh3.googleusercontent.com/pw/AP1GczNydAEeadD4afouzV-k8Srj8GPWnSoG4714kIJfeUgIYW5XLAAk26VhFc9zaGSAT226oPBh3LNYjgyFTmZhQa_KjCJmpqIYboJzoS6-BBM37-gdFFQa1reZb_7sTAyibwgIvqH23zZoRpBj5XOP6FD2gQ=w1546-h870-s-no-gm?authuser=0",
       "imageHint": "industrial plant"
     },
     {
       "id": "hero-extra-1",
       "description": "View of a water treatment facility with complex piping.",
-      "imageUrl": "https://lh3.googleusercontent.com/pw/AP1GczPbeNuPKX4f1fcLBcXPQiqlOOGIEuoQETateuyhWP1O1Iu_xQmmYjDhoMiUt3kWtomtuXmfNcSV-xMz4YYVeWcL0XdcnNh9-j9dxlS-cSDOezcZA5pHm4ZAWbMqcUebJPR7Mew_UM2IRvRW1A03HQeS1A=w1546-h870-s-no-gm?authuser=0",
+      "imageUrl": "https://lh3.googleusercontent.com/pw/AP1GczOU2TtVHlW4x4kbGDECN768Z5zvlPW7NhiRbBn7banNsKOGE0VdhwpM89Irw7pF8VjBUsDo4AJ5ncpByEomQYyTBPvaLQwlCJAf_-Frwc61HsDboJ-puZBWQryaqKo6pWqeLOWiOIRMWCQzjptq8jVvNw=w1546-h870-s-no-gm?authuser=0",
       "imageHint": "water treatment"
     },
     {
       "id": "hero-extra-2",
       "description": "Industrial GRP piping in a bright, modern factory.",
-      "imageUrl": "https://lh3.googleusercontent.com/pw/AP1GczM1hckqIUVw9IhQ89NuHm4s5MP18qBYn1Es4PrukI3kM5JUQLfBz0xVB46fB2NGtBL-qGIU96NN5Jp0TKJPNZqq8idRWdwdKwp90ZinmNZX3N8sTV8WZ4FTV8QNJkgO105umrKdwaVg3qB_6BKBoUxP0w=w1546-h870-s-no-gm?authuser=0",
+      "imageUrl": "https://lh3.googleusercontent.com/pw/AP1GczOEJF1sSIpkcr-vMTUU-a4xvIocSK32_LFiMnZ6qcFlTPj2LGqphJ-ww_8DhniTPLln_HTlNpMiFq6heEWi5ek1V8M13C6Q4Hl0IT7BU9aGz3GH8A2LLSl4I9OEf50fZV2hASoFRQaw2PsnSv6RK-oMcw=w1546-h870-s-no-gm?authuser=0",
       "imageHint": "industrial piping"
     },
     {
       "id": "hero-extra-3",
       "description": "Close-up of a complex array of GRP pipes and valves.",
-      "imageUrl": "https://lh3.googleusercontent.com/pw/AP1GczM23e5IB401B6M-knj-n3x72djmOLjm9HE2awJAuhVdyaXmAjCeRkd4o0nWGsOVnODi-5OHDBbfFJGXHFAMQqLGJtY7Af4o8soGA9b6A92u04WXskUIwjtsXSdumMYO6nbUiX3N9CL7VwIqL25oti253g=w1546-h870-s-no-gm?authuser=0",
+      "imageUrl": "https://lh3.googleusercontent.com/pw/AP1GczP-TM_jYqr4e7i0O369qr7NGHID_xQWDAdk5Ric5Q8R52mle7gqZMj4E8ELUDtxqNGzRrI2Koc8te93X6m2vXchDzDMX96bq0B6IAF0-wf2mLhRfE46fyFARENXgQYuHd6SU79AK03EhO1YUh5GhSfU5A=w1546-h870-s-no-gm?authuser=0",
       "imageHint": "pipe valves"
     },
     {
       "id": "hero-extra-4",
       "description": "A complex industrial setting with pipes and machinery.",
-      "imageUrl": "https://lh3.googleusercontent.com/pw/AP1GczN_wmEmIA7ncYycqOYv4YvX1FLopxo1y_cU3rD41Y81m_pM2B5ZKndiFicbaeMYmL7-UqlWrs2UbKENda4hwvxpJANhJt0hrY-cSz-AifpcRl491N7eeTzQxFxvnuRZxArg_rhf0z0OzMjeAm_qm9sxUg=w1546-h870-s-no-gm?authuser=0",
+      "imageUrl": "https://lh3.googleusercontent.com/pw/AP1GczP4LjU1nI2qVdw_84s7IYx5TxmUmbYQgoTOiuC1jD7Pr14-s_iTCqIB4yl18SXOn6UYO2ueIh7SVePB3js2Ygg_ry5m4VqaSgTW1HVWszpOiLkX7cn_CkiSwaAzTx70pr4de_KMeYOMpkPC7cWRTFwnKQ=w1546-h870-s-no-gm?authuser=0",
       "imageHint": "industrial setting"
     },
     {
       "id": "hero-extra-5",
       "description": "An industrial setting with complex machinery.",
-      "imageUrl": "https://lh3.googleusercontent.com/pw/AP1GczMvuz7tjgxC5-JF9dQctIIAuS8YxbnxwOh-BxiCmu2-fRi94SQUgqdsyZ8QcYCx_WhpUYQe-RJjo9kUnlKWHJYyHFiq7le1FfH98Qvn_LBr4-BYmSe-LfgpUg-WAI7KRzJg2kp_-VQNZK7FQcCRyd07dw=w1546-h870-s-no-gm?authuser=0",
+      "imageUrl": "https://lh3.googleusercontent.com/pw/AP1GczOilOPWlPBSI1wWoM4Z6eNJJOPNerZia2E0AV_KPby9-huJ-fAlJkF4oYRhcbSjeLyH-NAYegof0sWtvbZ8WAGI6x90tFf0rVzTdycDmiQ8qZj-SklsxUA_eTe4vAhsjNstwaOHo0RmOiyloYctmFMfBg=w1546-h870-s-no-gm?authuser=0",
       "imageHint": "industrial machinery"
     },
     {
