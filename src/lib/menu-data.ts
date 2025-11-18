@@ -136,7 +136,7 @@ export const menuData: MegaMenu[] = [
             title: "Downloads & Trust",
             links: [
                 { title: "Certifications & Test Reports", href: "/downloads" },
-                { title: "Authority Approvals", href: "/clients/authority-approvals" },
+                { title: "Authority Approvals", href: "/authority-approvals/power-water" },
             ]
         }
     ],
@@ -150,14 +150,12 @@ export const menuData: MegaMenu[] = [
             title: "Project Navigation",
             links: [
                 { title: "Major Projects", href: "/projects"},
-                { title: "Our Markets", href: "/clients/markets"},
             ]
         },
         {
             title: "Proof & Conversion",
             links: [
                 { title: "Case Studies", href: "/projects"},
-                { title: "Client Testimonials", href: "/clients/testimonials"},
             ]
         }
     ],
@@ -187,7 +185,7 @@ export const menuData: MegaMenu[] = [
   },
   {
       title: "Approvals",
-      href: "/clients/authority-approvals",
+      href: "/authority-approvals/power-water",
       columns: [
           {
               title: "By Sector",
