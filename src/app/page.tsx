@@ -1,4 +1,3 @@
-
 'use client';
 import Link from 'next/link';
 import { ArrowRight, Factory, HardHat, ShieldCheck, Award, Fingerprint, Building } from 'lucide-react';
@@ -54,7 +53,8 @@ export default function Home() {
     'gallery-factory-3',
     'gallery-project-1',
     'gallery-instrumentation',
-    'gallery-project-4'
+    'gallery-project-4',
+    'hero-industrial-plant'
   ].includes(p.id));
 
   return (

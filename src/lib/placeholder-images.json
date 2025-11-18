@@ -161,6 +161,12 @@
       "description": "A team meeting in a modern conference room.",
       "imageUrl": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "imageHint": "team meeting"
+    },
+    {
+      "id": "hero-industrial-plant",
+      "description": "Wide shot of a modern industrial plant with extensive piping.",
+      "imageUrl": "https://lh3.googleusercontent.com/pw/AP1GczNauezXtutn-NC8eX0l3owbOZZY25GmPn621gvIB59xKxDA9GHSSw0cm_WB5xYw-FO1HmuSdSdhc-h-TmybmLaBSku2nw5AfKWjGSSCPwbpuuCTPeoYPoVIz4AZFypNMC3qoR_yz9qLO4u33b7GUNdnCw=w1546-h870-s-no-gm?authuser=0",
+      "imageHint": "industrial plant"
     }
   ]
 }
