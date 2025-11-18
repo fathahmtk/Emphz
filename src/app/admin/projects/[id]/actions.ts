@@ -2,7 +2,7 @@
 "use server";
 
 import { doc, updateDoc, setDoc, deleteDoc, collection, DocumentReference } from 'firebase/firestore';
-import { firestore } from '@/firebase/server';
+import { authedDb } from '@/firebase/admin-db';
 import type { Project } from "@/lib/types";
 
 export async function saveProject(
@@ -10,6 +10,7 @@ export async function saveProject(
     projectData: Omit<Project, 'id'>
 ): Promise<{ success: boolean, id?: string } | { error: string }> {
   try {
+    const { firestore } = await authedDb.get();
     let projectRef: DocumentReference;
     if (projectId === 'new') {
         projectRef = doc(collection(firestore, 'projects'));
@@ -31,6 +32,7 @@ export async function deleteProject(projectId: string): Promise<{ success: boole
         return { error: 'Cannot delete a new project.' };
     }
     try {
+        const { firestore } = await authedDb.get();
         await deleteDoc(doc(firestore, 'projects', projectId));
         return { success: true };
     } catch (e: any) {

@@ -2,7 +2,7 @@
 "use server";
 
 import { doc, updateDoc, setDoc, deleteDoc, collection, DocumentReference } from 'firebase/firestore';
-import { firestore } from '@/firebase/server';
+import { authedDb } from '@/firebase/admin-db';
 import type { TechnicalDownload } from "@/lib/types";
 
 export async function saveDownload(
@@ -10,6 +10,7 @@ export async function saveDownload(
     downloadData: Omit<TechnicalDownload, 'id'>
 ): Promise<{ success: boolean, id?: string } | { error: string }> {
   try {
+    const { firestore } = await authedDb.get();
     let downloadRef: DocumentReference;
     if (downloadId === 'new') {
         downloadRef = doc(collection(firestore, 'technical_downloads'));
@@ -31,6 +32,7 @@ export async function deleteDownload(downloadId: string): Promise<{ success: boo
         return { error: 'Cannot delete a new download.' };
     }
     try {
+        const { firestore } = await authedDb.get();
         await deleteDoc(doc(firestore, 'technical_downloads', downloadId));
         return { success: true };
     } catch (e: any) {

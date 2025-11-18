@@ -44,4 +44,9 @@ export type Lead = {
   company?: string;
   inquiry: string;
   submittedAt: Timestamp | Date;
+  phone?: string;
+  industry?: string;
+  product?: string;
+  quantity?: number;
+  location?: string;
 };

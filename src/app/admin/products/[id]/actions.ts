@@ -2,7 +2,7 @@
 "use server";
 
 import { doc, updateDoc, setDoc, deleteDoc, DocumentReference, collection } from 'firebase/firestore';
-import { firestore } from '@/firebase/server';
+import { authedDb } from '@/firebase/admin-db';
 import { Product } from '@/lib/types';
 
 export async function saveProduct(
@@ -10,7 +10,9 @@ export async function saveProduct(
   productData: Omit<Product, 'id'>
 ): Promise<{ success: boolean; id?: string } | { error: string }> {
   try {
+    const { firestore } = await authedDb.get();
     let productRef: DocumentReference;
+
     if (productId === 'new') {
         productRef = doc(collection(firestore, 'products'));
         await setDoc(productRef, productData);
@@ -31,6 +33,7 @@ export async function deleteProduct(productId: string): Promise<{ success: boole
         return { error: 'Cannot delete a new product.' };
     }
     try {
+        const { firestore } = await authedDb.get();
         await deleteDoc(doc(firestore, 'products', productId));
         return { success: true };
     } catch (e: any) {
