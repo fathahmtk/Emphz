@@ -10,6 +10,7 @@ import { cn } from '@/lib/utils';
 import { Toaster } from "@/components/ui/toaster";
 import { FirebaseClientProvider } from '@/firebase';
 import { ClientOnly } from '@/components/client-only';
+import { BackToTopButton } from '@/components/ui/back-to-top-button';
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
@@ -39,6 +40,7 @@ function RootBody({
                 </ClientOnly>
             </FirebaseClientProvider>
             <Toaster />
+            <BackToTopButton />
         </body>
     )
 }

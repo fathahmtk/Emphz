@@ -1,7 +1,7 @@
 
 'use client';
 import Link from 'next/link';
-import { ArrowRight, Factory, HardHat, ShieldCheck } from 'lucide-react';
+import { ArrowRight, Factory, HardHat, ShieldCheck, Award, Building, Fingerprint } from 'lucide-react';
 import { collection, orderBy, query, limit } from 'firebase/firestore';
 
 import { Button } from '@/components/ui/button';
@@ -34,10 +34,10 @@ const corporatePillars = [
 ];
 
 const trustBadges = [
-  { name: 'ISO 9001:2015', description: 'Quality Management Systems' },
-  { name: 'ISO 14001:2015', description: 'Environmental Management' },
-  { name: 'IP65 Certified', description: 'Ingress Protection Rating' },
-  { name: 'Govt. Approved Vendor', description: 'Public Works Dept.' },
+  { icon: Award, name: 'ISO 9001:2015', description: 'Quality Management Systems' },
+  { icon: Award, name: 'ISO 14001:2015', description: 'Environmental Management' },
+  { icon: Fingerprint, name: 'IP65 Certified', description: 'Ingress Protection Rating' },
+  { icon: Building, name: 'Govt. Approved Vendor', description: 'Public Works Dept.' },
 ]
 
 export default function Home() {
@@ -164,18 +164,17 @@ export default function Home() {
               </div>
             </ScrollReveal>
             <ScrollReveal delay={200}>
-              <Card className="mt-12">
-                <CardContent className="p-6">
-                  <div className="grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-4">
-                    {trustBadges.map((badge) => (
-                      <div key={badge.name} className="text-center">
-                        <p className="font-semibold text-primary">{badge.name}</p>
-                        <p className="text-sm text-muted-foreground">{badge.description}</p>
+               <div className="mx-auto mt-12 grid grid-cols-2 gap-8 md:grid-cols-4">
+                  {trustBadges.map((badge, i) => (
+                    <div key={i} className="flex flex-col items-center text-center">
+                      <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-card">
+                        <badge.icon className="h-8 w-8 text-primary" />
                       </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
+                      <h3 className="text-md font-semibold">{badge.name}</h3>
+                      <p className="mt-1 text-sm text-muted-foreground">{badge.description}</p>
+                    </div>
+                  ))}
+                </div>
             </ScrollReveal>
           </div>
         </section>
