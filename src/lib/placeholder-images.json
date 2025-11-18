@@ -45,19 +45,19 @@
     {
       "id": "office-location",
       "description": "A modern office building exterior.",
-      "imageUrl": "https://images.unsplash.com/photo-1696738061271-401a7ef09e51?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxvZmZpY2UlMjBidWlsZGluZ3xlbnwwfHx8fDE3NjMzNjM2MDF8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1696738061271-401a7ef09e51?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxvZmZpY2UlMjBidWlsZGluZ3xlbnwwfHx8fDE3NjMzNjM2MDF8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "office building"
     },
     {
       "id": "factory-location",
       "description": "A large industrial factory exterior.",
-      "imageUrl": "https://images.unsplash.com/photo-1714366449985-e4dd29959996?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxmYWN0b3J5JTIwZXh0ZXJpb3J8ZW58MHx8fHwxNzYzNDAwNTU3fDA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1714366449985-e4dd29959996?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxmYWN0b3J5JTIwZXh0ZXJpb3J8ZW58MHx8fHwxNzYzNDAwNTU3fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "factory exterior"
     },
     {
       "id": "gallery-product-1",
       "description": "A close-up of a GRP electrical enclosure with wiring.",
-      "imageUrl": "https://images.unsplash.com/photo-1640526569383-24ac00e0eae6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxHUlAlMjBlbmNsb3N1cmV8ZW58MHx8fHwxNzYzNDUzNjMxfDA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1640526569383-24ac00e0eae6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxHUlAlMjBlbmNsb3N1cmV8ZW58MHx8fHwxNzYzNDUzNjMxfDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "GRP enclosure"
     },
     {
@@ -69,13 +69,13 @@
     {
       "id": "gallery-factory-1",
       "description": "Inside the EMPHZ manufacturing facility, showing molding process.",
-      "imageUrl": "https://images.unsplash.com/photo-1741993677318-7c269b452379?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxmYWN0b3J5JTIwcHJvY2Vzc3xlbnwwfHx8fDE3NjM0NTM2MzF8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1741993677318-7c269b452379?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxmYWN0b3J5JTIwcHJvY2Vzc3xlbnwwfHx8fDE3NjM0NTM2MzF8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "factory process"
     },
     {
       "id": "gallery-factory-2",
       "description": "A quality control specialist inspecting a finished product.",
-      "imageUrl": "https://images.unsplash.com/photo-1624957485560-47747511b32f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxxdWFsaXR5JTIwY29udHJvbHxlbnwwfHx8fDE3NjM0NTM2MzB8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1624957485560-47747511b32f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxxdWFsaXR5JTIwY29udHJvbHxlbnwwfHx8fDE3NjM0NTM2MzB8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "quality control"
     },
     {
@@ -87,7 +87,7 @@
     {
       "id": "gallery-project-2",
       "description": "Our GRP roofing system on an industrial building.",
-      "imageUrl": "https://images.unsplash.com/photo-1757401419592-29224c46ecef?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxHUlAlMjByb29maW5nfGVufDB8fHx8MTc2MzQ1MzYzMHww&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1757401419592-29224c46ecef?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxHUlAlMjByb29maW5nfGVufDB8fHx8MTc2MzQ1MzYzMHww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "GRP roofing"
     },
     {
@@ -101,6 +101,12 @@
       "description": "A high-tech instrumentation panel with various gauges and dials inside a GRP enclosure.",
       "imageUrl": "https://images.unsplash.com/photo-1616785324021-c34336c53573?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "imageHint": "instrumentation panel"
+    },
+    {
+      "id": "gallery-battery-enclosure",
+      "description": "A robust battery enclosure for a solar energy system.",
+      "imageUrl": "https://images.unsplash.com/photo-1632073248509-c3225a81a95a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "imageHint": "battery enclosure"
     }
   ]
 }
