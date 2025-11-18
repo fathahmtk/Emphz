@@ -57,7 +57,8 @@ export default function Home() {
     'hero-industrial-plant',
     'hero-extra-1',
     'hero-extra-2',
-    'hero-extra-3'
+    'hero-extra-3',
+    'hero-extra-4'
   ].includes(p.id));
 
   return (
