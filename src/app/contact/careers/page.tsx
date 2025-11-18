@@ -7,8 +7,8 @@ import { ScrollReveal } from "@/components/scroll-reveal";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { useFormState, useFormStatus } from "react-dom";
-import { useEffect } from "react";
+import { useFormStatus } from "react-dom";
+import { useEffect, useActionState } from "react";
 import { submitJobApplication } from "./actions";
 import { useToast } from "@/hooks/use-toast";
 import { Label } from "@/components/ui/label";
@@ -37,7 +37,7 @@ function SubmitButton() {
 
 function JobApplicationForm() {
     const initialState = { status: "idle" as const, message: "" };
-    const [state, formAction] = useFormState(submitJobApplication, initialState);
+    const [state, formAction] = useActionState(submitJobApplication, initialState);
     const { toast } = useToast();
 
     useEffect(() => {
