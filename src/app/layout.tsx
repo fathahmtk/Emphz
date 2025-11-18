@@ -3,7 +3,7 @@
 
 import type { ReactNode } from 'react';
 import { usePathname } from 'next/navigation';
-import { Orbitron, Inter } from 'next/font/google';
+import { Orbitron, Exo_2 } from 'next/font/google';
 
 import './globals.css';
 import { cn } from '@/lib/utils';
@@ -16,7 +16,7 @@ const orbitron = Orbitron({
   variable: '--font-headline',
 });
 
-const inter = Inter({
+const exo2 = Exo_2({
   subsets: ['latin'],
   variable: '--font-body',
 })
@@ -30,7 +30,7 @@ function RootBody({
     const pathname = usePathname();
 
     return (
-        <body className={cn('min-h-screen font-body antialiased', orbitron.variable, inter.variable)}>
+        <body className={cn('min-h-screen font-body antialiased', orbitron.variable, exo2.variable)}>
             <FirebaseClientProvider>
                 <ClientOnly>
                     <div className="relative flex min-h-dvh flex-col bg-background">
@@ -46,7 +46,7 @@ function RootBody({
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
