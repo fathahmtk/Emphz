@@ -1,3 +1,4 @@
+
 "use client";
 
 import { cn } from "@/lib/utils";
@@ -12,6 +13,7 @@ interface ScrollRevealProps {
 
 export function ScrollReveal({ children, className, delay = 0, threshold = 0.1 }: ScrollRevealProps) {
   const [isVisible, setIsVisible] = useState(false);
+  const [hasGlowed, setHasGlowed] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -22,6 +24,8 @@ export function ScrollReveal({ children, className, delay = 0, threshold = 0.1 }
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
+          // Trigger glow effect and then remove it after a delay
+          setTimeout(() => setHasGlowed(true), (delay || 0) + 300);
           observer.unobserve(element);
         }
       },
@@ -31,9 +35,11 @@ export function ScrollReveal({ children, className, delay = 0, threshold = 0.1 }
     observer.observe(element);
 
     return () => {
-      observer.unobserve(element);
+      if (element) {
+        observer.unobserve(element);
+      }
     };
-  }, [threshold]);
+  }, [threshold, delay]);
 
   return (
     <div
@@ -43,6 +49,7 @@ export function ScrollReveal({ children, className, delay = 0, threshold = 0.1 }
         {
           "opacity-0 translate-y-5": !isVisible,
           "opacity-100 translate-y-0": isVisible,
+          "shadow-glow-md": isVisible && !hasGlowed,
         },
         className
       )}
