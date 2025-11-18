@@ -1,3 +1,4 @@
+
 "use client"
 
 import * as React from "react"
@@ -48,14 +49,14 @@ const navItems = [
     {
         title: "GRP (FRP) Products",
         links: [
-            { title: "Enclosures", href: "/products/enclosures" },
-            { title: "Kiosks", href: "/products/kiosks" },
+            { title: "GRP/FRP Electrical Enclosures", href: "/products/enclosures" },
+            { title: "Utility-Approved Enclosures", href: "/products/utility-approved" },
+            { title: "Fire & Safety Enclosures", href: "/products/fire-safety" },
+            { title: "Instrumentation Enclosures", href: "/products/instrumentation" },
             { title: "Battery Enclosures", href: "/products/battery-enclosures" },
-            { title: "Instrumentation Products", href: "/products/instrumentation" },
-            { title: "Fire and Safety Enclosures", href: "/products/fire-safety" },
-            { title: "Roofing Systems Products", href: "/products/roofing" },
-            { title: "Utility Approved Enclosures", href: "/products/utility-approved" },
-            { title: "Customized Products", href: "/products/custom" },
+            { title: "GRP/FRP Kiosks", href: "/products/kiosks" },
+            { title: "Customized GRP Enclosures", href: "/products/custom" },
+            { title: "GRP Roofing Systems", href: "/products/roofing" },
             { title: "View all products", href: "/products" },
         ]
     },

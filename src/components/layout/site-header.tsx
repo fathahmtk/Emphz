@@ -1,3 +1,4 @@
+
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { type NavItem } from "@/lib/types";
@@ -38,14 +39,14 @@ const industriesLinks: { title: string; href: string; description: string }[] = 
 ]
 
 const productsLinks: { title: string; href: string; description: string }[] = [
-    { title: "Enclosures", href: "/products/enclosures", description: "GRP electrical and industrial enclosures." },
-    { title: "Kiosks", href: "/products/kiosks", description: "Modular GRP kiosks and booths." },
-    { title: "Battery Enclosures", href: "/products/battery-enclosures", description: "Secure enclosures for energy storage." },
-    { title: "Instrumentation Products", href: "/products/instrumentation", description: "Precision protection for sensitive equipment." },
-    { title: "Fire and Safety Enclosures", href: "/products/fire-safety", description: "Specialized enclosures for safety systems." },
-    { title: "Roofing Systems", href: "/products/roofing", description: "Durable and lightweight GRP roofing." },
-    { title: "Utility Approved Enclosures", href: "/products/utility-approved", description: "Approved for public utility projects." },
-    { title: "Customized Products", href: "/products/custom", description: "Tailor-made solutions for your needs." },
+    { title: "GRP/FRP Electrical Enclosures", href: "/products/enclosures", description: "High-durability GRP enclosures for electrical distribution." },
+    { title: "Utility-Approved Enclosures", href: "/products/utility-approved", description: "Certified enclosures meeting regional authority compliance." },
+    { title: "Fire & Safety Enclosures", href: "/products/fire-safety", description: "Fire-rated GRP enclosures for emergency equipment." },
+    { title: "Instrumentation Enclosures", href: "/products/instrumentation", description: "Precision-built GRP boxes for sensitive instruments." },
+    { title: "Battery Enclosures", href: "/products/battery-enclosures", description: "Engineered GRP containers for energy storage systems." },
+    { title: "GRP/FRP Kiosks", href: "/products/kiosks", description: "Fully-moulded GRP kiosks for various field operations." },
+    { title: "Customized GRP Enclosures", href: "/products/custom", description: "Tailor-made GRP solutions for unique requirements." },
+    { title: "GRP Roofing Systems", href: "/products/roofing", description: "Durable, corrosion-proof roofing for industrial structures." },
 ];
 
 const qualityLinks: { title: string; href: string; description: string }[] = [

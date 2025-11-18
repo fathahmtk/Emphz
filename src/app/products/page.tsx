@@ -1,44 +1,56 @@
-'use client';
-import { useMemo } from 'react';
-import { collection, orderBy, query } from 'firebase/firestore';
 
-import { ProductCard } from '@/components/product-card';
-import { ScrollReveal } from '@/components/scroll-reveal';
-import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
-import { type Product } from '@/lib/types';
 import { SiteHeader } from '@/components/layout/site-header';
 import { SiteFooter } from '@/components/layout/site-footer';
+import { ScrollReveal } from '@/components/scroll-reveal';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Filter } from 'lucide-react';
+import Link from 'next/link';
+
+const productCategories = [
+  {
+    name: 'GRP Electrical Enclosures',
+    description: 'High-durability GRP enclosures engineered for electrical distribution, control systems, and field installations.',
+    href: '/products/enclosures'
+  },
+  {
+    name: 'Utility-Approved Enclosures',
+    description: 'Certified GRP enclosures meeting the compliance requirements of regional power & water authorities.',
+    href: '/products/utility-approved'
+  },
+  {
+    name: 'Fire & Safety Enclosures',
+    description: 'Fire-rated GRP enclosures designed for housing safety and emergency equipment.',
+    href: '/products/fire-safety'
+  },
+  {
+    name: 'Instrumentation Enclosures',
+    description: 'Precision-built GRP boxes for sensitive instruments that require stable, insulated, and corrosion-proof housings.',
+    href: '/products/instrumentation'
+  },
+  {
+    name: 'Battery Enclosures',
+    description: 'GRP battery containers engineered for solar energy systems, telecom backup batteries, and industrial UPS units.',
+    href: '/products/battery-enclosures'
+  },
+  {
+    name: 'Customized GRP Enclosures',
+    description: 'Tailor-made GRP enclosures engineered to meet unique dimensional, operational, or environmental requirements.',
+    href: '/products/custom'
+  },
+  {
+    name: 'GRP/FRP Kiosks',
+    description: 'Fully-moulded GRP kiosks for utilities, security, ticketing, temporary offices, and field operations.',
+    href: '/products/kiosks'
+  },
+  {
+    name: 'GRP Roofing Systems',
+    description: 'Durable, corrosion-proof roofing solutions for industrial, utility, and coastal structures.',
+    href: '/products/roofing'
+  }
+];
 
 export default function ProductsPage() {
-  const firestore = useFirestore();
-  const productsQuery = useMemoFirebase(() => {
-    if (!firestore) return null;
-    return query(collection(firestore, 'products'), orderBy('name'));
-  }, [firestore]);
-
-  const { data: products } = useCollection<Product>(productsQuery);
-
-  const categories = useMemo(() => {
-    if (!products) return [];
-    const categoryOrder = [
-        "GRP Electrical Enclosures",
-        "GRP Portable Toilets",
-        "GRP Kiosks & Booths",
-        "Modular Smart Units",
-        "GRP Cabins & Micro-Villa Pods",
-        "Industrial Custom GRP Solutions",
-        "GRP Bus Shelters & Urban Furniture"
-    ];
-    const uniqueCategories = [...new Set(products.map((p) => p.category))];
-    return uniqueCategories.sort((a, b) => {
-        const indexA = categoryOrder.indexOf(a);
-        const indexB = categoryOrder.indexOf(b);
-        if (indexA === -1) return 1;
-        if (indexB === -1) return -1;
-        return indexA - indexB;
-    });
-  }, [products]);
-
   return (
     <>
       <SiteHeader />
@@ -50,36 +62,37 @@ export default function ProductsPage() {
                 Products Ecosystem
               </h1>
               <p className="mx-auto mt-4 max-w-3xl text-muted-foreground md:text-lg">
-                Engineered GRP solutions for power, urban infrastructure, telecom, and more. Durable, compliant, and built for performance.
+                EMPHZ engineers a full suite of GRP/FRP enclosures, kiosks, cabinets, and modular structures designed for harsh industrial, utility, and outdoor environments. Every unit is manufactured using high-performance composites, precision moulds, and a quality framework built around ISO, utility standards, and sector compliance.
+              </p>
+              <p className="mx-auto mt-2 max-w-3xl text-muted-foreground md:text-lg">
+                The result: corrosion-proof, electrically safe, long-life GRP systems trusted across power, water, solar, oil & gas, telecom, construction, fire & safety, and mining sectors.
               </p>
             </div>
           </ScrollReveal>
 
-          {categories.map((category, i) => (
-            <section
-              key={category}
-              id={category.toLowerCase().replace(/\s+/g, '-')}
-              className="mb-16 scroll-mt-20"
-            >
-              <ScrollReveal delay={i * 100}>
-                <h2 className="mb-8 border-l-4 border-accent pl-4 text-2xl font-bold font-headline tracking-tight sm:text-3xl">
-                  {category}
-                </h2>
+          <div className="mb-8 flex items-center justify-end">
+            <Button variant="outline">
+              <Filter className="mr-2 h-4 w-4" />
+              Filter Products
+            </Button>
+          </div>
+          
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {productCategories.map((category, i) => (
+              <ScrollReveal key={category.name} delay={i * 100}>
+                <Link href={category.href} className="h-full block">
+                  <Card className="flex h-full flex-col group overflow-hidden transition-shadow hover:shadow-xl hover:border-accent">
+                    <CardHeader>
+                      <CardTitle className="text-xl font-headline group-hover:text-accent">{category.name}</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <CardDescription>{category.description}</CardDescription>
+                    </CardContent>
+                  </Card>
+                </Link>
               </ScrollReveal>
-              <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-                {products
-                  ?.filter((p) => p.category === category)
-                  .map((product, j) => (
-                    <ScrollReveal
-                      key={product.id}
-                      delay={i * 100 + (j + 1) * 150}
-                    >
-                      <ProductCard product={product} />
-                    </ScrollReveal>
-                  ))}
-              </div>
-            </section>
-          ))}
+            ))}
+          </div>
         </div>
       </main>
       <SiteFooter />

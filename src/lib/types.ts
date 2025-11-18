@@ -1,3 +1,4 @@
+
 import { Timestamp } from 'firebase/firestore';
 
 export type Product = {
@@ -5,14 +6,16 @@ export type Product = {
   name: string;
   category: string;
   overview: string;
+  keyFeatures: string[];
   applications: string[];
   specifications: Record<string, string>;
-  variants: string[];
+  downloads?: Array<{ title: string; url: string; }>;
   imageUrl: string;
   imageHint: string;
+  compliance?: string[];
+  variants?: string[];
   cadUrl?: string;
   datasheetUrl?: string;
-  compliance: string[];
 };
 
 export type Project = {
