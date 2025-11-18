@@ -18,7 +18,7 @@ import { ArrowRight, Search } from "lucide-react";
 
 export function SiteHeader() {
     return (
-        <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <header className="sticky top-0 z-51 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
             <div className="container flex h-16 items-center px-4 md:px-6">
                 <Link href="/" className="mr-6 flex items-center space-x-2">
                     <Logo className="h-6 w-auto" />
