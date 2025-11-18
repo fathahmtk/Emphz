@@ -2,7 +2,6 @@
 'use client';
 
 import { initializeApp, getApps, getApp, FirebaseApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 import React, { createContext, useContext, useMemo, type ReactNode, type DependencyList } from 'react';
 
@@ -24,7 +23,6 @@ if (!firebaseConfig.apiKey) {
 
 // --- Initialization ---
 let firebaseApp: FirebaseApp;
-let auth: ReturnType<typeof getAuth>;
 let firestore: ReturnType<typeof getFirestore>;
 
 if (typeof window !== 'undefined') {
@@ -37,7 +35,6 @@ if (typeof window !== 'undefined') {
     }
 
     if (firebaseApp) {
-        auth = getAuth(firebaseApp);
         firestore = getFirestore(firebaseApp);
     }
 }
