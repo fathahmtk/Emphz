@@ -97,7 +97,6 @@ export function SiteHeader() {
                     <div className="flex flex-1 items-center justify-end space-x-2">
                         <div className="hidden md:flex items-center space-x-2">
                             <Button>Request Spec Pack</Button>
-                            <Button variant={'secondary'}>Submit Tender</Button>
                             <Button variant="ghost" size="icon" onClick={() => setIsSearchOpen(true)}><Search className="h-4 w-4"/></Button>
                         </div>
                         <MobileNav />

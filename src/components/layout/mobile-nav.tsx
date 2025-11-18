@@ -85,7 +85,6 @@ export function MobileNav() {
                 </div>
                 <SheetFooter className="p-4 border-t gap-2">
                     <Button className="w-full">Request Spec Pack</Button>
-                    <Button variant="secondary" className="w-full">Submit Tender</Button>
                 </SheetFooter>
             </SheetContent>
         </Sheet>
