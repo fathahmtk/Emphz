@@ -9,65 +9,65 @@ body {
 
 @layer base {
   :root {
-    --background: 30 50% 98%; /* Light warm off-white */
-    --foreground: 20 14.3% 4.1%; /* Dark Charcoal */
+    --background: 140 60% 98%; /* Very light green-white */
+    --foreground: 140 10% 10%; /* Dark green-charcoal */
 
-    --card: 30 50% 98%;
-    --card-foreground: 20 14.3% 4.1%;
+    --card: 140 60% 98%;
+    --card-foreground: 140 10% 10%;
 
-    --popover: 30 50% 98%;
-    --popover-foreground: 20 14.3% 4.1%;
+    --popover: 140 60% 98%;
+    --popover-foreground: 140 10% 10%;
 
-    --primary: 347 77% 39%; /* Royal Burgundy */
-    --primary-foreground: 30 50% 98%;
+    --primary: 150 50% 30%; /* Deep Green */
+    --primary-foreground: 150 20% 98%;
 
-    --secondary: 30 5.9% 90%;
-    --secondary-foreground: 20 14.3% 4.1%;
+    --secondary: 150 15% 94%;
+    --secondary-foreground: 150 10% 20%;
     
-    --muted: 30 5.9% 90%;
-    --muted-foreground: 20 8% 40%;
+    --muted: 150 15% 94%;
+    --muted-foreground: 150 10% 40%;
 
-    --accent: 30 5.9% 90%;
-    --accent-foreground: 20 14.3% 4.1%;
+    --accent: 150 15% 90%;
+    --accent-foreground: 150 10% 15%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 30 50% 98%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 30 5.9% 90%;
-    --input: 30 5.9% 90%;
-    --ring: 347 77% 39%;
+    --border: 150 15% 88%;
+    --input: 150 15% 88%;
+    --ring: 150 50% 30%;
     
     --radius: 0.5rem;
   }
 
   .dark {
-    --background: 20 14.3% 4.1%;
-    --foreground: 30 50% 98%;
+    --background: 140 10% 10%;
+    --foreground: 140 20% 94%;
 
-    --card: 20 14.3% 4.1%;
-    --card-foreground: 30 50% 98%;
+    --card: 140 10% 10%;
+    --card-foreground: 140 20% 94%;
 
-    --popover: 20 14.3% 4.1%;
-    --popover-foreground: 30 50% 98%;
+    --popover: 140 10% 8%;
+    --popover-foreground: 140 20% 94%;
 
-    --primary: 347 77% 55%; /* Brighter Burgundy for dark mode */
-    --primary-foreground: 20 14.3% 4.1%;
+    --primary: 150 50% 45%; /* Brighter Green for dark mode */
+    --primary-foreground: 150 20% 98%;
 
-    --secondary: 20 10% 10%;
-    --secondary-foreground: 30 50% 98%;
+    --secondary: 150 10% 15%;
+    --secondary-foreground: 140 20% 94%;
     
-    --muted: 20 10% 10%;
-    --muted-foreground: 20 5% 64%;
+    --muted: 150 10% 15%;
+    --muted-foreground: 140 15% 60%;
 
-    --accent: 20 10% 10%;
-    --accent-foreground: 30 50% 98%;
+    --accent: 150 10% 15%;
+    --accent-foreground: 140 20% 94%;
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 30 50% 98%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 20 10% 10%;
-    --input: 20 10% 10%;
-    --ring: 347 77% 55%;
+    --border: 150 10% 20%;
+    --input: 150 10% 20%;
+    --ring: 150 50% 45%;
   }
 }
 
@@ -93,4 +93,3 @@ body {
 .embla__slide.is-selected {
   opacity: 1;
 }
-
