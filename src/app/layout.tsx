@@ -1,15 +1,14 @@
 
 'use client'
 
-import type { Metadata } from 'next';
+import type { ReactNode } from 'react';
+import { usePathname } from 'next/navigation';
+import { Orbitron, Inter } from 'next/font/google';
+
 import './globals.css';
 import { cn } from '@/lib/utils';
 import { Toaster } from "@/components/ui/toaster";
-import { SidebarProvider } from '@/components/ui/sidebar';
-import { ReactNode } from 'react';
-import { Orbitron, Inter } from 'next/font/google';
 import { FirebaseClientProvider } from '@/firebase';
-import { usePathname } from 'next/navigation';
 import { ClientOnly } from '@/components/client-only';
 
 const orbitron = Orbitron({
@@ -29,22 +28,15 @@ function RootBody({
   children: ReactNode,
 }) {
     const pathname = usePathname();
-    const isAdminPage = pathname ? pathname.startsWith('/admin') : false;
 
     return (
         <body className={cn('min-h-screen font-body antialiased', orbitron.variable, inter.variable)}>
             <FirebaseClientProvider>
-                <SidebarProvider>
-                  <ClientOnly>
-                    {isAdminPage ? (
-                        <div className='bg-background text-foreground'>{children}</div>
-                    ) : (
-                        <div className="relative flex min-h-dvh flex-col bg-background">
-                            {children}
-                        </div>
-                    )}
-                  </ClientOnly>
-                </SidebarProvider>
+                <ClientOnly>
+                    <div className="relative flex min-h-dvh flex-col bg-background">
+                        {children}
+                    </div>
+                </ClientOnly>
             </FirebaseClientProvider>
             <Toaster />
         </body>

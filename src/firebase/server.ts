@@ -8,16 +8,20 @@ let app: App;
 let firestore: Firestore;
 let auth: Auth;
 
-if (getApps().length === 0) {
-  app = initializeApp({
-    projectId: firebaseConfig.projectId,
-  });
-  firestore = getFirestore(app);
-  auth = getAuth(app);
-} else {
-  app = getApps()[0];
-  firestore = getFirestore(app);
-  auth = getAuth(app);
+// Condition to check if running in a server environment
+if (typeof window === 'undefined') {
+  if (getApps().length === 0) {
+    app = initializeApp({
+      projectId: firebaseConfig.projectId,
+    });
+    firestore = getFirestore(app);
+    auth = getAuth(app);
+  } else {
+    app = getApps()[0];
+    firestore = getFirestore(app);
+    auth = getAuth(app);
+  }
 }
 
+// @ts-ignore
 export { app, firestore, auth };
