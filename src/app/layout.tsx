@@ -3,7 +3,7 @@
 
 import type { ReactNode } from 'react';
 import { usePathname } from 'next/navigation';
-import { Jost, Manrope } from 'next/font/google';
+import { Playfair_Display, Manrope } from 'next/font/google';
 
 import './globals.css';
 import { cn } from '@/lib/utils';
@@ -11,7 +11,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { FirebaseClientProvider } from '@/firebase';
 import { ClientOnly } from '@/components/client-only';
 
-const jost = Jost({
+const playfair = Playfair_Display({
   subsets: ['latin'],
   variable: '--font-headline',
 });
@@ -30,7 +30,7 @@ function RootBody({
     const pathname = usePathname();
 
     return (
-        <body className={cn('min-h-screen font-body antialiased dark', jost.variable, manrope.variable)}>
+        <body className={cn('min-h-screen font-body antialiased', playfair.variable, manrope.variable)}>
             <FirebaseClientProvider>
                 <ClientOnly>
                     <div className="relative flex min-h-dvh flex-col bg-background">

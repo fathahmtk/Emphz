@@ -1,11 +1,10 @@
 
 import Image from "next/image";
 import { type Project } from "@/lib/types";
-import { CardDescription, CardTitle } from "./ui/card";
+import { Card, CardDescription, CardTitle } from "./ui/card";
 import { Badge } from "./ui/badge";
 import { MapPin } from "lucide-react";
 import Link from "next/link";
-import { GlassCard } from "./glass-card";
 
 interface ProjectCardProps {
   project: Project;
@@ -13,7 +12,7 @@ interface ProjectCardProps {
 
 export function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <GlassCard className="overflow-hidden transition-shadow hover:shadow-lg h-full flex flex-col group">
+    <Card className="overflow-hidden transition-shadow hover:shadow-lg h-full flex flex-col group">
        <Link href={`/projects`}>
         <div className="relative aspect-video">
            <Image
@@ -36,6 +35,6 @@ export function ProjectCard({ project }: ProjectCardProps) {
             <CardDescription className="mt-3 flex-grow line-clamp-3">{project.details}</CardDescription>
         </div>
       </Link>
-    </GlassCard>
+    </Card>
   );
 }

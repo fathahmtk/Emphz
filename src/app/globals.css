@@ -8,65 +8,65 @@ body {
 
 @layer base {
   :root {
-    --background: 224 71.4% 4.1%;
-    --foreground: 210 40% 98%;
+    --background: 30 50% 98%; /* Light warm off-white */
+    --foreground: 20 14.3% 4.1%; /* Dark Charcoal */
 
-    --card: 224 71.4% 4.1%;
-    --card-foreground: 210 40% 98%;
+    --card: 30 50% 98%;
+    --card-foreground: 20 14.3% 4.1%;
 
-    --popover: 224 71.4% 4.1%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 30 50% 98%;
+    --popover-foreground: 20 14.3% 4.1%;
 
-    --primary: 210 100% 50%; /* Electric Blue */
-    --primary-foreground: 210 40% 98%;
+    --primary: 347 77% 39%; /* Royal Burgundy */
+    --primary-foreground: 30 50% 98%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 30 5.9% 90%;
+    --secondary-foreground: 20 14.3% 4.1%;
     
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 30 5.9% 90%;
+    --muted-foreground: 20 8% 40%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 30 5.9% 90%;
+    --accent-foreground: 20 14.3% 4.1%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 30 50% 98%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 210 100% 50%; /* Electric Blue */
+    --border: 30 5.9% 90%;
+    --input: 30 5.9% 90%;
+    --ring: 347 77% 39%;
     
     --radius: 0.5rem;
   }
 
   .dark {
-    --background: 224 71.4% 4.1%;
-    --foreground: 210 40% 98%;
+    --background: 20 14.3% 4.1%;
+    --foreground: 30 50% 98%;
 
-    --card: 224 71.4% 4.1%;
-    --card-foreground: 210 40% 98%;
+    --card: 20 14.3% 4.1%;
+    --card-foreground: 30 50% 98%;
 
-    --popover: 224 71.4% 4.1%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 20 14.3% 4.1%;
+    --popover-foreground: 30 50% 98%;
 
-    --primary: 210 100% 50%; /* Electric Blue */
-    --primary-foreground: 210 40% 98%;
+    --primary: 347 77% 55%; /* Brighter Burgundy for dark mode */
+    --primary-foreground: 20 14.3% 4.1%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 20 10% 10%;
+    --secondary-foreground: 30 50% 98%;
     
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 20 10% 10%;
+    --muted-foreground: 20 5% 64%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 20 10% 10%;
+    --accent-foreground: 30 50% 98%;
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 30 50% 98%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 210 100% 50%;
+    --border: 20 10% 10%;
+    --input: 20 10% 10%;
+    --ring: 347 77% 55%;
   }
 }
 
