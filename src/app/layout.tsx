@@ -1,8 +1,5 @@
 
-'use client'
-
 import type { ReactNode } from 'react';
-import { usePathname } from 'next/navigation';
 import { Urbanist, Playfair_Display } from 'next/font/google';
 
 import './globals.css';
@@ -22,30 +19,6 @@ const playfairDisplay = Playfair_Display({
     variable: '--font-headline',
 });
 
-
-// This component uses client-side hooks, so it must be a client component.
-function RootBody({
-  children,
-}: {
-  children: ReactNode,
-}) {
-    const pathname = usePathname();
-    
-    return (
-        <body className={cn('min-h-screen font-body antialiased', urbanist.variable, playfairDisplay.variable)}>
-            <FirebaseClientProvider>
-                <ClientOnly>
-                    <div className="relative flex min-h-dvh flex-col bg-background">
-                        {children}
-                    </div>
-                </ClientOnly>
-            </FirebaseClientProvider>
-            <Toaster />
-            <BackToTopButton />
-        </body>
-    )
-}
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -61,7 +34,17 @@ export default function RootLayout({
           }
         `}</style>
       </head>
-      <RootBody>{children}</RootBody>
+      <body className={cn('min-h-screen font-body antialiased', urbanist.variable, playfairDisplay.variable)}>
+        <FirebaseClientProvider>
+          <ClientOnly>
+            <div className="relative flex min-h-dvh flex-col bg-background">
+                {children}
+            </div>
+          </ClientOnly>
+        </FirebaseClientProvider>
+        <Toaster />
+        <BackToTopButton />
+      </body>
     </html>
   );
 }
