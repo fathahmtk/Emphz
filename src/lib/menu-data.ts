@@ -136,7 +136,6 @@ export const menuData: MegaMenu[] = [
             title: "Downloads & Trust",
             links: [
                 { title: "Certifications & Test Reports", href: "/downloads" },
-                { title: "Authority Approvals", href: "/authority-approvals/power-water" },
             ]
         }
     ],
