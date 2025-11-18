@@ -25,7 +25,7 @@ export type Project = {
   afterImageHint: string;
 };
 
-export type DownloadLink = {
+export type TechnicalDownload = {
   id: string;
   title: string;
   description: string;

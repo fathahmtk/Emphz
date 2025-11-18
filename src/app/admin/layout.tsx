@@ -3,7 +3,7 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { BarChart, BookText, Home, LogOut, PanelLeft, ShoppingBag } from "lucide-react"
+import { BarChart, BookText, Download, Home, LogOut, PanelLeft, ShoppingBag } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -29,6 +29,7 @@ const adminNavItems = [
   { href: "/admin/products", label: "Products", icon: ShoppingBag },
   { href: "/admin/projects", label: "Projects", icon: BookText },
   { href: "/admin/leads", label: "Leads", icon: BarChart },
+  { href: "/admin/downloads", label: "Downloads", icon: Download },
 ];
 
 export default function AdminLayout({

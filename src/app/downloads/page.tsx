@@ -1,13 +1,23 @@
 
-import { downloads } from "@/lib/data";
+'use client';
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { Button } from "@/components/ui/button";
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Download, FileText } from "lucide-react";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
+import { useAuth, useCollection, useFirestore, useMemoFirebase } from "@/firebase";
+import { type TechnicalDownload } from "@/lib/types";
+import { collection, orderBy, query } from "firebase/firestore";
 
 export default function DownloadsPage() {
+  const firestore = useFirestore();
+  const downloadsQuery = useMemoFirebase(() => {
+    if (!firestore) return null;
+    return query(collection(firestore, 'technical_downloads'), orderBy('title'));
+  }, [firestore]);
+  const { data: downloads, isLoading } = useCollection<TechnicalDownload>(downloadsQuery);
+
   return (
     <>
       <SiteHeader />
@@ -24,7 +34,8 @@ export default function DownloadsPage() {
 
           <ScrollReveal delay={200}>
             <div className="space-y-4">
-              {downloads.map((item) => (
+              {isLoading && <p className="text-center">Loading documents...</p>}
+              {downloads?.map((item) => (
                 <Card key={item.id} className="bg-card/80">
                   <div className="flex items-center justify-between p-6">
                     <div className="flex items-center gap-4">
@@ -35,7 +46,7 @@ export default function DownloadsPage() {
                       </div>
                     </div>
                     <Button asChild variant="outline">
-                      <a href={item.fileUrl} download>
+                      <a href={item.fileUrl} download target="_blank">
                         <Download className="mr-2 h-4 w-4" />
                         Download
                       </a>
