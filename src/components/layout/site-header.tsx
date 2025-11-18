@@ -64,7 +64,7 @@ export function SiteHeader() {
                                         <div className={`grid gap-x-6 gap-y-4 p-6 w-[--nav-width] grid-cols-${item.columns.length > 3 ? '4' : item.columns.length > 2 ? '3' : '2'}`} style={{'--nav-width': `${item.columns.length * 250}px`} as React.CSSProperties}>
                                             {item.columns.map((col) => (
                                                 <div key={col.title} className="flex flex-col space-y-3">
-                                                    <h3 className="font-bold text-lg text-foreground/90">{col.title}</h3>
+                                                    <h3 className="font-bold text-lg text-foreground/90 font-headline">{col.title}</h3>
                                                     <ul className="space-y-2">
                                                     {col.links.map(link => (
                                                         <li key={link.href}>
@@ -96,7 +96,9 @@ export function SiteHeader() {
 
                     <div className="flex flex-1 items-center justify-end space-x-2">
                         <div className="hidden md:flex items-center space-x-2">
-                            <Button>Request Spec Pack</Button>
+                            <Button asChild>
+                                <Link href="/contact">Request Spec Pack</Link>
+                            </Button>
                             <Button variant="ghost" size="icon" onClick={() => setIsSearchOpen(true)}><Search className="h-4 w-4"/></Button>
                         </div>
                         <MobileNav />

@@ -50,11 +50,13 @@ export function MobileNav() {
                         {menuData.map((item) => (
                            <Accordion type="single" collapsible className="w-full" key={item.title}>
                              <AccordionItem value={item.title} className="border-b-0">
-                               <AccordionTrigger className="flex w-full items-center justify-between rounded-md px-3 py-2 text-base font-medium text-foreground/80 hover:bg-accent hover:text-accent-foreground hover:no-underline [&[data-state=open]>svg]:rotate-180">
+                               <div className="flex w-full items-center justify-between rounded-md px-3 py-2 text-base font-medium text-foreground/80 hover:bg-accent hover:text-accent-foreground">
                                  <SheetClose asChild>
                                     <Link href={item.href} className="flex-1 text-left">{item.title}</Link>
                                  </SheetClose>
-                               </AccordionTrigger>
+                                <AccordionTrigger className="p-0 w-auto hover:no-underline [&[data-state=open]>svg]:rotate-180">
+                                </AccordionTrigger>
+                               </div>
                                <AccordionContent className="pt-2">
                                   <div className="grid gap-2 pl-7">
                                      {item.columns.map(col => (
@@ -81,7 +83,11 @@ export function MobileNav() {
                 </div>
                  <Separator />
                 <SheetFooter className="p-4 gap-2">
-                    <Button className="w-full">Request Spec Pack</Button>
+                     <SheetClose asChild>
+                        <Button asChild className="w-full">
+                            <Link href="/contact">Request Spec Pack</Link>
+                        </Button>
+                    </SheetClose>
                 </SheetFooter>
             </SheetContent>
         </Sheet>

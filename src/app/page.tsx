@@ -64,7 +64,7 @@ const newsBgImage = PlaceHolderImages.find(p => p.id === 'hero-extra-8');
 
 function CaseStudyCard({ project }: { project: ProjectCaseStudy }) {
     return (
-        <Card className="overflow-hidden bg-background/50 backdrop-blur-sm border-white/20 text-primary-foreground">
+        <Card className="overflow-hidden bg-background/20 backdrop-blur-sm border-white/20 text-primary-foreground">
             <div className="grid md:grid-cols-2">
                 <div className="relative aspect-video">
                     <Image src={project.beforeImageUrl} alt={`Before image for ${project.title}`} fill className="object-cover" />
@@ -205,7 +205,7 @@ export default function Home() {
                     <div className="absolute inset-0 bg-black/70" />
                 </div>
             )}
-            <div className="container px-4 md:px-6 grid md:grid-cols-2 gap-12 items-center text-primary-foreground">
+            <div className="container grid md:grid-cols-2 gap-12 items-center text-primary-foreground px-4 md:px-6">
                 <ScrollReveal>
                     <div className="bg-background/20 backdrop-blur-sm border border-white/20 p-8 rounded-lg">
                         <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl">Our Mission & Values</h2>
@@ -215,7 +215,7 @@ export default function Home() {
                         <div className="mt-8 grid gap-6">
                             {values.map((value) => (
                                 <div key={value.title} className="flex items-start gap-4">
-                                    <CheckCircle className="h-6 w-6 text-primary mt-1 shrink-0"/>
+                                    <CheckCircle className="h-6 w-6 text-primary-foreground/80 mt-1 shrink-0"/>
                                     <div>
                                         <h3 className="font-semibold text-lg">{value.title}</h3>
                                         <p className="text-primary-foreground/80">{value.description}</p>
@@ -248,7 +248,7 @@ export default function Home() {
             <div className="container px-4 md:px-6">
                 <ScrollReveal>
                     <div className="text-center mb-12 text-primary-foreground">
-                         <div className="inline-block rounded-lg bg-background/80 px-3 py-1 text-sm text-foreground mb-2">
+                         <div className="inline-block rounded-lg bg-background/80 backdrop-blur-sm px-3 py-1 text-sm text-foreground mb-2">
                             Featured Projects
                           </div>
                         <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-5xl">Proven Field Performance</h2>
@@ -336,7 +336,7 @@ export default function Home() {
             <div className="container px-4 md:px-6">
                  <ScrollReveal>
                     <div className="text-center mb-12 text-primary-foreground">
-                         <div className="inline-block rounded-lg bg-background/80 px-3 py-1 text-sm text-foreground mb-2">
+                         <div className="inline-block rounded-lg bg-background/80 backdrop-blur-sm px-3 py-1 text-sm text-foreground mb-2">
                            News & Media
                           </div>
                         <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-5xl">Latest Updates</h2>
@@ -349,10 +349,10 @@ export default function Home() {
                     {newsItems.map((item, i) => (
                         <ScrollReveal key={item.title} delay={i * 150}>
                             <Link href={item.href}>
-                                <Card className="h-full group hover:border-primary/50 transition-colors bg-background/30 backdrop-blur-sm border-white/20 text-primary-foreground">
+                                <Card className="h-full group hover:border-primary-foreground/50 transition-colors bg-background/30 backdrop-blur-sm border-white/20 text-primary-foreground">
                                     <CardHeader className="flex-row items-center gap-4">
-                                        <item.icon className="h-8 w-8 text-primary" />
-                                        <CardTitle className="text-base font-semibold group-hover:text-primary transition-colors text-primary-foreground">{item.title}</CardTitle>
+                                        <item.icon className="h-8 w-8 text-primary-foreground/80" />
+                                        <CardTitle className="text-base font-semibold group-hover:text-primary-foreground transition-colors text-primary-foreground">{item.title}</CardTitle>
                                     </CardHeader>
                                     <CardContent>
                                         <p className="text-xs text-primary-foreground/70">{item.date}</p>

@@ -53,6 +53,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <style>{`
+          :root {
+            --font-body: ${urbanist.style.fontFamily};
+            --font-headline: ${playfairDisplay.style.fontFamily};
+          }
+        `}</style>
+      </head>
       <RootBody>{children}</RootBody>
     </html>
   );
