@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -10,7 +9,8 @@ import {
   QuerySnapshot,
   CollectionReference,
 } from 'firebase/firestore';
-import { type MemoizedFirebase, isMemoized } from '..';
+import { errorEmitter } from '@/firebase/error-emitter';
+import { FirestorePermissionError } from '@/firebase/errors';
 
 /** Utility type to add an 'id' field to a given type T. */
 export type WithId<T> = T & { id: string };
@@ -52,14 +52,8 @@ export interface InternalQuery extends Query<DocumentData> {
  * @returns {UseCollectionResult<T>} Object with data, isLoading, error.
  */
 export function useCollection<T = any>(
-    memoizedHookInput: MemoizedFirebase<CollectionReference<DocumentData> | Query<DocumentData> | null | undefined> | null
+    memoizedTargetRefOrQuery: ((CollectionReference<DocumentData> | Query<DocumentData>) & {__memo?: boolean})  | null | undefined,
 ): UseCollectionResult<T> {
-  if (memoizedHookInput !== null && memoizedHookInput !== undefined && !isMemoized(memoizedHookInput)) {
-    throw new Error('Input to useCollection was not properly memoized using useMemoFirebase. This can lead to infinite loops.');
-  }
-  
-  const targetRefOrQuery = memoizedHookInput ? memoizedHookInput.value : null;
-
   type ResultItemType = WithId<T>;
   type StateDataType = ResultItemType[] | null;
 
@@ -68,7 +62,7 @@ export function useCollection<T = any>(
   const [error, setError] = useState<FirestoreError | Error | null>(null);
 
   useEffect(() => {
-    if (!targetRefOrQuery) {
+    if (!memoizedTargetRefOrQuery) {
       setData(null);
       setIsLoading(false);
       setError(null);
@@ -78,9 +72,9 @@ export function useCollection<T = any>(
     setIsLoading(true);
     setError(null);
 
-    // Directly use targetRefOrQuery as it's assumed to be the final query
+    // Directly use memoizedTargetRefOrQuery as it's assumed to be the final query
     const unsubscribe = onSnapshot(
-      targetRefOrQuery,
+      memoizedTargetRefOrQuery,
       (snapshot: QuerySnapshot<DocumentData>) => {
         const results: ResultItemType[] = [];
         for (const doc of snapshot.docs) {
@@ -91,15 +85,30 @@ export function useCollection<T = any>(
         setIsLoading(false);
       },
       (error: FirestoreError) => {
-        setError(error)
+        // This logic extracts the path from either a ref or a query
+        const path: string =
+          memoizedTargetRefOrQuery.type === 'collection'
+            ? (memoizedTargetRefOrQuery as CollectionReference).path
+            : (memoizedTargetRefOrQuery as unknown as InternalQuery)._query.path.canonicalString()
+
+        const contextualError = new FirestorePermissionError({
+          operation: 'list',
+          path,
+        })
+
+        setError(contextualError)
         setData(null)
         setIsLoading(false)
+
+        // trigger global error propagation
+        errorEmitter.emit('permission-error', contextualError);
       }
     );
 
     return () => unsubscribe();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [targetRefOrQuery]); // Re-run if the target query/reference changes.
-  
+  }, [memoizedTargetRefOrQuery]); // Re-run if the target query/reference changes.
+  if(memoizedTargetRefOrQuery && !memoizedTargetRefOrQuery.__memo) {
+    throw new Error(memoizedTargetRefOrQuery + ' was not properly memoized using useMemoFirebase');
+  }
   return { data, isLoading, error };
 }

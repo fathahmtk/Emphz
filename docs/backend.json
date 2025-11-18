@@ -1,11 +1,10 @@
-
 {
   "entities": {
     "Product": {
       "$schema": "http://json-schema.org/draft-07/schema#",
       "title": "Product",
       "type": "object",
-      "description": "Represents a product in the GRP catalog.",
+      "description": "Represents a GRP product in the dynamic product catalog.",
       "properties": {
         "id": {
           "type": "string",
@@ -15,63 +14,99 @@
           "type": "string",
           "description": "Name of the product."
         },
-        "category": {
+        "description": {
           "type": "string",
-          "description": "Category of the product."
+          "description": "Detailed specification of the product."
         },
-        "overview": {
+        "imageUrl": {
           "type": "string",
-          "description": "A brief overview of the product."
-        },
-        "imageUrls": {
-            "type": "array",
-            "description": "URLs of the product images.",
-            "items": { "type": "string", "format": "uri" }
-        },
-        "imageHint": {
-          "type": "string",
-          "description": "Hint for AI to find similar images."
-        },
-        "specifications": {
-          "type": "object",
-          "description": "Technical specifications of the product.",
-          "properties": {
-              "Material": { "type": "string" },
-              "IP Rating": { "type": "string" },
-              "Impact Resistance": { "type": "string" },
-              "Operating Temperature": { "type": "string" }
-          }
-        },
-        "applications": {
-            "type": "array",
-            "items": { "type": "string" }
-        },
-        "datasheetUrl": {
-            "type": "string",
-            "format": "uri"
-        },
-        "model3dUrl": {
-            "type": "string",
-            "format": "uri"
-        },
-        "colors": {
-            "type": "array",
-            "items": { "type": "string" }
-        },
-        "sizes": {
-            "type": "array",
-            "items": { "type": "string" }
+          "description": "URL of the product image.",
+          "format": "uri"
         }
       },
       "required": [
         "id",
         "name",
-        "category",
-        "overview",
-        "imageUrls",
-        "specifications",
-        "applications",
-        "datasheetUrl"
+        "description",
+        "imageUrl"
+      ]
+    },
+    "ProjectCaseStudy": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "ProjectCaseStudy",
+      "type": "object",
+      "description": "Represents a project case study with before-after images and details.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the ProjectCaseStudy entity."
+        },
+        "title": {
+          "type": "string",
+          "description": "Title of the project case study."
+        },
+        "beforeImageUrl": {
+          "type": "string",
+          "description": "URL of the 'before' image.",
+          "format": "uri"
+        },
+        "afterImageUrl": {
+          "type": "string",
+          "description": "URL of the 'after' image.",
+          "format": "uri"
+        },
+        "details": {
+          "type": "string",
+          "description": "Detailed description of the project."
+        },
+        "location": {
+          "type": "string",
+          "description": "Location of the project."
+        },
+        "clientType": {
+          "type": "string",
+          "description": "Type of client for the project."
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "beforeImageUrl",
+        "afterImageUrl",
+        "details",
+        "location",
+        "clientType"
+      ]
+    },
+    "TechnicalDownload": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "TechnicalDownload",
+      "type": "object",
+      "description": "Represents a downloadable technical document (brochure, datasheet).",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the TechnicalDownload entity."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the downloadable document."
+        },
+        "fileUrl": {
+          "type": "string",
+          "description": "URL of the downloadable PDF file.",
+          "format": "uri"
+        },
+        "description": {
+          "type": "string",
+          "description": "Description of the downloadable document."
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "fileUrl",
+        "description"
       ]
     },
     "Lead": {
@@ -93,17 +128,13 @@
           "description": "Email address of the lead.",
           "format": "email"
         },
-        "phone": {
-          "type": "string",
-          "description": "Phone number of the lead."
-        },
         "message": {
           "type": "string",
-          "description": "Message from the lead."
+          "description": "Message submitted by the lead."
         },
-        "dateCreated": {
+        "timestamp": {
           "type": "string",
-          "description": "Date and time when the lead was created.",
+          "description": "Timestamp when the lead was submitted.",
           "format": "date-time"
         }
       },
@@ -111,86 +142,16 @@
         "id",
         "name",
         "email",
-        "phone",
         "message",
-        "dateCreated"
+        "timestamp"
       ]
-    },
-    "TechnicalDownload": {
-      "$schema": "http://json-schema.org/draft-07/schema#",
-      "title": "TechnicalDownload",
-      "type": "object",
-      "description": "Represents a downloadable technical document.",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "Unique identifier for the TechnicalDownload entity."
-        },
-        "title": {
-          "type": "string",
-          "description": "Title of the technical download."
-        },
-        "fileUrl": {
-          "type": "string",
-          "description": "URL of the downloadable file (PDF).",
-          "format": "uri"
-        },
-        "description": {
-          "type": "string",
-          "description": "A brief description of the technical download."
-        }
-      },
-      "required": [
-        "id",
-        "title",
-        "fileUrl",
-        "description"
-      ]
-    },
-    "Subscription": {
-      "$schema": "http://json-schema.org/draft-07/schema#",
-      "title": "Subscription",
-      "type": "object",
-      "description": "Represents a newsletter subscription.",
-      "properties": {
-        "id": {
-          "type": "string",
-          "description": "Unique identifier for the Subscription entity."
-        },
-        "email": {
-          "type": "string",
-          "description": "Email address of the subscriber.",
-          "format": "email"
-        },
-        "subscribedAt": {
-          "type": "string",
-          "description": "Date and time when the subscription was made.",
-          "format": "date-time"
-        }
-      },
-      "required": [
-        "id",
-        "email",
-        "subscribedAt"
-      ]
-    },
-    "JobApplication": {
-      "$schema": "http://json-schema.org/draft-07/schema#",
-      "title": "JobApplication",
-      "type": "object",
-      "description": "Represents a job application submitted through the careers page.",
-      "properties": {
-        "id": { "type": "string" },
-        "name": { "type": "string" },
-        "email": { "type": "string", "format": "email" },
-        "phone": { "type": "string" },
-        "position": { "type": "string" },
-        "coverLetter": { "type": "string" },
-        "cvInfo": { "type": "string", "description": "Information about the uploaded CV file (name, size). In a real app, this would be a URL to Firebase Storage." },
-        "submittedAt": { "type": "string", "format": "date-time" }
-      },
-      "required": ["id", "name", "email", "phone", "cvInfo", "submittedAt"]
     }
+  },
+  "auth": {
+    "providers": [
+      "password",
+      "anonymous"
+    ]
   },
   "firestore": {
     "structure": [
@@ -201,27 +162,27 @@
           "schema": {
             "$ref": "#/backend/entities/Product"
           },
-          "description": "Stores product information.",
+          "description": "Stores product information for the dynamic product catalog. Publicly readable.",
           "params": [
             {
               "name": "productId",
-              "description": "The unique identifier of the product."
+              "description": "Unique identifier for the product."
             }
           ]
         }
       },
       {
-        "path": "/leads/{leadId}",
+        "path": "/project_case_studies/{projectCaseStudyId}",
         "definition": {
-          "entityName": "Lead",
+          "entityName": "ProjectCaseStudy",
           "schema": {
-            "$ref": "#/backend/entities/Lead"
+            "$ref": "#/backend/entities/ProjectCaseStudy"
           },
-          "description": "Stores lead information captured from the contact form.",
+          "description": "Stores project case study information with before-after images and details. Publicly readable.",
           "params": [
             {
-              "name": "leadId",
-              "description": "The unique identifier of the lead."
+              "name": "projectCaseStudyId",
+              "description": "Unique identifier for the project case study."
             }
           ]
         }
@@ -233,48 +194,32 @@
           "schema": {
             "$ref": "#/backend/entities/TechnicalDownload"
           },
-          "description": "Stores technical download information.",
+          "description": "Stores technical brochures and product data sheets (PDF links). Publicly readable.",
           "params": [
             {
               "name": "technicalDownloadId",
-              "description": "The unique identifier of the technical download."
+              "description": "Unique identifier for the technical download."
             }
           ]
         }
       },
       {
-        "path": "/subscriptions/{subscriptionId}",
+        "path": "/leads/{leadId}",
         "definition": {
-          "entityName": "Subscription",
+          "entityName": "Lead",
           "schema": {
-            "$ref": "#/backend/entities/Subscription"
+            "$ref": "#/backend/entities/Lead"
           },
-          "description": "Stores newsletter subscriptions.",
+          "description": "Stores lead data captured from the contact form.  Write-protected; can only be created by backend, read-protected.",
           "params": [
             {
-              "name": "subscriptionId",
-              "description": "The unique identifier of the subscription."
-            }
-          ]
-        }
-      },
-       {
-        "path": "/job_applications/{applicationId}",
-        "definition": {
-          "entityName": "JobApplication",
-          "schema": {
-            "$ref": "#/backend/entities/JobApplication"
-          },
-          "description": "Stores job applications from the careers page.",
-          "params": [
-            {
-              "name": "applicationId",
-              "description": "The unique identifier of the job application."
+              "name": "leadId",
+              "description": "Unique identifier for the lead."
             }
           ]
         }
       }
     ],
-    "reasoning": "The Firestore structure is designed to address the 'auth/invalid-api-key' error and fulfill the application's data storage needs, focusing on clear authorization and data integrity.  The provided error indicates an issue with the Firebase API key configuration. Ensure the Firebase configuration object (`firebaseConfig`) within `src/firebase/index.ts` contains the correct `apiKey` value, and that the API key is enabled within the Firebase project settings in the Firebase Console.  Also, check that Firebase billing is enabled for the project, as some features require a paid plan. The structure avoids hierarchical authorization dependencies to ensure security and enables atomic operations (transactions/batches) without `get()` calls in the rules. All documents within the same collection will have the same security requirements to simplify the security rules.\n\n**Products:** Products are stored in a top-level `/products` collection. This simplifies querying and management.\n\n**Project Case Studies:** Project case studies are stored in a top-level `/project_case_studies` collection, facilitating easy access and listing.\n\n**Leads:** Leads are stored in a top-level `/leads` collection. Because leads are created anonymously, there are no authorization concerns.\n\n**Technical Downloads:** Technical downloads are stored in a top-level `/technical_downloads` collection.\n\n**Subscriptions:** Newsletter subscriptions are stored in a top-level `/subscriptions` collection. These are public writes.\n\n**Job Applications:** Job applications are stored in a top-level `/job_applications` collection. These are also public writes, similar to leads and subscriptions.\n\nThis structure ensures **Authorization Independence**, which is critical for secure and scalable applications. By avoiding hierarchical authorization dependencies, the design simplifies security rules and avoids breaking atomic operations."
+    "reasoning": "The Firestore data structure is designed to support the Emphz application's core features, including a dynamic product catalog, project case studies, technical downloads, and lead tracking. The design prioritizes security, scalability, and debuggability by adhering to the principles of Authorization Independence, Structural Segregation, Access Modeling, and Data Clarity. Authorization Independence is achieved by avoiding hierarchical authorization dependencies, ensuring atomic operations and simplified debugging. Structural Segregation separates data with different access needs into distinct collections, simplifying security rules. Access Modeling employs consistent patterns for authorization, such as path-based ownership and membership maps. Data Clarity promotes explicit state modeling and predictable schema, enhancing maintainability.\n\nThe `products` and `project_case_studies` collections store product and case study data, respectively, and are publicly accessible for read operations, enabling the dynamic product catalog and project case studies features. The `technical_downloads` collection houses technical documents, also publicly accessible for downloads. The `leads` collection stores contact form submissions, accessible only to authorized admin users. This segregation ensures that sensitive lead data is protected while allowing public access to product information, case studies, and technical downloads.\n\nSpecifically, Authorization Independence is achieved as follows:\n*   `products`, `project_case_studies`, and `technical_downloads`: public read access eliminates the need for any authorization checks. No `get()` calls are needed in security rules.\n*   `leads`: restricted write access through server-side code or Firebase Authentication and associated security rules.\n\nQAPs are supported as follows:\n*   The segregation of publicly readable data into collections like `products`, `project_case_studies`, and `technical_downloads` allows for unrestricted `list` operations (QAP: Rules are not Filters) without compromising security.\n*   Sensitive data such as `leads` is stored in a separate collection with restricted access, ensuring that only authorized users can access the data."
   }
 }

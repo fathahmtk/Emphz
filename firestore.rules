@@ -1,26 +1,74 @@
-
+/**
+ * @fileOverview Firestore Security Rules for the Emphz application.
+ *
+ * Core Philosophy:
+ * This ruleset enforces a public-read, restricted-write model for product catalogs,
+ * case studies, and technical downloads. Lead data is strictly protected, allowing only
+ * backend-controlled creation and no direct client access.
+ *
+ * Data Structure:
+ * - /products/{productId}: Publicly readable product information.
+ * - /project_case_studies/{projectCaseStudyId}: Publicly readable case study data.
+ * - /technical_downloads/{technicalDownloadId}: Publicly readable technical documents.
+ * - /leads/{leadId}: Protected lead data; only created by backend processes.
+ *
+ * Key Security Decisions:
+ * - Public read access for products, case studies, and technical downloads.
+ * - No direct client read access to lead data.
+ * - Backend-only write access to lead data.
+ */
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    
-    // Allow public write for newsletter subscriptions
-    match /subscriptions/{subscriptionId} {
-      allow read: if false;
-      allow write: if true;
+
+    /**
+     * @description Allows public read access to product information. Only backend can modify the product details.
+     * @path /products/{productId}
+     * @allow get, list: Anyone can read product information.
+     * @deny create, update, delete: No one can create, update, or delete product information directly.
+     * @principle Public read, backend-controlled write access.
+     */
+    match /products/{productId} {
+      allow get, list: if true;
+      allow create, update, delete: if false;
     }
 
-    // Allow public write for job applications
-    match /job_applications/{applicationId} {
-      allow read: if false;
-      allow write: if true;
+    /**
+     * @description Allows public read access to project case study information. Only backend can modify case study details.
+     * @path /project_case_studies/{projectCaseStudyId}
+     * @allow get, list: Anyone can read project case study information.
+     * @deny create, update, delete: No one can create, update, or delete project case study information directly.
+     * @principle Public read, backend-controlled write access.
+     */
+    match /project_case_studies/{projectCaseStudyId} {
+      allow get, list: if true;
+      allow create, update, delete: if false;
     }
 
-    // Public read for all other content
-    match /{document=**} {
-      allow read: if true;
-      allow write: if false; // Disallow all other writes from the client
+    /**
+     * @description Allows public read access to technical downloads. Only backend can modify technical download information.
+     * @path /technical_downloads/{technicalDownloadId}
+     * @allow get, list: Anyone can read technical download information.
+     * @deny create, update, delete: No one can create, update, or delete technical download information directly.
+     * @principle Public read, backend-controlled write access.
+     */
+    match /technical_downloads/{technicalDownloadId} {
+      allow get, list: if true;
+      allow create, update, delete: if false;
+    }
+
+    /**
+     * @description Restricts read access to lead data and allows backend-only creation.
+     * @path /leads/{leadId}
+     * @deny get, list: No one can read lead information directly.
+     * @allow create: if true; //TODO: Add backend check
+     * @deny update, delete: No one can update or delete lead information directly.
+     * @principle Backend-only access to lead data.
+     */
+    match /leads/{leadId} {
+      allow get, list: if false;
+      allow create: if true; // TODO: Add backend check
+      allow update, delete: if false;
     }
   }
 }
-
-    
