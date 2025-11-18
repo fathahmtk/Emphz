@@ -58,7 +58,11 @@ export default function Home() {
     'hero-extra-1',
     'hero-extra-2',
     'hero-extra-3',
-    'hero-extra-4'
+    'hero-extra-4',
+    'hero-extra-5',
+    'hero-extra-6',
+    'hero-extra-7',
+    'hero-extra-8'
   ].includes(p.id));
 
   return (

@@ -191,6 +191,30 @@
       "description": "A complex industrial setting with pipes and machinery.",
       "imageUrl": "https://lh3.googleusercontent.com/pw/AP1GczN_wmEmIA7ncYycqOYv4YvX1FLopxo1y_cU3rD41Y81m_pM2B5ZKndiFicbaeMYmL7-UqlWrs2UbKENda4hwvxpJANhJt0hrY-cSz-AifpcRl491N7eeTzQxFxvnuRZxArg_rhf0z0OzMjeAm_qm9sxUg=w1546-h870-s-no-gm?authuser=0",
       "imageHint": "industrial setting"
+    },
+    {
+      "id": "hero-extra-5",
+      "description": "An industrial setting with complex machinery.",
+      "imageUrl": "https://lh3.googleusercontent.com/pw/AP1GczMvuz7tjgxC5-JF9dQctIIAuS8YxbnxwOh-BxiCmu2-fRi94SQUgqdsyZ8QcYCx_WhpUYQe-RJjo9kUnlKWHJYyHFiq7le1FfH98Qvn_LBr4-BYmSe-LfgpUg-WAI7KRzJg2kp_-VQNZK7FQcCRyd07dw=w1546-h870-s-no-gm?authuser=0",
+      "imageHint": "industrial machinery"
+    },
+    {
+      "id": "hero-extra-6",
+      "description": "Close-up on industrial pipes.",
+      "imageUrl": "https://lh3.googleusercontent.com/pw/AP1GczMpO460jYx94eD8HEyGiPrJ0ea--4ru7cDN-zzbgx0KaLGug6YehZZVIzzn2U1QnE8hsfGln4KuW1oJjiLNZQmIsa73Cr1DevyUW5i81y1YuCPqtd8-7gLHUhUHv0eU3vFiheNfrc5g58c-cqZGv21uyg=w1546-h870-s-no-gm?authuser=0",
+      "imageHint": "pipe detail"
+    },
+    {
+      "id": "hero-extra-7",
+      "description": "Modern factory interior.",
+      "imageUrl": "https://lh3.googleusercontent.com/pw/AP1GczOTSU29lbNNJv5sLH6p8tdRMwdvN3WIzNKEOC0pK7CZh4v-AFt-GuBTg2h6hHGSAwkpqG1PNIcLJBq0kNpTIruqQVGJcU7pZ9Nx5TYy0HPkkG1fASQVKRi3S4sbBOwSkDAhUgcumcUEV9x0NFPBg8Rygg=w1546-h870-s-no-gm?authuser=0",
+      "imageHint": "factory interior"
+    },
+    {
+      "id": "hero-extra-8",
+      "description": "Energy plant infrastructure.",
+      "imageUrl": "https://lh3.googleusercontent.com/pw/AP1GczNHDRejNbFc9X-2_IqElBS_aQg3cWwycNVOBd0TN3_lbnuErIZJrV1JmDd377E8YsRbhwHy6MvzCODVnuY0yLxRwJlbXxxwt0WcH1addRK_Ffv5cIQKRu3kAgdutyJYMsYoqgGWsMSnqbmVo-BZy0_9Mg=w1546-h870-s-no-gm?authuser=0",
+      "imageHint": "energy plant"
     }
   ]
 }
