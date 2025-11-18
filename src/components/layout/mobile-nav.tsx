@@ -39,7 +39,7 @@ export function MobileNav() {
                 <div className="flex h-16 items-center border-b px-6">
                     <SheetClose asChild>
                         <Link href="/" className="flex items-center gap-2 font-semibold">
-                            <Logo className="h-6 w-auto" />
+                            <Logo className="h-8 w-auto" />
                             <span className="sr-only">Emphz</span>
                         </Link>
                     </SheetClose>
