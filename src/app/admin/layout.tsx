@@ -89,7 +89,11 @@ export default function AdminLayout({
                 </SidebarMenuItem>
             </SidebarMenu>
         </SidebarFooter>
-        <SidebarInset>{children}</SidebarInset>
+        <SidebarInset>
+          <div className="w-full">
+            {children}
+          </div>
+        </SidebarInset>
       </Sidebar>
   )
 }
