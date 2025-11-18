@@ -1,4 +1,5 @@
 
+'use client';
 import { SiteHeader } from '@/components/layout/site-header';
 import { SiteFooter } from '@/components/layout/site-footer';
 import { ScrollReveal } from '@/components/scroll-reveal';
@@ -6,6 +7,10 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Filter } from 'lucide-react';
 import Link from 'next/link';
+import { useState } from 'react';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Label } from '@/components/ui/label';
 
 const productCategories = [
   {
@@ -51,6 +56,16 @@ const productCategories = [
 ];
 
 export default function ProductsPage() {
+  const [filters, setFilters] = useState<Record<string, boolean>>({});
+
+  const handleFilterChange = (categoryName: string, checked: boolean) => {
+    setFilters(prev => ({...prev, [categoryName]: checked}));
+  }
+
+  const activeFilters = Object.entries(filters).filter(([,isActive]) => isActive).map(([key]) => key);
+  const filteredCategories = activeFilters.length === 0 ? productCategories : productCategories.filter(cat => activeFilters.includes(cat.name));
+
+
   return (
     <>
       <SiteHeader />
@@ -71,14 +86,37 @@ export default function ProductsPage() {
           </ScrollReveal>
 
           <div className="mb-8 flex items-center justify-end">
-            <Button variant="outline">
-              <Filter className="mr-2 h-4 w-4" />
-              Filter Products
-            </Button>
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button variant="outline">
+                  <Filter className="mr-2 h-4 w-4" />
+                  Filter Products
+                </Button>
+              </SheetTrigger>
+              <SheetContent>
+                <SheetHeader>
+                  <SheetTitle>Filter by Category</SheetTitle>
+                </SheetHeader>
+                <div className="py-4 space-y-4">
+                  {productCategories.map(category => (
+                    <div key={category.name} className="flex items-center space-x-2">
+                       <Checkbox 
+                        id={category.name} 
+                        checked={filters[category.name] || false}
+                        onCheckedChange={(checked) => handleFilterChange(category.name, !!checked)}
+                       />
+                       <Label htmlFor={category.name} className="flex-1 text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                         {category.name}
+                       </Label>
+                    </div>
+                  ))}
+                </div>
+              </SheetContent>
+            </Sheet>
           </div>
           
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {productCategories.map((category, i) => (
+            {filteredCategories.map((category, i) => (
               <ScrollReveal key={category.name} delay={i * 100}>
                 <Link href={category.href} className="h-full block">
                   <Card className="flex h-full flex-col group overflow-hidden transition-shadow hover:shadow-xl hover:border-accent">

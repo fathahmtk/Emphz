@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState } from-react";
+import { useState } from "react";
 import { type Project } from "@/lib/types";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -9,7 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { Loader2, Trash2 } from "lucide-react";
+import { Loader2, Trash2, ImageIcon } from "lucide-react";
 import { saveProject, deleteProject } from "./actions";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
@@ -114,7 +114,13 @@ export function EditProjectForm({ project: initialProject }: { project: Project 
               <Label>Before Image URL</Label>
                <Input value={project.beforeImageUrl} onChange={(e) => handleInputChange('beforeImageUrl', e.target.value)} className="mt-2" />
               <div className="relative aspect-video w-full mt-2">
-                <Image src={project.beforeImageUrl || "https://picsum.photos/seed/placeholder/600/400"} alt="Before" data-ai-hint={project.beforeImageHint} fill className="object-cover rounded-md" />
+                {project.beforeImageUrl ? (
+                    <Image src={project.beforeImageUrl} alt="Before" data-ai-hint={project.beforeImageHint} fill className="object-cover rounded-md" />
+                ) : (
+                    <div className="w-full h-full bg-muted rounded-md flex items-center justify-center">
+                        <ImageIcon className="text-muted-foreground" />
+                    </div>
+                )}
                 <Badge variant="destructive" className="absolute top-2 left-2">Before</Badge>
               </div>
             </div>
@@ -122,7 +128,13 @@ export function EditProjectForm({ project: initialProject }: { project: Project 
               <Label>After Image URL</Label>
               <Input value={project.afterImageUrl} onChange={(e) => handleInputChange('afterImageUrl', e.target.value)} className="mt-2" />
               <div className="relative aspect-video w-full mt-2">
-                <Image src={project.afterImageUrl || "https://picsum.photos/seed/placeholder/600/400"} alt="After" data-ai-hint={project.afterImageHint} fill className="object-cover rounded-md" />
+                 {project.afterImageUrl ? (
+                    <Image src={project.afterImageUrl} alt="After" data-ai-hint={project.afterImageHint} fill className="object-cover rounded-md" />
+                 ) : (
+                    <div className="w-full h-full bg-muted rounded-md flex items-center justify-center">
+                        <ImageIcon className="text-muted-foreground" />
+                    </div>
+                 )}
                 <Badge variant="default" className="bg-green-600 absolute top-2 left-2">After</Badge>
               </div>
             </div>
