@@ -113,7 +113,6 @@ export const menuData: MegaMenu[] = [
           title: "Business Tools",
           links: [
               { title: "Case Studies", href: "/projects"},
-              { title: "Tender Support", href: "/contact"},
           ]
       }
     ],
