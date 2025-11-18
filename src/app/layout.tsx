@@ -10,6 +10,7 @@ import { ReactNode } from 'react';
 import { Orbitron, Inter } from 'next/font/google';
 import { FirebaseClientProvider } from '@/firebase';
 import { usePathname } from 'next/navigation';
+import { ClientOnly } from '@/components/client-only';
 
 const orbitron = Orbitron({
   subsets: ['latin'],
@@ -34,6 +35,7 @@ function RootBody({
         <body className={cn('min-h-screen font-body antialiased', orbitron.variable, inter.variable)}>
             <FirebaseClientProvider>
                 <SidebarProvider>
+                  <ClientOnly>
                     {isAdminPage ? (
                         <div className='bg-background text-foreground'>{children}</div>
                     ) : (
@@ -41,6 +43,7 @@ function RootBody({
                             {children}
                         </div>
                     )}
+                  </ClientOnly>
                 </SidebarProvider>
             </FirebaseClientProvider>
             <Toaster />
