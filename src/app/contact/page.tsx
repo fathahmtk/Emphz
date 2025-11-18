@@ -1,14 +1,13 @@
 
 import { ContactForm } from "@/components/contact-form";
 import { ScrollReveal } from "@/components/scroll-reveal";
-import { CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Mail, Phone, MessageSquare } from "lucide-react";
 import type { Metadata } from "next";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { GlassCard } from "@/components/glass-card";
 import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 
@@ -44,14 +43,14 @@ export default function ContactPage() {
                         fill
                         className="object-cover"
                     />
-                    <div className="absolute inset-0 bg-black/70" />
+                    <div className="absolute inset-0 bg-background/70" />
                 </div>
             )}
           <div className="container px-4 md:px-6 py-24 md:py-32">
             <ScrollReveal>
               <div className="text-center mb-12">
-                <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl font-headline text-white">Connect with EMPHZ</h1>
-                <p className="mt-4 max-w-3xl mx-auto text-gray-200/90 md:text-lg">
+                <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl font-headline text-foreground">Connect with EMPHZ</h1>
+                <p className="mt-4 max-w-3xl mx-auto text-foreground/80 md:text-lg">
                   Technical Support, Product Inquiries & Project Collaboration. EMPHZ teams respond quickly to technical requests, project requirements, and product inquiries. Upload drawings, specifications, or tender documents directly via the form.
                 </p>
               </div>
@@ -62,21 +61,21 @@ export default function ContactPage() {
                 <ContactForm />
               </ScrollReveal>
               <ScrollReveal delay={400} className="lg:col-span-2 space-y-8">
-                <GlassCard>
+                <Card>
                   <CardHeader>
                     <CardTitle>Contact Channels</CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4 text-muted-foreground">
                     {contactChannels.map(channel => (
-                         <a key={channel.text} href={channel.href} className="flex items-center gap-4 hover:text-accent transition-colors">
+                         <a key={channel.text} href={channel.href} className="flex items-center gap-4 hover:text-accent-foreground transition-colors">
                           <channel.icon className="w-5 h-5 text-primary" />
                           <span>{channel.text}</span>
                         </a>
                     ))}
                     <p className="text-sm pt-2">Operating Hours: Sun-Thu, 8:00 AM - 6:00 PM (GMT+4)</p>
                   </CardContent>
-                </GlassCard>
-                <GlassCard>
+                </Card>
+                <Card>
                   <CardHeader>
                     <CardTitle>Looking for documentation?</CardTitle>
                   </CardHeader>
@@ -86,7 +85,7 @@ export default function ContactPage() {
                         <Link href="/downloads">Request Specifications Pack</Link>
                     </Button>
                   </CardContent>
-                </GlassCard>
+                </Card>
               </ScrollReveal>
             </div>
           </div>

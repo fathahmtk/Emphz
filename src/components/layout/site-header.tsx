@@ -50,14 +50,14 @@ export function SiteHeader() {
             )}>
                 <div className="container flex h-16 items-center px-4 md:px-6">
                     <Link href="/" className="mr-6 flex items-center space-x-2">
-                        <Logo className={cn("h-8 w-auto text-white transition-colors")} />
+                        <Logo className={cn("h-8 w-auto text-foreground transition-colors")} />
                     </Link>
                     
-                    <NavigationMenu className={cn("hidden md:flex text-white")}>
+                    <NavigationMenu className={cn("hidden md:flex")}>
                         <NavigationMenuList>
                             {menuData.map((item) => (
                                 <NavigationMenuItem key={item.title}>
-                                    <NavigationMenuTrigger className={cn("bg-transparent hover:bg-white/10 focus:bg-white/10 data-[active]:bg-white/10 data-[state=open]:bg-white/10")}>
+                                    <NavigationMenuTrigger className={cn("bg-transparent text-sm font-medium text-foreground/70 hover:text-foreground/90 hover:bg-accent/50 focus:bg-accent/50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50")}>
                                         <Link href={item.href}>{item.title}</Link>
                                     </NavigationMenuTrigger>
                                     <NavigationMenuContent>
@@ -96,9 +96,9 @@ export function SiteHeader() {
 
                     <div className="flex flex-1 items-center justify-end space-x-2">
                         <div className="hidden md:flex items-center space-x-2">
-                            <Button variant={'outline'} className={cn("text-white border-white/50 hover:bg-white hover:text-primary")}>Request Spec Pack</Button>
-                            <Button variant={'outline'} className={cn("text-white border-white/50 hover:bg-white hover:text-primary")}>Submit Tender</Button>
-                            <Button variant="ghost" size="icon" onClick={() => setIsSearchOpen(true)} className={cn("text-white hover:bg-white/10")}><Search className="h-4 w-4"/></Button>
+                            <Button>Request Spec Pack</Button>
+                            <Button variant={'secondary'}>Submit Tender</Button>
+                            <Button variant="ghost" size="icon" onClick={() => setIsSearchOpen(true)}><Search className="h-4 w-4"/></Button>
                         </div>
                         <MobileNav />
                     </div>

@@ -1,9 +1,10 @@
+
 'use client';
 import { SiteHeader } from '@/components/layout/site-header';
 import { SiteFooter } from '@/components/layout/site-footer';
 import { ScrollReveal } from '@/components/scroll-reveal';
 import { Button } from '@/components/ui/button';
-import { CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Filter } from 'lucide-react';
 import Link from 'next/link';
 import { useMemo, useState } from 'react';
@@ -13,7 +14,6 @@ import { Label } from '@/components/ui/label';
 import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
 import type { Product } from '@/lib/types';
 import { collection, orderBy, query } from 'firebase/firestore';
-import { GlassCard } from '@/components/glass-card';
 
 
 const productPageLinks = [
@@ -154,14 +154,14 @@ export default function ProductsPage() {
             {productCards.map((category, i) => (
               <ScrollReveal key={category.name} delay={i * 100}>
                 <Link href={category.href} className="h-full block">
-                  <GlassCard className="flex h-full flex-col group overflow-hidden transition-shadow hover:shadow-xl hover:border-accent">
+                  <Card className="flex h-full flex-col group overflow-hidden transition-shadow hover:shadow-xl hover:border-accent">
                     <CardHeader>
-                      <CardTitle className="text-xl font-headline group-hover:text-accent">{category.name}</CardTitle>
+                      <CardTitle className="text-xl font-headline group-hover:text-primary">{category.name}</CardTitle>
                     </CardHeader>
                     <CardContent>
                       <CardDescription>{category.description}</CardDescription>
                     </CardContent>
-                  </GlassCard>
+                  </Card>
                 </Link>
               </ScrollReveal>
             ))}

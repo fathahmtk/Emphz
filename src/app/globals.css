@@ -9,57 +9,57 @@ body {
 
 @layer base {
   :root {
-    --background: 0 0% 0%; /* Black */
-    --foreground: 240 10% 90%; /* Light Gray */
+    --background: 20 50% 98%; /* Very light, almost white with a hint of warmth */
+    --foreground: 20 20% 15%; /* Dark, warm gray */
 
-    --card: 240 10% 4%;
-    --card-foreground: 240 10% 90%;
+    --card: 20 50% 100%;
+    --card-foreground: 20 20% 15%;
 
-    --popover: 0 0% 0%;
-    --popover-foreground: 240 10% 90%;
+    --popover: 20 50% 100%;
+    --popover-foreground: 20 20% 15%;
 
-    --primary: 220 90% 60%; /* Vibrant Blue */
-    --primary-foreground: 220 90% 10%;
+    --primary: 160 30% 40%; /* Muted, soft green */
+    --primary-foreground: 160 30% 95%;
 
-    --secondary: 260 80% 20%; /* Dark Purple */
-    --secondary-foreground: 260 80% 90%;
+    --secondary: 20 30% 94%; /* Light warm gray */
+    --secondary-foreground: 20 20% 25%;
     
-    --muted: 260 80% 20%;
-    --muted-foreground: 240 10% 60%;
+    --muted: 20 30% 94%;
+    --muted-foreground: 20 20% 45%;
 
-    --accent: 260 80% 25%; /* Purple for accents */
-    --accent-foreground: 260 80% 95%;
+    --accent: 20 30% 90%; /* Slightly darker warm gray for accents */
+    --accent-foreground: 20 20% 10%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 240 10% 15%;
-    --input: 240 10% 15%;
-    --ring: 220 90% 60%; /* Vibrant Blue for rings/glow */
+    --border: 20 20% 88%;
+    --input: 20 20% 88%;
+    --ring: 160 30% 40%; /* Muted green for rings/glow */
     
     --radius: 0.5rem;
   }
 
   .dark {
-    --background: 0 0% 0%;
-    --foreground: 240 10% 90%;
-    --card: 240 10% 4%;
-    --card-foreground: 240 10% 90%;
-    --popover: 0 0% 0%;
-    --popover-foreground: 240 10% 90%;
-    --primary: 220 90% 60%;
-    --primary-foreground: 220 90% 10%;
-    --secondary: 260 80% 20%;
-    --secondary-foreground: 260 80% 90%;
-    --muted: 260 80% 20%;
-    --muted-foreground: 240 10% 60%;
-    --accent: 260 80% 25%;
-    --accent-foreground: 260 80% 95%;
+    --background: 20 20% 5%;
+    --foreground: 20 50% 95%;
+    --card: 20 20% 10%;
+    --card-foreground: 20 50% 95%;
+    --popover: 20 20% 5%;
+    --popover-foreground: 20 50% 95%;
+    --primary: 160 30% 50%;
+    --primary-foreground: 160 30% 95%;
+    --secondary: 20 20% 15%;
+    --secondary-foreground: 20 50% 95%;
+    --muted: 20 20% 15%;
+    --muted-foreground: 20 50% 70%;
+    --accent: 20 20% 20%;
+    --accent-foreground: 20 50% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 240 10% 15%;
-    --input: 240 10% 15%;
-    --ring: 220 90% 60%;
+    --border: 20 20% 25%;
+    --input: 20 20% 25%;
+    --ring: 160 30% 50%;
   }
 }
 
@@ -87,3 +87,4 @@ body {
 .embla__container > .embla__slide.is-active {
     opacity: 1;
 }
+

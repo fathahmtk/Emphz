@@ -3,7 +3,7 @@
 import { SiteHeader } from '@/components/layout/site-header';
 import { SiteFooter } from '@/components/layout/site-footer';
 import { ScrollReveal } from '@/components/scroll-reveal';
-import { CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
 import type { ProjectCaseStudy } from '@/lib/types';
 import { collection, orderBy, query } from 'firebase/firestore';
@@ -11,11 +11,10 @@ import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
 import { Users, MapPin } from 'lucide-react';
-import { GlassCard } from '@/components/glass-card';
 
 function CaseStudyCard({ project }: { project: ProjectCaseStudy }) {
     return (
-        <GlassCard className="overflow-hidden">
+        <Card className="overflow-hidden">
             <div className="grid md:grid-cols-2">
                 <div className="relative aspect-video">
                     <Image src={project.beforeImageUrl} alt={`Before image for ${project.title}`} fill className="object-cover" />
@@ -23,7 +22,7 @@ function CaseStudyCard({ project }: { project: ProjectCaseStudy }) {
                 </div>
                 <div className="relative aspect-video">
                     <Image src={project.afterImageUrl} alt={`After image for ${project.title}`} fill className="object-cover" />
-                    <Badge className="absolute top-2 left-2">After</Badge>
+                    <Badge className="absolute top-2 left-2" variant="default">After</Badge>
                 </div>
             </div>
             <CardHeader>
@@ -43,7 +42,7 @@ function CaseStudyCard({ project }: { project: ProjectCaseStudy }) {
                     </div>
                 </div>
             </CardContent>
-        </GlassCard>
+        </Card>
     );
 }
 

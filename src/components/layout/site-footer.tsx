@@ -48,7 +48,7 @@ export function SiteFooter() {
     }, [state, toast]);
 
   return (
-    <footer className="bg-secondary/20 border-t border-border/50">
+    <footer className="bg-secondary/30 border-t border-border/50">
       <div className="container max-w-7xl px-6 py-12 mx-auto">
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-y-10 lg:grid-cols-4">
           <div className="sm:col-span-2">
@@ -61,7 +61,7 @@ export function SiteFooter() {
                         id="email"
                         name="email"
                         type="email"
-                        className="w-full px-4 py-2 text-foreground bg-background border-input rounded-md focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent h-auto"
+                        className="w-full px-4 py-2 text-foreground bg-background border-input rounded-md focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary h-auto"
                         placeholder="Email Address"
                         required
                     />
@@ -72,15 +72,15 @@ export function SiteFooter() {
           <div>
             <p className="font-semibold text-foreground">Quick Links</p>
             <div className="flex flex-col items-start mt-5 space-y-2">
-              <Link href="/about" className="text-muted-foreground transition-colors duration-300 hover:text-accent">About EMPHZ</Link>
-              <Link href="/products" className="text-muted-foreground transition-colors duration-300 hover:text-accent">Products</Link>
-              <Link href="/contact" className="text-muted-foreground transition-colors duration-300 hover:text-accent">Contact</Link>
+              <Link href="/about" className="text-muted-foreground transition-colors duration-300 hover:text-primary">About EMPHZ</Link>
+              <Link href="/products" className="text-muted-foreground transition-colors duration-300 hover:text-primary">Products</Link>
+              <Link href="/contact" className="text-muted-foreground transition-colors duration-300 hover:text-primary">Contact</Link>
             </div>
           </div>
           <div>
             <p className="font-semibold text-foreground">Contact</p>
             <div className="flex flex-col items-start mt-5 space-y-2">
-              <a href="mailto:contact@emphz.com" className="text-muted-foreground transition-colors duration-300 hover:text-accent">contact@emphz.com</a>
+              <a href="mailto:contact@emphz.com" className="text-muted-foreground transition-colors duration-300 hover:text-primary">contact@emphz.com</a>
               <p className="text-muted-foreground">123 Innovation Drive, Dubai, UAE</p>
             </div>
           </div>
@@ -93,7 +93,7 @@ export function SiteFooter() {
           <div className="flex -mx-2">
             {socialLinks.map((link) => (
               <Button key={link.name} variant="ghost" size="icon" asChild>
-                <a href={link.href} aria-label={link.name} className="mx-2 text-muted-foreground transition-colors duration-300 hover:text-accent" >
+                <a href={link.href} aria-label={link.name} className="mx-2 text-muted-foreground transition-colors duration-300 hover:text-primary" >
                   <link.icon className="w-5 h-5" />
                 </a>
               </Button>

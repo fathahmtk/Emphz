@@ -1,8 +1,8 @@
+
 'use client';
 import Link from 'next/link';
 import { ArrowRight, Factory, HardHat, ShieldCheck, Award, Fingerprint, Building } from 'lucide-react';
 import { collection, orderBy, query, limit } from 'firebase/firestore';
-import dynamic from 'next/dynamic';
 import { useMemo } from 'react';
 import Image from 'next/image';
 
@@ -14,8 +14,7 @@ import { type Product } from '@/lib/types';
 import { SiteHeader } from '@/components/layout/site-header';
 import { SiteFooter } from '@/components/layout/site-footer';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { GlassCard } from '@/components/glass-card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 const corporatePillars = [
   {
@@ -70,16 +69,16 @@ export default function Home() {
                 />
               </div>
           )}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent z-10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/50 to-transparent z-10" />
           <div className="container relative px-4 md:px-6 z-20">
-            <div className="mx-auto max-w-4xl text-primary-foreground">
+            <div className="mx-auto max-w-4xl">
               <ScrollReveal>
-                <h1 className="!leading-tight text-4xl font-bold font-headline tracking-tighter text-white shadow-lg sm:text-5xl md:text-6xl lg:text-7xl">
+                <h1 className="!leading-tight text-4xl font-bold font-headline tracking-tighter text-foreground shadow-lg sm:text-5xl md:text-6xl lg:text-7xl">
                   Premier GRP Engineering & Modular Infrastructure
                 </h1>
               </ScrollReveal>
               <ScrollReveal delay={200}>
-                <p className="mt-6 text-lg text-gray-200/90 md:text-xl">
+                <p className="mt-6 text-lg text-foreground/80 md:text-xl">
                   Manufacturing smart urban solutions and high-performance industrial components.
                 </p>
               </ScrollReveal>
@@ -91,7 +90,7 @@ export default function Home() {
                       <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                     </Link>
                   </Button>
-                  <Button size="lg" variant="outline" className='bg-transparent backdrop-blur-sm border-white/50 text-white hover:bg-white hover:text-primary' asChild>
+                  <Button size="lg" variant="outline" asChild>
                     <Link href="/products">Explore Product Catalogue</Link>
                   </Button>
                 </div>
@@ -105,7 +104,7 @@ export default function Home() {
             <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
               {corporatePillars.map((pillar, i) => (
                 <ScrollReveal key={pillar.title} delay={i * 150}>
-                  <GlassCard className="text-center h-full">
+                  <Card className="text-center h-full bg-card/50">
                     <CardHeader>
                       <div className="mx-auto mb-4 inline-flex items-center justify-center rounded-full bg-primary/10 p-3 text-primary">
                         <pillar.icon className="h-8 w-8" />
@@ -115,7 +114,7 @@ export default function Home() {
                     <CardContent>
                       <p className="text-muted-foreground">{pillar.description}</p>
                     </CardContent>
-                  </GlassCard>
+                  </Card>
                 </ScrollReveal>
               ))}
             </div>
