@@ -52,7 +52,7 @@ export interface InternalQuery extends Query<DocumentData> {
  * @returns {UseCollectionResult<T>} Object with data, isLoading, error.
  */
 export function useCollection<T = any>(
-    memoizedHookInput: MemoizedFirebase<CollectionReference<DocumentData> | Query<DocumentData> | null | undefined>
+    memoizedHookInput: MemoizedFirebase<CollectionReference<DocumentData> | Query<DocumentData> | null | undefined> | null
 ): UseCollectionResult<T> {
   if (memoizedHookInput !== null && memoizedHookInput !== undefined && !isMemoized(memoizedHookInput)) {
     throw new Error('Input to useCollection was not properly memoized using useMemoFirebase. This can lead to infinite loops.');
@@ -98,6 +98,7 @@ export function useCollection<T = any>(
     );
 
     return () => unsubscribe();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [targetRefOrQuery]); // Re-run if the target query/reference changes.
   
   return { data, isLoading, error };

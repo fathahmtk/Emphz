@@ -40,7 +40,7 @@ export interface UseDocResult<T> {
  * @returns {UseDocResult<T>} Object with data, isLoading, error.
  */
 export function useDoc<T = any>(
-  memoizedHookInput: MemoizedFirebase<DocumentReference<DocumentData> | null | undefined>,
+  memoizedHookInput: MemoizedFirebase<DocumentReference<DocumentData> | null | undefined> | null,
 ): UseDocResult<T> {
   if (memoizedHookInput !== null && memoizedHookInput !== undefined && !isMemoized(memoizedHookInput)) {
     throw new Error('Input to useDoc was not properly memoized using useMemoFirebase. This can lead to infinite loops.');
@@ -84,6 +84,7 @@ export function useDoc<T = any>(
     );
 
     return () => unsubscribe();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [docRef]); // Re-run if the memoizedDocRef changes.
 
   return { data, isLoading, error };

@@ -70,6 +70,7 @@ export function isMemoized<T>(value: any): value is MemoizedFirebase<T> {
 }
 
 export function useMemoFirebase<T>(factory: () => T, deps: DependencyList): MemoizedFirebase<T> | null {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const memoizedValue = useMemo(factory, deps);
   if (memoizedValue === null || memoizedValue === undefined) {
     return null;
