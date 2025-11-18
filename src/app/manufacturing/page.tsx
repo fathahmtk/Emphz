@@ -12,19 +12,19 @@ const manufacturingProcesses = [
         icon: Factory,
         title: "Advanced GRP/FRP Moulding",
         description: "Utilizing high-precision moulds and automated resin injection systems to produce consistent, high-tolerance composite parts. Our process ensures material integrity and optimal structural performance.",
-        image: PlaceHolderImages.find(p => p.id === 'gallery-factory-1'),
+        image: PlaceHolderImages.find(p => p.id === 'hero-extra-2'),
     },
     {
         icon: Microscope,
         title: "Finishing & Assembly",
         description: "Post-moulding, each component undergoes a rigorous finishing process. Our assembly lines are equipped for hardware integration, sealing, and final compliance checks.",
-        image: PlaceHolderImages.find(p => p.id === 'gallery-factory-2'),
+        image: PlaceHolderImages.find(p => p.id === 'hero-extra-5'),
     },
     {
         icon: Package,
         title: "Integrated Quality Control",
         description: "QA/QC is embedded at every stage, from raw material verification to final dispatch inspection. We conduct mechanical, dimensional, and environmental tests to guarantee performance.",
-        image: PlaceHolderImages.find(p => p.id === 'gallery-project-3'),
+        image: PlaceHolderImages.find(p => p.id === 'hero-extra-6'),
     }
 ];
 
