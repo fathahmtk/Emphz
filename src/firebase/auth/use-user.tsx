@@ -3,10 +3,18 @@
 
 import { onAuthStateChanged, User } from 'firebase/auth';
 import { useEffect, useState } from 'react';
-import { useAuth } from '../provider';
+import { useAuth as useFirebaseAuth } from '../provider';
+import { Auth } from 'firebase/auth';
 
-export function useUser() {
-  const auth = useAuth();
+export interface UserHookResult { 
+  user: User | null;
+  loading: boolean; // True during initial auth check
+  auth: Auth;
+}
+
+
+export function useAuth(): UserHookResult {
+  const auth = useFirebaseAuth();
   const [user, setUser] = useState<User | null>(auth?.currentUser || null);
   const [loading, setLoading] = useState(true);
 
@@ -31,5 +39,5 @@ export function useUser() {
     return () => unsubscribe();
   }, [auth]);
 
-  return { user, loading };
+  return { user, loading, auth };
 }
