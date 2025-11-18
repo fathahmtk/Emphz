@@ -9,56 +9,56 @@ body {
 
 @layer base {
   :root {
-    --background: 0 0% 98%; /* Light gray */
-    --foreground: 0 0% 9%; /* Dark gray */
+    --background: 224 71% 4%; /* Dark Blue/Black */
+    --foreground: 210 40% 98%; /* Almost White */
 
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 9%;
+    --card: 224 71% 10%;
+    --card-foreground: 210 40% 98%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 9%;
+    --popover: 224 71% 4%;
+    --popover-foreground: 210 40% 98%;
 
     --primary: 45 90% 50%; /* Gold/Yellow */
     --primary-foreground: 45 90% 5%;
 
-    --secondary: 0 0% 95%;
-    --secondary-foreground: 0 0% 9%;
+    --secondary: 215 28% 17%;
+    --secondary-foreground: 210 40% 98%;
     
-    --muted: 0 0% 95%;
-    --muted-foreground: 0 0% 45%;
+    --muted: 215 28% 17%;
+    --muted-foreground: 210 40% 60%;
 
-    --accent: 0 0% 95%;
-    --accent-foreground: 0 0% 9%;
+    --accent: 215 28% 17%;
+    --accent-foreground: 210 40% 98%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 0 0% 90%;
-    --input: 0 0% 90%;
+    --border: 215 28% 22%;
+    --input: 215 28% 22%;
     --ring: 45 90% 50%;
     
     --radius: 0.5rem;
   }
 
   .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
+    --background: 224 71% 4%;
+    --foreground: 210 40% 98%;
+    --card: 224 71% 10%;
+    --card-foreground: 210 40% 98%;
+    --popover: 224 71% 4%;
+    --popover-foreground: 210 40% 98%;
     --primary: 45 90% 50%;
     --primary-foreground: 45 90% 5%;
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
+    --secondary: 215 28% 17%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 215 28% 17%;
+    --muted-foreground: 210 40% 60%;
+    --accent: 215 28% 17%;
+    --accent-foreground: 210 40% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
+    --border: 215 28% 22%;
+    --input: 215 28% 22%;
     --ring: 45 90% 50%;
   }
 }
@@ -73,4 +73,17 @@ body {
   h1, h2, h3, h4, h5, h6 {
     @apply font-headline tracking-wide;
   }
+}
+
+/* Remove default slide animation from carousel */
+.embla__container > .embla__slide {
+    min-width: 100%;
+    position: relative;
+    
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.embla__container > .embla__slide.is-active {
+    opacity: 1;
 }

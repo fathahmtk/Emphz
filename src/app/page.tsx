@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { ArrowRight, Factory, HardHat, ShieldCheck, Award, Fingerprint, Building } from 'lucide-react';
 import { collection, orderBy, query, limit } from 'firebase/firestore';
 import dynamic from 'next/dynamic';
+import { useMemo } from 'react';
 
 import { Button } from '@/components/ui/button';
 import { ProductCard } from '@/components/product-card';
@@ -53,7 +54,7 @@ export default function Home() {
   }, [firestore]);
   const { data: products } = useCollection<Product>(productsQuery);
 
-  const heroImages = PlaceHolderImages.filter(p => [
+  const heroImages = useMemo(() => PlaceHolderImages.filter(p => [
       'hero-main',
       'gallery-factory-3',
       'gallery-project-1',
@@ -68,7 +69,7 @@ export default function Home() {
       'hero-extra-6',
       'hero-extra-7',
       'hero-extra-8'
-    ].includes(p.id));
+    ].includes(p.id)), []);
 
   return (
     <>
@@ -76,7 +77,7 @@ export default function Home() {
       <main className="flex-1">
         <section className="relative h-dvh w-full flex items-center justify-center text-center overflow-hidden">
           <HeroCarousel images={heroImages} />
-          <div className="absolute inset-0 bg-black/60 z-10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent z-10" />
           <div className="container relative px-4 md:px-6 z-20">
             <div className="mx-auto max-w-4xl text-primary-foreground">
               <ScrollReveal>
@@ -113,7 +114,7 @@ export default function Home() {
                 <ScrollReveal key={pillar.title} delay={i * 150}>
                   <GlassCard className="text-center h-full">
                     <CardHeader>
-                      <div className="mx-auto mb-4 inline-flex items-center justify-center rounded-lg bg-primary/10 p-3 text-primary">
+                      <div className="mx-auto mb-4 inline-flex items-center justify-center rounded-full bg-primary/10 p-3 text-primary">
                         <pillar.icon className="h-8 w-8" />
                       </div>
                       <CardTitle className="text-xl font-bold font-headline">{pillar.title}</CardTitle>
@@ -130,7 +131,7 @@ export default function Home() {
 
         <section
           id="products"
-          className="w-full bg-secondary/30 py-12 md:py-24 lg:py-32"
+          className="w-full bg-secondary/20 py-12 md:py-24 lg:py-32"
         >
           <div className="container px-4 md:px-6">
             <ScrollReveal>
@@ -181,13 +182,13 @@ export default function Home() {
               </div>
             </ScrollReveal>
             <ScrollReveal delay={200}>
-               <div className="mx-auto mt-12 grid grid-cols-2 gap-8 md:grid-cols-4">
+               <div className="mx-auto mt-12 grid grid-cols-2 gap-y-10 gap-x-8 md:grid-cols-4">
                   {trustBadges.map((badge, i) => (
                     <div key={i} className="flex flex-col items-center text-center">
-                      <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-secondary">
-                        <badge.icon className="h-8 w-8 text-secondary-foreground" />
+                      <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-secondary/50">
+                        <badge.icon className="h-8 w-8 text-primary" />
                       </div>
-                      <h3 className="text-md font-semibold">{badge.name}</h3>
+                      <h3 className="text-lg font-semibold">{badge.name}</h3>
                       <p className="mt-1 text-sm text-muted-foreground">{badge.description}</p>
                     </div>
                   ))}

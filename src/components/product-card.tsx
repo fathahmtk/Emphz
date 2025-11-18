@@ -33,7 +33,7 @@ export function ProductCard({ product }: ProductCardProps) {
           </div>
         </CardHeader>
         <CardContent className="flex flex-grow flex-col p-6">
-          <Badge variant="secondary" className='w-fit mb-2'>{product.category}</Badge>
+          <Badge variant="default" className='w-fit mb-2 bg-primary/10 text-primary border border-primary/20'>{product.category}</Badge>
           <CardTitle className="mb-2 text-xl font-headline">
             {product.name}
           </CardTitle>
