@@ -64,18 +64,16 @@ export default function Home() {
       <SiteHeader />
       <main className="flex-1">
         <section className="relative h-dvh w-full flex items-center justify-center text-center overflow-hidden">
-           <div className="absolute inset-0 z-0">
-             <video 
-                autoPlay 
-                loop 
-                muted 
-                playsInline 
-                className="w-full h-full object-cover"
-                poster="/video-poster.jpg"
-              >
-                <source src="https://storage.googleapis.com/stabl-media/pexels-laker-5792902%20(2160p).mp4" type="video/mp4" />
-             </video>
-           </div>
+           {heroImage && <div className="absolute inset-0 z-0">
+             <Image 
+                src={heroImage.imageUrl}
+                alt={heroImage.description}
+                data-ai-hint={heroImage.imageHint}
+                fill
+                className="object-cover"
+                priority
+             />
+           </div>}
           <div className="absolute inset-0 bg-black/30" />
           <div className="container relative px-4 md:px-6 z-10">
             <div className="mx-auto max-w-4xl text-primary-foreground">

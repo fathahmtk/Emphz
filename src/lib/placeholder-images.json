@@ -2,9 +2,9 @@
   "placeholderImages": [
     {
       "id": "hero-main",
-      "description": "An array of modern modular buildings and kiosks in a park-like setting with green lawns and trees.",
+      "description": "A sleek, futuristic product showcase with a dark, high-tech aesthetic.",
       "imageUrl": "https://storage.googleapis.com/stabl-media/6f183983-de3c-4740-8a1a-464a75399587.png",
-      "imageHint": "modular buildings"
+      "imageHint": "futuristic product"
     },
     {
       "id": "product-pipes",
@@ -45,7 +45,7 @@
     {
       "id": "office-location",
       "description": "A modern office building exterior.",
-      "imageUrl": "https://images.unsplash.com/photo-1696738061271-401a7ef09e51?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxvZmZpY2UlMjBidWlsZGluZ3xlbnwwfHx8fDE3NjMzNjM2MDF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1696738061271-401a7ef09e51?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxvZmZpY2UlMjBidWlsZGluZ3xlbnwwfHx8fDE3NjMzNjM2MDF8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "office building"
     },
     {
@@ -75,13 +75,13 @@
     {
       "id": "gallery-factory-2",
       "description": "A quality control specialist inspecting a finished product.",
-      "imageUrl": "https://images.unsplash.com/photo-1624957485560-47747511b32f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxxdWFsaXR5JTIwY29udHJvbHxlbnwwfHx8fDE3NjM0NTM2MzB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1624957485560-47747511b32f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxxdWFsaXR5JTIwY29udHJvbHxlbnwwfHx8fDE3NjM0NTM2MzB8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "quality control"
     },
     {
       "id": "gallery-project-1",
       "description": "EMPHZ enclosures installed at a large-scale solar farm.",
-      "imageUrl": "https://images.unsplash.com/photo-1509389928833-fe62aef36deb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxzb2xhciUyMGZhcm18ZW58MHx8fHwxNzYzNDUzNjMxfDA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1509389928833-fe62aef36deb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxzb2xhciUyMGZhcm18ZW58MHx8fHwxNzYzNDUzNjMxfDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "solar farm"
     },
     {
