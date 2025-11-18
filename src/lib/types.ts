@@ -19,8 +19,10 @@ export type Project = {
   description: string;
   clientType: string;
   location: string;
-  imageUrl: string;
-  imageHint: string;
+  beforeImageUrl: string;
+  beforeImageHint: string;
+  afterImageUrl: string;
+  afterImageHint: string;
 };
 
 export type TechnicalDownload = {

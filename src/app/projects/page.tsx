@@ -43,26 +43,37 @@ export default function ProjectsPage() {
               <ScrollReveal key={project.id} delay={i * 150}>
                 <Card className="overflow-hidden">
                    <div className="grid grid-cols-1 lg:grid-cols-2">
-                     <div className="relative min-h-[300px] lg:min-h-0">
-                       <Image
-                        src={project.imageUrl}
-                        alt={project.title}
-                        data-ai-hint={project.imageHint}
-                        fill
-                        className="object-cover"
-                        />
-                    </div>
-                     <div className="p-6 md:p-8">
-                       <Badge variant="secondary" className="mb-2">{project.clientType}</Badge>
+                     <div className="p-6 md:p-8 flex flex-col justify-center">
+                       <Badge variant="secondary" className="mb-2 w-fit">{project.clientType}</Badge>
                        <h2 className="text-2xl font-bold font-headline">{project.title}</h2>
                        <div className="flex items-center gap-2 text-sm text-muted-foreground mt-2">
                           <MapPin className="h-4 w-4" />
                           <span>{project.location}</span>
                        </div>
-                       <div className="mt-6">
-                         <p className="text-muted-foreground mt-1">{project.description}</p>
-                       </div>
+                       <p className="text-muted-foreground mt-4">{project.description}</p>
                      </div>
+                      <div className="grid grid-cols-2 gap-2 p-4">
+                         <div className="relative min-h-[250px] lg:min-h-0">
+                           <Image
+                            src={project.beforeImageUrl}
+                            alt={`Before image for ${project.title}`}
+                            data-ai-hint={project.beforeImageHint}
+                            fill
+                            className="object-cover rounded-md"
+                            />
+                            <Badge variant="destructive" className="absolute top-2 left-2">Before</Badge>
+                        </div>
+                         <div className="relative min-h-[250px] lg:min-h-0">
+                           <Image
+                            src={project.afterImageUrl}
+                            alt={`After image for ${project.title}`}
+                            data-ai-hint={project.afterImageHint}
+                            fill
+                            className="object-cover rounded-md"
+                            />
+                            <Badge variant="default" className="absolute top-2 left-2 bg-green-600">After</Badge>
+                        </div>
+                      </div>
                    </div>
                 </Card>
               </ScrollReveal>
