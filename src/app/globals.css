@@ -9,33 +9,33 @@ body {
 
 @layer base {
   :root {
-    --background: 150 10% 98%; /* Lighter, almost white green */
-    --foreground: 150 25% 10%; /* Very dark, saturated green */
+    --background: 150 15% 5%; /* Very dark green-black */
+    --foreground: 150 15% 96%; /* Off-white */
 
-    --card: 150 10% 98%;
-    --card-foreground: 150 25% 10%;
+    --card: 150 15% 8%;
+    --card-foreground: 150 15% 96%;
 
-    --popover: 150 10% 98%;
-    --popover-foreground: 150 25% 10%;
+    --popover: 150 15% 5%;
+    --popover-foreground: 150 15% 96%;
 
-    --primary: 150 40% 28%; /* A strong, modern green */
+    --primary: 150 50% 45%; /* A brighter, more vibrant green for dark mode */
     --primary-foreground: 150 20% 98%;
 
-    --secondary: 150 15% 94%;
-    --secondary-foreground: 150 10% 20%;
+    --secondary: 150 10% 12%;
+    --secondary-foreground: 150 15% 96%;
     
-    --muted: 150 15% 94%;
-    --muted-foreground: 150 10% 40%;
+    --muted: 150 10% 12%;
+    --muted-foreground: 150 15% 65%;
 
-    --accent: 150 15% 90%;
-    --accent-foreground: 150 10% 15%;
+    --accent: 150 10% 12%;
+    --accent-foreground: 150 15% 96%;
 
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 150 15% 88%;
-    --input: 150 15% 88%;
-    --ring: 150 40% 35%; /* Ring color based on primary */
+    --border: 150 10% 18%;
+    --input: 150 10% 18%;
+    --ring: 150 50% 50%;
     
     --radius: 0.5rem;
   }
