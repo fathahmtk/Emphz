@@ -9,6 +9,8 @@ import { SiteFooter } from "@/components/layout/site-footer";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { GlassCard } from "@/components/glass-card";
+import Image from "next/image";
+import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 export const metadata: Metadata = {
   title: "Contact Us",
@@ -25,22 +27,37 @@ const contactChannels = [
 
 
 export default function ContactPage() {
+    const bgImage = PlaceHolderImages.find(p => p.id === 'office-location');
+
   return (
     <>
       <SiteHeader />
       <main className="flex-1">
-        <div className="bg-primary/5">
-          <div className="container px-4 md:px-6 py-12 md:py-20">
+        <div className="relative isolate min-h-screen">
+            {bgImage && (
+                <div className="absolute inset-0 -z-10 h-full w-full">
+                    <Image
+                        src={bgImage.imageUrl}
+                        alt={bgImage.description}
+                        data-ai-hint={bgImage.imageHint}
+                        quality={100}
+                        fill
+                        className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-black/70" />
+                </div>
+            )}
+          <div className="container px-4 md:px-6 py-24 md:py-32">
             <ScrollReveal>
               <div className="text-center mb-12">
-                <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl font-headline">Connect with EMPHZ</h1>
-                <p className="mt-4 max-w-3xl mx-auto text-muted-foreground md:text-lg">
+                <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl font-headline text-white">Connect with EMPHZ</h1>
+                <p className="mt-4 max-w-3xl mx-auto text-gray-200/90 md:text-lg">
                   Technical Support, Product Inquiries & Project Collaboration. EMPHZ teams respond quickly to technical requests, project requirements, and product inquiries. Upload drawings, specifications, or tender documents directly via the form.
                 </p>
               </div>
             </ScrollReveal>
 
-            <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
+            <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-start">
               <ScrollReveal delay={200} className="lg:col-span-3">
                 <ContactForm />
               </ScrollReveal>
@@ -52,7 +69,7 @@ export default function ContactPage() {
                   <CardContent className="space-y-4 text-muted-foreground">
                     {contactChannels.map(channel => (
                          <a key={channel.text} href={channel.href} className="flex items-center gap-4 hover:text-accent transition-colors">
-                          <channel.icon className="w-5 h-5 text-accent" />
+                          <channel.icon className="w-5 h-5 text-primary" />
                           <span>{channel.text}</span>
                         </a>
                     ))}
