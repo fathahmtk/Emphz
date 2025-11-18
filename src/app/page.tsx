@@ -55,13 +55,16 @@ const newsItems = [
 ]
 
 const heroImages = PlaceHolderImages.filter(img => img.id.startsWith('hero-'));
-const aboutImage = PlaceHolderImages.find(p => p.id === 'hero-industrial-plant');
-const missionImage = PlaceHolderImages.find(p => p.id === 'hero-extra-1');
+const aboutBgImage = PlaceHolderImages.find(p => p.id === 'hero-industrial-plant');
+const missionBgImage = PlaceHolderImages.find(p => p.id === 'hero-extra-1');
+const projectsBgImage = PlaceHolderImages.find(p => p.id === 'hero-new-1');
+const qualityBgImage = PlaceHolderImages.find(p => p.id === 'hero-extra-7');
+const newsBgImage = PlaceHolderImages.find(p => p.id === 'hero-extra-8');
 
 
 function CaseStudyCard({ project }: { project: ProjectCaseStudy }) {
     return (
-        <Card className="overflow-hidden bg-card/50">
+        <Card className="overflow-hidden bg-background/50 backdrop-blur-sm border-white/20">
             <div className="grid md:grid-cols-2">
                 <div className="relative aspect-video">
                     <Image src={project.beforeImageUrl} alt={`Before image for ${project.title}`} fill className="object-cover" />
@@ -145,12 +148,25 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="about" className="py-12 md:py-24 lg:py-32">
-            <div className="container px-4 md:px-6">
+        <section id="about" className="relative py-12 md:py-24 lg:py-32">
+            {aboutBgImage && (
+                <div className="absolute inset-0 -z-10 h-full w-full">
+                    <Image
+                        src={aboutBgImage.imageUrl}
+                        alt={aboutBgImage.description}
+                        data-ai-hint={aboutBgImage.imageHint}
+                        quality={100}
+                        fill
+                        className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-black/60" />
+                </div>
+            )}
+            <div className="container px-4 md:px-6 text-primary-foreground">
                 <ScrollReveal>
                     <div className="text-center mb-12">
                         <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-5xl">About EMPHZ</h2>
-                        <p className="mt-4 max-w-3xl mx-auto text-muted-foreground md:text-lg">
+                        <p className="mt-4 max-w-3xl mx-auto text-primary-foreground/80 md:text-lg">
                             EMPHZ is a next-generation GRP/FRP engineering manufacturer dedicated to delivering mission-critical infrastructure solutions for utilities, industry, and smart-city development.
                         </p>
                     </div>
@@ -158,15 +174,15 @@ export default function Home() {
                 <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
                 {corporatePillars.map((pillar, i) => (
                     <ScrollReveal key={pillar.title} delay={i * 150}>
-                    <Card className="text-center h-full bg-card/50">
+                    <Card className="text-center h-full bg-background/20 backdrop-blur-sm border-white/20 text-primary-foreground">
                         <CardHeader>
                         <div className="mx-auto mb-4 inline-flex items-center justify-center rounded-full bg-primary/10 p-3 text-primary">
-                            <pillar.icon className="h-8 w-8" />
+                            <pillar.icon className="h-8 w-8 text-primary-foreground" />
                         </div>
                         <CardTitle className="text-xl font-bold font-headline">{pillar.title}</CardTitle>
                         </CardHeader>
                         <CardContent>
-                        <p className="text-muted-foreground">{pillar.description}</p>
+                        <p className="text-primary-foreground/80">{pillar.description}</p>
                         </CardContent>
                     </Card>
                     </ScrollReveal>
@@ -175,13 +191,26 @@ export default function Home() {
             </div>
         </section>
 
-        <section id="mission-vision" className="py-12 md:py-24 lg:py-32 bg-secondary/20">
-            <div className="container px-4 md:px-6 grid md:grid-cols-2 gap-12 items-center">
+        <section id="mission-vision" className="relative py-12 md:py-24 lg:py-32">
+             {missionBgImage && (
+                <div className="absolute inset-0 -z-10 h-full w-full">
+                    <Image
+                        src={missionBgImage.imageUrl}
+                        alt={missionBgImage.description}
+                        data-ai-hint={missionBgImage.imageHint}
+                        quality={100}
+                        fill
+                        className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-black/70" />
+                </div>
+            )}
+            <div className="container px-4 md:px-6 grid md:grid-cols-2 gap-12 items-center text-primary-foreground">
                 <ScrollReveal>
-                    <div>
+                    <div className="bg-background/20 backdrop-blur-sm border border-white/20 p-8 rounded-lg">
                         <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl">Our Mission & Values</h2>
-                        <p className="mt-4 text-muted-foreground md:text-lg">
-                            <strong className="text-foreground">Mission:</strong> To engineer world-class GRP solutions that enable resilient, safe, and efficient infrastructure for industries and communities.
+                        <p className="mt-4 text-primary-foreground/80 md:text-lg">
+                            <strong className="text-primary-foreground">Mission:</strong> To engineer world-class GRP solutions that enable resilient, safe, and efficient infrastructure for industries and communities.
                         </p>
                         <div className="mt-8 grid gap-6">
                             {values.map((value, i) => (
@@ -189,7 +218,7 @@ export default function Home() {
                                     <CheckCircle className="h-6 w-6 text-primary mt-1 shrink-0"/>
                                     <div>
                                         <h3 className="font-semibold text-lg">{value.title}</h3>
-                                        <p className="text-muted-foreground">{value.description}</p>
+                                        <p className="text-primary-foreground/80">{value.description}</p>
                                     </div>
                                 </div>
                             ))}
@@ -197,22 +226,33 @@ export default function Home() {
                     </div>
                 </ScrollReveal>
                  <ScrollReveal delay={200} className='hidden md:block'>
-                    {missionImage && <div className="relative aspect-video rounded-lg overflow-hidden">
-                        <Image src={missionImage.imageUrl} alt={missionImage.description} data-ai-hint={missionImage.imageHint} fill className="object-cover" />
-                    </div>}
+                   {/* This space is intentionally left blank for the background image to show */}
                 </ScrollReveal>
             </div>
         </section>
         
-        <section id="projects" className="py-12 md:py-24 lg:py-32">
+        <section id="projects" className="relative py-12 md:py-24 lg:py-32">
+            {projectsBgImage && (
+                <div className="absolute inset-0 -z-10 h-full w-full">
+                    <Image
+                        src={projectsBgImage.imageUrl}
+                        alt={projectsBgImage.description}
+                        data-ai-hint={projectsBgImage.imageHint}
+                        quality={100}
+                        fill
+                        className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-black/60" />
+                </div>
+            )}
             <div className="container px-4 md:px-6">
                 <ScrollReveal>
-                    <div className="text-center mb-12">
+                    <div className="text-center mb-12 text-primary-foreground">
                          <div className="inline-block rounded-lg bg-secondary px-3 py-1 text-sm text-secondary-foreground mb-2">
                             Featured Projects
                           </div>
                         <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-5xl">Proven Field Performance</h2>
-                        <p className="mt-4 max-w-3xl mx-auto text-muted-foreground md:text-lg">
+                        <p className="mt-4 max-w-3xl mx-auto text-primary-foreground/80 md:text-lg">
                            From corrosive coastal environments to high-traffic industrial sites, our GRP solutions deliver unmatched durability and performance.
                         </p>
                     </div>
@@ -239,48 +279,70 @@ export default function Home() {
             </div>
         </section>
 
-        <section id="quality-trust" className="w-full bg-secondary/20 py-12 md:py-24 lg:py-32">
-          <div className="container px-4 md:px-6">
+        <section id="quality-trust" className="relative w-full py-12 md:py-24 lg:py-32">
+          {qualityBgImage && (
+                <div className="absolute inset-0 -z-10 h-full w-full">
+                    <Image
+                        src={qualityBgImage.imageUrl}
+                        alt={qualityBgImage.description}
+                        data-ai-hint={qualityBgImage.imageHint}
+                        quality={100}
+                        fill
+                        className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-black/70" />
+                </div>
+            )}
+          <div className="container px-4 md:px-6 text-primary-foreground">
             <ScrollReveal>
-              <div className="text-center">
+              <div className="text-center bg-background/20 backdrop-blur-sm border border-white/20 p-8 rounded-lg">
                 <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl">Quality, Compliance & Trust</h2>
-                <p className="mx-auto mt-4 max-w-3xl text-muted-foreground md:text-xl/relaxed">
+                <p className="mx-auto mt-4 max-w-3xl text-primary-foreground/80 md:text-xl/relaxed">
                   Our commitment to quality is backed by industry-leading certifications and approvals, ensuring every product meets rigorous standards for safety and performance.
                 </p>
-              </div>
-            </ScrollReveal>
-            <ScrollReveal delay={200}>
-               <div className="mx-auto mt-12 grid grid-cols-2 gap-y-10 gap-x-8 md:grid-cols-4">
+                 <div className="mx-auto mt-12 grid grid-cols-2 gap-y-10 gap-x-8 md:grid-cols-4">
                   {trustBadges.map((badge, i) => (
                     <div key={i} className="flex flex-col items-center text-center">
                       <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
-                        <badge.icon className="h-8 w-8 text-primary" />
+                        <badge.icon className="h-8 w-8 text-primary-foreground" />
                       </div>
                       <h3 className="text-lg font-semibold">{badge.name}</h3>
-                      <p className="mt-1 text-sm text-muted-foreground">{badge.description}</p>
+                      <p className="mt-1 text-sm text-primary-foreground/80">{badge.description}</p>
                     </div>
                   ))}
                 </div>
-            </ScrollReveal>
-             <ScrollReveal>
-              <div className="mt-12 text-center">
-                <Button size="lg" variant="outline" asChild>
-                    <Link href="/quality/certification">View Quality Framework</Link>
-                </Button>
+                 <div className="mt-12 text-center">
+                    <Button size="lg" variant="outline" asChild>
+                        <Link href="/quality/certification">View Quality Framework</Link>
+                    </Button>
+                </div>
               </div>
             </ScrollReveal>
           </div>
         </section>
 
-        <section id="news" className="py-12 md:py-24 lg:py-32">
+        <section id="news" className="relative py-12 md:py-24 lg:py-32">
+             {newsBgImage && (
+                <div className="absolute inset-0 -z-10 h-full w-full">
+                    <Image
+                        src={newsBgImage.imageUrl}
+                        alt={newsBgImage.description}
+                        data-ai-hint={newsBgImage.imageHint}
+                        quality={100}
+                        fill
+                        className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-black/60" />
+                </div>
+            )}
             <div className="container px-4 md:px-6">
                  <ScrollReveal>
-                    <div className="text-center mb-12">
+                    <div className="text-center mb-12 text-primary-foreground">
                          <div className="inline-block rounded-lg bg-secondary px-3 py-1 text-sm text-secondary-foreground mb-2">
                            News & Media
                           </div>
                         <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-5xl">Latest Updates</h2>
-                         <p className="mt-4 max-w-3xl mx-auto text-muted-foreground md:text-lg">
+                         <p className="mt-4 max-w-3xl mx-auto text-primary-foreground/80 md:text-lg">
                           Stay informed on our latest product innovations, project milestones, and company news.
                         </p>
                     </div>
@@ -289,13 +351,13 @@ export default function Home() {
                     {newsItems.map((item, i) => (
                         <ScrollReveal key={item.title} delay={i * 150}>
                             <Link href={item.href}>
-                                <Card className="h-full group hover:border-primary/50 transition-colors">
+                                <Card className="h-full group hover:border-primary/50 transition-colors bg-background/30 backdrop-blur-sm border-white/20 text-primary-foreground">
                                     <CardHeader className="flex-row items-center gap-4">
                                         <item.icon className="h-8 w-8 text-primary" />
-                                        <CardTitle className="text-base font-semibold group-hover:text-primary transition-colors">{item.title}</CardTitle>
+                                        <CardTitle className="text-base font-semibold group-hover:text-primary transition-colors text-primary-foreground">{item.title}</CardTitle>
                                     </CardHeader>
                                     <CardContent>
-                                        <p className="text-xs text-muted-foreground">{item.date}</p>
+                                        <p className="text-xs text-primary-foreground/70">{item.date}</p>
                                     </CardContent>
                                 </Card>
                             </Link>
@@ -310,7 +372,3 @@ export default function Home() {
     </>
   );
 }
-
-    
-
-    
