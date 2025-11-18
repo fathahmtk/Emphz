@@ -66,6 +66,7 @@ const navItems = [
             { title: "Product Certification", href: "/quality/certification" },
             { title: "Integrated Management System (IMS)", href: "/quality/ims" },
             { title: "Standard Operating Procedures", href: "/quality/sop" },
+            { title: "QA/QC Framework", href: "/quality/qa-qc" },
         ]
     },
     {

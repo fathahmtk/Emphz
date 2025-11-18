@@ -53,6 +53,7 @@ const qualityLinks: { title: string; href: string; description: string }[] = [
     { title: "Product Certification", href: "/quality/certification", description: "Our certified quality standards." },
     { title: "Integrated Management System (IMS)", href: "/quality/ims", description: "Our approach to quality management." },
     { title: "Standard Operating Procedures", href: "/quality/sop", description: "Ensuring consistency and excellence." },
+    { title: "QA/QC Framework", href: "/quality/qa-qc", description: "Our rigid, traceable quality control workflow." },
 ];
 
 const clientsLinks: { title: string; href: string; description: string }[] = [
