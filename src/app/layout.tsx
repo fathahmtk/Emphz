@@ -1,4 +1,3 @@
-
 import type { Metadata } from 'next';
 import { headers } from 'next/headers';
 import './globals.css';
@@ -59,7 +58,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
