@@ -27,5 +27,3 @@ export function Logo({ className, ...props }: HTMLAttributes<SVGSVGElement>) {
     </svg>
   );
 }
-
-    
