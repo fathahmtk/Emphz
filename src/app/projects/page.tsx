@@ -1,4 +1,3 @@
-
 'use client';
 import { collection, orderBy, query } from 'firebase/firestore';
 
@@ -26,11 +25,10 @@ export default function ProjectsPage() {
           <ScrollReveal>
             <div className="mb-12 text-center">
               <h1 className="text-4xl font-bold font-headline tracking-tighter sm:text-5xl md:text-6xl">
-                Project Case Studies
+                Project Portfolio
               </h1>
-              <p className="mx-auto mt-4 max-w-2xl text-muted-foreground md:text-lg">
-                From municipal upgrades to complex industrial plants, our GRP
-                solutions deliver tangible results.
+              <p className="mx-auto mt-4 max-w-3xl text-muted-foreground md:text-lg">
+                Showcasing our capabilities in government projects, utility installations, smart city deployments, and custom corporate builds.
               </p>
             </div>
           </ScrollReveal>

@@ -8,7 +8,7 @@ export function GlassCard({ className, ...props }: CardProps) {
         'bg-card/70 backdrop-blur-xl',
         'border',
         'transition-all duration-300 ease-out',
-        'hover:shadow-2xl hover:shadow-primary/10 hover:bg-card/90 hover:-translate-y-1',
+        'hover:shadow-lg hover:bg-card/90',
         className
       )}
       {...props}

@@ -1,26 +1,32 @@
-
 import { Timestamp } from 'firebase/firestore';
 
 export type Product = {
   id: string;
   name: string;
-  description: string;
+  category: string;
+  overview: string;
+  applications: string[];
   specifications: Record<string, string>;
+  variants: string[];
   imageUrl: string;
   imageHint: string;
-  category: string;
+  cadUrl?: string;
+  datasheetUrl?: string;
+  compliance: string[];
 };
 
 export type Project = {
   id:string;
   title: string;
   description: string;
-  clientType: string;
+  industry: string;
   location: string;
-  beforeImageUrl: string;
-  beforeImageHint: string;
-  afterImageUrl: string;
-  afterImageHint: string;
+  imageUrl: string;
+  imageHint: string;
+  beforeImageUrl?: string;
+  beforeImageHint?: string;
+  afterImageUrl?: string;
+  afterImageHint?: string;
 };
 
 export type DownloadLink = {
@@ -28,6 +34,7 @@ export type DownloadLink = {
   title: string;
   description: string;
   fileUrl: string; // Will be a placeholder '#'
+  category: 'Datasheet' | 'CAD' | 'Certificate' | 'Manual' | 'Case Study' | 'Other';
 };
 
 export type NavItem = {

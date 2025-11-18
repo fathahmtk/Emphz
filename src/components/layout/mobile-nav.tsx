@@ -8,14 +8,15 @@ import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet"
 import { type NavItem } from "@/lib/types"
 import { Logo } from "@/components/icons"
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../ui/accordion"
 
 const navItems: NavItem[] = [
-  { title: "Home", href: "/" },
-  { title: "Products", href: "/products" },
-  { title: "Projects", href: "/projects" },
-  { title: "Downloads", href: "/downloads" },
-  { title: "Contact", href: "/contact" },
+    { title: "Home", href: "/" },
+    { title: "About", href: "/about" },
+    { title: "Products", href: "/products" },
+    { title: "Industries", href: "/industries" },
+    { title: "Portfolio", href: "/projects" },
+    { title: "Downloads", href: "/downloads" },
+    { title: "Contact", href: "/contact" },
 ];
 
 export function MobileNav() {

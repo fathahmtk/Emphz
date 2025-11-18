@@ -1,4 +1,3 @@
-
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { type NavItem } from "@/lib/types";
@@ -7,8 +6,10 @@ import { Logo } from "../icons";
 import { ArrowRight } from "lucide-react";
 
 const navItems: NavItem[] = [
+  { title: "About", href: "/about" },
   { title: "Products", href: "/products" },
-  { title: "Projects", href: "/projects" },
+  { title: "Industries", href: "/industries" },
+  { title: "Portfolio", href: "/projects" },
   { title: "Downloads", href: "/downloads" },
 ];
 
@@ -30,10 +31,10 @@ export function SiteHeader() {
                 {item.title}
               </Link>
             ))}
-             <Button asChild className="group">
+             <Button asChild className="group bg-accent hover:bg-accent/90">
               <Link href="/contact">
                 <span>
-                  Contact Us
+                  Request a Quote
                   <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform inline" />
                 </span>
               </Link>

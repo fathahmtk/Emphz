@@ -1,4 +1,3 @@
-
 'use client';
 import { useMemo } from 'react';
 import { collection, orderBy, query } from 'firebase/firestore';
@@ -21,7 +20,23 @@ export default function ProductsPage() {
 
   const categories = useMemo(() => {
     if (!products) return [];
-    return [...new Set(products.map((p) => p.category))];
+    const categoryOrder = [
+        "GRP Electrical Enclosures",
+        "GRP Portable Toilets",
+        "GRP Kiosks & Booths",
+        "Modular Smart Units",
+        "GRP Cabins & Micro-Villa Pods",
+        "Industrial Custom GRP Solutions",
+        "GRP Bus Shelters & Urban Furniture"
+    ];
+    const uniqueCategories = [...new Set(products.map((p) => p.category))];
+    return uniqueCategories.sort((a, b) => {
+        const indexA = categoryOrder.indexOf(a);
+        const indexB = categoryOrder.indexOf(b);
+        if (indexA === -1) return 1;
+        if (indexB === -1) return -1;
+        return indexA - indexB;
+    });
   }, [products]);
 
   return (
@@ -32,11 +47,10 @@ export default function ProductsPage() {
           <ScrollReveal>
             <div className="mb-12 text-center">
               <h1 className="text-4xl font-bold font-headline tracking-tighter sm:text-5xl md:text-6xl">
-                Our Products
+                Products Ecosystem
               </h1>
-              <p className="mx-auto mt-4 max-w-2xl text-muted-foreground md:text-lg">
-                High-quality GRP solutions engineered for durability and performance
-                in any environment.
+              <p className="mx-auto mt-4 max-w-3xl text-muted-foreground md:text-lg">
+                Engineered GRP solutions for power, urban infrastructure, telecom, and more. Durable, compliant, and built for performance.
               </p>
             </div>
           </ScrollReveal>
