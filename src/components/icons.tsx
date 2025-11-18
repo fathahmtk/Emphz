@@ -6,24 +6,17 @@ export function Logo({ className, ...props }: HTMLAttributes<SVGSVGElement>) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 500 160"
+      viewBox="0 0 400 100"
       className={cn("h-full w-auto", className)}
       {...props}
     >
-      <g transform="translate(20,20)">
-        <rect x="0" y="0" width="120" height="120" rx="28" className="fill-current text-primary"/>
-        
-        <g className="fill-current text-primary-foreground">
-           <rect x="28" y="28" width="60" height="16" rx="8" />
-           <rect x="28" y="52" width="50" height="16" rx="8" />
-           <rect x="28" y="76" width="60" height="16" rx="8" />
-        </g>
-        
-        <polygon className="fill-current text-primary" points="80,12 126,12 98,60 124,60 70,130 86,76 58,76"/>
+      <g className="fill-current text-primary">
+        <path d="M20 25 L20 75 L35 75 L35 55 L70 55 L70 75 L85 75 L85 25 L70 25 L70 45 L35 45 L35 25 Z" />
+        <path d="M95 25 L110 25 L110 50 L125 50 L125 25 L140 25 L140 75 L125 75 L125 50 L110 50 L110 75 L95 75 Z" />
       </g>
-      <g transform="translate(170,40)">
-        <text x="0" y="70" className="fill-current text-primary" fontFamily="Playfair Display,Poppins,system-ui" fontSize="72" fontWeight="700" letterSpacing="1.5">Emphz</text>
-      </g>
+      <text x="155" y="68" className="fill-current text-foreground" fontFamily="Manrope, system-ui, sans-serif" fontSize="48" fontWeight="600" letterSpacing="-1">
+        EMPHZ
+      </text>
     </svg>
   );
 }

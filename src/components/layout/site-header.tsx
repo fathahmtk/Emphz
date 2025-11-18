@@ -50,18 +50,18 @@ export function SiteHeader() {
         <>
             <header className={cn(
                 "fixed top-0 z-50 w-full transition-all duration-300",
-                scrolled ? "border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60" : "bg-transparent"
+                scrolled ? "border-b border-border/40 bg-background/80 backdrop-blur-lg" : "bg-transparent"
             )}>
                 <div className="container flex h-16 items-center px-4 md:px-6">
                     <Link href="/" className="mr-6 flex items-center space-x-2">
-                        <Logo className={cn("h-8 w-auto transition-colors", !scrolled && "text-white fill-white")} />
+                        <Logo className={cn("h-8 w-auto transition-colors", !scrolled && "text-white")} />
                     </Link>
                     
                     <NavigationMenu className={cn("hidden md:flex", !scrolled && "text-white")}>
                         <NavigationMenuList>
                             {menuData.map((item) => (
                                 <NavigationMenuItem key={item.title}>
-                                    <NavigationMenuTrigger className={cn("bg-transparent hover:bg-white/10 focus:bg-white/10 data-[active]:bg-white/10 data-[state=open]:bg-white/10", scrolled && "text-foreground hover:bg-accent focus:bg-accent data-[active]:bg-accent/50 data-[state=open]:bg-accent/50")}>
+                                    <NavigationMenuTrigger className={cn("bg-transparent hover:bg-black/10 focus:bg-black/10 data-[active]:bg-black/10 data-[state=open]:bg-black/10", scrolled && "text-foreground hover:bg-accent focus:bg-accent data-[active]:bg-accent/50 data-[state=open]:bg-accent/50")}>
                                         <Link href={item.href}>{item.title}</Link>
                                     </NavigationMenuTrigger>
                                     <NavigationMenuContent>
@@ -100,7 +100,7 @@ export function SiteHeader() {
 
                     <div className="flex flex-1 items-center justify-end space-x-2">
                         <div className="hidden md:flex items-center space-x-2">
-                            <Button variant={scrolled ? 'ghost' : 'link'} className={cn(!scrolled && 'text-white hover:bg-white/10')}>Request Spec Pack</Button>
+                            <Button variant={'ghost'} className={cn(!scrolled && 'text-white hover:bg-white/10')}>Request Spec Pack</Button>
                             <Button variant={scrolled ? 'default' : 'outline'} className={cn(!scrolled && "text-white border-white/50 hover:bg-white hover:text-primary")}>Submit Tender</Button>
                             <Button variant="outline" size="icon" onClick={() => setIsSearchOpen(true)} className={cn(!scrolled && "text-white border-white/50 hover:bg-white hover:text-primary")}><Search className="h-4 w-4"/></Button>
                         </div>

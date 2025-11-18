@@ -1,7 +1,7 @@
 
 'use client';
 import Link from 'next/link';
-import { ArrowRight, Factory, HardHat, ShieldCheck, Award, Building, Fingerprint } from 'lucide-react';
+import { ArrowRight, Factory, HardHat, ShieldCheck, Award, Fingerprint, Building } from 'lucide-react';
 import { collection, orderBy, query, limit } from 'firebase/firestore';
 
 import { Button } from '@/components/ui/button';
@@ -12,7 +12,7 @@ import { type Product } from '@/lib/types';
 import { SiteHeader } from '@/components/layout/site-header';
 import { SiteFooter } from '@/components/layout/site-footer';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { HeroCarousel } from '@/components/hero-carousel';
 
 const corporatePillars = [
@@ -34,10 +34,10 @@ const corporatePillars = [
 ];
 
 const trustBadges = [
-  { icon: Award, name: 'ISO 9001:2015', description: 'Quality Management Systems' },
-  { icon: Award, name: 'ISO 14001:2015', description: 'Environmental Management' },
-  { icon: Fingerprint, name: 'IP65 Certified', description: 'Ingress Protection Rating' },
-  { icon: Building, name: 'Govt. Approved Vendor', description: 'Public Works Dept.' },
+  { icon: Award, name: 'ISO 9001:2015', description: 'Quality Management' },
+  { icon: Award, name: 'ISO 14001:2015', description: 'Environmental' },
+  { icon: Fingerprint, name: 'IP65 Certified', description: 'Ingress Protection' },
+  { icon: Building, name: 'Govt. Approved', description: 'Public Works Dept.' },
 ]
 
 export default function Home() {
@@ -63,7 +63,7 @@ export default function Home() {
       <main className="flex-1">
         <section className="relative h-dvh w-full flex items-center justify-center text-center overflow-hidden">
            <HeroCarousel images={heroImages} />
-          <div className="absolute inset-0 bg-black/30 z-10" />
+          <div className="absolute inset-0 bg-black/50 z-10" />
           <div className="container relative px-4 md:px-6 z-20">
             <div className="mx-auto max-w-4xl text-primary-foreground">
               <ScrollReveal>
@@ -98,13 +98,17 @@ export default function Home() {
             <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
               {corporatePillars.map((pillar, i) => (
                 <ScrollReveal key={pillar.title} delay={i * 150}>
-                  <div className="text-center">
-                    <div className="mb-4 inline-flex items-center justify-center rounded-md bg-primary p-3 text-primary-foreground">
-                      <pillar.icon className="h-6 w-6" />
-                    </div>
-                    <h3 className="text-xl font-bold font-headline">{pillar.title}</h3>
-                    <p className="mt-2 text-muted-foreground">{pillar.description}</p>
-                  </div>
+                  <Card className="text-center h-full hover:shadow-lg transition-shadow">
+                    <CardHeader>
+                      <div className="mx-auto mb-4 inline-flex items-center justify-center rounded-lg bg-primary/10 p-3 text-primary">
+                        <pillar.icon className="h-8 w-8" />
+                      </div>
+                      <CardTitle className="text-xl font-bold font-headline">{pillar.title}</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-muted-foreground">{pillar.description}</p>
+                    </CardContent>
+                  </Card>
                 </ScrollReveal>
               ))}
             </div>
@@ -153,7 +157,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="trust-layer" className="w-full bg-secondary/30 py-12 md:py-24 lg:py-32">
+        <section id="trust-layer" className="w-full bg-background py-12 md:py-24 lg:py-32">
           <div className="container px-4 md:px-6">
             <ScrollReveal>
               <div className="text-center">
@@ -167,8 +171,8 @@ export default function Home() {
                <div className="mx-auto mt-12 grid grid-cols-2 gap-8 md:grid-cols-4">
                   {trustBadges.map((badge, i) => (
                     <div key={i} className="flex flex-col items-center text-center">
-                      <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-card">
-                        <badge.icon className="h-8 w-8 text-primary" />
+                      <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-secondary">
+                        <badge.icon className="h-8 w-8 text-secondary-foreground" />
                       </div>
                       <h3 className="text-md font-semibold">{badge.name}</h3>
                       <p className="mt-1 text-sm text-muted-foreground">{badge.description}</p>
