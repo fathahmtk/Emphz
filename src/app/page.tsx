@@ -64,7 +64,7 @@ const newsBgImage = PlaceHolderImages.find(p => p.id === 'hero-extra-8');
 
 function CaseStudyCard({ project }: { project: ProjectCaseStudy }) {
     return (
-        <Card className="overflow-hidden bg-background/50 backdrop-blur-sm border-white/20">
+        <Card className="overflow-hidden bg-background/50 backdrop-blur-sm border-white/20 text-primary-foreground">
             <div className="grid md:grid-cols-2">
                 <div className="relative aspect-video">
                     <Image src={project.beforeImageUrl} alt={`Before image for ${project.title}`} fill className="object-cover" />
@@ -79,7 +79,7 @@ function CaseStudyCard({ project }: { project: ProjectCaseStudy }) {
                 <CardTitle className="font-headline text-xl text-primary-foreground">{project.title}</CardTitle>
             </CardHeader>
             <CardContent>
-                <CardDescription className="text-sm text-primary-foreground/80">{project.details}</CardDescription>
+                <p className="text-sm text-primary-foreground/80">{project.details}</p>
                 <Separator className="my-4 bg-white/20" />
                 <div className="flex items-center justify-between text-xs text-primary-foreground/80">
                     <div className="flex items-center gap-2">
@@ -176,7 +176,7 @@ export default function Home() {
                     <ScrollReveal key={pillar.title} delay={i * 150}>
                     <Card className="text-center h-full bg-background/20 backdrop-blur-sm border-white/20 text-primary-foreground">
                         <CardHeader>
-                        <div className="mx-auto mb-4 inline-flex items-center justify-center rounded-full bg-primary/10 p-3 text-primary">
+                        <div className="mx-auto mb-4 inline-flex items-center justify-center rounded-full bg-primary/10 p-3">
                             <pillar.icon className="h-8 w-8 text-primary-foreground" />
                         </div>
                         <CardTitle className="text-xl font-bold font-headline">{pillar.title}</CardTitle>
@@ -213,7 +213,7 @@ export default function Home() {
                             <strong className="text-primary-foreground">Mission:</strong> To engineer world-class GRP solutions that enable resilient, safe, and efficient infrastructure for industries and communities.
                         </p>
                         <div className="mt-8 grid gap-6">
-                            {values.map((value, i) => (
+                            {values.map((value) => (
                                 <div key={value.title} className="flex items-start gap-4">
                                     <CheckCircle className="h-6 w-6 text-primary mt-1 shrink-0"/>
                                     <div>
@@ -268,10 +268,8 @@ export default function Home() {
                       <div className="mt-12 text-center">
                         <Button size="lg" asChild className="group">
                           <Link href="/projects">
-                            <span>
                               View All Projects
                               <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                            </span>
                           </Link>
                         </Button>
                       </div>
