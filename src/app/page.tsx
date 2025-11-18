@@ -1,10 +1,10 @@
-
 'use client';
 import Link from 'next/link';
 import { ArrowRight, Factory, HardHat, ShieldCheck, Award, Fingerprint, Building } from 'lucide-react';
 import { collection, orderBy, query, limit } from 'firebase/firestore';
 import dynamic from 'next/dynamic';
 import { useMemo } from 'react';
+import Image from 'next/image';
 
 import { Button } from '@/components/ui/button';
 import { ProductCard } from '@/components/product-card';
@@ -16,9 +16,6 @@ import { SiteFooter } from '@/components/layout/site-footer';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { GlassCard } from '@/components/glass-card';
-
-const HeroCarousel = dynamic(() => import('@/components/hero-carousel').then(m => m.HeroCarousel), { ssr: false });
-
 
 const corporatePillars = [
   {
@@ -54,29 +51,25 @@ export default function Home() {
   }, [firestore]);
   const { data: products } = useCollection<Product>(productsQuery);
 
-  const heroImages = useMemo(() => PlaceHolderImages.filter(p => [
-      'hero-main',
-      'gallery-factory-3',
-      'gallery-project-1',
-      'gallery-instrumentation',
-      'gallery-project-4',
-      'hero-industrial-plant',
-      'hero-extra-1',
-      'hero-extra-2',
-      'hero-extra-3',
-      'hero-extra-4',
-      'hero-extra-5',
-      'hero-extra-6',
-      'hero-extra-7',
-      'hero-extra-8'
-    ].includes(p.id)), []);
+  const heroImage = useMemo(() => PlaceHolderImages.find(p => p.id === 'hero-main-single'), []);
 
   return (
     <>
       <SiteHeader />
       <main className="flex-1">
         <section className="relative h-dvh w-full flex items-center justify-center text-center overflow-hidden">
-          <HeroCarousel images={heroImages} />
+          {heroImage && (
+             <div className="absolute inset-0 z-0">
+                <Image
+                  src={heroImage.imageUrl}
+                  alt={heroImage.description}
+                  data-ai-hint={heroImage.imageHint}
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </div>
+          )}
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent z-10" />
           <div className="container relative px-4 md:px-6 z-20">
             <div className="mx-auto max-w-4xl text-primary-foreground">

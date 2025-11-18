@@ -7,6 +7,12 @@
       "imageHint": "industrial pipes"
     },
     {
+      "id": "hero-main-single",
+      "description": "A close-up of industrial GRP pipes and fittings, showcasing material quality and engineering precision.",
+      "imageUrl": "https://lh3.googleusercontent.com/pw/AP1GczNNRMOa3iV4TcgGI3CYBYhlyPLtEmekfG9bVmVjZEt2Gaxtw1ODMbgSLVLbAkcXE7gmcx8CbFIqqpXDT--Zv20AMFsFk22CnwjkPYp4VgIvbE4l_gvPbqgBzl5G1Rekcd4o78qDaT0WeTQfzCMTjvHx3w=w1546-h870-s-no-gm?authuser=0",
+      "imageHint": "industrial pipes"
+    },
+    {
       "id": "product-pipes",
       "description": "A collection of large industrial GRP pipes.",
       "imageUrl": "https://images.unsplash.com/photo-1641630520184-8ea70bd9b3bc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxHUlAlMjBwaXBlc3xlbnwwfHx8fDE3NjM0NDQwMjh8MA&ixlib=rb-4.1.0&q=80&w=1080",
@@ -75,7 +81,7 @@
     {
       "id": "gallery-factory-2",
       "description": "A quality control specialist inspecting a finished product.",
-      "imageUrl": "https://images.unsplash.com/photo-1624957485560-47747511b32f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxxdWFsaXR5JTIwY29udHJvbHxlbnwwfHx8fDE3NjM0NTM2MzB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1624957485560-47747511b32f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxxdWFsaXR5JTIwY29udHJvbHxlbnwwfHx8fDE3NjM0NTM2MzB8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "quality control"
     },
     {
