@@ -10,7 +10,7 @@ import {
   QuerySnapshot,
   CollectionReference,
 } from 'firebase/firestore';
-import { type MemoizedFirebase, isMemoized } from '../provider';
+import { type MemoizedFirebase, isMemoized } from '../client-provider';
 
 /** Utility type to add an 'id' field to a given type T. */
 export type WithId<T> = T & { id: string };
