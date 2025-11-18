@@ -28,7 +28,7 @@ export function ProductCard({ product }: ProductCardProps) {
               alt={product.name}
               data-ai-hint={product.imageHint}
               fill
-              className="rounded-t-lg object-cover transition-transform duration-300 group-hover:scale-105"
+              className="rounded-t-lg object-cover transition-transform duration-300 group-hover:scale-105 grayscale group-hover:grayscale-0"
             />
           </div>
         </CardHeader>

@@ -71,7 +71,7 @@ export default function Home() {
                     alt={heroImage.description}
                     data-ai-hint={heroImage.imageHint}
                     fill
-                    className="object-cover"
+                    className="object-cover grayscale"
                     priority
                 />
             </div>
@@ -92,13 +92,13 @@ export default function Home() {
               </ScrollReveal>
               <ScrollReveal delay={400}>
                 <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
-                  <Button size="lg" asChild className="group bg-accent text-accent-foreground hover:bg-accent/90">
+                  <Button size="lg" asChild className="group">
                     <Link href="/contact">
                       Request Specification Pack
                       <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                     </Link>
                   </Button>
-                  <Button size="lg" variant="secondary" asChild>
+                  <Button size="lg" variant="outline" asChild>
                     <Link href="/products">Explore Product Catalogue</Link>
                   </Button>
                 </div>

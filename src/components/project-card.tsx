@@ -21,12 +21,12 @@ export function ProjectCard({ project }: ProjectCardProps) {
               alt={project.title}
               data-ai-hint="new infrastructure"
               fill
-              className="object-cover transition-transform duration-300 group-hover:scale-105"
+              className="object-cover transition-transform duration-300 group-hover:scale-105 grayscale group-hover:grayscale-0"
             />
         </div>
         <div className="p-6 flex flex-col flex-grow">
             <Badge variant="outline" className="w-fit mb-2">{project.clientType}</Badge>
-            <CardTitle className="text-xl font-headline group-hover:text-accent transition-colors">{project.title}</CardTitle>
+            <CardTitle className="text-xl font-headline group-hover:text-primary transition-colors">{project.title}</CardTitle>
             <div className="flex items-center gap-4 text-sm text-muted-foreground mt-2">
                 <div className="flex items-center">
                 <MapPin className="w-4 h-4 mr-1" />

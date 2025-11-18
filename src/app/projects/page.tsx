@@ -59,7 +59,7 @@ export default function ProjectsPage() {
                             alt={`Before image for ${project.title}`}
                             data-ai-hint="old infrastructure"
                             fill
-                            className="object-cover rounded-md"
+                            className="object-cover rounded-md grayscale"
                             />
                             <Badge variant="destructive" className="absolute top-2 left-2">Before</Badge>
                         </div>
@@ -69,7 +69,7 @@ export default function ProjectsPage() {
                             alt={`After image for ${project.title}`}
                             data-ai-hint="new infrastructure"
                             fill
-                            className="object-cover rounded-md"
+                            className="object-cover rounded-md grayscale"
                             />
                             <Badge variant="default" className="absolute top-2 left-2 bg-green-600">After</Badge>
                         </div>
