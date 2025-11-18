@@ -24,31 +24,6 @@ export interface MegaMenu {
 
 export const menuData: MegaMenu[] = [
   {
-    title: "Company",
-    href: "/about",
-    columns: [
-      {
-        title: "Brand & People",
-        links: [
-          { title: "About Us", href: "/about" },
-          { title: "History", href: "/about/history" },
-          { title: "CEO's Message", href: "/about/ceo-message" },
-          { title: "Mission, Vision & Values", href: "/about/mission" },
-          { title: "Our Team", href: "/about/team" },
-        ],
-      },
-      {
-        title: "Capability Highlights",
-        links: [
-          { title: "GRP Advantage", href: "/grp-advantage", description: "Why our materials are superior." },
-          { title: "Manufacturing", href: "/manufacturing", description: "Facilities, capacity & virtual tour." },
-          { title: "Careers", href: "/contact/careers", description: "View our current openings." },
-        ],
-      },
-    ],
-    cta: { text: "Download Corporate Brochure", href: "/downloads" },
-  },
-  {
     title: "Products",
     href: "/products",
     columns: [
@@ -120,6 +95,8 @@ export const menuData: MegaMenu[] = [
             title: "Our Work",
             links: [
                 { title: "Project Case Studies", href: "/projects" },
+                 { title: "GRP Advantage", href: "/grp-advantage", description: "Why our materials are superior." },
+                { title: "Manufacturing", href: "/manufacturing", description: "Facilities, capacity & virtual tour." },
             ]
         }
     ]
@@ -179,6 +156,7 @@ export const menuData: MegaMenu[] = [
                   { title: "Our Locations", href: "/contact/locations" },
                   { title: "Submit Inquiry", href: "/contact" },
                   { title: "Support Request", href: "/contact/support" },
+                  { title: "Careers", href: "/contact/careers" },
               ]
           }
       ]
