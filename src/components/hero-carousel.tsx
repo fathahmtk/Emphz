@@ -17,7 +17,6 @@ export function HeroCarousel({ images, className }: HeroCarouselProps) {
   const [emblaRef] = useEmblaCarousel(
     {
       loop: true,
-      // The fade effect is handled by custom CSS
     },
     [
       Autoplay({
@@ -41,7 +40,7 @@ export function HeroCarousel({ images, className }: HeroCarouselProps) {
               alt={image.description}
               data-ai-hint={image.imageHint}
               fill
-              className="object-cover"
+              className="object-contain"
               priority={index === 0}
             />
           </div>
