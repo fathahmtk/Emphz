@@ -1,35 +1,27 @@
 
-import Image from "next/image";
 import { ContactForm } from "@/components/contact-form";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Factory, LocateFixed, Mail, Phone } from "lucide-react";
+import { Mail, Phone, MessageSquare } from "lucide-react";
 import type { Metadata } from "next";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Contact Us",
-  description: "Get in touch with the Emphz team. Contact us for quotes, technical support, or partnership opportunities. Find our office and factory locations.",
+  description: "Connect with EMPHZ for technical support, product inquiries, and project collaboration. Upload drawings, specifications, or tender documents directly.",
 };
 
-const locations = [
-  {
-    icon: LocateFixed,
-    title: "Head Office",
-    address: "123 Innovation Drive, Metropolis, USA 12345",
-    image: PlaceHolderImages.find(p => p.id === 'office-location')?.imageUrl || '',
-    imageHint: PlaceHolderImages.find(p => p.id === 'office-location')?.imageHint || '',
-  },
-  {
-    icon: Factory,
-    title: "Manufacturing Plant",
-    address: "456 Industrial Ave, Tecumseh, USA 67890",
-    image: PlaceHolderImages.find(p => p.id === 'factory-location')?.imageUrl || '',
-    imageHint: PlaceHolderImages.find(p => p.id === 'factory-location')?.imageHint || '',
-  },
+const contactChannels = [
+    { icon: Phone, text: "Sales: +971 4 123 4567", href: "tel:+97141234567" },
+    { icon: Phone, text: "Support: +971 4 765 4321", href: "tel:+97147654321" },
+    { icon: Mail, text: "Sales: sales@emphz.com", href: "mailto:sales@emphz.com" },
+    { icon: Mail, text: "Support: support@emphz.com", href: "mailto:support@emphz.com" },
+    { icon: MessageSquare, text: "WhatsApp / Instant Chat", href: "#" },
 ];
+
 
 export default function ContactPage() {
   return (
@@ -40,9 +32,9 @@ export default function ContactPage() {
           <div className="container max-w-7xl px-4 md:px-6 py-12 md:py-20">
             <ScrollReveal>
               <div className="text-center mb-12">
-                <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl font-headline">Contact Us</h1>
-                <p className="mt-4 max-w-2xl mx-auto text-muted-foreground md:text-lg">
-                  We're here to help. Reach out with questions, quote requests, or to discuss your next project.
+                <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl font-headline">Connect with EMPHZ</h1>
+                <p className="mt-4 max-w-3xl mx-auto text-muted-foreground md:text-lg">
+                  Technical Support, Product Inquiries & Project Collaboration. EMPHZ teams respond quickly to technical requests, project requirements, and product inquiries. Upload drawings, specifications, or tender documents directly via the form.
                 </p>
               </div>
             </ScrollReveal>
@@ -54,37 +46,29 @@ export default function ContactPage() {
               <ScrollReveal delay={400} className="lg:col-span-2 space-y-8">
                 <Card className="bg-card/80">
                   <CardHeader>
-                    <CardTitle>Contact Information</CardTitle>
+                    <CardTitle>Contact Channels</CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4 text-muted-foreground">
-                    <div className="flex items-center gap-4">
-                      <Phone className="w-5 h-5 text-accent" />
-                      <span>(555) 123-4567</span>
-                    </div>
-                    <div className="flex items-center gap-4">
-                      <Mail className="w-5 h-5 text-accent" />
-                      <span>contact@emphz.com</span>
-                    </div>
+                    {contactChannels.map(channel => (
+                         <a key={channel.text} href={channel.href} className="flex items-center gap-4 hover:text-accent transition-colors">
+                          <channel.icon className="w-5 h-5 text-accent" />
+                          <span>{channel.text}</span>
+                        </a>
+                    ))}
+                    <p className="text-sm pt-2">Operating Hours: Sun-Thu, 8:00 AM - 6:00 PM (GMT+4)</p>
                   </CardContent>
                 </Card>
-                
-                {locations.map((loc, i) => (
-                  <Card key={i} className="bg-card/80 overflow-hidden">
-                    <div className="relative h-48 w-full">
-                      <Image src={loc.image} alt={loc.title} data-ai-hint={loc.imageHint} fill className="object-cover" />
-                    </div>
-                    <CardHeader>
-                      <CardTitle className="flex items-center gap-2">
-                        <loc.icon className="w-6 h-6 text-accent" />
-                        {loc.title}
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-muted-foreground">{loc.address}</p>
-                       <a href="#" className="text-sm text-accent font-semibold mt-2 inline-block">View on Google Maps</a>
-                    </CardContent>
-                  </Card>
-                ))}
+                <Card className="bg-card/80">
+                  <CardHeader>
+                    <CardTitle>Looking for documentation?</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-muted-foreground mb-4">Access datasheets, CAD files, and compliance documents instantly.</p>
+                    <Button asChild className="w-full">
+                        <Link href="/downloads">Request Specifications Pack</Link>
+                    </Button>
+                  </CardContent>
+                </Card>
               </ScrollReveal>
             </div>
           </div>
