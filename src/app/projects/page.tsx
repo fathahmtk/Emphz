@@ -10,6 +10,29 @@ import { MapPin } from 'lucide-react';
 import { collection, orderBy, query } from 'firebase/firestore';
 import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
 import { type Project } from '@/lib/types';
+import { Skeleton } from '@/components/ui/skeleton';
+
+
+function ProjectSkeleton() {
+    return (
+        <Card className="overflow-hidden">
+            <div className="grid grid-cols-1 lg:grid-cols-2">
+                <div className="p-6 md:p-8 flex flex-col justify-center">
+                    <Skeleton className="h-6 w-1/4 mb-2" />
+                    <Skeleton className="h-8 w-3/4" />
+                    <Skeleton className="h-5 w-1/2 mt-2" />
+                    <Skeleton className="h-4 w-full mt-4" />
+                    <Skeleton className="h-4 w-full mt-2" />
+                    <Skeleton className="h-4 w-5/6 mt-2" />
+                </div>
+                <div className="grid grid-cols-2 gap-2 p-4">
+                    <Skeleton className="h-full min-h-[250px] rounded-md" />
+                    <Skeleton className="h-full min-h-[250px] rounded-md" />
+                </div>
+            </div>
+        </Card>
+    );
+}
 
 
 export default function ProjectsPage() {
@@ -38,7 +61,13 @@ export default function ProjectsPage() {
           </ScrollReveal>
 
           <div className="space-y-16">
-            {isLoading && <p className="text-center">Loading projects...</p>}
+            {isLoading && (
+                 <>
+                    <ProjectSkeleton />
+                    <ProjectSkeleton />
+                    <ProjectSkeleton />
+                </>
+            )}
             {projects?.map((project, i) => (
               <ScrollReveal key={project.id} delay={i * 150}>
                 <Card className="overflow-hidden">
@@ -60,6 +89,7 @@ export default function ProjectsPage() {
                             data-ai-hint="old infrastructure"
                             fill
                             className="object-cover rounded-md"
+                            sizes="(max-width: 1024px) 50vw, 25vw"
                             />
                             <Badge variant="destructive" className="absolute top-2 left-2">Before</Badge>
                         </div>
@@ -70,8 +100,9 @@ export default function ProjectsPage() {
                             data-ai-hint="new infrastructure"
                             fill
                             className="object-cover rounded-md"
+                            sizes="(max-width: 1024px) 50vw, 25vw"
                             />
-                            <Badge variant="default" className="absolute top-2 left-2 bg-green-600">After</Badge>
+                            <Badge className="absolute top-2 left-2 bg-green-600 hover:bg-green-700">After</Badge>
                         </div>
                       </div>
                    </div>
