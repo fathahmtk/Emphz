@@ -120,7 +120,7 @@ export default function Home() {
       <main className="flex-1">
         <section className="relative h-dvh w-full flex items-center justify-center text-left overflow-hidden">
           <HeroCarousel images={heroImages} />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent z-10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent z-10" />
           <div className="container relative flex items-center justify-between px-4 md:px-6 z-20">
             <div className="hidden md:block">
                  <Link href="/">
@@ -377,3 +377,4 @@ export default function Home() {
     </>
   );
 }
+

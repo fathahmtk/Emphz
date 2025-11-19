@@ -80,7 +80,7 @@ export function SiteFooter() {
           <div>
             <p className="font-semibold text-foreground">Contact</p>
             <div className="flex flex-col items-start mt-5 space-y-2">
-              <a href="mailto:contact@emphz.com" className="text-muted-foreground transition-colors duration-300 hover:text-primary">contact@emphz.com</a>
+              <a href="mailto:sales@emphz.com" className="text-muted-foreground transition-colors duration-300 hover:text-primary">sales@emphz.com</a>
               <p className="text-muted-foreground">123 Innovation Drive, Dubai, UAE</p>
             </div>
           </div>
@@ -107,3 +107,4 @@ export function SiteFooter() {
     </footer>
   );
 }
+

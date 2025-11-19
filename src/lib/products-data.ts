@@ -1,3 +1,4 @@
+
 import type { Product } from './types';
 
 export const productsSeed: Omit<Product, 'id'>[] = [
@@ -98,3 +99,4 @@ export const productsSeed: Omit<Product, 'id'>[] = [
     datasheetUrl: '#',
   },
 ];
+

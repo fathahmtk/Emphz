@@ -21,7 +21,7 @@ const contactChannels = [
     { icon: Phone, text: "Support: +971 4 765 4321", href: "tel:+97147654321" },
     { icon: Mail, text: "Sales: sales@emphz.com", href: "mailto:sales@emphz.com" },
     { icon: Mail, text: "Support: support@emphz.com", href: "mailto:support@emphz.com" },
-    { icon: MessageSquare, text: "WhatsApp / Instant Chat", href: "#" },
+    { icon: MessageSquare, text: "WhatsApp / Instant Chat", href: "https://wa.me/971501234567" },
 ];
 
 
@@ -43,7 +43,7 @@ export default function ContactPage() {
                         fill
                         className="object-cover"
                     />
-                    <div className="absolute inset-0 bg-background/70" />
+                    <div className="absolute inset-0 bg-background/80" />
                 </div>
             )}
           <div className="container px-4 md:px-6 py-24 md:py-32">
@@ -95,3 +95,4 @@ export default function ContactPage() {
     </>
   );
 }
+

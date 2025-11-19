@@ -1,3 +1,4 @@
+
 import type { ProjectCaseStudy } from './types';
 import { PlaceHolderImages } from './placeholder-images';
 
@@ -27,3 +28,4 @@ export const projectsSeed: Omit<ProjectCaseStudy, 'id'>[] = [
         afterImageUrl: findImage('case-study-after-2'),
     },
 ];
+

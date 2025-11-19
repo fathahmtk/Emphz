@@ -32,3 +32,4 @@ export const technicalDownloads: TechnicalDownload[] = [
         "fileUrl": "/downloads/EMPHZ-Compliance-Pack.pdf"
     }
 ];
+
