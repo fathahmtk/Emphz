@@ -1,45 +1,55 @@
 
 'use client';
+import { useMemo, useState } from 'react';
+import { collection, query, orderBy } from 'firebase/firestore';
+
 import { SiteHeader } from '@/components/layout/site-header';
 import { SiteFooter } from '@/components/layout/site-footer';
 import { ScrollReveal } from '@/components/scroll-reveal';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import Link from 'next/link';
+import { useCollection, useFirestore } from '@/firebase';
+import type { Product } from '@/lib/types';
+import { ProductCard } from '@/components/product-card';
+import { Skeleton } from '@/components/ui/skeleton';
+import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
 
-const productCategories = [
-    {
-        name: "GRP Electrical Enclosures",
-        href: "/products/enclosures",
-        description: "Industrial-grade, IP-rated, UV-resistant GRP enclosures engineered for harsh outdoor environments and electrical safety compliance."
-    },
-    {
-        name: "GRP Portable Toilets",
-        href: "/products/toilets",
-        description: "Hygienic, monsoon-proof toilet cabins designed for public spaces, sites, tourism, panchayat projects, and heavy daily usage."
-    },
-    {
-        name: "GRP Modular Kiosks",
-        href: "/products/kiosks",
-        description: "Food kiosks, ticket counters, retail pods, and security booths built with structural integrity and clean finishing."
-    },
-    {
-        name: "GRP Security Cabins",
-        href: "/products/cabins",
-        description: "Impact-resistant, insulated, ergonomic cabins ideal for residential, commercial, and industrial security operations."
-    },
-    {
-        name: "GRP Resort Villas & Pods",
-        href: "/products/villas",
-        description: "High-end GRP villas crafted for resorts in Wayanad, Munnar, Mysore, Coorg, coastal areas, and private retreats."
-    },
-    {
-        name: "Custom GRP Fabrication",
-        href: "/products/custom",
-        description: "Bespoke GRP structures engineered for unique architectural, commercial, or industrial requirements."
-    }
-];
+function ProductSkeleton() {
+    return (
+        <div className="flex flex-col gap-4">
+            <Skeleton className="aspect-[4/3] w-full" />
+            <Skeleton className="h-5 w-20" />
+            <Skeleton className="h-6 w-3/4" />
+            <Skeleton className="h-4 w-full" />
+            <Skeleton className="h-4 w-full" />
+            <Skeleton className="h-10 w-full mt-2" />
+        </div>
+    )
+}
 
 export default function ProductsPage() {
+    const firestore = useFirestore();
+    
+    const productsQuery = useMemo(() => {
+        if (!firestore) return null;
+        return query(collection(firestore, 'products'), orderBy('name'));
+    }, [firestore]);
+
+    const { data: products, isLoading } = useCollection<Product>(productsQuery);
+
+    const categories = useMemo(() => {
+        if (!products) return [];
+        const uniqueCategories = [...new Set(products.map(p => p.category))];
+        return ['All', ...uniqueCategories];
+    }, [products]);
+
+    const [activeCategory, setActiveCategory] = useState('All');
+
+    const filteredProducts = useMemo(() => {
+        if (activeCategory === 'All') {
+            return products;
+        }
+        return products?.filter(p => p.category === activeCategory);
+    }, [products, activeCategory]);
 
   return (
     <>
@@ -49,27 +59,32 @@ export default function ProductsPage() {
           <ScrollReveal>
             <div className="mb-12 text-center">
               <h1 className="text-4xl font-bold font-headline tracking-tighter sm:text-5xl md:text-6xl">
-                Products
+                Product Catalog
               </h1>
               <p className="mx-auto mt-4 max-w-3xl text-muted-foreground md:text-lg">
-                EMPHZ engineers a full suite of GRP/FRP enclosures, kiosks, cabins, and modular structures designed for the demanding conditions of South India.
+                Explore our full range of GRP/FRP enclosures, kiosks, cabins, and modular structures engineered for the demanding conditions of South India.
               </p>
             </div>
           </ScrollReveal>
           
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {productCategories.map((category, i) => (
-              <ScrollReveal key={category.name} delay={i * 100}>
-                <Link href={category.href} className="h-full block">
-                  <Card className="flex h-full flex-col group overflow-hidden transition-all duration-300 hover:shadow-xl hover:border-primary/30 hover:bg-accent/50">
-                    <CardHeader>
-                      <CardTitle className="text-xl font-headline transition-colors group-hover:text-primary">{category.name}</CardTitle>
-                    </CardHeader>
-                    <CardContent className="flex-grow">
-                      <CardDescription>{category.description}</CardDescription>
-                    </CardContent>
-                  </Card>
-                </Link>
+          <div className="mb-8 flex flex-wrap justify-center gap-2">
+            {categories.map(category => (
+              <Button 
+                key={category} 
+                variant={activeCategory === category ? 'default' : 'outline'}
+                onClick={() => setActiveCategory(category)}
+                className={cn('transition-all', activeCategory !== category && "bg-background/50 text-foreground/80")}
+              >
+                {category}
+              </Button>
+            ))}
+          </div>
+
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {isLoading && Array.from({length: 8}).map((_, i) => <ProductSkeleton key={i} />)}
+            {filteredProducts?.map((product, i) => (
+              <ScrollReveal key={product.id} delay={i * 50}>
+                <ProductCard product={product} />
               </ScrollReveal>
             ))}
           </div>
@@ -79,3 +94,4 @@ export default function ProductsPage() {
     </>
   );
 }
+

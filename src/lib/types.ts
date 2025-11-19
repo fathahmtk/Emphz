@@ -1,4 +1,5 @@
 
+
 import { Timestamp } from 'firebase/firestore';
 
 export type Product = {
@@ -38,3 +39,4 @@ export type NavItem = {
   title: string;
   href: string;
 };
+
