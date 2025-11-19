@@ -64,7 +64,7 @@ const newsBgImage = PlaceHolderImages.find(p => p.id === 'hero-extra-8');
 
 function CaseStudyCard({ project }: { project: ProjectCaseStudy }) {
     return (
-        <Card className="overflow-hidden bg-background/20 backdrop-blur-sm border-white/20 text-primary-foreground">
+        <Card className="overflow-hidden bg-background/30 backdrop-blur-sm border-white/20 text-primary-foreground">
             <div className="grid md:grid-cols-2">
                 <div className="relative aspect-video">
                     <Image src={project.beforeImageUrl} alt={`Before image for ${project.title}`} fill className="object-cover" />
@@ -159,7 +159,7 @@ export default function Home() {
                         fill
                         className="object-cover"
                     />
-                    <div className="absolute inset-0 bg-black/60" />
+                    <div className="absolute inset-0 bg-background/80" />
                 </div>
             )}
             <div className="container px-4 md:px-6 text-primary-foreground">
@@ -174,7 +174,7 @@ export default function Home() {
                 <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
                 {corporatePillars.map((pillar, i) => (
                     <ScrollReveal key={pillar.title} delay={i * 150}>
-                    <Card className="text-center h-full bg-background/20 backdrop-blur-sm border-white/20 text-primary-foreground">
+                    <Card className="text-center h-full bg-background/30 backdrop-blur-sm border-white/20 text-primary-foreground">
                         <CardHeader>
                         <div className="mx-auto mb-4 inline-flex items-center justify-center rounded-full bg-primary/10 p-3">
                             <pillar.icon className="h-8 w-8 text-primary-foreground" />
@@ -202,12 +202,12 @@ export default function Home() {
                         fill
                         className="object-cover"
                     />
-                    <div className="absolute inset-0 bg-black/70" />
+                    <div className="absolute inset-0 bg-background/80" />
                 </div>
             )}
             <div className="container grid md:grid-cols-2 gap-12 items-center text-primary-foreground px-4 md:px-6">
                 <ScrollReveal>
-                    <div className="bg-background/20 backdrop-blur-sm border border-white/20 p-8 rounded-lg">
+                    <div className="bg-background/30 backdrop-blur-sm border border-white/20 p-8 rounded-lg">
                         <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl">Our Mission & Values</h2>
                         <p className="mt-4 text-primary-foreground/80 md:text-lg">
                             <strong className="text-primary-foreground">Mission:</strong> To engineer world-class GRP solutions that enable resilient, safe, and efficient infrastructure for industries and communities.
@@ -242,7 +242,7 @@ export default function Home() {
                         fill
                         className="object-cover"
                     />
-                    <div className="absolute inset-0 bg-black/60" />
+                    <div className="absolute inset-0 bg-background/80" />
                 </div>
             )}
             <div className="container px-4 md:px-6">
@@ -288,12 +288,12 @@ export default function Home() {
                         fill
                         className="object-cover"
                     />
-                    <div className="absolute inset-0 bg-black/70" />
+                    <div className="absolute inset-0 bg-background/80" />
                 </div>
             )}
           <div className="container px-4 md:px-6 text-primary-foreground">
             <ScrollReveal>
-              <div className="text-center bg-background/20 backdrop-blur-sm border border-white/20 p-8 rounded-lg">
+              <div className="text-center bg-background/30 backdrop-blur-sm border border-white/20 p-8 rounded-lg">
                 <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl">Quality, Compliance & Trust</h2>
                 <p className="mx-auto mt-4 max-w-3xl text-primary-foreground/80 md:text-xl/relaxed">
                   Our commitment to quality is backed by industry-leading certifications and approvals, ensuring every product meets rigorous standards for safety and performance.
@@ -330,7 +330,7 @@ export default function Home() {
                         fill
                         className="object-cover"
                     />
-                    <div className="absolute inset-0 bg-black/60" />
+                    <div className="absolute inset-0 bg-background/80" />
                 </div>
             )}
             <div className="container px-4 md:px-6">
