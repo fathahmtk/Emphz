@@ -1,6 +1,6 @@
 
 import type { ReactNode } from 'react';
-import { Roboto } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import type { Metadata } from 'next';
 
 import './globals.css';
@@ -9,13 +9,13 @@ import { Toaster } from "@/components/ui/toaster";
 import { FirebaseClientProvider } from '@/firebase';
 import { BackToTopButton } from '@/components/ui/back-to-top-button';
 
-const roboto = Roboto({
+const inter = Inter({
   subsets: ['latin'],
   weight: ['400', '700'],
   variable: '--font-body',
 });
 
-const roboto_headline = Roboto({
+const inter_headline = Inter({
     subsets: ['latin'],
     weight: ['700'],
     variable: '--font-headline',
@@ -35,7 +35,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head />
-      <body className={cn('min-h-screen font-body antialiased', roboto.variable, roboto_headline.variable)}>
+      <body className={cn('min-h-screen font-body antialiased', inter.variable, inter_headline.variable)}>
         <FirebaseClientProvider>
             <div className="relative flex min-h-dvh flex-col bg-background">
                 {children}

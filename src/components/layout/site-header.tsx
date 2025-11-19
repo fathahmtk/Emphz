@@ -63,7 +63,7 @@ export function SiteHeader() {
                                             <NavigationMenuTrigger className={cn("bg-transparent text-sm font-medium", isScrolled ? "text-foreground/70 hover:text-foreground/90" : "text-white/80 hover:text-white", "hover:bg-accent/50 focus:bg-accent/50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50")}>
                                                 <Link href={item.href}>{item.title}</Link>
                                             </NavigationMenuTrigger>
-                                            <NavigationMenuContent>
+                                            {item.columns.length > 0 && <NavigationMenuContent>
                                                 <div className={`grid gap-x-6 gap-y-4 p-6 w-[--nav-width] grid-cols-${item.columns.length > 3 ? '4' : item.columns.length > 2 ? '3' : item.columns.length > 1 ? '2' : '1'}`} style={{'--nav-width': `${item.columns.length * 280}px`} as React.CSSProperties}>
                                                     {item.columns.map((col) => (
                                                         <div key={col.title} className="flex flex-col space-y-3">
@@ -90,7 +90,7 @@ export function SiteHeader() {
                                                         </div>
                                                     )}
                                                 </div>
-                                            </NavigationMenuContent>
+                                            </NavigationMenuContent>}
                                         </NavigationMenuItem>
                                     ))}
                                 

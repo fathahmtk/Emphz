@@ -62,36 +62,45 @@ export function MobileNav() {
                 <div className="flex-1 overflow-y-auto">
                     <nav className="grid gap-2 p-4">
                         {menuData.map((item) => (
-                           <Accordion type="single" collapsible className="w-full" key={item.title}>
-                             <AccordionItem value={item.title} className="border-b-0">
-                               <div className="flex w-full items-center justify-between rounded-md px-3 py-2 text-base font-medium text-foreground/80 hover:bg-accent hover:text-accent-foreground">
+                           <React.Fragment key={item.title}>
+                             {item.columns.length > 0 ? (
+                                <Accordion type="single" collapsible className="w-full">
+                                    <AccordionItem value={item.title} className="border-b-0">
+                                    <div className="flex w-full items-center justify-between rounded-md text-base font-medium text-foreground/80 hover:bg-accent hover:text-accent-foreground">
+                                        <SheetClose asChild>
+                                            <Link href={item.href} className="flex-1 text-left px-3 py-2">{item.title}</Link>
+                                        </SheetClose>
+                                        <AccordionTrigger className="p-2 w-auto hover:no-underline [&[data-state=open]>svg]:rotate-180"></AccordionTrigger>
+                                    </div>
+                                    <AccordionContent className="pt-2">
+                                    <div className="grid gap-2 pl-7">
+                                        {item.columns.map(col => (
+                                            <div key={col.title}>
+                                                <h4 className="font-semibold text-muted-foreground mb-2 text-sm">{col.title}</h4>
+                                                {col.links.map((link) => (
+                                                    <SheetClose asChild key={link.href}>
+                                                        <Link
+                                                            href={link.href}
+                                                            className="flex w-full items-center py-2 text-sm text-foreground/70 hover:text-foreground"
+                                                        >
+                                                            {link.title}
+                                                        </Link>
+                                                    </SheetClose>
+                                                ))}
+                                            </div>
+                                        ))}
+                                    </div>
+                                    </AccordionContent>
+                                    </AccordionItem>
+                                </Accordion>
+                             ) : (
                                  <SheetClose asChild>
-                                    <Link href={item.href} className="flex-1 text-left">{item.title}</Link>
+                                    <Link href={item.href} className="flex w-full items-center rounded-md px-3 py-2 text-base font-medium text-foreground/80 hover:bg-accent hover:text-accent-foreground">
+                                        {item.title}
+                                    </Link>
                                  </SheetClose>
-                                {item.columns.length > 0 && <AccordionTrigger className="p-0 w-auto hover:no-underline [&[data-state=open]>svg]:rotate-180">
-                                </AccordionTrigger>}
-                               </div>
-                               {item.columns.length > 0 && <AccordionContent className="pt-2">
-                                  <div className="grid gap-2 pl-7">
-                                     {item.columns.map(col => (
-                                        <div key={col.title}>
-                                            <h4 className="font-semibold text-muted-foreground mb-2 text-sm">{col.title}</h4>
-                                            {col.links.map((link) => (
-                                                <SheetClose asChild key={link.href}>
-                                                    <Link
-                                                        href={link.href}
-                                                        className="flex w-full items-center py-2 text-sm text-foreground/70 hover:text-foreground"
-                                                    >
-                                                        {link.title}
-                                                    </Link>
-                                                </SheetClose>
-                                            ))}
-                                        </div>
-                                    ))}
-                                  </div>
-                               </AccordionContent>}
-                             </AccordionItem>
-                           </Accordion>
+                             )}
+                           </React.Fragment>
                         ))}
                     </nav>
                 </div>

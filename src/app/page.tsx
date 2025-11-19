@@ -1,7 +1,7 @@
 
 'use client';
 import Link from 'next/link';
-import { ArrowRight, CheckCircle, Factory, HardHat, ShieldCheck, Zap, Droplets, Wind, Sun } from 'lucide-react';
+import { ArrowRight, CheckCircle, Factory, HardHat, ShieldCheck, Zap, Droplets, Wind, Sun, Box } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { ScrollReveal } from '@/components/scroll-reveal';
@@ -9,11 +9,10 @@ import { SiteHeader } from '@/components/layout/site-header';
 import { SiteFooter } from '@/components/layout/site-footer';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { HeroCarousel } from '@/components/hero-carousel';
 import Image from 'next/image';
-import type { Metadata } from 'next';
+import { GlassCard } from '@/components/glass-card';
 
-const heroImages = PlaceHolderImages.filter(img => img.id.startsWith('hero-'));
+const heroBgImage = PlaceHolderImages.find(p => p.id === 'hero-new-2');
 const aboutBgImage = PlaceHolderImages.find(p => p.id === 'hero-industrial-plant');
 
 const coreProducts = [
@@ -70,23 +69,40 @@ const industries = [
     "Retail and F&B"
 ];
 
+const heroProducts = [
+  { title: 'Electrical Enclosures', href: '/products/enclosures' },
+  { title: 'Modular Kiosks', href: '/products/kiosks' },
+  { title: 'Portable Toilets', href: '/products/toilets' },
+  { title: 'Resort Villas', href: '/products/villas' },
+];
+
 export default function Home() {
   return (
     <>
       <SiteHeader />
       <main className="flex-1">
         <section className="relative h-dvh w-full flex items-center justify-center text-left overflow-hidden">
-          <HeroCarousel images={heroImages} />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent z-10" />
-          <div className="container relative flex items-center justify-between px-4 md:px-6 z-20">
+            {heroBgImage && (
+              <Image
+                src={heroBgImage.imageUrl}
+                alt={heroBgImage.description}
+                data-ai-hint={heroBgImage.imageHint}
+                fill
+                className="object-cover"
+                priority
+                quality={100}
+              />
+            )}
+          <div className="absolute inset-0 bg-background/70 z-10" />
+          <div className="container relative grid lg:grid-cols-2 gap-12 items-center px-4 md:px-6 z-20">
             <div className="max-w-3xl">
               <ScrollReveal>
                 <h1 className="!leading-tight text-4xl font-bold font-headline tracking-tighter text-white shadow-lg sm:text-5xl">
-                  Engineered GRP Solutions for the Next Generation
+                  Engineered GRP Solutions for Demanding Environments
                 </h1>
               </ScrollReveal>
               <ScrollReveal delay={200}>
-                <p className="mt-4 text-lg text-white/90 md:text-xl">
+                <p className="mt-4 text-lg text-white/80 md:text-xl">
                   Manufactured at scale in Mysore. Delivered with precision across Kerala. GRP enclosures, toilet cabins, kiosks, security cabins, and premium resort villas built to outperform in real-world conditions.
                 </p>
               </ScrollReveal>
@@ -104,10 +120,30 @@ export default function Home() {
                 </div>
               </ScrollReveal>
             </div>
+             <ScrollReveal delay={500} className="hidden lg:block">
+               <GlassCard>
+                <CardHeader>
+                    <CardTitle>Core Product Lines</CardTitle>
+                    <CardDescription>Explore our engineered solutions.</CardDescription>
+                </CardHeader>
+                <CardContent>
+                    <div className="grid grid-cols-2 gap-4">
+                        {heroProducts.map((product) => (
+                           <Link key={product.href} href={product.href}>
+                             <div className="p-4 rounded-lg bg-card/80 hover:bg-accent/50 hover:text-primary transition-colors flex items-center gap-3">
+                               <Box className="w-5 h-5 text-primary" />
+                               <span className="font-semibold">{product.title}</span>
+                             </div>
+                           </Link>
+                        ))}
+                    </div>
+                </CardContent>
+               </GlassCard>
+            </ScrollReveal>
           </div>
         </section>
 
-        <section id="about" className="bg-background">
+        <section id="about" className="bg-secondary/20">
           <div className="container grid grid-cols-1 lg:grid-cols-2 min-h-[70dvh] items-center gap-12 px-4 md:px-6 py-12 md:py-24">
             <div className="text-foreground">
               <ScrollReveal>
@@ -138,7 +174,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="products" className="py-12 md:py-24 lg:py-32 bg-secondary/30">
+        <section id="products" className="py-12 md:py-24 lg:py-32 bg-background">
             <div className="container px-4 md:px-6">
                 <ScrollReveal>
                     <div className="text-center mb-12 text-foreground">
@@ -164,7 +200,7 @@ export default function Home() {
             </div>
         </section>
         
-        <section id="why-grp" className="py-12 md:py-24 lg:py-32 bg-background">
+        <section id="why-grp" className="py-12 md:py-24 lg:py-32 bg-secondary/20">
              <div className="container px-4 md:px-6">
                 <ScrollReveal>
                     <div className="text-center mb-12 text-foreground">
@@ -186,7 +222,7 @@ export default function Home() {
              </div>
         </section>
 
-        <section id="delivery-model" className="py-12 md:py-24 lg:py-32 bg-secondary/30">
+        <section id="delivery-model" className="py-12 md:py-24 lg:py-32 bg-background">
             <div className="container px-4 md:px-6 text-center">
                 <ScrollReveal>
                     <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-5xl">South India Delivery Model</h2>
@@ -219,7 +255,7 @@ export default function Home() {
             </div>
         </section>
 
-        <section id="industries" className="py-12 md:py-24 lg:py-32 bg-background">
+        <section id="industries" className="py-12 md:py-24 lg:py-32 bg-secondary/20">
             <div className="container px-4 md:px-6 text-center">
                  <ScrollReveal>
                     <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-5xl">Industries We Serve</h2>
@@ -234,7 +270,7 @@ export default function Home() {
             </div>
         </section>
 
-        <section id="cta" className="py-12 md:py-24 lg:py-32 bg-secondary/30">
+        <section id="cta" className="py-12 md:py-24 lg:py-32 bg-background">
              <div className="container px-4 md:px-6 text-center">
                 <ScrollReveal>
                     <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl">Build with Confidence. Build with GRP.</h2>
