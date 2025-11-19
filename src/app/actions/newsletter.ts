@@ -3,10 +3,7 @@
 
 import { z } from 'zod';
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
-import { getSdks } from '@/firebase';
-import { initializeApp } from 'firebase/app';
-import { firebaseConfig } from '@/firebase/config';
-import { getFirestore } from 'firebase/firestore';
+import { initializeFirebase } from '@/firebase';
 
 const emailSchema = z.string().email({ message: 'Please enter a valid email address.' });
 
@@ -29,8 +26,7 @@ export async function subscribeToNewsletter(
   }
 
   try {
-    const firebaseApp = initializeApp(firebaseConfig);
-    const { firestore } = getSdks(firebaseApp);
+    const { firestore } = initializeFirebase();
     const subscriptionsCollection = collection(firestore, 'subscriptions');
     
     await addDoc(subscriptionsCollection, {

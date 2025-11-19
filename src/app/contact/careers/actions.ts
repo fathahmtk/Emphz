@@ -3,10 +3,7 @@
 
 import { z } from 'zod';
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
-import { getSdks } from '@/firebase';
-import { initializeApp } from 'firebase/app';
-import { firebaseConfig } from '@/firebase/config';
-import { getFirestore } from 'firebase/firestore';
+import { initializeFirebase } from '@/firebase';
 
 
 const applicationSchema = z.object({
@@ -48,8 +45,7 @@ export async function submitJobApplication(
   const { cv, ...applicationData } = validatedFields.data;
 
   try {
-    const firebaseApp = initializeApp(firebaseConfig);
-    const { firestore } = getSdks(firebaseApp);
+    const { firestore } = initializeFirebase();
     const applicationsCollection = collection(firestore, 'job_applications');
 
     // NOTE: In a real app, you would upload the CV to Cloud Storage and save the URL.

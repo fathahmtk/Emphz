@@ -3,10 +3,8 @@
 
 import { z } from 'zod';
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
-import { getSdks } from '@/firebase';
-import { initializeApp } from 'firebase/app';
-import { firebaseConfig } from '@/firebase/config';
-import { getFirestore } from 'firebase/firestore';
+import { initializeFirebase } from '@/firebase';
+
 
 const contactSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters.'),
@@ -50,8 +48,7 @@ export async function submitContactForm(
   }
   
   try {
-    const firebaseApp = initializeApp(firebaseConfig);
-    const { firestore } = getSdks(firebaseApp);
+    const { firestore } = initializeFirebase();
     const leadsCollection = collection(firestore, 'leads');
 
     await addDoc(leadsCollection, {
