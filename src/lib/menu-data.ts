@@ -38,62 +38,44 @@ export const menuData: MegaMenu[] = [
     href: "/products",
     columns: [
       {
-        title: "GRP Electrical Enclosures",
+        title: "By Type",
         links: [
-          { title: "Single Door", href: "/products/enclosures", description: "Standard single door enclosures." },
-          { title: "Double Door", href: "/products/enclosures", description: "Spacious double door cabinets." },
-          { title: "Multi-Door / MCC", href: "/products/enclosures", description: "Large multi-door panel boards." },
-          { title: "Battery/Solar Cabinet", href: "/products/enclosures", description: "Enclosures for energy storage." },
-          { title: "Custom Electrical Enclosures", href: "/products/custom", description: "Tailor-made for specific needs." },
+          { title: "GRP Electrical Enclosures", href: "/products/enclosures", description: "IP-rated outdoor & industrial cabinets." },
+          { title: "GRP Portable Toilets", href: "/products/toilets", description: "Hygienic, monsoon-proof toilet cabins." },
+          { title: "GRP Modular Kiosks", href: "/products/kiosks", description: "For retail, security, and information." },
+          { title: "GRP Security Cabins", href: "/products/cabins", description: "Secure booths for personnel." },
+          { title: "GRP Resort Villas & Pods", href: "/products/villas", description: "Luxury, climate-resistant modular housing." },
+          { title: "Custom GRP Fabrication", href: "/products/custom", description: "Bespoke structures for any need." },
+        ],
+      },
+    ],
+  },
+   {
+    title: "Solutions",
+    href: "/#",
+     columns: [
+      {
+        title: "By Industry",
+        links: [
+          { title: "Tourism & Resorts", href: "/industries", description: "High-performance villas and cabins." },
+          { title: "Construction", href: "/industries", description: "Durable site offices and toilet cabins." },
+          { title: "Government / Panchayat", href: "/industries", description: "Public sanitation and utility kiosks." },
+          { title: "Solar EPC", href: "/industries", description: "Weatherproof battery/inverter enclosures." },
         ],
       },
       {
-        title: "GRP Portable Toilets",
+        title: "By Location",
         links: [
-          { title: "Standard Model", href: "/products/toilets", description: "Durable and hygienic single units." },
-          { title: "Western Model", href: "/products/toilets", description: "Featuring western-style commodes." },
-          { title: "Indian Model", href: "/products/toilets", description: "Traditional Indian-style units." },
-          { title: "Multi-unit Block", href: "/products/toilets", description: "For large sites and events." },
-        ],
-      },
-       {
-        title: "GRP Modular Kiosks",
-        links: [
-          { title: "Food Kiosk", href: "/products/kiosks", description: "For food and beverage businesses." },
-          { title: "Ticket Kiosk", href: "/products/kiosks", description: "For events and transport hubs." },
-          { title: "Security Cabin", href: "/products/cabins", description: "Secure booths for personnel." },
-          { title: "Retail Pod", href: "/products/kiosks", description: "Compact shops for any location." },
-        ],
-      },
-      {
-        title: "GRP Resort Villas",
-        links: [
-          { title: "Luxury Villa", href: "/products/villas", description: "High-end, customizable resort housing." },
-          { title: "Beach Cabin", href: "/products/villas", description: "Coastal-proof holiday cabins." },
-          { title: "Mountain Pod", href: "/products/villas", description: "Cozy retreats for hilly areas." },
-          { title: "Designer GRP Rooms", href: "/products/villas", description: "Architecturally unique modular rooms." },
-        ],
-      },
-      {
-        title: "Custom GRP Fabrication",
-        links: [
-          { title: "Site Office Cabins", href: "/products/custom", description: "Portable offices for construction sites." },
-          { title: "Shelters", href: "/products/custom", description: "Durable shelters for various uses." },
-          { title: "Reception Pods", href: "/products/custom", description: "Stylish, modern reception areas." },
-          { title: "Custom Models", href: "/products/custom", description: "Bring your unique design to life." },
-        ],
-      },
+            { title: "Kerala Operations", href: "/kerala", description: "Fast supply and installation across Kerala." },
+            { title: "Mysore Factory", href: "/mysore", description: "Advanced GRP manufacturing hub." },
+        ]
+      }
     ],
   },
   {
     title: "Projects",
     href: "/projects",
     columns: [],
-  },
-  {
-    title: "Industries",
-    href: "/industries",
-    columns: []
   },
   {
     title: "Gallery",
