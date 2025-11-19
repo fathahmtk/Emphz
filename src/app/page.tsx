@@ -117,14 +117,16 @@ export default function Home() {
     <>
       <SiteHeader />
       <main className="flex-1">
-        <section className="relative h-dvh w-full flex items-end justify-start text-left overflow-hidden">
-          <Link href="/" className="absolute top-4 left-4 md:top-6 md:left-6 z-30">
-              <Logo className="h-10 md:h-12 w-auto text-white" />
-          </Link>
+        <section className="relative h-dvh w-full flex items-center justify-between text-left overflow-hidden">
           <HeroCarousel images={heroImages} />
-          <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent z-10" />
-          <div className="container relative px-4 md:px-6 z-20 pb-12 md:pb-20">
-            <div className="max-w-2xl">
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent z-10" />
+          <div className="container relative flex items-center justify-between px-4 md:px-6 z-20">
+            <div className="hidden md:block">
+                 <Link href="/">
+                    <Logo className="h-20 w-auto text-white" />
+                </Link>
+            </div>
+            <div className="max-w-2xl text-right ml-auto self-end pb-12 md:pb-20">
               <ScrollReveal>
                 <h1 className="!leading-tight text-3xl font-bold font-headline tracking-tighter text-white shadow-lg sm:text-4xl md:text-5xl">
                   Premier GRP Engineering & Modular Infrastructure
@@ -136,7 +138,7 @@ export default function Home() {
                 </p>
               </ScrollReveal>
               <ScrollReveal delay={400}>
-                <div className="mt-6 flex flex-col justify-start items-start gap-4 sm:flex-row">
+                <div className="mt-6 flex flex-col justify-end items-end gap-4 sm:flex-row">
                   <Button size="lg" asChild className="group">
                     <Link href="/contact">
                       Request Specification Pack
@@ -374,5 +376,7 @@ export default function Home() {
     </>
   );
 }
+
+    
 
     
