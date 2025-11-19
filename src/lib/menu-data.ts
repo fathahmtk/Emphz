@@ -95,6 +95,7 @@ export const menuData: MegaMenu[] = [
             title: "Our Company",
             links: [
                 { title: "Mission & Values", href: "/#mission-vision", description: "The principles that guide our work." },
+                { title: "CEO's Statement", href: "/about/leadership", description: "A message from our CEO." },
                 { title: "GRP Advantage", href: "/grp-advantage", description: "Why our materials are superior." },
                 { title: "Manufacturing", href: "/manufacturing", description: "Explore our state-of-the-art facilities." },
                 { title: "Quality & Compliance", href: "/quality/certification", description: "Our commitment to the highest standards." },
@@ -124,4 +125,3 @@ export const menuData: MegaMenu[] = [
       ]
   }
 ];
-
