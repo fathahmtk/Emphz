@@ -88,7 +88,7 @@ export function SiteFooter() {
         <hr className="my-6 border-border/50 md:my-8" />
         <div className="flex items-center justify-between">
           <Link href="/">
-            <Logo className="h-10 w-auto" />
+            <Logo className="h-10 w-auto" variant="default" />
           </Link>
           <div className="flex -mx-2">
             {socialLinks.map((link) => (
