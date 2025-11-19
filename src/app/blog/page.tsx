@@ -1,16 +1,18 @@
 
 'use client';
-import { useMemo } from 'react';
-import { collection, getDocs, orderBy, query, limit, getDoc, doc } from 'firebase/firestore';
+import { useState, useMemo, useEffect } from 'react';
+import { collection, getDocs, orderBy, query, limit, startAfter, endBefore, limitToLast, DocumentData, QueryDocumentSnapshot } from 'firebase/firestore';
 
 import { SiteHeader } from '@/components/layout/site-header';
 import { SiteFooter } from '@/components/layout/site-footer';
 import { ScrollReveal } from '@/components/scroll-reveal';
-import { useCollection, useFirestore } from '@/firebase';
+import { useFirestore } from '@/firebase';
 import type { BlogPost, BlogAuthor } from '@/lib/types';
 import { Skeleton } from '@/components/ui/skeleton';
 import { BlogPostCard } from '@/components/blog-post-card';
+import { Button } from '@/components/ui/button';
 
+const POSTS_PER_PAGE = 6;
 
 function PostSkeleton() {
     return (
@@ -27,20 +29,67 @@ function PostSkeleton() {
 
 export default function BlogPage() {
     const firestore = useFirestore();
+    const [posts, setPosts] = useState<BlogPost[]>([]);
+    const [authors, setAuthors] = useState<BlogAuthor[]>([]);
+    const [isLoading, setIsLoading] = useState(true);
+    const [firstVisible, setFirstVisible] = useState<QueryDocumentSnapshot<DocumentData> | null>(null);
+    const [lastVisible, setLastVisible] = useState<QueryDocumentSnapshot<DocumentData> | null>(null);
+    const [isNextPageAvailable, setIsNextPageAvailable] = useState(false);
+    const [currentPage, setCurrentPage] = useState(1);
     
-    const postsQuery = useMemo(() => {
-        if (!firestore) return null;
-        return query(collection(firestore, 'blog_posts'), orderBy('publishedAt', 'desc'));
+    const fetchPosts = async (direction: 'next' | 'prev' | 'initial' = 'initial') => {
+        if (!firestore) return;
+        setIsLoading(true);
+
+        const postsRef = collection(firestore, 'blog_posts');
+        let q;
+
+        if (direction === 'next' && lastVisible) {
+            q = query(postsRef, orderBy('publishedAt', 'desc'), startAfter(lastVisible), limit(POSTS_PER_PAGE + 1));
+        } else if (direction === 'prev' && firstVisible) {
+            q = query(postsRef, orderBy('publishedAt', 'desc'), endBefore(firstVisible), limitToLast(POSTS_PER_PAGE));
+        } else {
+            q = query(postsRef, orderBy('publishedAt', 'desc'), limit(POSTS_PER_PAGE + 1));
+        }
+
+        try {
+            const documentSnapshots = await getDocs(q);
+            
+            const newPosts: BlogPost[] = [];
+            documentSnapshots.forEach(doc => {
+                newPosts.push({ id: doc.id, ...doc.data() } as BlogPost);
+            });
+
+            if (direction === 'prev') {
+                setPosts(newPosts);
+            } else {
+                 const hasNext = newPosts.length > POSTS_PER_PAGE;
+                setIsNextPageAvailable(hasNext);
+                setPosts(newPosts.slice(0, POSTS_PER_PAGE));
+            }
+
+            setFirstVisible(documentSnapshots.docs[0]);
+            setLastVisible(documentSnapshots.docs[documentSnapshots.docs.length > POSTS_PER_PAGE ? POSTS_PER_PAGE - 1 : documentSnapshots.docs.length - 1]);
+            
+        } catch (error) {
+            console.error("Error fetching posts: ", error);
+        } finally {
+            setIsLoading(false);
+        }
+    };
+    
+    useEffect(() => {
+        fetchPosts();
+         if (firestore) {
+            const authorsRef = collection(firestore, 'blog_authors');
+            getDocs(authorsRef).then(snapshot => {
+                const authorData: BlogAuthor[] = [];
+                snapshot.forEach(doc => authorData.push({ id: doc.id, ...doc.data() } as BlogAuthor));
+                setAuthors(authorData);
+            });
+        }
     }, [firestore]);
 
-    const { data: posts, isLoading: postsLoading } = useCollection<BlogPost>(postsQuery);
-
-    const authorsQuery = useMemo(() => {
-        if (!firestore) return null;
-        return collection(firestore, 'blog_authors');
-    }, [firestore]);
-
-    const { data: authors, isLoading: authorsLoading } = useCollection<BlogAuthor>(authorsQuery);
 
     const postsWithAuthors = useMemo(() => {
         if (!posts || !authors) return [];
@@ -49,7 +98,20 @@ export default function BlogPage() {
             author: authors.find(author => author.id === post.authorId)
         }));
     }, [posts, authors]);
+    
+    const handleNext = () => {
+        if (isNextPageAvailable) {
+            setCurrentPage(p => p + 1);
+            fetchPosts('next');
+        }
+    };
 
+    const handlePrev = () => {
+        if (currentPage > 1) {
+            setCurrentPage(p => p - 1);
+            fetchPosts('prev');
+        }
+    };
 
   return (
     <>
@@ -68,13 +130,23 @@ export default function BlogPage() {
           </ScrollReveal>
           
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {(postsLoading || authorsLoading) && Array.from({length: 3}).map((_, i) => <PostSkeleton key={i} />)}
-            {postsWithAuthors.map((post, i) => (
+            {isLoading && Array.from({length: 6}).map((_, i) => <PostSkeleton key={i} />)}
+            {!isLoading && postsWithAuthors.map((post, i) => (
               <ScrollReveal key={post.id} delay={i * 100}>
                 <BlogPostCard post={post} />
               </ScrollReveal>
             ))}
           </div>
+
+          <div className="mt-12 flex justify-center gap-4">
+            <Button onClick={handlePrev} disabled={currentPage === 1 || isLoading}>
+              Previous
+            </Button>
+            <Button onClick={handleNext} disabled={!isNextPageAvailable || isLoading}>
+              Next
+            </Button>
+          </div>
+
         </div>
       </main>
       <SiteFooter />
