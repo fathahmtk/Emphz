@@ -37,18 +37,19 @@ export const menuData: MegaMenu[] = [
         ],
       },
       {
-        title: "Kiosks & Modular",
+        title: "Kiosks & Systems",
         links: [
           { title: "GRP/FRP Kiosks", href: "/products/kiosks", description: "Durable, lightweight structures for various applications." },
-          { title: "Customized Kiosk Solutions", href: "/products/custom", description: "Tailored designs for specific operational needs." },
+          { title: "Battery Enclosures", href: "/products/battery-enclosures", description: "Engineered for solar, telecom, and UPS systems." },
+          { title: "GRP Roofing Systems", href: "/products/roofing", description: "Corrosion-proof roofing for industrial buildings." },
         ],
       },
       {
-        title: "Specialized & Systems",
+        title: "Modular Solutions",
         links: [
-          { title: "Battery Enclosures", href: "/products/battery-enclosures", description: "Engineered for solar, telecom, and UPS systems." },
+          { title: "E6 Modular Villa", href: "/products/modular-villas/e6", description: "Compact, expandable modern living." },
+          { title: "E7 Modular Villa", href: "/products/modular-villas/e7", description: "Spacious, luxurious modular homes." },
           { title: "Customized GRP Solutions", href: "/products/custom", description: "Bespoke engineering for unique project requirements." },
-          { title: "GRP Roofing Systems", href: "/products/roofing", description: "Corrosion-proof roofing for industrial buildings." },
         ],
       },
        {

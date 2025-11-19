@@ -36,7 +36,7 @@ export const productsSeed: Omit<Product, 'id'>[] = [
       'Fully-moulded GRP kiosks for utilities, security, and field operations. Built for long-term outdoor durability, providing a lightweight yet robust solution for housing equipment and personnel.',
     imageUrls: [
         'https://images.unsplash.com/photo-1476036604315-fed0874dfd55?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxHUlAlMjBraW9za3xlbnwwfHx8fDE3NjM0NTM2MzF8MA&ixlib=rb-4.1.0&q=80&w=1080',
-        'https://images.unsplash.com/photo-1560681610-b97792bd7cd9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxraW9zayUyMGludGVyaW9yfGVufDB8fHx8MTc2MzQ2Njk0Nnww&ixlib-rb-4.1.0&q=80&w=1080'
+        'https://images.unsplash.com/photo-1560681610-b97792bd7cd9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxraW9zayUyMGludGVyaW9yfGVufDB8fHx8MTc2MzQ2Njk0Nnww&ixlib=rb-4.1.0&q=80&w=1080'
     ],
     imageHint: 'GRP kiosk',
     specifications: {
@@ -105,6 +105,58 @@ export const productsSeed: Omit<Product, 'id'>[] = [
     ],
     colors: ['RAL 7035 (Light Gray)'],
     sizes: ['Custom sizes for battery arrays'],
+    datasheetUrl: '#',
+  },
+  {
+    name: 'E6 Modular Villa',
+    category: 'Modular Villas',
+    overview:
+      'The E6 is a compact, expandable modular villa designed for modern living. Its efficient layout and robust GRP construction make it ideal for personal getaways, accessory dwelling units (ADUs), or boutique hospitality.',
+    imageUrls: [
+        'https://picsum.photos/seed/e6-villa-ext/800/600',
+        'https://picsum.photos/seed/e6-villa-int/800/600'
+    ],
+    imageHint: 'modern villa',
+    specifications: {
+      Structure: 'Steel frame with GRP composite panels',
+      'Insulation': 'High-density PUF insulation',
+      'Area': '55 sq. m.',
+      'Features': '1 Bedroom, 1 Bathroom, Kitchenette, Living Area, Outdoor Deck',
+    },
+    applications: [
+      'Holiday Homes',
+      'ADUs / Granny Flats',
+      'Farmhouses',
+      'Resort Pods',
+    ],
+    colors: ['Arctic White', 'Slate Gray', 'Desert Sand'],
+    sizes: ['Standard E6 Model'],
+    datasheetUrl: '#',
+  },
+  {
+    name: 'E7 Modular Villa',
+    category: 'Modular Villas',
+    overview:
+      'The E7 offers a spacious and luxurious modular living experience. With a larger footprint and premium finishes, it’s designed for families, high-end hospitality, or as a primary residence that blends comfort with cutting-edge design.',
+    imageUrls: [
+        'https://picsum.photos/seed/e7-villa-ext/800/600',
+        'https://picsum.photos/seed/e7-villa-int/800/600'
+    ],
+    imageHint: 'luxury villa',
+    specifications: {
+      Structure: 'Heavy-duty steel frame with GRP composite panels',
+      'Insulation': 'Enhanced thermal and acoustic insulation',
+      'Area': '75 sq. m.',
+      'Features': '2 Bedrooms, 2 Bathrooms, Full Kitchen, Expansive Living Room, Panoramic Windows',
+    },
+    applications: [
+      'Primary Residences',
+      'Luxury Retreats',
+      'Guest Houses',
+      'Exclusive Hospitality Suites',
+    ],
+    colors: ['Charcoal Black', 'Pearl White', 'Teak Wood Finish'],
+    sizes: ['Standard E7 Model'],
     datasheetUrl: '#',
   },
 ];

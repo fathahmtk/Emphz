@@ -299,6 +299,18 @@
       "description": "A portrait of the CEO, Muhammed Rashik.",
       "imageUrl": "https://storage.googleapis.com/stabl-media/a78d06b4-f655-4e78-9e6e-4c54093c121e.png",
       "imageHint": "CEO portrait"
+    },
+    {
+      "id": "villa-e6",
+      "description": "Exterior of the modern and compact E6 modular villa.",
+      "imageUrl": "https://images.unsplash.com/photo-1670589953903-b4e2f17a70a9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxtb2Rlcm4lMjB2aWxsYXxlbnwwfHx8fDE3NjM0Mzg4MjN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "modern villa"
+    },
+    {
+      "id": "villa-e7",
+      "description": "Exterior of the spacious and luxurious E7 modular villa.",
+      "imageUrl": "https://images.unsplash.com/photo-1591474200742-8e512e6f98f8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxsdXh1cnklMjB2aWxsYXxlbnwwfHx8fDE3NjM0Nzc2NTd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "luxury villa"
     }
   ]
 }
