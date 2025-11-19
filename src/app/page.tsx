@@ -151,47 +151,44 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="about" className="relative py-12 md:py-24 lg:py-32">
-            {aboutBgImage && (
-                <div className="absolute inset-0 -z-10 h-full w-full">
-                    <Image
-                        src={aboutBgImage.imageUrl}
-                        alt={aboutBgImage.description}
-                        data-ai-hint={aboutBgImage.imageHint}
-                        quality={100}
-                        fill
-                        className="object-cover"
-                    />
-                    <div className="absolute inset-0 bg-background/80" />
-                </div>
-            )}
-            <div className="container px-4 md:px-6 text-foreground">
-                <ScrollReveal>
-                    <div className="text-center mb-12">
-                        <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-5xl">About EMPHZ</h2>
-                        <p className="mt-4 max-w-3xl mx-auto text-foreground/80 md:text-lg">
-                            EMPHZ is a next-generation GRP/FRP engineering manufacturer dedicated to delivering mission-critical infrastructure solutions for utilities, industry, and smart-city development.
-                        </p>
-                    </div>
-                </ScrollReveal>
-                <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+        <section id="about" className="bg-background">
+          <div className="container grid grid-cols-1 lg:grid-cols-2 min-h-[70dvh] items-center gap-12 px-4 md:px-6 py-12 md:py-24">
+            <div className="text-foreground">
+              <ScrollReveal>
+                <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-5xl">About EMPHZ</h2>
+                <p className="mt-4 max-w-3xl text-foreground/80 md:text-lg">
+                  EMPHZ is a next-generation GRP/FRP engineering manufacturer dedicated to delivering mission-critical infrastructure solutions for utilities, industry, and smart-city development.
+                </p>
+              </ScrollReveal>
+              <div className="mt-8 grid gap-8">
                 {corporatePillars.map((pillar, i) => (
-                    <ScrollReveal key={pillar.title} delay={i * 150}>
-                    <GlassCard className="text-center h-full text-foreground">
-                        <CardHeader>
-                        <div className="mx-auto mb-4 inline-flex items-center justify-center rounded-full bg-primary/10 p-3">
-                            <pillar.icon className="h-8 w-8 text-primary" />
-                        </div>
-                        <CardTitle className="text-xl font-bold font-headline">{pillar.title}</CardTitle>
-                        </CardHeader>
-                        <CardContent>
+                  <ScrollReveal key={pillar.title} delay={i * 150}>
+                    <div className="flex items-start gap-4">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
+                        <pillar.icon className="h-6 w-6 text-primary" />
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-bold font-headline">{pillar.title}</h3>
                         <p className="text-foreground/80">{pillar.description}</p>
-                        </CardContent>
-                    </GlassCard>
-                    </ScrollReveal>
+                      </div>
+                    </div>
+                  </ScrollReveal>
                 ))}
-                </div>
+              </div>
             </div>
+            <ScrollReveal className="relative h-full w-full min-h-[40vh] overflow-hidden rounded-lg">
+              {aboutBgImage && (
+                <Image
+                    src={aboutBgImage.imageUrl}
+                    alt={aboutBgImage.description}
+                    data-ai-hint={aboutBgImage.imageHint}
+                    quality={100}
+                    fill
+                    className="object-cover"
+                />
+              )}
+            </ScrollReveal>
+          </div>
         </section>
 
         <section id="mission-vision" className="relative py-12 md:py-24 lg:py-32">
@@ -369,5 +366,7 @@ export default function Home() {
     </>
   );
 }
+
+    
 
     
