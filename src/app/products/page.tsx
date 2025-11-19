@@ -12,6 +12,8 @@ import { ProductCard } from '@/components/product-card';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import Link from 'next/link';
+import { FolderOpen } from 'lucide-react';
 
 function ProductSkeleton() {
     return (
@@ -92,6 +94,18 @@ export default function ProductsPage() {
               </ScrollReveal>
             ))}
           </div>
+            {!isLoading && products?.length === 0 && (
+                <div className="col-span-1 sm:col-span-2 lg:col-span-3 xl:col-span-4 text-center py-16 border-2 border-dashed rounded-lg">
+                    <FolderOpen className="mx-auto h-12 w-12 text-muted-foreground" />
+                    <h3 className="mt-4 text-lg font-semibold">No Products Found</h3>
+                    <p className="mt-2 text-sm text-muted-foreground">
+                        There are no products in the "{activeCategory}" category.
+                    </p>
+                    <Button variant="outline" className="mt-6" onClick={() => setActiveCategory('All')}>
+                        View All Products
+                    </Button>
+                </div>
+            )}
         </div>
       </main>
       <SiteFooter />

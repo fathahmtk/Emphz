@@ -11,6 +11,9 @@ import { useCollection, useFirestore } from '@/firebase';
 import type { ProjectCaseStudy } from '@/lib/types';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
+import { FolderOpen } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 function ProjectSkeleton() {
     return (
@@ -58,7 +61,8 @@ export default function ProjectsPage() {
 
                 <div className="space-y-12">
                     {isLoading && Array.from({length: 2}).map((_,i) => <ProjectSkeleton key={i} />)}
-                    {projects?.map((project, index) => (
+
+                    {!isLoading && projects && projects.length > 0 && projects.map((project, index) => (
                         <ScrollReveal key={project.id} delay={index * 150}>
                             <Card className="overflow-hidden">
                                 <div className="grid grid-cols-1 md:grid-cols-2">
@@ -93,6 +97,17 @@ export default function ProjectsPage() {
                             </Card>
                         </ScrollReveal>
                     ))}
+
+                    {!isLoading && projects?.length === 0 && (
+                        <div className="text-center py-16 border-2 border-dashed rounded-lg">
+                            <FolderOpen className="mx-auto h-12 w-12 text-muted-foreground" />
+                            <h3 className="mt-4 text-lg font-semibold">No Case Studies Yet</h3>
+                            <p className="mt-2 text-sm text-muted-foreground">Our project case studies will be showcased here as they are published.</p>
+                             <Button asChild variant="link" className="mt-4">
+                                <Link href="/contact">Inquire About Our Projects</Link>
+                            </Button>
+                        </div>
+                    )}
                 </div>
 
             </main>

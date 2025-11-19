@@ -5,7 +5,7 @@ import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { CheckCircle } from "lucide-react";
+import { CheckCircle, FolderOpen } from "lucide-react";
 import { useCollection, useFirestore } from '@/firebase';
 import type { Industry } from '@/lib/types';
 import { collection, orderBy, query } from 'firebase/firestore';
@@ -52,24 +52,38 @@ export default function IndustriesPage() {
                     </div>
                 </ScrollReveal>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {isLoading && Array.from({length: 6}).map((_, i) => <IndustrySkeleton key={i} />)}
-                    {industries?.map((industry, index) => (
-                         <ScrollReveal key={industry.id} delay={index * 100}>
-                            <Card className="h-full">
-                                <CardHeader>
-                                    <CardTitle className="flex items-center gap-3 font-headline text-xl">
-                                        <CheckCircle className="h-6 w-6 text-primary shrink-0" />
-                                        {industry.name}
-                                    </CardTitle>
-                                </CardHeader>
-                                <CardContent>
-                                    <p className="text-muted-foreground">{industry.description}</p>
-                                </CardContent>
-                            </Card>
-                        </ScrollReveal>
-                    ))}
-                </div>
+                {isLoading && (
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {Array.from({length: 6}).map((_, i) => <IndustrySkeleton key={i} />)}
+                    </div>
+                )}
+
+                {!isLoading && industries && industries.length > 0 && (
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {industries.map((industry, index) => (
+                             <ScrollReveal key={industry.id} delay={index * 100}>
+                                <Card className="h-full">
+                                    <CardHeader>
+                                        <CardTitle className="flex items-center gap-3 font-headline text-xl">
+                                            <CheckCircle className="h-6 w-6 text-primary shrink-0" />
+                                            {industry.name}
+                                        </CardTitle>
+                                    </CardHeader>
+                                    <CardContent>
+                                        <p className="text-muted-foreground">{industry.description}</p>
+                                    </CardContent>
+                                </Card>
+                            </ScrollReveal>
+                        ))}
+                    </div>
+                )}
+                 {!isLoading && industries?.length === 0 && (
+                    <div className="text-center py-16 border-2 border-dashed rounded-lg">
+                        <FolderOpen className="mx-auto h-12 w-12 text-muted-foreground" />
+                        <h3 className="mt-4 text-lg font-semibold">No Industries to Display</h3>
+                        <p className="mt-2 text-sm text-muted-foreground">Industries we serve will be listed here once they are added.</p>
+                    </div>
+                )}
             </main>
             <SiteFooter />
         </>

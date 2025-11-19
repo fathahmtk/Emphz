@@ -7,10 +7,11 @@ import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/ca
 import { useCollection, useFirestore } from '@/firebase';
 import type { TechnicalDownload } from '@/lib/types';
 import { collection, orderBy, query } from 'firebase/firestore';
-import { Download, FileText } from "lucide-react";
+import { Download, FileText, FolderOpen } from "lucide-react";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { Skeleton } from '@/components/ui/skeleton';
+import Link from 'next/link';
 
 function DownloadSkeleton() {
     return (
@@ -57,7 +58,8 @@ export default function DownloadsPage() {
           <ScrollReveal delay={200}>
             <div className="space-y-4">
               {isLoading && Array.from({length: 4}).map((_, i) => <DownloadSkeleton key={i} />)}
-              {downloads?.map((item) => (
+              
+              {!isLoading && downloads && downloads.length > 0 && downloads.map((item) => (
                 <Card key={item.id} className="bg-card/80">
                   <div className="flex items-center justify-between p-6">
                     <div className="flex items-center gap-4">
@@ -76,6 +78,14 @@ export default function DownloadsPage() {
                   </div>
                 </Card>
               ))}
+
+              {!isLoading && downloads?.length === 0 && (
+                <div className="text-center py-16 border-2 border-dashed rounded-lg">
+                    <FolderOpen className="mx-auto h-12 w-12 text-muted-foreground" />
+                    <h3 className="mt-4 text-lg font-semibold">No Downloads Available</h3>
+                    <p className="mt-2 text-sm text-muted-foreground">Technical documents and datasheets will appear here when they are added.</p>
+                </div>
+              )}
             </div>
           </ScrollReveal>
         </div>

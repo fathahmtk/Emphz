@@ -15,7 +15,8 @@ function generateId(name: string): string {
 export function getProductsWithIds(): Product[] {
     return productsSeed.map(p => ({
         ...p,
-        id: generateId(p.name)
+        id: generateId(p.name),
+        slug: p.slug || generateId(p.name),
     }))
 }
 

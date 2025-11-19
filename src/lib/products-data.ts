@@ -5,6 +5,7 @@ import type { Product } from './types';
 export const productsSeed: Omit<Product, 'id'>[] = [
   {
     name: 'GRP Electrical Enclosure',
+    slug: 'grp-electrical-enclosure',
     category: 'Enclosures',
     overview:
       'High-durability GRP enclosures for electrical distribution and control systems. A rust-proof, non-conductive alternative to metal boxes, ideal for harsh outdoor and industrial environments.',
@@ -32,6 +33,7 @@ export const productsSeed: Omit<Product, 'id'>[] = [
   },
   {
     name: 'GRP/FRP Kiosk',
+    slug: 'grp-frp-kiosk',
     category: 'Kiosks & Modular',
     overview:
       'Fully-moulded GRP kiosks for utilities, security, and field operations. Built for long-term outdoor durability, providing a lightweight yet robust solution for housing equipment and personnel.',
@@ -58,6 +60,7 @@ export const productsSeed: Omit<Product, 'id'>[] = [
   },
   {
     name: 'Fire & Safety Enclosure',
+    slug: 'fire-safety-enclosure',
     category: 'Specialized',
     overview:
       'Fire-rated GRP enclosures for housing safety and emergency equipment. Engineered to remain operational in high-temperature and corrosive environments, ensuring critical systems are protected.',
@@ -84,6 +87,7 @@ export const productsSeed: Omit<Product, 'id'>[] = [
   },
    {
     name: 'GRP Battery Enclosure',
+    slug: 'grp-battery-enclosure',
     category: 'Specialized',
     overview:
       'GRP battery containers engineered for solar energy systems, telecom backup batteries, and industrial UPS units, featuring acid-resistant GRP and thermal management.',
@@ -110,6 +114,7 @@ export const productsSeed: Omit<Product, 'id'>[] = [
   },
   {
     name: 'E6 Modular Villa',
+    slug: 'e6-modular-villa',
     category: 'Modular Villas',
     overview:
       'The E6 is a compact, expandable modular villa designed for modern living. Its efficient layout and robust GRP construction make it ideal for personal getaways, accessory dwelling units (ADUs), or boutique hospitality.',
@@ -136,6 +141,7 @@ export const productsSeed: Omit<Product, 'id'>[] = [
   },
   {
     name: 'E7 Modular Villa',
+    slug: 'e7-modular-villa',
     category: 'Modular Villas',
     overview:
       'The E7 offers a spacious and luxurious modular living experience. With a larger footprint and premium finishes, it’s designed for families, high-end hospitality, or as a primary residence that blends comfort with cutting-edge design.',
@@ -161,4 +167,3 @@ export const productsSeed: Omit<Product, 'id'>[] = [
     datasheetUrl: '#',
   },
 ];
-

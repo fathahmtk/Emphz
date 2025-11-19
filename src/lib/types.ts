@@ -5,6 +5,7 @@ import { Timestamp } from 'firebase/firestore';
 export type Product = {
   id: string;
   name: string;
+  slug: string;
   category: string;
   overview: string;
   specifications: Record<string, string>;
