@@ -1,7 +1,7 @@
 
 'use client';
 import { useMemo, useState } from 'react';
-import { collection, query, orderBy } from 'firebase/firestore';
+import { collection, query, orderBy, where } from 'firebase/firestore';
 
 import { SiteHeader } from '@/components/layout/site-header';
 import { SiteFooter } from '@/components/layout/site-footer';
@@ -26,31 +26,35 @@ function ProductSkeleton() {
     )
 }
 
+const productCategories = [
+    "All",
+    "Enclosures",
+    "Kiosks & Modular",
+    "Specialized",
+    "Modular Villas"
+];
+
 export default function ProductsPage() {
     const firestore = useFirestore();
+    const [activeCategory, setActiveCategory] = useState('All');
     
     const productsQuery = useMemo(() => {
         if (!firestore) return null;
-        return query(collection(firestore, 'products'), orderBy('name'));
-    }, [firestore]);
+        const productsCollection = collection(firestore, 'products');
+
+        if (activeCategory === 'All') {
+            return query(productsCollection, orderBy('name'));
+        }
+
+        return query(
+            productsCollection, 
+            where('category', '==', activeCategory),
+            orderBy('name')
+        );
+    }, [firestore, activeCategory]);
 
     const { data: products, isLoading } = useCollection<Product>(productsQuery);
-
-    const categories = useMemo(() => {
-        if (!products) return [];
-        const uniqueCategories = [...new Set(products.map(p => p.category))];
-        return ['All', ...uniqueCategories];
-    }, [products]);
-
-    const [activeCategory, setActiveCategory] = useState('All');
-
-    const filteredProducts = useMemo(() => {
-        if (activeCategory === 'All') {
-            return products;
-        }
-        return products?.filter(p => p.category === activeCategory);
-    }, [products, activeCategory]);
-
+    
   return (
     <>
       <SiteHeader />
@@ -68,7 +72,7 @@ export default function ProductsPage() {
           </ScrollReveal>
           
           <div className="mb-8 flex flex-wrap justify-center gap-2">
-            {categories.map(category => (
+            {productCategories.map(category => (
               <Button 
                 key={category} 
                 variant={activeCategory === category ? 'default' : 'outline'}
@@ -82,7 +86,7 @@ export default function ProductsPage() {
 
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {isLoading && Array.from({length: 8}).map((_, i) => <ProductSkeleton key={i} />)}
-            {filteredProducts?.map((product, i) => (
+            {products?.map((product, i) => (
               <ScrollReveal key={product.id} delay={i * 50}>
                 <ProductCard product={product} />
               </ScrollReveal>
@@ -94,4 +98,3 @@ export default function ProductsPage() {
     </>
   );
 }
-
