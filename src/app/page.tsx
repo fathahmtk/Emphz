@@ -1,120 +1,76 @@
 
 'use client';
 import Link from 'next/link';
-import { ArrowRight, CheckCircle, Factory, HardHat, ShieldCheck, Award, Fingerprint, Building, Users, MapPin, Newspaper, Video, GalleryVertical } from 'lucide-react';
-import { collection, orderBy, query, limit } from 'firebase/firestore';
-import { useMemo } from 'react';
+import { ArrowRight, CheckCircle, Factory, HardHat, ShieldCheck, Zap, Droplets, Wind, Sun } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { ScrollReveal } from '@/components/scroll-reveal';
-import { useCollection, useFirestore } from '@/firebase';
-import type { Product, ProjectCaseStudy } from '@/lib/types';
 import { SiteHeader } from '@/components/layout/site-header';
 import { SiteFooter } from '@/components/layout/site-footer';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { HeroCarousel } from '@/components/hero-carousel';
 import Image from 'next/image';
-import { Badge } from '@/components/ui/badge';
-import { Separator } from '@/components/ui/separator';
-import { Logo } from '@/components/icons';
-import { GlassCard } from '@/components/glass-card';
-
-const corporatePillars = [
-  {
-    icon: HardHat,
-    title: 'GRP Technology',
-    description: 'Leveraging advanced composite materials for superior performance and longevity.'
-  },
-  {
-    icon: Factory,
-    title: 'Manufacturing Strength',
-    description: 'State-of-the-art facilities ensuring precision, quality, and scalability.'
-  },
-  {
-    icon: ShieldCheck,
-    title: 'Custom Engineering',
-    description: 'Bespoke solutions designed to meet unique project requirements and specifications.'
-  }
-];
-
-const trustBadges = [
-  { icon: Award, name: 'ISO 9001:2015', description: 'Quality Management' },
-  { icon: Award, name: 'ISO 14001:2015', description: 'Environmental' },
-  { icon: Fingerprint, name: 'IP65 Certified', description: 'Ingress Protection' },
-  { icon: Building, name: 'Govt. Approved', description: 'Public Works Dept.' },
-];
-
-const values = [
-    { title: "Integrity", description: "Zero-compromise approach to quality, compliance, and customer commitments." },
-    { title: "Innovation", description: "Advancing GRP engineering through R&D and modern production methods." },
-    { title: "Reliability", description: "Delivering products that perform consistently across extreme conditions." },
-];
-
-const newsItems = [
-    { icon: Newspaper, title: 'EMPHZ Launches New Fire-Retardant Enclosure Line', date: 'Oct 2023', href: '/media/news' },
-    { icon: Video, title: 'Virtual Factory Tour: See Our GRP Process in Action', date: 'Sep 2023', href: '/media/video' },
-    { icon: GalleryVertical, title: 'Project Spotlight: Solar Farm Installation Gallery', date: 'Aug 2023', href: '/media/gallery' },
-]
 
 const heroImages = PlaceHolderImages.filter(img => img.id.startsWith('hero-'));
 const aboutBgImage = PlaceHolderImages.find(p => p.id === 'hero-industrial-plant');
-const missionBgImage = PlaceHolderImages.find(p => p.id === 'hero-extra-1');
-const projectsBgImage = PlaceHolderImages.find(p => p.id === 'hero-new-1');
-const qualityBgImage = PlaceHolderImages.find(p => p.id === 'hero-extra-7');
-const newsBgImage = PlaceHolderImages.find(p => p.id === 'hero-extra-8');
 
+const coreProducts = [
+  {
+    title: "GRP Electrical Enclosures",
+    description: "Industrial-grade, IP-rated, UV-resistant GRP enclosures engineered for harsh outdoor environments and electrical safety compliance.",
+    href: "/products/enclosures"
+  },
+  {
+    title: "GRP Portable Toilets",
+    description: "Hygienic, monsoon-proof toilet cabins designed for public spaces, sites, tourism, panchayat projects, and heavy daily usage.",
+    href: "/products/toilets"
+  },
+  {
+    title: "GRP Modular Kiosks",
+    description: "Food kiosks, ticket counters, retail pods, and security booths built with structural integrity and clean finishing.",
+    href: "/products/kiosks"
+  },
+  {
+    title: "GRP Security Cabins",
+    description: "Impact-resistant, insulated, ergonomic cabins ideal for residential, commercial, and industrial security operations.",
+    href: "/products/cabins"
+  },
+  {
+    title: "GRP Resort Villas & Pods",
+    description: "High-end GRP villas crafted for resorts in Wayanad, Munnar, Mysore, Coorg, coastal areas, and private retreats.",
+    href: "/products/villas"
+  },
+  {
+    title: "Custom GRP Fabrication",
+    description: "Bespoke GRP structures engineered for unique architectural, commercial, or industrial requirements.",
+    href: "/products/custom"
+  },
+];
 
-function CaseStudyCard({ project }: { project: ProjectCaseStudy }) {
-    return (
-        <GlassCard className="overflow-hidden">
-            <div className="grid md:grid-cols-2">
-                <div className="relative aspect-video">
-                    <Image src={project.beforeImageUrl} alt={`Before image for ${project.title}`} fill className="object-cover" />
-                     <Badge className="absolute top-2 left-2" variant="destructive">Before</Badge>
-                </div>
-                <div className="relative aspect-video">
-                    <Image src={project.afterImageUrl} alt={`After image for ${project.title}`} fill className="object-cover" />
-                    <Badge className="absolute top-2 left-2" variant="default">After</Badge>
-                </div>
-            </div>
-            <CardHeader>
-                <CardTitle className="font-headline text-xl">{project.title}</CardTitle>
-            </CardHeader>
-            <CardContent>
-                <p className="text-sm text-foreground/80">{project.details}</p>
-                <Separator className="my-4 bg-foreground/20" />
-                <div className="flex items-center justify-between text-xs text-foreground/80">
-                    <div className="flex items-center gap-2">
-                        <Users className="h-4 w-4" />
-                        <span>{project.clientType}</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                        <MapPin className="h-4 w-4" />
-                         <span>{project.location}</span>
-                    </div>
-                </div>
-            </CardContent>
-        </GlassCard>
-    );
-}
+const whyGprPoints = [
+    { icon: ShieldCheck, text: "Zero corrosion" },
+    { icon: Zap, text: "Zero maintenance" },
+    { icon: Wind, text: "Lightweight, high strength" },
+    { icon: ShieldCheck, text: "Thermal and electrical insulation" },
+    { icon: Sun, text: "UV and monsoon-resistant" },
+    { icon: Factory, text: "Decades-long lifecycle" },
+    { icon: HardHat, text: "Fast deployment and installation" },
+    { icon: Droplets, text: "Higher ROI compared to traditional construction" }
+];
+
+const industries = [
+    "Tourism & Resorts",
+    "Construction & Infrastructure",
+    "Solar EPC & Electrical Contractors",
+    "Government / Panchayat projects",
+    "Residential & Commercial Security",
+    "Event & Exhibition Industries",
+    "Retail and F&B"
+];
 
 
 export default function Home() {
-  const firestore = useFirestore();
-
-  const productsQuery = useMemo(() => {
-    if (!firestore) return null;
-    return query(collection(firestore, 'products'), orderBy('name'), limit(3));
-  }, [firestore]);
-  const { data: products } = useCollection<Product>(productsQuery);
-  
-  const projectsQuery = useMemo(() => {
-    if (!firestore) return null;
-    return query(collection(firestore, 'project_case_studies'), orderBy('title'), limit(2));
-  }, [firestore]);
-  const { data: projects } = useCollection<ProjectCaseStudy>(projectsQuery);
-
   return (
     <>
       <SiteHeader />
@@ -123,27 +79,27 @@ export default function Home() {
           <HeroCarousel images={heroImages} />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent z-10" />
           <div className="container relative flex items-center justify-between px-4 md:px-6 z-20">
-            <div className="max-w-2xl text-right ml-auto self-end pb-12 md:pb-20">
+            <div className="max-w-3xl">
               <ScrollReveal>
-                <h1 className="!leading-tight text-2xl font-bold font-headline tracking-tighter text-white shadow-lg sm:text-3xl md:text-4xl">
-                  Premier GRP Engineering & Modular Infrastructure
+                <h1 className="!leading-tight text-4xl font-bold font-headline tracking-tighter text-white shadow-lg sm:text-5xl md:text-6xl">
+                  Engineered GRP Solutions for the Next Generation
                 </h1>
               </ScrollReveal>
               <ScrollReveal delay={200}>
-                <p className="mt-4 text-base text-white/90 md:text-lg">
-                  Manufacturing smart urban solutions and high-performance industrial components.
+                <p className="mt-4 text-lg text-white/90 md:text-xl">
+                  Manufactured at scale in Mysore. Delivered with precision across Kerala. GRP enclosures, toilet cabins, kiosks, security cabins, and premium resort villas built to outperform in real-world conditions.
                 </p>
               </ScrollReveal>
               <ScrollReveal delay={400}>
-                <div className="mt-6 flex flex-col justify-end items-end gap-4 sm:flex-row">
+                <div className="mt-6 flex flex-col gap-4 sm:flex-row">
                   <Button size="lg" asChild className="group">
                     <Link href="/contact">
-                      Request Specification Pack
+                      Get a Quote
                       <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                     </Link>
                   </Button>
                   <Button size="lg" variant="outline" className="text-white border-white hover:bg-white hover:text-background" asChild>
-                    <Link href="/products">Explore Product Catalogue</Link>
+                    <Link href="/downloads">Download Catalog</Link>
                   </Button>
                 </div>
               </ScrollReveal>
@@ -156,25 +112,15 @@ export default function Home() {
             <div className="text-foreground">
               <ScrollReveal>
                 <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-5xl">About EMPHZ</h2>
-                <p className="mt-4 max-w-3xl text-foreground/80 md:text-lg">
-                  EMPHZ is a next-generation GRP/FRP engineering manufacturer dedicated to delivering mission-critical infrastructure solutions for utilities, industry, and smart-city development.
-                </p>
+                 <div className="mt-4 space-y-4 text-foreground/80 md:text-lg">
+                    <p>
+                        EMPHZ is a specialized GRP manufacturing company operating out of Mysore with dedicated execution teams across Kerala. We build high-strength, weatherproof, corrosion-resistant GRP enclosures and modular structures designed for industrial, commercial, tourism, and government applications.
+                    </p>
+                    <p>
+                        We don’t compete with low-end fabricators. We deliver engineered products with predictable quality, repeatable performance, and long-term durability.
+                    </p>
+                </div>
               </ScrollReveal>
-              <div className="mt-8 grid gap-8">
-                {corporatePillars.map((pillar, i) => (
-                  <ScrollReveal key={pillar.title} delay={i * 150}>
-                    <div className="flex items-start gap-4">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
-                        <pillar.icon className="h-6 w-6 text-primary" />
-                      </div>
-                      <div>
-                        <h3 className="text-xl font-bold font-headline">{pillar.title}</h3>
-                        <p className="text-foreground/80">{pillar.description}</p>
-                      </div>
-                    </div>
-                  </ScrollReveal>
-                ))}
-              </div>
             </div>
             <ScrollReveal className="relative h-full w-full min-h-[40vh] overflow-hidden rounded-lg">
               {aboutBgImage && (
@@ -192,162 +138,116 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="mission-vision" className="relative py-12 md:py-24 lg:py-32 bg-secondary/30">
-            <div className="container grid md:grid-cols-2 gap-12 items-center text-foreground px-4 md:px-6">
-                <ScrollReveal>
-                    <GlassCard className="p-8 text-foreground shadow-lg">
-                        <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground">Our Mission & Values</h2>
-                        <p className="mt-4 text-foreground/80 md:text-lg">
-                            <strong className="text-foreground">Mission:</strong> To engineer world-class GRP solutions that enable resilient, safe, and efficient infrastructure for industries and communities.
-                        </p>
-                        <div className="mt-8 grid gap-6">
-                            {values.map((value) => (
-                                <div key={value.title} className="flex items-start gap-4">
-                                    <CheckCircle className="h-6 w-6 text-primary/80 mt-1 shrink-0"/>
-                                    <div>
-                                        <h3 className="font-semibold text-lg text-foreground">{value.title}</h3>
-                                        <p className="text-foreground/80">{value.description}</p>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </GlassCard>
-                </ScrollReveal>
-                 <ScrollReveal delay={200}>
-                    {missionBgImage && (
-                        <div className="relative h-full w-full min-h-[50vh] overflow-hidden rounded-lg">
-                             <Image
-                                src={missionBgImage.imageUrl}
-                                alt={missionBgImage.description}
-                                data-ai-hint={missionBgImage.imageHint}
-                                quality={100}
-                                fill
-                                sizes="(max-width: 768px) 100vw, 50vw"
-                                className="object-cover"
-                            />
-                        </div>
-                    )}
-                </ScrollReveal>
-            </div>
-        </section>
-        
-        <section id="projects" className="py-12 md:py-24 lg:py-32 bg-background">
+        <section id="products" className="py-12 md:py-24 lg:py-32 bg-secondary/30">
             <div className="container px-4 md:px-6">
                 <ScrollReveal>
                     <div className="text-center mb-12 text-foreground">
-                         <Badge className="mb-2" variant="outline">Featured Projects</Badge>
-                        <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-5xl">Proven Field Performance</h2>
-                        <p className="mt-4 max-w-3xl mx-auto text-foreground/80 md:text-lg">
-                           From corrosive coastal environments to high-traffic industrial sites, our GRP solutions deliver unmatched durability and performance.
-                        </p>
+                        <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-5xl">Core Product Lines</h2>
                     </div>
                 </ScrollReveal>
-                 <div className="mx-auto max-w-5xl grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    {projects?.map((project, i) => (
-                        <ScrollReveal key={project.id} delay={i * 200}>
-                            <CaseStudyCard project={project} />
-                        </ScrollReveal>
-                    ))}
-                  </div>
-                   <ScrollReveal>
-                      <div className="mt-12 text-center">
-                        <Button size="lg" asChild className="group">
-                          <Link href="/projects">
-                              View All Projects
-                              <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                          </Link>
-                        </Button>
-                      </div>
-                    </ScrollReveal>
-            </div>
-        </section>
-
-        <section id="quality-trust" className="relative w-full py-12 md:py-24 lg:py-32">
-          {qualityBgImage && (
-                <div className="absolute inset-0 -z-10 h-full w-full">
-                    <Image
-                        src={qualityBgImage.imageUrl}
-                        alt={qualityBgImage.description}
-                        data-ai-hint={qualityBgImage.imageHint}
-                        quality={100}
-                        fill
-                        sizes="100vw"
-                        className="object-cover"
-                    />
-                    <div className="absolute inset-0 bg-background/80" />
-                </div>
-            )}
-          <div className="container px-4 md:px-6 text-foreground">
-            <ScrollReveal>
-              <GlassCard className="p-8 text-center text-foreground">
-                <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl">Quality, Compliance & Trust</h2>
-                <p className="mx-auto mt-4 max-w-3xl text-foreground/80 md:text-xl/relaxed">
-                  Our commitment to quality is backed by industry-leading certifications and approvals, ensuring every product meets rigorous standards for safety and performance.
-                </p>
-                 <div className="mx-auto mt-12 grid grid-cols-2 gap-y-10 gap-x-8 md:grid-cols-4">
-                  {trustBadges.map((badge, i) => (
-                    <div key={i} className="flex flex-col items-center text-center">
-                      <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
-                        <badge.icon className="h-8 w-8 text-primary" />
-                      </div>
-                      <h3 className="text-lg font-semibold">{badge.name}</h3>
-                      <p className="mt-1 text-sm text-foreground/80">{badge.description}</p>
-                    </div>
-                  ))}
-                </div>
-                 <div className="mt-12 text-center">
-                    <Button size="lg" asChild>
-                        <Link href="/quality/certification">View Quality Framework</Link>
-                    </Button>
-                </div>
-              </GlassCard>
-            </ScrollReveal>
-          </div>
-        </section>
-
-        <section id="news" className="relative py-12 md:py-24 lg:py-32">
-             {newsBgImage && (
-                <div className="absolute inset-0 -z-10 h-full w-full">
-                    <Image
-                        src={newsBgImage.imageUrl}
-                        alt={newsBgImage.description}
-                        data-ai-hint={newsBgImage.imageHint}
-                        quality={100}
-                        fill
-                        sizes="100vw"
-                        className="object-cover"
-                    />
-                    <div className="absolute inset-0 bg-background/80" />
-                </div>
-            )}
-            <div className="container px-4 md:px-6">
-                 <ScrollReveal>
-                    <div className="text-center mb-12 text-foreground">
-                        <Badge className="mb-2" variant="outline">News & Media</Badge>
-                        <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-5xl">Latest Updates</h2>
-                         <p className="mt-4 max-w-3xl mx-auto text-foreground/80 md:text-lg">
-                          Stay informed on our latest product innovations, project milestones, and company news.
-                        </p>
-                    </div>
-                </ScrollReveal>
-                 <div className="mx-auto grid max-w-5xl gap-8 sm:grid-cols-2 lg:grid-cols-3">
-                    {newsItems.map((item, i) => (
-                        <ScrollReveal key={item.title} delay={i * 150}>
-                            <Link href={item.href}>
-                                <GlassCard className="h-full group text-foreground">
-                                    <CardHeader className="flex-row items-center gap-4">
-                                        <item.icon className="h-8 w-8 text-primary/80" />
-                                        <CardTitle className="text-base font-semibold group-hover:text-primary transition-colors text-foreground">{item.title}</CardTitle>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {coreProducts.map((product, i) => (
+                        <ScrollReveal key={product.title} delay={i * 100}>
+                            <Link href={product.href} className="h-full block">
+                                <Card className="flex h-full flex-col group overflow-hidden transition-all duration-300 hover:shadow-xl hover:border-primary/30 hover:bg-accent/50">
+                                    <CardHeader>
+                                        <CardTitle className="text-xl font-headline transition-colors group-hover:text-primary">{product.title}</CardTitle>
                                     </CardHeader>
                                     <CardContent>
-                                        <p className="text-xs text-foreground/70">{item.date}</p>
+                                        <CardDescription>{product.description}</CardDescription>
                                     </CardContent>
-                                </GlassCard>
+                                </Card>
                             </Link>
                         </ScrollReveal>
                     ))}
-                 </div>
+                </div>
             </div>
+        </section>
+        
+        <section id="why-grp" className="py-12 md:py-24 lg:py-32 bg-background">
+             <div className="container px-4 md:px-6">
+                <ScrollReveal>
+                    <div className="text-center mb-12 text-foreground">
+                        <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-5xl">Why GRP? Why EMPHZ?</h2>
+                    </div>
+                </ScrollReveal>
+                 <div className="mx-auto max-w-5xl grid grid-cols-2 md:grid-cols-4 gap-8">
+                    {whyGprPoints.map((point, i) => (
+                        <ScrollReveal key={i} delay={i * 100}>
+                            <div className="flex flex-col items-center text-center gap-2">
+                                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
+                                    <point.icon className="h-6 w-6 text-primary" />
+                                </div>
+                                <p className="text-sm font-medium text-foreground">{point.text}</p>
+                            </div>
+                        </ScrollReveal>
+                    ))}
+                </div>
+             </div>
+        </section>
+
+        <section id="delivery-model" className="py-12 md:py-24 lg:py-32 bg-secondary/30">
+            <div className="container px-4 md:px-6 text-center">
+                <ScrollReveal>
+                    <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-5xl">South India Delivery Model</h2>
+                    <p className="mt-4 max-w-3xl mx-auto text-foreground/80 md:text-lg">
+                        You get manufacturing reliability from our Mysore factory, plus local execution support from our Kerala operations offices.
+                    </p>
+                </ScrollReveal>
+                <ScrollReveal delay={200}>
+                    <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8 text-center max-w-4xl mx-auto">
+                        <Card>
+                            <CardHeader>
+                                <CardTitle>Factory</CardTitle>
+                                <CardDescription>Mysore (Karnataka)</CardDescription>
+                            </CardHeader>
+                        </Card>
+                         <Card>
+                            <CardHeader>
+                                <CardTitle>Operations Office</CardTitle>
+                                <CardDescription>Kerala (Calicut/Malappuram/Kochi)</CardDescription>
+                            </CardHeader>
+                        </Card>
+                         <Card>
+                            <CardHeader>
+                                <CardTitle>Coverage</CardTitle>
+                                <CardDescription>Entire Kerala + Karnataka + Tamil Nadu</CardDescription>
+                            </CardHeader>
+                        </Card>
+                    </div>
+                </ScrollReveal>
+            </div>
+        </section>
+
+        <section id="industries" className="py-12 md:py-24 lg:py-32 bg-background">
+            <div className="container px-4 md:px-6 text-center">
+                 <ScrollReveal>
+                    <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-5xl">Industries We Serve</h2>
+                </ScrollReveal>
+                 <ScrollReveal delay={200}>
+                    <div className="mt-8 flex flex-wrap justify-center gap-4">
+                        {industries.map(industry => (
+                            <div key={industry} className="p-4 bg-card rounded-lg border text-card-foreground font-medium">{industry}</div>
+                        ))}
+                    </div>
+                </ScrollReveal>
+            </div>
+        </section>
+
+        <section id="cta" className="py-12 md:py-24 lg:py-32 bg-secondary/30">
+             <div className="container px-4 md:px-6 text-center">
+                <ScrollReveal>
+                    <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl">Build with Confidence. Build with GRP.</h2>
+                    <p className="mt-4 max-w-xl mx-auto text-foreground/80 md:text-lg">
+                        Request a quotation or schedule a site visit today.
+                    </p>
+                    <div className="mt-6">
+                        <Button size="lg" asChild>
+                            <Link href="/contact">Get Started</Link>
+                        </Button>
+                    </div>
+                </ScrollReveal>
+             </div>
         </section>
 
       </main>

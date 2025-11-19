@@ -6,12 +6,7 @@ export type Product = {
   name: string;
   category: string;
   overview: string;
-  specifications: {
-    Material: string;
-    "IP Rating": string;
-    "Impact Resistance": string;
-    "Operating Temperature": string;
-  };
+  specifications: Record<string, string>;
   imageUrls: string[];
   imageHint?: string;
   datasheetUrl?: string;
