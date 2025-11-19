@@ -78,6 +78,11 @@ export const menuData: MegaMenu[] = [
     columns: [],
   },
   {
+    title: "Blog",
+    href: "/blog",
+    columns: []
+  },
+  {
     title: "Gallery",
     href: "/gallery",
     columns: []
