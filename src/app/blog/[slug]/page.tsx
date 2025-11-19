@@ -1,12 +1,9 @@
-
-'use client';
-import { useEffect, useState } from 'react';
+'use server';
 import { collection, query, where, getDocs, doc, getDoc, limit } from 'firebase/firestore';
-import { useFirestore } from '@/firebase';
+import { getFirestore } from '@/firebase/server';
 import { SiteHeader } from '@/components/layout/site-header';
 import { SiteFooter } from '@/components/layout/site-footer';
 import type { BlogPost, BlogAuthor } from '@/lib/types';
-import { Skeleton } from '@/components/ui/skeleton';
 import { PageHero } from '@/components/layout/page-hero';
 import { Badge } from '@/components/ui/badge';
 import { format } from 'date-fns';
@@ -15,74 +12,38 @@ import { notFound } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 
-export default function BlogPostPage({ params }: { params: { slug: string } }) {
-    const firestore = useFirestore();
-    const [post, setPost] = useState<BlogPost | null>(null);
-    const [author, setAuthor] = useState<BlogAuthor | null>(null);
-    const [isLoading, setIsLoading] = useState(true);
-    const [error, setError] = useState<string | null>(null);
+async function getPost(slug: string): Promise<{ post: BlogPost; author: BlogAuthor | null } | null> {
+    const firestore = getFirestore();
+    const postsRef = collection(firestore, 'blog_posts');
+    const q = query(postsRef, where("slug", "==", slug), limit(1));
+    const querySnapshot = await getDocs(q);
 
-    useEffect(() => {
-        if (!firestore || !params.slug) return;
-
-        const fetchPost = async () => {
-            setIsLoading(true);
-            try {
-                const postsRef = collection(firestore, 'blog_posts');
-                const q = query(postsRef, where("slug", "==", params.slug), limit(1));
-                const querySnapshot = await getDocs(q);
-
-                if (querySnapshot.empty) {
-                    setError('Post not found');
-                    return;
-                }
-
-                const postDoc = querySnapshot.docs[0];
-                const postData = { id: postDoc.id, ...postDoc.data() } as BlogPost;
-                setPost(postData);
-
-                if (postData.authorId) {
-                    const authorRef = doc(firestore, 'blog_authors', postData.authorId);
-                    const authorSnap = await getDoc(authorRef);
-                    if (authorSnap.exists()) {
-                        setAuthor({ id: authorSnap.id, ...authorSnap.data() } as BlogAuthor);
-                    }
-                }
-            } catch (err) {
-                console.error(err);
-                setError('Failed to load post.');
-            } finally {
-                setIsLoading(false);
-            }
-        };
-
-        fetchPost();
-    }, [firestore, params.slug]);
-
-    if (isLoading) {
-        return (
-            <>
-                <SiteHeader />
-                <div className="container py-12 md:py-20">
-                    <Skeleton className="h-8 w-3/4 mb-4" />
-                    <Skeleton className="h-6 w-1/2 mb-8" />
-                    <Skeleton className="h-[400px] w-full mb-8" />
-                    <Skeleton className="h-4 w-full mb-2" />
-                    <Skeleton className="h-4 w-full mb-2" />
-                    <Skeleton className="h-4 w-5/6 mb-2" />
-                </div>
-                <SiteFooter />
-            </>
-        );
+    if (querySnapshot.empty) {
+        return null;
     }
-    
-    if (error) {
+
+    const postDoc = querySnapshot.docs[0];
+    const postData = { id: postDoc.id, ...postDoc.data() } as BlogPost;
+
+    let author: BlogAuthor | null = null;
+    if (postData.authorId) {
+        const authorRef = doc(firestore, 'blog_authors', postData.authorId);
+        const authorSnap = await getDoc(authorRef);
+        if (authorSnap.exists()) {
+            author = { id: authorSnap.id, ...authorSnap.data() } as BlogAuthor;
+        }
+    }
+
+    return { post: postData, author };
+}
+
+export default async function BlogPostPage({ params }: { params: { slug: string } }) {
+    const data = await getPost(params.slug);
+
+    if (!data) {
         notFound();
     }
-
-    if (!post) {
-        return null; // Or some other state
-    }
+    const { post, author } = data;
 
     return (
         <>
