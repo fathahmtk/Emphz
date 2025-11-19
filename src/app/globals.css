@@ -5,52 +5,54 @@
 
 body {
   background-color: hsl(var(--background));
+  background-image: radial-gradient(ellipse at top, hsl(228 51% 9%), hsl(var(--background)));
+  background-attachment: fixed;
 }
 
 @layer base {
   :root {
-    --background: 240 10% 4%;
+    --background: 228 81% 6%;
     --foreground: 210 40% 98%;
-    --card: 240 10% 8%;
+    --card: 228 51% 9%;
     --card-foreground: 210 40% 98%;
-    --popover: 240 10% 4%;
+    --popover: 228 81% 6%;
     --popover-foreground: 210 40% 98%;
-    --primary: 210 100% 50%;
+    --primary: 220 100% 50%;
     --primary-foreground: 210 40% 98%;
-    --secondary: 240 10% 12%;
+    --secondary: 228 41% 12%;
     --secondary-foreground: 210 40% 98%;
-    --muted: 240 10% 12%;
+    --muted: 228 41% 12%;
     --muted-foreground: 215 20% 65%;
-    --accent: 240 10% 12%;
+    --accent: 228 41% 12%;
     --accent-foreground: 210 40% 98%;
     --destructive: 0 63% 31%;
     --destructive-foreground: 210 40% 98%;
-    --border: 240 10% 12%;
-    --input: 240 10% 12%;
-    --ring: 210 100% 50%;
+    --border: 228 41% 12%;
+    --input: 228 41% 12%;
+    --ring: 220 100% 50%;
     --radius: 0.5rem;
   }
 
   .dark {
-    --background: 240 10% 4%;
+    --background: 228 81% 6%;
     --foreground: 210 40% 98%;
-    --card: 240 10% 8%;
+    --card: 228 51% 9%;
     --card-foreground: 210 40% 98%;
-    --popover: 240 10% 4%;
+    --popover: 228 81% 6%;
     --popover-foreground: 210 40% 98%;
-    --primary: 210 100% 50%;
+    --primary: 220 100% 50%;
     --primary-foreground: 210 40% 98%;
-    --secondary: 240 10% 12%;
+    --secondary: 228 41% 12%;
     --secondary-foreground: 210 40% 98%;
-    --muted: 240 10% 12%;
+    --muted: 228 41% 12%;
     --muted-foreground: 215 20% 65%;
-    --accent: 240 10% 12%;
+    --accent: 228 41% 12%;
     --accent-foreground: 210 40% 98%;
     --destructive: 0 63% 31%;
     --destructive-foreground: 210 40% 98%;
-    --border: 240 10% 12%;
-    --input: 240 10% 12%;
-    --ring: 210 100% 50%;
+    --border: 228 41% 12%;
+    --input: 228 41% 12%;
+    --ring: 220 100% 50%;
   }
 }
 
@@ -59,7 +61,7 @@ body {
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground;
   }
   h1, h2, h3, h4, h5, h6 {
     @apply font-headline tracking-wide;
