@@ -1,19 +1,22 @@
 
 'use client';
 import Link from 'next/link';
-import { ArrowRight, CheckCircle, Factory, HardHat, ShieldCheck, Zap, Droplets, Wind, Sun, Box } from 'lucide-react';
+import { ArrowRight, Box, CheckCircle, Droplets, Factory, HardHat, ShieldCheck, Sun, Wind, Zap } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { ScrollReveal } from '@/components/scroll-reveal';
 import { SiteHeader } from '@/components/layout/site-header';
 import { SiteFooter } from '@/components/layout/site-footer';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import Image from 'next/image';
 import { GlassCard } from '@/components/glass-card';
 
 const heroBgImage = PlaceHolderImages.find(p => p.id === 'hero-new-2');
 const aboutBgImage = PlaceHolderImages.find(p => p.id === 'hero-industrial-plant');
+const productsBgImage = PlaceHolderImages.find(p => p.id === 'hero-new-3');
+const whyGrpBgImage = PlaceHolderImages.find(p => p.id === 'hero-new-4');
+const deliveryBgImage = PlaceHolderImages.find(p => p.id === 'hero-new-6');
 
 const coreProducts = [
   {
@@ -81,6 +84,7 @@ export default function Home() {
     <>
       <SiteHeader />
       <main className="flex-1">
+        {/* HERO SECTION */}
         <section className="relative h-dvh w-full flex items-center justify-center text-left overflow-hidden">
             {heroBgImage && (
               <Image
@@ -143,42 +147,57 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="about" className="bg-secondary/20">
-          <div className="container grid grid-cols-1 lg:grid-cols-2 min-h-[70dvh] items-center gap-12 px-4 md:px-6 py-12 md:py-24">
-            <div className="text-foreground">
-              <ScrollReveal>
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">About EMPHZ</h2>
-                 <div className="mt-4 space-y-4 text-foreground/80 md:text-lg">
-                    <p>
-                        EMPHZ is a specialized GRP manufacturing company operating out of Mysore with dedicated execution teams across Kerala. We build high-strength, weatherproof, corrosion-resistant GRP enclosures and modular structures designed for industrial, commercial, tourism, and government applications.
-                    </p>
-                    <p>
-                        We don’t compete with low-end fabricators. We deliver engineered products with predictable quality, repeatable performance, and long-term durability.
-                    </p>
+        {/* ABOUT SECTION */}
+        <section id="about" className="relative py-12 md:py-24 lg:py-32 w-full flex items-center justify-center overflow-hidden">
+             {aboutBgImage && (
+              <Image
+                src={aboutBgImage.imageUrl}
+                alt={aboutBgImage.description}
+                data-ai-hint={aboutBgImage.imageHint}
+                fill
+                className="object-cover"
+                quality={100}
+              />
+            )}
+            <div className="absolute inset-0 bg-background/80 z-10" />
+            <div className="container relative z-20 px-4 md:px-6">
+                <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-12">
+                    <div className="text-white">
+                        <ScrollReveal>
+                            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">About EMPHZ</h2>
+                            <div className="mt-4 space-y-4 text-white/80 md:text-lg">
+                                <p>
+                                    EMPHZ is a specialized GRP manufacturing company operating out of Mysore with dedicated execution teams across Kerala. We build high-strength, weatherproof, corrosion-resistant GRP enclosures and modular structures designed for industrial, commercial, tourism, and government applications.
+                                </p>
+                                <p>
+                                    We don’t compete with low-end fabricators. We deliver engineered products with predictable quality, repeatable performance, and long-term durability.
+                                </p>
+                            </div>
+                        </ScrollReveal>
+                    </div>
+                     <ScrollReveal delay={200}>
+                        <GlassCard>
+                            <CardHeader>
+                                <CardTitle>Our Mission</CardTitle>
+                            </CardHeader>
+                            <CardContent>
+                                <p className="text-lg text-foreground/80">Deliver durable, scalable, and design-forward GRP structures that outperform traditional materials and enable rapid deployment across industries.</p>
+                            </CardContent>
+                        </GlassCard>
+                    </ScrollReveal>
                 </div>
-              </ScrollReveal>
             </div>
-            <ScrollReveal className="relative h-full w-full min-h-[40vh] overflow-hidden rounded-lg">
-              {aboutBgImage && (
-                <Image
-                    src={aboutBgImage.imageUrl}
-                    alt={aboutBgImage.description}
-                    data-ai-hint={aboutBgImage.imageHint}
-                    quality={100}
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    className="object-cover"
-                />
-              )}
-            </ScrollReveal>
-          </div>
         </section>
 
-        <section id="products" className="py-12 md:py-24 lg:py-32 bg-background">
+        {/* PRODUCTS SECTION */}
+        <section id="products" className="py-12 md:py-24 lg:py-32 bg-secondary/20">
             <div className="container px-4 md:px-6">
                 <ScrollReveal>
                     <div className="text-center mb-12 text-foreground">
                         <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Core Product Lines</h2>
+                         <p className="mt-4 max-w-3xl mx-auto text-foreground/80 md:text-lg">
+                            From mission-critical electrical enclosures to luxury resort villas, our products are engineered for performance and longevity.
+                        </p>
                     </div>
                 </ScrollReveal>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -200,29 +219,51 @@ export default function Home() {
             </div>
         </section>
         
-        <section id="why-grp" className="py-12 md:py-24 lg:py-32 bg-secondary/20">
-             <div className="container px-4 md:px-6">
+        {/* WHY GRP SECTION */}
+        <section id="why-grp" className="relative py-12 md:py-24 lg:py-32 w-full flex items-center justify-center overflow-hidden">
+            {whyGrpBgImage && (
+              <Image
+                src={whyGrpBgImage.imageUrl}
+                alt={whyGrpBgImage.description}
+                data-ai-hint={whyGrpBgImage.imageHint}
+                fill
+                className="object-cover"
+                quality={100}
+              />
+            )}
+            <div className="absolute inset-0 bg-background/80 z-10" />
+            <div className="container relative z-20 px-4 md:px-6">
                 <ScrollReveal>
-                    <div className="text-center mb-12 text-foreground">
+                    <div className="text-center mb-12 text-white">
                         <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Why GRP? Why EMPHZ?</h2>
+                         <p className="mt-4 max-w-3xl mx-auto text-white/80 md:text-lg">
+                            GRP isn't just a material; it's a long-term strategic advantage. We leverage its inherent strengths with industrial manufacturing to deliver unparalleled value.
+                        </p>
                     </div>
                 </ScrollReveal>
-                 <div className="mx-auto max-w-5xl grid grid-cols-2 md:grid-cols-4 gap-8">
-                    {whyGprPoints.map((point, i) => (
-                        <ScrollReveal key={i} delay={i * 100}>
-                            <div className="flex flex-col items-center text-center gap-2">
-                                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
-                                    <point.icon className="h-6 w-6 text-primary" />
-                                </div>
-                                <p className="text-sm font-medium text-foreground">{point.text}</p>
+                 <div className="mx-auto max-w-5xl">
+                    <GlassCard>
+                        <CardContent className="p-8">
+                            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+                                {whyGprPoints.map((point, i) => (
+                                    <ScrollReveal key={i} delay={i * 100}>
+                                        <div className="flex flex-col items-center text-center gap-2">
+                                            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
+                                                <point.icon className="h-6 w-6 text-primary" />
+                                            </div>
+                                            <p className="text-sm font-medium text-foreground">{point.text}</p>
+                                        </div>
+                                    </ScrollReveal>
+                                ))}
                             </div>
-                        </ScrollReveal>
-                    ))}
-                </div>
+                        </CardContent>
+                    </GlassCard>
+                 </div>
              </div>
         </section>
 
-        <section id="delivery-model" className="py-12 md:py-24 lg:py-32 bg-background">
+        {/* DELIVERY MODEL SECTION */}
+        <section id="delivery-model" className="py-12 md:py-24 lg:py-32 bg-secondary/20">
             <div className="container px-4 md:px-6 text-center">
                 <ScrollReveal>
                     <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">South India Delivery Model</h2>
@@ -255,21 +296,39 @@ export default function Home() {
             </div>
         </section>
 
-        <section id="industries" className="py-12 md:py-24 lg:py-32 bg-secondary/20">
-            <div className="container px-4 md:px-6 text-center">
+        {/* INDUSTRIES SECTION */}
+        <section id="industries" className="relative py-12 md:py-24 lg:py-32 w-full flex items-center justify-center overflow-hidden">
+            {deliveryBgImage && (
+              <Image
+                src={deliveryBgImage.imageUrl}
+                alt={deliveryBgImage.description}
+                data-ai-hint={deliveryBgImage.imageHint}
+                fill
+                className="object-cover"
+                quality={100}
+              />
+            )}
+            <div className="absolute inset-0 bg-background/80 z-10" />
+            <div className="container px-4 md:px-6 text-center relative z-20">
                  <ScrollReveal>
-                    <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Industries We Serve</h2>
+                    <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-white">Industries We Serve</h2>
+                     <p className="mt-4 max-w-3xl mx-auto text-white/80 md:text-lg">
+                        Our solutions are trusted across a wide range of sectors for their reliability and performance.
+                    </p>
                 </ScrollReveal>
                  <ScrollReveal delay={200}>
                     <div className="mt-8 flex flex-wrap justify-center gap-4">
                         {industries.map(industry => (
-                            <div key={industry} className="p-4 bg-card/80 rounded-lg border border-border text-card-foreground font-medium">{industry}</div>
+                             <GlassCard key={industry} className="p-4 bg-card/80">
+                                <span className="font-medium text-card-foreground">{industry}</span>
+                            </GlassCard>
                         ))}
                     </div>
                 </ScrollReveal>
             </div>
         </section>
 
+        {/* CTA SECTION */}
         <section id="cta" className="py-12 md:py-24 lg:py-32 bg-background">
              <div className="container px-4 md:px-6 text-center">
                 <ScrollReveal>
@@ -291,3 +350,5 @@ export default function Home() {
     </>
   );
 }
+
+    
