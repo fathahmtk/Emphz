@@ -81,7 +81,7 @@ export function SiteFooter() {
             <p className="font-semibold text-foreground">Contact</p>
             <div className="flex flex-col items-start mt-5 space-y-2">
               <a href="mailto:sales@emphz.com" className="text-muted-foreground transition-colors duration-300 hover:text-primary">sales@emphz.com</a>
-              <p className="text-muted-foreground">EMPHZ Solutions Inc, Dubai, UAE</p>
+              <p className="text-muted-foreground">01 10/1133, near Government Hospital Road, Nut Street, Vatakara, Kerala 673104, India</p>
             </div>
           </div>
         </div>

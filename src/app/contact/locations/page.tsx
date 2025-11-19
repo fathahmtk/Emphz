@@ -31,10 +31,10 @@ export default function LocationsPage() {
                         <Card className="h-full">
                             <CardHeader className="flex-row items-center gap-4">
                                 <MapPin className="h-8 w-8 text-accent" />
-                                <CardTitle className="font-headline text-2xl">Head Office</CardTitle>
+                                <CardTitle className="font-headline text-2xl">Corporate Office</CardTitle>
                             </CardHeader>
                             <CardContent>
-                                <p className="text-muted-foreground">EMPHZ Solutions Inc, Dubai, UAE</p>
+                                <p className="text-muted-foreground">01 10/1133, near Government Hospital Road, Nut Street, Vatakara, Kerala 673104, India</p>
                                 <p className="text-sm text-muted-foreground mt-2">Visitor & Safety Guidelines Apply</p>
                             </CardContent>
                         </Card>
