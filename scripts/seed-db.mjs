@@ -1,44 +1,45 @@
 
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, writeBatch } from 'firebase/firestore';
-import { getProductsWithIds, getProjectsWithIds } from '../src/lib/seed-data.ts';
-import { firebaseConfig } from '../src/firebase/config.ts';
+import { firebaseConfig } from '../src/firebase/config.js';
+import { getProductsWithIds, getProjectsWithIds } from '../src/lib/seed-data.js';
 
 // Initialize Firebase
 const firebaseApp = initializeApp(firebaseConfig);
 const db = getFirestore(firebaseApp);
 
-async function seedDatabase() {
+async function seedCollection(collectionName, data) {
+  const collectionRef = collection(db, collectionName);
   const batch = writeBatch(db);
 
-  // Seed Products
-  const products = getProductsWithIds();
-  const productsCollection = collection(db, 'products');
-  console.log(`Seeding ${products.length} products...`);
-  products.forEach((product) => {
-    const docRef = collection(productsCollection, product.id);
-    batch.set(docRef, product);
-  });
-
-  // Seed Projects
-  const projects = getProjectsWithIds();
-  const projectsCollection = collection(db, 'project_case_studies');
-  console.log(`Seeding ${projects.length} projects...`);
-  projects.forEach((project) => {
-    const docRef = collection(projectsCollection, project.id);
-    batch.set(docRef, project);
+  data.forEach((item) => {
+    const docRef = collectionRef.doc(item.id);
+    batch.set(docRef, item);
   });
 
   try {
     await batch.commit();
-    console.log('Database seeded successfully!');
+    console.log(`Successfully seeded ${collectionName} with ${data.length} documents.`);
   } catch (error) {
-    console.error('Error seeding database:', error);
-  } finally {
-    // Firebase doesn't have a db.close() like some other DBs.
-    // The script will exit automatically.
-    process.exit(0);
+    console.error(`Error seeding ${collectionName}:`, error);
   }
 }
 
-seedDatabase();
+async function main() {
+  console.log('Starting to seed database...');
+  
+  const products = getProductsWithIds();
+  await seedCollection('products', products);
+
+  const projects = getProjectsWithIds();
+  await seedCollection('project_case_studies', projects);
+
+  console.log('Database seeding complete.');
+  // Force exit to prevent hanging connection
+  process.exit(0);
+}
+
+main().catch((error) => {
+  console.error('An unexpected error occurred:', error);
+  process.exit(1);
+});

@@ -28,4 +28,3 @@ export const projectsSeed: Omit<ProjectCaseStudy, 'id'>[] = [
         afterImageUrl: findImage('case-study-after-2'),
     },
 ];
-
