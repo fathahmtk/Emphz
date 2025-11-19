@@ -2,9 +2,9 @@
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { ScrollReveal } from "@/components/scroll-reveal";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Quote } from "lucide-react";
+import Image from "next/image";
 
 export default function LeadershipPage() {
     const ceoImage = PlaceHolderImages.find(p => p.id === 'ceo-portrait');
@@ -23,10 +23,16 @@ export default function LeadershipPage() {
                     <div className="grid md:grid-cols-3 gap-8 items-start">
                         <ScrollReveal delay={200} className="md:col-span-1 flex flex-col items-center">
                             {ceoImage && (
-                                <Avatar className="h-48 w-48 border-4 border-primary/10">
-                                    <AvatarImage src={ceoImage.imageUrl} alt="Muhammed Rashik, CEO of EMPHZ" data-ai-hint={ceoImage.imageHint} />
-                                    <AvatarFallback>MR</AvatarFallback>
-                                </Avatar>
+                                <div className="relative w-full aspect-[3/4] overflow-hidden rounded-lg shadow-lg mb-4">
+                                     <Image 
+                                        src={ceoImage.imageUrl} 
+                                        alt="Muhammed Rashik, CEO of EMPHZ" 
+                                        data-ai-hint={ceoImage.imageHint}
+                                        fill
+                                        className="object-cover"
+                                        sizes="(max-width: 768px) 100vw, 33vw"
+                                     />
+                                </div>
                             )}
                             <div className="text-center mt-4">
                                 <h2 className="text-2xl font-bold font-headline">Muhammed Rashik</h2>
