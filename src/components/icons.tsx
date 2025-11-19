@@ -1,21 +1,20 @@
-
 import { cn } from "@/lib/utils";
 import type { HTMLAttributes } from "react";
+import Image from "next/image";
 
-export function Logo({ className, ...props }: HTMLAttributes<SVGSVGElement>) {
+export function Logo({ className, ...props }: HTMLAttributes<HTMLElement>) {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 400 100"
-      className={cn("h-full w-auto", className)}
+    <div
+      className={cn("relative h-10 w-40", className)}
       {...props}
     >
-      <text x="5" y="68" className="fill-current text-primary" fontFamily="Playfair Display, serif" fontSize="64" fontWeight="700">
-        E
-      </text>
-      <text x="45" y="68" className="fill-current" fontFamily="Manrope, system-ui, sans-serif" fontSize="48" fontWeight="600" letterSpacing="-1">
-        MPH-Z
-      </text>
-    </svg>
+       <Image
+        src="https://storage.googleapis.com/stabl-media/6f183983-de3c-4740-8a1a-464a75399587.png"
+        alt="EMPHZ Logo"
+        fill
+        className="object-contain"
+        priority
+      />
+    </div>
   );
 }

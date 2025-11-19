@@ -1,4 +1,3 @@
-
 "use client"
 
 import * as React from "react"
@@ -54,10 +53,10 @@ export function MobileNav() {
                                  <SheetClose asChild>
                                     <Link href={item.href} className="flex-1 text-left">{item.title}</Link>
                                  </SheetClose>
-                                <AccordionTrigger className="p-0 w-auto hover:no-underline [&[data-state=open]>svg]:rotate-180">
-                                </AccordionTrigger>
+                                {item.columns.length > 0 && <AccordionTrigger className="p-0 w-auto hover:no-underline [&[data-state=open]>svg]:rotate-180">
+                                </AccordionTrigger>}
                                </div>
-                               <AccordionContent className="pt-2">
+                               {item.columns.length > 0 && <AccordionContent className="pt-2">
                                   <div className="grid gap-2 pl-7">
                                      {item.columns.map(col => (
                                         <div key={col.title}>
@@ -75,7 +74,7 @@ export function MobileNav() {
                                         </div>
                                     ))}
                                   </div>
-                               </AccordionContent>
+                               </AccordionContent>}
                              </AccordionItem>
                            </Accordion>
                         ))}

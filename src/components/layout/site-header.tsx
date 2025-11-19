@@ -1,5 +1,4 @@
-
-'use client';
+"use client";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { MobileNav } from "@/components/layout/mobile-nav";
@@ -50,7 +49,9 @@ export function SiteHeader() {
             )}>
                 <div className="container flex h-16 items-center px-4 md:px-6">
                     <div className="mr-6 hidden md:flex items-center space-x-2">
-                        <Logo className={cn("h-8 w-auto text-foreground transition-colors", !isScrolled && "text-white")} />
+                         <Link href="/">
+                            <Logo className={cn("h-8 w-auto text-foreground transition-colors", !isScrolled && "text-white")} />
+                         </Link>
                     </div>
                     
                     <NavigationMenu className={cn("hidden md:flex flex-1")}>
@@ -133,5 +134,3 @@ const ListItem = React.forwardRef<
     )
 })
 ListItem.displayName = "ListItem"
-
-    
