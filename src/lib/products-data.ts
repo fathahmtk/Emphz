@@ -119,7 +119,7 @@ export const productsSeed: Omit<Product, 'id'>[] = [
       'Fire-rated GRP enclosures for housing safety and emergency equipment. Engineered to remain operational in high-temperature and corrosive environments, ensuring critical systems are protected.',
     imageUrls: [
         'https://images.unsplash.com/photo-1629819125301-447961b16492?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-        'https://picsum.photos/seed/firesafe2/800/600'
+        'https://lh3.googleusercontent.com/pw/AP1GczNydAEeadD4afouzV-k8Srj8GPWnSoG4714kIJfeUgIYW5XLAAk26VhFc9zaGSAT226oPBh3LNYjgyFTmZhQa_KjCJmpqIYboJzoS6-BBM37-gdFFQa1reZb_7sTAyibwgIvqH23zZoRpBj5XOP6FD2gQ=w1546-h870-s-no-gm?authuser=0'
     ],
     imageHint: 'fire safety',
     specifications: {
@@ -146,7 +146,7 @@ export const productsSeed: Omit<Product, 'id'>[] = [
       'GRP battery containers engineered for solar energy systems, telecom backup batteries, and industrial UPS units, featuring acid-resistant GRP and thermal management.',
     imageUrls: [
         'https://images.unsplash.com/photo-1632073248509-c3225a81a95a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-        'https://picsum.photos/seed/battery2/800/600'
+        'https://lh3.googleusercontent.com/pw/AP1GczP6gOeYUDOeHPQtV5a-KLIpWNxXJMXhl5TYk98Moh2zWuNygWfHQvdEpzt4Sqs1yZ94RfyVfMEukBtSZmquiiuHDaZ26w4A7pchcNNL7bhbkBlRiGEsYUOSDAEUXRavg-FR3CHDGqKnMJQn7oOSqnirAg=w1546-h870-s-no-gm?authuser=0'
     ],
     imageHint: 'battery enclosure',
     specifications: {
