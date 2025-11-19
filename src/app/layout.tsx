@@ -1,6 +1,6 @@
 
 import type { ReactNode } from 'react';
-import { Urbanist, Playfair_Display } from 'next/font/google';
+import { Roboto } from 'next/font/google';
 
 import './globals.css';
 import { cn } from '@/lib/utils';
@@ -9,13 +9,15 @@ import { FirebaseClientProvider } from '@/firebase';
 import { ClientOnly } from '@/components/client-only';
 import { BackToTopButton } from '@/components/ui/back-to-top-button';
 
-const urbanist = Urbanist({
+const roboto = Roboto({
   subsets: ['latin'],
+  weight: ['400', '700'],
   variable: '--font-body',
 });
 
-const playfairDisplay = Playfair_Display({
+const roboto_headline = Roboto({
     subsets: ['latin'],
+    weight: ['700'],
     variable: '--font-headline',
 });
 
@@ -27,7 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head />
-      <body className={cn('min-h-screen font-body antialiased', urbanist.variable, playfairDisplay.variable)}>
+      <body className={cn('min-h-screen font-body antialiased', roboto.variable, roboto_headline.variable)}>
         <FirebaseClientProvider>
           <ClientOnly>
             <div className="relative flex min-h-dvh flex-col bg-background">
