@@ -1,17 +1,17 @@
 
 'use client';
 import { useMemo } from 'react';
+import Link from 'next/link';
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { Button } from "@/components/ui/button";
-import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardDescription, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { useCollection, useFirestore } from '@/firebase';
 import type { TechnicalDownload } from '@/lib/types';
 import { collection, orderBy, query } from 'firebase/firestore';
-import { Download, FileText, FolderOpen } from "lucide-react";
+import { Download, FileText, FolderOpen, BookOpen } from "lucide-react";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { Skeleton } from '@/components/ui/skeleton';
-import Link from 'next/link';
 
 function DownloadSkeleton() {
     return (
@@ -50,13 +50,32 @@ export default function DownloadsPage() {
             <div className="text-center mb-12">
               <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl font-headline">Technical Downloads</h1>
               <p className="mt-4 max-w-2xl mx-auto text-muted-foreground md:text-lg">
-                Access our library of technical resources to get detailed information about our products.
+                Access our library of technical resources, datasheets, and our complete product catalog.
               </p>
             </div>
           </ScrollReveal>
 
           <ScrollReveal delay={200}>
+             <Card className="mb-8 border-primary/50 bg-primary/5">
+                <CardHeader>
+                    <CardTitle className="flex items-center gap-3">
+                        <BookOpen className="w-6 h-6 text-primary"/>
+                        Master Product Catalog
+                    </CardTitle>
+                    <CardDescription>
+                        View our complete, up-to-date product catalog in a single, print-friendly page.
+                    </CardDescription>
+                </CardHeader>
+                <CardContent>
+                    <Button asChild>
+                        <Link href="/catalog">View Master Catalog</Link>
+                    </Button>
+                </CardContent>
+             </Card>
+
+
             <div className="space-y-4">
+              <h2 className="text-2xl font-bold font-headline mt-12">Individual Documents</h2>
               {isLoading && Array.from({length: 4}).map((_, i) => <DownloadSkeleton key={i} />)}
               
               {!isLoading && downloads && downloads.length > 0 && downloads.map((item) => (
@@ -82,7 +101,7 @@ export default function DownloadsPage() {
               {!isLoading && downloads?.length === 0 && (
                 <div className="text-center py-16 border-2 border-dashed rounded-lg">
                     <FolderOpen className="mx-auto h-12 w-12 text-muted-foreground" />
-                    <h3 className="mt-4 text-lg font-semibold">No Downloads Available</h3>
+                    <h3 className="mt-4 text-lg font-semibold">No Documents Available</h3>
                     <p className="mt-2 text-sm text-muted-foreground">Technical documents and datasheets will appear here when they are added.</p>
                 </div>
               )}

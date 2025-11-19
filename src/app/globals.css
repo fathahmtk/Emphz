@@ -79,3 +79,31 @@ body {
     opacity: 1;
 }
 
+@media print {
+  .print-hide {
+    display: none;
+  }
+  .print\\:p-0 {
+    padding: 0;
+  }
+  .print\\:block {
+    display: block;
+  }
+  .page-break {
+    page-break-after: always;
+  }
+  body {
+    background-color: #ffffff;
+    color: #000000;
+  }
+  .bg-card {
+    background-color: #ffffff !important;
+    border: 1px solid #e5e7eb !important;
+  }
+  .text-muted-foreground {
+    color: #6b7280 !important;
+  }
+  .font-headline {
+    color: #000000 !important;
+  }
+}
