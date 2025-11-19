@@ -311,6 +311,66 @@
       "description": "Exterior of the spacious and luxurious E7 modular villa.",
       "imageUrl": "https://images.unsplash.com/photo-1591474200742-8e512e6f98f8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxsdXh1cnklMjB2aWxsYXxlbnwwfHx8fDE3NjM0Nzc2NTd8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "luxury villa"
+    },
+    {
+      "id": "security-cabin-1",
+      "description": "A standalone modern security cabin at an entrance.",
+      "imageUrl": "https://images.unsplash.com/photo-1626747086393-d19a14d99e10?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxzZWN1cml0eSUyMGNhYmlufGVufDB8fHx8MTc2MzUyNzc2N3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "security cabin"
+    },
+    {
+      "id": "security-cabin-2",
+      "description": "A different model of a GRP security cabin.",
+      "imageUrl": "https://images.unsplash.com/photo-1678737921482-6d9719b7fea0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxHUlAlMjBjYWJpbnxlbnwwfHx8fDE3NjM1Mjc3Njd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "GRP cabin"
+    },
+    {
+      "id": "enclosure-1",
+      "description": "GRP electrical enclosure installed outdoors.",
+      "imageUrl": "https://images.unsplash.com/photo-1698146512047-403fbeb78001?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxlbGVjdHJpY2FsJTIwZW5jbG9zdXJlfGVufDB8fHx8MTc2MzUyNzc2N3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "electrical enclosure"
+    },
+    {
+      "id": "enclosure-2",
+      "description": "Interior view of a wired GRP enclosure.",
+      "imageUrl": "https://images.unsplash.com/photo-1652047310363-bfdd53fa9b5d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHx3aXJlZCUyMGVuY2xvc3VyZXxlbnwwfHx8fDE3NjM1Mjc3Njd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "wired enclosure"
+    },
+    {
+      "id": "kiosk-1",
+      "description": "A retail GRP kiosk in a public space.",
+      "imageUrl": "https://images.unsplash.com/photo-1582317361770-c0b3040d8d0c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxyZXRhaWwlMjBraW9za3xlbnwwfHx8fDE3NjM1Mjc3Njh8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "retail kiosk"
+    },
+    {
+      "id": "kiosk-2",
+      "description": "A food and beverage kiosk made from GRP.",
+      "imageUrl": "https://images.unsplash.com/photo-1613652056837-fda5bddd1503?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxmb29kJTIwa2lvc2t8ZW58MHx8fHwxNzYzNTI3NzY4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "food kiosk"
+    },
+    {
+      "id": "toilet-1",
+      "description": "A standard GRP portable toilet unit.",
+      "imageUrl": "https://images.unsplash.com/photo-1759597617486-10f3dab52ac1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxwb3J0YWJsZSUyMHRvaWxldHxlbnwwfHx8fDE3NjM1Mjc3Njd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "portable toilet"
+    },
+    {
+      "id": "toilet-2",
+      "description": "A multi-unit GRP toilet block for events.",
+      "imageUrl": "https://images.unsplash.com/photo-1604364234787-e5b5d9188a29?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHx0b2lsZXQlMjBibG9ja3xlbnwwfHx8fDE3NjM1Mjc3Njh8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "toilet block"
+    },
+    {
+      "id": "villa-1",
+      "description": "A luxury GRP resort villa with a view.",
+      "imageUrl": "https://images.unsplash.com/photo-1694967832949-09984640b143?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxyZXNvcnQlMjB2aWxsYXxlbnwwfHx8fDE3NjM1Mjc3Njd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "resort villa"
+    },
+    {
+      "id": "villa-2",
+      "description": "Interior of a modern GRP modular villa.",
+      "imageUrl": "https://images.unsplash.com/photo-1505576391880-b3f9d713dc4f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHx2aWxsYSUyMGludGVyaW9yfGVufDB8fHx8MTc2MzUyNzc2N3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "villa interior"
     }
   ]
 }

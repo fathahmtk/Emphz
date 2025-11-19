@@ -5,23 +5,27 @@ import { ScrollReveal } from "@/components/scroll-reveal";
 import { CheckCircle } from "lucide-react";
 import { PageHero } from "@/components/layout/page-hero";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
+import { ImageGallery } from "@/components/image-gallery";
 
 const features = [
-    "Premium interior finishes",
-    "Sound & heat insulation",
-    "Long lifecycle",
-    "Custom size & layout",
-    "Modern architectural design",
+    "Premium interior finishes (wood, stone, etc.)",
+    "Superior sound & heat insulation for comfort",
+    "Long lifecycle with minimal maintenance",
+    "Customizable sizes & layouts to fit your vision",
+    "Modern architectural designs with large glazings",
+    "Rapid installation compared to traditional construction"
 ];
 
 const idealLocations = [
-    "Wayanad",
-    "Munnar",
-    "Mysore / Coorg",
-    "Coastal Karnataka",
-    "Ooty",
+    "Wayanad (Resorts, Private Estates)",
+    "Munnar (Tea Plantation Bungalows)",
+    "Mysore / Coorg (Coffee Estate Villas)",
+    "Coastal Karnataka / Kerala (Beachfront Properties)",
+    "Ooty / Kodaikanal (Hill Station Retreats)",
     "Private farm/villa plots",
 ];
+
+const galleryImages = PlaceHolderImages.filter(p => ['villa-e7', 'villa-1', 'villa-2', 'villa-e6'].includes(p.id));
 
 export default function VillasPage() {
     const heroImage = PlaceHolderImages.find(p => p.id === 'villa-e7');
@@ -35,9 +39,9 @@ export default function VillasPage() {
                 imageUrl={heroImage.imageUrl}
                 imageHint={heroImage.imageHint}
              />}
-            <main className="container py-12 md:py-20">
-                 <div className="mt-12 grid gap-12 md:grid-cols-2">
-                    <ScrollReveal delay={200}>
+            <main className="container py-12 md:py-20 space-y-16">
+                 <div className="grid gap-12 md:grid-cols-2">
+                    <ScrollReveal>
                         <h2 className="text-2xl font-bold font-headline">Features</h2>
                         <ul className="mt-4 space-y-3 text-muted-foreground">
                             {features.map(item => (
@@ -46,7 +50,7 @@ export default function VillasPage() {
                         </ul>
                     </ScrollReveal>
 
-                    <ScrollReveal delay={300}>
+                    <ScrollReveal delay={100}>
                         <h2 className="text-2xl font-bold font-headline">Ideal Locations</h2>
                          <ul className="mt-4 space-y-3 text-muted-foreground">
                             {idealLocations.map(item => (
@@ -55,9 +59,14 @@ export default function VillasPage() {
                         </ul>
                     </ScrollReveal>
                 </div>
+                 <ScrollReveal delay={200}>
+                    <h2 className="text-3xl font-bold font-headline text-center">Gallery</h2>
+                    <div className="mt-6">
+                        <ImageGallery images={galleryImages} />
+                    </div>
+                </ScrollReveal>
             </main>
             <SiteFooter />
         </>
     );
 }
-
