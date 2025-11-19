@@ -10,32 +10,32 @@ const productCategories = [
     {
         name: "GRP Electrical Enclosures",
         href: "/products/enclosures",
-        description: "Our GRP electrical enclosures are designed for outdoor and industrial applications where corrosion, heat, and moisture destroy traditional metal cabinets. These enclosures deliver uncompromised safety and longevity."
+        description: "Industrial-grade, IP-rated, UV-resistant GRP enclosures engineered for harsh outdoor environments and electrical safety compliance."
     },
     {
         name: "GRP Portable Toilets",
         href: "/products/toilets",
-        description: "Monsoon-proof, hygienic, high-strength GRP toilet cabins engineered for continuous public usage."
+        description: "Hygienic, monsoon-proof toilet cabins designed for public spaces, sites, tourism, panchayat projects, and heavy daily usage."
     },
     {
         name: "GRP Modular Kiosks",
         href: "/products/kiosks",
-        description: "Turnkey GRP kiosks for food retail, ticketing, micro-shops, tourism counters, and commercial setups."
+        description: "Food kiosks, ticket counters, retail pods, and security booths built with structural integrity and clean finishing."
     },
     {
         name: "GRP Security Cabins",
         href: "/products/cabins",
-        description: "Secure, durable, thermally insulated GRP security cabins designed for malls, companies, commercial buildings, and residential communities."
+        description: "Impact-resistant, insulated, ergonomic cabins ideal for residential, commercial, and industrial security operations."
     },
     {
         name: "GRP Resort Villas & Pods",
         href: "/products/villas",
-        description: "Luxury, climate-resistant GRP cabins for tourism and resort developers. Designed to deliver high aesthetics with rapid installation and long-term rental ROI."
+        description: "High-end GRP villas crafted for resorts in Wayanad, Munnar, Mysore, Coorg, coastal areas, and private retreats."
     },
     {
         name: "Custom GRP Fabrication",
         href: "/products/custom",
-        description: "We engineer unique structures based on client specifications, ensuring structural integrity and design flexibility."
+        description: "Bespoke GRP structures engineered for unique architectural, commercial, or industrial requirements."
     }
 ];
 

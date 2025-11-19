@@ -1,6 +1,7 @@
 
 import type { ReactNode } from 'react';
 import { Roboto } from 'next/font/google';
+import type { Metadata } from 'next';
 
 import './globals.css';
 import { cn } from '@/lib/utils';
@@ -20,6 +21,12 @@ const roboto_headline = Roboto({
     weight: ['700'],
     variable: '--font-headline',
 });
+
+export const metadata: Metadata = {
+  title: 'EMPHZ – GRP Enclosures, Portable Toilets & Modular Kiosks | Mysore Factory, Kerala Operations',
+  description: 'Premium GRP electrical enclosures, portable toilet cabins, kiosks, security cabins, and resort villas. Manufactured in Mysore with full operations across Kerala. Weatherproof, corrosion-resistant GRP solutions.',
+};
+
 
 export default function RootLayout({
   children,

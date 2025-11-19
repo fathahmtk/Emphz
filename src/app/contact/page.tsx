@@ -31,6 +31,7 @@ export default function ContactPage() {
                         quality={100}
                         fill
                         className="object-cover"
+                        sizes="100vw"
                     />
                     <div className="absolute inset-0 bg-background/80" />
                 </div>

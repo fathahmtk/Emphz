@@ -6,6 +6,12 @@ import { CheckCircle } from "lucide-react";
 import { PageHero } from "@/components/layout/page-hero";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { ImageGallery } from "@/components/image-gallery";
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'GRP Portable Toilets Kerala | Durable Toilet Cabins – EMPHZ',
+  description: 'Hygienic, durable GRP toilet cabins built for Kerala’s humidity and heavy usage. Available in Western, Indian, and custom models.',
+};
 
 const benefits = [
     "Leak-proof one-piece construction prevents water damage",

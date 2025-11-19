@@ -7,6 +7,12 @@ import { CheckCircle } from "lucide-react";
 import { PageHero } from "@/components/layout/page-hero";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { ImageGallery } from "@/components/image-gallery";
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'GRP Modular Kiosks & Security Cabins | EMPHZ Kerala',
+  description: 'GRP kiosks designed for food stalls, ticket counters, and security cabins. Strong, weatherproof, long-lasting structures.',
+};
 
 const keyFeatures = [
     "Rigid, monolithic GRP construction",

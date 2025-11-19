@@ -11,6 +11,7 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { HeroCarousel } from '@/components/hero-carousel';
 import Image from 'next/image';
+import type { Metadata } from 'next';
 
 const heroImages = PlaceHolderImages.filter(img => img.id.startsWith('hero-'));
 const aboutBgImage = PlaceHolderImages.find(p => p.id === 'hero-industrial-plant');
@@ -68,7 +69,6 @@ const industries = [
     "Event & Exhibition Industries",
     "Retail and F&B"
 ];
-
 
 export default function Home() {
   return (

@@ -6,6 +6,13 @@ import { CheckCircle } from "lucide-react";
 import { PageHero } from "@/components/layout/page-hero";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { ImageGallery } from "@/components/image-gallery";
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'GRP Electrical Enclosures | Weatherproof GRP Cabinets – EMPHZ South India',
+  description: 'High-strength GRP enclosures for industrial, solar, and electrical applications. Single, double, and multi-door cabinets. IP-rated and corrosion-proof.',
+};
+
 
 const keyBenefits = [
     "Non-corrosive & weatherproof for outdoor longevity",

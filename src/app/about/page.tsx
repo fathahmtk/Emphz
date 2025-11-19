@@ -90,7 +90,7 @@ export default function AboutPage() {
                         <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-8">
                              <div className="md:col-span-1">
                                 {ceoImage && (
-                                    <div className="relative aspect-square w-full max-w-[250px] mx-auto rounded-lg overflow-hidden shadow-lg">
+                                     <div className="relative aspect-square w-full max-w-[250px] mx-auto rounded-lg overflow-hidden shadow-lg">
                                         <Image
                                             src={ceoImage.imageUrl}
                                             alt={ceoImage.description}

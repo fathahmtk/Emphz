@@ -6,6 +6,12 @@ import { CheckCircle } from "lucide-react";
 import { PageHero } from "@/components/layout/page-hero";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { ImageGallery } from "@/components/image-gallery";
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'GRP Resort Villas & Pods | Premium GRP Cabins – EMPHZ',
+  description: 'Luxury GRP villas for resorts in Wayanad, Munnar, Mysore and Coorg. Lightweight, premium, fully customizable GRP structures.',
+};
 
 const features = [
     "Premium interior finishes (wood, stone, etc.)",
