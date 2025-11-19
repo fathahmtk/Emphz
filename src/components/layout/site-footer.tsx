@@ -20,7 +20,7 @@ const socialLinks = [
 function SubmitButton() {
     const { pending } = useFormStatus();
     return (
-        <Button type="submit" disabled={pending} className="ml-0 md:ml-4 w-full md:w-auto shrink-0">
+        <Button type="submit" disabled={pending} className="w-full md:w-auto shrink-0">
             {pending ? "Subscribing..." : "Subscribe"}
         </Button>
     );
@@ -56,12 +56,12 @@ export function SiteFooter() {
               Stay updated with our latest engineering innovations.
             </h1>
             <form action={formAction}>
-                <div className="flex flex-col mx-auto mt-6 space-y-3 md:space-y-0 md:flex-row">
+                <div className="flex flex-col mx-auto mt-6 space-y-3 md:space-y-0 md:flex-row md:items-start">
                     <Input
                         id="email"
                         name="email"
                         type="email"
-                        className="w-full px-4 py-2 text-foreground bg-background border-input rounded-md focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary h-auto"
+                        className="w-full px-4 py-2 text-foreground bg-background border-input rounded-md focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary h-10"
                         placeholder="Email Address"
                         required
                     />

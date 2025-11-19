@@ -42,7 +42,7 @@ export function ImageGallery({ images, className }: ImageGalleryProps) {
       </div>
 
       <Dialog open={!!selectedImage} onOpenChange={(isOpen) => !isOpen && setSelectedImage(null)}>
-        <DialogContent className="max-w-4xl p-2">
+        <DialogContent className="max-w-5xl p-2">
           {selectedImage && (
             <div className="relative aspect-video">
                  <Image

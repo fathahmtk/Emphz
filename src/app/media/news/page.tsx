@@ -4,22 +4,26 @@ import { SiteFooter } from "@/components/layout/site-footer";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Newspaper } from "lucide-react";
+import Link from "next/link";
 
 const newsItems = [
     {
         title: "EMPHZ Launches New Fire-Retardant Enclosure Line",
         date: "October 15, 2023",
         summary: "EMPHZ today announced a new line of advanced fire-retardant GRP enclosures, designed to meet the most stringent safety standards for industrial and hazardous environments. The new products offer superior protection for critical electrical and instrumentation systems.",
+        href: "#",
     },
     {
         title: "Strategic Partnership with Major Utility Provider",
         date: "September 5, 2023",
         summary: "EMPHZ has entered into a strategic partnership to supply a regional utility provider with custom-engineered GRP enclosures for their grid modernization project. This collaboration underscores our commitment to supporting critical infrastructure.",
+        href: "#",
     },
     {
         title: "EMPHZ Expands Manufacturing Capacity",
         date: "July 20, 2023",
         summary: "To meet growing demand, EMPHZ has completed a major expansion of its manufacturing facility. The new line will increase production capacity by 40% and features state-of-the-art automation for enhanced quality and efficiency.",
+        href: "#",
     }
 ];
 
@@ -40,20 +44,22 @@ export default function NewsPage() {
                 <div className="space-y-8 max-w-4xl mx-auto">
                     {newsItems.map((item, index) => (
                         <ScrollReveal key={item.title} delay={index * 150}>
-                            <Card className="hover:shadow-md transition-shadow">
-                                <CardHeader>
-                                    <div className="flex items-start gap-4">
-                                        <Newspaper className="h-6 w-6 mt-1 text-primary"/>
-                                        <div>
-                                            <CardTitle className="font-headline text-2xl">{item.title}</CardTitle>
-                                            <CardDescription>{item.date}</CardDescription>
+                             <Link href={item.href}>
+                                <Card className="hover:shadow-lg hover:border-primary/30 transition-all duration-300 group">
+                                    <CardHeader>
+                                        <div className="flex items-start gap-4">
+                                            <Newspaper className="h-6 w-6 mt-1 text-primary"/>
+                                            <div>
+                                                <CardTitle className="font-headline text-2xl group-hover:text-primary transition-colors">{item.title}</CardTitle>
+                                                <CardDescription>{item.date}</CardDescription>
+                                            </div>
                                         </div>
-                                    </div>
-                                </CardHeader>
-                                <CardContent>
-                                    <p className="text-muted-foreground">{item.summary}</p>
-                                </CardContent>
-                            </Card>
+                                    </CardHeader>
+                                    <CardContent>
+                                        <p className="text-muted-foreground">{item.summary}</p>
+                                    </CardContent>
+                                </Card>
+                            </Link>
                         </ScrollReveal>
                     ))}
                 </div>

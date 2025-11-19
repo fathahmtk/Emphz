@@ -3,6 +3,7 @@ import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { CheckCircle, XCircle } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const recommendedProducts = [
     "GRP Portable Kiosks",
@@ -51,22 +52,30 @@ export default function ConstructionPage() {
                 <ScrollReveal delay={400} className="mt-12">
                     <h2 className="text-2xl font-bold font-headline text-center">Recommended Products & Key Advantages</h2>
                     <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <div className="rounded-lg bg-card/50 p-6">
-                            <h3 className="text-xl font-semibold">Recommended Products</h3>
-                            <ul className="mt-4 space-y-2 text-muted-foreground">
-                                {recommendedProducts.map(product => (
-                                    <li key={product} className="flex items-center gap-3"><CheckCircle className="h-5 w-5 text-foreground/60" /> {product}</li>
-                                ))}
-                            </ul>
-                        </div>
-                        <div className="rounded-lg bg-card/50 p-6">
-                             <h3 className="text-xl font-semibold">Why EMPHZ</h3>
-                            <ul className="mt-4 space-y-2 text-muted-foreground">
-                                {whyEmphz.map(point => (
-                                    <li key={point} className="flex items-center gap-3"><CheckCircle className="h-5 w-5 text-foreground/60" /> {point}</li>
-                                ))}
-                            </ul>
-                        </div>
+                        <Card>
+                            <CardHeader>
+                                <CardTitle className="text-xl font-semibold">Recommended Products</CardTitle>
+                            </CardHeader>
+                            <CardContent>
+                                <ul className="space-y-2 text-muted-foreground">
+                                    {recommendedProducts.map(product => (
+                                        <li key={product} className="flex items-center gap-3"><CheckCircle className="h-5 w-5 text-primary" /> {product}</li>
+                                    ))}
+                                </ul>
+                            </CardContent>
+                        </Card>
+                        <Card>
+                             <CardHeader>
+                                <CardTitle className="text-xl font-semibold">Why EMPHZ</CardTitle>
+                            </CardHeader>
+                            <CardContent>
+                                <ul className="space-y-2 text-muted-foreground">
+                                    {whyEmphz.map(point => (
+                                        <li key={point} className="flex items-center gap-3"><CheckCircle className="h-5 w-5 text-primary" /> {point}</li>
+                                    ))}
+                                </ul>
+                            </CardContent>
+                        </Card>
                     </div>
                 </ScrollReveal>
 
@@ -75,3 +84,4 @@ export default function ConstructionPage() {
         </>
     );
 }
+

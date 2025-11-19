@@ -30,7 +30,7 @@ export default function LocationsPage() {
                      <ScrollReveal delay={200}>
                         <Card className="h-full">
                             <CardHeader className="flex-row items-center gap-4">
-                                <MapPin className="h-8 w-8 text-accent" />
+                                <MapPin className="h-8 w-8 text-primary" />
                                 <CardTitle className="font-headline text-2xl">Corporate Office</CardTitle>
                             </CardHeader>
                             <CardContent>
@@ -42,7 +42,7 @@ export default function LocationsPage() {
                      <ScrollReveal delay={300}>
                         <Card className="h-full">
                             <CardHeader className="flex-row items-center gap-4">
-                                <Factory className="h-8 w-8 text-accent" />
+                                <Factory className="h-8 w-8 text-primary" />
                                 <CardTitle className="font-headline text-2xl">Manufacturing Facility</CardTitle>
                             </CardHeader>
                             <CardContent>
@@ -56,7 +56,7 @@ export default function LocationsPage() {
                  <ScrollReveal delay={400} className="mt-12">
                         <Card>
                             <CardHeader className="flex-row items-center gap-4">
-                                <Globe className="h-8 w-8 text-accent" />
+                                <Globe className="h-8 w-8 text-primary" />
                                 <CardTitle className="font-headline text-2xl">Regional Coverage</CardTitle>
                             </CardHeader>
                             <CardContent className="flex flex-wrap gap-4">
@@ -71,3 +71,4 @@ export default function LocationsPage() {
         </>
     );
 }
+
