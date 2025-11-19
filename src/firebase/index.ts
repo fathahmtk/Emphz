@@ -3,6 +3,8 @@
 import { firebaseConfig } from '@/firebase/config';
 import { initializeApp, getApps, getApp, FirebaseApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore'
+import { FirestorePermissionError } from './errors';
+import { errorEmitter } from './error-emitter';
 
 // IMPORTANT: DO NOT MODIFY THIS FUNCTION
 export function initializeFirebase() {

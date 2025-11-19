@@ -3,7 +3,7 @@
 
 import { z } from 'zod';
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
-import { initializeFirebase } from '@/firebase';
+import { initializeFirebase, errorEmitter, FirestorePermissionError } from '@/firebase';
 
 const emailSchema = z.string().email({ message: 'Please enter a valid email address.' });
 
@@ -25,23 +25,25 @@ export async function subscribeToNewsletter(
     };
   }
 
-  try {
-    const { firestore } = initializeFirebase();
-    const subscriptionsCollection = collection(firestore, 'subscriptions');
-    
-    await addDoc(subscriptionsCollection, {
-        email: validatedEmail.data,
-        subscribedAt: serverTimestamp()
+  const { firestore } = initializeFirebase();
+  const subscriptionsCollection = collection(firestore, 'subscriptions');
+  const subscriptionData = {
+    email: validatedEmail.data,
+    subscribedAt: serverTimestamp()
+  };
+
+  addDoc(subscriptionsCollection, subscriptionData)
+    .catch(async (serverError) => {
+        const permissionError = new FirestorePermissionError({
+            path: subscriptionsCollection.path,
+            operation: 'create',
+            requestResourceData: subscriptionData,
+        });
+        errorEmitter.emit('permission-error', permissionError);
     });
 
-    return {
-        status: 'success',
-        message: 'Thank you for subscribing!',
-    };
-  } catch (e: any) {
-    return {
-        status: 'error',
-        message: e.message || 'Something went wrong. Please try again.',
-    }
-  }
+  return {
+      status: 'success',
+      message: 'Thank you for subscribing!',
+  };
 }
