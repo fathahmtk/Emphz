@@ -85,10 +85,10 @@ body {
   .print-hide {
     display: none;
   }
-  .print\\:p-0 {
+  .print\:p-0 {
     padding: 0;
   }
-  .print\\:block {
+  .print\:block {
     display: block;
   }
   .page-break {
