@@ -22,15 +22,29 @@ import {
 import { Logo } from "@/components/icons"
 import { menuData } from "@/lib/menu-data"
 import { Separator } from "../ui/separator"
+import { cn } from "@/lib/utils"
 
 export function MobileNav() {
+    const [isScrolled, setIsScrolled] = React.useState(false);
+
+    React.useEffect(() => {
+        const handleScroll = () => {
+            setIsScrolled(window.scrollY > 10);
+        };
+        window.addEventListener("scroll", handleScroll);
+        // Initial check
+        handleScroll();
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
     return (
+        <div className="md:hidden">
         <Sheet>
             <SheetTrigger asChild>
                 <Button
                     variant="ghost"
                     size="icon"
-                    className="shrink-0 md:hidden"
+                    className={cn("shrink-0", !isScrolled ? "text-white hover:text-white hover:bg-white/10" : "text-foreground" )}
                 >
                     <Menu className="h-6 w-6" />
                     <span className="sr-only">Toggle navigation menu</span>
@@ -91,7 +105,6 @@ export function MobileNav() {
                 </SheetFooter>
             </SheetContent>
         </Sheet>
+        </div>
     )
 }
-
-    

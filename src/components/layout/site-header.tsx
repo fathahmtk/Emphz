@@ -1,3 +1,4 @@
+
 "use client";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -48,61 +49,63 @@ export function SiteHeader() {
                 isScrolled ? "border-b border-border/50 bg-background/80 backdrop-blur-lg" : "bg-transparent border-b border-transparent"
             )}>
                 <div className="container flex h-16 items-center px-4 md:px-6">
-                    <div className="mr-6 hidden md:flex items-center space-x-2">
-                         <Link href="/">
-                            <Logo className={cn("h-8 w-auto text-foreground transition-colors", !isScrolled && "text-white")} />
+                    <div className="mr-6 flex items-center md:flex-1">
+                         <Link href="/" className="mr-6">
+                            <Logo className={cn("h-8 w-auto transition-all", !isScrolled ? "[&_img]:invert [&_img]:brightness-0" : "")} />
                          </Link>
+                        <div className="hidden md:flex">
+                             <NavigationMenu>
+                                <NavigationMenuList>
+                                    {menuData.map((item) => (
+                                        <NavigationMenuItem key={item.title}>
+                                            <NavigationMenuTrigger className={cn("bg-transparent text-sm font-medium", isScrolled ? "text-foreground/70 hover:text-foreground/90" : "text-white/80 hover:text-white", "hover:bg-accent/50 focus:bg-accent/50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50")}>
+                                                <Link href={item.href}>{item.title}</Link>
+                                            </NavigationMenuTrigger>
+                                            <NavigationMenuContent>
+                                                <div className={`grid gap-x-6 gap-y-4 p-6 w-[--nav-width] grid-cols-${item.columns.length > 3 ? '4' : item.columns.length > 2 ? '3' : '2'}`} style={{'--nav-width': `${item.columns.length * 250}px`} as React.CSSProperties}>
+                                                    {item.columns.map((col) => (
+                                                        <div key={col.title} className="flex flex-col space-y-3">
+                                                            <h3 className="font-bold text-lg text-foreground/90 font-headline">{col.title}</h3>
+                                                            <ul className="space-y-2">
+                                                            {col.links.map(link => (
+                                                                <li key={link.href}>
+                                                                    <ListItem href={link.href} title={link.title}>
+                                                                        {link.description}
+                                                                    </ListItem>
+                                                                </li>
+                                                            ))}
+                                                            </ul>
+                                                        </div>
+                                                    ))}
+                                                    {item.cta && (
+                                                        <div className={`col-span-${item.columns.length > 3 ? '4' : item.columns.length > 2 ? '3' : '2'} mt-4`}>
+                                                            <Button asChild className="w-full group">
+                                                                <Link href={item.cta.href}>
+                                                                    {item.cta.text}
+                                                                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"/>
+                                                                </Link>
+                                                            </Button>
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            </NavigationMenuContent>
+                                        </NavigationMenuItem>
+                                    ))}
+                                
+                                </NavigationMenuList>
+                            </NavigationMenu>
+                        </div>
                     </div>
                     
-                    <NavigationMenu className={cn("hidden md:flex flex-1")}>
-                        <NavigationMenuList>
-                            {menuData.map((item) => (
-                                <NavigationMenuItem key={item.title}>
-                                    <NavigationMenuTrigger className={cn("bg-transparent text-sm font-medium", isScrolled ? "text-foreground/70 hover:text-foreground/90" : "text-white/80 hover:text-white", "hover:bg-accent/50 focus:bg-accent/50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50")}>
-                                        <Link href={item.href}>{item.title}</Link>
-                                    </NavigationMenuTrigger>
-                                    <NavigationMenuContent>
-                                        <div className={`grid gap-x-6 gap-y-4 p-6 w-[--nav-width] grid-cols-${item.columns.length > 3 ? '4' : item.columns.length > 2 ? '3' : '2'}`} style={{'--nav-width': `${item.columns.length * 250}px`} as React.CSSProperties}>
-                                            {item.columns.map((col) => (
-                                                <div key={col.title} className="flex flex-col space-y-3">
-                                                    <h3 className="font-bold text-lg text-foreground/90 font-headline">{col.title}</h3>
-                                                    <ul className="space-y-2">
-                                                    {col.links.map(link => (
-                                                        <li key={link.href}>
-                                                            <ListItem href={link.href} title={link.title}>
-                                                                {link.description}
-                                                            </ListItem>
-                                                        </li>
-                                                    ))}
-                                                    </ul>
-                                                </div>
-                                            ))}
-                                            {item.cta && (
-                                                <div className={`col-span-${item.columns.length > 3 ? '4' : item.columns.length > 2 ? '3' : '2'} mt-4`}>
-                                                    <Button asChild className="w-full group">
-                                                        <Link href={item.cta.href}>
-                                                            {item.cta.text}
-                                                            <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"/>
-                                                        </Link>
-                                                    </Button>
-                                                </div>
-                                            )}
-                                        </div>
-                                    </NavigationMenuContent>
-                                </NavigationMenuItem>
-                            ))}
-                        
-                        </NavigationMenuList>
-                    </NavigationMenu>
+                    <MobileNav />
 
-                    <div className="flex flex-1 items-center justify-start md:justify-end space-x-2">
+                    <div className="flex flex-1 items-center justify-end space-x-2 md:flex-grow-0">
                         <div className="hidden md:flex items-center space-x-2">
                             <Button asChild>
                                 <Link href="/contact">Request Spec Pack</Link>
                             </Button>
                             <Button variant="ghost" size="icon" onClick={() => setIsSearchOpen(true)} className={cn(!isScrolled && "text-white hover:text-white hover:bg-white/10")}><Search className="h-4 w-4"/></Button>
                         </div>
-                        <MobileNav />
                     </div>
                 </div>
             </header>
