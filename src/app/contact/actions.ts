@@ -16,6 +16,7 @@ const contactSchema = z.object({
   quantity: z.string().optional(),
   location: z.string().optional(),
   inquiry: z.string().min(10, 'Inquiry must be at least 10 characters.'),
+  'file-upload': z.instanceof(File).optional(),
 });
 
 type State = {
@@ -37,6 +38,7 @@ export async function submitContactForm(
     quantity: formData.get('quantity'),
     location: formData.get('location'),
     inquiry: formData.get('inquiry'),
+    'file-upload': formData.get('file-upload'),
   });
 
   if (!validatedFields.success) {
@@ -50,16 +52,25 @@ export async function submitContactForm(
   try {
     const { firestore } = initializeFirebase();
     const leadsCollection = collection(firestore, 'leads');
+    
+    const { 'file-upload': file, ...leadData } = validatedFields.data;
 
     await addDoc(leadsCollection, {
-        ...validatedFields.data,
+        ...leadData,
+        fileName: file && file.size > 0 ? file.name : null,
         submittedAt: serverTimestamp()
     });
     
     const { name } = validatedFields.data;
+    let successMessage = `Thank you, ${name}! Your inquiry has been received. Our team will get back to you shortly.`;
+
+    if (file && file.size > 0) {
+      successMessage += ` Your file '${file.name}' has been submitted.`;
+    }
+
     return {
       status: 'success',
-      message: `Thank you, ${name}! Your inquiry has been received. Our team will get back to you shortly.`,
+      message: successMessage,
     };
   } catch (e: any) {
     return {
