@@ -128,7 +128,7 @@ export default function Home() {
             </div>
             <div className="max-w-2xl text-right ml-auto self-end pb-12 md:pb-20">
               <ScrollReveal>
-                <h1 className="!leading-tight text-3xl font-bold font-headline tracking-tighter text-white shadow-lg sm:text-4xl md:text-5xl">
+                <h1 className="!leading-tight text-2xl font-bold font-headline tracking-tighter text-white shadow-lg sm:text-3xl md:text-4xl">
                   Premier GRP Engineering & Modular Infrastructure
                 </h1>
               </ScrollReveal>
@@ -376,6 +376,8 @@ export default function Home() {
     </>
   );
 }
+
+    
 
     
 
