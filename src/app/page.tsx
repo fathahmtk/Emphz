@@ -191,23 +191,10 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="mission-vision" className="relative py-12 md:py-24 lg:py-32">
-             {missionBgImage && (
-                <div className="absolute inset-0 -z-10 h-full w-full">
-                    <Image
-                        src={missionBgImage.imageUrl}
-                        alt={missionBgImage.description}
-                        data-ai-hint={missionBgImage.imageHint}
-                        quality={100}
-                        fill
-                        className="object-cover"
-                    />
-                    <div className="absolute inset-0 bg-background/80" />
-                </div>
-            )}
+        <section id="mission-vision" className="relative py-12 md:py-24 lg:py-32 bg-secondary/30">
             <div className="container grid md:grid-cols-2 gap-12 items-center text-foreground px-4 md:px-6">
                 <ScrollReveal>
-                    <GlassCard className="p-8 text-foreground">
+                    <Card className="p-8 text-foreground shadow-lg">
                         <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground">Our Mission & Values</h2>
                         <p className="mt-4 text-foreground/80 md:text-lg">
                             <strong className="text-foreground">Mission:</strong> To engineer world-class GRP solutions that enable resilient, safe, and efficient infrastructure for industries and communities.
@@ -223,28 +210,26 @@ export default function Home() {
                                 </div>
                             ))}
                         </div>
-                    </GlassCard>
+                    </Card>
                 </ScrollReveal>
-                 <ScrollReveal delay={200} className='hidden md:block'>
-                   {/* This space is intentionally left blank for the background image to show */}
+                 <ScrollReveal delay={200}>
+                    {missionBgImage && (
+                        <div className="relative h-full w-full min-h-[50vh] overflow-hidden rounded-lg">
+                             <Image
+                                src={missionBgImage.imageUrl}
+                                alt={missionBgImage.description}
+                                data-ai-hint={missionBgImage.imageHint}
+                                quality={100}
+                                fill
+                                className="object-cover"
+                            />
+                        </div>
+                    )}
                 </ScrollReveal>
             </div>
         </section>
         
-        <section id="projects" className="relative py-12 md:py-24 lg:py-32">
-            {projectsBgImage && (
-                <div className="absolute inset-0 -z-10 h-full w-full">
-                    <Image
-                        src={projectsBgImage.imageUrl}
-                        alt={projectsBgImage.description}
-                        data-ai-hint={projectsBgImage.imageHint}
-                        quality={100}
-                        fill
-                        className="object-cover"
-                    />
-                    <div className="absolute inset-0 bg-background/80" />
-                </div>
-            )}
+        <section id="projects" className="py-12 md:py-24 lg:py-32 bg-background">
             <div className="container px-4 md:px-6">
                 <ScrollReveal>
                     <div className="text-center mb-12 text-foreground">
@@ -366,7 +351,3 @@ export default function Home() {
     </>
   );
 }
-
-    
-
-    
