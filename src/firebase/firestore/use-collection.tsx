@@ -1,7 +1,7 @@
 
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import {
   Query,
   onSnapshot,
@@ -60,6 +60,7 @@ export function useCollection<T = any>(
   const [data, setData] = useState<StateDataType>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<FirestoreError | Error | null>(null);
+  const initialLoadRef = useRef(true);
 
   useEffect(() => {
     if (!targetRefOrQuery) {
@@ -71,6 +72,7 @@ export function useCollection<T = any>(
 
     setIsLoading(true);
     setError(null);
+    initialLoadRef.current = true;
 
     // Directly use targetRefOrQuery as it's assumed to be the final query
     const unsubscribe = onSnapshot(
@@ -83,6 +85,7 @@ export function useCollection<T = any>(
         setData(results);
         setError(null);
         setIsLoading(false);
+        initialLoadRef.current = false;
       },
       (error: FirestoreError) => {
         // This logic extracts the path from either a ref or a query
@@ -95,13 +98,16 @@ export function useCollection<T = any>(
           operation: 'list',
           path,
         })
+        
+        setError(contextualError);
+        setData(null);
+        setIsLoading(false);
 
-        setError(contextualError)
-        setData(null)
-        setIsLoading(false)
-
-        // Re-throw the error to be caught by the nearest error boundary
-        throw contextualError;
+        // Only throw after the initial load attempt to prevent infinite loops in error boundaries
+        if (initialLoadRef.current) {
+            initialLoadRef.current = false;
+            throw contextualError;
+        }
       }
     );
 

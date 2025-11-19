@@ -3,7 +3,8 @@
 
 import { z } from 'zod';
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
-import { initializeFirebase, errorEmitter, FirestorePermissionError } from '@/firebase';
+import { getFirestore } from '@/firebase/server';
+import { FirestorePermissionError } from '@/firebase';
 
 
 const contactSchema = z.object({
@@ -59,7 +60,7 @@ export async function submitContactForm(
     };
   }
   
-  const { firestore } = initializeFirebase();
+  const firestore = getFirestore();
   const leadsCollection = collection(firestore, 'leads');
   
   const { 'file-upload': file, ...leadData } = validatedFields.data;
@@ -70,15 +71,15 @@ export async function submitContactForm(
       submittedAt: serverTimestamp()
   };
 
-  addDoc(leadsCollection, submissionData)
-    .catch(async (serverError) => {
-        const permissionError = new FirestorePermissionError({
-            path: leadsCollection.path,
-            operation: 'create',
-            requestResourceData: submissionData,
-        });
-        errorEmitter.emit('permission-error', permissionError);
-    });
+  try {
+    await addDoc(leadsCollection, submissionData);
+  } catch (serverError) {
+      throw new FirestorePermissionError({
+          path: leadsCollection.path,
+          operation: 'create',
+          requestResourceData: submissionData,
+      });
+  }
   
   const { name } = validatedFields.data;
   let successMessage = `Thank you, ${name}! Your inquiry has been received. Our team will get back to you shortly.`;
@@ -117,7 +118,7 @@ export async function submitJobApplication(
   
   const { cv, ...applicationData } = validatedFields.data;
 
-  const { firestore } = initializeFirebase();
+  const firestore = getFirestore();
   const applicationsCollection = collection(firestore, 'job_applications');
 
   const submissionData = {
@@ -125,17 +126,19 @@ export async function submitJobApplication(
       cvFileName: cv.name,
       submittedAt: serverTimestamp()
   };
-  // NOTE: In a real app, you would upload the CV to Cloud Storage and save the URL.
-  // For this prototype, we'll just save the file name.
-  addDoc(applicationsCollection, submissionData)
-    .catch(async (serverError) => {
-        const permissionError = new FirestorePermissionError({
-            path: applicationsCollection.path,
-            operation: 'create',
-            requestResourceData: submissionData,
-        });
-        errorEmitter.emit('permission-error', permissionError);
-    });
+  
+  try {
+    // NOTE: In a real app, you would upload the CV to Cloud Storage and save the URL.
+    // For this prototype, we'll just save the file name.
+    await addDoc(applicationsCollection, submissionData);
+  } catch (serverError) {
+      throw new FirestorePermissionError({
+          path: applicationsCollection.path,
+          operation: 'create',
+          requestResourceData: submissionData,
+      });
+  }
+
 
   const { name } = validatedFields.data;
   return {

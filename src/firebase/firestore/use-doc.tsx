@@ -1,7 +1,7 @@
 
 'use client';
     
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import {
   DocumentReference,
   onSnapshot,
@@ -46,6 +46,7 @@ export function useDoc<T = any>(
   const [data, setData] = useState<StateDataType>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<FirestoreError | Error | null>(null);
+  const initialLoadRef = useRef(true);
 
   useEffect(() => {
     if (!docRef) {
@@ -57,7 +58,7 @@ export function useDoc<T = any>(
 
     setIsLoading(true);
     setError(null);
-    // Optional: setData(null); // Clear previous data instantly
+    initialLoadRef.current = true;
 
     const unsubscribe = onSnapshot(
       docRef,
@@ -70,6 +71,7 @@ export function useDoc<T = any>(
         }
         setError(null); // Clear any previous error on successful snapshot (even if doc doesn't exist)
         setIsLoading(false);
+        initialLoadRef.current = false;
       },
       (error: FirestoreError) => {
         const contextualError = new FirestorePermissionError({
@@ -77,12 +79,15 @@ export function useDoc<T = any>(
           path: docRef.path,
         })
 
-        setError(contextualError)
-        setData(null)
-        setIsLoading(false)
+        setError(contextualError);
+        setData(null);
+        setIsLoading(false);
 
-        // Re-throw the error to be caught by the nearest error boundary
-        throw contextualError;
+        // Only throw after the initial load attempt to prevent infinite loops in error boundaries
+        if (initialLoadRef.current) {
+            initialLoadRef.current = false;
+            throw contextualError;
+        }
       }
     );
 
