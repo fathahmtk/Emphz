@@ -123,11 +123,6 @@ export default function Home() {
           <HeroCarousel images={heroImages} />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent z-10" />
           <div className="container relative flex items-center justify-between px-4 md:px-6 z-20">
-            <div className="hidden md:block">
-                 <Link href="/">
-                    <Logo className="h-20 w-auto text-white" />
-                </Link>
-            </div>
             <div className="max-w-2xl text-right ml-auto self-end pb-12 md:pb-20">
               <ScrollReveal>
                 <h1 className="!leading-tight text-2xl font-bold font-headline tracking-tighter text-white shadow-lg sm:text-3xl md:text-4xl">
@@ -374,3 +369,5 @@ export default function Home() {
     </>
   );
 }
+
+    
