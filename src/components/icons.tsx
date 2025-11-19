@@ -9,7 +9,7 @@ export function Logo({ className, ...props }: HTMLAttributes<HTMLElement>) {
       {...props}
     >
        <Image
-        src="https://storage.googleapis.com/stabl-media/6f183983-de3c-4740-8a1a-464a75399587.png"
+        src="https://storage.googleapis.com/stabl-media/1546850d-a32b-4d44-b220-73f4e89582d1.png"
         alt="EMPHZ Logo"
         fill
         className="object-contain"
