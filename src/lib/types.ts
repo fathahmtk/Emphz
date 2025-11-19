@@ -1,3 +1,4 @@
+
 import { Timestamp } from 'firebase/firestore';
 
 export type Product = {
@@ -33,18 +34,4 @@ export type ProjectCaseStudy = {
 export type NavItem = {
   title: string;
   href: string;
-};
-
-export type Lead = {
-  id: string;
-  name: string;
-  email: string;
-  company?: string;
-  inquiry: string;
-  submittedAt: Timestamp | Date;
-  phone?: string;
-  industry?: string;
-  product?: string;
-  quantity?: number;
-  location?: string;
 };

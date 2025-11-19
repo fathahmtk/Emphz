@@ -4,13 +4,14 @@ import { SiteHeader } from '@/components/layout/site-header';
 import { SiteFooter } from '@/components/layout/site-footer';
 import { ScrollReveal } from '@/components/scroll-reveal';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
+import { useCollection, useFirestore } from '@/firebase';
 import type { ProjectCaseStudy } from '@/lib/types';
 import { collection, orderBy, query } from 'firebase/firestore';
 import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
 import { Users, MapPin } from 'lucide-react';
+import { useMemo } from 'react';
 
 function CaseStudyCard({ project }: { project: ProjectCaseStudy }) {
     return (
@@ -50,7 +51,7 @@ function CaseStudyCard({ project }: { project: ProjectCaseStudy }) {
 export default function ProjectsPage() {
   const firestore = useFirestore();
 
-  const projectsQuery = useMemoFirebase(() => {
+  const projectsQuery = useMemo(() => {
     if (!firestore) return null;
     return query(collection(firestore, 'project_case_studies'), orderBy('title'));
   }, [firestore]);

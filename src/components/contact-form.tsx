@@ -2,7 +2,7 @@
 "use client";
 
 import { useFormState, useFormStatus } from "react-dom";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { submitContactForm } from "@/app/contact/actions";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
@@ -13,7 +13,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Alert, AlertDescription, AlertTitle } from "./ui/alert";
 import { Terminal } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
-import { useCollection, useFirestore, useMemoFirebase } from "@/firebase";
+import { useCollection, useFirestore } from "@/firebase";
 import type { Product } from "@/lib/types";
 import { collection, orderBy, query } from "firebase/firestore";
 
@@ -32,7 +32,7 @@ export function ContactForm() {
   const { toast } = useToast();
   
   const firestore = useFirestore();
-  const productsQuery = useMemoFirebase(() => {
+  const productsQuery = useMemo(() => {
     if (!firestore) return null;
     return query(collection(firestore, 'products'), orderBy('name'));
   }, [firestore]);

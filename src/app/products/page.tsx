@@ -11,7 +11,7 @@ import { useMemo, useState } from 'react';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
-import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
+import { useCollection, useFirestore } from '@/firebase';
 import type { Product } from '@/lib/types';
 import { collection, orderBy, query } from 'firebase/firestore';
 
@@ -31,7 +31,7 @@ export default function ProductsPage() {
   const [filters, setFilters] = useState<Record<string, boolean>>({});
 
   const firestore = useFirestore();
-  const productsQuery = useMemoFirebase(() => {
+  const productsQuery = useMemo(() => {
     if (!firestore) return null;
     return query(collection(firestore, 'products'), orderBy('name'));
   }, [firestore]);

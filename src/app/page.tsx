@@ -3,10 +3,11 @@
 import Link from 'next/link';
 import { ArrowRight, CheckCircle, Factory, HardHat, ShieldCheck, Award, Fingerprint, Building, Users, MapPin, Newspaper, Video, GalleryVertical } from 'lucide-react';
 import { collection, orderBy, query, limit } from 'firebase/firestore';
+import { useMemo } from 'react';
 
 import { Button } from '@/components/ui/button';
 import { ScrollReveal } from '@/components/scroll-reveal';
-import { useCollection, useFirestore, useMemoFirebase } from '@/firebase';
+import { useCollection, useFirestore } from '@/firebase';
 import type { Product, ProjectCaseStudy } from '@/lib/types';
 import { SiteHeader } from '@/components/layout/site-header';
 import { SiteFooter } from '@/components/layout/site-footer';
@@ -101,13 +102,13 @@ function CaseStudyCard({ project }: { project: ProjectCaseStudy }) {
 export default function Home() {
   const firestore = useFirestore();
 
-  const productsQuery = useMemoFirebase(() => {
+  const productsQuery = useMemo(() => {
     if (!firestore) return null;
     return query(collection(firestore, 'products'), orderBy('name'), limit(3));
   }, [firestore]);
   const { data: products } = useCollection<Product>(productsQuery);
   
-  const projectsQuery = useMemoFirebase(() => {
+  const projectsQuery = useMemo(() => {
     if (!firestore) return null;
     return query(collection(firestore, 'project_case_studies'), orderBy('title'), limit(2));
   }, [firestore]);
@@ -376,11 +377,3 @@ export default function Home() {
     </>
   );
 }
-
-    
-
-    
-
-    
-
-    

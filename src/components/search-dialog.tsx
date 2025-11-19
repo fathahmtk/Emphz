@@ -14,7 +14,7 @@ import {
   CommandList,
 } from "@/components/ui/command"
 import { menuData, type NavLink } from "@/lib/menu-data"
-import { useCollection, useFirestore, useMemoFirebase } from "@/firebase"
+import { useCollection, useFirestore } from "@/firebase"
 import type { Product, ProjectCaseStudy } from "@/lib/types"
 import { collection } from "firebase/firestore"
 
@@ -24,13 +24,13 @@ export function SearchDialog({ open, onOpenChange }: { open: boolean; onOpenChan
 
   const firestore = useFirestore();
 
-  const productsQuery = useMemoFirebase(() => {
+  const productsQuery = React.useMemo(() => {
     if (!firestore) return null;
     return collection(firestore, 'products');
   }, [firestore]);
   const { data: products } = useCollection<Product>(productsQuery);
 
-  const projectsQuery = useMemoFirebase(() => {
+  const projectsQuery = React.useMemo(() => {
     if (!firestore) return null;
     return collection(firestore, 'project_case_studies');
   }, [firestore]);

@@ -1,7 +1,7 @@
 
 'use client';
 
-import React, { DependencyList, createContext, useContext, ReactNode, useMemo, useState, useEffect } from 'react';
+import React, { createContext, useContext, ReactNode, useMemo, useState, useEffect } from 'react';
 import { FirebaseApp } from 'firebase/app';
 import { Firestore } from 'firebase/firestore';
 import { Auth, User, onAuthStateChanged } from 'firebase/auth';
@@ -154,20 +154,6 @@ export const useFirebaseApp = (): FirebaseApp => {
   const { firebaseApp } = useFirebase();
   return firebaseApp;
 };
-
-type Memoizable = object | any[] | null | undefined;
-type MemoizedFirebase<T> = T & { __memo?: boolean };
-
-export function useMemoFirebase<T extends Memoizable>(factory: () => T, deps: DependencyList): T {
-    const memoized = useMemo(factory, deps);
-
-    if (memoized && typeof memoized === 'object') {
-        (memoized as MemoizedFirebase<T>).__memo = true;
-    }
-
-    return memoized;
-}
-
 
 /**
  * Hook specifically for accessing the authenticated user's state.
