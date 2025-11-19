@@ -26,12 +26,12 @@ export function PageHero({ title, description, imageUrl, imageHint }: PageHeroPr
       <div className="container relative px-4 md:px-6">
         <div className="mx-auto max-w-4xl text-primary-foreground">
           <ScrollReveal>
-            <h1 className="!leading-tight text-4xl font-bold font-headline tracking-tighter text-white shadow-lg sm:text-5xl md:text-6xl">
+            <h1 className="!leading-tight text-4xl font-bold font-headline tracking-tighter text-white sm:text-5xl md:text-6xl" style={{ textShadow: '2px 2px 8px rgba(0,0,0,0.7)' }}>
               {title}
             </h1>
           </ScrollReveal>
           <ScrollReveal delay={200}>
-            <p className="mt-6 text-lg text-gray-200/90 md:text-xl">
+            <p className="mt-6 text-lg text-gray-200/90 md:text-xl" style={{ textShadow: '1px 1px 4px rgba(0,0,0,0.8)' }}>
               {description}
             </p>
           </ScrollReveal>

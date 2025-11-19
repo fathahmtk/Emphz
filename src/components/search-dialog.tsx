@@ -64,7 +64,7 @@ export function SearchDialog({ open, onOpenChange }: { open: boolean; onOpenChan
       <CommandInput placeholder="Type a command or search..." />
       <CommandList>
         <CommandEmpty>No results found.</CommandEmpty>
-        <CommandGroup heading="Pages">
+        {searchPages.length > 0 && <CommandGroup heading="Pages">
           {searchPages.map((page) => (
             <CommandItem
               key={page.href}
@@ -77,7 +77,7 @@ export function SearchDialog({ open, onOpenChange }: { open: boolean; onOpenChan
               {page.title}
             </CommandItem>
           ))}
-        </CommandGroup>
+        </CommandGroup>}
         {products && (
             <CommandGroup heading="Products">
                  {products.map((product) => (

@@ -64,7 +64,7 @@ export function SiteHeader() {
                                                 <Link href={item.href}>{item.title}</Link>
                                             </NavigationMenuTrigger>
                                             <NavigationMenuContent>
-                                                <div className={`grid gap-x-6 gap-y-4 p-6 w-[--nav-width] grid-cols-${item.columns.length > 3 ? '4' : item.columns.length > 2 ? '3' : '2'}`} style={{'--nav-width': `${item.columns.length * 250}px`} as React.CSSProperties}>
+                                                <div className={`grid gap-x-6 gap-y-4 p-6 w-[--nav-width] grid-cols-${item.columns.length > 3 ? '4' : item.columns.length > 2 ? '3' : '2'}`} style={{'--nav-width': `${item.columns.length * 280}px`} as React.CSSProperties}>
                                                     {item.columns.map((col) => (
                                                         <div key={col.title} className="flex flex-col space-y-3">
                                                             <h3 className="font-bold text-lg text-foreground/90 font-headline">{col.title}</h3>

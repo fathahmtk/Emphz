@@ -56,12 +56,12 @@ export function SiteFooter() {
               Stay updated with our latest engineering innovations.
             </h1>
             <form action={formAction}>
-                <div className="flex flex-col mx-auto mt-6 space-y-3 md:space-y-0 md:flex-row md:items-start">
+                <div className="flex flex-col mx-auto mt-6 space-y-3 md:space-y-0 md:flex-row md:items-start md:gap-2">
                     <Input
                         id="email"
                         name="email"
                         type="email"
-                        className="w-full px-4 py-2 text-foreground bg-background border-input rounded-md focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary h-10"
+                        className="w-full px-4 py-2 text-foreground bg-background border-input rounded-md focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
                         placeholder="Email Address"
                         required
                     />
