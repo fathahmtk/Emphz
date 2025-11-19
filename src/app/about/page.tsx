@@ -107,6 +107,9 @@ export default function AboutPage() {
                                 <blockquote className="text-2xl font-semibold text-foreground/90 italic text-center md:text-left">
                                     We operate with clarity, speed, and outcome-focused execution. No delays. No excuses. Only performance.
                                 </blockquote>
+                                <p className="mt-4 text-center md:text-right font-semibold text-foreground">
+                                    — Muhammed Rashik, CEO, EMPHZ
+                                </p>
                              </div>
                         </div>
                     </ScrollReveal>
