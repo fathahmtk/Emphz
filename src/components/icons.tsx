@@ -22,6 +22,7 @@ export function Logo({
         alt="EMPHZ Logo"
         fill
         className={cn("object-contain")}
+        unoptimized
         priority
       />
     </div>
