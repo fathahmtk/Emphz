@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button";
 import { CheckCircle, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ImageGallery } from "@/components/image-gallery";
+import { PlaceHolderImages } from "@/lib/placeholder-images";
 
 const capabilities = [
     "Custom mould design & fabrication",
@@ -27,6 +29,9 @@ const processSteps = [
     { title: "Delivery", description: "Final products are delivered with complete quality documentation." },
 ];
 
+const sampleImages = PlaceHolderImages.filter(p => ['hero-industrial-plant', 'hero-extra-3', 'hero-extra-4', 'hero-new-4'].includes(p.id));
+
+
 export default function CustomPage() {
     return (
         <>
@@ -37,6 +42,13 @@ export default function CustomPage() {
                     <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
                         For projects with unique dimensional, operational, or environmental requirements, EMPHZ provides end-to-end custom engineering. Our teams work with you to design, prototype, and manufacture GRP enclosures tailored to your exact specifications.
                     </p>
+                </ScrollReveal>
+
+                <ScrollReveal delay={150} className="mt-12">
+                    <h2 className="text-3xl font-bold font-headline">Example Customizations</h2>
+                    <div className="mt-6">
+                        <ImageGallery images={sampleImages} />
+                    </div>
                 </ScrollReveal>
 
                 <ScrollReveal delay={200} className="mt-12">
