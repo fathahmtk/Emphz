@@ -85,7 +85,7 @@ export function SearchDialog({ open, onOpenChange }: { open: boolean; onOpenChan
                         key={product.id}
                         value={product.name}
                         onSelect={() => {
-                            runCommand(() => router.push(`/products`))
+                            runCommand(() => router.push(`/products/${product.slug}`))
                         }}
                         >
                         <HardHat className="mr-2 h-4 w-4" />
