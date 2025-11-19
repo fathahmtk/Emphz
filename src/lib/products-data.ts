@@ -1,5 +1,4 @@
 
-
 import type { Product } from './types';
 
 export const productsSeed: Omit<Product, 'id'>[] = [
