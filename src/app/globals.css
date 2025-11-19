@@ -9,33 +9,33 @@ body {
 
 @layer base {
   :root {
-    --background: 210 20% 98%; /* Very light, cool gray */
-    --foreground: 210 10% 23%; /* Dark slate gray */
+    --background: 210 40% 98%;
+    --foreground: 210 10% 23%;
 
-    --card: 0 0% 100%;
+    --card: 210 30% 96%;
     --card-foreground: 210 10% 23%;
 
-    --popover: 0 0% 100%;
+    --popover: 210 40% 98%;
     --popover-foreground: 210 10% 23%;
 
-    --primary: 180 60% 35%; /* Sophisticated dark teal */
+    --primary: 180 65% 30%;
     --primary-foreground: 180 60% 95%;
 
-    --secondary: 210 15% 94%; /* Light gray */
+    --secondary: 210 20% 88%;
     --secondary-foreground: 210 10% 23%;
     
-    --muted: 210 15% 94%;
+    --muted: 210 20% 88%;
     --muted-foreground: 210 10% 45%;
 
-    --accent: 210 15% 90%; /* Slightly darker light gray for accents */
+    --accent: 210 25% 92%;
     --accent-foreground: 210 10% 15%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 210 10% 85%;
-    --input: 210 10% 85%;
-    --ring: 180 60% 35%; /* Matching the new primary teal */
+    --border: 210 15% 80%;
+    --input: 210 15% 85%;
+    --ring: 180 65% 30%;
     
     --radius: 0.5rem;
   }
@@ -87,3 +87,4 @@ body {
 .embla__container > .embla__slide.is-active {
     opacity: 1;
 }
+
