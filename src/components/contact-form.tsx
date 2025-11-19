@@ -2,7 +2,7 @@
 "use client";
 
 import { useFormState, useFormStatus } from "react-dom";
-import { useEffect, useMemo } from "react";
+import { useEffect } from "react";
 import { submitContactForm } from "@/app/contact/actions";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
@@ -13,9 +13,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Alert, AlertDescription, AlertTitle } from "./ui/alert";
 import { Terminal } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
-import { useCollection, useFirestore } from "@/firebase";
-import type { Product } from "@/lib/types";
-import { collection, orderBy, query } from "firebase/firestore";
+import { getProductsWithIds } from "@/lib/seed-data";
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -26,18 +24,20 @@ function SubmitButton() {
   );
 }
 
+const productCategories = [
+    "GRP Electrical Enclosures",
+    "GRP Portable Toilets",
+    "GRP Modular Kiosks",
+    "GRP Security Cabins",
+    "GRP Resort Villas & Pods",
+    "Custom GRP Fabrication",
+    "Other"
+];
+
 export function ContactForm() {
   const initialState = { status: "idle" as const, message: "" };
   const [state, formAction] = useFormState(submitContactForm, initialState);
   const { toast } = useToast();
-  
-  const firestore = useFirestore();
-  const productsQuery = useMemo(() => {
-    if (!firestore) return null;
-    return query(collection(firestore, 'products'), orderBy('name'));
-  }, [firestore]);
-  const { data: products } = useCollection<Product>(productsQuery);
-
 
   useEffect(() => {
     if (state.status === "error") {
@@ -86,7 +86,7 @@ export function ContactForm() {
             </div>
             <div className="space-y-2">
               <Label htmlFor="phone">Phone</Label>
-              <Input id="phone" name="phone" type="tel" placeholder="+1-555-123-4567" required />
+              <Input id="phone" name="phone" type="tel" placeholder="+91 XXXXXXXX" required />
             </div>
           </div>
            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -98,10 +98,10 @@ export function ContactForm() {
               <Label htmlFor="product">Product of Interest</Label>
               <Select name="product">
                 <SelectTrigger id="product">
-                    <SelectValue placeholder="Select a product" />
+                    <SelectValue placeholder="Select a product category" />
                 </SelectTrigger>
                 <SelectContent>
-                    {products?.map(p => <SelectItem key={p.id} value={p.name}>{p.name}</SelectItem>)}
+                    {productCategories.map(p => <SelectItem key={p} value={p}>{p}</SelectItem>)}
                 </SelectContent>
               </Select>
             </div>
@@ -113,7 +113,7 @@ export function ContactForm() {
             </div>
              <div className="space-y-2">
                 <Label htmlFor="location">Project Location</Label>
-                <Input id="location" name="location" placeholder="City, Country" />
+                <Input id="location" name="location" placeholder="City, State" />
             </div>
           </div>
           <div className="space-y-2">
