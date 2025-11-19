@@ -1,11 +1,10 @@
 
 'use client';
-import { useEffect, useMemo, useState } from 'react';
-import { collection, query, where, getDocs, doc, getDoc } from 'firebase/firestore';
+import { useEffect, useState } from 'react';
+import { collection, query, where, getDocs, doc, getDoc, limit } from 'firebase/firestore';
 import { useFirestore } from '@/firebase';
 import { SiteHeader } from '@/components/layout/site-header';
 import { SiteFooter } from '@/components/layout/site-footer';
-import { ScrollReveal } from '@/components/scroll-reveal';
 import type { BlogPost, BlogAuthor } from '@/lib/types';
 import { Skeleton } from '@/components/ui/skeleton';
 import { PageHero } from '@/components/layout/page-hero';
@@ -13,6 +12,8 @@ import { Badge } from '@/components/ui/badge';
 import { format } from 'date-fns';
 import { AuthorAvatar } from '@/components/author-avatar';
 import { notFound } from 'next/navigation';
+import ReactMarkdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw';
 
 export default function BlogPostPage({ params }: { params: { slug: string } }) {
     const firestore = useFirestore();
@@ -93,7 +94,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
                 imageHint="blog post hero"
              />
             <main className="py-12 md:py-20">
-                <article className="container max-w-3xl mx-auto prose dark:prose-invert">
+                <article className="container max-w-3xl mx-auto">
                     <header className="mb-8">
                         <div className="flex items-center justify-between mb-4">
                              <Badge variant="outline">{post.category}</Badge>
@@ -103,11 +104,10 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
                         </div>
                        {author && <AuthorAvatar author={author} />}
                     </header>
-                    <div className="prose-p:text-foreground/80 prose-headings:text-foreground prose-strong:text-foreground prose-a:text-primary hover:prose-a:text-primary/80">
-                       {/* This is a simplified way to render content. For production, use a Markdown renderer like 'react-markdown' */}
-                       {post.content.split('\\n').map((paragraph, index) => (
-                           <p key={index} className="mb-4">{paragraph}</p>
-                       ))}
+                    <div className="prose dark:prose-invert prose-p:text-foreground/80 prose-headings:text-foreground prose-strong:text-foreground prose-a:text-primary hover:prose-a:text-primary/80 max-w-none">
+                       <ReactMarkdown rehypePlugins={[rehypeRaw]}>
+                            {post.content}
+                       </ReactMarkdown>
                     </div>
                 </article>
             </main>
@@ -115,6 +115,3 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
         </>
     );
 }
-
-// Add this to handle potential limit on getDocs, though with a slug it should be fine.
-const limit = (count: number) => (query: any) => ({ ...query, limit: count });
