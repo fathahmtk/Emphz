@@ -16,6 +16,7 @@ import { HeroCarousel } from '@/components/hero-carousel';
 import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
+import { Logo } from '@/components/icons';
 
 const corporatePillars = [
   {
@@ -117,17 +118,20 @@ export default function Home() {
       <SiteHeader />
       <main className="flex-1">
         <section className="relative h-dvh w-full flex items-end justify-start text-left overflow-hidden">
+          <Link href="/" className="absolute top-4 left-4 md:top-6 md:left-6 z-30">
+              <Logo className="h-10 md:h-12 w-auto text-white" />
+          </Link>
           <HeroCarousel images={heroImages} />
           <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent z-10" />
           <div className="container relative px-4 md:px-6 z-20 pb-12 md:pb-20">
             <div className="max-w-2xl">
               <ScrollReveal>
-                <h1 className="!leading-tight text-3xl font-bold font-headline tracking-tighter text-foreground shadow-lg sm:text-4xl md:text-5xl">
+                <h1 className="!leading-tight text-3xl font-bold font-headline tracking-tighter text-white shadow-lg sm:text-4xl md:text-5xl">
                   Premier GRP Engineering & Modular Infrastructure
                 </h1>
               </ScrollReveal>
               <ScrollReveal delay={200}>
-                <p className="mt-4 text-base text-foreground/80 md:text-lg">
+                <p className="mt-4 text-base text-white/90 md:text-lg">
                   Manufacturing smart urban solutions and high-performance industrial components.
                 </p>
               </ScrollReveal>
@@ -139,7 +143,7 @@ export default function Home() {
                       <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                     </Link>
                   </Button>
-                  <Button size="lg" variant="outline" asChild>
+                  <Button size="lg" variant="outline" className="text-white border-white hover:bg-white hover:text-background" asChild>
                     <Link href="/products">Explore Product Catalogue</Link>
                   </Button>
                 </div>
@@ -370,3 +374,5 @@ export default function Home() {
     </>
   );
 }
+
+    

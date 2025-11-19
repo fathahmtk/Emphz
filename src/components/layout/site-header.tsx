@@ -46,18 +46,18 @@ export function SiteHeader() {
         <>
             <header className={cn(
                 "fixed top-0 z-50 w-full transition-all duration-300",
-                isScrolled ? "border-b border-border/50 bg-background/80 backdrop-blur-lg" : "border-b border-transparent"
+                isScrolled ? "border-b border-border/50 bg-background/80 backdrop-blur-lg" : "bg-transparent border-b border-transparent"
             )}>
                 <div className="container flex h-16 items-center px-4 md:px-6">
-                    <Link href="/" className="mr-6 flex items-center space-x-2">
-                        <Logo className={cn("h-8 w-auto text-foreground transition-colors")} />
-                    </Link>
+                    <div className="mr-6 hidden md:flex items-center space-x-2">
+                        <Logo className={cn("h-8 w-auto text-foreground transition-colors", !isScrolled && "text-white")} />
+                    </div>
                     
-                    <NavigationMenu className={cn("hidden md:flex")}>
+                    <NavigationMenu className={cn("hidden md:flex flex-1")}>
                         <NavigationMenuList>
                             {menuData.map((item) => (
                                 <NavigationMenuItem key={item.title}>
-                                    <NavigationMenuTrigger className={cn("bg-transparent text-sm font-medium text-foreground/70 hover:text-foreground/90 hover:bg-accent/50 focus:bg-accent/50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50")}>
+                                    <NavigationMenuTrigger className={cn("bg-transparent text-sm font-medium", isScrolled ? "text-foreground/70 hover:text-foreground/90" : "text-white/80 hover:text-white", "hover:bg-accent/50 focus:bg-accent/50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50")}>
                                         <Link href={item.href}>{item.title}</Link>
                                     </NavigationMenuTrigger>
                                     <NavigationMenuContent>
@@ -94,12 +94,12 @@ export function SiteHeader() {
                         </NavigationMenuList>
                     </NavigationMenu>
 
-                    <div className="flex flex-1 items-center justify-end space-x-2">
+                    <div className="flex flex-1 items-center justify-start md:justify-end space-x-2">
                         <div className="hidden md:flex items-center space-x-2">
                             <Button asChild>
                                 <Link href="/contact">Request Spec Pack</Link>
                             </Button>
-                            <Button variant="ghost" size="icon" onClick={() => setIsSearchOpen(true)}><Search className="h-4 w-4"/></Button>
+                            <Button variant="ghost" size="icon" onClick={() => setIsSearchOpen(true)} className={cn(!isScrolled && "text-white hover:text-white hover:bg-white/10")}><Search className="h-4 w-4"/></Button>
                         </div>
                         <MobileNav />
                     </div>
@@ -133,3 +133,5 @@ const ListItem = React.forwardRef<
     )
 })
 ListItem.displayName = "ListItem"
+
+    
