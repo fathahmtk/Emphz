@@ -27,6 +27,8 @@ export function SiteHeader() {
             setIsScrolled(window.scrollY > 10);
         };
         window.addEventListener("scroll", handleScroll);
+        // Initial check
+        handleScroll();
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
@@ -51,7 +53,7 @@ export function SiteHeader() {
                 <div className="container flex h-16 items-center px-4 md:px-6">
                     <div className="mr-6 flex items-center md:flex-1">
                          <Link href="/" className="mr-6">
-                            <Logo className={cn("h-8 w-auto transition-all", !isScrolled ? "[&_img]:invert [&_img]:brightness-0" : "")} />
+                            <Logo className="h-8 w-auto" imageClassName={cn("transition-all", !isScrolled ? "invert brightness-0" : "")} />
                          </Link>
                         <div className="hidden md:flex">
                              <NavigationMenu>
