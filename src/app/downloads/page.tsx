@@ -1,14 +1,44 @@
 
 'use client';
+import { useMemo } from 'react';
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { Button } from "@/components/ui/button";
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { useCollection, useFirestore } from '@/firebase';
+import type { TechnicalDownload } from '@/lib/types';
+import { collection, orderBy, query } from 'firebase/firestore';
 import { Download, FileText } from "lucide-react";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
-import { technicalDownloads } from "@/lib/downloads-data";
+import { Skeleton } from '@/components/ui/skeleton';
+
+function DownloadSkeleton() {
+    return (
+        <Card>
+            <div className="flex items-center justify-between p-6">
+                <div className="flex items-center gap-4">
+                    <Skeleton className="w-8 h-8"/>
+                    <div>
+                        <Skeleton className="h-6 w-48 mb-2" />
+                        <Skeleton className="h-4 w-64" />
+                    </div>
+                </div>
+                <Skeleton className="h-10 w-28" />
+            </div>
+        </Card>
+    );
+}
+
 
 export default function DownloadsPage() {
+    const firestore = useFirestore();
+
+    const downloadsQuery = useMemo(() => {
+        if (!firestore) return null;
+        return query(collection(firestore, 'technical_downloads'), orderBy('name'));
+    }, [firestore]);
+
+    const { data: downloads, isLoading } = useCollection<TechnicalDownload>(downloadsQuery);
 
   return (
     <>
@@ -26,13 +56,14 @@ export default function DownloadsPage() {
 
           <ScrollReveal delay={200}>
             <div className="space-y-4">
-              {technicalDownloads.map((item) => (
+              {isLoading && Array.from({length: 4}).map((_, i) => <DownloadSkeleton key={i} />)}
+              {downloads?.map((item) => (
                 <Card key={item.id} className="bg-card/80">
                   <div className="flex items-center justify-between p-6">
                     <div className="flex items-center gap-4">
                       <FileText className="w-8 h-8 text-accent"/>
                       <div>
-                        <CardTitle>{item.title}</CardTitle>
+                        <CardTitle>{item.name}</CardTitle>
                         <CardDescription className="mt-1">{item.description}</CardDescription>
                       </div>
                     </div>

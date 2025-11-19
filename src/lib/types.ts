@@ -26,6 +26,14 @@ export type ProjectCaseStudy = {
   afterImageUrl: string;
 };
 
+export type TechnicalDownload = {
+    id: string;
+    name: string;
+    description: string;
+    fileUrl: string;
+};
+
+
 export type NavItem = {
   title: string;
   href: string;
