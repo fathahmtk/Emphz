@@ -3,6 +3,7 @@
 import { Button } from '@/components/ui/button';
 import { SiteHeader } from '@/components/layout/site-header';
 import { SiteFooter } from '@/components/layout/site-footer';
+import { FirestorePermissionError } from '@/firebase';
 
 export default function GlobalError({
   error,
@@ -11,8 +12,8 @@ export default function GlobalError({
   error: Error & { digest?: string };
   reset: () => void;
 }) {
-  // Check if the error is our custom FirestorePermissionError
-  const isPermissionError = error.name === 'FirebaseError' && error.message.includes('Missing or insufficient permissions');
+  // Check if the error is our custom FirestorePermissionError by looking for the unique properties we added to it.
+  const isPermissionError = error instanceof FirestorePermissionError || (error.name === 'FirebaseError' && 'request' in error);
 
   return (
     <html>
