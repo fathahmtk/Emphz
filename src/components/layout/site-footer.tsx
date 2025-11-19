@@ -72,7 +72,7 @@ export function SiteFooter() {
           <div>
             <p className="font-semibold text-foreground">Quick Links</p>
             <div className="flex flex-col items-start mt-5 space-y-2">
-              <Link href="/about" className="text-muted-foreground transition-colors duration-300 hover:text-primary">About EMPHZ</Link>
+              <Link href="/#about" className="text-muted-foreground transition-colors duration-300 hover:text-primary">About EMPHZ</Link>
               <Link href="/products" className="text-muted-foreground transition-colors duration-300 hover:text-primary">Products</Link>
               <Link href="/contact" className="text-muted-foreground transition-colors duration-300 hover:text-primary">Contact</Link>
             </div>
@@ -81,7 +81,7 @@ export function SiteFooter() {
             <p className="font-semibold text-foreground">Contact</p>
             <div className="flex flex-col items-start mt-5 space-y-2">
               <a href="mailto:sales@emphz.com" className="text-muted-foreground transition-colors duration-300 hover:text-primary">sales@emphz.com</a>
-              <p className="text-muted-foreground">123 Innovation Drive, Dubai, UAE</p>
+              <p className="text-muted-foreground">EMPHZ Solutions Inc, Dubai, UAE</p>
             </div>
           </div>
         </div>
@@ -107,4 +107,3 @@ export function SiteFooter() {
     </footer>
   );
 }
-

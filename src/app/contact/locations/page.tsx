@@ -34,7 +34,7 @@ export default function LocationsPage() {
                                 <CardTitle className="font-headline text-2xl">Head Office</CardTitle>
                             </CardHeader>
                             <CardContent>
-                                <p className="text-muted-foreground">123 Innovation Drive, Dubai, UAE</p>
+                                <p className="text-muted-foreground">EMPHZ Solutions Inc, Dubai, UAE</p>
                                 <p className="text-sm text-muted-foreground mt-2">Visitor & Safety Guidelines Apply</p>
                             </CardContent>
                         </Card>
@@ -46,7 +46,7 @@ export default function LocationsPage() {
                                 <CardTitle className="font-headline text-2xl">Manufacturing Facility</CardTitle>
                             </CardHeader>
                             <CardContent>
-                                <p className="text-muted-foreground">456 Industrial Zone, Abu Dhabi, UAE</p>
+                                <p className="text-muted-foreground">EMPHZ Solutions Inc, Abu Dhabi, UAE</p>
                                 <p className="text-sm text-muted-foreground mt-2">Capacity: 50,000 units/year</p>
                                 <p className="text-sm text-muted-foreground">Warehouse & Dispatch: Sun-Thu, 7am-4pm</p>
                             </CardContent>
