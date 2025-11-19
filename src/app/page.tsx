@@ -147,25 +147,14 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ABOUT SECTION */}
-        <section id="about" className="relative py-12 md:py-24 lg:py-32 w-full flex items-center justify-center overflow-hidden">
-             {aboutBgImage && (
-              <Image
-                src={aboutBgImage.imageUrl}
-                alt={aboutBgImage.description}
-                data-ai-hint={aboutBgImage.imageHint}
-                fill
-                className="object-cover"
-                quality={100}
-              />
-            )}
-            <div className="absolute inset-0 bg-background/80 z-10" />
-            <div className="container relative z-20 px-4 md:px-6">
+        {/* ABOUT SECTION - COLOR */}
+        <section id="about" className="py-12 md:py-24 lg:py-32 bg-secondary/20">
+            <div className="container px-4 md:px-6">
                 <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-12">
-                    <div className="text-white">
+                    <div>
                         <ScrollReveal>
                             <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">About EMPHZ</h2>
-                            <div className="mt-4 space-y-4 text-white/80 md:text-lg">
+                            <div className="mt-4 space-y-4 text-foreground/80 md:text-lg">
                                 <p>
                                     EMPHZ is a specialized GRP manufacturing company operating out of Mysore with dedicated execution teams across Kerala. We build high-strength, weatherproof, corrosion-resistant GRP enclosures and modular structures designed for industrial, commercial, tourism, and government applications.
                                 </p>
@@ -189,13 +178,24 @@ export default function Home() {
             </div>
         </section>
 
-        {/* PRODUCTS SECTION */}
-        <section id="products" className="py-12 md:py-24 lg:py-32 bg-secondary/20">
-            <div className="container px-4 md:px-6">
+        {/* PRODUCTS SECTION - IMAGE */}
+        <section id="products" className="relative py-12 md:py-24 lg:py-32 w-full flex items-center justify-center overflow-hidden">
+             {productsBgImage && (
+              <Image
+                src={productsBgImage.imageUrl}
+                alt={productsBgImage.description}
+                data-ai-hint={productsBgImage.imageHint}
+                fill
+                className="object-cover"
+                quality={100}
+              />
+            )}
+            <div className="absolute inset-0 bg-background/80 z-10" />
+            <div className="container px-4 md:px-6 relative z-20">
                 <ScrollReveal>
-                    <div className="text-center mb-12 text-foreground">
+                    <div className="text-center mb-12 text-white">
                         <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Core Product Lines</h2>
-                         <p className="mt-4 max-w-3xl mx-auto text-foreground/80 md:text-lg">
+                         <p className="mt-4 max-w-3xl mx-auto text-white/80 md:text-lg">
                             From mission-critical electrical enclosures to luxury resort villas, our products are engineered for performance and longevity.
                         </p>
                     </div>
@@ -219,24 +219,13 @@ export default function Home() {
             </div>
         </section>
         
-        {/* WHY GRP SECTION */}
-        <section id="why-grp" className="relative py-12 md:py-24 lg:py-32 w-full flex items-center justify-center overflow-hidden">
-            {whyGrpBgImage && (
-              <Image
-                src={whyGrpBgImage.imageUrl}
-                alt={whyGrpBgImage.description}
-                data-ai-hint={whyGrpBgImage.imageHint}
-                fill
-                className="object-cover"
-                quality={100}
-              />
-            )}
-            <div className="absolute inset-0 bg-background/80 z-10" />
-            <div className="container relative z-20 px-4 md:px-6">
+        {/* WHY GRP SECTION - COLOR */}
+        <section id="why-grp" className="py-12 md:py-24 lg:py-32 bg-secondary/20">
+            <div className="container px-4 md:px-6">
                 <ScrollReveal>
-                    <div className="text-center mb-12 text-white">
+                    <div className="text-center mb-12 text-foreground">
                         <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Why GRP? Why EMPHZ?</h2>
-                         <p className="mt-4 max-w-3xl mx-auto text-white/80 md:text-lg">
+                         <p className="mt-4 max-w-3xl mx-auto text-foreground/80 md:text-lg">
                             GRP isn't just a material; it's a long-term strategic advantage. We leverage its inherent strengths with industrial manufacturing to deliver unparalleled value.
                         </p>
                     </div>
@@ -262,12 +251,23 @@ export default function Home() {
              </div>
         </section>
 
-        {/* DELIVERY MODEL SECTION */}
-        <section id="delivery-model" className="py-12 md:py-24 lg:py-32 bg-secondary/20">
-            <div className="container px-4 md:px-6 text-center">
+        {/* DELIVERY MODEL SECTION - IMAGE */}
+        <section id="delivery-model" className="relative py-12 md:py-24 lg:py-32 w-full flex items-center justify-center overflow-hidden">
+             {deliveryBgImage && (
+              <Image
+                src={deliveryBgImage.imageUrl}
+                alt={deliveryBgImage.description}
+                data-ai-hint={deliveryBgImage.imageHint}
+                fill
+                className="object-cover"
+                quality={100}
+              />
+            )}
+            <div className="absolute inset-0 bg-background/80 z-10" />
+            <div className="container px-4 md:px-6 text-center relative z-20">
                 <ScrollReveal>
-                    <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">South India Delivery Model</h2>
-                    <p className="mt-4 max-w-3xl mx-auto text-foreground/80 md:text-lg">
+                    <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-white">South India Delivery Model</h2>
+                    <p className="mt-4 max-w-3xl mx-auto text-white/80 md:text-lg">
                         You get manufacturing reliability from our Mysore factory, plus local execution support from our Kerala operations offices.
                     </p>
                 </ScrollReveal>
@@ -296,23 +296,12 @@ export default function Home() {
             </div>
         </section>
 
-        {/* INDUSTRIES SECTION */}
-        <section id="industries" className="relative py-12 md:py-24 lg:py-32 w-full flex items-center justify-center overflow-hidden">
-            {deliveryBgImage && (
-              <Image
-                src={deliveryBgImage.imageUrl}
-                alt={deliveryBgImage.description}
-                data-ai-hint={deliveryBgImage.imageHint}
-                fill
-                className="object-cover"
-                quality={100}
-              />
-            )}
-            <div className="absolute inset-0 bg-background/80 z-10" />
-            <div className="container px-4 md:px-6 text-center relative z-20">
+        {/* INDUSTRIES SECTION - COLOR */}
+        <section id="industries" className="py-12 md:py-24 lg:py-32 bg-secondary/20">
+            <div className="container px-4 md:px-6 text-center">
                  <ScrollReveal>
-                    <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-white">Industries We Serve</h2>
-                     <p className="mt-4 max-w-3xl mx-auto text-white/80 md:text-lg">
+                    <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-foreground">Industries We Serve</h2>
+                     <p className="mt-4 max-w-3xl mx-auto text-foreground/80 md:text-lg">
                         Our solutions are trusted across a wide range of sectors for their reliability and performance.
                     </p>
                 </ScrollReveal>
@@ -350,5 +339,3 @@ export default function Home() {
     </>
   );
 }
-
-    
