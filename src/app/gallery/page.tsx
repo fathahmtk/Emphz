@@ -6,8 +6,21 @@ import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { ImageGallery } from "@/components/image-gallery";
 
 export default function GalleryPage() {
-    // For now, we'll just show all placeholder images. We can refine this later.
-    const galleryImages = PlaceHolderImages;
+    // Curate a specific set of images for the main gallery
+    const galleryImages = PlaceHolderImages.filter(p => [
+        'hero-new-4',
+        'gallery-project-1',
+        'gallery-kiosk',
+        'villa-e7',
+        'gallery-factory-3',
+        'gallery-project-2',
+        'enclosure-2',
+        'toilet-1',
+        'security-cabin-1',
+        'hero-industrial-plant',
+        'hero-new-2',
+        'case-study-after-2'
+    ].includes(p.id));
 
     return (
         <>
