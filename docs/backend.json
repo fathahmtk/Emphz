@@ -161,6 +161,31 @@
             "submittedAt": { "type": "string", "format": "date-time" }
         },
         "required": ["name", "email", "phone", "cvFileName", "submittedAt"]
+    },
+    "Industry": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Industry",
+      "type": "object",
+      "description": "Represents an industry that EMPHZ serves.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Industry entity."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the industry."
+        },
+        "description": {
+          "type": "string",
+          "description": "Description of how EMPHZ serves this industry."
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "description"
+      ]
     }
   },
   "auth": {
@@ -191,6 +216,10 @@
       {
         "path": "/job_applications/{jobApplicationId}",
         "definition": { "schema": { "$ref": "#/entities/JobApplication" } }
+      },
+      {
+        "path": "/industries/{industryId}",
+        "definition": { "schema": { "$ref": "#/entities/Industry" } }
       }
     ]
   }

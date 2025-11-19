@@ -1,9 +1,10 @@
 
 
-import type { Product, ProjectCaseStudy, TechnicalDownload } from './types';
+import type { Product, ProjectCaseStudy, TechnicalDownload, Industry } from './types';
 import { productsSeed } from './products-data';
 import { projectsSeed } from './projects-data';
 import { downloadsSeed } from './downloads-data';
+import { industriesSeed } from './industries-data';
 
 // Helper function to generate IDs from names
 function generateId(name: string): string {
@@ -28,5 +29,12 @@ export function getDownloadsWithIds(): TechnicalDownload[] {
     return downloadsSeed.map(d => ({
         ...d,
         id: generateId(d.name)
+    }))
+}
+
+export function getIndustriesWithIds(): Industry[] {
+    return industriesSeed.map(i => ({
+        ...i,
+        id: generateId(i.name)
     }))
 }

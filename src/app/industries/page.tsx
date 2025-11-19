@@ -1,20 +1,44 @@
 
+'use client';
+import { useMemo } from 'react';
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CheckCircle } from "lucide-react";
+import { useCollection, useFirestore } from '@/firebase';
+import type { Industry } from '@/lib/types';
+import { collection, orderBy, query } from 'firebase/firestore';
+import { Skeleton } from '@/components/ui/skeleton';
 
-const industries = [
-    { name: "Tourism & Resorts", description: "High-performance villas and cabins for resort destinations." },
-    { name: "Construction", description: "Toilet cabins, office cabins, and site enclosures." },
-    { name: "Government / Panchayat", description: "Sanitation cabins, kiosks, utility enclosures." },
-    { name: "Solar EPC", description: "Battery/inverter enclosures built for environmental exposure." },
-    { name: "Retail & Food Service", description: "Fast-deploy GRP kiosks and retail pods." },
-    { name: "Security", description: "Guard cabins for residential, commercial, and industrial sites." },
-];
+function IndustrySkeleton() {
+    return (
+        <Card>
+            <CardHeader>
+                <div className="flex items-center gap-3">
+                    <Skeleton className="h-6 w-6 rounded-full" />
+                    <Skeleton className="h-6 w-40" />
+                </div>
+            </CardHeader>
+            <CardContent>
+                <Skeleton className="h-4 w-full" />
+                <Skeleton className="h-4 w-3/4 mt-2" />
+            </CardContent>
+        </Card>
+    );
+}
+
 
 export default function IndustriesPage() {
+    const firestore = useFirestore();
+
+    const industriesQuery = useMemo(() => {
+        if (!firestore) return null;
+        return query(collection(firestore, 'industries'), orderBy('name'));
+    }, [firestore]);
+
+    const { data: industries, isLoading } = useCollection<Industry>(industriesQuery);
+
     return (
         <>
             <SiteHeader />
@@ -29,8 +53,9 @@ export default function IndustriesPage() {
                 </ScrollReveal>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {industries.map((industry, index) => (
-                         <ScrollReveal key={industry.name} delay={index * 100}>
+                    {isLoading && Array.from({length: 6}).map((_, i) => <IndustrySkeleton key={i} />)}
+                    {industries?.map((industry, index) => (
+                         <ScrollReveal key={industry.id} delay={index * 100}>
                             <Card className="h-full">
                                 <CardHeader>
                                     <CardTitle className="flex items-center gap-3 font-headline text-xl">

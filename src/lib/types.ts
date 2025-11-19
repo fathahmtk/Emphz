@@ -40,3 +40,8 @@ export type NavItem = {
   href: string;
 };
 
+export type Industry = {
+    id: string;
+    name: string;
+    description: string;
+};
