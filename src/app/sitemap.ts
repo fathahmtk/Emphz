@@ -1,8 +1,10 @@
 import { type MetadataRoute } from 'next'
-import { getProductsWithIds } from '@/lib/seed-data'
+import { getFirestore } from '@/firebase/server';
+import type { Product, BlogPost } from '@/lib/types';
  
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://emphz.com' // Replace with your actual domain
+  const firestore = getFirestore();
 
   const staticPages: MetadataRoute.Sitemap = [
     {
@@ -65,11 +67,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'yearly',
       priority: 0.7,
     },
+    {
+      url: `${baseUrl}/blog`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    }
   ];
 
-  const productPages = getProductsWithIds().map(product => {
-    // Generate a slug from the product name, e.g., 'GRP Electrical Enclosure' -> 'enclosures'
-    const slug = product.name.toLowerCase().split(' ')[1] || product.id;
+  // Fetch products
+  const productsSnapshot = await firestore.collection('products').get();
+  const productPages = productsSnapshot.docs.map(doc => {
+    const product = doc.data() as Product;
+    const slug = (product.category.split(' ')[0] || product.id).toLowerCase();
     return {
       url: `${baseUrl}/products/${slug}`,
       lastModified: new Date(),
@@ -77,10 +87,37 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     }
   });
+  
+  // Create a set of unique product category pages
+  const productCategories = new Set(productsSnapshot.docs.map(doc => (doc.data() as Product).category));
+  const productDetailPages = Array.from(productCategories).map(category => {
+    const slug = category.toLowerCase().split(' ')[0] || category;
+    return {
+        url: `${baseUrl}/products/${slug}`,
+        lastModified: new Date(),
+        changeFrequency: 'monthly' as const,
+        priority: 0.8
+    };
+  });
+  const uniqueProductDetailPages = Array.from(new Map(productDetailPages.map(item => [item.url, item])).values());
+
+
+  // Fetch blog posts
+  const blogPostsSnapshot = await firestore.collection('blog_posts').get();
+  const blogPostPages = blogPostsSnapshot.docs.map(doc => {
+    const post = doc.data() as BlogPost;
+    return {
+      url: `${baseUrl}/blog/${post.slug}`,
+      lastModified: post.publishedAt.toDate(),
+      changeFrequency: 'yearly' as const,
+      priority: 0.7,
+    }
+  });
 
 
   return [
     ...staticPages,
-    ...productPages
+    ...uniqueProductDetailPages,
+    ...blogPostPages,
   ];
 }
