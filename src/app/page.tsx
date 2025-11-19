@@ -1,7 +1,7 @@
 
 'use client';
 import Link from 'next/link';
-import { ArrowRight, Box, CheckCircle, Droplets, Factory, HardHat, ShieldCheck, Sun, Wind, Zap } from 'lucide-react';
+import { ArrowRight, Box, CheckCircle, Factory, HardHat, ShieldCheck, Sun, Wind, Zap } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { ScrollReveal } from '@/components/scroll-reveal';
@@ -11,8 +11,15 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import Image from 'next/image';
 import { GlassCard } from '@/components/glass-card';
+import { HeroCarousel } from '@/components/hero-carousel';
 
-const heroBgImage = PlaceHolderImages.find(p => p.id === 'hero-new-2');
+const heroCarouselImages = PlaceHolderImages.filter(p => [
+    'hero-new-2', 
+    'hero-new-4', 
+    'hero-new-6',
+    'hero-industrial-plant'
+].includes(p.id));
+
 const aboutBgImage = PlaceHolderImages.find(p => p.id === 'hero-industrial-plant');
 const productsBgImage = PlaceHolderImages.find(p => p.id === 'hero-new-3');
 const whyGrpBgImage = PlaceHolderImages.find(p => p.id === 'hero-new-4');
@@ -53,13 +60,13 @@ const coreProducts = [
 
 const whyGprPoints = [
     { icon: ShieldCheck, text: "Zero corrosion" },
-    { icon: Zap, text: "Zero maintenance" },
+    { icon: Zap, text: "High ROI" },
     { icon: Wind, text: "Lightweight, high strength" },
-    { icon: ShieldCheck, text: "Thermal and electrical insulation" },
-    { icon: Sun, text: "UV and monsoon-resistant" },
+    { icon: ShieldCheck, text: "Thermal & electrical insulation" },
+    { icon: Sun, text: "UV & monsoon-resistant" },
     { icon: Factory, text: "Decades-long lifecycle" },
-    { icon: HardHat, text: "Fast deployment and installation" },
-    { icon: Droplets, text: "Higher ROI compared to traditional construction" }
+    { icon: HardHat, text: "Fast deployment" },
+    { icon: CheckCircle, text: "Zero maintenance" }
 ];
 
 const industries = [
@@ -86,17 +93,7 @@ export default function Home() {
       <main className="flex-1">
         {/* HERO SECTION */}
         <section className="relative h-dvh w-full flex items-center justify-center text-left overflow-hidden">
-            {heroBgImage && (
-              <Image
-                src={heroBgImage.imageUrl}
-                alt={heroBgImage.description}
-                data-ai-hint={heroBgImage.imageHint}
-                fill
-                className="object-cover"
-                priority
-                quality={100}
-              />
-            )}
+            <HeroCarousel images={heroCarouselImages} />
           <div className="absolute inset-0 bg-black/60 z-10" />
           <div className="container relative grid lg:grid-cols-2 gap-12 items-center px-4 md:px-6 z-20">
             <div className="max-w-3xl">
@@ -125,30 +122,30 @@ export default function Home() {
               </ScrollReveal>
             </div>
              <ScrollReveal delay={500} className="hidden lg:block">
-               <Card className="bg-white/90 backdrop-blur-sm">
+               <GlassCard>
                 <CardHeader>
-                    <CardTitle>Core Product Lines</CardTitle>
-                    <CardDescription>Explore our engineered solutions.</CardDescription>
+                    <CardTitle className="text-white">Core Product Lines</CardTitle>
+                    <CardDescription className="text-white/80">Explore our engineered solutions.</CardDescription>
                 </CardHeader>
                 <CardContent>
                     <div className="grid grid-cols-2 gap-4">
                         {heroProducts.map((product) => (
                            <Link key={product.href} href={product.href} className="block group">
-                             <div className="p-4 rounded-lg bg-secondary hover:bg-primary/10 hover:border-primary/20 border border-transparent transition-colors flex items-center gap-3">
+                             <div className="p-4 rounded-lg bg-white/10 hover:bg-white/20 border border-transparent transition-colors flex items-center gap-3">
                                <Box className="w-5 h-5 text-primary" />
-                               <span className="font-semibold group-hover:text-primary transition-colors">{product.title}</span>
+                               <span className="font-semibold text-white group-hover:text-primary transition-colors">{product.title}</span>
                              </div>
                            </Link>
                         ))}
                     </div>
                 </CardContent>
-               </Card>
+               </GlassCard>
             </ScrollReveal>
           </div>
         </section>
 
         {/* ABOUT SECTION - COLOR */}
-        <section id="about" className="py-12 md:py-24 lg:py-32 bg-secondary">
+        <section id="about" className="py-12 md:py-24 lg:py-32 bg-background">
             <div className="container px-4 md:px-6">
                 <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-12">
                     <div>
@@ -204,12 +201,12 @@ export default function Home() {
                     {coreProducts.map((product, i) => (
                         <ScrollReveal key={product.title} delay={i * 100}>
                             <Link href={product.href} className="h-full block">
-                                <GlassCard className="flex h-full flex-col group overflow-hidden bg-background/90 text-foreground">
+                                <GlassCard className="flex h-full flex-col group overflow-hidden">
                                     <CardHeader>
-                                        <CardTitle className="text-xl transition-colors group-hover:text-primary">{product.title}</CardTitle>
+                                        <CardTitle className="text-xl transition-colors text-white group-hover:text-primary">{product.title}</CardTitle>
                                     </CardHeader>
                                     <CardContent>
-                                        <CardDescription>{product.description}</CardDescription>
+                                        <CardDescription className="text-white/80">{product.description}</CardDescription>
                                     </CardContent>
                                 </GlassCard>
                             </Link>
@@ -220,33 +217,29 @@ export default function Home() {
         </section>
         
         {/* WHY GRP SECTION - COLOR */}
-        <section id="why-grp" className="py-12 md:py-24 lg:py-32 bg-secondary">
+        <section id="why-grp" className="py-12 md:py-24 lg:py-32 bg-background">
             <div className="container px-4 md:px-6">
-                <ScrollReveal>
-                    <div className="text-center mb-12 text-foreground">
-                        <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Why GRP? Why EMPHZ?</h2>
-                         <p className="mt-4 max-w-3xl mx-auto text-muted-foreground md:text-lg">
-                            GRP isn't just a material; it's a long-term strategic advantage. We leverage its inherent strengths with industrial manufacturing to deliver unparalleled value.
-                        </p>
+                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                     <ScrollReveal>
+                        <div className="text-left">
+                            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Why GRP? Why EMPHZ?</h2>
+                             <p className="mt-4 text-muted-foreground md:text-lg">
+                                GRP isn't just a material; it's a long-term strategic advantage. We leverage its inherent strengths with industrial manufacturing to deliver unparalleled value.
+                            </p>
+                        </div>
+                    </ScrollReveal>
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-8">
+                        {whyGprPoints.map((point, i) => (
+                            <ScrollReveal key={i} delay={i * 100}>
+                                <div className="flex flex-col items-center text-center gap-2">
+                                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
+                                        <point.icon className="h-6 w-6 text-primary" />
+                                    </div>
+                                    <p className="text-sm font-medium text-foreground">{point.text}</p>
+                                </div>
+                            </ScrollReveal>
+                        ))}
                     </div>
-                </ScrollReveal>
-                 <div className="mx-auto max-w-5xl">
-                    <Card>
-                        <CardContent className="p-8">
-                            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-                                {whyGprPoints.map((point, i) => (
-                                    <ScrollReveal key={i} delay={i * 100}>
-                                        <div className="flex flex-col items-center text-center gap-2">
-                                            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
-                                                <point.icon className="h-6 w-6 text-primary" />
-                                            </div>
-                                            <p className="text-sm font-medium text-foreground">{point.text}</p>
-                                        </div>
-                                    </ScrollReveal>
-                                ))}
-                            </div>
-                        </CardContent>
-                    </Card>
                  </div>
              </div>
         </section>
@@ -273,22 +266,22 @@ export default function Home() {
                 </ScrollReveal>
                 <ScrollReveal delay={200}>
                     <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8 text-center max-w-4xl mx-auto">
-                        <GlassCard className="bg-background/90 text-foreground">
+                        <GlassCard>
                             <CardHeader>
-                                <CardTitle>Factory</CardTitle>
-                                <CardDescription>Mysore (Karnataka)</CardDescription>
+                                <CardTitle className="text-white">Factory</CardTitle>
+                                <CardDescription className="text-white/80">Mysore (Karnataka)</CardDescription>
                             </CardHeader>
                         </GlassCard>
-                         <GlassCard className="bg-background/90 text-foreground">
+                         <GlassCard>
                             <CardHeader>
-                                <CardTitle>Operations Office</CardTitle>
-                                <CardDescription>Kerala (Calicut/Malappuram/Kochi)</CardDescription>
+                                <CardTitle className="text-white">Operations Office</CardTitle>
+                                <CardDescription className="text-white/80">Kerala (Calicut/Malappuram/Kochi)</CardDescription>
                             </CardHeader>
                         </GlassCard>
-                         <GlassCard className="bg-background/90 text-foreground">
+                         <GlassCard>
                             <CardHeader>
-                                <CardTitle>Coverage</CardTitle>
-                                <CardDescription>Entire Kerala + Karnataka + Tamil Nadu</CardDescription>
+                                <CardTitle className="text-white">Coverage</CardTitle>
+                                <CardDescription className="text-white/80">Entire Kerala + Karnataka + Tamil Nadu</CardDescription>
                             </CardHeader>
                         </GlassCard>
                     </div>
@@ -297,7 +290,7 @@ export default function Home() {
         </section>
 
         {/* INDUSTRIES SECTION - COLOR */}
-        <section id="industries" className="py-12 md:py-24 lg:py-32 bg-secondary">
+        <section id="industries" className="py-12 md:py-24 lg:py-32 bg-background">
             <div className="container px-4 md:px-6 text-center">
                  <ScrollReveal>
                     <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl text-foreground">Industries We Serve</h2>
@@ -308,7 +301,7 @@ export default function Home() {
                  <ScrollReveal delay={200}>
                     <div className="mt-8 flex flex-wrap justify-center gap-4">
                         {industries.map(industry => (
-                             <Card key={industry} className="p-4 bg-background">
+                             <Card key={industry} className="p-4">
                                 <span className="font-medium text-card-foreground">{industry}</span>
                             </Card>
                         ))}
@@ -318,7 +311,7 @@ export default function Home() {
         </section>
 
         {/* CTA SECTION */}
-        <section id="cta" className="py-12 md:py-24 lg:py-32 bg-background">
+        <section id="cta" className="py-12 md:py-24 lg:py-32 bg-secondary">
              <div className="container px-4 md:px-6 text-center">
                 <ScrollReveal>
                     <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">Build with Confidence. Build with GRP.</h2>
