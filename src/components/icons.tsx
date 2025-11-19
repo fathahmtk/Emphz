@@ -14,6 +14,7 @@ export function Logo({ className, imageClassName, ...props }: HTMLAttributes<HTM
         fill
         className={cn("object-contain", imageClassName)}
         priority
+        unoptimized
       />
     </div>
   );
