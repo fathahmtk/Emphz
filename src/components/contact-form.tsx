@@ -62,7 +62,7 @@ export function ContactForm() {
   }
 
   return (
-    <GlassCard>
+    <Card className="bg-card/90 backdrop-blur-sm">
       <CardHeader>
         <CardTitle className="text-2xl">Submit Inquiry</CardTitle>
         <CardDescription>Our technical engineering team will review your requirements and respond promptly.</CardDescription>
@@ -128,6 +128,6 @@ export function ContactForm() {
           <SubmitButton />
         </form>
       </CardContent>
-    </GlassCard>
+    </Card>
   );
 }

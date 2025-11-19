@@ -44,7 +44,7 @@ export function MobileNav() {
                 <Button
                     variant="ghost"
                     size="icon"
-                    className={cn("shrink-0", !isScrolled ? "text-white hover:text-white hover:bg-white/10" : "text-foreground" )}
+                    className={cn("shrink-0", !isScrolled ? "text-white hover:text-foreground hover:bg-black/10" : "text-foreground" )}
                 >
                     <Menu className="h-6 w-6" />
                     <span className="sr-only">Toggle navigation menu</span>

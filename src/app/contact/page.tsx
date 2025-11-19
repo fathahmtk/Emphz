@@ -4,7 +4,6 @@
 import { useState } from "react";
 import { ContactForm } from "@/components/contact-form";
 import { ScrollReveal } from "@/components/scroll-reveal";
-import { GlassCard } from "@/components/glass-card";
 import { Mail, Phone, MessageSquare, MapPin } from "lucide-react";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
@@ -34,16 +33,16 @@ export default function ContactPage() {
                         className="object-cover"
                         sizes="100vw"
                     />
-                    <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" />
+                    <div className="absolute inset-0 bg-background/50 backdrop-blur-sm" />
                 </div>
             )}
           <div className="container px-4 md:px-6 py-24 md:py-32">
             <ScrollReveal>
               <div className="text-center mb-12">
-                <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl text-white">
+                <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl text-foreground">
                     {activeTab === 'inquiry' ? 'Request Quotation or Schedule Site Visit' : 'Join Our Team'}
                 </h1>
-                <p className="mt-4 max-w-3xl mx-auto text-white/80 md:text-lg">
+                <p className="mt-4 max-w-3xl mx-auto text-foreground/80 md:text-lg">
                   {activeTab === 'inquiry' 
                     ? 'Our teams in Mysore and Kerala are ready to assist with your project requirements.' 
                     : 'We are always looking for talented individuals to join our manufacturing and operations teams.'}
@@ -62,7 +61,7 @@ export default function ContactPage() {
                             <ContactForm />
                         </ScrollReveal>
                         <ScrollReveal delay={400} className="lg:col-span-2 space-y-8">
-                           <GlassCard>
+                           <Card className="bg-card/90 backdrop-blur-sm">
                             <CardHeader>
                                 <CardTitle>Contact Details</CardTitle>
                             </CardHeader>
@@ -80,8 +79,8 @@ export default function ContactPage() {
                                 <span>WhatsApp: +91 XXXXXXXX</span>
                                 </a>
                             </CardContent>
-                            </GlassCard>
-                            <GlassCard>
+                            </Card>
+                            <Card className="bg-card/90 backdrop-blur-sm">
                             <CardHeader>
                                 <CardTitle>Locations</CardTitle>
                             </CardHeader>
@@ -101,7 +100,7 @@ export default function ContactPage() {
                                     </div>
                                 </div>
                             </CardContent>
-                            </GlassCard>
+                            </Card>
                         </ScrollReveal>
                     </div>
                 </TabsContent>

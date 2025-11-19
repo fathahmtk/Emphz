@@ -53,7 +53,7 @@ export function SiteHeader() {
                 <div className="container flex h-16 items-center px-4 md:px-6">
                     <div className="mr-6 flex items-center md:flex-1">
                          <Link href="/" className="mr-6">
-                            <Logo className="h-8 w-auto" variant={isScrolled ? 'default' : 'white'} />
+                            <Logo className="h-8 w-auto" variant={'default'} />
                          </Link>
                         <div className="hidden md:flex">
                              <NavigationMenu>
