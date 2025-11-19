@@ -45,3 +45,23 @@ export type Industry = {
     name: string;
     description: string;
 };
+
+export type BlogAuthor = {
+    id: string;
+    name: string;
+    avatarUrl: string;
+    title: string;
+}
+
+export type BlogPost = {
+    id: string;
+    title: string;
+    slug: string;
+    authorId: string;
+    author?: BlogAuthor;
+    publishedAt: Timestamp;
+    category: string;
+    heroImageUrl: string;
+    summary: string;
+    content: string; // Markdown content
+}

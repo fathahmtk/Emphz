@@ -37,5 +37,15 @@ service cloud.firestore {
       allow read: if true;
       allow write: if false;
     }
+    
+    match /blog_authors/{authorId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    match /blog_posts/{postId} {
+      allow read: if true;
+      allow write: if false;
+    }
   }
 }

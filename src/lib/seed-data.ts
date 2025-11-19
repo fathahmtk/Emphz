@@ -1,10 +1,11 @@
 
 
-import type { Product, ProjectCaseStudy, TechnicalDownload, Industry } from './types';
+import type { Product, ProjectCaseStudy, TechnicalDownload, Industry, BlogPost, BlogAuthor } from './types';
 import { productsSeed } from './products-data';
 import { projectsSeed } from './projects-data';
 import { downloadsSeed } from './downloads-data';
 import { industriesSeed } from './industries-data';
+import { authorsSeed, postsSeed } from './blog-data';
 
 // Helper function to generate IDs from names
 function generateId(name: string): string {
@@ -37,4 +38,15 @@ export function getIndustriesWithIds(): Industry[] {
         ...i,
         id: generateId(i.name)
     }))
+}
+
+export function getAuthorsWithIds(): BlogAuthor[] {
+    return authorsSeed.map(a => ({
+        ...a,
+        id: generateId(a.name)
+    }))
+}
+
+export function getPostsWithIds(): Omit<BlogPost, 'id'>[] {
+    return postsSeed;
 }

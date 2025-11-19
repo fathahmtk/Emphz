@@ -186,6 +186,37 @@
         "name",
         "description"
       ]
+    },
+    "BlogAuthor": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "title": "BlogAuthor",
+        "type": "object",
+        "description": "Represents a blog post author.",
+        "properties": {
+            "id": { "type": "string" },
+            "name": { "type": "string" },
+            "avatarUrl": { "type": "string", "format": "uri" },
+            "title": { "type": "string" }
+        },
+        "required": ["id", "name", "avatarUrl", "title"]
+    },
+    "BlogPost": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "title": "BlogPost",
+        "type": "object",
+        "description": "Represents a single blog post.",
+        "properties": {
+            "id": { "type": "string" },
+            "title": { "type": "string" },
+            "slug": { "type": "string" },
+            "authorId": { "type": "string" },
+            "publishedAt": { "type": "string", "format": "date-time" },
+            "category": { "type": "string" },
+            "heroImageUrl": { "type": "string", "format": "uri" },
+            "summary": { "type": "string" },
+            "content": { "type": "string", "description": "Full content of the blog post in Markdown format." }
+        },
+        "required": ["id", "title", "slug", "authorId", "publishedAt", "category", "heroImageUrl", "summary", "content"]
     }
   },
   "auth": {
@@ -220,6 +251,14 @@
       {
         "path": "/industries/{industryId}",
         "definition": { "schema": { "$ref": "#/entities/Industry" } }
+      },
+      {
+        "path": "/blog_authors/{authorId}",
+        "definition": { "schema": { "$ref": "#/entities/BlogAuthor" } }
+      },
+      {
+        "path": "/blog_posts/{postId}",
+        "definition": { "schema": { "$ref": "#/entities/BlogPost" } }
       }
     ]
   }
