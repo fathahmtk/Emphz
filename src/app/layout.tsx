@@ -11,7 +11,7 @@ import { BackToTopButton } from '@/components/ui/back-to-top-button';
 
 const inter = Inter({
   subsets: ['latin'],
-  weight: ['400', '700'],
+  display: 'swap',
   variable: '--font-body',
 });
 

@@ -39,7 +39,7 @@ export default async function CatalogPage() {
             </div>
             <main className="bg-background">
                 <header className="print-hide container py-12 text-center">
-                    <h1 className="text-4xl font-bold font-headline tracking-tighter sm:text-5xl md:text-6xl">
+                    <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
                         Master Product Catalog
                     </h1>
                     <p className="mx-auto mt-4 max-w-3xl text-muted-foreground md:text-lg">
@@ -57,7 +57,7 @@ export default async function CatalogPage() {
                          <div className="flex justify-between items-center pb-4 border-b">
                             <Logo className="h-12 w-auto" />
                             <div className='text-right'>
-                                <h1 className="font-headline text-2xl font-bold">Master Product Catalog</h1>
+                                <h1 className="text-2xl font-bold">Master Product Catalog</h1>
                                 <p className="text-muted-foreground text-sm">EMPHZ - Engineered GRP Solutions</p>
                             </div>
                         </div>
@@ -84,7 +84,7 @@ export default async function CatalogPage() {
                                     </div>
                                     <div>
                                         <Badge variant="secondary" className="mb-2">{product.category}</Badge>
-                                        <h2 className="font-headline text-3xl font-bold">{product.name}</h2>
+                                        <h2 className="text-3xl font-bold">{product.name}</h2>
                                         <p className="mt-2 text-muted-foreground">{product.overview}</p>
                                         <Link href={`/products/${product.slug}`} className="text-sm text-primary hover:underline print-hide mt-2 block">
                                             View product page &rarr;
@@ -92,7 +92,7 @@ export default async function CatalogPage() {
                                     </div>
                                 </div>
                                 <div className="mt-8">
-                                    <h3 className="text-xl font-bold font-headline mb-4">Technical Specifications</h3>
+                                    <h3 className="text-xl font-bold mb-4">Technical Specifications</h3>
                                     <Table>
                                         <TableBody>
                                             {Object.entries(product.specifications).map(([key, value]) => (

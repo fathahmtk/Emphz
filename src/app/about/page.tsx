@@ -7,6 +7,7 @@ import { Quote } from "lucide-react";
 import Image from "next/image";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CheckCircle } from "lucide-react";
+import { GlassCard } from "@/components/glass-card";
 
 const manufacturingStrengths = [
     "Proprietary GRP lay-up and resin standards",
@@ -37,7 +38,7 @@ export default function AboutPage() {
             <main className="container py-24 md:py-32">
                 <ScrollReveal>
                     <div className="text-center mb-12">
-                        <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl font-headline">Who We Are</h1>
+                        <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">Who We Are</h1>
                         <p className="mt-4 max-w-3xl mx-auto text-muted-foreground md:text-lg">
                             EMPHZ is a dedicated GRP engineering company that brings industrial manufacturing standards to the composite cabin and enclosure sector. Our production facility in Mysore operates with streamlined processes, standardized molds, consistency-driven finishing, and strict QC cycles. Our Kerala operations team manages sales, site evaluations, installations, and after-sales support across the state.
                         </p>
@@ -48,21 +49,21 @@ export default function AboutPage() {
                 </ScrollReveal>
 
                 <ScrollReveal delay={200} className="mt-12">
-                     <Card className="bg-primary/5">
+                     <GlassCard>
                         <CardHeader>
-                            <CardTitle className="text-2xl font-headline">Our Mission</CardTitle>
+                            <CardTitle className="text-2xl">Our Mission</CardTitle>
                         </CardHeader>
                         <CardContent>
                              <p className="text-lg text-foreground/80">
                                 Deliver durable, scalable, and design-forward GRP structures that outperform traditional materials and enable rapid deployment across industries.
                             </p>
                         </CardContent>
-                     </Card>
+                     </GlassCard>
                 </ScrollReveal>
 
                 <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-12">
                     <ScrollReveal delay={300}>
-                        <h2 className="text-3xl font-bold font-headline mb-6">Our Manufacturing Strength</h2>
+                        <h2 className="text-3xl font-bold mb-6">Our Manufacturing Strength</h2>
                          <ul className="space-y-3">
                             {manufacturingStrengths.map(item => (
                                 <li key={item} className="flex items-center gap-3 text-muted-foreground"><CheckCircle className="w-5 h-5 text-primary"/> {item}</li>
@@ -70,7 +71,7 @@ export default function AboutPage() {
                         </ul>
                     </ScrollReveal>
                      <ScrollReveal delay={400}>
-                        <h2 className="text-3xl font-bold font-headline mb-6">Kerala Operations Office</h2>
+                        <h2 className="text-3xl font-bold mb-6">Kerala Operations Office</h2>
                         <p className="text-muted-foreground mb-4">Our Kerala team manages:</p>
                          <ul className="space-y-3">
                             {keralaOperations.map(item => (
@@ -85,7 +86,7 @@ export default function AboutPage() {
                 <div className="mt-20 max-w-4xl mx-auto">
                     <ScrollReveal delay={500}>
                         <div className="text-center mb-8">
-                            <h2 className="text-3xl font-bold font-headline">Leadership Approach</h2>
+                            <h2 className="text-3xl font-bold">Leadership Approach</h2>
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-8">
                              <div className="md:col-span-1">

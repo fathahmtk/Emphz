@@ -54,7 +54,7 @@ export default function ToiletsPage() {
             <main className="container py-12 md:py-20 space-y-16">
                 <div className="grid gap-12 md:grid-cols-2">
                     <ScrollReveal>
-                        <h2 className="text-2xl font-bold font-headline">Benefits</h2>
+                        <h2 className="text-2xl font-bold">Benefits</h2>
                         <ul className="mt-4 space-y-3 text-muted-foreground">
                             {benefits.map(item => (
                                 <li key={item} className="flex items-center gap-3"><CheckCircle className="h-5 w-5 text-primary" /> {item}</li>
@@ -62,7 +62,7 @@ export default function ToiletsPage() {
                         </ul>
                     </ScrollReveal>
                     <ScrollReveal delay={100}>
-                        <h2 className="text-2xl font-bold font-headline">Use Cases</h2>
+                        <h2 className="text-2xl font-bold">Use Cases</h2>
                          <ul className="mt-4 space-y-3 text-muted-foreground">
                             {useCases.map(item => (
                                 <li key={item} className="flex items-center gap-3"><CheckCircle className="h-5 w-5 text-primary" /> {item}</li>
@@ -71,15 +71,15 @@ export default function ToiletsPage() {
                     </ScrollReveal>
                 </div>
                  <ScrollReveal delay={200}>
-                    <h2 className="text-3xl font-bold font-headline text-center">Models</h2>
+                    <h2 className="text-3xl font-bold text-center">Models</h2>
                      <ul className="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-muted-foreground">
                         {models.map(item => (
-                            <li key={item} className="flex items-center gap-3 p-4 bg-card rounded-lg border"><CheckCircle className="h-5 w-5 text-primary" /> {item}</li>
+                            <li key={item} className="flex items-center gap-3 p-4 bg-card/80 rounded-lg border"><CheckCircle className="h-5 w-5 text-primary" /> {item}</li>
                         ))}
                     </ul>
                 </ScrollReveal>
                 <ScrollReveal delay={300}>
-                    <h2 className="text-3xl font-bold font-headline text-center">Gallery</h2>
+                    <h2 className="text-3xl font-bold text-center">Gallery</h2>
                     <div className="mt-6">
                         <ImageGallery images={galleryImages} />
                     </div>

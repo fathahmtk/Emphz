@@ -8,6 +8,7 @@ import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ImageGallery } from "@/components/image-gallery";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
+import { GlassCard } from "@/components/glass-card";
 
 const capabilities = [
     "Custom mould design & fabrication",
@@ -38,35 +39,35 @@ export default function CustomPage() {
             <SiteHeader />
             <main className="container py-12 md:py-20">
                 <ScrollReveal>
-                    <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl font-headline">Customized GRP Enclosures</h1>
+                    <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl">Customized GRP Enclosures</h1>
                     <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
                         For projects with unique dimensional, operational, or environmental requirements, EMPHZ provides end-to-end custom engineering. Our teams work with you to design, prototype, and manufacture GRP enclosures tailored to your exact specifications.
                     </p>
                 </ScrollReveal>
 
                 <ScrollReveal delay={150} className="mt-12">
-                    <h2 className="text-3xl font-bold font-headline">Example Customizations</h2>
+                    <h2 className="text-3xl font-bold">Example Customizations</h2>
                     <div className="mt-6">
                         <ImageGallery images={sampleImages} />
                     </div>
                 </ScrollReveal>
 
                 <ScrollReveal delay={200} className="mt-12">
-                    <h2 className="text-3xl font-bold font-headline">Common Customizations</h2>
+                    <h2 className="text-3xl font-bold">Common Customizations</h2>
                     <ul className="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-muted-foreground">
                         {capabilities.map(capability => (
-                            <li key={capability} className="flex items-center gap-3 p-4 bg-card/50 rounded-lg"><CheckCircle className="h-5 w-5 text-foreground/60 shrink-0" /> {capability}</li>
+                            <li key={capability} className="flex items-center gap-3 p-4 bg-card/50 rounded-lg"><CheckCircle className="h-5 w-5 text-primary" /> {capability}</li>
                         ))}
                     </ul>
                 </ScrollReveal>
                 
                 <ScrollReveal delay={300} className="mt-12">
-                     <h2 className="text-3xl font-bold font-headline text-center">Our Customization Process</h2>
+                     <h2 className="text-3xl font-bold text-center">Our Customization Process</h2>
                      <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {processSteps.map((step, index) => (
-                            <Card key={step.title} className="bg-card/50">
+                            <GlassCard key={step.title}>
                                 <CardHeader>
-                                    <CardTitle className="flex items-center gap-4 font-headline">
+                                    <CardTitle className="flex items-center gap-4">
                                         <span className="flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary font-bold">{index + 1}</span>
                                         {step.title}
                                     </CardTitle>
@@ -74,13 +75,13 @@ export default function CustomPage() {
                                 <CardContent>
                                     <p className="text-muted-foreground">{step.description}</p>
                                 </CardContent>
-                            </Card>
+                            </GlassCard>
                         ))}
                      </div>
                 </ScrollReveal>
 
                 <ScrollReveal delay={400} className="mt-16 text-center">
-                    <h2 className="text-2xl font-bold font-headline">Have a unique requirement?</h2>
+                    <h2 className="text-2xl font-bold">Have a unique requirement?</h2>
                     <p className="mt-2 text-muted-foreground max-w-xl mx-auto">
                         Our engineering team is ready to translate your concept into a production-ready GRP solution.
                     </p>

@@ -47,7 +47,7 @@ export default function KiosksPage() {
             <main className="container py-12 md:py-20 space-y-16">
                 <div className="grid gap-12 md:grid-cols-2">
                     <ScrollReveal>
-                        <h2 className="text-2xl font-bold font-headline">Key Features</h2>
+                        <h2 className="text-2xl font-bold">Key Features</h2>
                         <ul className="mt-4 space-y-3 text-muted-foreground">
                             {keyFeatures.map(feature => (
                                 <li key={feature} className="flex items-center gap-3"><CheckCircle className="h-5 w-5 text-primary" /> {feature}</li>
@@ -56,7 +56,7 @@ export default function KiosksPage() {
                     </ScrollReveal>
 
                     <ScrollReveal delay={100}>
-                        <h2 className="text-2xl font-bold font-headline">Applications</h2>
+                        <h2 className="text-2xl font-bold">Applications</h2>
                          <ul className="mt-4 space-y-3 text-muted-foreground">
                             {applications.map(app => (
                                 <li key={app} className="flex items-center gap-3"><CheckCircle className="h-5 w-5 text-primary" /> {app}</li>
@@ -66,7 +66,7 @@ export default function KiosksPage() {
                 </div>
 
                 <ScrollReveal delay={200}>
-                    <h2 className="text-3xl font-bold font-headline text-center">Gallery</h2>
+                    <h2 className="text-3xl font-bold text-center">Gallery</h2>
                     <div className="mt-6">
                         <ImageGallery images={galleryImages} />
                     </div>

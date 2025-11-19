@@ -4,7 +4,7 @@
 import { useState } from "react";
 import { ContactForm } from "@/components/contact-form";
 import { ScrollReveal } from "@/components/scroll-reveal";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { GlassCard } from "@/components/glass-card";
 import { Mail, Phone, MessageSquare, MapPin } from "lucide-react";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
@@ -12,6 +12,7 @@ import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { JobApplicationForm } from "@/components/job-application-form";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export default function ContactPage() {
     const bgImage = PlaceHolderImages.find(p => p.id === 'office-location');
@@ -33,16 +34,16 @@ export default function ContactPage() {
                         className="object-cover"
                         sizes="100vw"
                     />
-                    <div className="absolute inset-0 bg-background/80" />
+                    <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" />
                 </div>
             )}
           <div className="container px-4 md:px-6 py-24 md:py-32">
             <ScrollReveal>
               <div className="text-center mb-12">
-                <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl font-headline text-foreground">
+                <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl text-white">
                     {activeTab === 'inquiry' ? 'Request Quotation or Schedule Site Visit' : 'Join Our Team'}
                 </h1>
-                <p className="mt-4 max-w-3xl mx-auto text-foreground/80 md:text-lg">
+                <p className="mt-4 max-w-3xl mx-auto text-white/80 md:text-lg">
                   {activeTab === 'inquiry' 
                     ? 'Our teams in Mysore and Kerala are ready to assist with your project requirements.' 
                     : 'We are always looking for talented individuals to join our manufacturing and operations teams.'}
@@ -51,7 +52,7 @@ export default function ContactPage() {
             </ScrollReveal>
             
             <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full max-w-5xl mx-auto">
-                <TabsList className="grid w-full grid-cols-2 max-w-sm mx-auto mb-8">
+                <TabsList className="grid w-full grid-cols-2 max-w-sm mx-auto mb-8 bg-card/80 backdrop-blur-sm">
                     <TabsTrigger value="inquiry">Submit Inquiry</TabsTrigger>
                     <TabsTrigger value="careers">Apply for a Job</TabsTrigger>
                 </TabsList>
@@ -61,26 +62,26 @@ export default function ContactPage() {
                             <ContactForm />
                         </ScrollReveal>
                         <ScrollReveal delay={400} className="lg:col-span-2 space-y-8">
-                           <Card>
+                           <GlassCard>
                             <CardHeader>
                                 <CardTitle>Contact Details</CardTitle>
                             </CardHeader>
                             <CardContent className="space-y-4 text-muted-foreground">
-                                <a href="tel:+91XXXXXXXX" className="flex items-center gap-4 hover:text-accent-foreground transition-colors">
+                                <a href="tel:+91XXXXXXXX" className="flex items-center gap-4 hover:text-primary transition-colors">
                                 <Phone className="w-5 h-5 text-primary" />
                                 <span>+91 XXXXXXXX</span>
                                 </a>
-                                <a href="mailto:info@emphz.com" className="flex items-center gap-4 hover:text-accent-foreground transition-colors">
+                                <a href="mailto:info@emphz.com" className="flex items-center gap-4 hover:text-primary transition-colors">
                                 <Mail className="w-5 h-5 text-primary" />
                                 <span>info@emphz.com</span>
                                 </a>
-                                <a href="https://wa.me/91XXXXXXXX" className="flex items-center gap-4 hover:text-accent-foreground transition-colors">
+                                <a href="https://wa.me/91XXXXXXXX" className="flex items-center gap-4 hover:text-primary transition-colors">
                                 <MessageSquare className="w-5 h-5 text-primary" />
                                 <span>WhatsApp: +91 XXXXXXXX</span>
                                 </a>
                             </CardContent>
-                            </Card>
-                            <Card>
+                            </GlassCard>
+                            <GlassCard>
                             <CardHeader>
                                 <CardTitle>Locations</CardTitle>
                             </CardHeader>
@@ -100,7 +101,7 @@ export default function ContactPage() {
                                     </div>
                                 </div>
                             </CardContent>
-                            </Card>
+                            </GlassCard>
                         </ScrollReveal>
                     </div>
                 </TabsContent>

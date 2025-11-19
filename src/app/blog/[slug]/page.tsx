@@ -58,7 +58,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
                 <article className="container max-w-3xl mx-auto">
                     <header className="mb-8">
                         <div className="flex items-center justify-between mb-4">
-                             <Badge variant="outline">{post.category}</Badge>
+                             <Badge variant="secondary">{post.category}</Badge>
                              <time dateTime={post.publishedAt.toDate().toISOString()} className="text-sm text-muted-foreground">
                                 {format(post.publishedAt.toDate(), 'MMMM d, yyyy')}
                             </time>

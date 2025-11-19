@@ -12,6 +12,7 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Alert, AlertDescription, AlertTitle } from "./ui/alert";
 import { Check } from "lucide-react";
+import { GlassCard } from "./glass-card";
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -52,7 +53,7 @@ export function JobApplicationForm() {
   }
 
   return (
-    <Card className="max-w-xl mx-auto">
+    <GlassCard className="max-w-xl mx-auto">
       <CardHeader>
         <CardTitle className="text-2xl">Job Application</CardTitle>
         <CardDescription>Fill out the form below to apply for a position at EMPHZ.</CardDescription>
@@ -92,6 +93,6 @@ export function JobApplicationForm() {
           <SubmitButton />
         </form>
       </CardContent>
-    </Card>
+    </GlassCard>
   );
 }

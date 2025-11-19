@@ -13,6 +13,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Alert, AlertDescription, AlertTitle } from "./ui/alert";
 import { Terminal } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
+import { GlassCard } from "./glass-card";
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -61,7 +62,7 @@ export function ContactForm() {
   }
 
   return (
-    <Card>
+    <GlassCard>
       <CardHeader>
         <CardTitle className="text-2xl">Submit Inquiry</CardTitle>
         <CardDescription>Our technical engineering team will review your requirements and respond promptly.</CardDescription>
@@ -127,6 +128,6 @@ export function ContactForm() {
           <SubmitButton />
         </form>
       </CardContent>
-    </Card>
+    </GlassCard>
   );
 }

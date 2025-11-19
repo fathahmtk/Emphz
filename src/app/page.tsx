@@ -97,7 +97,7 @@ export default function Home() {
           <div className="container relative grid lg:grid-cols-2 gap-12 items-center px-4 md:px-6 z-20">
             <div className="max-w-3xl">
               <ScrollReveal>
-                <h1 className="!leading-tight text-4xl font-bold font-headline tracking-tighter text-white shadow-lg sm:text-5xl">
+                <h1 className="!leading-tight text-4xl font-bold tracking-tighter text-white shadow-lg sm:text-5xl">
                   Engineered GRP Solutions for Demanding Environments
                 </h1>
               </ScrollReveal>
@@ -114,7 +114,7 @@ export default function Home() {
                       <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                     </Link>
                   </Button>
-                  <Button size="lg" variant="outline" className="text-white border-white hover:bg-white hover:text-background" asChild>
+                  <Button size="lg" variant="outline" className="text-white border-white bg-transparent hover:bg-white hover:text-background" asChild>
                     <Link href="/downloads">Download Catalog</Link>
                   </Button>
                 </div>
@@ -129,10 +129,10 @@ export default function Home() {
                 <CardContent>
                     <div className="grid grid-cols-2 gap-4">
                         {heroProducts.map((product) => (
-                           <Link key={product.href} href={product.href}>
-                             <div className="p-4 rounded-lg bg-card/80 hover:bg-accent/50 hover:text-primary transition-colors flex items-center gap-3">
+                           <Link key={product.href} href={product.href} className="block group">
+                             <div className="p-4 rounded-lg bg-card/80 hover:bg-primary/10 hover:border-primary/20 border border-transparent transition-colors flex items-center gap-3">
                                <Box className="w-5 h-5 text-primary" />
-                               <span className="font-semibold">{product.title}</span>
+                               <span className="font-semibold group-hover:text-primary transition-colors">{product.title}</span>
                              </div>
                            </Link>
                         ))}
@@ -147,7 +147,7 @@ export default function Home() {
           <div className="container grid grid-cols-1 lg:grid-cols-2 min-h-[70dvh] items-center gap-12 px-4 md:px-6 py-12 md:py-24">
             <div className="text-foreground">
               <ScrollReveal>
-                <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-5xl">About EMPHZ</h2>
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">About EMPHZ</h2>
                  <div className="mt-4 space-y-4 text-foreground/80 md:text-lg">
                     <p>
                         EMPHZ is a specialized GRP manufacturing company operating out of Mysore with dedicated execution teams across Kerala. We build high-strength, weatherproof, corrosion-resistant GRP enclosures and modular structures designed for industrial, commercial, tourism, and government applications.
@@ -178,21 +178,21 @@ export default function Home() {
             <div className="container px-4 md:px-6">
                 <ScrollReveal>
                     <div className="text-center mb-12 text-foreground">
-                        <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-5xl">Core Product Lines</h2>
+                        <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Core Product Lines</h2>
                     </div>
                 </ScrollReveal>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {coreProducts.map((product, i) => (
                         <ScrollReveal key={product.title} delay={i * 100}>
                             <Link href={product.href} className="h-full block">
-                                <Card className="flex h-full flex-col group overflow-hidden transition-all duration-300 hover:shadow-xl hover:border-primary/30 hover:bg-accent/50">
+                                <GlassCard className="flex h-full flex-col group overflow-hidden">
                                     <CardHeader>
-                                        <CardTitle className="text-xl font-headline transition-colors group-hover:text-primary">{product.title}</CardTitle>
+                                        <CardTitle className="text-xl transition-colors group-hover:text-primary">{product.title}</CardTitle>
                                     </CardHeader>
                                     <CardContent>
                                         <CardDescription>{product.description}</CardDescription>
                                     </CardContent>
-                                </Card>
+                                </GlassCard>
                             </Link>
                         </ScrollReveal>
                     ))}
@@ -204,7 +204,7 @@ export default function Home() {
              <div className="container px-4 md:px-6">
                 <ScrollReveal>
                     <div className="text-center mb-12 text-foreground">
-                        <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-5xl">Why GRP? Why EMPHZ?</h2>
+                        <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Why GRP? Why EMPHZ?</h2>
                     </div>
                 </ScrollReveal>
                  <div className="mx-auto max-w-5xl grid grid-cols-2 md:grid-cols-4 gap-8">
@@ -225,31 +225,31 @@ export default function Home() {
         <section id="delivery-model" className="py-12 md:py-24 lg:py-32 bg-background">
             <div className="container px-4 md:px-6 text-center">
                 <ScrollReveal>
-                    <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-5xl">South India Delivery Model</h2>
+                    <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">South India Delivery Model</h2>
                     <p className="mt-4 max-w-3xl mx-auto text-foreground/80 md:text-lg">
                         You get manufacturing reliability from our Mysore factory, plus local execution support from our Kerala operations offices.
                     </p>
                 </ScrollReveal>
                 <ScrollReveal delay={200}>
                     <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8 text-center max-w-4xl mx-auto">
-                        <Card>
+                        <GlassCard>
                             <CardHeader>
                                 <CardTitle>Factory</CardTitle>
                                 <CardDescription>Mysore (Karnataka)</CardDescription>
                             </CardHeader>
-                        </Card>
-                         <Card>
+                        </GlassCard>
+                         <GlassCard>
                             <CardHeader>
                                 <CardTitle>Operations Office</CardTitle>
                                 <CardDescription>Kerala (Calicut/Malappuram/Kochi)</CardDescription>
                             </CardHeader>
-                        </Card>
-                         <Card>
+                        </GlassCard>
+                         <GlassCard>
                             <CardHeader>
                                 <CardTitle>Coverage</CardTitle>
                                 <CardDescription>Entire Kerala + Karnataka + Tamil Nadu</CardDescription>
                             </CardHeader>
-                        </Card>
+                        </GlassCard>
                     </div>
                 </ScrollReveal>
             </div>
@@ -258,12 +258,12 @@ export default function Home() {
         <section id="industries" className="py-12 md:py-24 lg:py-32 bg-secondary/20">
             <div className="container px-4 md:px-6 text-center">
                  <ScrollReveal>
-                    <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-5xl">Industries We Serve</h2>
+                    <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">Industries We Serve</h2>
                 </ScrollReveal>
                  <ScrollReveal delay={200}>
                     <div className="mt-8 flex flex-wrap justify-center gap-4">
                         {industries.map(industry => (
-                            <div key={industry} className="p-4 bg-card rounded-lg border text-card-foreground font-medium">{industry}</div>
+                            <div key={industry} className="p-4 bg-card/80 rounded-lg border border-border text-card-foreground font-medium">{industry}</div>
                         ))}
                     </div>
                 </ScrollReveal>
@@ -273,7 +273,7 @@ export default function Home() {
         <section id="cta" className="py-12 md:py-24 lg:py-32 bg-background">
              <div className="container px-4 md:px-6 text-center">
                 <ScrollReveal>
-                    <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl">Build with Confidence. Build with GRP.</h2>
+                    <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">Build with Confidence. Build with GRP.</h2>
                     <p className="mt-4 max-w-xl mx-auto text-foreground/80 md:text-lg">
                         Request a quotation or schedule a site visit today.
                     </p>

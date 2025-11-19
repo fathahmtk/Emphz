@@ -41,7 +41,7 @@ export default function SecurityCabinsPage() {
             <main className="container py-12 md:py-20 space-y-16">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                     <ScrollReveal delay={200}>
-                        <h2 className="text-2xl font-bold font-headline">Features</h2>
+                        <h2 className="text-2xl font-bold">Features</h2>
                         <ul className="mt-4 space-y-3 text-muted-foreground">
                             {features.map(feature => (
                                 <li key={feature} className="flex items-center gap-3"><CheckCircle className="h-5 w-5 text-primary" /> {feature}</li>
@@ -49,7 +49,7 @@ export default function SecurityCabinsPage() {
                         </ul>
                     </ScrollReveal>
                     <ScrollReveal delay={300}>
-                        <h2 className="text-2xl font-bold font-headline">Ideal For</h2>
+                        <h2 className="text-2xl font-bold">Ideal For</h2>
                         <ul className="mt-4 space-y-3 text-muted-foreground">
                             {applications.map(feature => (
                                 <li key={feature} className="flex items-center gap-3"><CheckCircle className="h-5 w-5 text-primary" /> {feature}</li>
@@ -58,7 +58,7 @@ export default function SecurityCabinsPage() {
                     </ScrollReveal>
                 </div>
                 <ScrollReveal delay={400}>
-                    <h2 className="text-3xl font-bold font-headline text-center">Gallery</h2>
+                    <h2 className="text-3xl font-bold text-center">Gallery</h2>
                     <div className="mt-6">
                         <ImageGallery images={galleryImages} />
                     </div>

@@ -21,6 +21,7 @@ import Link from 'next/link';
 import { Download, Box, CheckCircle } from 'lucide-react';
 import { ScrollReveal } from '@/components/scroll-reveal';
 import type { Metadata, ResolvingMetadata } from 'next'
+import { GlassCard } from '@/components/glass-card';
 
 async function getProduct(slug: string): Promise<Product | null> {
     const firestore = getFirestore();
@@ -98,10 +99,10 @@ export default async function ProductPage({ params }: { params: { slug: string }
                     </ScrollReveal>
                     <ScrollReveal delay={200}>
                          <div className="flex flex-col h-full">
-                            <Badge variant="outline" className="w-fit">
+                            <Badge variant="secondary" className="w-fit">
                                 {product.category}
                             </Badge>
-                            <h1 className="mt-2 font-headline text-4xl font-bold">{product.name}</h1>
+                            <h1 className="mt-2 text-4xl font-bold">{product.name}</h1>
 
                             <div className="mt-4 flex-grow space-y-6">
                                 <div>
@@ -147,8 +148,8 @@ export default async function ProductPage({ params }: { params: { slug: string }
                 </div>
                 <ScrollReveal className="mt-16" delay={300}>
                     <div className="max-w-4xl mx-auto">
-                        <h2 className="text-3xl font-bold font-headline text-center mb-8">Technical Specifications</h2>
-                        <Card>
+                        <h2 className="text-3xl font-bold text-center mb-8">Technical Specifications</h2>
+                        <GlassCard>
                              <Table>
                                 <TableBody>
                                     {Object.entries(product.specifications).map(
@@ -189,7 +190,7 @@ export default async function ProductPage({ params }: { params: { slug: string }
                                     )}
                                 </TableBody>
                             </Table>
-                        </Card>
+                        </GlassCard>
                     </div>
                 </ScrollReveal>
             </main>
