@@ -21,7 +21,7 @@
     {
       "id": "product-tank",
       "description": "A large cylindrical GRP tank in a factory setting.",
-      "imageUrl": "https://images.unsplash.com/photo-1580841554426-c4a28492865f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8R1JQJTIwdGFua3xlbnwwfHx8fDE3NjM0NDQwMjl8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1580841554426-c4a28492865f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8R1JQJTIwdGFua3xlbnwwfHx8fDE3NjM0NDQwMjl8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "GRP tank"
     },
     {
@@ -45,31 +45,31 @@
     {
       "id": "project-waterplant",
       "description": "A water treatment plant upgraded with new GRP tanks and pipes.",
-      "imageUrl": "https://images.unsplash.com/photo-1680280135702-e89c634335ee?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxtb2Rlcm4lMjBwbGFudHxlbnwwfHx8fDE3NjMzNjQ3MjJ8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1680280135702-e89c634335ee?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxtb2Rlcm4lMjBwbGFudHxlbnwwfHx8fDE3NjMzNjQ3MjJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "modern plant"
     },
     {
       "id": "office-location",
       "description": "A modern office building exterior.",
-      "imageUrl": "https://images.unsplash.com/photo-1696738061271-401a7ef09e51?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxvZmZpY2UlMjBidWlsZGluZ3xlbnwwfHx8fDE3NjMzNjM2MDF8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1696738061271-401a7ef09e51?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxvZmZpY2UlMjBidWlsZGluZ3xlbnwwfHx8fDE3NjMzNjM2MDF8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "office building"
     },
     {
       "id": "factory-location",
       "description": "A large industrial factory exterior.",
-      "imageUrl": "https://images.unsplash.com/photo-1714366449985-e4dd29959996?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxmYWN0b3J5JTIwZXh0ZXJpb3J8ZW58MHx8fHwxNzYzNDAwNTU3fDA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1714366449985-e4dd29959996?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxmYWN0b3J5JTIwZXh0ZXJpb3J8ZW58MHx8fHwxNzYzNDAwNTU3fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "factory exterior"
     },
     {
       "id": "gallery-product-1",
       "description": "A close-up of a GRP electrical enclosure with wiring.",
-      "imageUrl": "https://images.unsplash.com/photo-1640526569383-24ac00e0eae6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxHUlAlMjBlbmNsb3N1cmV8ZW58MHx8fHwxNzYzNDUzNjMxfDA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1640526569383-24ac00e0eae6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxHUlAlMjBlbmNsb3N1cmV8ZW58MHx8fHwxNzYzNDUzNjMxfDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "GRP enclosure"
     },
     {
       "id": "gallery-kiosk",
       "description": "A GRP kiosk in an outdoor setting.",
-      "imageUrl": "https://images.unsplash.com/photo-1476036604315-fed0874dfd55?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxHUlAlMjBraW9za3xlbnwwfHx8fDE3NjM0NTM2MzF8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1476036604315-fed0874dfd55?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxHUlAlMjBraW9za3xlbnwwfHx8fDE3NjM0NTM2MzF8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "GRP kiosk"
     },
     {
@@ -141,7 +141,7 @@
     {
       "id": "gallery-product-2",
       "description": "A stack of gray GRP electrical enclosures.",
-      "imageUrl": "https://images.unsplash.com/photo-1646800570508-172052920324?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxHUlAlMjBlbmNsb3N1cmVzfGVufDB8fHx8MTc2MzQ2Njk0Nnww&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1646800570508-172052920324?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxHUlAlMjBlbmNsb3N1cmVzfGVufDB8fHx8MTc2MzQ2Njk0Nnww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "GRP enclosures"
     },
     {
@@ -255,7 +255,7 @@
     {
       "id": "case-study-after-1",
       "description": "A new, clean GRP enclosure installed in the same location.",
-      "imageUrl": "https://images.unsplash.com/photo-1640526569383-24ac00e0eae6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxHUlAlMjBlbmNsb3N1cmV8ZW58MHx8fHwxNzYzNDUzNjMxfDA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1640526569383-24ac00e0eae6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxHUlAlMjBlbmNsb3N1cmV8ZW58MHx8fHwxNzYzNDUzNjMxfDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "GRP enclosure"
     },
     {
@@ -297,7 +297,7 @@
     {
       "id": "ceo-portrait",
       "description": "A portrait of the CEO, Muhammed Rashik.",
-      "imageUrl": "https://images.unsplash.com/photo-1560250097-0b93528c311a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxDRU8lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjM1MTI1OTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxDRU8lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjM1MTI1OTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "CEO portrait"
     }
   ]
