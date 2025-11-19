@@ -184,6 +184,7 @@ export default function Home() {
                     data-ai-hint={aboutBgImage.imageHint}
                     quality={100}
                     fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                     className="object-cover"
                 />
               )}
@@ -194,7 +195,7 @@ export default function Home() {
         <section id="mission-vision" className="relative py-12 md:py-24 lg:py-32 bg-secondary/30">
             <div className="container grid md:grid-cols-2 gap-12 items-center text-foreground px-4 md:px-6">
                 <ScrollReveal>
-                    <Card className="p-8 text-foreground shadow-lg">
+                    <GlassCard className="p-8 text-foreground shadow-lg">
                         <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground">Our Mission & Values</h2>
                         <p className="mt-4 text-foreground/80 md:text-lg">
                             <strong className="text-foreground">Mission:</strong> To engineer world-class GRP solutions that enable resilient, safe, and efficient infrastructure for industries and communities.
@@ -210,7 +211,7 @@ export default function Home() {
                                 </div>
                             ))}
                         </div>
-                    </Card>
+                    </GlassCard>
                 </ScrollReveal>
                  <ScrollReveal delay={200}>
                     {missionBgImage && (
@@ -221,6 +222,7 @@ export default function Home() {
                                 data-ai-hint={missionBgImage.imageHint}
                                 quality={100}
                                 fill
+                                sizes="(max-width: 768px) 100vw, 50vw"
                                 className="object-cover"
                             />
                         </div>
@@ -269,6 +271,7 @@ export default function Home() {
                         data-ai-hint={qualityBgImage.imageHint}
                         quality={100}
                         fill
+                        sizes="100vw"
                         className="object-cover"
                     />
                     <div className="absolute inset-0 bg-background/80" />
@@ -311,6 +314,7 @@ export default function Home() {
                         data-ai-hint={newsBgImage.imageHint}
                         quality={100}
                         fill
+                        sizes="100vw"
                         className="object-cover"
                     />
                     <div className="absolute inset-0 bg-background/80" />

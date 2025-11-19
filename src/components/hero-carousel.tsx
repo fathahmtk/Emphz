@@ -40,6 +40,7 @@ export function HeroCarousel({ images, className }: HeroCarouselProps) {
               alt={image.description}
               data-ai-hint={image.imageHint}
               fill
+              sizes="100vw"
               className="object-cover"
               priority={index === 0}
             />

@@ -18,12 +18,13 @@ export function PageHero({ title, description, imageUrl, imageHint }: PageHeroPr
                 alt={description}
                 data-ai-hint={imageHint}
                 fill
+                sizes="100vw"
                 className="object-cover"
                 priority
             />
         </div>
       <div className="absolute inset-0 bg-black/60" />
-      <div className="container relative px-4 md:px-6">
+      <div className="container relative z-[99] px-4 md:px-6">
         <div className="mx-auto max-w-4xl text-primary-foreground">
           <ScrollReveal>
             <h1 className="!leading-tight text-4xl font-bold font-headline tracking-tighter text-white sm:text-5xl md:text-6xl" style={{ textShadow: '2px 2px 8px rgba(0,0,0,0.7)' }}>
