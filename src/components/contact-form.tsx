@@ -62,7 +62,7 @@ export function ContactForm() {
   }
 
   return (
-    <Card className="bg-card/90 backdrop-blur-sm">
+    <Card>
       <CardHeader>
         <CardTitle className="text-2xl">Submit Inquiry</CardTitle>
         <CardDescription>Our technical engineering team will review your requirements and respond promptly.</CardDescription>

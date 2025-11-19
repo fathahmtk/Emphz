@@ -61,7 +61,7 @@ export default function ContactPage() {
                             <ContactForm />
                         </ScrollReveal>
                         <ScrollReveal delay={400} className="lg:col-span-2 space-y-8">
-                           <Card className="bg-card/90 backdrop-blur-sm">
+                           <Card>
                             <CardHeader>
                                 <CardTitle>Contact Details</CardTitle>
                             </CardHeader>
@@ -80,7 +80,7 @@ export default function ContactPage() {
                                 </a>
                             </CardContent>
                             </Card>
-                            <Card className="bg-card/90 backdrop-blur-sm">
+                            <Card>
                             <CardHeader>
                                 <CardTitle>Locations</CardTitle>
                             </CardHeader>

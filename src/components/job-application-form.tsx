@@ -53,7 +53,7 @@ export function JobApplicationForm() {
   }
 
   return (
-    <Card className="max-w-xl mx-auto bg-card/90 backdrop-blur-sm">
+    <Card className="max-w-xl mx-auto">
       <CardHeader>
         <CardTitle className="text-2xl">Job Application</CardTitle>
         <CardDescription>Fill out the form below to apply for a position at EMPHZ.</CardDescription>
