@@ -87,11 +87,27 @@ export default function AboutPage() {
                         <div className="text-center mb-8">
                             <h2 className="text-3xl font-bold font-headline">Leadership Approach</h2>
                         </div>
-                        <div className="relative text-center">
-                            <Quote className="absolute -top-4 -left-6 h-12 w-12 text-primary/10" />
-                            <blockquote className="text-2xl font-semibold text-foreground/90 italic">
-                                We operate with clarity, speed, and outcome-focused execution. No delays. No excuses. Only performance.
-                            </blockquote>
+                        <div className="grid grid-cols-1 md:grid-cols-3 items-center gap-8">
+                             <div className="md:col-span-1">
+                                {ceoImage && (
+                                    <div className="relative aspect-square w-full max-w-[250px] mx-auto rounded-lg overflow-hidden shadow-lg">
+                                        <Image
+                                            src={ceoImage.imageUrl}
+                                            alt={ceoImage.description}
+                                            data-ai-hint={ceoImage.imageHint}
+                                            fill
+                                            className="object-cover"
+                                            sizes="(max-width: 768px) 100vw, 33vw"
+                                        />
+                                    </div>
+                                )}
+                             </div>
+                             <div className="md:col-span-2 relative">
+                                <Quote className="absolute -top-6 -left-6 h-16 w-16 text-primary/10" />
+                                <blockquote className="text-2xl font-semibold text-foreground/90 italic text-center md:text-left">
+                                    We operate with clarity, speed, and outcome-focused execution. No delays. No excuses. Only performance.
+                                </blockquote>
+                             </div>
                         </div>
                     </ScrollReveal>
                 </div>
@@ -101,4 +117,3 @@ export default function AboutPage() {
         </>
     );
 }
-
