@@ -67,7 +67,7 @@ const newsBgImage = PlaceHolderImages.find(p => p.id === 'hero-extra-8');
 
 function CaseStudyCard({ project }: { project: ProjectCaseStudy }) {
     return (
-        <GlassCard className="overflow-hidden text-primary-foreground">
+        <GlassCard className="overflow-hidden">
             <div className="grid md:grid-cols-2">
                 <div className="relative aspect-video">
                     <Image src={project.beforeImageUrl} alt={`Before image for ${project.title}`} fill className="object-cover" />
@@ -79,12 +79,12 @@ function CaseStudyCard({ project }: { project: ProjectCaseStudy }) {
                 </div>
             </div>
             <CardHeader>
-                <CardTitle className="font-headline text-xl text-primary-foreground">{project.title}</CardTitle>
+                <CardTitle className="font-headline text-xl">{project.title}</CardTitle>
             </CardHeader>
             <CardContent>
-                <p className="text-sm text-primary-foreground/80">{project.details}</p>
-                <Separator className="my-4 bg-white/20" />
-                <div className="flex items-center justify-between text-xs text-primary-foreground/80">
+                <p className="text-sm text-foreground/80">{project.details}</p>
+                <Separator className="my-4 bg-foreground/20" />
+                <div className="flex items-center justify-between text-xs text-foreground/80">
                     <div className="flex items-center gap-2">
                         <Users className="h-4 w-4" />
                         <span>{project.clientType}</span>
@@ -170,11 +170,11 @@ export default function Home() {
                     <div className="absolute inset-0 bg-background/80" />
                 </div>
             )}
-            <div className="container px-4 md:px-6 text-primary-foreground">
+            <div className="container px-4 md:px-6 text-foreground">
                 <ScrollReveal>
                     <div className="text-center mb-12">
                         <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-5xl">About EMPHZ</h2>
-                        <p className="mt-4 max-w-3xl mx-auto text-primary-foreground/80 md:text-lg">
+                        <p className="mt-4 max-w-3xl mx-auto text-foreground/80 md:text-lg">
                             EMPHZ is a next-generation GRP/FRP engineering manufacturer dedicated to delivering mission-critical infrastructure solutions for utilities, industry, and smart-city development.
                         </p>
                     </div>
@@ -182,15 +182,15 @@ export default function Home() {
                 <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
                 {corporatePillars.map((pillar, i) => (
                     <ScrollReveal key={pillar.title} delay={i * 150}>
-                    <GlassCard className="text-center h-full text-primary-foreground">
+                    <GlassCard className="text-center h-full text-foreground">
                         <CardHeader>
                         <div className="mx-auto mb-4 inline-flex items-center justify-center rounded-full bg-primary/10 p-3">
-                            <pillar.icon className="h-8 w-8 text-primary-foreground" />
+                            <pillar.icon className="h-8 w-8 text-primary" />
                         </div>
                         <CardTitle className="text-xl font-bold font-headline">{pillar.title}</CardTitle>
                         </CardHeader>
                         <CardContent>
-                        <p className="text-primary-foreground/80">{pillar.description}</p>
+                        <p className="text-foreground/80">{pillar.description}</p>
                         </CardContent>
                     </GlassCard>
                     </ScrollReveal>
@@ -213,20 +213,20 @@ export default function Home() {
                     <div className="absolute inset-0 bg-background/80" />
                 </div>
             )}
-            <div className="container grid md:grid-cols-2 gap-12 items-center text-primary-foreground px-4 md:px-6">
+            <div className="container grid md:grid-cols-2 gap-12 items-center text-foreground px-4 md:px-6">
                 <ScrollReveal>
-                    <GlassCard className="p-8">
-                        <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-primary-foreground">Our Mission & Values</h2>
-                        <p className="mt-4 text-primary-foreground/80 md:text-lg">
-                            <strong className="text-primary-foreground">Mission:</strong> To engineer world-class GRP solutions that enable resilient, safe, and efficient infrastructure for industries and communities.
+                    <GlassCard className="p-8 text-foreground">
+                        <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl text-foreground">Our Mission & Values</h2>
+                        <p className="mt-4 text-foreground/80 md:text-lg">
+                            <strong className="text-foreground">Mission:</strong> To engineer world-class GRP solutions that enable resilient, safe, and efficient infrastructure for industries and communities.
                         </p>
                         <div className="mt-8 grid gap-6">
                             {values.map((value) => (
                                 <div key={value.title} className="flex items-start gap-4">
-                                    <CheckCircle className="h-6 w-6 text-primary-foreground/80 mt-1 shrink-0"/>
+                                    <CheckCircle className="h-6 w-6 text-primary/80 mt-1 shrink-0"/>
                                     <div>
-                                        <h3 className="font-semibold text-lg text-primary-foreground">{value.title}</h3>
-                                        <p className="text-primary-foreground/80">{value.description}</p>
+                                        <h3 className="font-semibold text-lg text-foreground">{value.title}</h3>
+                                        <p className="text-foreground/80">{value.description}</p>
                                     </div>
                                 </div>
                             ))}
@@ -255,10 +255,10 @@ export default function Home() {
             )}
             <div className="container px-4 md:px-6">
                 <ScrollReveal>
-                    <div className="text-center mb-12 text-primary-foreground">
+                    <div className="text-center mb-12 text-foreground">
                          <Badge className="mb-2" variant="outline">Featured Projects</Badge>
                         <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-5xl">Proven Field Performance</h2>
-                        <p className="mt-4 max-w-3xl mx-auto text-primary-foreground/80 md:text-lg">
+                        <p className="mt-4 max-w-3xl mx-auto text-foreground/80 md:text-lg">
                            From corrosive coastal environments to high-traffic industrial sites, our GRP solutions deliver unmatched durability and performance.
                         </p>
                     </div>
@@ -297,26 +297,26 @@ export default function Home() {
                     <div className="absolute inset-0 bg-background/80" />
                 </div>
             )}
-          <div className="container px-4 md:px-6 text-primary-foreground">
+          <div className="container px-4 md:px-6 text-foreground">
             <ScrollReveal>
-              <GlassCard className="p-8 text-center text-primary-foreground">
+              <GlassCard className="p-8 text-center text-foreground">
                 <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-4xl">Quality, Compliance & Trust</h2>
-                <p className="mx-auto mt-4 max-w-3xl text-primary-foreground/80 md:text-xl/relaxed">
+                <p className="mx-auto mt-4 max-w-3xl text-foreground/80 md:text-xl/relaxed">
                   Our commitment to quality is backed by industry-leading certifications and approvals, ensuring every product meets rigorous standards for safety and performance.
                 </p>
                  <div className="mx-auto mt-12 grid grid-cols-2 gap-y-10 gap-x-8 md:grid-cols-4">
                   {trustBadges.map((badge, i) => (
                     <div key={i} className="flex flex-col items-center text-center">
                       <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
-                        <badge.icon className="h-8 w-8 text-primary-foreground" />
+                        <badge.icon className="h-8 w-8 text-primary" />
                       </div>
                       <h3 className="text-lg font-semibold">{badge.name}</h3>
-                      <p className="mt-1 text-sm text-primary-foreground/80">{badge.description}</p>
+                      <p className="mt-1 text-sm text-foreground/80">{badge.description}</p>
                     </div>
                   ))}
                 </div>
                  <div className="mt-12 text-center">
-                    <Button size="lg" variant="outline" className="text-primary-foreground border-primary-foreground hover:bg-primary-foreground hover:text-background" asChild>
+                    <Button size="lg" asChild>
                         <Link href="/quality/certification">View Quality Framework</Link>
                     </Button>
                 </div>
@@ -341,10 +341,10 @@ export default function Home() {
             )}
             <div className="container px-4 md:px-6">
                  <ScrollReveal>
-                    <div className="text-center mb-12 text-primary-foreground">
+                    <div className="text-center mb-12 text-foreground">
                         <Badge className="mb-2" variant="outline">News & Media</Badge>
                         <h2 className="text-3xl font-bold font-headline tracking-tighter sm:text-5xl">Latest Updates</h2>
-                         <p className="mt-4 max-w-3xl mx-auto text-primary-foreground/80 md:text-lg">
+                         <p className="mt-4 max-w-3xl mx-auto text-foreground/80 md:text-lg">
                           Stay informed on our latest product innovations, project milestones, and company news.
                         </p>
                     </div>
@@ -353,13 +353,13 @@ export default function Home() {
                     {newsItems.map((item, i) => (
                         <ScrollReveal key={item.title} delay={i * 150}>
                             <Link href={item.href}>
-                                <GlassCard className="h-full group text-primary-foreground">
+                                <GlassCard className="h-full group text-foreground">
                                     <CardHeader className="flex-row items-center gap-4">
-                                        <item.icon className="h-8 w-8 text-primary-foreground/80" />
-                                        <CardTitle className="text-base font-semibold group-hover:text-primary-foreground transition-colors text-primary-foreground">{item.title}</CardTitle>
+                                        <item.icon className="h-8 w-8 text-primary/80" />
+                                        <CardTitle className="text-base font-semibold group-hover:text-primary transition-colors text-foreground">{item.title}</CardTitle>
                                     </CardHeader>
                                     <CardContent>
-                                        <p className="text-xs text-primary-foreground/70">{item.date}</p>
+                                        <p className="text-xs text-foreground/70">{item.date}</p>
                                     </CardContent>
                                 </GlassCard>
                             </Link>
