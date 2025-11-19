@@ -81,7 +81,7 @@ export default function Home() {
           <div className="container relative flex items-center justify-between px-4 md:px-6 z-20">
             <div className="max-w-3xl">
               <ScrollReveal>
-                <h1 className="!leading-tight text-4xl font-bold font-headline tracking-tighter text-white shadow-lg sm:text-5xl md:text-6xl">
+                <h1 className="!leading-tight text-4xl font-bold font-headline tracking-tighter text-white shadow-lg sm:text-5xl">
                   Engineered GRP Solutions for the Next Generation
                 </h1>
               </ScrollReveal>
