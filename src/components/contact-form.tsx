@@ -2,7 +2,7 @@
 "use client";
 
 import { useFormState, useFormStatus } from "react-dom";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { submitContactForm } from "@/app/contact/actions";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
@@ -13,7 +13,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Alert, AlertDescription, AlertTitle } from "./ui/alert";
 import { Terminal } from "lucide-react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
-import { GlassCard } from "./glass-card";
+import { useCollection, useFirestore } from "@/firebase";
+import type { Product } from "@/lib/types";
+import { collection, orderBy, query } from "firebase/firestore";
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -24,20 +26,19 @@ function SubmitButton() {
   );
 }
 
-const productCategories = [
-    "GRP Electrical Enclosures",
-    "GRP Portable Toilets",
-    "GRP Modular Kiosks",
-    "GRP Security Cabins",
-    "GRP Resort Villas & Pods",
-    "Custom GRP Fabrication",
-    "Other"
-];
 
 export function ContactForm() {
   const initialState = { status: "idle" as const, message: "" };
   const [state, formAction] = useFormState(submitContactForm, initialState);
   const { toast } = useToast();
+
+  const firestore = useFirestore();
+  const productsQuery = useMemo(() => {
+    if (!firestore) return null;
+    return query(collection(firestore, 'products'), orderBy('name'));
+  }, [firestore]);
+
+  const { data: products, isLoading: isLoadingProducts } = useCollection<Product>(productsQuery);
 
   useEffect(() => {
     if (state.status === "error") {
@@ -97,11 +98,12 @@ export function ContactForm() {
             <div className="space-y-2">
               <Label htmlFor="product">Product of Interest</Label>
               <Select name="product">
-                <SelectTrigger id="product">
-                    <SelectValue placeholder="Select a product category" />
+                <SelectTrigger id="product" disabled={isLoadingProducts}>
+                    <SelectValue placeholder={isLoadingProducts ? "Loading products..." : "Select a product"} />
                 </SelectTrigger>
                 <SelectContent>
-                    {productCategories.map(p => <SelectItem key={p} value={p}>{p}</SelectItem>)}
+                    {products?.map(p => <SelectItem key={p.id} value={p.name}>{p.name}</SelectItem>)}
+                    <SelectItem value="Other">Other</SelectItem>
                 </SelectContent>
               </Select>
             </div>

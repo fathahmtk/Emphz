@@ -79,10 +79,10 @@ export default function DownloadsPage() {
               {isLoading && Array.from({length: 4}).map((_, i) => <DownloadSkeleton key={i} />)}
               
               {!isLoading && downloads && downloads.length > 0 && downloads.map((item) => (
-                <Card key={item.id} className="bg-card/80">
+                <Card key={item.id}>
                   <div className="flex items-center justify-between p-6">
                     <div className="flex items-center gap-4">
-                      <FileText className="w-8 h-8 text-accent"/>
+                      <FileText className="w-8 h-8 text-primary"/>
                       <div>
                         <CardTitle>{item.name}</CardTitle>
                         <CardDescription className="mt-1">{item.description}</CardDescription>

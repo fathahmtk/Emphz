@@ -12,7 +12,6 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Alert, AlertDescription, AlertTitle } from "./ui/alert";
 import { Check } from "lucide-react";
-import { GlassCard } from "./glass-card";
 
 function SubmitButton() {
   const { pending } = useFormStatus();
