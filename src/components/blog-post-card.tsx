@@ -56,4 +56,3 @@ export function BlogPostCard({ post }: BlogPostCardProps) {
         </Card>
     );
 }
-
