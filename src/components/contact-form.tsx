@@ -141,7 +141,7 @@ export function ContactForm({ prefillData }: ContactFormProps) {
           </div>
           <SubmitButton />
         </form>
-      </Content>
+      </CardContent>
     </Card>
   );
 }
