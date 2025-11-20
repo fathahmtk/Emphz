@@ -26,7 +26,17 @@ export const menuData: MegaMenu[] = [
   {
     title: "Home",
     href: "/",
-    columns: []
+    columns: [
+      {
+        title: "Homepage Sections",
+        links: [
+            { title: "About EMPHZ", href: "/#about", description: "Learn about our mission and values." },
+            { title: "Core Product Lines", href: "/#products", description: "Explore our range of GRP solutions." },
+            { title: "Why GRP?", href: "/#why-grp", description: "Discover the benefits of GRP." },
+            { title: "Industries We Serve", href: "/#industries", description: "See the sectors that trust our products." },
+        ]
+      }
+    ]
   },
   {
     title: "About",
