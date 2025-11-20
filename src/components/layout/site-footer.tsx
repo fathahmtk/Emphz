@@ -61,7 +61,6 @@ export function SiteFooter() {
                         id="email"
                         name="email"
                         type="email"
-                        className="w-full px-4 py-2 text-foreground bg-background border-input rounded-md focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
                         placeholder="Email Address"
                         required
                     />
