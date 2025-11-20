@@ -2,7 +2,7 @@
 "use client";
 
 import { useFormState, useFormStatus } from "react-dom";
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { submitContactForm } from "@/app/contact/actions";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
@@ -16,6 +16,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from ".
 import { useCollection, useFirestore } from "@/firebase";
 import type { Product } from "@/lib/types";
 import { collection, orderBy, query } from "firebase/firestore";
+import type { Inquiry } from "@/lib/types";
 
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -26,11 +27,16 @@ function SubmitButton() {
   );
 }
 
+interface ContactFormProps {
+    prefillData?: Inquiry;
+}
 
-export function ContactForm() {
+
+export function ContactForm({ prefillData }: ContactFormProps) {
   const initialState = { status: "idle" as const, message: "" };
   const [state, formAction] = useFormState(submitContactForm, initialState);
   const { toast } = useToast();
+  const formRef = useRef<HTMLFormElement>(null);
 
   const firestore = useFirestore();
   const productsQuery = useMemo(() => {
@@ -48,6 +54,7 @@ export function ContactForm() {
         description: state.message,
       });
     }
+    // Don't reset on success, because the success message will be shown
   }, [state, toast]);
 
   if (state.status === "success") {
@@ -66,10 +73,15 @@ export function ContactForm() {
     <Card>
       <CardHeader>
         <CardTitle className="text-2xl">Submit Inquiry</CardTitle>
-        <CardDescription>Our technical engineering team will review your requirements and respond promptly.</CardDescription>
+        <CardDescription>
+            {prefillData 
+             ? "Our AI has pre-filled the form based on your conversation. Please review and submit."
+             : "Our technical engineering team will review your requirements and respond promptly."
+            }
+        </CardDescription>
       </CardHeader>
       <CardContent>
-        <form action={formAction} className="space-y-4">
+        <form ref={formRef} action={formAction} className="space-y-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="space-y-2">
               <Label htmlFor="name">Name</Label>
@@ -93,11 +105,11 @@ export function ContactForm() {
            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="space-y-2">
               <Label htmlFor="industry">Industry</Label>
-              <Input id="industry" name="industry" placeholder="e.g., Power Generation" />
+              <Input key={`industry-${prefillData?.industry}`} id="industry" name="industry" placeholder="e.g., Power Generation" defaultValue={prefillData?.industry} />
             </div>
             <div className="space-y-2">
               <Label htmlFor="product">Product of Interest</Label>
-              <Select name="product">
+              <Select name="product" defaultValue={prefillData?.product}>
                 <SelectTrigger id="product" disabled={isLoadingProducts}>
                     <SelectValue placeholder={isLoadingProducts ? "Loading products..." : "Select a product"} />
                 </SelectTrigger>
@@ -111,16 +123,16 @@ export function ContactForm() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="space-y-2">
                 <Label htmlFor="quantity">Quantity</Label>
-                <Input id="quantity" name="quantity" type="number" placeholder="e.g., 100" />
+                <Input key={`quantity-${prefillData?.quantity}`} id="quantity" name="quantity" type="number" placeholder="e.g., 100" defaultValue={prefillData?.quantity} />
             </div>
              <div className="space-y-2">
                 <Label htmlFor="location">Project Location</Label>
-                <Input id="location" name="location" placeholder="City, State" />
+                <Input key={`location-${prefillData?.location}`} id="location" name="location" placeholder="City, State" defaultValue={prefillData?.location} />
             </div>
           </div>
           <div className="space-y-2">
             <Label htmlFor="inquiry">Description / Requirements</Label>
-            <Textarea id="inquiry" name="inquiry" placeholder="Please describe your requirements in detail..." required minLength={10} />
+            <Textarea key={`inquiry-${prefillData?.inquiry}`} id="inquiry" name="inquiry" placeholder="Please describe your requirements in detail..." required minLength={10} defaultValue={prefillData?.inquiry} />
           </div>
           <div className="space-y-2">
             <Label htmlFor="file-upload">Upload RFQ / CAD / BOQ</Label>
@@ -129,7 +141,7 @@ export function ContactForm() {
           </div>
           <SubmitButton />
         </form>
-      </CardContent>
+      </Content>
     </Card>
   );
 }

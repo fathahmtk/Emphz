@@ -12,10 +12,36 @@ import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { JobApplicationForm } from "@/components/job-application-form";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { InquiryAssistant } from "@/components/inquiry-assistant";
 
 export default function ContactPage() {
     const bgImage = PlaceHolderImages.find(p => p.id === 'office-location');
     const [activeTab, setActiveTab] = useState("inquiry");
+
+    const getTitle = () => {
+        switch(activeTab) {
+            case 'inquiry':
+                return 'Request Quotation or Schedule Site Visit';
+            case 'assistant':
+                return 'AI Project Assistant';
+            case 'careers':
+                return 'Join Our Team';
+            default:
+                return 'Contact Us';
+        }
+    }
+     const getDescription = () => {
+        switch(activeTab) {
+            case 'inquiry':
+                return 'Our teams in Mysore and Kerala are ready to assist with your project requirements.';
+             case 'assistant':
+                return 'Describe your project needs and our AI assistant will help gather the details.';
+            case 'careers':
+                return 'We are always looking for talented individuals to join our manufacturing and operations teams.';
+            default:
+                return 'Get in touch with us.';
+        }
+    }
 
   return (
     <>
@@ -40,20 +66,19 @@ export default function ContactPage() {
             <ScrollReveal>
               <div className="text-center mb-12">
                 <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl text-foreground">
-                    {activeTab === 'inquiry' ? 'Request Quotation or Schedule Site Visit' : 'Join Our Team'}
+                    {getTitle()}
                 </h1>
                 <p className="mt-4 max-w-3xl mx-auto text-foreground/80 md:text-lg">
-                  {activeTab === 'inquiry' 
-                    ? 'Our teams in Mysore and Kerala are ready to assist with your project requirements.' 
-                    : 'We are always looking for talented individuals to join our manufacturing and operations teams.'}
+                  {getDescription()}
                 </p>
               </div>
             </ScrollReveal>
             
             <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full max-w-5xl mx-auto">
-                <TabsList className="grid w-full grid-cols-2 max-w-sm mx-auto mb-8 bg-card/80 backdrop-blur-sm">
-                    <TabsTrigger value="inquiry">Submit Inquiry</TabsTrigger>
-                    <TabsTrigger value="careers">Apply for a Job</TabsTrigger>
+                <TabsList className="grid w-full grid-cols-3 max-w-md mx-auto mb-8 bg-card/80 backdrop-blur-sm">
+                    <TabsTrigger value="inquiry">Manual Inquiry</TabsTrigger>
+                    <TabsTrigger value="assistant">AI Assistant</TabsTrigger>
+                    <TabsTrigger value="careers">Careers</TabsTrigger>
                 </TabsList>
                 <TabsContent value="inquiry">
                     <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-start">
@@ -103,6 +128,11 @@ export default function ContactPage() {
                             </Card>
                         </ScrollReveal>
                     </div>
+                </TabsContent>
+                <TabsContent value="assistant">
+                     <ScrollReveal delay={200}>
+                        <InquiryAssistant />
+                    </ScrollReveal>
                 </TabsContent>
                 <TabsContent value="careers">
                      <ScrollReveal delay={200}>

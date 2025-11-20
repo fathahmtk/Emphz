@@ -66,3 +66,12 @@ export type BlogPost = {
     summary: string;
     content: string; // Markdown content
 }
+
+export type Inquiry = {
+    inquiry: string;
+    product?: string;
+    quantity?: string;
+    industry?: string;
+    location?: string;
+    [key: string]: any;
+}
