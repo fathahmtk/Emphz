@@ -25,7 +25,7 @@ export function ScrollReveal({ children, className, delay = 0, threshold = 0.1 }
         if (entry.isIntersecting) {
           setIsVisible(true);
           // Trigger glow effect and then remove it after a delay
-          setTimeout(() => setHasGlowed(true), (delay || 0) + 300);
+          setTimeout(() => setHasGlowed(true), (delay || 0) + 700); // Increased duration for the glow effect
           observer.unobserve(element);
         }
       },
@@ -45,11 +45,11 @@ export function ScrollReveal({ children, className, delay = 0, threshold = 0.1 }
     <div
       ref={ref}
       className={cn(
-        "transition-all ease-in-out duration-700",
+        "transition-all ease-out duration-1000", // Slower, more graceful transition
         {
           "opacity-0 translate-y-5": !isVisible,
           "opacity-100 translate-y-0": isVisible,
-          "shadow-glow-md": isVisible && !hasGlowed,
+          "shadow-glow": isVisible && !hasGlowed, // Using a more defined glow class
         },
         className
       )}
