@@ -11,6 +11,7 @@ import { subscribeToNewsletter } from "@/app/actions/newsletter";
 import { Logo } from "../icons";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
+import { Label } from "../ui/label";
 
 const socialLinks = [
   { icon: Twitter, href: "#", name: "Twitter" },
@@ -57,6 +58,7 @@ export function SiteFooter() {
             </h1>
             <form action={formAction}>
                 <div className="flex flex-col mx-auto mt-6 space-y-3 md:space-y-0 md:flex-row md:items-start md:gap-2">
+                    <Label htmlFor="email" className="sr-only">Email Address</Label>
                     <Input
                         id="email"
                         name="email"
