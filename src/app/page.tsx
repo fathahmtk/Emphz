@@ -1,3 +1,4 @@
+
 'use client';
 import Link from 'next/link';
 import { ArrowRight, Box, CheckCircle, Factory, HardHat, ShieldCheck, Sun, Wind, Zap } from 'lucide-react';
