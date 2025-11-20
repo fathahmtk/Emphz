@@ -2,7 +2,7 @@
 import { collection, getDocs, orderBy, query } from 'firebase/firestore';
 import Image from 'next/image';
 
-import { getFirestore } from '@/firebase/server';
+import { useFirestore } from '@/firebase';
 import type { Product } from '@/lib/types';
 import { Badge } from '@/components/ui/badge';
 import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table';
@@ -13,9 +13,10 @@ import { ScrollReveal } from '@/components/scroll-reveal';
 import { Button } from '@/components/ui/button';
 import { Printer } from 'lucide-react';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
-async function getProducts() {
-    const firestore = getFirestore();
+async function getProducts(firestore: ReturnType<typeof useFirestore>) {
+    if (!firestore) return [];
     const productsRef = collection(firestore, 'products');
     const q = query(productsRef, orderBy('name'));
     const querySnapshot = await getDocs(q);
@@ -28,8 +29,14 @@ async function getProducts() {
     return products;
 }
 
-export default async function CatalogPage() {
-    const products = await getProducts();
+export default function CatalogPage() {
+    const firestore = useFirestore();
+    const [products, setProducts] = useState<Product[]>([]);
+
+    useEffect(() => {
+        getProducts(firestore).then(setProducts);
+    }, [firestore]);
+
 
     return (
         <>
