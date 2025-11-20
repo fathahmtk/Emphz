@@ -1,3 +1,4 @@
+
 import { cn } from "@/lib/utils";
 import type { HTMLAttributes } from "react";
 
@@ -16,15 +17,32 @@ export function Logo({
       <svg
         width="100%"
         height="100%"
-        viewBox="0 0 541 135"
+        viewBox="0 0 450 100"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         preserveAspectRatio="xMidYMid meet"
       >
+        {/* Icon: E with lightning bolt */}
         <path
-          d="M0.201172 134.793V0.685547H38.5345V53.8522H71.5345V0.685547H109.868V134.793H71.5345V81.1922H38.5345V134.793H0.201172ZM121.801 134.793V0.685547H212.801V28.1922H160.134V54.2122H206.134V81.1922H160.134V107.293H212.801V134.793H121.801ZM226.201 134.793V0.685547H264.534V107.293H311.534V134.793H226.201ZM323.468 134.793L323.534 0.685547H361.868V134.793H323.468ZM395.034 134.793V83.6522L374.701 0.685547H416.701L426.868 50.8522L437.034 0.685547H479.034L458.701 83.6522V134.793H395.034ZM467.534 54.2122V0.685547H540.701V134.793H502.368V54.2122H467.534Z"
+          d="M0 0 H40 V15 H15 V42.5 H35 V57.5 H15 V85 H40 V100 H0 V0 Z M50 0 L25 50 L50 50 L30 100 L55 50 L30 50 Z"
           fill={fillColor}
         />
+        <path 
+          d="M27.5 50 L50 50 L30 100 L55 48 L30 48Z" 
+          fill={fillColor}
+        />
+
+        {/* Text: Emphz */}
+        <path
+          d="M80 15 H120 M80 50 H120 M80 85 H120 M140 100 V15 H165 L180 50 L165 85 H140 M190 100 V15 H210 C230 15 230 40 210 40 H190 M240 100 V15 H255 V85 H280 V100 H240 M290 15 L320 85 H300 L295 70 H275 L270 85 H250 L280 15 H290 Z M285 55 L278 35 L271 55 H285"
+          stroke={fillColor}
+          strokeWidth="15"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+         <text x="135" y="88" fontFamily="sans-serif" fontSize="80" fill={fillColor} fontWeight="bold">
+            <tspan>m</tspan><tspan>p</tspan><tspan>h</tspan><tspan>z</tspan>
+        </text>
       </svg>
     </div>
   );
