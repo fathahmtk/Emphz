@@ -4,8 +4,8 @@ import type { HTMLAttributes } from "react";
 import Image from "next/image";
 
 const logoUrls = {
-  default: "https://storage.googleapis.com/studio-assests/projects/emhz/logo-black.png",
-  white: "https://storage.googleapis.com/studio-assests/projects/emhz/logo-white.png"
+  default: "https://storage.googleapis.com/studio-assets/projects/emhz/logo-black.png",
+  white: "https://storage.googleapis.com/studio-assets/projects/emhz/logo-white.png"
 }
 
 export function Logo({ 
