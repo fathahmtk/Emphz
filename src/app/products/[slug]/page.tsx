@@ -155,7 +155,7 @@ export default async function ProductPage({ params }: { params: { slug: string }
                                     {Object.entries(product.specifications).map(
                                     ([key, value]) => (
                                         <TableRow key={key}>
-                                        <TableCell className="font-medium">{key}</TableCell>
+                                        <TableCell className="font-medium w-1/3">{key}</TableCell>
                                         <TableCell>{value}</TableCell>
                                         </TableRow>
                                     )
@@ -198,3 +198,5 @@ export default async function ProductPage({ params }: { params: { slug: string }
         </>
     );
 }
+
+    

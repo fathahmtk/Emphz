@@ -20,9 +20,7 @@ const heroCarouselImages = PlaceHolderImages.filter(p => [
     'hero-industrial-plant'
 ].includes(p.id));
 
-const aboutBgImage = PlaceHolderImages.find(p => p.id === 'hero-industrial-plant');
 const productsBgImage = PlaceHolderImages.find(p => p.id === 'hero-new-3');
-const whyGrpBgImage = PlaceHolderImages.find(p => p.id === 'hero-new-4');
 const deliveryBgImage = PlaceHolderImages.find(p => p.id === 'hero-new-6');
 
 const coreProducts = [
@@ -162,14 +160,14 @@ export default function Home() {
                         </ScrollReveal>
                     </div>
                      <ScrollReveal delay={200}>
-                        <Card>
+                        <GlassCard>
                             <CardHeader>
                                 <CardTitle>Our Mission</CardTitle>
                             </CardHeader>
                             <CardContent>
                                 <p className="text-lg text-muted-foreground">Deliver durable, scalable, and design-forward GRP structures that outperform traditional materials and enable rapid deployment across industries.</p>
                             </CardContent>
-                        </Card>
+                        </GlassCard>
                     </ScrollReveal>
                 </div>
             </div>
@@ -332,3 +330,5 @@ export default function Home() {
     </>
   );
 }
+
+    

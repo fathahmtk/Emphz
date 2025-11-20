@@ -1,6 +1,6 @@
 
 'use client';
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import { collection, query, orderBy, where } from 'firebase/firestore';
 
 import { SiteHeader } from '@/components/layout/site-header';
@@ -12,7 +12,6 @@ import { ProductCard } from '@/components/product-card';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import Link from 'next/link';
 import { FolderOpen } from 'lucide-react';
 
 function ProductSkeleton() {
@@ -28,18 +27,25 @@ function ProductSkeleton() {
     )
 }
 
-const productCategories = [
-    "All",
-    "Enclosures",
-    "Kiosks & Modular",
-    "Specialized",
-    "Modular Villas"
-];
-
 export default function ProductsPage() {
     const firestore = useFirestore();
     const [activeCategory, setActiveCategory] = useState('All');
+    const [productCategories, setProductCategories] = useState<string[]>(['All']);
     
+    const allProductsQuery = useMemo(() => {
+        if (!firestore) return null;
+        return query(collection(firestore, 'products'), orderBy('category'));
+    }, [firestore]);
+
+    const { data: allProducts, isLoading: isLoadingAllProducts } = useCollection<Product>(allProductsQuery);
+
+    useEffect(() => {
+        if (allProducts) {
+            const categories = ['All', ...Array.from(new Set(allProducts.map(p => p.category)))];
+            setProductCategories(categories);
+        }
+    }, [allProducts]);
+
     const productsQuery = useMemo(() => {
         if (!firestore) return null;
         const productsCollection = collection(firestore, 'products');
@@ -74,16 +80,20 @@ export default function ProductsPage() {
           </ScrollReveal>
           
           <div className="mb-8 flex flex-wrap justify-center gap-2">
-            {productCategories.map(category => (
-              <Button 
-                key={category} 
-                variant={activeCategory === category ? 'default' : 'outline'}
-                onClick={() => setActiveCategory(category)}
-                className={cn('transition-all', activeCategory !== category && "bg-background/50 text-foreground/80")}
-              >
-                {category}
-              </Button>
-            ))}
+            {(isLoadingAllProducts && productCategories.length <= 1) ? (
+                Array.from({length: 4}).map((_, i) => <Skeleton key={i} className="h-10 w-24" />)
+            ) : (
+                productCategories.map(category => (
+                <Button 
+                    key={category} 
+                    variant={activeCategory === category ? 'default' : 'outline'}
+                    onClick={() => setActiveCategory(category)}
+                    className={cn('transition-all', activeCategory !== category && "bg-background/50 text-foreground/80")}
+                >
+                    {category}
+                </Button>
+                ))
+            )}
           </div>
 
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
@@ -112,3 +122,5 @@ export default function ProductsPage() {
     </>
   );
 }
+
+    
