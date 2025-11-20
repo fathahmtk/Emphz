@@ -29,32 +29,32 @@ const coreProducts = [
   {
     title: "GRP Electrical Enclosures",
     description: "Industrial-grade, IP-rated, UV-resistant GRP enclosures engineered for harsh outdoor environments and electrical safety compliance.",
-    href: "/products/enclosures"
+    href: "/products/grp-electrical-enclosure"
   },
   {
     title: "GRP Portable Toilets",
     description: "Hygienic, monsoon-proof toilet cabins designed for public spaces, sites, tourism, panchayat projects, and heavy daily usage.",
-    href: "/products/toilets"
+    href: "/products/grp-portable-toilet"
   },
   {
     title: "GRP Modular Kiosks",
     description: "Food kiosks, ticket counters, retail pods, and security booths built with structural integrity and clean finishing.",
-    href: "/products/kiosks"
+    href: "/products/grp-modular-kiosk"
   },
   {
     title: "GRP Security Cabins",
     description: "Impact-resistant, insulated, ergonomic cabins ideal for residential, commercial, and industrial security operations.",
-    href: "/products/cabins"
+    href: "/products/grp-security-cabin"
   },
   {
     title: "GRP Resort Villas & Pods",
     description: "High-end GRP villas crafted for resorts in Wayanad, Munnar, Mysore, Coorg, coastal areas, and private retreats.",
-    href: "/products/villas"
+    href: "/products/e7-modular-villa"
   },
   {
     title: "Custom GRP Fabrication",
     description: "Bespoke GRP structures engineered for unique architectural, commercial, or industrial requirements.",
-    href: "/products/custom"
+    href: "/products/custom-grp-fabrication"
   },
 ];
 
@@ -80,10 +80,10 @@ const industries = [
 ];
 
 const heroProducts = [
-  { title: 'Electrical Enclosures', href: '/products/enclosures' },
-  { title: 'Modular Kiosks', href: '/products/kiosks' },
-  { title: 'Portable Toilets', href: '/products/toilets' },
-  { title: 'Resort Villas', href: '/products/villas' },
+  { title: 'Electrical Enclosures', href: '/products/grp-electrical-enclosure' },
+  { title: 'Modular Kiosks', href: '/products/grp-modular-kiosk' },
+  { title: 'Portable Toilets', href: '/products/grp-portable-toilet' },
+  { title: 'Resort Villas', href: '/products/e7-modular-villa' },
 ];
 
 export default function Home() {

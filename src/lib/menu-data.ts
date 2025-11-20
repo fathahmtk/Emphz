@@ -40,12 +40,12 @@ export const menuData: MegaMenu[] = [
       {
         title: "By Type",
         links: [
-          { title: "GRP Electrical Enclosures", href: "/products/enclosures", description: "IP-rated outdoor & industrial cabinets." },
-          { title: "GRP Portable Toilets", href: "/products/toilets", description: "Hygienic, monsoon-proof toilet cabins." },
-          { title: "GRP Modular Kiosks", href: "/products/kiosks", description: "For retail, security, and information." },
-          { title: "GRP Security Cabins", href: "/products/cabins", description: "Secure booths for personnel." },
-          { title: "GRP Resort Villas & Pods", href: "/products/villas", description: "Luxury, climate-resistant modular housing." },
-          { title: "Custom GRP Fabrication", href: "/products/custom", description: "Bespoke structures for any need." },
+          { title: "GRP Electrical Enclosures", href: "/products/grp-electrical-enclosure", description: "IP-rated outdoor & industrial cabinets." },
+          { title: "GRP Portable Toilets", href: "/products/grp-portable-toilet", description: "Hygienic, monsoon-proof toilet cabins." },
+          { title: "GRP Modular Kiosks", href: "/products/grp-modular-kiosk", description: "For retail, security, and information." },
+          { title: "GRP Security Cabins", href: "/products/grp-security-cabin", description: "Secure booths for personnel." },
+          { title: "GRP Resort Villas & Pods", href: "/products/e7-modular-villa", description: "Luxury, climate-resistant modular housing." },
+          { title: "Custom GRP Fabrication", href: "/products/custom-grp-fabrication", description: "Bespoke structures for any need." },
         ],
       },
     ],

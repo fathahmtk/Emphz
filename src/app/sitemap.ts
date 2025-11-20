@@ -76,22 +76,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   ];
 
-  // Static product category pages from menu data - these are now the detail pages, not category pages.
-  // We will generate product URLs dynamically instead.
-  const staticProductPages = [
-    '/products/enclosures',
-    '/products/toilets',
-    '/products/kiosks',
-    '/products/cabins',
-    '/products/villas',
-    '/products/custom',
-  ].map(path => ({
-    url: `${baseUrl}${path}`,
-    lastModified: new Date(),
-    changeFrequency: 'monthly' as const,
-    priority: 0.8
-  }));
-
   // Fetch products
   const productsSnapshot = await firestore.collection('products').get();
   const productPages = productsSnapshot.docs.map(doc => {
@@ -120,7 +104,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   return [
     ...staticPages,
-    ...staticProductPages,
     ...productPages,
     ...blogPostPages,
   ];

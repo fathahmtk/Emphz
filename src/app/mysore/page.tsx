@@ -10,11 +10,11 @@ import { PlaceHolderImages } from "@/lib/placeholder-images";
 import Image from "next/image";
 
 const productLines = [
-    { title: "GRP Electrical Enclosures", href: "/products/enclosures" },
-    { title: "GRP Portable Toilets", href: "/products/toilets" },
-    { title: "GRP Modular Kiosks", href: "/products/kiosks" },
-    { title: "GRP Resort Villas", href: "/products/villas" },
-    { title: "Custom GRP Fabrication", href: "/products/custom" },
+    { title: "GRP Electrical Enclosures", href: "/products/grp-electrical-enclosure" },
+    { title: "GRP Portable Toilets", href: "/products/grp-portable-toilet" },
+    { title: "GRP Modular Kiosks", href: "/products/grp-modular-kiosk" },
+    { title: "GRP Resort Villas", href: "/products/e7-modular-villa" },
+    { title: "Custom GRP Fabrication", href: "/products/custom-grp-fabrication" },
 ];
 
 const manufacturingProcess = [

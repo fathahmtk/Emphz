@@ -11,6 +11,7 @@ export const productsSeed: Omit<Product, 'id'>[] = [
     imageUrls: [
       'https://images.unsplash.com/photo-1640526569383-24ac00e0eae6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxHUlAlMjBlbmNsb3N1cmV8ZW58MHx8fHwxNzYzNDUzNjMxfDA&ixlib=rb-4.1.0&q=80&w=1080',
       'https://images.unsplash.com/photo-1646800570508-172052920324?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxHUlAlMjBlbmNsb3N1cmVzfGVufDB8fHx8MTc2MzQ2Njk0Nnww&ixlib=rb-4.1.0&q=80&w=1080',
+      'https://images.unsplash.com/photo-1698146512047-403fbeb78001?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxlbGVjdHJpY2FsJTIwZW5jbG9zdXJlfGVufDB8fHx8MTc2MzUyNzc2N3ww&ixlib=rb-4.1.0&q=80&w=1080'
     ],
     imageHint: 'GRP enclosure',
     specifications: {
@@ -31,14 +32,15 @@ export const productsSeed: Omit<Product, 'id'>[] = [
     model3dUrl: '#',
   },
   {
-    name: 'GRP/FRP Kiosk',
-    slug: 'grp-frp-kiosk',
+    name: 'GRP Modular Kiosk',
+    slug: 'grp-modular-kiosk',
     category: 'Kiosks & Modular',
     overview:
       'Fully-moulded GRP kiosks for utilities, security, and field operations. Built for long-term outdoor durability, providing a lightweight yet robust solution for housing equipment and personnel.',
     imageUrls: [
         'https://images.unsplash.com/photo-1476036604315-fed0874dfd55?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxHUlAlMjBraW9za3xlbnwwfHx8fDE3NjM0NTM2MzF8MA&ixlib=rb-4.1.0&q=80&w=1080',
-        'https://images.unsplash.com/photo-1560681610-b97792bd7cd9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxraW9zayUyMGludGVyaW9yfGVufDB8fHx8MTc2MzQ2Njk0Nnww&ixlib=rb-4.1.0&q=80&w=1080'
+        'https://images.unsplash.com/photo-1560681610-b97792bd7cd9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxraW9zayUyMGludGVyaW9yfGVufDB8fHx8MTc2MzQ2Njk0Nnww&ixlib=rb-4.1.0&q=80&w=1080',
+        'https://images.unsplash.com/photo-1582317361770-c0b3040d8d0c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxyZXRhaWwlMjBraW9za3xlbnwwfHx8fDE3NjM1Mjc3Njh8MA&ixlib=rb-4.1.0&q=80&w=1080',
     ],
     imageHint: 'GRP kiosk',
     specifications: {
