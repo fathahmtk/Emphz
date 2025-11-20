@@ -85,12 +85,36 @@ export const menuData: MegaMenu[] = [
   {
     title: "Projects",
     href: "/projects",
-    columns: [],
+    columns: [
+       {
+        title: "Recent Case Studies",
+        links: [
+            { title: "Corrosion Control Upgrade", href: "/projects", description: "Replacing rusted metal with IP66 GRP." },
+            { title: "Industrial Plant Modernization", href: "/projects", description: "Custom kiosks for an automated line." },
+        ]
+       }
+    ],
+    cta: {
+        text: "View All Projects",
+        href: "/projects"
+    }
   },
   {
     title: "Blog",
     href: "/blog",
-    columns: []
+    columns: [
+        {
+            title: "Latest Articles",
+            links: [
+                { title: "Why GRP is Superior for Kerala's Climate", href: "/blog/why-grp-is-superior-for-kerala-climate" },
+                { title: "Industrial Manufacturing vs. Local Fabrication", href: "/blog/industrial-manufacturing-vs-local-fabrication" },
+            ]
+        }
+    ],
+    cta: {
+        text: "View All Posts",
+        href: "/blog"
+    }
   },
   {
     title: "Gallery",
