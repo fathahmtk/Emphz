@@ -5,7 +5,7 @@ import { ScrollReveal } from "@/components/scroll-reveal";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Quote } from "lucide-react";
 import Image from "next/image";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CheckCircle } from "lucide-react";
 import { GlassCard } from "@/components/glass-card";
 
