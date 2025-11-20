@@ -11,15 +11,8 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import Image from 'next/image';
 import { GlassCard } from '@/components/glass-card';
-import { HeroCarousel } from '@/components/hero-carousel';
 
-const heroCarouselImages = PlaceHolderImages.filter(p => [
-    'hero-new-2', 
-    'hero-new-4', 
-    'hero-new-6',
-    'hero-industrial-plant'
-].includes(p.id));
-
+const heroBgImage = PlaceHolderImages.find(p => p.id === 'hero-new-2');
 const productsBgImage = PlaceHolderImages.find(p => p.id === 'hero-new-3');
 const deliveryBgImage = PlaceHolderImages.find(p => p.id === 'hero-new-6');
 
@@ -91,7 +84,16 @@ export default function Home() {
       <main className="flex-1">
         {/* HERO SECTION */}
         <section className="relative h-dvh w-full flex items-center justify-center text-left overflow-hidden">
-            <HeroCarousel images={heroCarouselImages} />
+            {heroBgImage && (
+              <Image
+                src={heroBgImage.imageUrl}
+                alt={heroBgImage.description}
+                data-ai-hint={heroBgImage.imageHint}
+                fill
+                className="object-cover"
+                quality={100}
+              />
+            )}
           <div className="absolute inset-0 bg-black/60 z-10" />
           <div className="container relative grid lg:grid-cols-2 gap-12 items-center px-4 md:px-6 z-20">
             <div className="max-w-3xl">
