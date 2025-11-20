@@ -14,15 +14,15 @@ export function Logo({
 }: HTMLAttributes<HTMLElement> & { variant?: keyof typeof logoUrls }) {
   return (
     <div
-      className={cn("relative h-10 w-40", className)}
+      className={cn("relative", className)}
       {...props}
     >
        <Image
         src={logoUrls[variant]}
         alt="EMPHZ Logo"
-        fill
-        sizes="160px"
-        className={cn("object-contain")}
+        width={160}
+        height={40}
+        className={cn("object-contain h-auto w-auto")}
         priority
       />
     </div>
