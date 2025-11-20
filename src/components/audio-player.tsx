@@ -1,76 +1,264 @@
-
-'use client';
-import { useState, useTransition } from 'react';
-import { generateAudio } from '@/ai/flows/audio-flow';
-import { Button } from './ui/button';
-import { Loader2, PlayCircle, StopCircle, AlertTriangle } from 'lucide-react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
-
-interface AudioPlayerProps {
-    textToSpeak: string;
-}
-
-export function AudioPlayer({ textToSpeak }: AudioPlayerProps) {
-    const [audioSrc, setAudioSrc] = useState<string | null>(null);
-    const [error, setError] = useState<string | null>(null);
-    const [isPending, startTransition] = useTransition();
-
-    const handleGenerateAudio = () => {
-        setError(null);
-        startTransition(async () => {
-            try {
-                const { audioDataUri } = await generateAudio({ text: textToSpeak });
-                setAudioSrc(audioDataUri);
-            } catch (err: any) {
-                console.error("Audio generation failed:", err);
-                setError(err.message || 'Failed to generate audio. Please try again.');
-            }
-        });
-    };
-
-    if (audioSrc) {
-        return (
-             <Card className="bg-secondary/30">
-                <CardContent className="p-4 flex items-center gap-4">
-                     <StopCircle className="h-6 w-6 text-primary" />
-                     <audio controls autoPlay src={audioSrc} className="w-full">
-                        Your browser does not support the audio element.
-                    </audio>
-                </CardContent>
-             </Card>
-        );
+{
+  "entities": {
+    "Product": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Product",
+      "type": "object",
+      "description": "Represents a GRP product in the dynamic product catalog.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Product entity."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the product."
+        },
+        "description": {
+          "type": "string",
+          "description": "Detailed specification of the product."
+        },
+        "imageUrl": {
+          "type": "string",
+          "description": "URL of the product image.",
+          "format": "uri"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "description",
+        "imageUrl"
+      ]
+    },
+    "ProjectCaseStudy": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "ProjectCaseStudy",
+      "type": "object",
+      "description": "Represents a project case study with before-after images and details.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the ProjectCaseStudy entity."
+        },
+        "title": {
+          "type": "string",
+          "description": "Title of the project case study."
+        },
+        "beforeImageUrl": {
+          "type": "string",
+          "description": "URL of the 'before' image.",
+          "format": "uri"
+        },
+        "afterImageUrl": {
+          "type": "string",
+          "description": "URL of the 'after' image.",
+          "format": "uri"
+        },
+        "details": {
+          "type": "string",
+          "description": "Detailed description of the project."
+        },
+        "location": {
+          "type": "string",
+          "description": "Location of the project."
+        },
+        "clientType": {
+          "type": "string",
+          "description": "Type of client for the project."
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "beforeImageUrl",
+        "afterImageUrl",
+        "details",
+        "location",
+        "clientType"
+      ]
+    },
+    "TechnicalDownload": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "TechnicalDownload",
+      "type": "object",
+      "description": "Represents a downloadable technical document (brochure, datasheet).",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the TechnicalDownload entity."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the downloadable document."
+        },
+        "fileUrl": {
+          "type": "string",
+          "description": "URL of the downloadable PDF file.",
+          "format": "uri"
+        },
+        "description": {
+          "type": "string",
+          "description": "Description of the downloadable document."
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "fileUrl",
+        "description"
+      ]
+    },
+    "Subscription": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Subscription",
+      "type": "object",
+      "description": "Represents a newsletter subscription.",
+      "properties": {
+        "email": {
+          "type": "string",
+          "format": "email"
+        },
+        "subscribedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["email", "subscribedAt"]
+    },
+    "Lead": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Lead",
+      "type": "object",
+      "description": "Represents a lead captured from the contact form.",
+      "properties": {
+        "name": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "company": { "type": "string" },
+        "phone": { "type": "string" },
+        "industry": { "type": "string" },
+        "product": { "type": "string" },
+        "quantity": { "type": "string" },
+        "location": { "type": "string" },
+        "inquiry": { "type": "string" },
+        "submittedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "email", "company", "phone", "inquiry", "submittedAt"]
+    },
+    "JobApplication": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "title": "JobApplication",
+        "type": "object",
+        "description": "Represents a job application.",
+        "properties": {
+            "name": { "type": "string" },
+            "email": { "type": "string", "format": "email" },
+            "phone": { "type": "string" },
+            "position": { "type": "string" },
+            "coverLetter": { "type": "string" },
+            "cvFileName": { "type": "string" },
+            "submittedAt": { "type": "string", "format": "date-time" }
+        },
+        "required": ["name", "email", "phone", "cvFileName", "submittedAt"]
+    },
+    "Industry": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Industry",
+      "type": "object",
+      "description": "Represents an industry that EMPHZ serves.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Industry entity."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the industry."
+        },
+        "description": {
+          "type": "string",
+          "description": "Description of how EMPHZ serves this industry."
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "description"
+      ]
+    },
+    "BlogAuthor": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "title": "BlogAuthor",
+        "type": "object",
+        "description": "Represents a blog post author.",
+        "properties": {
+            "id": { "type": "string" },
+            "name": { "type": "string" },
+            "avatarUrl": { "type": "string", "format": "uri" },
+            "title": { "type": "string" }
+        },
+        "required": ["id", "name", "avatarUrl", "title"]
+    },
+    "BlogPost": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "title": "BlogPost",
+        "type": "object",
+        "description": "Represents a single blog post.",
+        "properties": {
+            "id": { "type": "string" },
+            "title": { "type": "string" },
+            "slug": { "type": "string" },
+            "authorId": { "type": "string" },
+            "publishedAt": { "type": "string", "format": "date-time" },
+            "category": { "type": "string" },
+            "heroImageUrl": { "type": "string", "format": "uri" },
+            "summary": { "type": "string" },
+            "content": { "type": "string", "description": "Full content of the blog post in Markdown format." }
+        },
+        "required": ["id", "title", "slug", "authorId", "publishedAt", "category", "heroImageUrl", "summary", "content"]
     }
-    
-    if (error) {
-        return (
-             <div className="flex items-center gap-2 text-sm text-destructive">
-                <AlertTriangle className="h-4 w-4" />
-                <p>{error}</p>
-            </div>
-        )
-    }
-
-    return (
-        <Card className="bg-secondary/30">
-            <CardHeader className='pb-4'>
-                <CardTitle className="text-xl">Listen to this article</CardTitle>
-                <CardDescription>Press play to hear an AI-generated audio version.</CardDescription>
-            </CardHeader>
-            <CardContent>
-                <Button onClick={handleGenerateAudio} disabled={isPending}>
-                    {isPending ? (
-                        <>
-                            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                            Generating Audio...
-                        </>
-                    ) : (
-                        <>
-                            <PlayCircle className="mr-2 h-4 w-4" />
-                            Play Audio
-                        </>
-                    )}
-                </Button>
-            </CardContent>
-        </Card>
-    );
+  },
+  "auth": {
+    "providers": []
+  },
+  "firestore": {
+     "structure": [
+      {
+        "path": "/products/{productId}",
+        "definition": { "schema": { "$ref": "#/entities/Product" } }
+      },
+      {
+        "path": "/project_case_studies/{projectCaseStudyId}",
+        "definition": { "schema": { "$ref": "#/entities/ProjectCaseStudy" } }
+      },
+      {
+        "path": "/technical_downloads/{technicalDownloadId}",
+        "definition": { "schema": { "$ref": "#/entities/TechnicalDownload" } }
+      },
+      {
+        "path": "/subscriptions/{subscriptionId}",
+        "definition": { "schema": { "$ref": "#/entities/Subscription" } }
+      },
+      {
+        "path": "/leads/{leadId}",
+        "definition": { "schema": { "$ref": "#/entities/Lead" } }
+      },
+      {
+        "path": "/job_applications/{jobApplicationId}",
+        "definition": { "schema": { "$ref": "#/entities/JobApplication" } }
+      },
+      {
+        "path": "/industries/{industryId}",
+        "definition": { "schema": { "$ref": "#/entities/Industry" } }
+      },
+      {
+        "path": "/blog_authors/{authorId}",
+        "definition": { "schema": { "$ref": "#/entities/BlogAuthor" } }
+      },
+      {
+        "path": "/blog_posts/{postId}",
+        "definition": { "schema": { "$ref": "#/entities/BlogPost" } }
+      }
+    ]
+  }
 }

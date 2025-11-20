@@ -11,8 +11,6 @@
     "seed": "node scripts/seed-db.mjs"
   },
   "dependencies": {
-    "@genkit-ai/ai": "latest",
-    "@genkit-ai/google-genai": "latest",
     "@hookform/resolvers": "latest",
     "@radix-ui/react-accordion": "latest",
     "@radix-ui/react-alert-dialog": "latest",
@@ -42,7 +40,6 @@
     "embla-carousel-react": "latest",
     "firebase": "latest",
     "firebase-admin": "latest",
-    "genkit": "latest",
     "lucide-react": "latest",
     "next": "latest",
     "next-themes": "latest",
@@ -54,7 +51,6 @@
     "rehype-raw": "latest",
     "tailwind-merge": "latest",
     "tailwindcss-animate": "latest",
-    "wav": "latest",
     "zod": "latest"
   },
   "devDependencies": {
@@ -66,12 +62,5 @@
     "tailwindcss": "latest",
     "typescript": "latest"
   },
-  "overrides": {
-    "@genkit-ai/google-genai": {
-      "genkit": "latest"
-    },
-    "@genkit-ai/ai": {
-      "genkit": "latest"
-    }
-  }
+  "overrides": {}
 }

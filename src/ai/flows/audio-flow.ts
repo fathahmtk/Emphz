@@ -1,107 +1,264 @@
-
-'use server';
-/**
- * @fileOverview A flow for generating audio from text using a TTS model.
- *
- * - generateAudio - A function that takes text and returns a data URI for the audio.
- */
-
-import { ai } from '@/ai/genkit';
-import { z } from 'zod';
-import wav from 'wav';
-
-// Define the input schema for the audio generation flow
-const AudioInputSchema = z.object({
-  text: z.string().describe('The text to be converted to speech.'),
-});
-export type AudioInput = z.infer<typeof AudioInputSchema>;
-
-// Define the output schema for the audio generation flow
-const AudioOutputSchema = z.object({
-  audioDataUri: z.string().describe("The generated audio as a data URI in WAV format. Expected format: 'data:audio/wav;base64,<encoded_data>'."),
-});
-export type AudioOutput = z.infer<typeof AudioOutputSchema>;
-
-/**
- * Converts raw PCM audio buffer to a Base64 encoded WAV data string.
- * @param pcmData The raw PCM audio data buffer.
- * @param channels The number of audio channels.
- * @param rate The sample rate.
- * @param sampleWidth The sample width in bytes.
- * @returns A promise that resolves to the Base64 encoded WAV string.
- */
-async function toWav(
-  pcmData: Buffer,
-  channels = 1,
-  rate = 24000,
-  sampleWidth = 2
-): Promise<string> {
-  return new Promise((resolve, reject) => {
-    const writer = new wav.Writer({
-      channels,
-      sampleRate: rate,
-      bitDepth: sampleWidth * 8,
-    });
-
-    const bufs: any[] = [];
-    writer.on('error', reject);
-    writer.on('data', (d) => bufs.push(d));
-    writer.on('end', () => {
-      resolve(Buffer.concat(bufs).toString('base64'));
-    });
-
-    writer.write(pcmData);
-    writer.end();
-  });
-}
-
-// Define the Genkit flow for text-to-speech
-const audioFlow = ai.defineFlow(
-  {
-    name: 'audioFlow',
-    inputSchema: AudioInputSchema,
-    outputSchema: AudioOutputSchema,
-  },
-  async ({ text }) => {
-    // Generate audio using the Gemini TTS model
-    const { media } = await ai.generate({
-      model: 'googleai/tts-2',
-      config: {
-        responseModalities: ['AUDIO'],
-        speechConfig: {
-          voiceConfig: {
-            prebuiltVoiceConfig: { voiceName: 'Algenib' }, // A professional and clear voice
-          },
+{
+  "entities": {
+    "Product": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Product",
+      "type": "object",
+      "description": "Represents a GRP product in the dynamic product catalog.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Product entity."
         },
+        "name": {
+          "type": "string",
+          "description": "Name of the product."
+        },
+        "description": {
+          "type": "string",
+          "description": "Detailed specification of the product."
+        },
+        "imageUrl": {
+          "type": "string",
+          "description": "URL of the product image.",
+          "format": "uri"
+        }
       },
-      prompt: text,
-    });
-
-    if (!media?.url) {
-      throw new Error('Audio generation failed: no media was returned from the model.');
+      "required": [
+        "id",
+        "name",
+        "description",
+        "imageUrl"
+      ]
+    },
+    "ProjectCaseStudy": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "ProjectCaseStudy",
+      "type": "object",
+      "description": "Represents a project case study with before-after images and details.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the ProjectCaseStudy entity."
+        },
+        "title": {
+          "type": "string",
+          "description": "Title of the project case study."
+        },
+        "beforeImageUrl": {
+          "type": "string",
+          "description": "URL of the 'before' image.",
+          "format": "uri"
+        },
+        "afterImageUrl": {
+          "type": "string",
+          "description": "URL of the 'after' image.",
+          "format": "uri"
+        },
+        "details": {
+          "type": "string",
+          "description": "Detailed description of the project."
+        },
+        "location": {
+          "type": "string",
+          "description": "Location of the project."
+        },
+        "clientType": {
+          "type": "string",
+          "description": "Type of client for the project."
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "beforeImageUrl",
+        "afterImageUrl",
+        "details",
+        "location",
+        "clientType"
+      ]
+    },
+    "TechnicalDownload": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "TechnicalDownload",
+      "type": "object",
+      "description": "Represents a downloadable technical document (brochure, datasheet).",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the TechnicalDownload entity."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the downloadable document."
+        },
+        "fileUrl": {
+          "type": "string",
+          "description": "URL of the downloadable PDF file.",
+          "format": "uri"
+        },
+        "description": {
+          "type": "string",
+          "description": "Description of the downloadable document."
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "fileUrl",
+        "description"
+      ]
+    },
+    "Subscription": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Subscription",
+      "type": "object",
+      "description": "Represents a newsletter subscription.",
+      "properties": {
+        "email": {
+          "type": "string",
+          "format": "email"
+        },
+        "subscribedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["email", "subscribedAt"]
+    },
+    "Lead": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Lead",
+      "type": "object",
+      "description": "Represents a lead captured from the contact form.",
+      "properties": {
+        "name": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "company": { "type": "string" },
+        "phone": { "type": "string" },
+        "industry": { "type": "string" },
+        "product": { "type": "string" },
+        "quantity": { "type": "string" },
+        "location": { "type": "string" },
+        "inquiry": { "type": "string" },
+        "submittedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "email", "company", "phone", "inquiry", "submittedAt"]
+    },
+    "JobApplication": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "title": "JobApplication",
+        "type": "object",
+        "description": "Represents a job application.",
+        "properties": {
+            "name": { "type": "string" },
+            "email": { "type": "string", "format": "email" },
+            "phone": { "type": "string" },
+            "position": { "type": "string" },
+            "coverLetter": { "type": "string" },
+            "cvFileName": { "type": "string" },
+            "submittedAt": { "type": "string", "format": "date-time" }
+        },
+        "required": ["name", "email", "phone", "cvFileName", "submittedAt"]
+    },
+    "Industry": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Industry",
+      "type": "object",
+      "description": "Represents an industry that EMPHZ serves.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Industry entity."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the industry."
+        },
+        "description": {
+          "type": "string",
+          "description": "Description of how EMPHZ serves this industry."
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "description"
+      ]
+    },
+    "BlogAuthor": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "title": "BlogAuthor",
+        "type": "object",
+        "description": "Represents a blog post author.",
+        "properties": {
+            "id": { "type": "string" },
+            "name": { "type": "string" },
+            "avatarUrl": { "type": "string", "format": "uri" },
+            "title": { "type": "string" }
+        },
+        "required": ["id", "name", "avatarUrl", "title"]
+    },
+    "BlogPost": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "title": "BlogPost",
+        "type": "object",
+        "description": "Represents a single blog post.",
+        "properties": {
+            "id": { "type": "string" },
+            "title": { "type": "string" },
+            "slug": { "type": "string" },
+            "authorId": { "type": "string" },
+            "publishedAt": { "type": "string", "format": "date-time" },
+            "category": { "type": "string" },
+            "heroImageUrl": { "type": "string", "format": "uri" },
+            "summary": { "type": "string" },
+            "content": { "type": "string", "description": "Full content of the blog post in Markdown format." }
+        },
+        "required": ["id", "title", "slug", "authorId", "publishedAt", "category", "heroImageUrl", "summary", "content"]
     }
-
-    // The model returns a base64 data URI for raw PCM data. We need to extract it.
-    const pcmBuffer = Buffer.from(
-      media.url.substring(media.url.indexOf(',') + 1),
-      'base64'
-    );
-
-    // Convert the raw PCM data to a proper WAV format
-    const wavBase64 = await toWav(pcmBuffer);
-
-    return {
-      audioDataUri: `data:audio/wav;base64,${wavBase64}`,
-    };
+  },
+  "auth": {
+    "providers": []
+  },
+  "firestore": {
+     "structure": [
+      {
+        "path": "/products/{productId}",
+        "definition": { "schema": { "$ref": "#/entities/Product" } }
+      },
+      {
+        "path": "/project_case_studies/{projectCaseStudyId}",
+        "definition": { "schema": { "$ref": "#/entities/ProjectCaseStudy" } }
+      },
+      {
+        "path": "/technical_downloads/{technicalDownloadId}",
+        "definition": { "schema": { "$ref": "#/entities/TechnicalDownload" } }
+      },
+      {
+        "path": "/subscriptions/{subscriptionId}",
+        "definition": { "schema": { "$ref": "#/entities/Subscription" } }
+      },
+      {
+        "path": "/leads/{leadId}",
+        "definition": { "schema": { "$ref": "#/entities/Lead" } }
+      },
+      {
+        "path": "/job_applications/{jobApplicationId}",
+        "definition": { "schema": { "$ref": "#/entities/JobApplication" } }
+      },
+      {
+        "path": "/industries/{industryId}",
+        "definition": { "schema": { "$ref": "#/entities/Industry" } }
+      },
+      {
+        "path": "/blog_authors/{authorId}",
+        "definition": { "schema": { "$ref": "#/entities/BlogAuthor" } }
+      },
+      {
+        "path": "/blog_posts/{postId}",
+        "definition": { "schema": { "$ref": "#/entities/BlogPost" } }
+      }
+    ]
   }
-);
-
-
-/**
- * Public-facing function to generate audio from text.
- * @param input The text to convert to speech.
- * @returns A promise that resolves to the audio data URI.
- */
-export async function generateAudio(input: AudioInput): Promise<AudioOutput> {
-  return audioFlow(input);
 }

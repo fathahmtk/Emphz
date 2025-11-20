@@ -146,19 +146,6 @@
       },
       "required": ["name", "email", "company", "phone", "inquiry", "submittedAt"]
     },
-    "Inquiry": {
-      "title": "Inquiry",
-      "type": "object",
-      "description": "Structured data captured by the AI assistant.",
-      "properties": {
-        "inquiry": { "type": "string", "description": "The user's core project description." },
-        "product": { "type": "string", "description": "The specific product the user is interested in." },
-        "quantity": { "type": "string", "description": "The estimated quantity of products needed." },
-        "industry": { "type": "string", "description": "The user's industry." },
-        "location": { "type": "string", "description": "The project's physical location." }
-      },
-      "required": ["inquiry"]
-    },
     "JobApplication": {
         "$schema": "http://json-schema.org/draft-07/schema#",
         "title": "JobApplication",

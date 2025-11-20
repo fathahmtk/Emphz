@@ -12,7 +12,6 @@ import { AuthorAvatar } from '@/components/author-avatar';
 import { notFound } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
-import { AudioPlayer } from '@/components/audio-player';
 import { ScrollReveal } from '@/components/scroll-reveal';
 
 async function getPost(slug: string): Promise<{ post: BlogPost; author: BlogAuthor | null } | null> {
@@ -68,10 +67,6 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
                         </div>
                        {author && <AuthorAvatar author={author} />}
                     </header>
-
-                    <ScrollReveal delay={200}>
-                      <AudioPlayer textToSpeak={post.content} />
-                    </ScrollReveal>
 
                     <div className="prose dark:prose-invert prose-p:text-foreground/80 prose-headings:text-foreground prose-strong:text-foreground prose-a:text-primary hover:prose-a:text-primary/80 max-w-none mt-8">
                        <ReactMarkdown rehypePlugins={[rehypeRaw]}>
