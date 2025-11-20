@@ -1,5 +1,4 @@
-
-'use server';
+'use client';
 import { collection, getDocs, orderBy, query } from 'firebase/firestore';
 import Image from 'next/image';
 

@@ -1,4 +1,3 @@
-
 'use client';
 import Link from 'next/link';
 import { ArrowRight, Box, CheckCircle, Factory, HardHat, ShieldCheck, Sun, Wind, Zap } from 'lucide-react';
@@ -121,26 +120,28 @@ export default function Home() {
                 </div>
               </ScrollReveal>
             </div>
-             <ScrollReveal delay={500} className="hidden lg:block">
-               <GlassCard>
-                <CardHeader>
-                    <CardTitle className="text-white">Core Product Lines</CardTitle>
-                    <CardDescription className="text-white/80">Explore our engineered solutions.</CardDescription>
-                </CardHeader>
-                <CardContent>
-                    <div className="grid grid-cols-2 gap-4">
-                        {heroProducts.map((product) => (
-                           <Link key={product.href} href={product.href} className="block group">
-                             <div className="p-4 rounded-lg bg-white/10 hover:bg-white/20 border border-transparent transition-colors flex items-center gap-3">
-                               <Box className="w-5 h-5 text-primary" />
-                               <span className="font-semibold text-white group-hover:text-primary transition-colors">{product.title}</span>
-                             </div>
-                           </Link>
-                        ))}
-                    </div>
-                </CardContent>
-               </GlassCard>
-            </ScrollReveal>
+             <div className="hidden lg:grid place-items-center">
+                 <ScrollReveal delay={500}>
+                   <GlassCard>
+                    <CardHeader>
+                        <CardTitle className="text-white">Core Product Lines</CardTitle>
+                        <CardDescription className="text-white/80">Explore our engineered solutions.</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                        <div className="grid grid-cols-2 gap-4">
+                            {heroProducts.map((product) => (
+                               <Link key={product.href} href={product.href} className="block group">
+                                 <div className="p-4 rounded-lg bg-white/10 hover:bg-white/20 border border-transparent transition-colors flex items-center gap-3">
+                                   <Box className="w-5 h-5 text-primary" />
+                                   <span className="font-semibold text-white group-hover:text-primary transition-colors">{product.title}</span>
+                                 </div>
+                               </Link>
+                            ))}
+                        </div>
+                    </CardContent>
+                   </GlassCard>
+                </ScrollReveal>
+            </div>
           </div>
         </section>
 
