@@ -45,6 +45,7 @@
     "genkit": "latest",
     "lucide-react": "latest",
     "next": "latest",
+    "next-themes": "latest",
     "react": "latest",
     "react-dom": "latest",
     "react-hook-form": "latest",

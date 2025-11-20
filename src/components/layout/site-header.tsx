@@ -17,6 +17,7 @@ import { cn } from "@/lib/utils";
 import { menuData } from "@/lib/menu-data";
 import { ArrowRight, Search } from "lucide-react";
 import { SearchDialog } from "../search-dialog";
+import { ThemeToggle } from "../ui/theme-toggle";
 
 export function SiteHeader() {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -107,6 +108,7 @@ export function SiteHeader() {
                                 <Link href="/contact">Request Spec Pack</Link>
                             </Button>
                             <Button variant="ghost" size="icon" onClick={() => setIsSearchOpen(true)} className={cn(!isScrolled && "text-white hover:text-white hover:bg-white/10")}><Search className="h-4 w-4"/></Button>
+                            <ThemeToggle />
                         </div>
                     </div>
                 </div>

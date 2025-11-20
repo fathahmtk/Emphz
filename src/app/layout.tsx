@@ -8,6 +8,7 @@ import { cn } from '@/lib/utils';
 import { Toaster } from "@/components/ui/toaster";
 import { FirebaseClientProvider } from '@/firebase';
 import { BackToTopButton } from '@/components/ui/back-to-top-button';
+import { ThemeProvider } from '@/components/theme-provider';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -36,13 +37,20 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head />
       <body className={cn('min-h-screen font-body antialiased', inter.variable, inter_headline.variable)}>
-        <FirebaseClientProvider>
-            <div className="relative flex min-h-dvh flex-col bg-background">
-                {children}
-            </div>
-        </FirebaseClientProvider>
-        <Toaster />
-        <BackToTopButton />
+        <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+        >
+            <FirebaseClientProvider>
+                <div className="relative flex min-h-dvh flex-col bg-background">
+                    {children}
+                </div>
+            </FirebaseClientProvider>
+            <Toaster />
+            <BackToTopButton />
+        </ThemeProvider>
       </body>
     </html>
   );
